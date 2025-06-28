@@ -300,6 +300,17 @@
     # Recursive
     - id: ClosetMaintenanceFilledRandom
       prob: 0.01
+    #Ratchanges
+    - id: MobHuman
+      prob: 0.01 #Urist Jumpscare
+    - id: Omnitool
+      prob: 0.01 #The Lottery.
+    - id: MobMouse1
+      prob: 0.15 #mouse stuck in maints locker, please help me
+    - id: TraitorCodePaper
+      prob: 0.01 #Another lottery spin
+    - id: WeaponShotgunImprovisedLoaded
+      prob: 0.05 #Older tiders left this for the newer tide.
 
 - type: entity
   id: ClosetMaintenanceFilledRandom
