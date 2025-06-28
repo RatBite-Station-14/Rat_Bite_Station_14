@@ -313,6 +313,9 @@
       - id: RubberStampGreytide
       - id: ClothingShoesWizardSkates #GoobStation - Wizard Skates
       - id: FoodSnackLollypopWrappedMysteryEvil # Goobstation - Lollypops!
+      #Rare Ratditions
+      - id: WeaponShotgunDoubleBarreledRubber #nonlethal loaded barkeep shotty
+      - id: CardBaseSyndicate
 
 - type: entity
   name: Maint Loot Spawner
