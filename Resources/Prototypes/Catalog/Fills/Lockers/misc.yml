@@ -309,8 +309,6 @@
       prob: 0.15 #mouse stuck in maints locker, please help me
     - id: TraitorCodePaper
       prob: 0.01 #Another lottery spin
-    - id: WeaponShotgunImprovisedLoaded
-      prob: 0.05 #Older tiders left this for the newer tide.
 
 - type: entity
   id: ClosetMaintenanceFilledRandom
