@@ -73,7 +73,7 @@
   - type: Armor
     modifiers:
       coefficients:
-        Caustic: 0.4
+        Caustic: 0.3 #RATBITES
 
 - type: entity
   parent: ClothingOuterBioGeneral

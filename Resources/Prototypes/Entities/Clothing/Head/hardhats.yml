@@ -109,10 +109,10 @@
       NerveDamage: 0
     modifiers:
       coefficients:
-        Blunt: 0.9
-        Slash: 0.9
-        Piercing: 0.9
-        Heat: 0.9
+        Blunt: 0.85 #RATBITES
+        Slash: 0.85 #RATBITES
+        Piercing: 0.85 #RATBITES
+        Heat: 0.85 #RATBITES
 
 - type: entity
   parent: ClothingHeadHatHardhatBase
