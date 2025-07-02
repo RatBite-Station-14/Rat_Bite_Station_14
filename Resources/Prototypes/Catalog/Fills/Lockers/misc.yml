@@ -303,7 +303,7 @@
     #Ratchanges
     - id: MobHuman
       prob: 0.01 #Urist Jumpscare
-    - id: Omnitool
+    - id: JawsOfLife #NT Jaws.
       prob: 0.01 #The Lottery.
     - id: MobMouse1
       prob: 0.15 #mouse stuck in maints locker, please help me
