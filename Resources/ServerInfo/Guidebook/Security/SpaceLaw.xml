@@ -61,7 +61,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
   # Crimes
 
-  # I Degree
+  # 1 - XX
 
   For minor crimes, fix the issue then warn the person to not attempt the crime again, if they still proceed to do it at a later date, a brig time may be better.
 
@@ -107,7 +107,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 
 
-  # II Degree
+  # 2 - XX
 
   ## Animal Cruelty
 
@@ -124,6 +124,14 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   [bold]Maximum Punishment:[/bold] 4:00
 
   [bold]Notes:[/bold] Step up from vandalism but a step down from mass destruction.
+
+  ## Discrimination
+
+  [bold]Description[/bold]: To recklessly put yourself or others in danger, either through direct action, or failure to act.
+
+  [bold]Maximum Punishment:[/bold] 4:00
+
+  [bold]Notes:[/bold] Covers industrial accidents, industrial negligence, self-experimentation, or even medical malpractice.
 
   ## Endangerment
 
@@ -159,7 +167,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 
 
-  # III Degree
+  # 3 - XX
 
   ## Assault/Battery
 
@@ -227,7 +235,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 
 
-  # IV Degree
+  # 4 - XX
 
   ## Attempted Murder
 
@@ -255,7 +263,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 
 
-  # V Degree
+  # 5 - XX
 
   ## Mass Murder
 
