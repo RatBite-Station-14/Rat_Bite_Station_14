@@ -22,8 +22,8 @@ reagent-desc-sodium-carbonate = A white, odorless, water-soluble salt that yield
 reagent-name-artifexium = artifexium
 reagent-desc-artifexium = A lavender mixture of microscopic artifact fragments and a strong acid. It has the ability to activate artifacts.
 
-reagent-name-benzene = benzene
-reagent-desc-benzene = An aromatic, slightly carcinogenic, ring of carbon, forming a base for many organic compounds.
+reagent-name-benzene = Hydrocarbons
+reagent-desc-benzene = Hydrocarbons are diverse compounds composed solely of hydrogen and carbon, forming the foundational framework for many compounds.
 
 reagent-name-hydroxide = hydroxide
 reagent-desc-hydroxide = A strong alkaline chemical, forming a base for many organic compounds.
