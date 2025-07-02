@@ -166,7 +166,7 @@
     - calmdynamic
   name: sleeper-title
   description: sleeper-description
-  showInVote: true
+  showInVote: false #ratbites, known to be buggy and secret should be used.
   minPlayers: 5
   rules:
     - CalmDynamic
@@ -243,3 +243,4 @@
   rules:
     - SecretPlusRampingMid
     - LavalandStormScheduler
+# Wont for now, but maybe get rid of secretplus and in that gamedirector?
