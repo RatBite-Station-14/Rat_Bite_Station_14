@@ -13,6 +13,30 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
+- type: guideEntry # Default for the RatBite SS14 Server.
+  id: DefaultServerRules
+  name: guide-entry-rules
+  priority: 60
+  text: "/ServerInfo/_RatBite/Guidebook/ServerRules/DefaultServerRules.xml""
+  children:
+  - SOP
+  
+- type: guideEntry
+  id: SOP
+  name: guide-entry-rules-sop
+  ruleEntry: true
+  priority: 30
+  text: "/ServerInfo/Guidebook/_Ratbite/ServerRules/SOP/StandardOperatingProcedure.xml"
+  children:
+  - CentralCommand
+  
+- type: guideEntry
+  id: CentralCommand
+  name: guide-entry-rules-cc
+  ruleEntry: true
+  priority: 1
+  text: "/ServerInfo/_RatBite/Guidebook/ServerRules/SOP/CentralCommand.xml"
+
 - type: guideEntry # Default for forks and stuff. Should not be listed anywhere if the server is using a custom ruleset.
   id: DefaultRuleset
   name: guide-entry-rules
@@ -465,9 +489,3 @@
   ruleEntry: true
   priority: 100
   text: "/ServerInfo/Guidebook/ServerRules/BanDurations.xml"
-
-- type: guideEntry # Default for the RatBite SS14 Server.
-  id: DefaultServerRules
-  name: guide-entry-rules
-  priority: 60
-  text: "/ServerInfo/Guidebook/ServerRules/RatBite Station/DefaultServerRules.xml"
