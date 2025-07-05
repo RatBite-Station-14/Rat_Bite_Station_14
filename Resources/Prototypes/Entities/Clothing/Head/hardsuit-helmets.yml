@@ -148,6 +148,8 @@
         Slash: 0.9
         Piercing: 0.9
         Caustic: 0.9
+  - type: EyeProtection #Ratbites, hardsuit update
+  - type: IdentityBlocker #Ratbites, Why wasn't this a thing before?
 
 #Atmospherics Hardsuit
 - type: entity
