@@ -147,7 +147,7 @@
   - extended
   - shittersafari
   name: extended-title
-  showInVote: false #2boring2vote
+  showInVote: true #Ratbites, people may want to have less intense shifts.
   description: extended-description
   rules:
   - BasicStationEventScheduler
@@ -162,7 +162,7 @@
   - greenshift
   - shittersafarideluxeedition
   name: greenshift-title
-  showInVote: false #4boring4vote
+  showInVote: true #Ratbites, people may want to have less intense shifts.
   description: greenshift-description
   rules:
   - SpaceTrafficControlFriendlyEventScheduler
@@ -175,7 +175,7 @@
     - secret
     - sekrit
   name: secret-title
-  showInVote: false # Goob - Game Director
+  showInVote: true #Ratbites, Secret Overhaul.
   description: secret-description
   rules:
     - Secret
@@ -245,7 +245,7 @@
   name: death-match-title
   description: death-match-description
   maxPlayers: 15
-  showInVote: true
+  showInVote: false #Ratbites, deathpool isnt good in current form.
   supportedMaps: DeathMatchMapPool
   rules:
     - DeathMatch31
@@ -277,7 +277,7 @@
   description: rev-description
   showInVote: false
   rules:
-  - DummyNonAntagChance  
+  - DummyNonAntagChance
   - Revolutionary
   - SubGamemodesRule
   - BasicStationEventScheduler
