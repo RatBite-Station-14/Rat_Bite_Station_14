@@ -313,6 +313,8 @@
       - id: RubberStampGreytide
       - id: ClothingShoesWizardSkates #GoobStation - Wizard Skates
       - id: FoodSnackLollypopWrappedMysteryEvil # Goobstation - Lollypops!
+      #Rare Ratditions
+      - id: CardBaseSyndicate #Collect your own set of syndi cards!
 
 - type: entity
   name: Maint Loot Spawner
