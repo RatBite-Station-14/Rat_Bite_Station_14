@@ -1,0 +1,15 @@
+# Sten by FloraMillhouse, just credit me if using :D
+
+- type: entity
+  name: Old War SMG
+  parent: [BaseWeaponSubMachineGun, BaseSecurityContraband]
+  id: BaseWeaponSubMachineGunSten
+  description: This gun is older than you, or at least the patent for it is! A free market firearm used in The old worlds "world war" series. It takes .35 auto, the pistol caliber and shoots unbarably slow however you cant complain due to it being 1000 years. # Once I rework the ammo this will take a lesserlethal cartridge like 9mm. (Sec pistol will be 10mm.)
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Weapons/Guns/SMGs/sten.rsi
+  - type: Gun
+    fireRate: 3
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/atreides.ogg
+  - type: Appearance
