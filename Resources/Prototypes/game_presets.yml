@@ -65,8 +65,8 @@
   rules:
     # - MeteorSwarmScheduler Goobstation - nuh uh
     - RampingStationEventScheduler
-    - SpaceTrafficControlEventScheduler
-    - SpaceTrafficControlFriendlyEventScheduler
+    # - SpaceTrafficControlEventScheduler - Ratbite currently has no shuttle events
+    # - SpaceTrafficControlFriendlyEventScheduler - Ratbite currently has no shuttle events
     - BasicRoundstartVariation
     - LavalandStormScheduler # Lavaland Change
 
@@ -82,7 +82,7 @@
   rules:
 #    - KesslerSyndromeScheduler
     - RampingStationEventScheduler
-    - SpaceTrafficControlEventScheduler
+#    - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
     - LavalandStormScheduler # Lavaland Change
 
@@ -106,7 +106,7 @@
     - Wizard
     - RampingStationEventScheduler
     - Changeling # Goobstation - changeling playtest
-    - SpaceTrafficControlEventScheduler
+#    - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
     - LavalandStormScheduler # Lavaland Change
 
@@ -135,8 +135,8 @@
 #    - MeteorSwarmMildScheduler # Goob Edit
 #    - MeteorSwarmScheduler # Goob edit
     - RampingStationEventScheduler
-    - SpaceTrafficControlEventScheduler
-    - SpaceTrafficControlFriendlyEventScheduler
+#    - SpaceTrafficControlEventScheduler
+    # - SpaceTrafficControlFriendlyEventScheduler - Ratbite currently has no shuttle events
     - BasicRoundstartVariation
     - Changeling # Goobstation - changeling playtest
     - LavalandStormScheduler # Lavaland Change
@@ -152,7 +152,7 @@
   rules:
   - BasicStationEventScheduler
   # - MeteorSwarmScheduler Goobstation - nuh uh
-  - SpaceTrafficControlEventScheduler
+  # - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
   - LavalandStormScheduler # Lavaland Change
 
@@ -165,7 +165,7 @@
   showInVote: false #4boring4vote
   description: greenshift-description
   rules:
-  - SpaceTrafficControlFriendlyEventScheduler
+  # - SpaceTrafficControlFriendlyEventScheduler - Ratbite currently has no shuttle events
   - BasicRoundstartVariation
   - LavalandStormScheduler # Lavaland Change
 
@@ -192,7 +192,7 @@
   rules:
     - BasicStationEventScheduler
   #  - MeteorSwarmScheduler Goobstation - nuh uh
-    - SpaceTrafficControlEventScheduler
+  #  - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
     - LavalandStormScheduler # Lavaland Change
 
@@ -204,7 +204,7 @@
   showInVote: false #Admin Use
   description: secret-description
   rules:
-  - SpaceTrafficControlFriendlyEventScheduler
+  # - SpaceTrafficControlFriendlyEventScheduler - Ratbite currently has no shuttle events
   - BasicRoundstartVariation
   - LavalandStormScheduler # Lavaland Change
 
@@ -233,7 +233,7 @@
   - SubGamemodesRule
   - BasicStationEventScheduler
   #- MeteorSwarmScheduler Goobstation - nuh uh
-  - SpaceTrafficControlEventScheduler
+  # - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
   - LavalandStormScheduler # Lavaland Change
 
@@ -263,7 +263,7 @@
   - SubGamemodesRule
   - BasicStationEventScheduler
   #  - MeteorSwarmScheduler Goobstation - nuh uh
-  - SpaceTrafficControlEventScheduler
+  # - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
   - LavalandStormScheduler # Lavaland Change
 
@@ -277,12 +277,12 @@
   description: rev-description
   showInVote: false
   rules:
-  - DummyNonAntagChance  
+  - DummyNonAntagChance
   - Revolutionary
   - SubGamemodesRule
   - BasicStationEventScheduler
   #  - MeteorSwarmScheduler Goobstation - nuh uh
-  - SpaceTrafficControlEventScheduler
+  # - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
   - LavalandStormScheduler # Lavaland Change
 
@@ -301,7 +301,7 @@
   - Zombie
   - BasicStationEventScheduler
 #  - MeteorSwarmScheduler Goobstation - nuh uh
-  - SpaceTrafficControlEventScheduler
+#  - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
   - LavalandStormScheduler # Lavaland Change
 
@@ -318,6 +318,6 @@
   - Zombie
   - BasicStationEventScheduler
  # - KesslerSyndromeScheduler
-  - SpaceTrafficControlEventScheduler
+ # - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
   - LavalandStormScheduler # Lavaland Change

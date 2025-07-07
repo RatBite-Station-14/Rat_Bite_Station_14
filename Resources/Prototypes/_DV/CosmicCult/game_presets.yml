@@ -10,7 +10,7 @@
     - CosmicCult
     - SubGamemodesRule
     #- MeteorSwarmScheduler - Goob Edit
-    - SpaceTrafficControlEventScheduler
+    #- SpaceTrafficControlEventScheduler - Ratbite currently has no shuttle events
     - BasicRoundstartVariation
     - BasicStationEventScheduler
 
@@ -25,6 +25,6 @@
     - CosmicCult
     - SubGamemodesRule
     #- MeteorSwarmScheduler - Goob Edit
-    - SpaceTrafficControlEventScheduler
+    #- SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
     - BasicStationEventScheduler

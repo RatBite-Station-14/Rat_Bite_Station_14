@@ -183,7 +183,7 @@
     - Wizard
     - SleepersOnWizardDeath
     - BasicStationEventScheduler
-    - SpaceTrafficControlEventScheduler
+    #- SpaceTrafficControlEventScheduler - Ratbite currently has no shuttle events
     - BasicRoundstartVariation
     - SubGamemodesRule
     - LavalandStormScheduler # Lavaland Change
