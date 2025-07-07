@@ -99,7 +99,7 @@
     name: abductor-agent-ghost-role-name
     description: abductor-agent-ghost-role-desc
     mindRoles:
-  #Ratbite  - MindRoleGhostRoleTeamAntagonist
+    - MindRoleGhostRoleTeamAntagonist
   #Ratbite  requirements:
  #Ratbite   - !type:OverallPlaytimeRequirement
   #Ratbite    time: 18000 #5 hours
