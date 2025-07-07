@@ -80261,13 +80261,6 @@ entities:
     - type: Transform
       pos: -30.5,40.5
       parent: 2
-- proto: PosterLegitKSLeaders
-  entities:
-  - uid: 12093
-    components:
-    - type: Transform
-      pos: -14.5,22.5
-      parent: 2
 - proto: PosterLegitLoveIan
   entities:
   - uid: 12094

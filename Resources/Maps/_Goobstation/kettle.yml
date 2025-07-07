@@ -124019,13 +124019,6 @@ entities:
     - type: Transform
       pos: 50.5,-11.5
       parent: 2
-- proto: PosterLegitKSLeaders
-  entities:
-  - uid: 18627
-    components:
-    - type: Transform
-      pos: 29.5,38.5
-      parent: 2
 - proto: PosterLegitNanotrasenLogo
   entities:
   - uid: 18628

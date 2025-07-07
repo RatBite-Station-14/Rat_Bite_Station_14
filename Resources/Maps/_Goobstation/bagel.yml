@@ -115442,13 +115442,6 @@ entities:
     - type: Transform
       pos: -28.5,3.5
       parent: 2
-- proto: PosterLegitKSLeaders
-  entities:
-  - uid: 17192
-    components:
-    - type: Transform
-      pos: 2.5,-7.5
-      parent: 2
   - uid: 17193
     components:
     - type: Transform
