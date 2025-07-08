@@ -5,7 +5,7 @@
   description: A stuffed toy that seems like it wants you to listen to it.
   components:
   - type: Sprite
-    state: listentome
+    state: listentome #This means that I had to put the sprite in the normal fun.rsi
   - type: EmitSoundOnUse
     sound:
       path: /Audio/_BRatBite/Items/redacted/listentome.ogg
