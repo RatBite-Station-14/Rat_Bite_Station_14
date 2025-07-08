@@ -233,6 +233,7 @@
       children:
       - id: ClothingNeckCloakHerald
       - id: ClothingHeadHelmetTemplar
+      - id: PlushieHumor #Ratbites, EVERYONE MUST SEE!!!
       # Cloaks
       - !type:GroupSelector
         children:
