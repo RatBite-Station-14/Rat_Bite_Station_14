@@ -1,0 +1,31 @@
+- type: entity
+  parent: BasePlushie
+  id: PlushieHumor
+  name: redacted plushie
+  description: A stuffed toy that seems like it wants you to listen to it.
+  components:
+  - type: Sprite
+    state: listentome
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/_BRatBite/Items/redacted/listentome.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_BRatBite/Items/redacted/destroyed.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/_BRatBite/Items/redacted/ifyouwere.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_BRatBite/Items/redacted/listentome.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/_BRatBite/Items/redacted/ifyouwere.ogg
+  - type: Food
+    requiresSpecialDigestion: true
+    useSound:
+      path: /Audio/_BRatBite/Items/redacted/listentome.ogg
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      path: /Audio/_BRatBite/Items/redacted/listentome.ogg
