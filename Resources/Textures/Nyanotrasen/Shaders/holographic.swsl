@@ -2,7 +2,7 @@ light_mode unshaded;
 
 uniform highp float hue;
 uniform highp float textureHeight;
-uniform highp float pixel_scale = 12.0;
+uniform highp float pixel_scale;
 
 //
 // Description : Array and textureless GLSL 2D/3D/4D simplex
