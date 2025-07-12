@@ -397,17 +397,21 @@
     - MagazineMagnum
 
 - type: selectableSet
-  id: ERTPulseSet
+  id: ERTLaserSet
   name: selectable-set-ert-pulse-name
   description: selectable-set-ert-pulse-description
   sprite:
     sprite: Objects/Weapons/Guns/Battery/pulse_carbine.rsi
     state: icon
   content:
-    - WeaponPulseCarbineAdvanced
+    - WeaponEnergyRifle
     - WeaponEnergyRevolver
-    - EnergySpeedloaderPulse
-    - EnergySpeedloaderPulse
+    - EnergySpeedloaderLethal
+    - EnergySpeedloaderLethal
+    - EnergyMagRifleOverchargeLethal
+    - EnergyMagRifleLethal
+    - EnergyMagRifleLethal
+    - PortableRecharger
     - EnergySpeedloaderDisabler
 
 ## voidsuit selectors
