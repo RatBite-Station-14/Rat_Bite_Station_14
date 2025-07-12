@@ -140,13 +140,13 @@
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     head: ClothingHeadHelmetERTLeader
     neck: ExecutiveIDCard # Goobstation - Executive Access!
-    eyes: ClothingEyesGlassesSecurity
+    eyes: ClothingEyesGlassesCentComm
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltAssaultFilled # Goobstation
-    pocket1: WeaponPulsePistol # Literally described as "Favored sidearm of NT ERT operatives". Is never used anywhere else.
+    pocket1: WeaponPistolN1984 # Literally described as "Favored sidearm of NT ERT operatives". Is never used anywhere else.
     pocket2: FlashlightSeclite
   storage:
     back:
@@ -165,13 +165,13 @@
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     neck: ExecutiveIDCard # Goobstation - Executive Access!
     mask: ClothingMaskGasERT
-    eyes: ClothingEyesGlassesSecurity
+    eyes: ClothingEyesGlassesCentComm
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTLeader
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltAssaultFilled # Goobstation
-    pocket1: WeaponPulsePistol # Literally described as "Favored sidearm of NT ERT operatives". Is never used anywhere else.
+    pocket1: WeaponPistolN1984 # Literally described as "Favored sidearm of NT ERT operatives". Is never used anywhere else.
     pocket2: FlashlightSeclite
   storage:
     back:
@@ -215,14 +215,14 @@
     back: ClothingBackpackERTChaplain
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     head: ClothingHeadHatFez
-    eyes: ClothingEyesGlasses
+    eyes: ClothingEyesGlassesCentComm
     neck: ClothingNeckStoleChaplain
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
     id: ERTChaplainPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltStorageWaistbag
-    pocket1: WeaponPulsePistol # Literally described as "Favored sidearm of NT ERT operatives".
+    pocket1: WeaponPistolN1984 # Literally described as "Favored sidearm of NT ERT operatives".
     pocket2: DrinkWaterBottleFull
   storage:
     back:
@@ -247,14 +247,14 @@
     back: ClothingBackpackERTChaplain
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     mask: ClothingMaskGasERT
-    eyes: ClothingEyesGlasses
+    eyes: ClothingEyesGlassesCentComm
     neck: ClothingNeckStoleChaplain
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTChaplain
     id: ERTChaplainPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltStorageWaistbag
-    pocket1: Flare
+    pocket1: WeaponPistolN1984
     pocket2: DrinkWaterBottleFull
   storage:
     back:
@@ -303,13 +303,13 @@
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     head: ClothingHeadHelmetERTEngineer
     neck: ExecutiveIDCard # Goobstation - Executive Access!
-    eyes: ClothingEyesGlassesMeson
+    eyes: ClothingEyesGlassesCentComm
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
     id: ERTEngineerPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltChiefEngineerFilled
-    pocket1: WeaponPulsePistol # Literally described as "Favored sidearm of NT ERT operatives".
+    pocket1: WeaponPistolN1984 # Literally described as "Favored sidearm of NT ERT operatives".
     pocket2: GasAnalyzer
   storage:
     back:
@@ -332,7 +332,7 @@
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     neck: ExecutiveIDCard # Goobstation - Executive Access!
     mask: ClothingMaskGasERT
-    eyes: ClothingEyesGlassesMeson
+    eyes: ClothingEyesGlassesCentComm
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTEngineer
     id: ERTEngineerPDA
@@ -383,13 +383,13 @@
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     head: ClothingHeadHelmetERTSecurity
     neck: ExecutiveIDCard # Goobstation - Executive Access!
-    eyes: ClothingEyesGlassesSecurity
+    eyes: ClothingEyesGlassesCentComm
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
     id: ERTSecurityPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltAssaultFilled # Goobstation
-    pocket1: WeaponPulsePistol # Literally described as "Favored sidearm of NT ERT operatives".
+    pocket1: WeaponPistolN1984 # Literally described as "Favored sidearm of NT ERT operatives".
     pocket2: FlashlightSeclite
   storage:
     back:
@@ -408,13 +408,13 @@
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     mask: ClothingMaskGasERT
     neck: ExecutiveIDCard # Goobstation - Executive Access!
-    eyes: ClothingEyesGlassesSecurity
+    eyes: ClothingEyesGlassesCentComm
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTSecurity
     id: ERTSecurityPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltAssaultFilled # Goobstation
-    pocket1: WeaponPulsePistol # Death to Crew aligned Ballistics
+    pocket1: WeaponPistolN1984 # Death to Crew aligned Ballistics
     pocket2: FlashlightSeclite
   storage:
     back:
@@ -482,14 +482,14 @@
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     head: ClothingHeadHelmetERTMedic
     neck: ExecutiveIDCard # Goobstation - Executive Access!
-    eyes: ClothingEyesGlassesMedSec # Goobstation
+    eyes: ClothingEyesGlassesCentComm # Goobstation
     gloves: ClothingHandsGlovesNitrile
     outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
     id: ERTMedicPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityWebbingFilledMedical # Fancier
     pocket1: Flare
-    pocket2: WeaponPulsePistol # Literally described as "Favored sidearm of NT ERT operatives".
+    pocket2: WeaponPistolN1984 # Literally described as "Favored sidearm of NT ERT operatives".
   storage:
     back:
     - CentCommHypo
@@ -510,13 +510,13 @@
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     mask: ClothingMaskGasERT
     neck: ExecutiveIDCard # Goobstation - Executive Access!
-    eyes: ClothingEyesGlassesMedSec # Goobstation
+    eyes: ClothingEyesGlassesCentComm # Goobstation
     gloves: ClothingHandsGlovesNitrile
     outerClothing: ClothingOuterHardsuitERTMedical
     id: ERTMedicPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityWebbingFilledMedical # Fancier
-    pocket1: WeaponPulsePistol # Literally described as "Favored sidearm of NT ERT operatives".
+    pocket1: WeaponPistolN1984 # Literally described as "Favored sidearm of NT ERT operatives".
   storage:
     back:
     - CentCommHypo
@@ -558,12 +558,13 @@
     shoes: ClothingShoesGaloshes
     head: ClothingHeadHelmetERTJanitor
     neck: ExecutiveIDCard # Goobstation - Executive Access!
+    eyes: ClothingEyesGlassesCentComm
     gloves: ClothingHandsGlovesColorPurple
     outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
     id: ERTJanitorPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltJanitorFilled
-    pocket1: WeaponPulsePistol # Literally described as "Favored sidearm of NT ERT operatives".
+    pocket1: WeaponPistolN1984 # Literally described as "Favored sidearm of NT ERT operatives".
   storage:
     back:
     - LightReplacer
@@ -581,12 +582,13 @@
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     mask: ClothingMaskGasERT
     neck: ExecutiveIDCard # Goobstation - Executive Access!
+    eyes: ClothingEyesGlassesCentComm
     gloves: ClothingHandsGlovesColorPurple
     outerClothing: ClothingOuterHardsuitERTJanitor
     id: ERTJanitorPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltJanitorFilled
-    pocket1: WeaponPulsePistol # Literally described as "Favored sidearm of NT ERT operatives".
+    pocket1: WeaponPistolN1984 # Literally described as "Favored sidearm of NT ERT operatives".
   storage:
     back:
     - LightReplacer
