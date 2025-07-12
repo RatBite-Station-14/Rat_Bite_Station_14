@@ -146,7 +146,7 @@
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltAssaultFilled # Goobstation
-    pocket1: WeaponPistolN1984 # Literally described as "Favored sidearm of NT ERT operatives". Is never used anywhere else.
+    pocket1: WeaponRevolverDeckard
     pocket2: FlashlightSeclite
   storage:
     back:
@@ -171,7 +171,7 @@
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltAssaultFilled # Goobstation
-    pocket1: WeaponPistolN1984 # Literally described as "Favored sidearm of NT ERT operatives". Is never used anywhere else.
+    pocket1: WeaponRevolverDeckard
     pocket2: FlashlightSeclite
   storage:
     back:
@@ -222,7 +222,7 @@
     id: ERTChaplainPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltStorageWaistbag
-    pocket1: WeaponPistolN1984 # Literally described as "Favored sidearm of NT ERT operatives".
+    pocket1: WeaponRevolverDeckard
     pocket2: DrinkWaterBottleFull
   storage:
     back:
@@ -254,7 +254,7 @@
     id: ERTChaplainPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltStorageWaistbag
-    pocket1: WeaponPistolN1984
+    pocket1: WeaponRevolverDeckard
     pocket2: DrinkWaterBottleFull
   storage:
     back:
@@ -309,12 +309,12 @@
     id: ERTEngineerPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltChiefEngineerFilled
-    pocket1: WeaponPistolN1984 # Literally described as "Favored sidearm of NT ERT operatives".
+    pocket1: WeaponRevolverDeckard
     pocket2: GasAnalyzer
   storage:
     back:
     - trayScanner
-    - RCD
+    - RCDRecharging
     - RCDAmmo
     - RCDAmmo
     - CableMVStack
@@ -338,12 +338,12 @@
     id: ERTEngineerPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltChiefEngineerFilled
-    pocket1: WeaponPistolN1984
+    pocket1: WeaponRevolverDeckard
     pocket2: GasAnalyzer
   storage:
     back:
     - trayScanner
-    - RCD
+    - RCDRecharging
     - RCDAmmo
     - RCDAmmo
     - CableMVStack
@@ -389,7 +389,7 @@
     id: ERTSecurityPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltAssaultFilled # Goobstation
-    pocket1: WeaponPistolN1984 # Literally described as "Favored sidearm of NT ERT operatives".
+    pocket1: WeaponRevolverDeckard
     pocket2: FlashlightSeclite
   storage:
     back:
@@ -414,7 +414,7 @@
     id: ERTSecurityPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltAssaultFilled # Goobstation
-    pocket1: WeaponPistolN1984 # Death to Crew aligned Ballistics
+    pocket1: WeaponRevolverDeckard
     pocket2: FlashlightSeclite
   storage:
     back:
@@ -488,8 +488,8 @@
     id: ERTMedicPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityWebbingFilledMedical # Fancier
-    pocket1: Flare
-    pocket2: WeaponPistolN1984 # Literally described as "Favored sidearm of NT ERT operatives".
+    pocket1: WeaponRevolverDeckard
+    pocket2: Flare
   storage:
     back:
     - CentCommHypo
@@ -516,7 +516,7 @@
     id: ERTMedicPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityWebbingFilledMedical # Fancier
-    pocket1: WeaponPistolN1984 # Literally described as "Favored sidearm of NT ERT operatives".
+    pocket1: WeaponRevolverDeckard
   storage:
     back:
     - CentCommHypo
@@ -564,7 +564,7 @@
     id: ERTJanitorPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltJanitorFilled
-    pocket1: WeaponPistolN1984 # Literally described as "Favored sidearm of NT ERT operatives".
+    pocket1: WeaponRevolverDeckard
   storage:
     back:
     - LightReplacer
@@ -588,7 +588,7 @@
     id: ERTJanitorPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltJanitorFilled
-    pocket1: WeaponPistolN1984 # Literally described as "Favored sidearm of NT ERT operatives".
+    pocket1: WeaponRevolverDeckard
   storage:
     back:
     - LightReplacer
