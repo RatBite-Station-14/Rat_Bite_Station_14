@@ -49,6 +49,7 @@
   storage:
     back:
     - WeaponLaserCannon
+    - PortableRecharger
     - GrenadeIncendiary
     - AmbuzolPlusMedipen # Injectors are cooler.
     - AmbuzolMedipen # Injectors are cooler.
