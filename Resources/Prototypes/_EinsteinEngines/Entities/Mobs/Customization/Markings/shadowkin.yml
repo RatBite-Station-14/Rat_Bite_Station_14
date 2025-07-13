@@ -713,3 +713,23 @@
     - sprite: _ADT/Mobs/Customization/Shadekin/shadekin_tails_32x32.rsi
       state: medium_twocolored
 
+# Shadowkin eye markings // why are you not able to apply shaders to markings?????? // guess heterochromia causes the lack of the glowy gland or whatever in the eye, thats the new lore
+
+- type: marking
+  id: EyeShadekinLeft
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Shadowkin]
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Shadekin/shadekin_eyes.rsi
+      state: left
+
+
+- type: marking
+  id: EyeShadekinRight
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Shadowkin]
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Shadekin/shadekin_eyes.rsi
+      state: right
