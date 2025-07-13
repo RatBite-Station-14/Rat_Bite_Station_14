@@ -1,8 +1,8 @@
 - type: entity
-  id: NFEnergyPickaxe
+  id: NTEnergyPickaxe
   parent: [BaseMeleeWeaponEnergy, BaseSyndicateContraband]
-  name: energy pickaxe
-  description: A holographic mining tool with blades comprised of hard light that also serves a deadly melee weapon. Rock and stone!
+  name: NT energy pickaxe
+  description: A holographic mining tool with blades comprised of hard light, This one seems to has its blades altered to cause more structural damage but less effective on people in return.
   components:
   - type: ItemToggleSize
     activatedSize: Huge
@@ -12,16 +12,16 @@
   - type: ItemToggleMeleeWeapon
     activatedDamage:
       groups:
-        Brute: 18
+        Brute: 8
       types:
-        Heat: 18
-        Structural: 40
+        Heat: 8
+        Structural: 70
   - type: Sprite
     sprite: _NF/Objects/Weapons/Melee/energy_pickaxe.rsi
     layers:
     - state: e-pickaxe
     - state: e-pickaxe-blade
-      color: "#e95151"
+      color: "#ADD8E6"
       visible: false
       shader: unshaded
       map: [ "blade" ]
@@ -67,10 +67,10 @@
     clickPartDamageMultiplier: 1
 
 - type: entity
-  name: "'Bojevic' combat shotgun"
+  name: "NT combat shotgun"
   parent: [BaseWeaponShotgun, BaseGunWieldable, BaseSyndicateContraband]
-  id: WeaponShotgunCombat
-  description: An old design with a beefier shell intended to repell boarding parties; this time, you are the boarding party. '8 GUAGE' is stamped on the barrel.
+  id: WeaponShotgunCombatNT
+  description: An old design with a beefier shell intended to repell boarding parties, this one seems to have been upgraded to auto cycle and can hold an extra shell.
   components:
   - type: Item
     size: Large
@@ -88,8 +88,8 @@
     whitelist:
       tags:
       - ShellShotgunHeavy
-    capacity: 5
+    capacity: 6
     proto: ShellShotgunHighCaliber
     soundRack:
       path: /Audio/Weapons/Guns/Cock/ltrifle_cock.ogg
-    autoCycle: false
+    autoCycle: true
