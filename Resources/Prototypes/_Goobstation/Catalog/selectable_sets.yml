@@ -381,9 +381,9 @@
 # ERT
 
 - type: selectableSet
-  id: ERTBallisticsSet
-  name: selectable-set-ert-ballistic-name
-  description: selectable-set-ert-ballistic-description
+  id: ERTTacticalSet
+  name: selectable-set-ert-Tactical-name
+  description: selectable-set-ert-Tactical-description
   sprite:
     sprite: _Goobstation/Objects/Weapons/Guns/Rifles/annie.rsi
     state: base
@@ -395,6 +395,7 @@
     - WeaponPistolN1984
     - MagazineMagnum
     - MagazineMagnum
+    - MagazineMagnumUranium
 
 - type: selectableSet
   id: ERTLaserSet
@@ -411,8 +412,48 @@
     - EnergyMagRifleOverchargeLethal
     - EnergyMagRifleLethal
     - EnergyMagRifleLethal
-    - PortableRecharger
     - EnergySpeedloaderDisabler
+
+- type: selectableSet
+  id: ERTCQCSet
+  name: selectable-set-ert-ballistic-name
+  description: selectable-set-ert-ballistic-description
+  sprite:
+    sprite: _Goobstation/Objects/Weapons/Guns/Rifles/annie.rsi
+    state: base
+  content:
+    - BSOManual
+    - CentcommStimpack
+    - CentcommStimpack
+    - CentcommStimpack
+    - EnergyShield
+
+- type: selectableSet
+  id: ERTBreacherSet
+  name: selectable-set-ert-pulse-name
+  description: selectable-set-ert-pulse-description
+  sprite:
+    sprite: Objects/Weapons/Guns/Battery/pulse_carbine.rsi
+    state: icon
+  content:
+    - WeaponShotgunCombatNT
+    - MagazineBoxShotgunHighCaliber
+    - MagazineBoxShotgunHighCaliber
+    - SeismicCharge
+    - SeismicCharge
+    - NTEnergyPickaxe
+
+- type: selectableSet
+  id: ERTSniperSet
+  name: selectable-set-ert-pulse-name
+  description: selectable-set-ert-pulse-description
+  sprite:
+    sprite: Objects/Weapons/Guns/Battery/pulse_carbine.rsi
+    state: icon
+  content:
+    - WeaponHeadOfSecuritySniper
+    - PortableRecharger
+    - KukriKnife
 
 ## voidsuit selectors
 
