@@ -386,3 +386,46 @@
         params:
           variation: 0.250
           volume: -2
+
+- type: entity
+  name: throngler Model2
+  parent: [ BaseSword, BaseCargoContraband ]
+  id: thronglerRatbite
+  description: Nanotrasen finally found a way to not make this thing a nightmare for everyone. At least it still works
+  components:
+    - type: Sprite
+      sprite: Objects/Weapons/Melee/Throngler2.rsi
+    - type: MeleeWeapon
+      attackRate: 10
+      autoAttack: true
+      damage:
+        types:
+          Structural: 150
+          Slash: 20 #Horror
+          Blunt: 20
+          Heat: 20
+          Piercing: 20
+          Radiation: 10
+      soundHit:
+        path: /Audio/Effects/explosion_small1.ogg
+    - type: Reflect # Goob edit
+      reflectProb: .5
+      reflects:
+        - Energy
+      spread: 90
+    - type: Item
+      size: Large
+      sprite: Objects/Weapons/Melee/Throngler-in-hand.rsi
+    - type: DisarmMalus
+    - type: Grammar
+      attributes:
+        proper: true
+    - type: ThrowableBlocker # Goobstation
+      blockSound:
+        path: /Audio/Weapons/eblade1.ogg
+        params:
+          variation: 0.250
+          volume: -2
+    - type: PressureDamageChange
+      appliedModifier: 0.01
+
