@@ -205,9 +205,9 @@
     duration: null
     maxOccurrences: 2
     chaos:
-      Hostile: 300
-      Medical: 300
-      Death: 300
+      Hostile: 600 #Ratbites, Secret+ keeps calling blob in which ends rounds instantly without admin intervention
+      Medical: 600 #Ratbites, Secret+ keeps calling blob in which ends rounds instantly without admin intervention
+      Death: 600 #Ratbites, Secret+ keeps calling blob in which ends rounds instantly without admin intervention
     eventType: HostilesSpawn
   - type: GameRule
     chaosScore: 800
