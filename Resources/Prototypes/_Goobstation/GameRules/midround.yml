@@ -210,7 +210,7 @@
       Death: 600 #Ratbites, Secret+ keeps calling blob in which ends rounds instantly without admin intervention
     eventType: HostilesSpawn
   - type: GameRule
-    chaosScore: 800
+    chaosScore: 1600 #Ratbites, doubling the score to keep secret+ at bay once it fires it
   - type: BlobSpawnRule
     carrierBlobProtos:
     - SpawnPointGhostBlobRat
