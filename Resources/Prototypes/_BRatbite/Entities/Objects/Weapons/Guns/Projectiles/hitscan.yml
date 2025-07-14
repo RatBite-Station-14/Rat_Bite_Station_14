@@ -3,7 +3,7 @@
   fireStacks: 0.7
   damage:
     types:
-      Heat: 34
+      Heat: 20
   muzzleFlash:
     sprite: _Goobstation/Objects/Weapons/Guns/Projectiles/small_laser.rsi
     state: muzzle_beam_light_overcharged
