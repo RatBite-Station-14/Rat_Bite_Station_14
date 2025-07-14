@@ -422,7 +422,7 @@
     sprite: _Goobstation/Objects/Weapons/Guns/Rifles/annie.rsi
     state: base
   content:
-    - BSOManual
+    - CQCManual
     - AdvancedCombatMedipen
     - AdvancedCombatMedipen
     - BolaEnergy
