@@ -134,9 +134,9 @@
   id: RevolutionaryMidround
   components:
   - type: StationEvent
-    earliestStart: 20
-    weight: 3
-    minimumPlayers: 30
+    earliestStart: 2000 #Ratbites, soft removal
+    weight: 300 #Ratbites, soft removal
+    minimumPlayers: 300 #Ratbites, soft removal
     maxOccurrences: 1
     duration: null
     occursDuringRoundEnd: false
@@ -151,7 +151,7 @@
     selectionTime: PostPlayerSpawn
     definitions:
     - prefRoles: [ HeadRev ]
-      max: 3
+      max: 0 #Ratbites, soft removal
       playerRatio: 15
       blacklist:
         components:

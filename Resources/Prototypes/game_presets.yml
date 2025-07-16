@@ -290,7 +290,7 @@
   rules:
   - PermaBrig # RatBite - Multi-Round brig system
   - DummyNonAntagChance
-  - Revolutionary
+  - Revolutionary #Ratbite - Soft removed (Only can use this gamepreset/rule to initiate revs)
   - SubGamemodesRule
   - BasicStationEventScheduler
   #  - MeteorSwarmScheduler Goobstation - nuh uh

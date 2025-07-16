@@ -375,8 +375,8 @@
   parent: BaseGameRule
   components:
   - type: GameRule
-    minPlayers: 15
-    chaosScore: 1000 # Goobstation
+    minPlayers: 90 #Ratbites, soft removal
+    chaosScore: 100000 # Ratbites, soft removal
   - type: RevolutionaryRule
   - type: AntagSelection
     selectionTime: IntraPlayerSpawn # Goobstation
