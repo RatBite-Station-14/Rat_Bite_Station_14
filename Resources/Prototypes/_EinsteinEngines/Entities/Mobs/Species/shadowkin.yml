@@ -135,7 +135,11 @@
     netsync: false
     noRot: true
     drawdepth: Mobs
+<<<<<<< HEAD
     # scale: 0.85, 0.85 # Goobstation: port EE height/width sliders
+=======
+    scale: 0.85, 0.85
+>>>>>>> 07953bf622 (Add Languages (#3332))
     layers:
       - map: ["enum.HumanoidVisualLayers.Chest"]
       - map: ["enum.HumanoidVisualLayers.Groin"]

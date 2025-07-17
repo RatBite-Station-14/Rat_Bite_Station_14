@@ -272,7 +272,11 @@
     - ServiceBoards
     - SharedBoards
     - CameraBoards
+<<<<<<< HEAD
     # - ServiceTools - Ratbite
+=======
+    - ServiceTools
+>>>>>>> 07953bf622 (Add Languages (#3332))
     # Einstein Engines Packs
     - Translators
   - type: EmagLatheRecipes

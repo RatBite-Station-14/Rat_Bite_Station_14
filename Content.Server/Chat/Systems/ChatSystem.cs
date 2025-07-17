@@ -98,7 +98,10 @@
 // SPDX-FileCopyrightText: 2025 Rinary <72972221+Rinary1@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
 // SPDX-FileCopyrightText: 2025 Skubman <ba.fallaria@gmail.com>
+<<<<<<< HEAD
 // SPDX-FileCopyrightText: 2025 Superlagg <sprambersonson@gmail.com>
+=======
+>>>>>>> 07953bf622 (Add Languages (#3332))
 // SPDX-FileCopyrightText: 2025 Tim <timfalken@hotmail.com>
 // SPDX-FileCopyrightText: 2025 Timfa <timfalken@hotmail.com>
 // SPDX-FileCopyrightText: 2025 VMSolidus <evilexecutive@gmail.com>
@@ -192,12 +195,15 @@ public sealed partial class ChatSystem : SharedChatSystem
     public const string DefaultAnnouncementSound = "/Audio/Announcements/attention.ogg";
     public const float DefaultObfuscationFactor = 0.2f; // Percentage of symbols in a whispered message that can be seen even by "far" listeners
     public readonly Color DefaultSpeakColor = Color.White; // Einstein Engines - Language
+<<<<<<< HEAD
 
     // Floofstation - Emotes and Sign Languages Respect LOS begin
     public const bool SpeakRespectsLOS = false; // You can hear through walls.
     public const bool WhisperRespectsLOS = false; // You can hear some whispers through walls.
     public const bool EmoteRespectsLOS = true; // You can still hear the noises, but you don't know who is making them.
     public const bool LocalOOCRespectsLOS = false; // LOOC can be seen through walls.
+=======
+>>>>>>> 07953bf622 (Add Languages (#3332))
 
     private bool _loocEnabled = true;
     private bool _deadLoocEnabled;
@@ -703,6 +709,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         //     ("fontSize", speech.FontSize),
         //     ("message", FormattedMessage.EscapeText(message)));
 
+<<<<<<< HEAD
         var typeLOS = SpeakRespectsLOS || language.SpeechOverride.RequireLOS;
         if (!language.SpeechOverride.RequireSpeech && language.SpeechOverride.RequireLOS)
         {
@@ -733,6 +740,19 @@ public sealed partial class ChatSystem : SharedChatSystem
             languageOverride: language, // Einstein Engines - Language
             checkLOS: typeLOS // Floofstation - Check Line-Of-Sight
             );
+=======
+        // The chat message wrapped in a "x says y" string.
+        var wrappedMessage = WrapPublicMessage(source, name, message, language: language);
+        // The chat message obfuscated via language obfuscation.
+        var obfuscated = SanitizeInGameICMessage(source, _language.ObfuscateSpeech(message, language), out var emoteStr, true, _configurationManager.GetCVar(CCVars.ChatPunctuation),
+        (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en")
+        || (CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Name == "en"));
+        // The language-obfuscated message wrapped in a "x says y" string.
+        var wrappedObfuscated = WrapPublicMessage(source, name, obfuscated, language: language);
+        // Einstein Engines - Language end
+
+        SendInVoiceRange(ChatChannel.Local, name, message, wrappedMessage, obfuscated, wrappedObfuscated, source, range, languageOverride: language); // Einstein Engines - Language
+>>>>>>> 07953bf622 (Add Languages (#3332))
 
         var ev = new EntitySpokeEvent(source, message, null, false, language); // Einstein Engines - Language
         RaiseLocalEvent(source, ev, true);
@@ -795,6 +815,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         }
         name = FormattedMessage.EscapeText(name);
 
+<<<<<<< HEAD
         if (!language.SpeechOverride.RequireSpeech && language.SpeechOverride.RequireLOS)
         {
             // Since this is basically an emote, make it act like an emote for identity.
@@ -802,6 +823,8 @@ public sealed partial class ChatSystem : SharedChatSystem
             name = FormattedMessage.EscapeText(nameOverride ?? Name(ent));
         }
 
+=======
+>>>>>>> 07953bf622 (Add Languages (#3332))
         var languageObfuscatedMessage = SanitizeInGameICMessage(source, _language.ObfuscateSpeech(message, language), out var emoteStr, true, _configurationManager.GetCVar(CCVars.ChatPunctuation),
         (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en")
         || (CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Name == "en")); // Einstein Engines - Language
@@ -821,10 +844,15 @@ public sealed partial class ChatSystem : SharedChatSystem
 
             // Result is the intermediate message derived from the perceived one via obfuscation
             // Wrapped message is the result wrapped in an "x says y" string
+<<<<<<< HEAD
             // Floof: handle languages that require LOS
             string result, wrappedMessage;
             if (!language.SpeechOverride.RequireLOS && data.Range <= WhisperClearRange
                 || _examineSystem.InRangeUnOccluded(source, listener, WhisperClearRange))
+=======
+            string result, wrappedMessage;
+            if (data.Range <= WhisperClearRange)
+>>>>>>> 07953bf622 (Add Languages (#3332))
             {
                 // Scenario 1: the listener can clearly understand the message
                 result = perceivedMessage;
@@ -838,9 +866,12 @@ public sealed partial class ChatSystem : SharedChatSystem
             }
             else
             {
+<<<<<<< HEAD
                 if (language.SpeechOverride.RequireLOS) // Floof - If there is no LOS, listener sees nothing.
                     continue;
 
+=======
+>>>>>>> 07953bf622 (Add Languages (#3332))
                 // Scenario 3: If listener is too far and has no line of sight, they can't identify the whisperer's identity
                 result = ObfuscateMessageReadability(perceivedMessage);
                 wrappedMessage = WrapWhisperMessage(source, "chat-manager-entity-whisper-unknown-wrap-message", string.Empty, result, language);
@@ -901,6 +932,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         if (checkEmote)
             TryEmoteChatInput(source, action);
+<<<<<<< HEAD
 
         SendInVoiceRange(
             ChatChannel.Emotes,
@@ -915,6 +947,9 @@ public sealed partial class ChatSystem : SharedChatSystem
             checkLOS: EmoteRespectsLOS // Floofstation - Some things don't go through walls, but they can go through windows.
             ); // Einstein Engines - Language
 
+=======
+        SendInVoiceRange(ChatChannel.Emotes, name, action, wrappedMessage, obfuscated: "", obfuscatedWrappedMessage: "", source, range, author); // Einstein Engines - Language
+>>>>>>> 07953bf622 (Add Languages (#3332))
         if (!hideLog)
             if (name != Name(source))
                 _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Emote from {ToPrettyString(source):user} as {name}: {action}");
@@ -941,20 +976,28 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("entityName", name),
             ("message", FormattedMessage.EscapeText(message)));
 
+<<<<<<< HEAD
         SendInVoiceRange(
             ChatChannel.LOOC,
             name,
             message,
             wrappedMessage,
+=======
+        SendInVoiceRange(ChatChannel.LOOC, name, message, wrappedMessage,
+>>>>>>> 07953bf622 (Add Languages (#3332))
             obfuscated: string.Empty,
             obfuscatedWrappedMessage: string.Empty, // will be skipped anyway
             source,
             hideChat ? ChatTransmitRange.HideChat : ChatTransmitRange.Normal,
             player.UserId,
+<<<<<<< HEAD
             languageOverride: LanguageSystem.Universal, // Einstein Engines - Language
             checkLOS: LocalOOCRespectsLOS // Floofstation - Check Line-Of-Sight.
             );
 
+=======
+            languageOverride: LanguageSystem.Universal); // Einstein Engines - Language
+>>>>>>> 07953bf622 (Add Languages (#3332))
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"LOOC from {player:Player}: {message}");
     }
 
@@ -1040,6 +1083,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     /// <summary>
     ///     Sends a chat message to the given players in range of the source entity.
     /// </summary>
+<<<<<<< HEAD
     private void SendInVoiceRange(
         ChatChannel channel,
         string name,
@@ -1053,6 +1097,9 @@ public sealed partial class ChatSystem : SharedChatSystem
         LanguagePrototype? languageOverride = null, // Einstein Engines - Language
         bool checkLOS = false // Floofstation - Check Line-Of-Sight
         )
+=======
+    private void SendInVoiceRange(ChatChannel channel, string name, string message, string wrappedMessage, string obfuscated, string obfuscatedWrappedMessage, EntityUid source, ChatTransmitRange range, NetUserId? author = null, LanguagePrototype? languageOverride = null) // Einstein Engines - Language
+>>>>>>> 07953bf622 (Add Languages (#3332))
     {
         var language = languageOverride ?? _language.GetLanguage(source); // Einstein Engines - Language
 
@@ -1066,8 +1113,11 @@ public sealed partial class ChatSystem : SharedChatSystem
             // Einstein Engines - Language begin
             if (session.AttachedEntity is not { Valid: true } playerEntity)
                 continue;
+<<<<<<< HEAD
             if (checkLOS && !data.Observer && !data.InLOS)
                 continue; // Floofstation - Some things don't go through walls, but they can go through windows!
+=======
+>>>>>>> 07953bf622 (Add Languages (#3332))
             EntityUid listener = session.AttachedEntity.Value;
 
             // If the channel does not support languages, or the entity can understand the message, send the original message, otherwise send the obfuscated version
