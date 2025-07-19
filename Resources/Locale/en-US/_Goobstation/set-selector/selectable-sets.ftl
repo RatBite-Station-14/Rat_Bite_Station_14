@@ -163,18 +163,41 @@ selectable-set-blueshield-modsuit-description =
 
 # ERT
 
-selectable-set-ert-ballistic-name = ballistics set
-selectable-set-ert-ballistic-description =
+selectable-set-ert-Tactical-name = Tactical set
+selectable-set-ert-Tactical-description =
     Reliable, efficient, and compact. The Annies got your back.
     Includes: .30 caliber rifle, the Annie.
     Spare magazines for it, and an N1984.
 
-selectable-set-ert-pulse-name = pulse set
-selectable-set-ert-pulse-description =
-    Running out of ammo is the worst thing that could happen
-    in a firefight.
-    Includes: A modified pulse carbine.
-    EG-4 revolver, pulse cells.
+selectable-set-ert-laser-name = laser set
+selectable-set-ert-laser-description =
+    Lead is ancient tech, blast a golfball sized laser through them
+    Includes: An Energy Rifle with 3 mags, one overcharged.
+    EG-4 revolver, lethal cells and a disabler.
+
+selectable-set-ert-cqc-name = cqc set
+selectable-set-ert-cqc-description =
+    For only the truly robust. "Domo arigato Mr. Robusto!"
+    Includes: CQC book, Combat medical pens, EBolas
+    One NT brand speed leg auto surgeon
+
+selectable-set-ert-breacher-name = breacher set
+selectable-set-ert-breacher-description =
+    "You cannot burn me! I'm already ablaze with passion, for war!"
+    Includes: A combat shotgun that can hold an extra shell and auto cycles
+    Two shell boxes, Two charges, NT brand energy breaching device.
+
+selectable-set-ert-sniper-name = sniper set
+selectable-set-ert-sniper-description =
+    Headshot! Centcomm does not permit "360 noscopes" no matter how "Hip"
+    Includes: An energy sniper.
+    EG-4 revolver, lethal cells, disabler.
+
+selectable-set-ert-melee-name = melee set
+selectable-set-ert-melee-description =
+    Cuts through people like a knife to hot butter.
+    Includes: An energy sword and a shield to go with it.
+    Comes with a stim also if you happen to get harmed or your shield breaks.
 
 # Voidsuit selectors
 

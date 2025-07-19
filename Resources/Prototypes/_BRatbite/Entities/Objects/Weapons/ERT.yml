@@ -1,0 +1,114 @@
+- type: entity
+  id: NTEnergyPickaxe
+  parent: [BaseMeleeWeaponEnergy, BaseCentcommContraband]
+  name: NT energy pickaxe
+  description: A holographic mining tool with blades comprised of hard light, This one seems to has its blades altered to cause more structural damage but less effective on people in return. There is an engraving in the hilt "FOR AUTHORIZED PERSONNEL ONLY"
+  components:
+  - type: ItemToggleSize
+    activatedSize: Huge
+    activatedShape:
+    - 0,0,2,0
+    - 1,1,1,2
+  - type: ItemToggleMeleeWeapon
+    activatedDamage:
+      groups:
+        Brute: 8
+      types:
+        Heat: 8
+        Structural: 70
+  - type: Sprite
+    sprite: _NF/Objects/Weapons/Melee/energy_pickaxe.rsi
+    layers:
+    - state: e-pickaxe
+    - state: e-pickaxe-blade
+      color: "#ADD8E6"
+      visible: false
+      shader: unshaded
+      map: [ "blade" ]
+  - type: Item
+    sprite: _NF/Objects/Weapons/Melee/energy_pickaxe.rsi
+    storedRotation: -45
+  - type: Clothing
+    sprite: _NF/Objects/Weapons/Melee/energy_pickaxe.rsi
+    quickEquip: false
+    slots:
+    - Belt
+    - back
+    - suitStorage
+  - type: ToggleableLightVisuals
+    spriteLayer: blade
+    inhandVisuals:
+      left:
+      - state: inhand-left-blade
+        shader: unshaded
+      right:
+      - state: inhand-right-blade
+        shader: unshaded
+  - type: Tag
+    tags:
+    - Pickaxe
+  - type: ThrowableBlocker
+    blockSound:
+      path: /Audio/Weapons/eblade1.ogg
+      params:
+        variation: 0.250
+        volume: -2
+  - type: MeleeWeapon
+    animationRotation: -135
+    attackRate: 0.7
+    soundHit:
+      path: "/Audio/Weapons/smash.ogg"
+      params:
+        volume: -3
+    damage:
+      groups:
+        Brute: 3
+    heavyStaminaCost: 5
+    clickPartDamageMultiplier: 1
+
+- type: entity
+  name: "NT combat shotgun"
+  parent: [BaseWeaponShotgun, BaseGunWieldable, BaseCentcommContraband]
+  id: WeaponShotgunCombatNT
+  description: An old design with a beefier shell intended to repell boarding parties, this one seems to have been upgraded to auto cycle and can hold an extra shell. There is an engraving in the barrel "FOR AUTHORIZED PERSONNEL ONLY"
+  components:
+  - type: Item
+    size: Large
+  - type: Sprite
+    sprite: _Goobstation/Objects/Weapons/Guns/Lever/combatshotgun.rsi
+  - type: Clothing
+    sprite: _Goobstation/Objects/Weapons/Guns/Lever/combatshotgun.rsi
+  - type: GunRequiresWield # remove when inaccuracy on spreads is fixed
+  - type: Gun
+    fireRate: 1
+  - type: Tag
+    tags:
+    - WeaponShotgunKammerer
+  - type: BallisticAmmoProvider # WYCI internal magazine weapon with bolt
+    whitelist:
+      tags:
+      - ShellShotgunHeavy
+    capacity: 6
+    proto: ShellShotgunHighCaliber
+    soundRack:
+      path: /Audio/Weapons/Guns/Cock/ltrifle_cock.ogg
+    autoCycle: true
+
+- type: entity
+  parent: [BaseItem, BaseCentcommContraband]
+  id: CQCManualNT
+  name: CQC Manual
+  description: A small, black manual. There are drawn instructions of tactical hand-to-hand combat. There is a sticker that reads "FOR AUTHORIZED PERSONNEL ONLY"
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/cqc_manual.rsi
+    layers:
+    - state: icon
+  - type: Item
+    size: Small
+  - type: StaticPrice
+    price: 3000
+  - type: GrantCqc
+  - type: GuideHelp
+    guides:
+    - CQC

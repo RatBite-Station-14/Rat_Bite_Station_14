@@ -1,0 +1,15 @@
+- type: hitscan
+  id: LargeOverchargedLaser
+  fireStacks: 0.7
+  damage:
+    types:
+      Heat: 20
+  muzzleFlash:
+    sprite: _Goobstation/Objects/Weapons/Guns/Projectiles/small_laser.rsi
+    state: muzzle_beam_light_overcharged
+  travelFlash:
+    sprite: _Goobstation/Objects/Weapons/Guns/Projectiles/small_laser.rsi
+    state: beam_light_overcharged
+  impactFlash:
+    sprite: _Goobstation/Objects/Weapons/Guns/Projectiles/small_laser.rsi
+    state: impact_beam_light_overcharged

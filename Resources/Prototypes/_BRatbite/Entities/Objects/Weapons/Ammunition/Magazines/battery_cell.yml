@@ -1,0 +1,40 @@
+- type: entity
+  id: BaseMilitaryPowerCellSniperERT
+  abstract: true
+  parent: BaseMilitaryPowerCell
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.PowerCellVisualLayers.Base" ]
+      state: icon
+    - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+      state: o4
+      shader: unshaded
+  - type: Battery
+    maxCharge: 2000
+    startingCharge: 2000
+  - type: Tag
+    tags:
+    - MilitaryPowerCellSniper
+    - MilitaryPowerCell
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 120
+      Gold: 60
+      Glass: 60
+      Plasma: 60
+    chemicalComposition:
+      Zinc: 10
+
+- type: entity
+  name: Elite sniper power cell
+  description: A militarized power cell compatible with laser snipers that has been overclocked and had its parts upgraded.
+  id: EliteMilitaryPowerCellSniper
+  suffix: Full
+  parent: BaseMilitaryPowerCellSniperERT
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Weapons/Guns/Ammunition/Magazine/energy_cell_rifle_overcharge.rsi
+  - type: HitscanBatteryAmmoProvider
+    proto: LargeOverchargedLaser
+    fireCost: 200
