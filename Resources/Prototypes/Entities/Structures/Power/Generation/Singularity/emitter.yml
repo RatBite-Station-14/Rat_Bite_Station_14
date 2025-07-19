@@ -73,6 +73,10 @@
       visible: false
       map: ["enum.LockVisualLayers.Lock"]
   - type: Emitter
+    powerOffDelay: 15
+    channels:
+    - Security
+    - Engineering
   - type: Gun
     showExamineText: false
     fireRate: 10 #just has to be fast enough to keep up with upgrades

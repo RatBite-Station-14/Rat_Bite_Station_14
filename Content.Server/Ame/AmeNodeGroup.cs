@@ -135,44 +135,16 @@ public sealed class AmeNodeGroup : BaseNodeGroup
     {
         overloading = false;
 
-        var shieldQuery = _entMan.GetEntityQuery<AmeShieldComponent>();
         if (fuel <= 0 || CoreCount <= 0)
             return 0;
 
         var safeFuelLimit = CoreCount * 2;
 
         var powerOutput = CalculatePower(fuel, CoreCount);
-        if (fuel <= safeFuelLimit)
-            return powerOutput;
+        if (fuel >= safeFuelLimit)
+            overloading = true;
 
-        // The AME is being overloaded.
-        // Note about these maths: I would assume the general idea here is to make larger engines less safe to overload.
-        // In other words, yes, those are supposed to be CoreCount, not safeFuelLimit.
-        var overloadVsSizeResult = fuel - CoreCount;
-
-        var instability = overloadVsSizeResult / CoreCount;
-        var fuzz = _random.Next(-1, 2); // -1 to 1
-        instability += fuzz; // fuzz the values a tiny bit.
-
-        overloading = true;
-        var integrityCheck = 100;
-        foreach (var coreUid in _cores)
-        {
-            if (!shieldQuery.TryGetComponent(coreUid, out var core))
-                continue;
-
-            var oldIntegrity = core.CoreIntegrity;
-            core.CoreIntegrity -= instability;
-
-            if (oldIntegrity > 95
-                && core.CoreIntegrity <= 95
-                && core.CoreIntegrity < integrityCheck)
-                integrityCheck = core.CoreIntegrity;
-        }
-
-        // Admin alert
-        if (integrityCheck != 100 && _masterController.HasValue)
-            _chat.SendAdminAlert($"AME overloading: {_entMan.ToPrettyString(_masterController.Value)}");
+        //Ratbite - Removed explosion and stability logic, to easy to sabo. Check CalculatePower() below for our alternative
 
         return powerOutput;
     }
@@ -185,11 +157,17 @@ public sealed class AmeNodeGroup : BaseNodeGroup
         // Balanced around a single core AME with injection level 2 producing 120KW.
         // Two core with four injection is 150kW. Two core with two injection is 90kW.
 
-        // Increasing core count creates diminishing returns, increasing injection amount increases 
+        // Increasing core count creates diminishing returns, increasing injection amount increases
         // Unlike the previous solution, increasing fuel and cores always leads to an increase in power, even if by very small amounts.
         // Increasing core count without increasing fuel always leads to reduced power as well.
         // At 18+ cores and 2 inject, the power produced is less than 0, the Max ensures the AME can never produce "negative" power.
-        return MathF.Max(200000f * MathF.Log10(2 * fuel * MathF.Pow(cores, (float)-0.5)), 0);
+
+        // Ratbite - Modified to make over safe limit injections also provide diminishing returns
+        // While everything within the safe limit produces the usual amount, anything over will produce less and less than the normal
+        var safeLimit = CoreCount * 2;
+        var overLimit = MathF.Max(fuel - safeLimit, 0);
+
+        return MathF.Max(200000f * MathF.Log10(2 * ( MathF.Min(fuel, safeLimit) + MathF.Pow(overLimit+0.00001f, -0.4f)*overLimit ) * MathF.Pow(cores, (float)-0.5)), 0);
     }
 
     public int GetTotalStability()

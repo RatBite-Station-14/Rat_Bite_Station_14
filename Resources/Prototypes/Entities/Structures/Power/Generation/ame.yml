@@ -118,6 +118,9 @@
     interfaces:
       enum.AmeControllerUiKey.Key:
         type: AmeControllerBoundUserInterface
+  - type: ActivatableUIRequiresAccess
+  - type: AccessReader
+    access: [ [ "Engineering" ] ]
   - type: Appearance
   - type: GenericVisualizer
     visuals:
