@@ -37,7 +37,7 @@
 - type: gameMap
   id: FlandHighPop
   mapName: 'Fland Installation'
-  mapPath: /Maps/_BRatbite/Ratbite_Supported/Fland.yml
+  mapPath: /Maps/_BRatbite/Ratbite_Supported/fland.yml
   minPlayers: 85
   stations:
     Fland:

@@ -34,7 +34,7 @@
 - type: gameMap
   id: Cluster
   mapName: 'Cluster'
-  mapPath: /Maps/_BRatbite/Ratbite_Supported/Cluster.yml
+  mapPath: /Maps/_BRatbite/Ratbite_Supported/cluster.yml
   minPlayers: 15
   maxPlayers: 40
   stations:
