@@ -1,0 +1,64 @@
+- type: entity
+  name: MonsterHamlet
+  parent: MobHamster
+  id: MobMonsterHammy
+  description: A grumpy, cute and fluffy monster of a hamster, Careful...
+  components:
+  - type: Sprite
+    drawdepth: SmallMobs
+    sprite: Mobs/Pets/hamlet.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base", "movement"]
+      state: hamster-0
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: hamster-moving-0
+    noMovementLayers:
+      movement:
+        state: hamster-0
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    name: ghost-role-information-monster-hammy-name
+    description: ghost-role-information-hamlet-description
+    rules: ghost-role-information-freeagent-rules
+  - type: GhostTakeoverAvailable
+  - type: InteractionPopup
+    successChance: 1
+    interactSuccessString: petting-success-hamster
+    interactFailureString: petting-failure-hamster
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound:
+      path: /Audio/Animals/fox_squeak.ogg
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+      amount: 1
+  - type: Grammar
+    attributes:
+      proper: true
+      gender: male
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - Hamster
+    - VimPilot
+    - ChefPilot
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - sadness
+  - type: Devourer
+    foodPreference: Humanoid
+    shouldStoreDevoured: true
+    chemical: Ichor
+    healRate: 7.5
+    whitelist:
+      components:
+      - MobState
+      - Door
+      - Item
+      tags:
+      - Wall
