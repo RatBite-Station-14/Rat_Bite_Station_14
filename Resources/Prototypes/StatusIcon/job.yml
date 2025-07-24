@@ -99,14 +99,6 @@
     sprite: /Textures/Interface/Misc/job_icons.rsi
     state: Detective
   jobName: job-name-detective
-  
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconRSO
-  icon:
-    sprite: /Textures/Interface/Misc/job_icons.rsi
-    state: RedsightOverseer
-  jobName: job-name-redsightoverseer
 
 - type: jobIcon
   parent: JobIcon

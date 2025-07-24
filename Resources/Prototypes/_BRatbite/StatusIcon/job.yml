@@ -1,0 +1,7 @@
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconRSO
+  icon:
+    sprite: /Textures/_BRatBite/Interface/Misc/job_icons.rsi
+    state: RedsightOverseer
+  jobName: job-name-redsightoverseer

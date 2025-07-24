@@ -24,7 +24,7 @@
 - type: loadout
   id: RedsightOverseerCap
   equipment:
-    head: ClothingHeadHatCapRedsight 
+    head: ClothingHeadHatCapRedsight
 
 
 # Jumpsuits
@@ -41,26 +41,12 @@
   equipment:
     outerClothing: RSOJack
 
-#- type: loadout
-#  id: 
-# equipment:
-
-
-
-
-# Neck
-
-
 # Eyes
 
 - type: loadout
   id: EyesGlassesRedsights
   equipment:
     eyes: ClothingEyesGlassesRSO
-
-
-# Mask
-
 
 # Back
 - type: loadout
@@ -84,7 +70,6 @@
     back: ClothingBackpackMessengerSecurity
 
 # Shoes
-
 
 - type: loadout
   id: RSOGloves
