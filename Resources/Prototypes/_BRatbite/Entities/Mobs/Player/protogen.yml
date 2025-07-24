@@ -1,0 +1,36 @@
+
+# For later when cybernetics are added, allow protogens to have 1 module slot, generic modules only. **MAYBE** have a cell required to use said modules
+# Also, maybe special "nanite" versions of whatever the module gives are used instead of the real tool. I.E nanite crowbar thats 2x slower than a regular crowbar (so its balanced-ish)
+
+- type: entity
+  save: false
+  name: Urist McProot
+  parent: MobProtogenBase
+  id: MobProtogen
+  components:
+  - type: HumanoidAppearance
+    species: Protogen
+  - type: Inventory
+    templateId: protogen
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: jumpsuit-female
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: shoes
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: jumpsuit
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: shoes

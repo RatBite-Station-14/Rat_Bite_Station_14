@@ -1,0 +1,269 @@
+
+# Self explanitory, establishes markings
+
+# Ears
+
+- type: marking
+  id: EarsProto
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/ears_32.rsi
+      state: ears_protogen
+
+- type: marking
+  id: EarsProtoDouble
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/ears_32.rsi
+      state: two_ears_protogen
+
+# Tails
+
+- type: marking
+  id: TailProto
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/tails_32.rsi
+      state: tail_protogen
+
+- type: marking
+  id: TailProtoFluffy
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/tails_32.rsi
+      state: bushy_tail_protogen
+
+- type: marking
+  id: TailProtoShark
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/tails_32.rsi
+      state: shark_tail_protogen
+
+- type: marking
+  id: TailProtoSharkFin
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/tails_32.rsi
+      state: body_fin
+
+- type: marking
+  id: TailProtoSynthLizard
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/tails_32.rsi
+      state: tail_smooth
+
+- type: marking
+  id: TailProtoLargeSynthLizard
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/tails_32.rsi
+      state: tail_large
+
+# Modular eyes
+
+- type: marking
+  id: EyesProto
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/modular_eyes.rsi
+      state: lefteye
+    - sprite: _RatBite/Mobs/Customization/Protogen/modular_eyes.rsi
+      state: righteye
+
+- type: marking
+  id: EyesProtoDiagonal
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/modular_eyes.rsi
+      state: lefteyed
+    - sprite: _RatBite/Mobs/Customization/Protogen/modular_eyes.rsi
+      state: righteyed
+
+- type: marking
+  id: EyesProtoBack
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/modular_eyes.rsi
+      state: lefteyel
+    - sprite: _RatBite/Mobs/Customization/Protogen/modular_eyes.rsi
+      state: righteyel
+
+# Modular mouths
+
+- type: marking
+  id: MouthProtoX1Y0
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/modular_mouths.rsi
+      state: x1y0
+
+- type: marking
+  id: MouthProtoX2Y0
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/modular_mouths.rsi
+      state: x2y0
+
+- type: marking
+  id: MouthProtoX3Y0
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/modular_mouths.rsi
+      state: x3y0
+
+- type: marking
+  id: MouthProtoX4Y0
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/modular_mouths.rsi
+      state: x4y0
+
+- type: marking
+  id: MouthProtoX5Y0
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/modular_mouths.rsi
+      state: x5y0
+
+- type: marking
+  id: MouthProtoX1Y1
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/modular_mouths.rsi
+      state: x1y1
+
+- type: marking
+  id: MouthProtoX2Y1
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/modular_mouths.rsi
+      state: x2y1
+
+- type: marking
+  id: MouthProtoX3Y1
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/modular_mouths.rsi
+      state: x3y1
+
+- type: marking
+  id: MouthProtoX4Y1
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/modular_mouths.rsi
+      state: x4y1
+
+- type: marking
+  id: MouthProtoX5Y1
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/modular_mouths.rsi
+      state: x5y1
+
+
+# Blank visors
+
+- type: marking
+  id: FaceProto
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/visors_32.rsi
+      state: visor_basic
+
+- type: marking
+  id: FaceProtoTall
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/visors_32.rsi
+      state: visor_tall
+  
+- type: marking
+  id: FaceProtoSnout
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/visors_32.rsi
+      state: visor_snout
+
+- type: marking
+  id: FaceProtoCuboid
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Protogen]
+  forcedColoring: false
+  sprites:
+    - sprite: _RatBite/Mobs/Customization/Protogen/visors_32.rsi
+      state: visor_cuboid

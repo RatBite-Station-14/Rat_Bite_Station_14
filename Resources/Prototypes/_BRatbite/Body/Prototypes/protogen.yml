@@ -1,0 +1,55 @@
+- type: body
+  id: Protogen
+  name: "Protogen"
+  root: chest
+  slots:
+    head:
+      part: HeadProtogen
+      connections:
+      - chest
+      organs:
+        brain: OrganProtogenBrain
+        eyes: OrganProtogenEyes
+    chest:
+      part: ChestProtogen
+      connections:
+      - groin
+      - right arm
+      - left arm
+      - head # Shitmed
+      organs:
+        heart: OrganProtogenHeart
+        lungs: OrganProtogenLungs
+    groin:
+      part: GroinProtogen
+      connections:
+      - right leg
+      - left leg
+      organs:
+        stomach: OrganProtogenStomach
+        liver:  OrganProtogenLiver
+        kidneys: OrganProtogenKidneys
+    right arm:
+      part: RightArmProtogen
+      connections:
+      - right hand
+    left arm:
+      part: LeftArmProtogen
+      connections:
+      - left hand
+    right hand:
+      part: RightHandProtogen
+    left hand:
+      part: LeftHandProtogen
+    right leg:
+      part: RightLegProtogen
+      connections:
+      - right foot
+    left leg:
+      part: LeftLegProtogen
+      connections:
+      - left foot
+    right foot:
+      part: RightFootProtogen
+    left foot:
+      part: LeftFootProtogen

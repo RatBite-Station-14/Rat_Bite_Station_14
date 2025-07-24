@@ -1,0 +1,139 @@
+# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+# SPDX-FileCopyrightText: 2025 Rouden <149893554+Roudenn@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Roudenn <romabond091@gmail.com>
+# SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  id: PartProtogen
+  parent: [BaseItem, BasePart]
+  name: "Protogen body part"
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: "chest_m"
+  - type: Icon
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: "chest_m"
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 3
+      - ReagentId: Blood
+        Quantity: 10
+  - type: Damageable
+    damageContainer: Biological # Protogen
+    damageModifierSet: Protogen
+
+- type: entity
+  id: ChestProtogen
+  name: "Protogen chest"
+  parent: [PartProtogen, BaseChest]
+  components:
+    - type: Sprite
+      state: "chest_m"
+    - type: Icon
+      state: "chest_m"
+
+- type: entity
+  id: GroinProtogen
+  name: "Protogen groin"
+  parent: [PartProtogen, BaseGroin]
+  components:
+    - type: Sprite
+      state: "groin_m"
+    - type: Icon
+      state: "groin_m"
+
+- type: entity
+  id: HeadProtogen
+  name: "Protogen head"
+  parent: [PartProtogen, BaseHead]
+  components:
+    - type: Sprite
+      state: "head_m"
+    - type: Icon
+      state: "head_m"
+
+- type: entity
+  id: LeftArmProtogen
+  name: "left Protogen arm"
+  parent: [PartProtogen, BaseLeftArm]
+  components:
+    - type: Sprite
+      state: "l_arm"
+    - type: Icon
+      state: "l_arm"
+
+- type: entity
+  id: RightArmProtogen
+  name: "right Protogen arm"
+  parent: [PartProtogen, BaseRightArm]
+  components:
+    - type: Sprite
+      state: "r_arm"
+    - type: Icon
+      state: "r_arm"
+
+- type: entity
+  id: LeftHandProtogen
+  name: "left Protogen hand"
+  parent: [PartProtogen, BaseLeftHand]
+  components:
+    - type: Sprite
+      state: "l_hand"
+    - type: Icon
+      state: "l_hand"
+
+- type: entity
+  id: RightHandProtogen
+  name: "right Protogen hand"
+  parent: [PartProtogen, BaseRightHand]
+  components:
+    - type: Sprite
+      state: "r_hand"
+    - type: Icon
+      state: "r_hand"
+
+- type: entity
+  id: LeftLegProtogen
+  name: "left Protogen leg"
+  parent: [PartProtogen, BaseLeftLeg]
+  components:
+    - type: Sprite
+      state: "l_leg"
+    - type: Icon
+      state: "l_leg"
+
+- type: entity
+  id: RightLegProtogen
+  name: "right Protogen leg"
+  parent: [PartProtogen, BaseRightLeg]
+  components:
+    - type: Sprite
+      state: "r_leg"
+    - type: Icon
+      state: "r_leg"
+
+- type: entity
+  id: LeftFootProtogen
+  name: "left Protogen foot"
+  parent: [PartProtogen, BaseLeftFoot]
+  components:
+    - type: Sprite
+      state: "l_foot"
+    - type: Icon
+      state: "l_foot"
+
+- type: entity
+  id: RightFootProtogen
+  name: "right Protogen foot"
+  parent: [PartProtogen, BaseRightFoot]
+  components:
+    - type: Sprite
+      state: "r_foot"
+    - type: Icon
+      state: "r_foot"

@@ -1,0 +1,13 @@
+# Note, should block equipping of helmets but not regular hats!
+# Customizable either through context menu (right click menu) or through character menu
+
+- type: entity
+  parent: ClothingMaskBase
+  id: ClothingProtogenVisorMask
+  name: protogen visor
+  description: The face of a Protogen, in more ways than one.
+  components:
+  - type: Sprite
+    sprite: _RatBite/Clothing/Mask/visor.rsi
+  - type: Clothing
+    sprite: _RatBite/Clothing/Mask/visor.rsi

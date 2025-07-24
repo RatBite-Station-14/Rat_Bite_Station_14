@@ -1,0 +1,12 @@
+
+- type: localizedDataset
+  id: NamesProtogen
+  values:
+    prefix: names-protogen-dataset-
+    count: 11
+
+- type: localizedDataset
+  id: NamesProtogenLast
+  values:
+    prefix: names-protogen-last-dataset-
+    count: 8

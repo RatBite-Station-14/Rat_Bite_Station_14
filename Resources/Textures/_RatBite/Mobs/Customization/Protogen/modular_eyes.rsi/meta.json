@@ -1,0 +1,12 @@
+{"version": 1, "size": {"x": 32, "y": 32}, "license": "CC-BY-SA-3.0", "copyright": "Visors, eyes, and mouths couresy of discord:generic_usernames", 
+"states": 
+    [
+        {"name":"lefteye","directions":4},
+        {"name":"lefteyed","directions":4},
+        {"name":"lefteyel","directions":4},
+        {"name":"righteye","directions":4},
+        {"name":"righteyel","directions":4},
+        {"name":"righteyed","directions":4}
+    ]
+}
+

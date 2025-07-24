@@ -1,0 +1,179 @@
+- type: species
+  id: Protogen
+  name: species-name-protogen
+  roundStart: true
+  prototype: MobProtogen
+  sprites: MobProtogenSprites
+  defaultSkinTone: "#FFFFFF"
+  markingLimits: MobProtogenMarkingLimits
+  dollPrototype: MobProtogenDummy
+  skinColoration: Hues
+  naming: FirstDashLast
+  maleFirstNames: NamesProtogen
+  femaleFirstNames: NamesProtogen
+  lastNames: NamesProtogenLast
+  minAge: 18
+  maxAge: 250
+  youngAge: 80
+  oldAge: 175
+  sexes:
+    - Male
+    - Female
+
+- type: speciesBaseSprites
+  id: MobProtogenSprites
+  sprites:
+    Head: MobProtogenHead
+    Snout: MobProtogenAnyMarkingFollowSkin
+    HeadTop: MobProtogenAnyMarking
+    HeadSide: MobProtogenAnyMarkingFollowSkin
+    Tail: MobProtogenAnyMarkingFollowSkin
+    Chest: MobProtogenChest
+    Groin: MobProtogenGroin
+    Eyes: MobProtogenEyes
+    LArm: MobProtogenLArm
+    RArm: MobProtogenRArm
+    LHand: MobProtogenLHand
+    RHand: MobProtogenRHand
+    LLeg: MobProtogenLLeg
+    RLeg: MobProtogenRLeg
+    LFoot: MobProtogenLFoot
+    RFoot: MobProtogenRFoot
+
+- type: markingPoints
+  id: MobProtogenMarkingLimits
+  points:
+    Tail:
+      points: 1
+      required: false
+    HeadTop:
+      points: 1
+      required: true
+    Chest:
+      points: 6
+      required: false
+    Legs:
+      points: 6
+      required: false
+    Arms:
+      points: 6
+      required: false
+    Snout:
+      points: 1
+      required: true
+      defaultMarkings: ["FaceProto"]
+
+- type: humanoidBaseSprite
+  id: MobProtogenAnyMarkingFollowSkin
+  markingsMatchSkin: true
+
+- type: humanoidBaseSprite
+  id: MobProtogenAnyMarking
+
+- type: humanoidBaseSprite
+  id: MobProtogenHead
+  baseSprite:
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: MobProtogenHeadMale
+  baseSprite:
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: MobProtogenHeadFemale
+  baseSprite:
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: head_f
+
+- type: humanoidBaseSprite
+  id: MobProtogenChest
+  baseSprite:
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: chest_m
+
+- type: humanoidBaseSprite
+  id: MobProtogenGroin
+  baseSprite:
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: groin_m
+
+- type: humanoidBaseSprite
+  id: MobProtogenChestMale
+  baseSprite:
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: chest_m
+
+- type: humanoidBaseSprite
+  id: MobProtogenChestFemale
+  baseSprite:
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: chest_f
+
+- type: humanoidBaseSprite
+  id: MobProtogenGroinMale
+  baseSprite:
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: groin_m
+
+- type: humanoidBaseSprite
+  id: MobProtogenGroinFemale
+  baseSprite:
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: groin_f
+
+- type: humanoidBaseSprite
+  id: MobProtogenLLeg
+  baseSprite:
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: l_leg
+
+- type: humanoidBaseSprite
+  id: MobProtogenLHand
+  baseSprite:
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: l_hand
+
+- type: humanoidBaseSprite
+  id: MobProtogenEyes
+  baseSprite:
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: eyes
+
+- type: humanoidBaseSprite
+  id: MobProtogenLArm
+  baseSprite:
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: l_arm
+
+- type: humanoidBaseSprite
+  id: MobProtogenLFoot
+  baseSprite:
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: l_foot
+
+- type: humanoidBaseSprite
+  id: MobProtogenRLeg
+  baseSprite:
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: r_leg
+
+- type: humanoidBaseSprite
+  id: MobProtogenRHand
+  baseSprite:
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: r_hand
+
+- type: humanoidBaseSprite
+  id: MobProtogenRArm
+  baseSprite:
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: r_arm
+
+- type: humanoidBaseSprite
+  id: MobProtogenRFoot
+  baseSprite:
+    sprite: _RatBite/Mobs/Species/Protogen/parts.rsi
+    state: r_foot
