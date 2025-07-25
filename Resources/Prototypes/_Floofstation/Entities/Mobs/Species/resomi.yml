@@ -221,7 +221,7 @@
         Cold : 0 #per second, scales with temperature & other constants
     heatDamage:
       types:
-        Heat : 3 #per second, scales with temperature & other constants
+        Heat : 1 #per second, scales with temperature & other constants
   - type: TemperatureSpeed # Goobstation - You're supposed to be used to the cold why are you so slow
     thresholds: # Goobstation - cold-immune resomi
       272: 1
