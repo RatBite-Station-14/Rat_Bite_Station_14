@@ -84,6 +84,38 @@
       collection: FemaleDeathGasp
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
+    Trill:
+      collection: Trill
+    Yip:
+      collection: Yip
+    Warble:
+      collection: Warble
+    Wurble:
+      collection: Wurble
+    Surprised: # Goob
+      path: /Audio/_Goobstation/Voice/surprised.ogg
+    Mars: # Omu, fix harpy emotes
+      collection: Mars
+    Yawn: # Omu, fix harpy emotes
+      collection: FemaleYawn
+    Boop: # Omu, give harpy more emotes
+      path: /Audio/_EinsteinEngines/Voice/IPC/beep_500.ogg
+    Buzz: # Omu, give harpy more emotes
+      path: /Audio/Machines/buzz-sigh.ogg
+    Chime: # Omu, give harpy more emotes
+      path: /Audio/Effects/Cargo/ping.ogg
+    Buzz-Two: # Omu, give harpy more emotes
+      path: /Audio/Machines/buzz-two.ogg
+    Ping: # Omu, give harpy more emotes
+      path: /Audio/Effects/beep1.ogg
+      params: # to prevent it from being definitively read by players as "OH SHIT A GRENADE"
+        variation: 0.125
+    Whirr: # Omu, give harpy more emotes
+      collection: IPCWhirrs
+    Hew: # Omu, give harpy more emotes
+      collection: Hew
+    Flap: # Omu, give harpy more emotes
+      path: /Audio/_Goobstation/Voice/Moth/moth_flap.ogg
 
 - type: emoteSounds
   id: SoundsHarpyMale
@@ -156,6 +188,38 @@
       collection: MaleDeathGasp
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
+    Trill:
+      collection: Trill
+    Yip:
+      collection: Yip
+    Warble:
+      collection: Warble
+    Wurble:
+      collection: Wurble
+    Mars:
+      collection: Mars
+    Surprised: # Goob
+      path: /Audio/_Goobstation/Voice/surprised.ogg
+    Yawn: # Omu, fix harpy emotes
+      collection: MaleYawn
+    Boop: # Omu, give harpy more emotes
+      path: /Audio/_EinsteinEngines/Voice/IPC/beep_500.ogg
+    Buzz: # Omu, give harpy more emotes
+      path: /Audio/Machines/buzz-sigh.ogg
+    Chime: # Omu, give harpy more emotes
+      path: /Audio/Effects/Cargo/ping.ogg
+    Buzz-Two: # Omu, give harpy more emotes
+      path: /Audio/Machines/buzz-two.ogg
+    Ping: # Omu, give harpy more emotes
+      path: /Audio/Effects/beep1.ogg
+      params: # to prevent it from being definitively read by players as "OH SHIT A GRENADE"
+        variation: 0.125
+    Whirr: # Omu, give harpy more emotes
+      collection: IPCWhirrs
+    Hew: # Omu, give harpy more emotes
+      collection: Hew
+    Flap: # Omu, give harpy more emotes
+      path: /Audio/_Goobstation/Voice/Moth/moth_flap.ogg
 
 - type: emoteSounds
   id: FemaleVulpkanin
@@ -386,3 +450,6 @@
       collection: Whistles
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
+    Surprised: # Goob
+      path: /Audio/_Goobstation/Voice/surprised.ogg
+
