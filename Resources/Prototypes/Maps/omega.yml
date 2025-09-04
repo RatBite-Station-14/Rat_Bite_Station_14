@@ -32,9 +32,9 @@
 - type: gameMap
   id: Omega
   mapName: 'Omega'
-  mapPath: /Maps/_BRatbite/Ratbite_Supported/omega.yml
-  minPlayers: 15
-  maxPlayers: 45
+  mapPath: /Maps/_Goobstation/omega.yml # Goobstation
+  minPlayers: 7
+  maxPlayers: 35
   stations:
     Omega:
       stationProto: StandardNanotrasenStation
@@ -97,7 +97,6 @@
             Clown: [ 1, 1 ]
             Mime: [ 1, 1 ]
             Musician: [ 1, 1 ]
-            Prisoner: [ -1, -1 ] #Ratbite
             #silicon
             StationAi: [ 1, 1 ]
             Borg: [ 2, 2 ]

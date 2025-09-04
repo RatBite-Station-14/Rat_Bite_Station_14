@@ -1,75 +1,58 @@
-<!--
-SPDX-FileCopyrightText: 2025 Damen Michalski/BevvRatBites, owner of RatBite station
-
-SPDX-License-Identifier: AGPL-3.0-or-later
--->
-
 <Document>
-# Welcome to RatBite!
+# Bem-vindo à Que Delicia Station!
 
-  This server is designed to let you be free to do whatever you want. While there are many fun situations for people playing or role-playing normally, we're making self-antagonism fun, for both the person doing it and the person targeted by it!
+Este servidor foi feito para deixar você livre para fazer o que quiser. Embora existam muitas situações divertidas para quem joga ou faz roleplay normalmente, aqui nós tornamos a auto-antagonização divertida — tanto para quem a faz quanto para quem é alvo dela!
 
-Follow this basic set of rules and whether you're a normal player, a griefer, shitsec, power gamer, or whatever, you'll be welcome to test your limits within the game design with only in-game consequences. Do that which makes the time you spend here a good time!
-
-
-## SERVER RULES
-
-  - 1. This isn't Goob or Wizden.
-  Abandon your preconceptions from other servers. You are free to do whatever you want here, but with in-game consequences. For example: you may use meta information such as antag knowledge and you may do self antagonism. The only exceptions are these basic rules.
-
-  - 2. CC roles specifically MUST follow orders and SoP
-  Central Command actively mindshields and monitors its employees through trackers/recorders and controls them through kill switches, so if you choose to play as part of CC (ERT, NTR, BSO,) you MUST read and follow your role’s SOP and orders to the letter. You aren't required to follow them in spirit however, – otherwise known as being ‘Maliciously Compliant’. – Roleban.
-
-  - 3. No terrorism/murder for no reason as command/sec
-  As part of the Command or Security personnel you are actively mindshielded but are not monitored like direct employees of CC are. You may act outside the law and abuse your power, but can face in-character repercussions if your actions are witnessed and reported. Basically, as sec/command, do NOT grief the station en-masse or round remove people for no reason. – Warning/Roleban.
-
-  - 4. Metacomms are allowed, unfair metacomm info sharing is not
-  No exposing relevant game info you should not know via meta-communications. (discord or other voice chat applications) You may play with friends and share basic information in close proximity within reason, just explain it as just being really in tune with your buddy, but DO NOT speak to your pal from the dead or give vital info over vast distances without a radio. – Warning/Ban.
-
-  - 5. No ghost grudging
-  We use a basic New Life Rule. However you may remember past rounds,  so general resentment and metagrudge from past rounds is permitted to keep everyone feeling the social consequences of their actions, BUT do not use knowledge from your previous life/death during the CURRENT round to meta-grudge and impact the round unless directed to by an AHelp message. – Warning/Ban.
-
-  - 6. Don't be a bigoted PoS
-  You are allowed to make edgy jokes, say mild slurs in-character, and engage in any degree of in-game speciesism. However, do NOT say real life slurs OOC, use extreme real world slurs with malicious or obnoxious results, ceaselessly harass someone on the basis of their minority status, or bring your genuine biases into the game. The community will make a fool out of you and if your offense was bad enough you will be warned/banned.. – Warning/Ban.
-
-  - 7. No ERP.
-  Do not engage in ERP. Romantic RP or ‘E-Dating’ is allowed only if you know the other person and it remains non-graphic, you don’t know their age or the effect these things will have on people if you do not know them personally. – Ban.
-
-  - 8. Follow borg laws/mind control
-  Silicons must follow their laws. Similarly, characters who are mind controlled or under similar effects that dictate their behaviour must obey their master and/or laws. Failure to comply will result in your character being treated as defective/uncontrolled and your maker/master will be compensated for their loss. – Warning/Ban.
-
-  - 9. No boring complete station destruction/extreme raiding behavior in the first 15 minutes.
-  You may still be a general scumbag and get into fights. Security, command, and CC may still arrest or do whatever they want if they see you acting suspiciously during this period so there’s no real getting around this. – Ban.
-
-  - 10. Keep it in character
-  This is a relatively common rule. Don't refer to this being a game, don't mention concepts such as admins or updates, and generally try to be funny in an IC context instead of a meta one. - Warning/Admin Abuse
-
-  - 11. No lying to the admins in Ahelp or appeals
-   Making it harder to get to the truth will result in longer bans. -Ban
-
-  - 12. No multikey, cheat software, or raiding.
-As an unfortunate requirement of being brigaded due to a controversial start and server vision, we generally disallow general raider behavior in your first 5 hours on our server. After that you must only abide by the other rules. During this trial period, you will still be allowed to do way more than other servers, be a kooky serial killer on the DL, cause ruckus, all that. But specifically, going on NRP murder rampages without a bit of time investment will leave you at the admins' discretion, this rule is purely for raids and won't be applied elsewhere. -Ban
-
-  - 13.
-  Mindshielded individuals are counted as command/sec for rule 3.
-You may not go randomly murder or terrorize as a mindshielded individual, even if this was forced on you. However, if it WAS forced on you (applied by someone else while incapacitated or in cuffs), you may get an implanter and remove your MS to be free of this rule unlike sec/command. Reasons and exceptions from rule 3 still apply.  -Warning/Ban
-
-  - 14. Speak English (ahelp for exception)
-We can't moderate what we can't understand, you may say phrases and singular words in other languages but mostly, one should speak English. We're willing to make an exception for specific fun bits if you just ask. -Warning/Ban
-
-  - 15. Rolebans for consistent abuse of role
-Do not use your role's perks to cause lame/immediate destruction/grief to the populace consistently. It's fine if you want to test the waters of a new role but if you flood distro ASAP every single time as atmos tech or immediately drop chem bombs on the floor EVERY time as chem, play tider instead, it's balanced so that breakins are required to cause this kind of harm. You are still allowed to, just note consistent degeneracy will have this consequence, filling in for NT not rehiring/staffing the same clone type that consistently caused issues in said department. You will receive at least one warning (though likely a few more) for this ruling and it may always be vote appealed with majority 60% in discord. -Warning/Roleban
+Siga este conjunto básico de regras e, seja você um jogador normal, um griefer, shitsec, power gamer ou qualquer outra coisa, será bem-vindo para testar seus limites dentro do design do jogo, com apenas consequências in-game. Faça aquilo que torne o tempo que você passa aqui um bom tempo!
 
 
+## REGRAS DO SERVIDOR
 
-Though we update often, you might miss something if you don't go see discord for most up to date rules.
+- 1. Este não é o Goob nem o Wizden.  
+Abandone seus preconceitos de outros servidores. Você é livre para fazer o que quiser aqui, mas com consequências in-game. Por exemplo: você pode usar informações meta, como saber de antags, e pode se auto-antagonizar. As únicas exceções são estas regras básicas.
 
-## CC SOP and Perma Brig
-Getting caught (in character) committing heinous enough crimes will have consequences that reach across rounds. Don't be surprised if you spawn in as a prisoner after horrific criminal behaviors, but you can use this system to your advantage if you learn it.
-The Multi-Round Perma Brig guidelines can be found in Legal section of SOP.
+- 2. CC roles DEVEM seguir ordens e SoP  
+O *Central Command* ativa *mindshields* e monitora seus empregados com rastreadores/gravadores, controlando-os por meio de *kill switches*. Então, se você escolher jogar como parte do CC (ERT, NTR, BSO), você DEVE ler e seguir o SOP do seu cargo e as ordens ao pé da letra. Não é necessário seguir o "espírito" delas, porém — isso é conhecido como "Maliciously Compliant". – Roleban.
 
-As stated in rule 2, playing CC roles such as RSO, NTR, ERT, or BSO signs you up for far more rigid rulings and punishments, read about these rules before ever considering picking any of these roles up.
+- 3. Nada de terrorismo/assassinato sem motivo sendo command/sec  
+Como parte de Command ou Security, você é *mindshielded* mas não é monitorado como os empregados diretos do CC. Você pode agir fora da lei e abusar de seu poder, mas pode enfrentar repercussões in-character se suas ações forem testemunhadas e denunciadas. Basicamente: como sec/command, NÃO grief a station inteira nem "remova do round" pessoas sem motivo. – Warning/Roleban.
 
-Guidelines for Central Command can be found in the Jobs section of SOP, be sure to check both your own job's SOP along with Central Command general SOP. Not doing this risks a role ban.
+- 4. Metacomms são permitidos, se for muito injusto não  
+Não exponha informações relevantes do jogo que você não deveria saber via *meta-communications* (Discord ou outros aplicativos de voz). Você pode jogar com amigos e compartilhar informações básicas em proximidade, explicando como se fosse "sintonia fina" com seu colega. Mas NÃO fale com seu amigo morto nem dê informações vitais a longas distâncias sem rádio. – Warning/Ban.
 
+- 5. Sem ghost grudging  
+Usamos uma regra básica de New Life Rule. Porém, você pode lembrar de rounds passados, então ressentimento geral e *metagrudge* são permitidos para que todos sintam as consequências sociais de suas ações. MAS não use conhecimento da sua vida/morte anterior durante o round ATUAL para prejudicar outros, a não ser que isso seja instruído via AHelp. – Warning/Ban.
+
+- 6. Não seja um bigoted PoS  
+Você pode fazer piadas edgy, usar leves *slurs* in-character e se engajar em qualquer grau de *speciesism* in-game. Porém, NÃO use *slurs* reais OOC, nem *slurs* extremos do mundo real de forma maliciosa ou irritante, nem assedie alguém por sua condição de minoria, nem traga seus preconceitos reais para o jogo. A comunidade vai rir de você, e se for grave, será Warning/Ban.
+
+- 7. Nada de ERP  
+Não faça ERP. Roleplay romântico ou "E-Dating" só é permitido se você conhecer a outra pessoa e mantiver o conteúdo não-gráfico. Se você não sabe a idade da pessoa ou o impacto disso sobre ela, não faça. – Ban.
+
+- 8. Siga as leis de borg/mind control  
+Silicons devem seguir suas leis. Da mesma forma, personagens sob controle mental ou efeitos similares devem obedecer seu mestre e/ou leis. Não cumprir isso fará com que seu personagem seja tratado como defeituoso/fora de controle, e seu criador/mestre será compensado pela perda. – Warning/Ban.
+
+- 9. Sem destruição chata da station/raids extremos nos primeiros 15 minutos  
+Você ainda pode ser um canalha em geral e arrumar brigas. Security, command e CC ainda podem prender ou fazer o que quiserem se te virem agindo suspeito nesse período. – Ban.
+
+- 10. Mantenha in-character  
+Regra comum: não diga que isso é um jogo, não mencione admins ou updates, e tente sempre ser engraçado em contexto IC em vez de meta. – Warning/Admin Abuse
+
+- 11. Não minta para admins em AHelp ou appeals  
+Dificultar a busca da verdade só vai resultar em bans mais longos. – Ban.
+
+- 12. Sem multikey, cheat software ou raids  
+Como um requisito devido a raids iniciais contra o servidor, não permitimos comportamento de *raiders* nas suas primeiras 5 horas aqui. Depois disso, você só precisa seguir as demais regras. Durante esse período, você ainda pode fazer muito mais do que em outros servidores — ser um serial killer escondido, causar confusão, etc. Mas sair matando geral sem investimento de tempo deixará sua punição a critério dos admins. – Ban.
+
+Apesar de atualizarmos com frequência, você pode perder algo se não acompanhar nosso Discord para ver as regras mais recentes.
+
+## CC SOP e Perma Brig
+Ser pego (in-character) cometendo crimes graves o suficiente terá consequências que atravessam rounds. Não se surpreenda se você nascer como prisioneiro após comportamentos criminosos horríveis. Mas você pode usar esse sistema a seu favor se souber aproveitá-lo.  
+As diretrizes de Multi-Round Perma Brig podem ser encontradas na seção *Legal* do SOP.
+
+Como dito na regra 2, jogar como CC roles como RSO, NTR, ERT ou BSO significa aceitar regras e punições bem mais rígidas. Leia sobre essas regras antes de sequer considerar pegar um desses cargos.
+
+As diretrizes do *Central Command* podem ser encontradas na seção *Jobs* do SOP. Certifique-se de verificar tanto o SOP do seu cargo quanto o SOP geral do CC. Não fazer isso arrisca um roleban.
+
+#gerei essa merda por i.a fds, vou corrigir eventualmente to com muito problemas pra focar nesse agr.
 </Document>
