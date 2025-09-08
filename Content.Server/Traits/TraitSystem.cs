@@ -22,11 +22,14 @@ using Content.Shared.Roles;
 using Content.Shared.Traits;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.Manager; // Omustation - Remake EE Traits System - Port trait functions
 
 namespace Content.Server.Traits;
 
 public sealed class TraitSystem : EntitySystem
 {
+    [Dependency] private readonly IComponentFactory _componentFactory = default!; // Omustation - Remake EE Traits System - Port trait functions
+    [Dependency] private readonly ISerializationManager _serialization = default!; // Omustation - Remake EE Traits System - Port trait functions
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedHandsSystem _sharedHandsSystem = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
@@ -62,7 +65,8 @@ public sealed class TraitSystem : EntitySystem
                 continue;
 
             // Add all components required by the prototype
-            EntityManager.AddComponents(args.Mob, traitPrototype.Components, false);
+            if (traitPrototype.Components != null) // Omustation - Remake EE Traits System - Port trait functions (make traits that don't directly give you components *possible*)
+                EntityManager.AddComponents(args.Mob, traitPrototype.Components, false);
 
             // Einstein Engines - Language begin (remove this if trait system refactor)
             // Remove/Add Languages required by the prototype
@@ -84,6 +88,12 @@ public sealed class TraitSystem : EntitySystem
                 foreach (var lang in traitPrototype.LanguagesUnderstood)
                     language.AddLanguage(args.Mob, lang, false, true);
             // Einstein Engines - Language end
+
+            // begin Omustation - Remake EE Traits System - Port trait functions
+            if (traitPrototype.Functions != null)
+                foreach (var function in traitPrototype.Functions)
+                    function.OnPlayerSpawn(args.Mob, _componentFactory, EntityManager, _serialization);
+            // end Omustation - Remake EE Traits System - Port trait functions
 
             // Add item required by the trait
             if (traitPrototype.TraitGear == null)

@@ -100,6 +100,7 @@ using Robust.Client.ResourceManagement;
 using Robust.Client.State;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
+using Content.Client._Omu.Lobby.Ui;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -290,6 +291,54 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
 
         if (selected == null)
             return;
+
+        // begin Omustation - Remake EE Traits System - Warn user when they're about to save a profile with bad traits
+        var warnings = new Dictionary<string, string>();
+        var traitPoints = _configurationManager.GetCVar(CCVars.TraitsDefaultPoints);
+        var numTraits = 0;
+
+        // look for unmet trait requirements
+        foreach (var traitProto in EditedProfile.TraitPreferences)
+        {
+            var trait = _prototypeManager.Index(traitProto);
+            traitPoints -= trait.GlobalCost;
+            numTraits++;
+
+            // if the saved profile will have unmet requirements, take note of it
+            if (!_requirements.CheckTraitRequirements(trait, EditedProfile, out var unmetRequirements))
+            {
+                warnings.Add(Loc.GetString(trait.Name), unmetRequirements.ToString());
+            }
+        }
+
+        // make sure the player doesn't have a negative number of trait points
+        if (_configurationManager.GetCVar(CCVars.TraitsGlobalPointsEnabled) && traitPoints < 0)
+        {
+            warnings.Add(Loc.GetString("lobby-confirm-save-trait-points-problem"), Loc.GetString("lobby-confirm-save-trait-points-details", ("points", traitPoints)));
+        }
+
+        var numAllowedTraits = _configurationManager.GetCVar(CCVars.TraitsMaxTraits);
+        if (numTraits > numAllowedTraits && numAllowedTraits > 0)
+        {
+            warnings.Add(Loc.GetString("lobby-confirm-save-trait-max-problem"), Loc.GetString("lobby-confirm-save-trait-max-details", ("numTraits", numTraits), ("maxTraits", numAllowedTraits)));
+        }
+
+        if (warnings.Count > 0)
+        {
+            var warningWindow = new ConfirmSaveWarningWindow();
+            warningWindow.AddWarnings(warnings);
+            warningWindow.OpenCentered();
+
+            warningWindow.OnSaveButtonPressed += _ =>
+            {
+                _preferencesManager.UpdateCharacter(EditedProfile, EditedSlot.Value);
+                ReloadCharacterSetup();
+            };
+
+            return;
+        }
+
+        // end Omustation - Remake EE Traits System - Warn user when they're about to save a profile with bad traits
 
         _preferencesManager.UpdateCharacter(EditedProfile, EditedSlot.Value);
         ReloadCharacterSetup();

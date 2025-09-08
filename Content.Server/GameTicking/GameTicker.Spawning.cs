@@ -90,6 +90,7 @@ using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
 using Content.Server.GameTicking.Events;
 using Content.Server.Ghost;
+using Content.Server.Players.PlayTimeTracking; // Omustation - Remake EE Traits System
 using Content.Server.Spawners.Components;
 using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
@@ -120,6 +121,8 @@ namespace Content.Server.GameTicking
         [Dependency] private readonly IAdminManager _adminManager = default!;
         [Dependency] private readonly SharedJobSystem _jobs = default!;
         [Dependency] private readonly AdminSystem _admin = default!;
+        [Dependency] private readonly PlayTimeTrackingManager _playTimeManager = default!; // Omustation Remake EE Traits System
+        [Dependency] private readonly IEntityManager _entityManager = default!; // Omustation - Remake EE Traits System
 
         [ValidatePrototypeId<EntityPrototype>]
         public const string ObserverPrototypeName = "MobObserver";
@@ -341,6 +344,34 @@ namespace Content.Server.GameTicking
                 return;
             }
 
+            // Start Omustation - Remake EE Traits System - block the player from spawning *serverside* if they have disallowed traits
+            var numSelectedTraits = 0;
+            var traitPoints = _cfg.GetCVar(CCVars.TraitsDefaultPoints);
+            // first, get all of the character's traits
+            foreach (var traitProtoId in character.TraitPreferences)
+            {
+                var traitProto = _prototypeManager.Index(traitProtoId);
+                numSelectedTraits++;
+                traitPoints -= traitProto.GlobalCost;
+
+                // if the trait exists, and the character is not allowed to have it
+                if (traitProto != null &&
+                    !JobRequirements.TryRequirementsMet(traitProto.Requirements, _playTimeManager.GetPlayTimes(player), out var _, _entityManager, _prototypeManager, character))
+                {
+                    DoWhenCharacterDoesNotMeetTraitRestrictions(player);
+                    return;
+                }
+            }
+
+            // if the player has more traits selected than they're allowed to select
+            var maxTraits = _cfg.GetCVar(CCVars.TraitsMaxTraits);
+            if (numSelectedTraits > maxTraits && maxTraits >= 0 || _cfg.GetCVar(CCVars.TraitsGlobalPointsEnabled) && traitPoints < 0)
+            {
+                DoWhenCharacterDoesNotMeetTraitRestrictions(player);
+                return;
+            }
+            // End Omustation - Remake EE Traits System - block the player from spawning *serverside* if they have disallowed traits
+
             PlayerJoinGame(player, silent);
 
             var data = player.ContentData();
@@ -435,6 +466,27 @@ namespace Content.Server.GameTicking
                 character);
             RaiseLocalEvent(mob, aev, true);
         }
+
+        // begin Omustation - Remake EE Traits System
+        /// <summary>
+        ///     Called by SpawnPlayer() when a player does not meet the restrictions on their character's traits.
+        ///     Should be called immediately before a `return` statement, to prevent the player from spawning.
+        /// </summary>
+        /// <param name="player">The player who's character doesn't meet the appropriate restrictions</param>
+        private void DoWhenCharacterDoesNotMeetTraitRestrictions(ICommonSession player)
+        {
+            if (!LobbyEnabled)
+            {
+                JoinAsObserver(player);
+            }
+
+            var evNoJobs = new NoJobsAvailableSpawningEvent(player); // Used by gamerules to wipe their antag slot, if they got one
+            RaiseLocalEvent(evNoJobs);
+
+            _chatManager.DispatchServerMessage(player,
+                Loc.GetString("game-ticker-player-restricted-traits-selected-when-joining"));
+        }
+        // end Omustation - Remake EE Traits System
 
         public void Respawn(ICommonSession player)
         {

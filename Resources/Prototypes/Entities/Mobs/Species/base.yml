@@ -454,6 +454,9 @@
       enum.WizardTeleportUiKey.Key: # Goobstation - wizard
         type: WizardTeleportBoundUserInterface
         requireInputValidation: false
+      enum.InstrumentUiKey.Key: # Omustation - Required to make the Singer trait work
+        type: InstrumentBoundUserInterface
+        requireInputValidation: false
   - type: Puller
   - type: Speech
     speechSounds: Alto

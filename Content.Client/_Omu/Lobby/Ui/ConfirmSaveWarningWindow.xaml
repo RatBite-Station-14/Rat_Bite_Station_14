@@ -1,0 +1,15 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+         xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+         SetSize="650 300"
+         MinSize="500 200"
+         Title="Confirm Save">
+    <BoxContainer Orientation="Vertical" VerticalExpand="True" Align="Center">
+        <Label Name="WarningMessage" Text="{Loc 'lobby-confirm-save-message'}" HorizontalAlignment="Center" Margin="8 0 8 8" />
+        <ScrollContainer HScrollEnabled="False" VerticalExpand="True" Margin="8 0 8 8">
+            <BoxContainer Name="Warnings" Orientation="Vertical" Align="Center"/>
+        </ScrollContainer>
+        <Button Name="SaveButton" Text="{Loc 'lobby-confirm-save-button-text'}" Margin="32 0 32 8" MinHeight="24"/>
+    </BoxContainer>
+</controls:FancyWindow>

@@ -1,0 +1,23 @@
+<!--
+SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+
+SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+
+<BoxContainer xmlns="https://spacestation14.io"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         Orientation="Horizontal">
+
+    <Control>
+        <Button Name="ToggleableButton" ToggleMode="true">
+            <BoxContainer Orientation="Horizontal">
+                <Label Name="GlobalPointsCount" Text="" StyleClasses="LabelHeading" Margin="0 0 0 0"/>
+                <Label Name="PointsCount" Text="0" StyleClasses="LabelSubText" Margin="0 0 0 0" Visible="false" VerticalAlignment="Bottom"/>
+                <Label Name="TraitsTitle" Text="trait" Margin = "8 0 0 0"/>
+            </BoxContainer>
+        </Button>
+    </Control>
+
+</BoxContainer>

@@ -11,7 +11,8 @@
   id: WheelchairBound
   name: trait-wheelchair-bound-name
   description: trait-wheelchair-bound-desc
-  category: Disabilities
+  # category: Disabilities
+  category: PhysicalTraits  # Omustation - Remake EE Traits system - global trait points cost
   blacklist:
     components:
       - BorgChassis
@@ -19,24 +20,29 @@
     - type: BuckleOnMapInit
       prototype: VehicleWheelchair
     - type: LegsStartParalyzed
+  globalCost: -10 # Omustation - Remake EE Traits system - global trait points cost
 
 - type: trait
   id: ByondYourPrime
   name: trait-tile-movement-name
   description: trait-tile-movement-desc
-  category: Disabilities
+  # category: Disabilities
+  category: PhysicalTraits  # Omustation - Remake EE Traits system - global trait points cost
   components:
   - type: TileMovement
+  globalCost: -2 # Omustation - Remake EE Traits system - global trait points cost
 
 - type: trait
   id: MovementImpaired
   name: trait-movement-impaired-name
   description: trait-movement-impaired-desc
   traitGear: Cane
-  category: Disabilities
+  # category: Disabilities
+  category: PhysicalTraits  # Omustation - Remake EE Traits system - global trait points cost
   blacklist:
     components:
     - BorgChassis
   components:
     - type: MovementImpaired
       impairedSpeedMultiplier: 0.6
+  globalCost: -4 # Omustation - Remake EE Traits system - global trait points cost

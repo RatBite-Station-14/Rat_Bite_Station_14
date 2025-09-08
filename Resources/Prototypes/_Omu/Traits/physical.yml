@@ -1,0 +1,124 @@
+- type: trait
+  id: AlcoholTolerance
+  name: trait-alcohol-tolerance-name
+  description: trait-alcohol-tolerance-desc
+  category: PhysicalTraits
+  components:
+  - type: LightweightDrunk
+    boozeStrengthMultiplier: 0.6
+  globalCost: 1
+  requirements:
+    - !type:TraitsRequirement
+      traits:
+        - LightweightDrunk
+      inverted: true
+
+- type: trait
+  id: Bodybuilder
+  name: trait-bodybuilder-name
+  description: trait-bodybuilder-desc
+  category: PhysicalTraits
+  blacklist:
+    components:
+      - BorgChassis
+  functions:
+    - !type:TraitModifyDensity
+      densityModifier: 55
+  globalCost: 4
+
+- type: trait
+  id: ClawsTrait
+  name: trait-claws-name
+  description: trait-claws-desc
+  category: PhysicalTraits
+  functions:
+    - !type:TraitModifyUnarmed
+      hitSound:
+        collection: AlienClaw
+      animation: WeaponArcClaw
+      damage:
+        types:
+          Slash: 5
+  globalCost: 1
+  requirements:
+    - !type:SpeciesRequirement
+      species: # a list of species which don't have claws.
+        - Diona
+        - Dwarf
+        - Human
+        - IPC
+        - Moth
+        - Plasmaman
+        - SlimePerson
+
+- type: trait
+  id: MothFlight
+  name: trait-moth-flight-name
+  description: trait-moth-flight-desc
+  category: PhysicalTraits
+  components:
+  - type: Flight
+    isLayerAnimated: true
+    layer: "/Textures/Mobs/Customization/Moth/moth_wings.rsi"
+    animationKey: "Flap"
+    shaderSpeed: 3 # moth wings look VERY wrong if displaced too much or too quickly.
+    shaderMultiplier: 0.003
+  functions:
+    - !type:TraitRemoveComponent
+      componentsToRemove:
+        - type: DashAction
+  globalCost: 2
+  requirements:
+    - !type:SpeciesRequirement
+      species:
+        - Moth
+    - !type:WeightRequirement # big moffs are too heavy to fly
+      minimumWeight: 60
+      inverted: true
+
+- type: trait
+  id: NaturalWeaponsRemoval
+  name: trait-weapons-removal-name
+  description: trait-weapons-removal-desc
+  category: PhysicalTraits
+  functions:
+    - !type:TraitModifyUnarmed
+      hitSound:
+        collection: Punch
+      animation: WeaponArcFist
+      damage:
+        types:
+          Blunt: 5
+  globalCost: 0
+  requirements:
+    - !type:SpeciesRequirement # restricted to species only with "natural weapons" (claws that do slashing damage, talons with puncture damage, so on)
+      species: # a list of species which have damage other than blunt, basically.
+        - Arachnid
+        - Chitinid
+        - Felinid
+        - Harpy
+        - Plasmaman
+        - Reptilian
+        - Resomi
+        - Rodentia
+        - Shadowkin
+        - Tajaran
+        - Vox
+        - Vulpkanin
+    - !type:TraitsRequirement
+      traits:
+        - ClawsTrait
+      inverted: true
+
+- type: trait
+  id: ThievingTrait
+  name: trait-thieving-name
+  description: trait-thieving-desc
+  category: PhysicalTraits
+  blacklist:
+    components:
+      - BorgChassis
+  components:
+    - type: Thieving
+      noiseLevel: 0 # "0" is small, per the PopupType enum
+  globalCost: 3

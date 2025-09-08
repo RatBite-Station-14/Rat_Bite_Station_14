@@ -13,6 +13,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared.Roles; // Omustation - Remake EE Traits System - change TraitPreferenceSelector for RequirementsSelector
+using Content.Shared._Omu.Traits; // Omustation - Remake EE Traits System - Port trait functions
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
 
@@ -41,6 +43,16 @@ public sealed partial class TraitPrototype : IPrototype
     public LocId? Description { get; private set; }
 
     /// <summary>
+    /// Requirements for the trait.
+    /// </summary>
+    /// <remarks>
+    /// Omustation - Remake EE Traits System - change TraitPreferenceSelector for RequirementsSelector
+    /// This field is used by the humanoid profile editor to disable RequirementsSelectors when requirements are(nt) met.
+    /// </remarks>
+    [DataField] // TODO: reduce scope / access to this field
+    public HashSet<JobRequirement>? Requirements;
+
+    /// <summary>
     /// Don't apply this trait to entities this whitelist IS NOT valid for.
     /// </summary>
     [DataField]
@@ -56,7 +68,7 @@ public sealed partial class TraitPrototype : IPrototype
     /// The components that get added to the player, when they pick this trait.
     /// </summary>
     [DataField]
-    public ComponentRegistry Components { get; private set; } = default!;
+    public ComponentRegistry? Components { get; private set; } = default!; // Omustation - remake EE traits system - this has been made nullable in order to allow for traits which rely on just functions, instead of giving components.
 
     /// <summary>
     /// Gear that is given to the player, when they pick this trait.
@@ -75,6 +87,27 @@ public sealed partial class TraitPrototype : IPrototype
     /// </summary>
     [DataField]
     public ProtoId<TraitCategoryPrototype>? Category;
+
+    // begin Omustation - Remake EE Traits System
+    /// <summary>
+    ///     The number of trait points required for this trait.
+    /// </summary>
+    /// <remarks
+    ///     This is an Omustation change, and is distinct from the upstream wizden cost field. This is for a few reasons:
+    ///     First, is that traits points upstream are category specific. So, if you take a trait for 2 points from the "Languages" category, it will ONLY
+    ///     use up the trait points availible to that category. Hence, these are "global".
+    ///     Second, is that being able to optionally restrict the amount of selectable traits in a category AND globally might be useful for balancing.
+    ///     Third, is that I want to alter as little upstream code as possible, and if that means adding two cost fields to the trait prototype, so be it.
+    /// </remarks>
+    [DataField]
+    public int GlobalCost = 0;
+
+    /// <summary>
+    ///     Functions which should be called when this trait is added to a player.
+    /// </summary>
+    [DataField(serverOnly: true)]
+    public HashSet<TraitFunction>? Functions;
+    // end Omustation - Remake EE Traits System
 
     // Einstein Engines - Language begin (remove this if trait system refactor)
     /// <summary>

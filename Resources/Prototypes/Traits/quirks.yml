@@ -9,23 +9,29 @@
   id: Pacifist
   name: trait-pacifist-name
   description: trait-pacifist-desc
-  category: Quirks
+  # category: Quirks
+  category: MentalTraits # Omustation - Remake EE Traits system - EE traits categories
   components:
   - type: Pacified
+  globalCost: -6 # Omustation - Remake EE Traits system - global trait points cost
 
 - type: trait
   id: LightweightDrunk
   name: trait-lightweight-name
   description: trait-lightweight-desc
-  category: Quirks
+  # category: Quirks
+  category: PhysicalTraits # Omustation - Remake EE Traits system - EE traits categories
   components:
   - type: LightweightDrunk
     boozeStrengthMultiplier: 2
+  globalCost: 0 # Omustation - Remake EE Traits system - global trait points cost
 
 - type: trait
   id: Snoring
   name: trait-snoring-name
   description: trait-snoring-desc
-  category: Quirks
+  # category: Quirks
+  category: AuditoryTraits # Omustation - Remake EE Traits system - EE traits categories
   components:
   - type: Snoring
+  globalCost: 0 # Omustation - Remake EE Traits system - global trait points cost

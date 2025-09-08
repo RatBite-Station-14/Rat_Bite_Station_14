@@ -34,61 +34,82 @@
   name: trait-blindness-name
   description: trait-blindness-desc
   traitGear: WhiteCane
-  category: Disabilities
+  # category: Disabilities
+  category: VisualTraits # Omustation - Remake EE Traits system - EE traits categories
   whitelist:
     components:
       - Blindable
   components:
     - type: PermanentBlindness
+  globalCost: -6 # Omustation - Remake EE Traits system - global trait points cost
 
 - type: trait
   id: PoorVision
   name: trait-poor-vision-name
   description: trait-poor-vision-desc
   traitGear: ClothingEyesPrescriptionGlasses # Goobstation
-  category: Disabilities
+  # category: Disabilities
+  category: VisualTraits # Omustation - Remake EE Traits system - EE traits categories
   whitelist:
     components:
       - Blindable
   components:
     - type: PermanentBlindness
       blindness: 4
+  globalCost: -1 # Omustation - Remake EE Traits system - global trait points cost
 
 - type: trait
   id: Narcolepsy
   name: trait-narcolepsy-name
   description: trait-narcolepsy-desc
-  category: Disabilities
+  # category: Disabilities
+  category: MentalTraits # Omustation - Remake EE Traits system - EE traits categories
   components:
     - type: Narcolepsy
       timeBetweenIncidents: 300, 600
       durationOfIncident: 10, 30
+  globalCost: -6 # Omustation - Remake EE Traits system - global trait points cost
 
 - type: trait
   id: Unrevivable
   name: trait-unrevivable-name
   description: trait-unrevivable-desc
-  category: Disabilities
+  # category: Disabilities
+  category: PhysicalTraits # Omustation - Remake EE Traits system - EE traits categories
   components:
     - type: Unrevivable
       cloneable: true
+  globalCost: -2 # Omustation - Remake EE Traits system - global trait points cost
+
+- type: trait
+  id: Monochromancy
+  name: trait-monochromancy-name
+  description: trait-monochromancy-desc
+  # category: Disabilities
+  category: VisualTraits # Omustation - Remake EE Traits system - EE traits categories
+  components:
+  - type: BlackAndWhiteOverlay
+  globalCost: 0 # Omustation - Remake EE Traits system - global trait points cost
 
 - type: trait
   id: Muted
   name: trait-muted-name
   description: trait-muted-desc
-  category: Disabilities
+  # category: Disabilities
+  category: MentalTraits # Omustation - Remake EE Traits system - EE traits categories
   blacklist:
     components:
       - BorgChassis
   components:
     - type: Muted
+  globalCost: -6 # Omustation - Remake EE Traits system - global trait points cost
 
 - type: trait
   id: Paracusia
   name: trait-paracusia-name
   description: trait-paracusia-desc
-  category: Disabilities
+  # category: Disabilities
+  category: AuditoryTraits # Omustation - Remake EE Traits system - EE traits categories
   components:
     - type: Paracusia
       minTimeBetweenIncidents: 0.1
@@ -96,11 +117,14 @@
       maxSoundDistance: 7
       sounds:
         collection: Paracusia
+  globalCost: -1 # Omustation - Remake EE Traits system - global trait points cost
 
 - type: trait
   id: PainNumbness
   name: trait-painnumbness-name
   description: trait-painnumbness-desc
-  category: Disabilities
+  # category: Disabilities
+  category: MentalTraits # Omustation - Remake EE Traits system - EE traits categories
   components:
   - type: PainNumbness
+  globalCost: -2 # Omustation - Remake EE Traits system - global trait points cost

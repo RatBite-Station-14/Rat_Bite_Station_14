@@ -82,6 +82,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Preferences;
+using Content.Shared.Traits; // Omustation - Remake EE Traits System
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
@@ -112,6 +113,39 @@ public static class JobRequirements
 
         return true;
     }
+
+    // start Omustation
+    /// <summary>
+    ///     Similar to the upstream TryRequirementsMet() method, but accepting a set of JobRequirements instead of a JobPrototype.
+    /// </summary>
+    /// <remarks>
+    ///     This method has been created to assist with the Omustation traits system.
+    ///     The upstream version of this method using job requirements causes issues,
+    ///     as job requirements are used by the traits system in order to implement trait requirements.
+    ///     So, this method exists to allow trait prototypes (or any other prototype with a requirements field) to have their requirements checked.
+    /// </remarks>
+    /// <returns> True when job requirements are met, false otherwise.</returns>
+    public static bool TryRequirementsMet(
+        HashSet<JobRequirement>? requirements,
+        IReadOnlyDictionary<string, TimeSpan> playTimes,
+        [NotNullWhen(false)] out FormattedMessage? reason,
+        IEntityManager entManager,
+        IPrototypeManager protoManager,
+        HumanoidCharacterProfile? profile)
+    {
+        reason = null;
+        if (requirements == null)
+            return true;
+
+        foreach (var requirement in requirements)
+        {
+            if (!requirement.Check(entManager, protoManager, profile, playTimes, out reason))
+                return false;
+        }
+
+        return true;
+    }
+    // end Omustation
 }
 
 /// <summary>

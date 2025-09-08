@@ -87,5 +87,5 @@ humanoid-profile-editor-no-traits = No traits available
 humanoid-profile-editor-trait-count-hint = Points available: [{$current}/{$max}]
 
 trait-category-disabilities = Disabilities
-trait-category-speech = Speech traits
+# trait-category-speech = Speech traits # Omustation - EE Traits Categories - this localization can now be found in the Omustation namespace version of this file
 trait-category-quirks = Quirks

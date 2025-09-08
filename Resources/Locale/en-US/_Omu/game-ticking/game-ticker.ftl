@@ -1,0 +1,1 @@
+game-ticker-player-restricted-traits-selected-when-joining = Attempted to join the game with restricted traits. Please check your character's traits and try again.

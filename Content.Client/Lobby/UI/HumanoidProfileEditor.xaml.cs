@@ -151,6 +151,7 @@
 using System.IO;
 using System.Linq;
 using System.Numerics;
+using Content.Client._Omu.Lobby.Ui.Roles; // Omustation - Remake EE Traits System - change TraitPreferenceSelector for TraitRequirementsSelector
 using Content.Client.Humanoid;
 using Content.Client.Lobby.UI.Loadouts;
 using Content.Client.Lobby.UI.Roles;
@@ -207,6 +208,9 @@ namespace Content.Client.Lobby.UI
         // CCvar.
         private int _maxNameLength;
         private bool _allowFlavorText;
+        private readonly int _maxTraits; // Omustation - Remake EE Traits System - Maximum allowed traits functionality
+        private readonly int _traitStartingPoints; // Omustation - Remake EE Traits System - global trait points functionality
+
 
         private FlavorText.FlavorText? _flavorText;
         private TextEdit? _flavorTextEdit;
@@ -241,6 +245,11 @@ namespace Content.Client.Lobby.UI
         /// The work in progress profile being edited.
         /// </summary>
         public HumanoidCharacterProfile? Profile;
+
+        private int _selectedTraitCount; // Omustation - Remake EE Traits System - Maximum allowed traits functionality
+        private int _selectedTraitPointCount; // Omustation - Remake EE Traits System - Maximum allowed traits functionality
+
+        private Dictionary<string, BoxContainer> _traitCategoryContainers = new(); // Omustation - Remake EE Traits System - Redesign traits tab
 
         private List<SpeciesPrototype> _species = new();
 
@@ -289,6 +298,8 @@ namespace Content.Client.Lobby.UI
 
             _maxNameLength = _cfgManager.GetCVar(CCVars.MaxNameLength);
             _allowFlavorText = _cfgManager.GetCVar(CCVars.FlavorText);
+            _maxTraits = _cfgManager.GetCVar(CCVars.TraitsMaxTraits); // Omustation - Remake EE Traits System
+            _traitStartingPoints = _cfgManager.GetCVar(CCVars.TraitsDefaultPoints); // Omustation - Remake EE Traits System
 
             ImportButton.OnPressed += args =>
             {
@@ -590,6 +601,27 @@ namespace Content.Client.Lobby.UI
 
             TabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-antags-tab"));
 
+            #region Omu Traits
+
+            // Omustation - this was previously in RefreshTraits(), but if I'm fully embracing that that method will be wholly incompatible with upstream merges.
+            // Like, there's no reason for the tab title to be set every single time the tab is refreshed. Why was it done that way when the rest of the tabs are done properly??
+            TabContainer.SetTabTitle(3, Loc.GetString("humanoid-profile-editor-traits-tab"));
+
+            // Get all trait categories, sorted A-Z.
+            var categories = _prototypeManager.EnumeratePrototypes<TraitCategoryPrototype>().OrderBy(t => Loc.GetString(t.Name)).ToList();
+
+            foreach (var category in categories)
+            {
+                // each category should have a container, which that category's trait selectors can be loaded into.
+                var container = new BoxContainer() { Orientation = LayoutOrientation.Vertical };
+                _traitCategoryContainers.Add(category.Name, container);
+
+                // The index here is meaningful: category 0 in _traitCategoryContainers will correspond to tab 0 here.
+                TraitTabs.AddTab(container, Loc.GetString(category.Name));
+            }
+
+            #endregion Omu Traits
+
             RefreshTraits();
 
             #region Markings
@@ -664,117 +696,140 @@ namespace Content.Client.Lobby.UI
             }
         }
 
+        // begin Omustation - dear god this method is so far removed from what it was upstream. WELP. I just hope the comments are useful.
         /// <summary>
         /// Refreshes traits selector
         /// </summary>
         public void RefreshTraits()
         {
-            TraitsList.DisposeAllChildren();
+            // Hide the trait points bar if global trait points are disabled.
+            TraitPointsBar.Visible = _cfgManager.GetCVar(CCVars.TraitsGlobalPointsEnabled);
 
-            var traits = _prototypeManager.EnumeratePrototypes<TraitPrototype>().OrderBy(t => Loc.GetString(t.Name)).ToList();
-            TabContainer.SetTabTitle(3, Loc.GetString("humanoid-profile-editor-traits-tab"));
-
-            if (traits.Count < 1)
+            // Empty out each of the trait tabs, so that they can be refreshed.
+            foreach (var (_, control) in _traitCategoryContainers)
             {
-                TraitsList.AddChild(new Label
-                {
-                    Text = Loc.GetString("humanoid-profile-editor-no-traits"),
-                    FontColorOverride = Color.Gray,
-                });
-                return;
+                control.DisposeAllChildren();
             }
 
-            // Setup model
-            Dictionary<string, List<string>> traitGroups = new();
-            List<string> defaultTraits = new();
-            traitGroups.Add(TraitCategoryPrototype.Default, defaultTraits);
+            // get all traits, ordered first alphabetically, and then by global points cost.
+            var traits = _prototypeManager.EnumeratePrototypes<TraitPrototype>().OrderBy(t => Loc.GetString(t.Name)).ToList().OrderByDescending(t => t.GlobalCost);
+
+            // setup the maxtraits and global trait points counters. These values will go up as selectors are (re)added to the UI.
+            _selectedTraitCount = 0;
+            _selectedTraitPointCount = _traitStartingPoints;
+            var selectionCount = 0;
+
+            // keep track of which categories have category-specific points, for later.
+            HashSet<TraitCategoryPrototype> categoriesWithPoints = new();
 
             foreach (var trait in traits)
             {
-                if (trait.Category == null)
-                {
-                    defaultTraits.Add(trait.ID);
-                    continue;
-                }
-
-                if (!_prototypeManager.HasIndex(trait.Category))
+                // Get this trait's category, and skip this trait if it doesn't have one.
+                if (!_prototypeManager.TryIndex(trait.Category, out var category))
                     continue;
 
-                var group = traitGroups.GetOrNew(trait.Category);
-                group.Add(trait.ID);
-            }
+                // Ensure that the trait category has an associated container to put selectors into.
+                if (!_traitCategoryContainers.TryGetValue(category.Name, out var categoryContainer))
+                    continue;
 
-            // Create UI view from model
-            foreach (var (categoryId, categoryTraits) in traitGroups)
-            {
-                TraitCategoryPrototype? category = null;
-
-                if (categoryId != TraitCategoryPrototype.Default)
+                // Take note of categories with their own points count, so we can add category-points text later.
+                if (category.MaxTraitPoints > 0)
                 {
-                    category = _prototypeManager.Index<TraitCategoryPrototype>(categoryId);
-                    // Label
-                    TraitsList.AddChild(new Label
-                    {
-                        Text = Loc.GetString(category.Name),
-                        Margin = new Thickness(0, 10, 0, 0),
-                        StyleClasses = { StyleBase.StyleClassLabelHeading },
-                    });
+                    categoriesWithPoints.Add(category);
                 }
 
-                List<TraitPreferenceSelector?> selectors = new();
-                var selectionCount = 0;
+                // Create a selector for this trait, but don't display it just yet.
+                var selector = new TraitRequirementsSelector(_cfgManager);
+                var selectorName = trait.Cost != 0 ? Loc.GetString(trait.Name) + " [" + trait.Cost + "]" : Loc.GetString(trait.Name);
+                var selectorDescription = Loc.GetString(trait.Description != null ? trait.Description : "");
 
-                foreach (var traitProto in categoryTraits)
+                // put the selector into the trait category container.
+                categoryContainer.AddChild(selector);
+
+                // Apply the player's trait preference to this trait's selector.
+                selector.Preference = Profile?.TraitPreferences.Contains(trait.ID) ?? false;
+
+                // increment the trait count and points, if the user has the trait selected.
+                if (selector.Preference)
                 {
-                    var trait = _prototypeManager.Index<TraitPrototype>(traitProto);
-                    var selector = new TraitPreferenceSelector(trait);
-
-                    selector.Preference = Profile?.TraitPreferences.Contains(trait.ID) == true;
-                    if (selector.Preference)
-                        selectionCount += trait.Cost;
-
-                    selector.PreferenceChanged += preference =>
-                    {
-                        if (preference)
-                        {
-                            Profile = Profile?.WithTraitPreference(trait.ID, _prototypeManager);
-                        }
-                        else
-                        {
-                            Profile = Profile?.WithoutTraitPreference(trait.ID, _prototypeManager);
-                        }
-
-                        SetDirty();
-                        RefreshTraits(); // If too many traits are selected, they will be reset to the real value.
-                    };
-                    selectors.Add(selector);
+                    selectionCount += trait.Cost;
+                    _selectedTraitCount++;
+                    _selectedTraitPointCount -= trait.GlobalCost;
                 }
 
-                // Selection counter
-                if (category is { MaxTraitPoints: >= 0 })
+                // Make sure that the player meets the requirements to select this trait. If they don't the trait is locked.
+                // Since the player's preference has already been applied, it's up to other systems (such as spawning, handled by the server)
+                // to ensure the player can't spawn when they don't meet the requirements.
+                // If we apply the player's preference after locking the selector, the player might not be able to deselect the trait.
+                if (!_requirements.CheckTraitRequirements(trait, (HumanoidCharacterProfile?) _preferencesManager.Preferences?.SelectedCharacter, out var reason))
                 {
-                    TraitsList.AddChild(new Label
-                    {
-                        Text = Loc.GetString("humanoid-profile-editor-trait-count-hint", ("current", selectionCount), ("max", category.MaxTraitPoints)),
-                        FontColorOverride = Color.Gray
-                    });
+                    selector.LockRequirements();
+                }
+                else
+                {
+                    selector.UnlockRequirements();
                 }
 
-                foreach (var selector in selectors)
+                // Define what should happen when the trait selector is pressed by the player.
+                selector.PreferenceChanged += preference =>
                 {
-                    if (selector == null)
-                        continue;
-
-                    if (category is { MaxTraitPoints: >= 0 } &&
-                        selector.Cost + selectionCount > category.MaxTraitPoints)
+                    if (preference &&
+                    (_selectedTraitCount < _maxTraits || _maxTraits <= 0)) // make sure the player isn't selecting more traits than they're allowed
                     {
-                        selector.Checkbox.Label.FontColorOverride = Color.Red;
+                        Profile = Profile?.WithTraitPreference(trait.ID, _prototypeManager);
+                        _selectedTraitCount++;
+                        _selectedTraitPointCount -= trait.GlobalCost;
+                    }
+                    else
+                    {
+                        Profile = Profile?.WithoutTraitPreference(trait.ID, _prototypeManager);
+                        _selectedTraitCount--;
+                        _selectedTraitPointCount += trait.GlobalCost;
                     }
 
-                    TraitsList.AddChild(selector);
+                    SetDirty();
+                    RefreshTraits();
+                };
+
+                // NOW show the trait selector.
+                selector.Setup(trait, reason);
+            }
+
+            // each category with category-specific points recieves a label here.
+            foreach (var categoryWithPoints in categoriesWithPoints)
+            {
+                // create the label
+                var categoryPointsText = new Label
+                {
+                    Text = Loc.GetString("humanoid-profile-editor-trait-count-hint", ("current", selectionCount), ("max", categoryWithPoints.MaxTraitPoints!)), // we know MaxTraitPoints isn't null here because it needs to have value in order to add this category to categoriesWithPoints
+                    FontColorOverride = Color.LightGray
+                };
+
+                // add the label to the category
+                if (_traitCategoryContainers.TryGetValue(categoryWithPoints.Name, out var categoryContainer))
+                {
+                    categoryContainer.AddChild(categoryPointsText);
+                    categoryPointsText.SetPositionFirst(); // show the points text at the top of the category.
                 }
             }
+
+            // show points remaining only if the global points system is enabled
+            if (_cfgManager.GetCVar(CCVars.TraitsGlobalPointsEnabled) && _maxTraits > 0)
+                TraitPointsLabel.Text = Loc.GetString("humanoid-profile-editor-traits-header", ("pointsRemaining", _selectedTraitPointCount), ("traits", _selectedTraitCount), ("maxTraits", _maxTraits));
+            else
+            {
+                if (_maxTraits > 0)
+                    TraitPointsLabel.Text = Loc.GetString("humanoid-profile-editor-traits-header-no-points", ("traits", _selectedTraitCount), ("maxTraits", _maxTraits)); // Omustation - Remake EE Traits System
+                else if (_cfgManager.GetCVar(CCVars.TraitsGlobalPointsEnabled))
+                    TraitPointsLabel.Text = Loc.GetString("humanoid-profile-editor-traits-header-no-maxtraits", ("pointsRemaining", _selectedTraitPointCount));
+                else
+                    TraitPointsLabel.Text = "";
+            }
+
+            TraitPointsBar.Value = _selectedTraitPointCount;
+            TraitPointsBar.MaxValue = _traitStartingPoints;
         }
+        // end Omustation
 
         /// <summary>
         /// Refreshes the species selector.
@@ -1428,6 +1483,7 @@ namespace Content.Client.Lobby.UI
             RefreshJobs();
             // In case there's species restrictions for loadouts
             RefreshLoadouts();
+            RefreshTraits();// Omustation - Remake EE Traits - In case there's species restrictions for traits
             UpdateSexControls(); // update sex for new species
             UpdateSpeciesGuidebookIcon();
             ReloadPreview();

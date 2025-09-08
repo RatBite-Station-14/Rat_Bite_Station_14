@@ -12,12 +12,16 @@
   id: UltraVision
   name: trait-ultravision-name
   description: trait-ultravision-desc
+  category: VisualTraits # Omustation - Remake EE Traits system - EE traits categories
   components:
     - type: UltraVision
+  globalCost: 0 # Omustation - Remake EE Traits system - global trait points cost
 
 - type: trait
   id: DogVision
   name: trait-deuteranopia-name
   description: trait-deuteranopia-desc
+  category: VisualTraits # Omustation - Remake EE Traits system - EE traits categories
   components:
     - type: DogVision
+  globalCost: 0 # Omustation - Remake EE Traits system - global trait points cost

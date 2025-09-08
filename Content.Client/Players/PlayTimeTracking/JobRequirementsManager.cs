@@ -89,6 +89,7 @@ using Content.Shared.Players.JobWhitelist;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
+using Content.Shared.Traits; // Omustation - Remake EE Traits System
 using Robust.Client;
 using Robust.Client.Player;
 using Robust.Shared.Configuration;
@@ -199,11 +200,22 @@ public sealed class JobRequirementsManager : ISharedPlaytimeManager
         return CheckRoleRequirements(reqs, profile, out reason);
     }
 
-    public bool CheckRoleRequirements(HashSet<JobRequirement>? requirements, HumanoidCharacterProfile? profile, [NotNullWhen(false)] out FormattedMessage? reason)
+    // begin Omustation - Remake EE Traits System
+    /// <remarks>
+    /// This method is almost identical to CheckRoleRequirements, but it takes a trait instead.
+    /// </remarks>
+    public bool CheckTraitRequirements(TraitPrototype trait, HumanoidCharacterProfile? profile, [NotNullWhen(false)] out FormattedMessage? reason)
+    {
+        var reqs = trait.Requirements;
+        return CheckRoleRequirements(reqs, profile, out reason, true);
+    }
+    // end Omustation - Remake EE Traits System
+
+    public bool CheckRoleRequirements(HashSet<JobRequirement>? requirements, HumanoidCharacterProfile? profile, [NotNullWhen(false)] out FormattedMessage? reason, bool isTraitRequirement = false) // Omustation - Remake EE Traits System - an "isTraitRequirement" boolean has been added here in order to prevent the RoleTimers CVar from affecting traits.
     {
         reason = null;
 
-        if (requirements == null || !_cfg.GetCVar(CCVars.GameRoleTimers))
+        if (requirements == null || !_cfg.GetCVar(CCVars.GameRoleTimers) && !isTraitRequirement) // Omustation - Remake EE Traits System - an "isTraitRequirement" boolean has been added here in order to prevent the RoleTimers CVar from affecting traits.
             return true;
 
         var reasons = new List<string>();
