@@ -61,7 +61,7 @@ public sealed partial class SprinterComponent : Component
     ///     How much do we multiply sprint speed?
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float SprintSpeedMultiplier = 1.45f;
+    public float SprintSpeedMultiplier = 1.2f;
 
     /// <summary>
     ///     How long do we have to wait between sprints?
