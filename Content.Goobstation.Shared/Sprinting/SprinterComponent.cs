@@ -39,7 +39,7 @@ public sealed partial class SprinterComponent : Component
     ///     How much stamina is drained per second?
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float StaminaDrainRate = 9f;
+    public float StaminaDrainRate = 19f;
 
     /// <summary>
     ///     By how much do we multiply stamina recovery while sprinting?
