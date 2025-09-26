@@ -372,7 +372,8 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
 			//{
 			// use spriteComponent's layersetshader function to set the layer's shader to that which is specified.
 			//	sprite.LayerSetShader(layerId, markingPrototype.Shader);
-			//}
+			//Dotnet run --project content.client
+}
 			// impstation edit end
 
             _sprite.LayerSetVisible((entity.Owner, sprite), layerId, visible);
@@ -399,7 +400,6 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
                 _displacement.TryAddDisplacement(displacementData, (entity.Owner, sprite), targetLayer + j + 1, layerId, out _);
             }
         }
-    }
 
     public override void SetSkinColor(EntityUid uid, Color skinColor, bool sync = true, bool verify = true, HumanoidAppearanceComponent? humanoid = null)
     {
