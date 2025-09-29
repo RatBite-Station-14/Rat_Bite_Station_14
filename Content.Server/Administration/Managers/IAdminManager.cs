@@ -84,6 +84,8 @@ namespace Content.Server.Administration.Managers
 
         void PromoteHost(ICommonSession player);
 
+        void LogBadAhelp(ICommonSession player);
+
         bool TryGetCommandFlags(CommandSpec command, out AdminFlags[]? flags);
     }
 }

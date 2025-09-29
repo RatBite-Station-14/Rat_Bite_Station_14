@@ -127,6 +127,7 @@ namespace Content.Server.Administration.Managers
 
         private readonly Dictionary<ICommonSession, AdminReg> _admins = new();
         private readonly HashSet<NetUserId> _promotedPlayers = new();
+        private HashSet<NetUserId> _possiblyMaliciousPlayers = new();
 
         public event Action<AdminPermsChangedEventArgs>? OnPermsChanged;
 
@@ -409,6 +410,7 @@ namespace Content.Server.Administration.Managers
         {
             _playerManager.PlayerStatusChanged += PlayerStatusChanged;
             _conGroup.Implementation = this;
+            _possiblyMaliciousPlayers = _promotedPlayers; // empty rn so we save memory
         }
 
         // NOTE: Also sends commands list for non admins..
@@ -445,7 +447,7 @@ namespace Content.Server.Administration.Managers
             }
             else if (e.NewStatus == SessionStatus.Disconnected)
             {
-                if (_admins.Remove(e.Session, out var reg ) && _cfg.GetCVar(CCVars.AdminAnnounceLogout))
+                if (_admins.Remove(e.Session, out var reg) && _cfg.GetCVar(CCVars.AdminAnnounceLogout))
                 {
                     if (reg.Data.Stealth)
                     {
@@ -578,7 +580,7 @@ namespace Content.Server.Administration.Managers
                     Active = !dbData.Deadminned,
                 };
 
-                if (dbData.Title != null  && _cfg.GetCVar(CCVars.AdminUseCustomNamesAdminRank))
+                if (dbData.Title != null && _cfg.GetCVar(CCVars.AdminUseCustomNamesAdminRank))
                 {
                     data.Title = dbData.Title;
                 }
@@ -722,6 +724,12 @@ namespace Content.Server.Administration.Managers
             // If attribs.length == 0 then no access attribute is specified,
             // and this is a server-only command.
             return (attribs.Length != 0, attribs);
+        }
+
+        public void LogBadAhelp(ICommonSession player)
+        {
+            _possiblyMaliciousPlayers.Add(player.UserId);
+            ReloadAdmin(player); // notify admins
         }
 
         public bool CanViewVar(ICommonSession session)
