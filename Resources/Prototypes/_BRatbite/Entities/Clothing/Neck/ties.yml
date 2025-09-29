@@ -5,6 +5,6 @@
   description: A mirror hangs on the bathroom wall.
   components:
   - type: Sprite
-    sprite: _BRatbite/Clothing/Neck/Ties/horrific_necktie.rsi
+    sprite: _BRatBite/Clothing/Neck/Ties/horrific_necktie.rsi
   - type: Clothing
-    sprite: _BRatbite/Clothing/Neck/Ties/horrific_necktie.rsi
+    sprite: _BRatBite/Clothing/Neck/Ties/horrific_necktie.rsi
