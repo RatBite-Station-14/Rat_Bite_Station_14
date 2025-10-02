@@ -86,13 +86,6 @@ public sealed partial class FartSystem : SharedFartSystem
                 return;
             }
 
-            // Make sure we aren't in timeout
-            if (component.FartTimeout)
-            {
-                _popup.PopupEntity(Loc.GetString("emote-fart-out-of-farts"), uid, uid);
-                return;
-            }
-
             // Handle our bools
             component.FartTimeout = true;
 
