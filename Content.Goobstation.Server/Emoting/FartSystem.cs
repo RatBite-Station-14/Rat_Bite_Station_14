@@ -86,13 +86,6 @@ public sealed partial class FartSystem : SharedFartSystem
                 return;
             }
 
-            // Make sure we aren't in timeout
-            if (component.FartTimeout)
-            {
-                _popup.PopupEntity(Loc.GetString("emote-fart-out-of-farts"), uid, uid);
-                return;
-            }
-
             // Handle our bools
             component.FartTimeout = true;
 
@@ -119,101 +112,6 @@ public sealed partial class FartSystem : SharedFartSystem
             });
             var ev = new PostFartEvent(uid);
             RaiseLocalEvent(uid, ev);
-        }
-        else if (args.Emote.ID == "FartInhale")
-        {
-            args.Handled = true;
-
-            if (component.SuperFarted)
-            {
-                _popup.PopupEntity(Loc.GetString("emote-fart-ass-off"), uid, uid);
-                return;
-            }
-
-            if (component.FartInhale)
-            {
-                _popup.PopupEntity(Loc.GetString("emote-fart-already-loaded"), uid, uid);
-            }
-
-            component.FartInhale = true;
-
-            // Shuffle the fart sounds
-            _rng.Shuffle(_fartInhaleSounds);
-
-            // Play a fart sound
-            _audio.PlayEntity(_fartInhaleSounds[0], Filter.Pvs(uid), uid, true);
-
-            _popup.PopupEntity(Loc.GetString("emote-fart-inhale-notice"), uid, uid);
-        }
-        else if (args.Emote.ID == "FartSuper")
-        {
-            args.Handled = true;
-
-            if (component.SuperFarted)
-            {
-                _popup.PopupEntity(Loc.GetString("emote-fart-ass-off"), uid, uid);
-                return;
-            }
-
-            if (!component.FartInhale)
-            {
-                _popup.PopupEntity(Loc.GetString("emote-fart-not-loaded"), uid, uid);
-                return;
-            }
-
-            // Handle bools
-            component.FartTimeout = true;
-            component.FartInhale = false;
-            component.SuperFarted = true;
-
-            // Shuffle the fart sounds
-            _rng.Shuffle(_superFartSounds);
-
-            // Play a fart sound
-            _audio.PlayEntity(_superFartSounds[0], Filter.Pvs(uid), uid, true, AudioParams.Default.WithVolume(0f));
-
-            // Screen shake
-            var xformSystem = _entMan.System<SharedTransformSystem>();
-            CameraShake(10f, xformSystem.GetMapCoordinates(uid), 0.75f);
-
-            // Release ammonia into the air
-            var tileMix = _atmos.GetTileMixture(uid, excite: true);
-            tileMix?.AdjustMoles(Gas.Ammonia, component.MolesAmmoniaPerFart * 2);
-
-            _entMan.SpawnEntity("Butt", xformSystem.GetMapCoordinates(uid));
-
-            _popup.PopupEntity(Loc.GetString("emote-fart-super-fart"), uid, uid);
-
-            // One minute timeout for ammonia release (60000MS = 60S)
-            Timer.Spawn(60000, () =>
-            {
-                component.FartTimeout = false;
-            });
-            var ev = new PostFartEvent(uid, true);
-            RaiseLocalEvent(uid, ev);
-        }
-    }
-
-    private void CameraShake(float range, MapCoordinates epicenter, float totalIntensity)
-    {
-        var players = Filter.Empty();
-        players.AddInRange(epicenter, range, _playerManager, EntityManager);
-
-        foreach (var player in players.Recipients)
-        {
-            if (player.AttachedEntity is not EntityUid uid)
-                continue;
-
-            var playerPos = _transformSystem.GetWorldPosition(player.AttachedEntity!.Value);
-            var delta = epicenter.Position - playerPos;
-
-            if (delta.EqualsApprox(Vector2.Zero))
-                delta = new(0.01f, 0);
-
-            var distance = delta.Length();
-            var effect = 5 * MathF.Pow(totalIntensity, 0.5f) * (1 - distance / range);
-            if (effect > 0.01f)
-                _recoilSystem.KickCamera(uid, -delta.Normalized() * effect);
         }
     }
 
