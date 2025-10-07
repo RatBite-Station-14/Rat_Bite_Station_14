@@ -99,11 +99,11 @@
     soundHit:
       path: "/Audio/Weapons/smash.ogg"
     angle: 0
-    attackRate: 0.35
+    attackRate: 0.40
     animation: WeaponArcPunch
     damage:
       types:
-        Blunt: 20
+        Blunt: 30
         Slash: 15
     range: 1.12 # Goob - Allows kinetic crushers to fight them without taking guaranteed damage.
   - type: NpcFactionMember
