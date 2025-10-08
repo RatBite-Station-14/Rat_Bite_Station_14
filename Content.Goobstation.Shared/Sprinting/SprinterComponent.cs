@@ -38,7 +38,7 @@ public sealed partial class SprinterComponent : Component
     ///     How much stamina is drained per second?
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float StaminaDrainRate = 10f;
+    public float StaminaDrainRate = 75f;
 
     /// <summary>
     ///     By how much do we multiply stamina recovery while sprinting?
@@ -60,7 +60,7 @@ public sealed partial class SprinterComponent : Component
     ///     How much do we multiply sprint speed?
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float SprintSpeedMultiplier = 1.6f;
+    public float SprintSpeedMultiplier = 1.15f;
 
     /// <summary>
     ///     How long do we have to wait between sprints?
@@ -91,7 +91,7 @@ public sealed partial class SprinterComponent : Component
     /// </summary>
     [ViewVariables]
     public TimeSpan LastStep = TimeSpan.Zero;
-    
+
     /// <summary>
     ///     What entity do we use for stepping visuals?
     /// </summary>
