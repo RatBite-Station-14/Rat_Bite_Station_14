@@ -20,13 +20,13 @@ public sealed partial class CosmicEntropyDebuffComponent : Component
     public TimeSpan CheckTimer = default!;
 
     [DataField]
-    public TimeSpan CheckWait = TimeSpan.FromSeconds(1);
+    public TimeSpan CheckWait = TimeSpan.FromSeconds(2);
 
     /// <summary>
     /// The chance to recieve a message popup while under the effects of Entropic Degen.
     /// </summary>
     [DataField]
-    public float PopupChance = 0.05f;
+    public float PopupChance = 0.00f;
 
     /// <summary>
     /// The debuff applied while the component is present.
@@ -36,8 +36,8 @@ public sealed partial class CosmicEntropyDebuffComponent : Component
     {
         DamageDict = new()
         {
-            { "Cold", 5.0},
-            { "Asphyxiation", 5.0},
+            { "Cold", 2},
+            { "Asphyxiation", 2},
             { "Ion", 5.0},
         }
     };
