@@ -60,7 +60,7 @@ public sealed partial class CosmicCultComponent : Component
     /// The duration of the doAfter for Siphon Entropy
     /// </summary>
     [DataField]
-    public TimeSpan CosmicSiphonDelay = TimeSpan.FromSeconds(5);
+    public TimeSpan CosmicSiphonDelay = TimeSpan.FromSeconds(3.5f);
 
     /// <summary>
     /// The duration of the doAfter for Shunt Subjectivity
@@ -90,13 +90,13 @@ public sealed partial class CosmicCultComponent : Component
     /// The range of Null Glare.
     /// </summary>
     [DataField]
-    public int CosmicGlareRange = 4;
+    public int CosmicGlareRange = 5;
 
     /// <summary>
     /// The movement speed penalty inflicted by Null Glare.
     /// </summary>
     [DataField]
-    public float CosmicGlarePenalty = 0.3f;
+    public float CosmicGlarePenalty = 0.5f;
 
     /// <summary>
     /// The stun duration inflicted by Null Glare.
