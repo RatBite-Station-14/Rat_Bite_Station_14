@@ -1,0 +1,10 @@
+- type: entity
+  id: RB_LifelineMarker
+  parent: MarkerBase
+  name: lifeline marker
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: /Textures/_Goobstation/Effects/bluespace_lifeline.rsi
+      state: bluespace_lifeline

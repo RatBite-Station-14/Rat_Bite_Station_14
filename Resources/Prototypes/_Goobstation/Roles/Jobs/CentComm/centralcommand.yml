@@ -29,7 +29,7 @@
   - BlueshieldOfficer
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ]
+    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplantAdminrole, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ] # ratbite change
 
 - type: startingGear
   id: NavyOfficerGear
@@ -69,7 +69,7 @@
     - BlueshieldOfficer
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ]
+    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplantAdminrole, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ] # ratbite change
 
 - type: startingGear
   id: NavyCaptainGear
@@ -110,7 +110,7 @@
     - BlueshieldOfficer
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ]
+    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplantAdminrole, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ] # ratbite change
 
 - type: startingGear
   id: NavyOfficerUndercoverGear
@@ -152,7 +152,7 @@
     - BlueshieldOfficer
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant]
+    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplantAdminrole, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant] # ratbite change
 
 - type: startingGear
   id: SpecialOperationsOfficerGear
@@ -194,7 +194,7 @@
   - BlueshieldOfficer
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ]
+    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplantAdminrole, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ] # ratbite change
 
 - type: startingGear
   id: DiplomatGear
@@ -232,7 +232,7 @@
   - BlueshieldOfficer
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ]
+    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplantAdminrole, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ] #ratbite change
 
 - type: startingGear
   id: InspectorGear

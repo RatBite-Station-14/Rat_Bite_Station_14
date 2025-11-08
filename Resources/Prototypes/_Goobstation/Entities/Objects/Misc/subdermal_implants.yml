@@ -35,13 +35,28 @@
     mobState:
     - Dead
   - type: TriggerImplantAction
-  - type: DeleteParentOnTrigger
+  - type: TeleportOnTrigger # RATBITE14 change
   - type: SpawnOnTrigger
     proto: BluespaceLifelineSpawnCore
   - type: Tag
     tags:
     - SubdermalImplant
     - HideContextMenu
+
+## ratbite change start
+
+- type: entity
+  parent: BluespaceLifelineImplant
+  id: BluespaceLifelineImplantAdminrole
+  name: bluespace lifeline implant
+  description: Teleports the hosts body to Central Command on activation. They will not be able to return.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TeleportOnTrigger # RATBITE14 change
+    allowNukeDisk: true
+    killOnTeleport: false # so the ERT doesnt see SO randomly fucking dying after TPing to CC
+
+## ratbite change end
 
 - type: entity
   parent: BaseSubdermalImplant
