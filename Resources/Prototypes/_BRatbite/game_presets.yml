@@ -15,3 +15,21 @@
     - LavalandStormScheduler
     - CalmerAntagStationScheduler
     - CalmerStationEventScheduler
+
+- type: gamePreset
+  id: SecretSquared
+  alias:
+    - SecretSquared
+    - secretsquared
+    - secret2
+  name: secretsquared-title
+  description: secretsquared-description
+  showInVote: true
+  rules:
+    - PermaBrig # Needed
+    - BasicRoundstartVariation
+    - LavalandStormScheduler
+    - SecretSquaredMain
+    - SecretSquaredSide
+    - BasicStationEventScheduler
+
