@@ -54,7 +54,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 300
+        damage: 450
       behaviors: #excess damage, don't spawn entities.
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -63,7 +63,7 @@
           collection: WindowShatter
     - trigger:
         !type:DamageTrigger
-        damage: 150
+        damage: 225
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -86,7 +86,7 @@
   - type: Appearance
   - type: DamageVisuals
     thresholds: [5, 10, 20]
-    damageDivisor: 6
+    damageDivisor: 8
     trackAllDamage: true
     damageOverlay:
       sprite: Structures/Windows/cracks.rsi
@@ -115,7 +115,7 @@
   - type: Appearance
   - type: DamageVisuals
     thresholds: [5, 10, 20]
-    damageDivisor: 3
+    damageDivisor: 8
     trackAllDamage: true
     damageOverlay:
       sprite: Structures/Windows/cracks_directional.rsi
@@ -125,13 +125,14 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 150
+        damage: 225
       behaviors: #excess damage, don't spawn entities.
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
     - trigger:
         !type:DamageTrigger
-        damage: 75
+        damage: 115 
+        # idk if decimals fuck it up so im doing wholes
       behaviors:
       - !type:PlaySoundBehavior
         sound:
