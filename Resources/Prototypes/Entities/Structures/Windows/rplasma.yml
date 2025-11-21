@@ -86,7 +86,7 @@
   - type: Appearance
   - type: DamageVisuals
     thresholds: [5, 10, 20]
-    damageDivisor: 8
+    damageDivisor: 6
     trackAllDamage: true
     damageOverlay:
       sprite: Structures/Windows/cracks.rsi
@@ -115,7 +115,8 @@
   - type: Appearance
   - type: DamageVisuals
     thresholds: [5, 10, 20]
-    damageDivisor: 8
+    damageDivisor: 3 
+    #directionals should be half as strong as full tile right?
     trackAllDamage: true
     damageOverlay:
       sprite: Structures/Windows/cracks_directional.rsi
