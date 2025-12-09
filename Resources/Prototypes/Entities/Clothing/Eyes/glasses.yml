@@ -197,6 +197,7 @@
     sprite: Clothing/Eyes/Glasses/meson.rsi
   - type: EyeProtection
   - type: IdentityBlocker
+  - type: FlashImmunity # Worlds Smallest Ratbite Change
     coverage: EYES
 
 - type: entity
