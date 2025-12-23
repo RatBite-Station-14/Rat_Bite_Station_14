@@ -50,7 +50,9 @@
       outerClothing:
       - state: equipped-OUTERCLOTHING-sealed
       outerClothing-resomi:
-      - state: equipped-OUTERCLOTHING-sealed-resomi   
+      - state: equipped-OUTERCLOTHING-sealed-resomi
+      outerClothing-vox:
+      - state: equipped-OUTERCLOTHING-sealed-vox      
   - type: StaminaResistance
     damageCoefficient: 0.9
   - type: Armor
