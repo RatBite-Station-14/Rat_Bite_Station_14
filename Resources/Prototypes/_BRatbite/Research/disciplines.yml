@@ -1,0 +1,12 @@
+- type: techDiscipline
+  id: LEGAL # Loosely Enforced Guidelines for Advanced Logistic (LEGAL) totally legal btw name said it all
+  name: research-discipline-legal
+  color: "#9a6ef0"
+  icon:
+    sprite: _BRatBites/Interface/Misc/research_disciplines.rsi
+    state: legal
+  tierPrerequisites:
+    1: 0
+    2: 0.75
+    3: 0.75
+  uiName: LEGAL  # Goobstation

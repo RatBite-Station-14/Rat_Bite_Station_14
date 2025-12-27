@@ -1,0 +1,11 @@
+- type: latheRecipePack #only on sci fab
+  id: LegalTechSciOnly
+  recipes:
+
+- type: latheRecipePack #both sci fab and secfab
+  id: LegalTechSciSec
+  recipes:
+
+- type: latheRecipePack #both sci fab and medfab
+  id: LegalTechSciMed
+  recipes:
