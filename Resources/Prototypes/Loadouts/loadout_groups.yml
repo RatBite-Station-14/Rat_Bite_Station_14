@@ -1264,6 +1264,7 @@
   name: loadout-group-warden-head
   minLimit: 0
   loadouts:
+  - WardenHelmet
   - WardenHead
   - WardenBeret
 
@@ -1278,6 +1279,7 @@
   id: WardenOuterClothing
   name: loadout-group-warden-outerclothing
   loadouts:
+  - WardenArmor
   - WardenCoat
   - WardenArmoredWinterCoat
 

@@ -478,6 +478,7 @@
     wilhelmProbability: 0.001
   - type: Tag
     tags:
+      - Trash
       - CannotSuicide
       - FootstepSound
   - type: NoSlip

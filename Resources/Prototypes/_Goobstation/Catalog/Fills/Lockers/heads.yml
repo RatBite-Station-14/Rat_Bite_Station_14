@@ -66,8 +66,8 @@
     - id: NitrogenTankFilled
     - id: OmnimedTool
     - id: HandheldCrewMonitorBSO
-    - id: BlueshieldUndeterminedWeapon
-    - id: BlueshieldUndeterminedHardsuit #RatBite
+    #- id: BlueshieldUndeterminedWeapon # Ratbite - no more free crazy weapon to locker breaker
+    #- id: BlueshieldUndeterminedHardsuit #RatBite
 
 - type: entity
   id: LockerBlueshieldOfficerFilled

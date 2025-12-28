@@ -1560,7 +1560,7 @@
   parent: VendingMachine
   id: VendingMachineVendomat
   name: Vendomat
-  description: Only the finest robust equipment in space!
+  description: Only the finest robust equipment in space, A label states "AVAILABLE TO EVEYONE!"
   components:
   - type: VendingMachine
     pack: VendomatInventory
@@ -1645,7 +1645,7 @@
   parent: VendingMachine
   id: VendingMachineYouTool
   name: YouTool
-  description: "A vending machine containing standard tools. A label reads: Tools for tools."
+  description: "A vending machine containing standard tools. A label reads: Tools, not for tools."
   components:
   - type: VendingMachine
     pack: YouToolInventory
@@ -1665,6 +1665,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AccessReader
+    access: [["Maintenance"]]
   - type: PointLight
     radius: 2
     energy: 1.6

@@ -45,7 +45,7 @@
 - type: startingGear
   id: RSOGear
   equipment:
-    suitstorage: WeaponSubMachineSmart
+    #suitstorage: WeaponSubMachineSmart
     gloves: ClothingHandsGlovesRSOShock
     id: RSOPDA
     ears: ClothingHeadsetAltCentCom
@@ -56,5 +56,7 @@
     - CQCManual
     - BookSpaceLaw
     - Flash
-    - MagazineSmart
-    - MagazineSmart
+    #- MagazineSmart
+    #- MagazineSmart
+    - RSOUndeterminedWeapon
+    - UndeterminedRSOHardsuit

@@ -18,7 +18,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         <ScrollContainer Name="GhostScroll" VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
         <BoxContainer Orientation="Vertical" >
             <BoxContainer Name="AntagBox" HorizontalExpand="True" >
-                <Collapsible HorizontalExpand="True">
+                <Collapsible HorizontalExpand="True" BodyVisible="True">
                     <CollapsibleHeading Name="AntagonistHeading" />
                     <CollapsibleBody>
                         <GridContainer Name="AntagonistContainer" MaxGridWidth="440"/> <!-- These contain buttons on runtime-->
@@ -26,15 +26,23 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 </Collapsible>
             </BoxContainer>
             <BoxContainer HorizontalExpand="True" >
-                <Collapsible HorizontalExpand="True">
+                <Collapsible HorizontalExpand="True" BodyVisible="True">
                     <CollapsibleHeading Name="LivingHeading" />
                     <CollapsibleBody>
                         <GridContainer Name="LivingContainer" MaxGridWidth="440"/>
                     </CollapsibleBody>
                 </Collapsible>
             </BoxContainer>
+            <BoxContainer Name="DeadBox" HorizontalExpand="True" >
+                <Collapsible HorizontalExpand="True" BodyVisible="True">
+                    <CollapsibleHeading Name="DeadHeading" />
+                    <CollapsibleBody>
+                        <GridContainer Name="DeadContainer" MaxGridWidth="440"/>
+                    </CollapsibleBody>
+                </Collapsible>
+            </BoxContainer>
             <BoxContainer HorizontalExpand="True" >
-                <Collapsible HorizontalExpand="True">
+                <Collapsible HorizontalExpand="True" BodyVisible="True">
                     <CollapsibleHeading Name="GhostHeading" />
                     <CollapsibleBody>
                         <GridContainer Name="GhostContainer" MaxGridWidth="440"/>
@@ -42,7 +50,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 </Collapsible>
             </BoxContainer>
             <BoxContainer HorizontalExpand="True" >
-                <Collapsible HorizontalExpand="True">
+                <Collapsible HorizontalExpand="True" BodyVisible="True">
                     <CollapsibleHeading Name="MiscHeading" />
                     <CollapsibleBody>
                         <GridContainer Name="MiscContainer" MaxGridWidth="440"/>

@@ -469,14 +469,16 @@ namespace Content.Server.Ghost
                         foreach(var _ in followComponent.Following)
                             followers++;
                     }
-                    if (TryComp<MindContainerComponent>(uid, out var mindContainer) && mindContainer.HasMind) // Remove to show all points for testing
+                    TryComp<MindContainerComponent>(uid, out var mind);
+                    if (mind?.Mind != null)
                     {
-                        yield return new GhostWarp(entity, warp.Location ?? Name(uid), warp.Mob, warp.Ghost, warp.Antagonist, followers);
+                        var player_name = $"{warp.Location ?? Name(uid)} ({_jobs.MindTryGetJobName(mind.Mind)})";
+                        yield return new GhostWarp(entity, player_name, warp.Mob, _mobState.IsDead(uid), warp.Ghost, warp.Antagonist, followers);
                     }
                 }
                 else
                 {
-                    yield return new GhostWarp(entity, warp.Location ?? Name(uid), warp.Mob, warp.Ghost, warp.Antagonist, 0);
+                    yield return new GhostWarp(entity, warp.Location ?? Name(uid), warp.Mob, true, warp.Ghost, warp.Antagonist, 0);
                 }
             }
         }
@@ -496,9 +498,10 @@ namespace Content.Server.Ghost
                 }
 
                 TryComp<MindContainerComponent>(attached, out var mind);
-                var playerInfo = $"{Comp<MetaDataComponent>(attached).EntityName}";
+                var jobName = _jobs.MindTryGetJobName(mind?.Mind);
+                var playerInfo = $"{Comp<MetaDataComponent>(attached).EntityName} ({jobName})";
 
-                yield return new GhostWarp(GetNetEntity(attached), playerInfo, false, false, false, 0);
+                yield return new GhostWarp(GetNetEntity(attached), playerInfo, true, _mobState.IsDead(attached), false, false, 0);
             }
         }
 

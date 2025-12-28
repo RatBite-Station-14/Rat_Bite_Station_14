@@ -173,6 +173,9 @@
   save: false
   abstract: true
   components:
+  - type: WarpPoint # Rat - Better observe menu
+    follow: true
+    mob: true
   - type: Reactive
     groups:
       Acidic: [Touch]

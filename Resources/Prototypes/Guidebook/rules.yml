@@ -403,6 +403,7 @@
   text: "/ServerInfo/Guidebook/ServerRules/SpaceLaw/SpaceLaw.xml"
   children:
   - SpaceLawCrimeList
+  - SpaceLawBillOfRights #Ratbite
   - SpaceLawSearches
   - SpaceLawPunishments
   - SpaceLawPerma
