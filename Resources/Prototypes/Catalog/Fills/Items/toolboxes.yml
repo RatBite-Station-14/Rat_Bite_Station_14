@@ -101,7 +101,7 @@
     contents:
       - id: CrowbarRed
       - id: RadioHandheld
-    # - id: WelderMini Ratbite TIDER DEATH
+      - id: WelderMini
       - id: FireExtinguisherMini
       # Random lighting item orGroup
       - id: FlashlightLantern
@@ -189,9 +189,9 @@
     contents:
       - id: CrowbarOrange
       - id: Wrench
-  #   - id: Welder  Ratbite tider death
+      - id: Welder
       - id: Wirecutter
-  #   - id: Screwdriver
+      - id: Screwdriver
         prob: 0.5
       - id: FlashlightLantern
         prob: 0.7
@@ -208,9 +208,9 @@
     contents:
     - id: Crowbar
     - id: Wrench
- #  - id: Screwdriver
+    - id: Screwdriver
     - id: Wirecutter
- #  - id: Welder
+    - id: Welder
     - id: Multitool
 
 - type: entity
@@ -222,11 +222,11 @@
     contents:
     - id: Crowbar
     - id: Wrench
-#   - id: Screwdriver Ratbite tider death
+    - id: Screwdriver
     - id: Wirecutter
     - id: Welder
     - id: Multitool
-#   - id: ClothingHandsGlovesCombat Ratbite tider death
+    - id: ClothingHandsGlovesCombat
     - id: ClothingMaskGasSyndicate
 
 - type: entity

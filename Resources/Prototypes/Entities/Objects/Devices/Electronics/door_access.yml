@@ -319,9 +319,9 @@
   parent: DoorElectronics
   id: DoorElectronicsMaintenance
   suffix: Maintenance, Locked
-# components:
-# - type: AccessReader
-#   access: [["Maintenance"]] Ratbite tider murdering, opening of maints.
+  components:
+  - type: AccessReader
+    access: [["Maintenance"]]
 
 - type: entity
   parent: DoorElectronics
