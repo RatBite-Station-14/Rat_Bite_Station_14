@@ -1,0 +1,11 @@
+
+- type: marking
+  id: Augmented Spine
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Human, SlimePerson, Reptilian, Dwarf, Felinid, Harpy, Rodentia, Tajaran, Oni, Shadowkin, Plasmaman]
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/AugmentedSpine.rsi
+            state: AugmentedSpine1
+          - sprite: _BRatBites/Entities/Mobs/Customization/AugmentedSpine.rsi
+            state: AugmentedSpine2

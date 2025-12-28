@@ -1,0 +1,13 @@
+
+- type: marking
+  id: Fish Head
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [IPC]
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/FishHead.rsi
+            state: HelmetWaterFish
+          - sprite: _BRatBites/Entities/Mobs/Customization/FishHead.rsi
+            state: HelmetFish
+          - sprite: _BRatBites/Entities/Mobs/Customization/FishHead.rsi
+            state: Fish

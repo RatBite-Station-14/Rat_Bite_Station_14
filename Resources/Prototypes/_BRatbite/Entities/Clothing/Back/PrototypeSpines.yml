@@ -1,0 +1,53 @@
+- type: entity
+  parent: [ClothingBackpack]
+  id: Cyberspine
+  name: Generic Cyberspine [DEBUG]
+  description: DEBUG PURPOSES ONLY!
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Back/TimeParasite.rsi
+  - type: Clothing
+    stripDelay: 15
+    unequipDelay: 15
+    equipDelay: 7
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 0.9
+  - type: HeldSpeedModifier
+
+
+- type: entity
+  parent: [Cyberspine]
+  id: ClothingBackpackCyberSpineTimeParasite
+  name: prototype time-parasite
+  description: An experimental cybernetic spine that can enhance someone's reflexes temporarily, however, it's bulky size and more invasive interfacing with the body makes it much more unwieldly to wear.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Back/TimeParasite.rsi
+  - type: Clothing
+  - type: ClothingGrantComponent
+    component:
+     - type: SandevistanUser
+  - type: Storage
+    maxItemSize: Huge
+    grid:
+    - 0,0,2,2
+
+ 
+
+- type: entity
+  parent: [Cyberspine]
+  id: ClothingBackpackCyberSpineMedicalSpine
+  name: medical cyber spine
+  description: An cyber spine designed for the medical department, can hold multiple surgical tools, small amounts of liquids, and offers additional space for topicals.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Back/MediSpine.rsi
+  - type: Clothing
+  - type: Storage
+    maxItemSize: Huge
+    grid:
+    - 3,3,3,3
+  sprite: _BRatBites/Clothing/Back/MediSpine.rsi
+
+
