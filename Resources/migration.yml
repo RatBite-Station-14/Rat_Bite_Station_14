@@ -159,177 +159,13 @@ AirlockPsychologistLocked: AirlockMedicalLocked
 AirlockReporterGlassLocked: AirlockServiceGlassLocked
 AirlockZookeeperGlassLocked: AirlockServiceGlassLocked
 AirlockZookeeperLocked: AirlockServiceLocked
-AlwaysPoweredLightPostSmallRed: null
 AsteroidAltRock: AsteroidRock
-BenchParkBambooMiddle: null
-BenchParkLeft: null
-BenchParkMiddle: null
-BenchParkRight: null
-BenchPewLeft: null
-BenchPewMiddle: null
-BenchPewRight: null
-BenchSofaCorpLeft: null
-BenchSofaCorpMiddle: null
-BenchSofaCorpRight: null
-BenchSofaLeft: null
-BenchSofaRight: null
-BenchSteelLeft: null
-BenchSteelMiddle: null
-BenchSteelRight: null
-BenchSteelWhiteLeft: null
-BenchSteelWhiteMiddle: null
-BenchSteelWhiteRight: null
-BoardGameSpawner: null
 BoxColoredLighttube: BoxLighttube
 BoxEncryptionKeyPrisoner: BoxEncryptionKeyPassenger
 BoxMaintenanceLightbulb: BoxLightMixed
 BoxPDAPrisoner: BoxPDA
-ClothingBeltMartialBlack: null
-ClothingCostumeArcDress: null
-ClothingHeadCourier: null
-ClothingHeadHatFedoraBlack: null
-ClothingHeadHatFedoraChoc: null
-ClothingHeadHatFezMantis: null
-ClothingHeadPrisonGuard: null
-ClothingUniformMartialGi: null
-ClothingUniformTShirtKhakiPants: null
-ComputerShipyard: null
-CourierBag: null
-CryogenicSleepUnitSpawnerPrisoner: null
-DefaultStationBeaconBoxing: null
-DefaultStationBeaconCameraServerRoom: null
-DefaultStationBeaconConferenceRoom: null
-DefaultStationBeaconCorpsman: null
-DefaultStationBeaconEngiOutpost: null
-DefaultStationBeaconExam: null
-DefaultStationBeaconJanitorsOffice: null
-DefaultStationBeaconMailroom: null
-DefaultStationBeaconMantis: null
-DefaultStationBeaconMetempsychosis: null
-DefaultStationBeaconPark: null
-DefaultStationBeaconPsychologist: null
-DefaultStationBeaconVirology: null
-DrinkBubbleTeaGlass: null
-FishLabeler: null
-FoodLollipop: null
-FoodPSB: null
-GlimmerProber: null
-GunSafeAdjutantShotgun: null
-GunSafeEnergyGunMini: null
-GunSafeVulcanRifle: null
-HatSpawner: null
-KitchenDeepFryer: null
-KvassTankFull: null
-LockerForensicMantisFilled: null
-LunchboxSecurityFilledRandom: null
-MagazineBoxSpecialPractice: null
-MetempsychoticMachine: null
-Oracle: null
-PaintingMothBigCatch: null
-PaintingSpoon: null
-PlushieMothMusician: null
-PlushieMothRandom: null
-PosterContrabandBreadLies: null
-PosterContrabandGotWood: null
-PosterContrabandSafetyMothSyndie: null
-PosterContrabandSaucerNumberOne: null
-PosterLegitBarDrinks: null
-PosterLegitBotanyFood: null
-PosterLegitChknDnnr: null
-PosterLegitCornzza: null
-PosterLegitDejaVu: null
-PosterLegitDontPanic: null
-PosterLegitEatMeat: null
-PosterLegitFuckAround: null
-PosterLegitHotDonkExplosion: null
-PosterLegitMedicate: null
-PosterLegitNoTouching: null
-PosterLegitPieSlice: null
-PosterLegitPizzaHope: null
-PosterLegitSafetyMothBoH: null
-PosterLegitSafetyMothFires: null
-PosterLegitSafetyMothGlimmer: null
-PosterLegitSafetyMothPills: null
-PosterLegitSafetyMothPoisoning: null
-PosterLegitShoukou: null
-PoweredLightBlueInterior: null
-PoweredLightColoredRed: null
-PoweredSmallLightMaintenance: null
-PoweredSmallLightMaintenanceRed: null
-RandomAmmoBox: null
-RandomAnimalSpawner: null
-RandomBoards: null
-RandomBook: null
-RandomCrystalSpawner: null
-ReverseEngineeringMachine: null
-Roboisseur: null
-SalvagePartsSpawnerLow: null
-SalvagePartsSpawnerMid: null
-SecBreachingHammer: null
-Shinai: null
-ShockCollar: null
-shuttle_manipulator: null
-SignConspiracyBoard: null
-SignDirectionalLogistics: null
-SignDirectionalMail: null
-SignDojo: null
-SignLastIdiot: null
-SignSec: null
-SophicScribe: null
-SpaceCashLuckyBill: null
-SpareIdCabinetFilled: null
-SpawnMobArcticFoxSiobhan: null
-SpawnMobFerret: null
-SpawnMobMothroach: null
-SpawnPointCourier: null
-SpawnPointForensicMantis: null
-SpawnPointLocationMidRoundAntag: null
-SpawnPointMartialArtist: null
-SpawnPointMedicalBorg: null
-SpawnPointPrisonGuard: null
-SpeedLoaderSpecialPractice: null
-SuitStorageCorpsman: null
-SuitStorageParamedic: null
 TableWoodReinforced: TableWood
-tatamimat: null
-ToyRenault: null
-ToySiobhan: null
-VendingMachineBoozeUnlocked: null
-VendingMachineBoxingDrobe: null
-VendingMachineCourierDrobe: null
-VendingMachineMNKDrobe: null
-VendingMachineRepDrobe: null
-WallPaper: null
-WarpPointAI: null
-WarpPointArrivals: null
-WarpPointAtmos: null
-WarpPointBar: null
-WarpPointCryo: null
-WarpPointDetective: null
-WarpPointDisposals: null
-WarpPointEpistemics: null
-WarpPointHOP: null
-WarpPointJanitor: null
-WarpPointKitchen: null
-WarpPointLawyer: null
-WarpPointLibrary: null
-WarpPointMorgue: null
-WarpPointReporter: null
-WarpPointSingulo: null
-WashingMachine: null
-WashingMachineBroken: null
-WashingMachineFilledClothes: null
-WeaponShotgunKammererNonLethal: null
-WindoorSecureMailLocked: null
-WindoorSecureParamedicLocked: null
-SpawnPointMailCarrier: null
-HoloprojectorEngineering: null
-ClothingOuterWinterCoatPlaid: null
-ClothingOuterWinterCoatLong: null
-ClothingHandsGlovesColorYellowUnsulated: null
-AirlockMusicianLocked: null
-AirlockMimeLocked: null
-DoorElectronicsParamedic: null
+
 AirlockExternalGlassSalvageLocked: AirlockExternalGlassCargoLocked
 AirlockExternalGlassShuttleEscapeSub: AirlockExternalGlassCargoLocked
 AirlockParamedicLocked: AirlockMedicalLocked
@@ -501,40 +337,34 @@ DefaultStationBeaconTeslaEngine: null
 # 2024-01-28
 FoodBoxDonkpocketGondola: FoodBoxDonkpocketPizza
 
-# 2024-01-31
-SpyCrewMonitor: null
-SpyCrewMonitorEmpty: null
-SyndiCrewMonitor: null
-SyndiCrewMonitorEmpty: null
 
 #SpawnVehicleWheelchair: null Goobstation - Re-add vehicles
 #SpawnVehicleWheelchairFolded: null Goobstation - Re-add vehicles
 #VehicleWheelchair: null Goobstation - Re-add vehicles
 #VehicleWheelchairFolded: null Goobstation - Re-add vehicles
-VehicleSecwayStealObjective: null
+#VehicleSecwayStealObjective: null
 #VehicleKeyJanicart: null Goobstation - Re-add vehicles
 #VehicleKeySecway: null Goobstation - Re-add vehicles
 #VehicleKeyATV: null Goobstation - Re-add vehicles
-VehicleKeySkeleton: null
+#VehicleKeySkeleton: null Goobstation - Re-add vehicles
 #VehicleKeySyndicateSegway: null Goobstation - Re-add vehicles
-VehicleKeySkeletonMotorcycle: null
 #VehicleSecway: null Goobstation - Re-add vehicles
 #VehicleATV: null Goobstation - Re-add vehicles
 #VehicleSyndicateSegway: null Goobstation - Re-add vehicles
-VehicleSkeletonMotorcycle: null
-VehicleUnicycle: null
-VehicleUnicycleFolded: null
-ActionVehicleHorn: null
+#VehicleSkeletonMotorcycle: null Goobstation - Re-add vehicles
+#VehicleUnicycle: null Goobstation - Re-add vehicles
+#VehicleUnicycleFolded: null Goobstation - Re-add vehicles
+#ActionVehicleHorn: null Goobstation - Re-add vehicles
 #CrateFunATV: null Goobstation - Re-add vehicles
 #CrateFunSyndicateSegway: null Goobstation - Re-add vehicles
-MobTaxiBot: null
+#MobTaxiBot: null Goobstation - Re-add vehicles
 # MobSupplyBot: null
-SpawnVehicleMotobike: null
-SpawnVehicleATV: null
+#SpawnVehicleMotobike: null Goobstation - Re-add vehicles
+#SpawnVehicleATV: null Goobstation - Re-add vehicles
 #SpawnVehicleSecway: null Goobstation - Re-add vehicles
 #SpawnVehicleJanicart: null Goobstation - Re-add vehicles
 #VehicleJanicart: null Goobstation - Re-add vehicles
-VehicleJanicartDestroyed: null
+#VehicleJanicartDestroyed: null Goobstation - Re-add vehicles
 
 # 2024-02-01
 YellowOxygenTank: OxygenTank
@@ -545,8 +375,6 @@ FoodDonutBlumpkin: FoodDonutBluePumpkin
 FoodDonutJellyBlumpkin: FoodDonutJellyBluePumpkin
 
 # 2024-02-19
-#Drone: null
-#SpawnMobDrone: null
 #Onestar: null # I dont think this is even mapped, but just in case
 
 # 2024-02-22
@@ -946,37 +774,6 @@ CargoShuttleComputerCircuitboard: CargoShuttleConsoleCircuitboard
 # 2025-05-09 Goobstation
 ClothingBackpackCentcom: ClothingBackpackCentcomm
 
-# 2025-06-04 Goobstation Plushie Death
-PlushieBenny: null
-PlushieCairo: null
-PlushiePash: null
-PlushieDelta: null
-PlushieRaki: null
-PlushieTina: null
-PlushieKnott: null
-PlushieZlorb: null
-PlushieTiderMoth: null
-PlushieCommandHuman: null
-PlushieRanork: null
-PlushieWehWinter: null
-PlushieHaleigh: null
-PlushieStoop: null
-PlushieAhti: null
-PlushieSparkle: null
-PlushieGrub: null
-PlushieHexadecimal: null
-PlushieFlint: null
-PlushiePistachio: null
-PlushieSeesTheStars: null
-PlushieDumbLizard: null
-PlushieSqueaks: null
-PlushieHaato: null
-PlushieTinyLane: null
-PlushieChewsTheShoes: null
-PlushieBlackburn: null
-PlushieBlackburnMatryoskya: null
-PlushieDesislavaBlackburn: null
-PlushieBlackburnKobliska: null
 
 # 2025-06-13 Goobstation
 BroomWitch: Broomstick
@@ -1000,9 +797,7 @@ SuitStorageBasic: SuitStorageEVA
 # 2025-05-18
 ClothingNeckCloakMiner: null
 #2025 independence day Ratbite removals
-VehicleATV: null
 VehicleSecway: null
 VehicleJanicart: null
-VehicleKeyATV: null
 VehicleKeySecway: null
 VehicleKeyJanicart: null
