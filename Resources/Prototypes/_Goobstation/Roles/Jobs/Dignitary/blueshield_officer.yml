@@ -88,3 +88,5 @@
     back:
     - Flash
     - ClothingMaskGasSecurity
+    - BlueshieldUndeterminedWeapon # Ratbite
+    - BlueshieldUndeterminedHardsuit # Ratbite

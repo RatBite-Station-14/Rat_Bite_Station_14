@@ -200,7 +200,7 @@
 - type: entity
   parent: IDCardStandard
   id: PassengerIDCard
-  name: assistant ID card
+  name: passenger ID card #Ratbite tider rework
   components:
   - type: Sprite
     layers:
@@ -933,7 +933,7 @@
   - type: Item
     heldPrefix: orange
 # ratbite changes start
-#  - type: Access 
+#  - type: Access
 #    tags:
 #    - GenpopEnter
   - type: GenpopIdCard

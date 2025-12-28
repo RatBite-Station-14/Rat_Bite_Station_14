@@ -907,7 +907,7 @@
 - type: entity
   parent: AirlockMaint
   id: AirlockMaintLocked
-  suffix: Locked
+  #suffix: Locked
   components:
   - type: ContainerFill
     containers:
@@ -916,7 +916,7 @@
 - type: entity
   parent: AirlockMaintGlass
   id: AirlockMaintGlassLocked
-  suffix: Locked
+  #suffix: Locked
   components:
   - type: ContainerFill
     containers:

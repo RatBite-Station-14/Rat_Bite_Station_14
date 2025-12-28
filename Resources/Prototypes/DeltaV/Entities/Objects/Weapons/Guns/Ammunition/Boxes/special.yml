@@ -11,10 +11,10 @@
     proto: CartridgeSpecial
     capacity: 12
   - type: Item
-    size: 5
+    size: Small # Ratbite
   - type: ContainerContainer
     containers:
-      ballistic-ammo: !type:Container
+      ballistic-ammo: !type:Container # Ratbite
   - type: Sprite
     sprite: DeltaV/Objects/Weapons/Guns/Ammunition/Boxes/special.rsi
   - type: MagazineVisuals

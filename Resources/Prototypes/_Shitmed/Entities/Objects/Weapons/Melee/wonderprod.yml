@@ -116,3 +116,24 @@
           damage:
             types:
               Heat: 30
+
+      peace: !type:ItemSwitchState #RATBITE, CHANGE SLEEP MODE TO PEACE MODE
+        verb: peace
+        sprite:
+          sprite: _Shitmed/Objects/Weapons/Melee/wonderprod.rsi
+          state: sleep-icon
+        components:
+        - type: MeleeWeapon
+          wideAnimationRotation: -135
+          attackRate: 0.8
+          damage:
+            types:
+              Ion: 30
+          angle: 60
+          animation: WeaponArcThrust
+        - type: InjectOnHit
+          reagents:
+          - ReagentId: Pax
+            Quantity: 5
+          limit: 20
+          needsRestrain: true

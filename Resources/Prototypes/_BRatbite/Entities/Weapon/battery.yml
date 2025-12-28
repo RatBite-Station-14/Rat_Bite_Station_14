@@ -84,7 +84,7 @@
     maxCharge: 1000
     startingCharge: 1000
   - type: ProjectileBatteryAmmoProvider
-    proto: BulletEnergyPistolLethalWeak
+    proto: PistolBulletEnergyGunDisablerWeak
     fireCost: 50
   - type: AmmoSelector
     prototypes:

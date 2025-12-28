@@ -415,7 +415,7 @@
     unlitIdleState: unlit
     unlitRunningState: unlit-building
     staticPacks:
-    - ToolsStatic
+   #- ToolsStatic Ratbite tider death
     - PartsStatic
     - AtmosStatic
     - CablesStatic

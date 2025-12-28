@@ -1270,21 +1270,21 @@
 
 # Allies
 
-- type: listing
-  id: UplinkHoloparaKit
-  name: uplink-holopara-kit-name
-  description: uplink-holopara-kit-desc
-  icon: { sprite: /Textures/Objects/Misc/guardian_info.rsi, state: icon }
-  productEntity: BoxHoloparasite
-  cost:
-    Telecrystal: 70 # goob
-  categories:
-  - UplinkAllies
-  conditions:
-  - !type:StoreWhitelistCondition
-    blacklist:
-      tags:
-      - NukeOpsUplink
+# type: listing RATBITE Removed because it was crashing the server. If someone PRs the fix I'll be happy to re-add it.
+# id: UplinkHoloparaKit
+# name: uplink-holopara-kit-name
+# description: uplink-holopara-kit-desc
+# icon: { sprite: /Textures/Objects/Misc/guardian_info.rsi, state: icon }
+# productEntity: BoxHoloparasite
+# cost:
+#   Telecrystal: 70 # goob
+# categories:
+# - UplinkAllies
+# conditions:
+# - !type:StoreWhitelistCondition
+#   blacklist:
+#     tags:
+#     - NukeOpsUplink
 
 
 - type: listing
@@ -2173,20 +2173,20 @@
     - Clown
 
 
-- type: listing
-  id: UplinkHoloclownKit
-  name: uplink-holoclown-kit-name
-  description: uplink-holoclown-kit-desc
-  icon: { sprite: /Textures/Objects/Fun/figurines.rsi, state: holoclown }
-  productEntity: BoxHoloclown
-  cost:
-    Telecrystal: 60 # goob
-  categories:
-  - UplinkJob
-  conditions:
-  - !type:BuyerJobCondition
-    whitelist:
-    - Clown
+# type: listing
+# id: UplinkHoloclownKit
+# name: uplink-holoclown-kit-name
+# description: uplink-holoclown-kit-desc
+# icon: { sprite: /Textures/Objects/Fun/figurines.rsi, state: holoclown }
+# productEntity: BoxHoloclown
+# cost:
+#   Telecrystal: 60 # goob
+# categories:
+# - UplinkJob
+# conditions:
+# - !type:BuyerJobCondition
+#   whitelist:
+#   - Clown
 
 
 - type: listing

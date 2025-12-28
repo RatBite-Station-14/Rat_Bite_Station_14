@@ -19,11 +19,13 @@
 - type: vendingMachineInventory
   id: VendomatInventory
   startingInventory:
-    RemoteSignaller: 1
-    Igniter: 2
-    Wirecutter: 2
-    Screwdriver: 2
-    CableApcStack: 2
+    #RemoteSignaller: 1 Ratbite tider death
+    #Igniter: 2 Ratbite tider death
+    Wirecutter: 3
+    Crowbar: 3 #Ratbite tider death add, crowbars are basic safety.
+    Wrench: 3 #Ratbite tider death add, tiders deserve wrenches for funny theft.
+    #Screwdriver: 2 Ratbite tider death
+    #CableApcStack: 2 Ratbite tider death
     FlashlightLantern: 2
     PowerCellSmallPrinted: 3
     MatterBinStockPart: 4

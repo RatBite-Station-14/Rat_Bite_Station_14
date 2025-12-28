@@ -435,6 +435,11 @@
         Steel: 50
         Plastic: 75
         Glass: 125
+    - type: Tag
+      tags:
+      - PetWearable
+      - WhitelistChameleon
+      - HudChemistry
 
 - type: entity
   parent: [ClothingEyesBase, BaseMajorContraband]

@@ -141,8 +141,8 @@
 # Ratbite additions
 - type: loadout
   id: ResearchDirectorSHDJacket
+  equipment:
+    outerClothing: ClothingOuterCoatSHDJacket
   effects:
   - !type:GroupLoadoutEffect
     proto: MasterRD
-  equipment:
-    outerclothing: ClothingOuterCoatSHDJacket

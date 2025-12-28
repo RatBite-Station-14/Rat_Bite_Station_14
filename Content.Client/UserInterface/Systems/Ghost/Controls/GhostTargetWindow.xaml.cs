@@ -54,17 +54,21 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
                 if (warp.Mob)
                 {
                     name = warp.DisplayName + (warp.Followers > 0 ? " f: " + warp.Followers : "");
-                    if (warp.Antagonist)
+                    if(warp.Player_ghost)
                     {
-                        type = 1;
+                        type = 4;
                     }
-                    else if(!warp.Player_ghost)
+                    else if (warp.IsDead)
+                    {
+                        type = 3;
+                    }
+                    else if (warp.Antagonist)
                     {
                         type = 2;
                     }
                     else
                     {
-                        type = 3;
+                        type = 1;
                     }
                 }
                 else
@@ -79,6 +83,7 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
         {
             AntagonistContainer.DisposeAllChildren();
             LivingContainer.DisposeAllChildren();
+            DeadContainer.DisposeAllChildren();
             GhostContainer.DisposeAllChildren();
             MiscContainer.DisposeAllChildren();
             AddButtons();
@@ -88,6 +93,7 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
         {
             var total_antagonist_length = 0;
             var total_living_length = 0;
+            var total_dead_length = 0;
             var total_ghost_length = 0;
             var total_misc_length = 0;
             foreach (var (name, Entity, type) in Warps)
@@ -110,25 +116,31 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
                         MiscContainer.AddChild(currentButtonRef);
                         continue;
                     case 1:
-                        total_antagonist_length++;
-                        AntagonistContainer.AddChild(currentButtonRef);
-                        continue;
-                    case 2:
                         total_living_length++;
                         LivingContainer.AddChild(currentButtonRef);
                         continue;
+                    case 2:
+                        total_antagonist_length++;
+                        AntagonistContainer.AddChild(currentButtonRef);
+                        continue;
                     case 3:
+                        total_dead_length++;
+                        DeadContainer.AddChild(currentButtonRef);
+                        continue;
+                    case 4:
                         total_ghost_length++;
                         GhostContainer.AddChild(currentButtonRef);
                         continue;
                 }
             }
-            MiscHeading.Title = "Misc - (" + total_misc_length + ")";
             AntagonistHeading.Title = "Antagonists - (" + total_antagonist_length + ")";
             LivingHeading.Title = "Alive - (" + total_living_length + ")";
+            DeadHeading.Title = "Dead - (" + total_dead_length + ")";
             GhostHeading.Title = "Ghosts - (" + total_ghost_length + ")";
-            // Only check this one for visibility, since the others will preety much always be visible
+            MiscHeading.Title = "Misc - (" + total_misc_length + ")";
+            // Only check these ones for visibility, since the others will preety much always be visible
             AntagBox.Visible = total_antagonist_length > 0;
+            DeadBox.Visible = total_dead_length > 0;
         }
 
         private bool ButtonIsVisible(Button button)
