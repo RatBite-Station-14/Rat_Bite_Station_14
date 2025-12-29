@@ -56,3 +56,78 @@
   name: Ultrabright Lantern
   suffix: legalTech
   description: A modified lantern that is so bright that it can blind people.
+
+- type: entity # good lord if someone spam this and throw a real disk in it. good fuckin luck.
+  parent: NukeDiskFake # hehe fuckin evil
+  id: LegalFakeNukeDisk
+  name: nuclear authentication disk
+  suffix: legalTech
+  description: A nuclear auth disk, capable of arming a nuke if used along with a code. Wait a minute, there a small defect on the disk due to manufacturing error.
+
+- type: entity
+  parent: [AgentIDCard, BaseMajorContraband]
+  id: LegalAgentIDCard
+  name: passenger ID card
+  suffix: legalTech
+  components:
+  - type: Access # remove syndie access
+    tags:
+    - Maintenance
+
+- type: entity #Good lord this one is op
+  parent: BaseSubdermalImplant
+  id: LegalFreedomImplant
+  name: restricted freedom implant
+  description: This implant lets the user break out of hand restraints up to three times before ceasing to function anymore.
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: SubdermalImplant
+      implantAction: ActionActivateLegalFreedomImplant #goob remove the 3 time restriction so im putting it back for this one
+      whitelist:
+        components:
+        - Cuffable # useless if you cant be cuffed
+
+- type: entity
+  id: LegalFreedomImplanter
+  name: restricted freedom implanter
+  parent: [BaseImplantOnlyImplanter, BaseMajorContraband]
+  components:
+    - type: Implanter
+      implant: LegalFreedomImplant
+
+- type: entity
+  parent: [HighFrequencyBlade, BaseMajorContraband]
+  id: LegalHighFrequencyBlade
+  name: high frequency blade
+  description: A highly reinforced blade that is vibrating on high frequency allowing it cut in fast pace. Unfortunately due to manufacturing defect the sharpness of the sword is slightly decrease.
+  suffix: legalTech
+  components:
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    attackRate: 8
+    autoAttack: true
+    heavyStaminaCost: 0
+    damage:
+      types:
+        Slash: 3
+        Structural: 5
+    soundHit:
+      path: "/Audio/Weapons/bladeslice.ogg"
+    animation: WeaponArcHighFreq
+
+- type: entity
+  name: energy sword
+  parent: [EnergySword, BaseMajorContraband]
+  id: LegalEnergySword
+  suffix: legalTech
+  components:
+  - type: ItemToggleMeleeWeapon
+    activatedSoundOnSwing:
+      path: /Audio/Weapons/eblademiss.ogg
+      params:
+        volume: -3
+        variation: 0.250
+    activatedDamage:
+        types:
+            Slash: 10
+            Heat: 15

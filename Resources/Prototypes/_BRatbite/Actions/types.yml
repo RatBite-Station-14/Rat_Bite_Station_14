@@ -1,0 +1,15 @@
+- type: entity
+  id: ActionActivateLegalFreedomImplant
+  name: Break Free
+  description: Activating your freedom implant will free you from any hand restraints
+  components:
+  - type: InstantAction
+    charges: 3 # goob make this implant infinitely use so we prob wanna restrict it if we wanna make it printable
+    useDelay: 15
+    checkCanInteract: false
+    itemIconStyle: BigAction
+    priority: -20
+    icon:
+      sprite: Actions/Implants/implants.rsi
+      state: freedom
+    event: !type:UseFreedomImplantEvent
