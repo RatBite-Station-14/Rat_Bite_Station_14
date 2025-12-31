@@ -11,13 +11,14 @@
   - GrenadeDummy
   - LegalFakeNukeDisk
   - LegalSyndieTrickyBomb
-  position: 7,-2 # Goobstation R&D Console rework
+  position: 8,-2 # Goobstation R&D Console rework
 
 - type: technology
   id: UnnaturalEntrapmentTechnologies
   name: research-legal-unnatural-entrapment-technology
   icon:
     sprite: _Goobstation/Clothing/Head/Helmets/reverse_bear_trap.rsi
+    state: icon
   discipline: LEGAL
   tier: 1
   cost: 100000
@@ -26,7 +27,7 @@
   - LegalLanternFlash
   - ReverseBearTrap
   - ReverseBearTrapKey
-  position: 7,-1 # Goobstation R&D Console rework
+  position: 8,-1 # Goobstation R&D Console rework
 
 - type: technology
   id: PhantomThiefTechnologies
@@ -39,7 +40,7 @@
   cost: 150000
   recipeUnlocks:
   - LegalThievingGloves
-  position: 7,0 # Goobstation R&D Console rework
+  position: 8,0 # Goobstation R&D Console rework
 
 - type: technology
   id: IDDistruptionTechnologies
@@ -55,20 +56,21 @@
   - ClothingHeadHatChameleon
   - ClothingMaskGasVoiceChameleon
   - LegalAgentIDCard
-  position: 7,1 # Goobstation R&D Console rework
+  position: 8,1 # Goobstation R&D Console rework
 
 - type: technology
   id: AdvChemManipulationTechnologies
   name: research-legal-adv-chem-manipulation-technology
   icon:
     sprite: Objects/Specific/Medical/syndihypo.rsi
+    state: hypo
   discipline: LEGAL
   tier: 1
   cost: 150000
   recipeUnlocks:
   - LegalHypoDart
   - LegalHypospray
-  position: 7,2 # Goobstation R&D Console rework
+  position: 8,2 # Goobstation R&D Console rework
 
 - type: technology
   id: FreedomTechnologies
@@ -82,7 +84,7 @@
   recipeUnlocks:
   - LegalFreedomImplanter
   - DimensionPot
-  position: 8,0 # Goobstation R&D Console rework
+  position: 9,0 # Goobstation R&D Console rework
   technologyPrerequisites:
   - IDDistruptionTechnologies
   - PhantomThiefTechnologies
@@ -102,7 +104,7 @@
   recipeUnlocks:
   - LegalHighFrequencyBlade
   - LegalEnergySword
-  position: 9,-2 # Goobstation R&D Console rework
+  position: 10,-2 # Goobstation R&D Console rework
   technologyPrerequisites:
   - FreedomTechnologies
   - HighEndSurgery
@@ -122,7 +124,7 @@
   - LegalC4
   - SeismicCharge
   - LegalEmpGrenade
-  position: 9,-1 # Goobstation R&D Console rework
+  position: 10,-1 # Goobstation R&D Console rework
   technologyPrerequisites:
   - FreedomTechnologies
   - KineticModifications
@@ -143,7 +145,7 @@
   recipeUnlocks:
   - LegalBorgModuleSyndicateWeaponAdvanced
   - LegalBorgModuleMartyr
-  position: 8,0 # Goobstation R&D Console rework
+  position: 10,0 # Goobstation R&D Console rework
   technologyPrerequisites:
   - FreedomTechnologies
   - PortableMicrofusionWeaponry
@@ -162,7 +164,7 @@
   cost: 100000
   recipeUnlocks:
   - VestineChemistryVial
-  position: 8,1 # Goobstation R&D Console rework
+  position: 10,1 # Goobstation R&D Console rework
   technologyPrerequisites:
   - FreedomTechnologies
   - BluespaceChemistry

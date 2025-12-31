@@ -226,17 +226,6 @@
 
 - type: latheRecipe
   parent: BaseToolRecipe
-  id: SeismicCharge
-  result: SeismicCharge
-  materials:
-    Steel: 5000
-    Gold: 500
-    Silver: 500
-    Plastic: 5000
-    Plasma: 7500
-
-- type: latheRecipe
-  parent: BaseToolRecipe
   id: LegalEmpGrenade
   result: LegalEmpGrenade
   materials:
