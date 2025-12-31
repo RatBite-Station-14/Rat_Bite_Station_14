@@ -131,3 +131,21 @@
         types:
             Slash: 10
             Heat: 15
+
+- type: entity
+  name: composition C-4
+  parent: [C4, BaseMajorContraband]
+  id: LegalC4
+  suffix: legalTech
+
+- type: entity
+  name: cyborg weapon module
+  parent: [BorgModuleSyndicateWeaponAdvanced, BaseMajorContraband]
+  id: LegalBorgModuleSyndicateWeaponAdvanced
+  suffix: legalTech
+
+- type: entity
+  name: cyborg self detonation module
+  parent: [BorgModuleMartyr, BaseMajorContraband]
+  id: LegalBorgModuleMartyr
+  suffix: legalTech
