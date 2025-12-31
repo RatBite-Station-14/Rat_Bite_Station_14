@@ -149,3 +149,9 @@
   parent: [BorgModuleMartyr, BaseMajorContraband]
   id: LegalBorgModuleMartyr
   suffix: legalTech
+
+- type: entity
+  parent: [EmpGrenade, BaseMajorContraband]
+  id: LegalEmpGrenade
+  name: EMP grenade
+  suffix: legalTech

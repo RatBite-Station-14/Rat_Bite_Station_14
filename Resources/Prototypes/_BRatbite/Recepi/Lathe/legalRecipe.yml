@@ -235,6 +235,17 @@
     Plastic: 5000
     Plasma: 7500
 
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: LegalEmpGrenade
+  result: LegalEmpGrenade
+  materials:
+    Steel: 5000
+    Gold: 1000
+    Silver: 500
+    Plastic: 5000
+    Plasma: 2500
+
 #Vestine synthesis
 
 - type: latheRecipe

@@ -220,6 +220,10 @@
     # Einstein Engines Packs
     - Translators
     - TranslatorImplanters
+    # Ratbite packs
+    - LegalTechSciOnly
+    - LegalTechSciSec
+    - LegalTechSciMed
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - MechBoardsSecurity

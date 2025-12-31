@@ -854,6 +854,7 @@
     - SecurityDisablers
     # Ratbite
     - SecurityAmmoRatbiteDynamic
+    - LegalTechSciSec
     # Goobstation
     - SecurityWeaponsGoob
     - RestraintTechnology
@@ -970,6 +971,8 @@
     # Einstein Engines Packs
     - Translators # Language
     - TranslatorImplanters # Language
+    # Ratbite Packs
+    - LegalTechSciMed
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: EmagLatheRecipes # Goobstation Packs
