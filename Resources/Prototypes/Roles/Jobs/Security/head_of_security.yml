@@ -143,7 +143,7 @@
 
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 10800 # 3 hrs
+      time: 36000 # 10 hrs
   #  - !type:StyleRequirement
   #    styles:
   #    - HumanHairFloorlengthBedhead

@@ -38,7 +38,7 @@
 
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 7200 # 2 hours
+      time: 36000 # 10 hours
     - !type:AgeRequirement
       requiredAge: 21
   goobcoins: 45

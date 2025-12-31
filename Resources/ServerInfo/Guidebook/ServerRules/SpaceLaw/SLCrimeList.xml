@@ -845,6 +845,7 @@
 
   ## Capital Crimes
   - Capital crimes should usually lead to a death sentence or shift lasting detainment.
+  - Though still illegal to brig someone for obscene lengths of time, the max sentence per Capital crime is 25 minutes.
   <Table Columns="4">
     <ColorBox>
       <Box>
@@ -918,7 +919,7 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="2">
-        This covers gibbing, spacing, intentionally hiding a body, or other ways of preventing a body with a soul from being resurrected.
+        This covers gibbing, spacing, intentionally hiding a body, or other ways of preventing a body with a soul from being resurrected. Additionally, this covers especially abusive surgeries such as "nuggeting" or lobotomies.
       </Box>
     </ColorBox>
     <ColorBox>

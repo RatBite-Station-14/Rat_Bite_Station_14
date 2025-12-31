@@ -415,7 +415,7 @@
     unlitIdleState: unlit
     unlitRunningState: unlit-building
     staticPacks:
-   #- ToolsStatic Ratbite tider death
+    - ToolsStatic
     - PartsStatic
     - AtmosStatic
     - CablesStatic
@@ -824,6 +824,7 @@
       - ClothingHeadHelmetInsulated # Nyanotrasen - Insulative headgear
       - ClothingHeadCage # Nyanotrasen - Insulative headgear
     staticPacks:
+    - ToolsStaticNoTiders
     - SecurityEquipmentStatic
     - SecurityPracticeStatic
     - SecurityAmmoStatic
