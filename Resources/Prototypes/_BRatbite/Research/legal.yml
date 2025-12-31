@@ -163,7 +163,7 @@
   tier: 3
   cost: 100000
   recipeUnlocks:
-  - VestineChemistryVial
+  - LegalVestineChemistryVial
   position: 10,1 # Goobstation R&D Console rework
   technologyPrerequisites:
   - FreedomTechnologies

@@ -38,6 +38,11 @@
   name: trick minibomb
   suffix: legalTech
   description: Giving heart attack to security since 2025.
+  components:
+  - type: Contraband
+    severity: Major
+  - type: ScannableForPoints # Goobstation - NTR update
+    points: 0
 
 - type: entity
   parent: [ClothingHandsGlovesColorBlack, BaseMajorContraband]
@@ -102,6 +107,10 @@
   description: A highly reinforced blade that is vibrating on high frequency allowing it cut in fast pace. Unfortunately due to manufacturing defect the sharpness of the sword is slightly decrease.
   suffix: legalTech
   components:
+  - type: Contraband
+    severity: Major
+  - type: ScannableForPoints # Goobstation - NTR update
+    points: 0
   - type: MeleeWeapon
     wideAnimationRotation: -135
     attackRate: 8
@@ -121,6 +130,10 @@
   id: LegalEnergySword
   suffix: legalTech
   components:
+  - type: Contraband
+    severity: Major
+  - type: ScannableForPoints # Goobstation - NTR update
+    points: 0
   - type: ItemToggleMeleeWeapon
     activatedSoundOnSwing:
       path: /Audio/Weapons/eblademiss.ogg
@@ -137,21 +150,47 @@
   parent: [C4, BaseMajorContraband]
   id: LegalC4
   suffix: legalTech
+  components:
+  - type: Contraband
+    severity: Major
+  - type: ScannableForPoints # Goobstation - NTR update
+    points: 0
 
 - type: entity
   name: cyborg weapon module
   parent: [BorgModuleSyndicateWeaponAdvanced, BaseMajorContraband]
   id: LegalBorgModuleSyndicateWeaponAdvanced
   suffix: legalTech
+  components:
+  - type: Contraband
+    severity: Major
+  - type: ScannableForPoints # Goobstation - NTR update
+    points: 0
 
 - type: entity
   name: cyborg self detonation module
   parent: [BorgModuleMartyr, BaseMajorContraband]
   id: LegalBorgModuleMartyr
   suffix: legalTech
+  components:
+  - type: Contraband
+    severity: Major
+  - type: ScannableForPoints # Goobstation - NTR update
+    points: 0
 
 - type: entity
   parent: [EmpGrenade, BaseMajorContraband]
   id: LegalEmpGrenade
   name: EMP grenade
+  suffix: legalTech
+  components:
+  - type: Contraband
+    severity: Major
+  - type: ScannableForPoints # Goobstation - NTR update
+    points: 0
+
+- type: entity
+  parent: [VestineChemistryVial, BaseMajorContraband]
+  id: LegalVestineChemistryVial
+  name: Vestine vial
   suffix: legalTech
