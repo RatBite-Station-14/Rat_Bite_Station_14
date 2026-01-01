@@ -1,0 +1,81 @@
+# SPDX-FileCopyrightText: 2024 P e p e . <josephpereira413@gmail.com>
+# SPDX-FileCopyrightText: 2025 GabyChangelog <agentepanela2@gmail.com>
+# SPDX-FileCopyrightText: 2025 Kyoth25f <41803390+Kyoth25f@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Kyoth25f <kyoth25f@gmail.com>
+# SPDX-FileCopyrightText: 2025 P e p e . <154895350+PepeThePog@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  name: Wendigo
+  description: A manhunter entity of the dark woods. Although its main diet is humanoids, it won't pass a meal at anything that comes across it.
+  parent: BaseMobSlaughterDemon
+  id: MobWendigo
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: RAT_BITE_STATION_14/Resources/Prototypes/_BRatbite/Wendigo/wendigo.rsi
+    offset: 0,0.4
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: alive
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1000: Dead # Bossfight
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      350: 1.6 # He gets faster when he's injured.
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 8
+  - type: MeleeWeapon
+    soundHit:
+      path: RAT_BITE_STATION_14/Resources/Prototypes/_Bratbite/Wendigo/monster_attack.ogg
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Slash: 40
+        Structural: 120
+  - type: Prying
+    pryPowered: true
+    force: true
+    speedModifier: 8.5
+    useSound:
+      path: RAT_BITE_STATION_14/Resources/Prototypes/_Bratbite/Wendigo/crowbar.ogg
+  - type: UseDelay
+    delay: 1
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 15500
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - FootstepSound
+    - DoorBumpOpener
+  - type: Reflect
+    reflectProb: 0.85
+    reflects:
+      - Energy
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepThud
+  - type: PointLight
+    radius: 70 # Let everyone know he's there
+    energy: 2.5
+    color: "#ff4242"
+    castShadows: false
+  - type: AnnounceOnSpawn
+    message: The winds howl as a Wendigo emerges from the shadows
+    sender: You shouldn't be here
+    sound:
+      path: RAT_BITE_STATION_14/Resources/Prototypes/_BRatbite/Wendigo/Wendigo_Cry_3.ogg
+    color: maroon
