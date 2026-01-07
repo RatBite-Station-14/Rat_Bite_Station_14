@@ -791,7 +791,7 @@
     speechVerb: Moth
     speechSounds: Squeak
     allowedEmotes: ['Chitter', 'Squeak', 'Flap'] #flap is from goob
-    
+
   - type: DashAction # Goobstation - dark souls moths
     actionProto: ActionDashMoth
   - type: MothAccent
@@ -930,6 +930,9 @@
           32:
             sprite: Mobs/Animals/mothroach/displacement.rsi
             state: neck
+ # - type: EatToGrow # Goobstation Eat To Grow System
+ #   growth: 0.05
+ #   maxGrowth: 2
 
 # Note that the mallard duck is actually a male drake mallard, with the brown duck being the female variant of the same species, however ss14 lacks sex specific textures
 # The white duck is more akin to a pekin or call duck.
@@ -1779,7 +1782,7 @@
     hasPainScreams: false
     threshold: 70
     cap: 140
-
+  - type: DiseaseCarrier # Goobstation
 
 - type: entity
   name: monkey
@@ -2218,7 +2221,7 @@
     deactivateSound: null
   - type: EggLayer
     eggSpawn:
-    - id: MobMouse
+    - id: SpawnMobMouse
     hungerUsage: 20
     eggLayAction: MouseMultiply
     hungerRequired: true
@@ -2247,7 +2250,15 @@
     defaultChannel: Mousemind
     channels:
     - Mousemind
-  # </Goobstation>
+  # does not infect you unless the mouse has any diseases, which it doesn't by default
+  - type: DiseaseOnHit
+    spreadParams:
+      chance: 0.05 # 1984 lower chance for normal mice so creating the turboplague horde is not as strong
+      power: 1
+      spreadType: Blood
+  - type: DiseaseCarrier
+    effectImmune: true
+  - type: ShowDiseaseIcons # they sense it
   - type: Destructible # Shitmed Change
     thresholds:
     - trigger:
@@ -2258,6 +2269,7 @@
       - !type:GibBehavior
         gibContents: Skip
         recursive: false
+  # </Goobstation>
 
 - type: entity
   parent: MobMouse

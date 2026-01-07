@@ -183,7 +183,7 @@
   name: suspicious toolbox
   parent: [ToolboxBase, BaseSyndicateContraband]
   id: ToolboxSyndicate
-  description: A sinister looking toolbox filled with elite syndicate tools.
+  description: A sinister looking toolbox filled with elite syndicate tools, designed for bashing skulls, and lovingly known as the "susbox" by assistants and those with dark humor everywhere.
   components:
   - type: Sprite
     sprite: Objects/Tools/Toolboxes/toolbox_syn.rsi
@@ -199,7 +199,7 @@
     heavyStaminaCost: 10 # goob edit
     damage:
       types:
-        Blunt: 20
+        Blunt: 15 #Ratbite tide melee nerf
 
 - type: entity
   name: golden toolbox

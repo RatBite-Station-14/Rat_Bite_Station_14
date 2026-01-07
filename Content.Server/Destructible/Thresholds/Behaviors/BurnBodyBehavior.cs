@@ -12,7 +12,6 @@ using Content.Shared.Inventory;
 using Content.Shared.Popups;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
-using Content.Shared.IdentityManagement;
 
 namespace Content.Server.Destructible.Thresholds.Behaviors;
 

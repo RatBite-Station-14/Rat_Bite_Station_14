@@ -824,6 +824,7 @@
       - ClothingHeadHelmetInsulated # Nyanotrasen - Insulative headgear
       - ClothingHeadCage # Nyanotrasen - Insulative headgear
     staticPacks:
+    - ToolsStaticNoTiders
     - SecurityEquipmentStatic
     - SecurityPracticeStatic
     - SecurityAmmoStatic

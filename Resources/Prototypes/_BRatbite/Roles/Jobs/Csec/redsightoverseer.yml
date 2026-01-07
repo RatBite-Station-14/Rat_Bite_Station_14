@@ -9,7 +9,7 @@
       time: 7200 # 2 hours
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 7200 # 2 hours
+      time: 36000 # 10 hours
     - !type:RoleTimeRequirement
       role: JobLawyer
       time: 1800 # 30 mins
@@ -45,7 +45,7 @@
 - type: startingGear
   id: RSOGear
   equipment:
-    suitstorage: WeaponSubMachineSmart
+    #suitstorage: WeaponSubMachineSmart
     gloves: ClothingHandsGlovesRSOShock
     id: RSOPDA
     ears: ClothingHeadsetAltCentCom
@@ -56,5 +56,7 @@
     - CQCManual
     - BookSpaceLaw
     - Flash
-    - MagazineSmart
-    - MagazineSmart
+    #- MagazineSmart
+    #- MagazineSmart
+    - RSOUndeterminedWeapon
+    #- UndeterminedRSOHardsuit Removed until rework

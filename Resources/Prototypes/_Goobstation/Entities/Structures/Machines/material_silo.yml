@@ -39,6 +39,7 @@
   - type: DeviceLinkSink
     ports:
       - FillbotAnyItem
+  - type: MaterialStorageMagnetPickup ##Frontier/Ratbite
 
 - type: entity
   id: BaseSiloUtilizer

@@ -19,6 +19,11 @@
 
 # Central Command SOP
 - type: guideEntry
+  id: HighCommand SOP
+  name: High Command SOP
+  text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/HighCommandSOP.xml"
+
+- type: guideEntry
   id: RedsightOverseer SOP
   name: guide-entry-sop-central-command-rso
   text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/CentralCommand/RedsightOverseerSOP.xml"
@@ -28,6 +33,14 @@
   name: guide-entry-sop-central-command-general
   text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/CentralCommandSOP.xml"
   children:
+  - HighCommand SOP
   - NanotrasenRep SOP
   - BlueshieldOfficer SOP
   - RedsightOverseer SOP
+
+# Security Additions SOP
+
+- type: guideEntry
+  id: DepartmentalGuard SOP
+  name: Departmental Security SOP
+  text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/StationJobs/DepartmentalGuardSOP.xml"

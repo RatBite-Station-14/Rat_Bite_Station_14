@@ -652,6 +652,7 @@
         - EnergySpeedloader # Goobstation
         - MilitaryPowerCell # Goobstation
         - HandGrenade
+        - EnergyMagAmmo # Ratbite
       components:
         - Stunbaton
         - FlashOnTrigger

@@ -47,10 +47,10 @@
   components:
   - type: StorageFill
     contents:
-      #- id: ClothingOuterHardsuitSalvage #Goobstation
+      - id: ClothingOuterHardsuitSalvage #Goobstation
       - id: OxygenTankFilled
       - id: NitrogenTankFilled
-      #- id: ClothingShoesBootsMag
+      - id: ClothingShoesBootsMag
       - id: ClothingMaskGasExplorer
       - id: ClothingBeltUtilityFilled
       - id: SurvivalKnife
@@ -62,7 +62,6 @@
         prob: 0.3
       - id: Flare
         prob: 0.3
-      # Lavaland Change Start
       - id: WeaponProtoKineticAccelerator
       - id: OreBag
       - id: Pickaxe
@@ -73,7 +72,7 @@
       - id: MineralScanner
       - id: FlashlightSeclite
       - id: ClothingEyesGlassesMeson
-      # Lavaland Change End
+      - id: WeaponGrapplingGun
 
 - type: entity
   id: LockerSalvageSpecialistFilled
@@ -93,7 +92,6 @@
         prob: 0.3
       - id: Flare
         prob: 0.3
-      # Lavaland Change Start
       - id: WeaponProtoKineticAccelerator
       - id: OreBag
       - id: Pickaxe
@@ -103,5 +101,4 @@
       - id: ClothingMaskGasExplorer
       - id: MineralScanner
       - id: FlashlightSeclite
-      # TODO: bluespace shelter capsule
-      # Lavaland Change End
+      - id: WeaponGrapplingGun

@@ -197,6 +197,7 @@
     sprite: Clothing/Eyes/Glasses/meson.rsi
   - type: EyeProtection
   - type: IdentityBlocker
+  - type: FlashImmunity # Worlds Smallest Ratbite Change
     coverage: EYES
 
 - type: entity
@@ -434,6 +435,11 @@
         Steel: 50
         Plastic: 75
         Glass: 125
+    - type: Tag
+      tags:
+      - PetWearable
+      - WhitelistChameleon
+      - HudChemistry
 
 - type: entity
   parent: [ClothingEyesBase, BaseMajorContraband]

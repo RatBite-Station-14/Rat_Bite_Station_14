@@ -138,6 +138,10 @@
   description: A flying leviathan, loosely related to space carps.
   abstract: true
   components:
+  - type: WarpPoint
+    follow: true
+    mob: true
+    antagonist: true
   - type: Body # Shitmed
     prototype: SpaceDragon
   - type: SurgeryTarget # Shitmed

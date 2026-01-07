@@ -110,7 +110,7 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Blunt: 8
+        Blunt: 10 # Ratbite tider nerf/self defense buff
     soundHit:
       collection: MetalThud
   - type: Tool

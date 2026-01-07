@@ -245,13 +245,13 @@
   - type: MeleeWeapon # the difference? +2 damage compared to a normal bat, shoudlnt be an op weapon
     damage:
       types:
-        Blunt: 12
-        Structural: 7
+        Blunt: 10 #RB tideweapon nerf
+        Structural: 5
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 7 # 19 weld dmage is the damage that cap saber has
-        Structural: 12
+        Blunt: 2 # 19 weld dmage is the damage that cap saber has - And that is too much. -Ratbite
+        Structural: 5
   - type: Construction
     graph: MetalBaseballBatGraph
     node: final
@@ -388,7 +388,7 @@
     sprite: _Goobstation/Clothing/Head/Helmets/helmet.rsi
   - type: Clothing
     sprite: _Goobstation/Clothing/Head/Helmets/helmet.rsi
-  - type: Armor 
+  - type: Armor
     coverage:
     - Head
     traumaDeductions:

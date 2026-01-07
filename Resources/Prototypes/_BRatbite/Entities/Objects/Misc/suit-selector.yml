@@ -1,0 +1,13 @@
+- type: entity
+  id: UndeterminedRSOHardsuit
+  name: rso hardsuit selector
+  description: A small remote utilizing bluespace technology to drop in a hardsuit of your choosing.
+  parent: [ BaseItem, BaseSetSelector, BaseCentcommContraband ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Devices/unique_teleporters.rsi
+    state: standard
+  - type: SetSelector
+    possibleSets:
+    - HardsuitSelectorRSOGoliath
+    - VoidsuitSelectorRSOMagistrate

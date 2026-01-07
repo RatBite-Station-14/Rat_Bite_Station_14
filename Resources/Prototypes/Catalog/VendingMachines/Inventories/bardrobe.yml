@@ -36,9 +36,10 @@
     ClothingUniformJumpskirtBartender: 2
     ClothingUniformJumpsuitBartenderPurple: 2
     ClothingShoesColorBlack: 2
-    ClothingOuterArmorBasicSlim: 2
+    #ClothingOuterArmorBasicSlim: 2 -Ratbite tiding nerf
     ClothingOuterVest: 2
-    ClothingBeltBandolier: 2
-    ClothingEyesGlassesSunglasses: 2
+    #ClothingBeltBandolier: 2 -Ratbite tiding nerf
+    # ClothingEyesGlassesSunglasses: 2 -Ratbite tiding nerf
   contrabandInventory:
     ToyFigurineBartender: 1
+    ClothingEyesGlassesSunglasses: 2

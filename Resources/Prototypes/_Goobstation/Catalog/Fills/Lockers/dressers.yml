@@ -24,7 +24,7 @@
     - id: ClothingUniformJumpskirtBlueshieldOfficer
     - id: ClothingUniformJumpsuitBlueshieldOfficer
     - id: ClothingUniformJumpsuitBlueshieldShirt
-    - id: ClothingBlueshieldArmoredJacket
+    # - id: ClothingBlueshieldArmoredJacket - Ratbite : free armor fr no free armor.
     # - id: ClothingHeadHatBeretNavy - NO. ITS A NAVY OFFICER HAT. NOT THE BLUESHIELD HAT. BAD BAD BAD BAD.
 
 - type: entity

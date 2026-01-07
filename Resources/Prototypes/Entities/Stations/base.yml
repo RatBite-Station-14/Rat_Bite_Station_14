@@ -139,7 +139,7 @@
           hide: true
           nameGrid: true
           minCount: 3 #Ratbite
-          maxCount: 4 #Ratbite
+          maxCount: 5 #Ratbite
           stationGrid: false
           paths:
           - /Maps/Ruins/abandoned_outpost.yml
@@ -179,20 +179,17 @@
           - ChunkDebrisSmall
           - ChunkDebris
         # goob - no vgroid
-        #vgroid: !type:DungeonSpawnGroup
-        #  minimumDistance: 300
-        #  maximumDistance: 350
-        #  nameDataset: NamesBorer
-        #  stationGrid: false
-        #  addComponents:
-        # - type: Gravity
-        #    enabled: true
-        #    inherent: true
-        #  - type: IFF
-        #    flags: HideLabel
-        #    color: "#d67e27"
-        #  protos:
-        #  - VGRoid
+        vgroid: !type:DungeonSpawnGroup
+          minimumDistance: 200
+          maximumDistance: 350
+          nameDataset: NamesBorer
+          stationGrid: false
+          addComponents:
+          - type: Gravity
+            enabled: true
+            inherent: true
+          protos:
+          - VGRoid
 
 - type: entity
   id: BaseStationCentcomm
