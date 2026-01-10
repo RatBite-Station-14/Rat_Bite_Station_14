@@ -84,6 +84,8 @@
           shader: unshaded
         gloves-vox:
         - state: equipped-HAND-sealed-vox
+        - state: equipped-HAND-sealed-unshaded-vox
+          shader: unshaded
     - type: Insulated # Goob Edit (WHY IS IT NOT INSULATED??)
 >>>>>>> 4bfb6545f1 (WAR, UNENDING)
 
