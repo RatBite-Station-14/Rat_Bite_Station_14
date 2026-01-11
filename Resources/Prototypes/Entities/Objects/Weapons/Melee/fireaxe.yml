@@ -108,7 +108,8 @@
       path: /Audio/_Shitmed/Medical/Surgery/saw.ogg
   - type: Enchanter #Ratbite
   maxLevel: 1 #this is to prevent the max lvl insane enchant item from just a fireaxe
-  enchants:EnchantSharpness
+  enchants: EnchantSharpness
+
 
 
 - type: entity
