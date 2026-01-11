@@ -54,6 +54,9 @@
     tags:
     - HereticItem
     - HereticBlade
+  - type: Enchanter
+  maxLevel: 2
+  enchants: EnchantSharpness
 
 - type: entity
   id: BaseRandomTeleportBlade
