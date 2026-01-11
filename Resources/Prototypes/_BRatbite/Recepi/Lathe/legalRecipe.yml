@@ -55,17 +55,17 @@
     Silver: 500
     Diamond: 100
 
-- type: latheRecipe
-  parent: BaseToolRecipe
-  id: LegalHypospray
-  result: LegalHypospray
-  materials:
-    Steel: 1000
-    Glass: 1000
-    Gold: 500
-    Silver: 500
-    Diamond: 300
-    BSCrystal: 250 #wow it name were bscrystal for bluespace crystal
+#- type: latheRecipe
+#  parent: BaseToolRecipe
+#  id: LegalHypospray
+#  result: LegalHypospray
+#  materials:
+#    Steel: 1000
+#    Glass: 1000
+#    Gold: 500
+#    Silver: 500
+#    Diamond: 300
+#    BSCrystal: 250 #wow it name were bscrystal for bluespace crystal
 
 # Research - Decoy Technologies
 
