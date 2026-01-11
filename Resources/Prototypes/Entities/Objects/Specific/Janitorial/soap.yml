@@ -283,6 +283,9 @@
   - type: Residue
     residueAdjective: residue-slippery
     residueColor: residue-blue
+  - type: Enchanter #Ratbite, Tom-foolery go
+  maxLevel: 1
+  enchants: EnchantSlippery
 
 - type: entity
   name: soap

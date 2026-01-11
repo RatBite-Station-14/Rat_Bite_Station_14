@@ -541,6 +541,9 @@
     tags:
     - RawMaterial
     - Diamond
+  - type: Enchanter #Ratbite Changes but literally the same as goob
+  maxLevel: 3
+  enchants: EnchantFortune
 
 - type: entity
   parent: MaterialDiamond
@@ -1011,3 +1014,7 @@
   components:
   - type: Stack
     count: 1
+  - type: Enchanter #Ratbite
+  maxLevel: 2
+  enchants: EnchantProtection
+

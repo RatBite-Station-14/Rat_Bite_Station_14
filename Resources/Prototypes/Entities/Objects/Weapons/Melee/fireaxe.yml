@@ -106,6 +106,10 @@
   - type: SurgeryTool # Shitmed
     startSound:
       path: /Audio/_Shitmed/Medical/Surgery/saw.ogg
+  - type: Enchanter #Ratbite
+  maxLevel: 1 #this is to prevent the max lvl insane enchant item from just a fireaxe
+  enchants:EnchantSharpness
+
 
 - type: entity
   id: FireAxeFlaming
@@ -137,3 +141,6 @@
     quickEquip: false
     slots:
     - back
+  - type: Enchanter #Ratbite
+  maxLevel: 2 #Syndi powergame Heart Emoji!
+  enchants:EnchantSharpness
