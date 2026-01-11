@@ -59,6 +59,7 @@
   description: A pair of gauntlets made for the Praetorian hardsuit. # Goob edit
   categories: [HideSpawnMenu]
   components:
+<<<<<<< HEAD
   - type: Insulated
   - type: Fiber
     fiberMaterial: fibers-insulative
@@ -71,6 +72,20 @@
       - state: equipped-HAND-sealed
       - state: equipped-HAND-sealed-unshaded
         shader: unshaded
+=======
+    - type: Sprite
+      sprite: _EinsteinEngines/Clothing/NanoTrasen/Modsuits/praetorian.rsi
+    - type: SealableClothingVisuals
+      spriteLayer: sealed
+      clothingVisuals:
+        gloves:
+        - state: equipped-HAND-sealed
+        - state: equipped-HAND-sealed-unshaded
+          shader: unshaded
+        gloves-vox:
+        - state: equipped-HAND-sealed-vox
+    - type: Insulated # Goob Edit (WHY IS IT NOT INSULATED??)
+>>>>>>> 4bfb6545f1 (WAR, UNENDING)
 
 - type: entity
   parent: ClothingModsuitHelmetStandard
@@ -85,6 +100,8 @@
         - state: equipped-HEAD
         head-resomi:
         - state: equipped-HEAD-resomi
+        head-vox:
+        - state: equipped-HEAD-vox
     - type: Sprite
       sprite: _EinsteinEngines/Clothing/NanoTrasen/Modsuits/praetorian.rsi
     - type: PressureProtection
@@ -118,7 +135,10 @@
           shader: unshaded
         head-resomi:
         - state: equipped-HEAD-sealed-resomi
-
+        head-vox:
+        - state: equipped-HEAD-sealed-vox
+        - state: equipped-HEAD-sealed-unshaded-vox
+          shader: unshaded
 - type: entity
   parent: ClothingModsuitChestplateStandard
   id: ClothingModsuitChestplatePraetorian
@@ -153,6 +173,8 @@
         - state: equipped-OUTERCLOTHING-sealed
         outerClothing-resomi:
         - state: equipped-OUTERCLOTHING-sealed-resomi
+        outerClothing-vox:
+        - state: equipped-OUTERCLOTHING-sealed-vox
     - type: ModifyDelayedKnockdown
       delayDelta: 2
       knockdownTimeDelta: -2
@@ -180,6 +202,8 @@
       clothingVisuals:
         shoes:
         - state: equipped-FEET-sealed
+        shoes-vox:
+        - state: equipped-FEET-sealed-vox
     - type: ItemToggle
     - type: ToggleClothing
       action: ActionToggleMagboots
