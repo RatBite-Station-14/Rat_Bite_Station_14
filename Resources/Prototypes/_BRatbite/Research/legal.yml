@@ -69,7 +69,7 @@
   cost: 150000
   recipeUnlocks:
   - LegalHypoDart
-  - LegalHypospray
+#  - LegalHypospray
   position: 8,2 # Goobstation R&D Console rework
 
 - type: technology
