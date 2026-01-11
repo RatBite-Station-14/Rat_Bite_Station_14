@@ -31,5 +31,5 @@
   id: LegalTechSciMed
   recipes:
   - LegalHypoDart
-  - LegalHypospray
+  #- LegalHypospray
   - LegalVestineChemistryVial
