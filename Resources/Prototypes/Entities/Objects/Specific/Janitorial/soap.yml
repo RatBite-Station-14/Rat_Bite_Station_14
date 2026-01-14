@@ -283,6 +283,10 @@
   - type: Residue
     residueAdjective: residue-slippery
     residueColor: residue-blue
+  - type: Enchanter # Ratbite
+    maxLevel: 1
+    enchants:
+    - EnchantSlippery # troll lulll
 
 - type: entity
   name: soap

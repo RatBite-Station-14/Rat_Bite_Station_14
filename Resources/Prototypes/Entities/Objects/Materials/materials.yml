@@ -1007,6 +1007,11 @@
   - type: Tag
     tags:
     - GoliathPlate
+  - type: Enchanter # Ratbite
+    maxLevel: 1
+    enchants:
+    - EnchantProtection
+    - EnchantUnbreaking
 
 - type: entity
   parent: MaterialGoliathHide

@@ -248,6 +248,10 @@
   - type: HideClothingLayerClothing # Goobstation
     hiddenSlots:
     - jumpsuit
+  - type: Enchanter # Ratbite
+    maxLevel: 2
+    enchants:
+    - EnchantProtFire
 
 - type: entity
   parent: [ ClothingOuterBaseLarge, GeigerCounterClothing, AllowSuitStorageClothing, ClothingOuterBaseToggleable ]

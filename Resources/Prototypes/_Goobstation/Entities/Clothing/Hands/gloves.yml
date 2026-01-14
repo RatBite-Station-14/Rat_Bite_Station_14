@@ -273,6 +273,10 @@
   - type: Fiber
     fiberMaterial: fibers-classified
     fiberColor: fibers-white
+  - type: Enchanter # Ratbite
+    maxLevel: 1
+    enchants:
+    - EnchantBudgetInsulated # it'd be really op if you could get full insuls on martial arts gloves and whatnot.. so no normal insuls you must GAMBLE
 
 - type: entity
   parent: ClothingHandsBase
