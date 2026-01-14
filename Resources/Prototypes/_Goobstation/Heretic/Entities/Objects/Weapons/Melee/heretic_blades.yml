@@ -54,6 +54,10 @@
     tags:
     - HereticItem
     - HereticBlade
+  - type: Enchanter # Ratbite
+    maxLevel: 1
+    enchants:
+    - EnchantSharpness
 
 - type: entity
   id: BaseRandomTeleportBlade
