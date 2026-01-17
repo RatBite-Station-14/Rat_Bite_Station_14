@@ -7,6 +7,7 @@ SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.norep
 SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
 SPDX-FileCopyrightText: 2024 Sk1tch <ben.peter.smith@gmail.com>
 SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
 
 SPDX-License-Identifier: MIT
 -->
@@ -24,8 +25,28 @@ SPDX-License-Identifier: MIT
     <PanelContainer Name="ChatWindowPanel" Access="Public" HorizontalExpand="True" VerticalExpand="True"
                     StyleClasses="StyleNano.StyleClassChatPanel">
         <BoxContainer Orientation="Vertical" SeparationOverride="4" HorizontalExpand="True" VerticalExpand="True">
-            <!-- Goobstation Change - Output Panel -->
-            <goobcontrols:CustomOutputPanel Name="Contents" HorizontalExpand="True" VerticalExpand="True" Margin="8 8 8 4" />
+            <!-- Search + Scroll Controls -->
+            <BoxContainer Orientation="Horizontal" SeparationOverride="4" Margin="8 8 8 0">
+                <LineEdit Name="SearchBar" Access="Public" 
+                          HorizontalExpand="True" 
+                          MinWidth="200"
+                          StyleClasses="chatLineEdit" />
+                <Button Name="ClearSearchButton" Access="Public"
+                        Text="✕"
+                        MinWidth="30"
+                        ToolTip="Clear search"
+                        StyleClasses="OpenBoth" />
+                <Button Name="ScrollToBottomButton" Access="Public"
+                        Text="↓"
+                        MinWidth="30"
+                        ToolTip="Scroll to bottom"
+                        StyleClasses="OpenRight" />
+            </BoxContainer>
+            
+            <!-- Chat Output Panel -->
+            <goobcontrols:CustomOutputPanel Name="Contents" HorizontalExpand="True" VerticalExpand="True" Margin="8 0 8 4" />
+            
+            <!-- Chat Input -->
             <controls:ChatInputBox HorizontalExpand="True" Name="ChatInput" Access="Public" Margin="2"/>
         </BoxContainer>
     </PanelContainer>

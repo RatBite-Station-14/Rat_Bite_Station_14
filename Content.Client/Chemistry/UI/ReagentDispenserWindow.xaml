@@ -11,6 +11,7 @@ SPDX-FileCopyrightText: 2024 Kevin Zheng <kevinz5000@gmail.com>
 SPDX-FileCopyrightText: 2024 Kira Bridgeton <161087999+Verbalase@users.noreply.github.com>
 SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
 SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
 
 SPDX-License-Identifier: AGPL-3.0-or-later
 -->
@@ -22,7 +23,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                       xmlns:ui="clr-namespace:Content.Client.Chemistry.UI"
                       Title="{Loc 'reagent-dispenser-bound-user-interface-title'}"
                       MinSize="600 300"
-                      SetSize="800 500">
+                      SetSize="800 550">
     <BoxContainer Orientation="Horizontal">
         <BoxContainer Orientation="Vertical" MinWidth="170">
             <Label Text="{Loc 'reagent-dispenser-window-amount-to-dispense-label'}" HorizontalAlignment="Center" />
@@ -36,6 +37,23 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 RadioGroup="True">
             </ui:ButtonGrid>
             <Control VerticalExpand="True" />
+            
+            <BoxContainer Orientation="Vertical" Margin="5 5 5 10">
+                <Label Text="{Loc 'reagent-dispenser-window-quick-input-label'}" 
+                       HorizontalAlignment="Center" 
+                       StyleClasses="LabelSubText"/>
+                <LineEdit Name="QuickInputField"
+                          Access="Public"
+                          PlaceHolder="{Loc 'reagent-dispenser-window-quick-input-placeholder'}"
+                          HorizontalExpand="True"
+                          MinHeight="25"/>
+                <Button Name="QuickInputButton"
+                        Access="Public"
+                        Text="{Loc 'reagent-dispenser-window-quick-input-button'}"
+                        HorizontalAlignment="Center"
+                        Margin="0 3 0 0"/>
+            </BoxContainer>
+            
             <Label Name="ContainerInfoName"
                    Access="Public"
                    Text=""

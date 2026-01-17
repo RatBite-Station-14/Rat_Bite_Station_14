@@ -1,0 +1,24 @@
+# SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: constructionGraph
+  id: ImprovisedHoloCigar
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: improvised_holo_cigar
+          steps:
+            - material: Cable
+              amount: 30
+              doAfter: 20
+            - material: Steel
+              amount: 5
+              doAfter: 20
+            - material: Glass
+              amount: 1
+              doAfter: 20
+
+    - node: improvised_holo_cigar
+      entity: ImprovisedHoloCigar

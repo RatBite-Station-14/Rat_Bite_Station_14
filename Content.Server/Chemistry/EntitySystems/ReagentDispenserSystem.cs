@@ -30,6 +30,7 @@
 // SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -47,6 +48,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Content.Shared.Labels.Components;
+using System.Text.RegularExpressions;
 
 namespace Content.Server.Chemistry.EntitySystems
 {
@@ -78,6 +80,7 @@ namespace Content.Server.Chemistry.EntitySystems
             SubscribeLocalEvent<ReagentDispenserComponent, ReagentDispenserSetDispenseAmountMessage>(OnSetDispenseAmountMessage);
             SubscribeLocalEvent<ReagentDispenserComponent, ReagentDispenserDispenseReagentMessage>(OnDispenseReagentMessage);
             SubscribeLocalEvent<ReagentDispenserComponent, ReagentDispenserClearContainerSolutionMessage>(OnClearContainerSolutionMessage);
+            SubscribeLocalEvent<ReagentDispenserComponent, ReagentDispenserQuickInputMessage>(OnQuickInputMessage);
 
             SubscribeLocalEvent<ReagentDispenserComponent, MapInitEvent>(OnMapInit, before: new []{typeof(ItemSlotsSystem)});
         }
@@ -187,6 +190,70 @@ namespace Content.Server.Chemistry.EntitySystems
                 return;
 
             _solutionContainerSystem.RemoveAllSolution(solution.Value);
+            UpdateUiState(reagentDispenser);
+            ClickSound(reagentDispenser);
+        }
+
+        private void OnQuickInputMessage(Entity<ReagentDispenserComponent> reagentDispenser, ref ReagentDispenserQuickInputMessage message)
+        {
+            var outputContainer = _itemSlotsSystem.GetItemOrNull(reagentDispenser, SharedReagentDispenser.OutputSlotName);
+            if (outputContainer is not { Valid: true } || !_solutionContainerSystem.TryGetFitsInDispenser(outputContainer.Value, out var solution, out _))
+                return;
+
+            // Parse input: format is "reagent_index:amount" separated by spaces, commas, or newlines
+            var input = message.InputText.Trim();
+            if (string.IsNullOrWhiteSpace(input))
+                return;
+
+            var inventory = GetInventory(reagentDispenser);
+            var pattern = @"([A-Za-z0-9]+)\s*[:,-]?\s*(\d+)";
+            var matches = Regex.Matches(input, pattern);
+
+            foreach (Match match in matches)
+            {
+                if (match.Groups.Count < 3)
+                    continue;
+
+                var indexStr = match.Groups[1].Value;
+                var amountStr = match.Groups[2].Value;
+
+                // Attempt index parse
+                int index = -1;
+                if (int.TryParse(indexStr, out var numIndex))
+                {
+                    index = numIndex - 1; // Convert to 0-based
+                }
+                else if (indexStr.Length == 1)
+                {
+                    // Convert letter to index
+                    var c = char.ToUpper(indexStr[0]);
+                    if (c >= 'A' && c <= 'Z')
+                        index = c - 'A';
+                }
+
+                if (index < 0 || index >= inventory.Count)
+                    continue;
+
+                if (!int.TryParse(amountStr, out var amount) || amount <= 0)
+                    continue;
+
+                // Dispense reagents
+                var item = inventory[index];
+                var storedContainer = _itemSlotsSystem.GetItemOrNull(reagentDispenser, item.StorageSlotId);
+                if (storedContainer == null)
+                    continue;
+
+                if (_solutionContainerSystem.TryGetDrainableSolution(storedContainer.Value, out var src, out _) &&
+                    _solutionContainerSystem.TryGetRefillableSolution(outputContainer.Value, out var dst, out _))
+                {
+                    _openable.SetOpen(storedContainer.Value, true);
+                    _solutionTransferSystem.Transfer(reagentDispenser,
+                            storedContainer.Value, src.Value,
+                            outputContainer.Value, dst.Value,
+                            amount);
+                }
+            }
+
             UpdateUiState(reagentDispenser);
             ClickSound(reagentDispenser);
         }

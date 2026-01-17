@@ -1,0 +1,34 @@
+<!--
+SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
+SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      xmlns:ui="clr-namespace:Content.Client.Mining.UI"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      x:Class="Content.Client.Mining.UI.OreScannerConsoleWindow"
+                      Title="{Loc 'ore-scanner-console-window-title'}"
+                      SetSize="800 600"
+                      MinSize="600 450">
+    <BoxContainer Orientation="Vertical">
+        <!-- Top control bar -->
+        <BoxContainer Name="ControlBar"
+                     Orientation="Horizontal"
+                     HorizontalAlignment="Stretch"
+                     MinSize="0 40"
+                     Margin="5">
+            <Button Name="RecenterButton"
+                    HorizontalExpand="True"
+                    VerticalExpand="True"
+                    Text="Recenter"
+                    Margin="5"/>
+        </BoxContainer>
+        
+        <!-- Display area -->
+        <ui:OreDisplayControl Name="OreDisplay"
+                             Margin="5"
+                             HorizontalExpand="True"
+                             VerticalExpand="True"/>
+    </BoxContainer>
+</controls:FancyWindow>

@@ -1,0 +1,33 @@
+# SPDX-FileCopyrightText: 2025 August Eymann <august.eymann@gmail.com>
+# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+# SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseItem
+  id: ImprovisedHoloCigar
+  name: improvised holo-cigar
+  description: A replica of the legendary holo-cigar. While it does not share the original gadget's combat benefits, it looks and feels almost identical...
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Devices/holocigar.rsi
+    state: icon
+    scale: 0.8, 0.8
+  - type: Construction
+    graph: ImprovisedHoloCigar
+    node: improvised_holo_cigar
+  - type: Clothing
+    sprite: Objects/Consumable/Smokeables/Cigars/cigar.rsi
+    slots: [ mask ]
+    equippedPrefix: unlit
+  - type: Item
+    size: Tiny
+    sprite: Objects/Consumable/Smokeables/Cigars/cigar.rsi
+    heldPrefix: unlit
+  - type: Appearance
+  - type: BurnStateVisuals
+  - type: HoloCigar
+  - type: ClothingGrantComponent
+    component:
+    - type: AltTheManWhoSoldTheWorld

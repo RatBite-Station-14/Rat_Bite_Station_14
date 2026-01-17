@@ -86,6 +86,7 @@
 // SPDX-FileCopyrightText: 2024 to4no_fix <156101927+chavonadelal@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2024 voidnull000 <18663194+voidnull000@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -98,6 +99,7 @@ using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using JetBrains.Annotations;
+using Robust.Shared.Collections;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -106,11 +108,11 @@ namespace Content.Shared.Item;
 
 public abstract class SharedItemSystem : EntitySystem
 {
-    [Dependency] private readonly SharedTransformSystem _transform = default!; // Goobstation
-    [Dependency] private readonly SharedStorageSystem _storage = default!; // Goobstation
-    [Dependency] private readonly InventorySystem _inventory = default!; // Goobstation
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly SharedStorageSystem _storage = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private   readonly SharedHandsSystem _handsSystem = default!;
+    [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] protected readonly SharedContainerSystem Container = default!;
 
     public override void Initialize()
@@ -300,25 +302,42 @@ public abstract class SharedItemSystem : EntitySystem
     public IReadOnlyList<Box2i> GetAdjustedItemShape(Entity<ItemComponent?> entity, Angle rotation, Vector2i position)
     {
         if (!Resolve(entity, ref entity.Comp))
-            return new Box2i[] { };
+            return [];
 
+        var adjustedShapes = new List<Box2i>();
+        GetAdjustedItemShape(adjustedShapes, entity, rotation, position);
+        return adjustedShapes;
+    }
+
+    public void GetAdjustedItemShape(List<Box2i> adjustedShapes, Entity<ItemComponent?> entity, Angle rotation, Vector2i position)
+    {
         var shapes = GetItemShape(entity);
         var boundingShape = shapes.GetBoundingBox();
         var boundingCenter = ((Box2) boundingShape).Center;
         var matty = Matrix3Helpers.CreateTransform(boundingCenter, rotation);
         var drift = boundingShape.BottomLeft - matty.TransformBox(boundingShape).BottomLeft;
 
-        var adjustedShapes = new List<Box2i>();
         foreach (var shape in shapes)
         {
             var transformed = matty.TransformBox(shape).Translated(drift);
-            var floored = new Box2i(transformed.BottomLeft.Floored(), transformed.TopRight.Floored());
-            var translated = floored.Translated(position);
+            
+            // FIX: Properly calculate the integer bounding box to include all occupied cells
+            // Use Floor for BottomLeft and Ceiling for TopRight to ensure we capture all grid cells
+            // that the transformed shape occupies, preventing off-by-one errors
+            var bottomLeft = new Vector2i(
+                (int)Math.Floor(transformed.BottomLeft.X),
+                (int)Math.Floor(transformed.BottomLeft.Y)
+            );
+            var topRight = new Vector2i(
+                (int)Math.Ceiling(transformed.TopRight.X),
+                (int)Math.Ceiling(transformed.TopRight.Y)
+            );
+            
+            var properBox = new Box2i(bottomLeft, topRight);
+            var translated = properBox.Translated(position);
 
             adjustedShapes.Add(translated);
         }
-
-        return adjustedShapes;
     }
 
     /// <summary>
@@ -360,7 +379,7 @@ public abstract class SharedItemSystem : EntitySystem
             }
         }
 
-        if (Container.TryGetContainingContainer((uid, null, null), out var container)) // Goobstation - reinsert item in storage because size changed
+        if (Container.TryGetContainingContainer((uid, null, null), out var container))
         {
             if (TryComp(container.Owner, out StorageComponent? storage))
             {

@@ -5,6 +5,7 @@
 # SPDX-FileCopyrightText: 2024 Brandon Li <48413902+aspiringLich@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -27,3 +28,6 @@ reagent-dispenser-window-no-container-loaded-text = No container loaded.
 reagent-dispenser-window-reagent-name-not-found-text = Reagent name not found
 reagent-dispenser-window-unknown-reagent-text = Unknown reagent
 reagent-dispenser-window-quantity-label-text = {$quantity}u
+reagent-dispenser-window-quick-input-label = Quick Input
+reagent-dispenser-window-quick-input-placeholder = Example: A10 B5 or 1:10 2:5
+reagent-dispenser-window-quick-input-button = Dispense

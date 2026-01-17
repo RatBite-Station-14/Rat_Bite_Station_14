@@ -29,6 +29,7 @@
 // SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -54,6 +55,7 @@ namespace Content.Client.Chemistry.UI
         [Dependency] private readonly IEntityManager _entityManager = default!;
         public event Action<string>? OnDispenseReagentButtonPressed;
         public event Action<string>? OnEjectJugButtonPressed;
+        public event Action<string>? OnQuickInputSubmitted;
 
         /// <summary>
         /// Create and initialize the dispenser UI client-side. Creates the basic layout,
@@ -63,6 +65,19 @@ namespace Content.Client.Chemistry.UI
         {
             RobustXamlLoader.Load(this);
             IoCManager.InjectDependencies(this);
+
+            QuickInputButton.OnPressed += _ => SubmitQuickInput();
+            QuickInputField.OnTextEntered += args => SubmitQuickInput();
+        }
+
+        private void SubmitQuickInput()
+        {
+            var text = QuickInputField.Text;
+            if (!string.IsNullOrWhiteSpace(text))
+            {
+                OnQuickInputSubmitted?.Invoke(text);
+                QuickInputField.Clear();
+            }
         }
 
         /// <summary>
@@ -78,11 +93,17 @@ namespace Content.Client.Chemistry.UI
             //Sort inventory by reagentLabel
             inventory.Sort((x, y) => x.ReagentLabel.CompareTo(y.ReagentLabel));
 
-            foreach (var item in inventory)
+            for (var i = 0; i < inventory.Count; i++)
             {
+                var item = inventory[i];
                 var card = new ReagentCardControl(item);
                 card.OnPressed += OnDispenseReagentButtonPressed;
                 card.OnEjectButtonPressed += OnEjectJugButtonPressed;
+                
+                // Add index tooltip to help with quick input
+                var indexLabel = i < 26 ? ((char)('A' + i)).ToString() : (i + 1).ToString();
+                card.ToolTip = $"Quick Input: {indexLabel}";
+                
                 ReagentList.Children.Add(card);
             }
         }
@@ -103,6 +124,8 @@ namespace Content.Client.Chemistry.UI
             // Disable the Clear & Eject button if no beaker
             ClearButton.Disabled = castState.OutputContainer is null;
             EjectButton.Disabled = castState.OutputContainer is null;
+            QuickInputButton.Disabled = castState.OutputContainer is null;
+            QuickInputField.Editable = castState.OutputContainer is not null;
 
             AmountGrid.Selected = ((int)castState.SelectedDispenseAmount).ToString();
         }
@@ -155,4 +178,4 @@ namespace Content.Client.Chemistry.UI
             }
         }
     }
-}
+}   

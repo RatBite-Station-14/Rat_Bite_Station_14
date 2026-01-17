@@ -25,6 +25,7 @@
 // SPDX-FileCopyrightText: 2025 J <billsmith116@gmail.com>
 // SPDX-FileCopyrightText: 2025 abadaba695 <spacestation13thingy@gmail.com>
 // SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
+// SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -62,6 +63,9 @@ namespace Content.Client.Chemistry.UI
         public readonly Button[] PillTypeButtons;
 
         private const string PillsRsiPath = "/Textures/Objects/Specific/Chemistry/pills.rsi";
+
+        private string _bufferSearchText = string.Empty;
+        private ChemMasterBoundUserInterfaceState? _currentState;
 
         /// <summary>
         /// Create and initialize the chem master UI client-side. Creates the basic layout,
@@ -121,7 +125,13 @@ namespace Content.Client.Chemistry.UI
             // Ensure label length is within the character limit.
             LabelLineEdit.IsValid = s => s.Length <= SharedChemMaster.LabelMaxLength;
 
-            Tabs.SetTabTitle(0, Loc.GetString("chem-master-window-input-tab"));
+            BufferSearchBar.OnTextChanged += _ =>
+            {
+                _bufferSearchText = BufferSearchBar.Text;
+                if (_currentState != null)
+                    RefreshBufferInfo(_currentState);
+            };
+
             Tabs.SetTabTitle(1, Loc.GetString("chem-master-window-output-tab"));
         }
 
@@ -132,6 +142,7 @@ namespace Content.Client.Chemistry.UI
                 => OnReagentButtonPressed?.Invoke(args, reagentTransferButton);
             return reagentTransferButton;
         }
+
         /// <summary>
         /// Conditionally generates a set of reagent buttons based on the supplied boolean argument.
         /// This was moved outside of BuildReagentRow to facilitate conditional logic, stops indentation depth getting out of hand as well.
@@ -173,6 +184,7 @@ namespace Content.Client.Chemistry.UI
         public void UpdateState(BoundUserInterfaceState state)
         {
             var castState = (ChemMasterBoundUserInterfaceState)state;
+            _currentState = castState;
 
             if (castState.UpdateLabel)
                 LabelLine = GenerateLabel(castState);
@@ -225,6 +237,7 @@ namespace Content.Client.Chemistry.UI
 
             BottleDosage.Value = Math.Min(bottleAmountMax, bufferVolume);
         }
+
         /// <summary>
         /// Generate a product label based on reagents in the buffer.
         /// </summary>
@@ -251,6 +264,16 @@ namespace Content.Client.Chemistry.UI
             BuildContainerUI(InputContainerInfo, state.InputContainerInfo, true);
             BuildContainerUI(OutputContainerInfo, state.OutputContainerInfo, false);
 
+            RefreshBufferInfo(state);
+        }
+
+        private void RefreshInputContainer(ChemMasterBoundUserInterfaceState state)
+        {
+            BuildContainerUI(InputContainerInfo, state.InputContainerInfo, true);
+        }
+
+        private void RefreshBufferInfo(ChemMasterBoundUserInterfaceState state)
+        {
             BufferInfo.Children.Clear();
 
             // This has to happen here due to people possibly
@@ -263,11 +286,9 @@ namespace Content.Client.Chemistry.UI
                 _ => Loc.GetString("chem-master-window-sort-type-none")
             };
 
-
             if (!state.BufferReagents.Any())
             {
                 BufferInfo.Children.Add(new Label { Text = Loc.GetString("chem-master-window-buffer-empty-text") });
-
                 return;
             }
 
@@ -287,8 +308,6 @@ namespace Content.Client.Chemistry.UI
             bufferHBox.AddChild(bufferVol);
 
             // This sets up the needed data for sorting later in a list
-            // Its done this way to not repeat having to use same code twice (once for sorting
-            // and once for displaying)
             var reagentList = new List<(ReagentId reagentId, string name, Color color, FixedPoint2 quantity)>();
             foreach (var (reagent, quantity) in state.BufferReagents)
             {
@@ -299,28 +318,28 @@ namespace Content.Client.Chemistry.UI
                 reagentList.Add(new (reagentId, name, reagentColor, quantity));
             }
 
-            // We sort here since we need sorted list to be filled first.
-            // You can easily add any new params you need to it.
+            // Apply search filter
+            if (!string.IsNullOrWhiteSpace(_bufferSearchText))
+            {
+                reagentList = reagentList.Where(r => 
+                    r.name.Contains(_bufferSearchText, StringComparison.InvariantCultureIgnoreCase))
+                    .ToList();
+            }
+
+            // Sort the filtered list
             switch (state.SortingType)
             {
                 case ChemMasterSortingType.Alphabetical:
                     reagentList = reagentList.OrderBy(x => x.name).ToList();
                     break;
-
                 case ChemMasterSortingType.Quantity:
                     reagentList = reagentList.OrderByDescending(x => x.quantity).ToList();
                     break;
                 case ChemMasterSortingType.Latest:
                     reagentList = Enumerable.Reverse(reagentList).ToList();
                     break;
-
-                case ChemMasterSortingType.None:
-                default:
-                    // This case is pointless but it is there for readability
-                    break;
             }
 
-            // initialises rowCount to allow for striped rows
             var rowCount = 0;
             foreach (var reagent in reagentList)
             {
@@ -355,7 +374,7 @@ namespace Content.Client.Chemistry.UI
                     }
                 }
             });
-            // Initialises rowCount to allow for striped rows
+
             var rowCount = 0;
 
             // Handle entities if they are not null
@@ -370,18 +389,25 @@ namespace Content.Client.Chemistry.UI
             // Handle reagents if they are not null
             if (info.Reagents != null)
             {
+                var reagentList = new List<(ReagentId id, string name, Color color, FixedPoint2 quantity)>();
+                
                 foreach (var reagent in info.Reagents)
                 {
                     _prototypeManager.TryIndex(reagent.Reagent.Prototype, out ReagentPrototype? proto);
                     var name = proto?.LocalizedName ?? Loc.GetString("chem-master-window-unknown-reagent-text");
                     var reagentColor = proto?.SubstanceColor ?? default(Color);
+                    reagentList.Add((reagent.Reagent, name, reagentColor, reagent.Quantity));
+                }
 
-                    control.Children.Add(BuildReagentRow(reagentColor, rowCount++, name, reagent.Reagent, reagent.Quantity, false, addReagentButtons));
+                foreach (var (id, name, color, quantity) in reagentList)
+                {
+                    control.Children.Add(BuildReagentRow(color, rowCount++, name, id, quantity, false, addReagentButtons));
                 }
             }
         }
+
         /// <summary>
-        /// Take reagent/entity data and present rows, labels, and buttons appropriately. todo sprites?
+        /// Take reagent/entity data and present rows, labels, and buttons appropriately.
         /// </summary>
         private Control BuildReagentRow(Color reagentColor, int rowCount, string name, ReagentId reagent, FixedPoint2 quantity, bool isBuffer, bool addReagentButtons)
         {

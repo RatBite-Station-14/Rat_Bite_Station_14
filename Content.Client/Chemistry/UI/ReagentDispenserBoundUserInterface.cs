@@ -24,6 +24,7 @@
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
 // SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -70,6 +71,7 @@ namespace Content.Client.Chemistry.UI
 
             _window.OnDispenseReagentButtonPressed += (id) => SendMessage(new ReagentDispenserDispenseReagentMessage(id));
             _window.OnEjectJugButtonPressed += (id) => SendMessage(new ItemSlotButtonPressedEvent(id));
+            _window.OnQuickInputSubmitted += (text) => SendMessage(new ReagentDispenserQuickInputMessage(text));
         }
 
         /// <summary>
