@@ -127,6 +127,7 @@
 # SPDX-FileCopyrightText: 2025 keronshb <54602815+keronshb@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
 # SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 floramillhouse <NoContact>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -643,3 +644,41 @@
       prob: 0.90
     - id: SolarPanelDamageVariationPass
     - id: SolarPanelEmptyVariationPass
+#Ratbite start
+#The below 3 control Squeakrat.
+#I should probably move all the squeakrat content to _bratbite but I'll do that in a later PR.
+- type: entity
+  id: CalmerAntagStationScheduler #used for SqueakRat, controls ghost role antags at the moment.
+  parent: BaseGameRule
+  components:
+  - type: BasicStationEventScheduler
+    scheduledGameRules: !type:NestedSelector
+      tableId: CalmerAntagTable
+    minMaxEventTiming:
+      min: 250
+      max: 1000
+
+- type: entity
+  id: HeavierAntagStationScheduler #used for SqueakRat, controls things like HereticMidround and SleeperAgents.
+  parent: BaseGameRule
+  components:
+  - type: BasicStationEventScheduler
+    scheduledGameRules: !type:NestedSelector
+      tableId: HeavierAntagTable
+    minMaxEventTiming:
+      min: 300
+      max: 1000
+
+
+- type: entity
+  id: CalmerStationEventScheduler #used for SqueakRat, controls station events.
+  parent: BaseGameRule
+  components:
+  - type: BasicStationEventScheduler
+    scheduledGameRules: !type:NestedSelector
+      tableId: BasicCalmEventsTable
+    minMaxEventTiming:
+      min: 300
+      max: 700
+#Squeakrat end
+#Ratbite end

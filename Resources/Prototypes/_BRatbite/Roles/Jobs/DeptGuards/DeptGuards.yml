@@ -1,0 +1,166 @@
+- type: job
+  id: MedOrderly
+  name: Medical Orderly
+  description: "Protect the medical department, its staff, its patients and above all else, the CMO"
+  playTimeTracker: JobMedOrderly
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 3600 # 1 hour
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 3600 # 1 hour
+  goobcoins: 30
+  weight: 20
+  startingGear: MedicalOrderlyGear
+  icon: "JobIconMedicalOrderly"
+  supervisors: ChiefMedicalOfficer
+  canBeAntag: false
+  access:
+  - Maintenance
+  - Medical
+
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: Condemned
+        soulOwnedNotDevil: true # Bootlicker for NT
+
+- type: startingGear
+  id: MedicalOrderlyGear
+  equipment:
+    eyes: ClothingEyesGlassesSunglasses
+    ears: ClothingHeadsetMedicalGuard # Their headsets have some seccomms now so they don't deal with shit alone.
+    id: MedWatchPDA
+  storage:
+    back:
+    - Flash
+
+- type: job
+  id: CargoInsurance
+  name: Cargo Insurance
+  description: "Protect the cargo department, its assets, its employees, and above all else, protect the quartermaster"
+  playTimeTracker: JobCargoInsurance
+
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Cargo
+      time: 3600 # 1 hour
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 3600 # 1 hour
+
+  startingGear: CargoInsuranceGear
+  icon: "JobIconCargoInsurance"
+  supervisors: Quartermaster
+  canBeAntag: false
+  goobcoins: 20 #Goob content
+  access:
+  - Cargo
+  - Maintenance
+
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: Condemned
+        soulOwnedNotDevil: true
+
+- type: startingGear
+  id: CargoInsuranceGear
+  equipment:
+    eyes: ClothingEyesGlassesSunglasses
+    id: CargoWatchPDA
+    ears: ClothingHeadsetCargoGuard
+  storage:
+    back:
+    - Flash
+
+- type: job
+  id: ScicurityGuard
+  name: Sci-Curity Guard
+  description: "Protect the science department, the scientists, its research, and above all else, the Research Director"
+  playTimeTracker: JobScicurityGuard
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Science
+      time: 3600 #1 hour
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 3600 # 1 hour
+  startingGear: ScicurityguardGear
+  icon: "JobIconScicurityGuard"
+  supervisors: job-supervisors-rd
+  canBeAntag: true # ourple guy
+  goobcoins: 20 #Goob content
+  access:
+  - Research
+  - Maintenance
+
+  special: # Sci guard has mindshield because fuck you.
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: Condemned
+        soulOwnedNotDevil: true
+
+- type: startingGear
+  id: ScicurityguardGear
+  equipment:
+    eyes: ClothingEyesGlassesSunglasses
+    ears: ClothingHeadsetScienceGuard
+    id: SciWatchPDA
+  storage:
+    back:
+    - Flash
+
+- type: job
+  id: EngiSentry
+  name: Engi Sentry
+  description: "Protect engineering, its workers, its infrastructure, and above all else, the Chief Engineer"
+  playTimeTracker: JobEngiSentry
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Engineering
+      time: 3600 #1 hour
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 3600 # 1 hour
+
+  startingGear: EngiSentryGear
+  icon: "JobIconEngiSentry"
+  supervisors: job-supervisors-ce
+  canBeAntag: false
+  goobcoins: 20 #Goob content
+  access:
+  - Maintenance
+  - Engineering
+  - External
+  extendedAccess:
+  - Atmospherics
+
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: Condemned
+        soulOwnedNotDevil: true
+  - !type:AddComponentSpecial
+    components:
+    - type: EngineeringStaff
+
+- type: startingGear
+  id: EngiSentryGear
+  equipment:
+    eyes: ClothingEyesGlassesSunglasses
+    ears: ClothingHeadsetEngineeringGuard
+    id: EngineerWatchPDA
+  storage:
+    back:
+    - Flash
+

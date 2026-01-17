@@ -13,7 +13,7 @@
   suffix: Weapon
   components:
   - type: MeleeWeapon
-    attackRate: 1.4
+    attackRate: 1.5 #Ratbite, it'll be meta one day...
     wideAnimationRotation: -120
     damage:
       types:

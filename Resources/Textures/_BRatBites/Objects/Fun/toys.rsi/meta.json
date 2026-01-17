@@ -1,0 +1,20 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-4.0",
+    "copyright": "axerplushie by eirin, mmarwaarrplushie by mink, eririn and kaaxu",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "axerplushie"
+        },
+        {
+            "name": "mmarwaarrplushie"
+        },
+        {
+            "name": "smokeyplushie"
+        }
+    ]
+}

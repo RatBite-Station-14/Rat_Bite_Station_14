@@ -97,7 +97,7 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Command
-      time: 18000  #5 hours
+      time: 36000  #10 hours
     - !type:AgeRequirement
       requiredAge: 21
   weight: 20
@@ -127,7 +127,7 @@
   - NanotrasenRepresentative
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
+    implants: [ MindShieldImplant, BluespaceLifelineImplant ] #CC gets bluespace
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
@@ -139,9 +139,11 @@
   equipment:
     id: NanotrasenRepresentativePDA
     ears: ClothingHeadsetAltCentCom
-    gloves: ClothingHandsGlovesGoldenTrim # Psst. I might as well add this here.
     pocket1: UniqueNanorepLockerTeleporter
   storage:
     back:
     - Flash
     - TelescopicBaton
+  # inhand:
+  #   - ExecutiveBriefcaseEmpty # TODO: Maybe change this to not-empty, so that ntr wouldn't be poor at the start of every shift but whatever
+

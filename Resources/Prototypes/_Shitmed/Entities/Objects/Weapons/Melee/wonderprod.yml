@@ -49,14 +49,14 @@
   - type: StaminaDamageOnHit
     damage: 50
     sound: /Audio/Weapons/Guns/Hits/taser_hit.ogg
-#  - type: RestrictMeleeByUserTag
-#    contains:
-#    - Abductor
-#    messages:
-#    - abductors-weapon-restricted-1
-#    - abductors-weapon-restricted-2
-#    - abductors-weapon-restricted-3
-#    - abductors-weapon-restricted-4
+  - type: RestrictMeleeByUserTag
+    contains:
+    - Abductor
+    messages:
+    - abductors-weapon-restricted-1
+    - abductors-weapon-restricted-2
+    - abductors-weapon-restricted-3
+    - abductors-weapon-restricted-4
   - type: DisarmMalus
   - type: ItemSwitch
     state: stun
@@ -101,26 +101,6 @@
         - type: CuffsOnHit
           proto: Cablecuffs
 
-      sleep: !type:ItemSwitchState
-        verb: sleep
-        sprite:
-          sprite: _Shitmed/Objects/Weapons/Melee/wonderprod.rsi
-          state: sleep-icon
-        components:
-        - type: MeleeWeapon
-          wideAnimationRotation: -135
-          attackRate: 1
-          damage:
-            types:
-              Shock: 0
-          angle: 60
-          animation: WeaponArcThrust
-        - type: InjectOnHit
-          reagents:
-          - ReagentId: Nocturine
-            Quantity: 5
-          limit: 20
-          needsRestrain: true
 
       damage: !type:ItemSwitchState
         verb: damage
@@ -136,3 +116,24 @@
           damage:
             types:
               Heat: 30
+
+      peace: !type:ItemSwitchState #RATBITE, CHANGE SLEEP MODE TO PEACE MODE
+        verb: peace
+        sprite:
+          sprite: _Shitmed/Objects/Weapons/Melee/wonderprod.rsi
+          state: sleep-icon
+        components:
+        - type: MeleeWeapon
+          wideAnimationRotation: -135
+          attackRate: 0.8
+          damage:
+            types:
+              Ion: 30
+          angle: 60
+          animation: WeaponArcThrust
+        - type: InjectOnHit
+          reagents:
+          - ReagentId: Pax
+            Quantity: 5
+          limit: 20
+          needsRestrain: true

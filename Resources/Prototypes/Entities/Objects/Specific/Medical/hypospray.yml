@@ -285,6 +285,8 @@
   id: EmergencyMedipen
   description: A rapid and safe way to heal minor damage, stop bleeding, and stabilize patients for personnel without advanced medical knowledge. # goobstation
   components:
+  - type: Hypospray
+    transferAmount: 25 #Ratbite
   - type: Sprite
     sprite: Objects/Specific/Medical/medipen.rsi
     layers:
@@ -297,14 +299,14 @@
   - type: SolutionContainerManager
     solutions:
       pen:
-        maxVol: 20 # goobstation
+        maxVol: 25 # Ratbite
         reagents:
-        - ReagentId: Tirimol # Goobstation
-          Quantity: 10
-        - ReagentId: Ibuprofen # Goobstation
+        - ReagentId: TranexamicAcid # Ratbite
+          Quantity: 1
+        - ReagentId: Omnizine # Ratbite
           Quantity: 5
-        - ReagentId: Omnizine # Goobstation
-          Quantity: 5
+        - ReagentId: Epinephrine # Ratbite
+          Quantity: 19
   - type: Tag
     tags:
     - EmergencyMedipen
@@ -643,9 +645,9 @@
       pen:
         maxVol: 30
         reagents:
-          - ReagentId: Leporazine
+          - ReagentId: Ibuprofen #Ratbite
             Quantity: 10
-          - ReagentId: Barozine
+          - ReagentId: Leporazine #Ratbite
             Quantity: 20
   - type: Tag
     tags:

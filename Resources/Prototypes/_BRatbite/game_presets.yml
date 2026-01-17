@@ -1,0 +1,17 @@
+# SPDX-FileCopyrightText: 2025 FloraMillhouse <no email, contact on discord.>
+- type: gamePreset
+  id: SqueakRat
+  alias:
+    - johnratbite
+    - SqueakRat
+    - squeakrat
+    - florashitcode
+  name: squeakrat-title
+  showInVote: true
+  description: squeakrat-description
+  rules:
+    - PermaBrig # Needed
+    - BasicRoundstartVariation
+    - LavalandStormScheduler
+    - CalmerAntagStationScheduler
+    - CalmerStationEventScheduler

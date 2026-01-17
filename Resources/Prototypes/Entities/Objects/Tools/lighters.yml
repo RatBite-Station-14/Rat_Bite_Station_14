@@ -94,7 +94,7 @@
   - type: ItemToggleMeleeWeapon
     activatedDamage:
         types:
-            Heat: 1
+            Heat: 3 #ratbites, getting a lighter put on your skin hurts gang
   - type: ItemToggleSize
     activatedSize: Small
   - type: ItemToggleHot

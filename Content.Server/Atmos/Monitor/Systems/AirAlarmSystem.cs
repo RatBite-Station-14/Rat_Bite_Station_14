@@ -81,8 +81,13 @@ using Content.Shared.Power;
 using Content.Shared.Wires;
 using Robust.Server.GameObjects;
 using System.Linq;
+using Content.Server.Pinpointer;
+using Content.Server.Radio.EntitySystems;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.IdentityManagement;
+using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Atmos.Monitor.Systems;
 
@@ -106,6 +111,9 @@ public sealed class AirAlarmSystem : EntitySystem
     [Dependency] private readonly DeviceListSystem _deviceList = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly RadioSystem _radio = default!;
+    [Dependency] private readonly NavMapSystem _navMap = default!;
 
     #region Device Network API
 
@@ -360,6 +368,7 @@ public sealed class AirAlarmSystem : EntitySystem
 
             _adminLogger.Add(LogType.AtmosDeviceSetting, LogImpact.Medium, $"{ToPrettyString(args.Actor)} changed {ToPrettyString(uid)} mode to {args.Mode}");
             SetMode(uid, addr, args.Mode, false);
+            SendNoticeToChannels(uid, component, args.Actor);
         }
         else
         {
@@ -375,6 +384,31 @@ public sealed class AirAlarmSystem : EntitySystem
         UpdateUI(uid, component);
     }
 
+    private void SendNoticeToChannels(EntityUid uid, AirAlarmComponent component, EntityUid user)
+    {
+        if (component.NextWarning < _timing.CurTime)
+        {
+            component.NextWarning = _timing.CurTime + component.WarningCooldown;
+            foreach (var channel in component.WarningChannels)
+            {
+                var title = "no ID found";
+                var getIdentityEvent = new TryGetIdentityShortInfoEvent(uid, user);
+                RaiseLocalEvent(getIdentityEvent);
+                if(getIdentityEvent.Title != null)
+                    title = getIdentityEvent.Title;
+
+                var location = FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString(uid));
+                _radio.SendRadioMessage(uid,
+                    Loc.GetString("air-alarm-settings-tampered",
+                        ("location", location),
+                        ("id", title)),
+                    channel,
+                    uid,
+                    escapeMarkup: false);
+            }
+        }
+    }
+
     private void OnUpdateThreshold(EntityUid uid, AirAlarmComponent component, AirAlarmUpdateAlarmThresholdMessage args)
     {
         if (AccessCheck(uid, args.Actor, component))
@@ -385,6 +419,7 @@ public sealed class AirAlarmSystem : EntitySystem
                 _adminLogger.Add(LogType.AtmosDeviceSetting, LogImpact.Medium, $"{ToPrettyString(args.Actor)} changed {args.Address} {args.Type} threshold using {ToPrettyString(uid)}");
 
             SetThreshold(uid, args.Address, args.Type, args.Threshold, args.Gas);
+            SendNoticeToChannels(uid, component, args.Actor);
         }
         else
         {
@@ -400,6 +435,7 @@ public sealed class AirAlarmSystem : EntitySystem
             _adminLogger.Add(LogType.AtmosDeviceSetting, LogImpact.Medium, $"{ToPrettyString(args.Actor)} changed {args.Address} settings using {ToPrettyString(uid)}");
 
             SetDeviceData(uid, args.Address, args.Data);
+            SendNoticeToChannels(uid, component, args.Actor);
         }
         else
         {
@@ -527,10 +563,16 @@ public sealed class AirAlarmSystem : EntitySystem
     /// <param name="uiOnly">Whether this change is for the UI only, or if it changes the air alarm's operating mode. Defaults to true.</param>
     public void SetMode(EntityUid uid, string origin, AirAlarmMode mode, bool uiOnly = true, AirAlarmComponent? controller = null)
     {
-        if (!Resolve(uid, ref controller) || controller.CurrentMode == mode)
+        if (!Resolve(uid, ref controller))
         {
             return;
         }
+
+        if (controller.PanicWireCut)
+        {
+            mode = AirAlarmMode.Panic;
+        }
+
 
         controller.CurrentMode = mode;
 
@@ -713,6 +755,7 @@ public sealed class AirAlarmSystem : EntitySystem
         }
         foreach (var (addr, data) in alarm.ScrubberData)
         {
+            data.AirAlarmPanicWireCut = alarm.PanicWireCut;
             dataToSend.Add((addr, data));
         }
         foreach (var (addr, data) in alarm.SensorData)
@@ -730,7 +773,7 @@ public sealed class AirAlarmSystem : EntitySystem
         _ui.SetUiState(
             uid,
             SharedAirAlarmInterfaceKey.Key,
-            new AirAlarmUIState(devNet.Address, deviceCount, pressure, temperature, dataToSend, alarm.CurrentMode, highestAlarm.Value, alarm.AutoMode));
+            new AirAlarmUIState(devNet.Address, deviceCount, pressure, temperature, dataToSend, alarm.CurrentMode, highestAlarm.Value, alarm.AutoMode, alarm.PanicWireCut));
     }
 
     private const float Delay = 8f;

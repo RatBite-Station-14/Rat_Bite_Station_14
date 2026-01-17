@@ -21,6 +21,7 @@
     DrinkFourteenLokoCan: 2
   contrabandInventory:
     DrinkDrGibbCan: 3
+    DrinkBeerBottleFull: 1 #Ratbite
   emaggedInventory:
     DrinkNukieCan: 2
     DrinkChangelingStingCan: 2

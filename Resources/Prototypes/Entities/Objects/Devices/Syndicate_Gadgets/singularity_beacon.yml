@@ -10,7 +10,7 @@
 
 - type: entity
   id: SingularityBeacon
-  parent: [BaseMachinePowered, BaseSyndicateContraband]
+  parent: [BaseMachinePowered, BaseSyndicateAnchoredContraband]
   name: singularity beacon
   description: A syndicate device that attracts the singularity. If it's loose and you're seeing this, run.
   components:
@@ -20,6 +20,10 @@
     - state: icon
   - type: Item
     size: Huge
+  - type: MultiHandedItem #huge device
+  - type: HeldSpeedModifier
+    walkModifier: 0.75
+    sprintModifier: 0.75
   - type: Fixtures
     fixtures:
       fix1:

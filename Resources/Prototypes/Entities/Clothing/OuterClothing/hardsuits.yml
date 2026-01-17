@@ -264,7 +264,7 @@
     clothingPrototypes:
       head: ClothingHeadHelmetHardsuitBasic
 
-#Atmospherics Hardsuit - goob - not used
+#Atmospherics Hardsuit - Bevvrat - USED (THE MODSUIT SUCKS)
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseEngineeringContraband]
   id: ClothingOuterHardsuitAtmos
@@ -276,7 +276,7 @@
   - type: Clothing
     sprite: Clothing/OuterClothing/Hardsuits/atmospherics.rsi
   - type: PressureProtection
-    highPressureMultiplier: 0.02
+    highPressureMultiplier: 5 #Atmos suit doesnt protect from atmos :clueless:
     lowPressureMultiplier: 1000
   - type: TemperatureProtection
     heatingCoefficient: 0.001
@@ -288,14 +288,14 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.9
-        Slash: 0.9
+        Blunt: 0.95 #Ratbites
+        Slash: 0.95 #Ratbites
         Piercing: 0.9
-        Heat: 0.8
-        Radiation: 0.15
+        Heat: 0.45 #Ratbites, why was it so fucking low
+        Radiation: 0.5 #Ratbites, why was this so fucking high
   - type: ClothingSpeedModifier
-    walkModifier: 0.7
-    sprintModifier: 0.7
+    walkModifier: 0.8 #Ratbites
+    sprintModifier: 0.8 #Ratbites
   - type: HeldSpeedModifier
   - type: ToggleableClothing # Goobstation - Modsuits change
     clothingPrototypes:
@@ -530,7 +530,7 @@
     modifiers:
       coefficients:
         Blunt: 0.5 #Ratbite
-        Slash: 0.5 #Ratbite 
+        Slash: 0.5 #Ratbite
         Piercing: 0.4 #Ratbite
         Heat: 0.7 #Ratbite
         Caustic: 0.7
@@ -1006,12 +1006,12 @@
       NerveDamage: 0
     modifiers:
       coefficients:
-        Blunt: 0.55
-        Slash: 0.55
-        Piercing: 0.3 #Ratbite
-        Heat: 0.2
-        Radiation: 0.01
-        Caustic: 0.4
+        Blunt: 0.40
+        Slash: 0.40
+        Piercing: 0.30 #Ratbite
+        Heat: 0.40
+        Radiation: 0.40
+        Caustic: 0.40
   - type: Item
     size: Huge
   - type: ClothingSpeedModifier # goobstation - duke nukies
@@ -1055,10 +1055,10 @@
       NerveDamage: 0
     modifiers:
       coefficients:
-        Blunt: 0.35
-        Slash: 0.35
-        Piercing: 0.35
-        Heat: 0.45
+        Blunt: 0.27
+        Slash: 0.27
+        Piercing: 0.20
+        Heat: 0.40
         Radiation: 0.2
         Caustic: 0.4
   - type: ClothingSpeedModifier

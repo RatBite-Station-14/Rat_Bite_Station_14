@@ -1,0 +1,182 @@
+- type: entity
+  id: RadioLeadIntern
+  parent: BaseItem
+  name: lead intern summoning radio
+  description: A NT-approved radio that can summon a lead intern with special coins.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Tools/executive_briefcase.rsi
+    state: icon_alt
+  - type: Item
+    size: Huge
+  - type: GhostRole
+    name: job-name-ntrleadintern # Ratbite - Intern Rework - Edit start
+    description: job-description-ntrleadintern
+    rules: ghost-role-lead-intern-rules
+    job: NTRLeadIntern
+    requirements:
+      - !type:DepartmentTimeRequirement
+        department: Command
+        time: 3600 # One hours # Ratbite - Intern Rework - Edit end
+  - type: GhostRoleMobSpawner
+    prototype: LeadIntern
+
+# Lead Intern
+- type: entity
+  id: LeadIntern
+  parent: MobHuman
+  name: Lead Intern
+  suffix: Human
+  components:
+  - type: RandomHumanoidAppearance
+    randomizeName: true
+  - type: Loadout
+    prototypes: [LeadInternGear]
+  - type: AutoImplant # Ratbite - Intern Rework
+    implants:
+    - MindShieldImplant
+    - BluespaceLifelineImplant
+
+# Basic Intern Coin
+- type: entity
+  id: InternCoin
+  parent: BaseItem
+  name: intern summoning coin
+  description: Toss to summon an intern.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/coins.rsi
+    state: coin_gold
+  - type: GhostRole
+    name: job-name-ntrintern # Ratbite - Intern Rework - Edit start
+    description: job-description-ntrintern
+    rules: ghost-role-intern-rules
+    job: NTRIntern
+    requirements:
+      - !type:DepartmentTimeRequirement
+        department: Command
+        time: 3600 # One hours # Ratbite - Intern Rework - Edit end
+  - type: GhostRoleMobSpawner
+    prototype: NTIntern
+
+# Nerd Intern Coin
+- type: entity
+  id: NerdInternCoin
+  parent: BaseItem
+  name: nerd intern summoning coin
+  description: Toss to summon a nerd intern.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/coins.rsi
+    state: coin_silver
+  - type: GhostRole
+    name: job-name-ntrintern # Ratbite - Intern Rework - Edit start
+    description: job-description-ntrintern
+    rules: ghost-role-intern-rules
+    job: NTRIntern
+    requirements:
+      - !type:DepartmentTimeRequirement
+        department: Command
+        time: 3600 # One hours # Ratbite - Intern Rework - Edit end
+  - type: GhostRoleMobSpawner
+    prototype: NTNerdIntern
+
+
+# Basic NT Intern
+- type: entity
+  id: NTIntern
+  parent: MobHuman
+  name: NT Intern
+  suffix: Human
+  components:
+  - type: RandomHumanoidAppearance
+    randomizeName: true
+  - type: Loadout
+    prototypes: [NTInternGear]
+  - type: AutoImplant # Ratbite - Intern Rework
+    implants:
+    - MindShieldImplant
+    - BluespaceLifelineImplant
+
+# NT Nerd Intern
+- type: entity
+  id: NTNerdIntern
+  parent: MobHuman
+  name: NT Nerd Intern
+  suffix: Human
+  components:
+  - type: RandomHumanoidAppearance
+    randomizeName: true
+  - type: Loadout
+    prototypes: [NTNerdInternGear]
+  - type: AutoImplant # Ratbite - Intern Rework
+    implants:
+    - MindShieldImplant
+    - BluespaceLifelineImplant
+
+# NT Nerd Intern Gear
+- type: startingGear
+  id: NTNerdInternGear
+  equipment:
+    eyes: ClothingEyesGlassesJamjar
+    jumpsuit: ClothingUniformJumpsuitCentcomOfficer
+    gloves: ClothingHandsGlovesColorYellowBudget
+    shoes: ClothingShoesBootsWork
+    back: ClothingBackpackCentcomm
+    ears: ClothingHeadsetGrey
+    id: NTRInternPDA # Ratbite - intern rework goofer -> # let NTR give them access on bridge lol, im too lazy to make a new ID just for interns
+    pocket1: DrinkEnergyDrinkCan # Ratbite
+    pocket2: TelescopicBaton # Ratbite
+  inhand:
+    - MedkitAdvancedFilled
+    - ToolboxElectricalFilled
+  storage:
+    back:
+    - ClothingShoesSlippers
+    - BoxSurvivalSlotsMedical
+    #- Stunbaton # Ratbite
+
+# Lead Intern Gear
+- type: startingGear
+  id: LeadInternGear
+  equipment:
+    eyes: ClothingEyesGlassesSunglasses
+    head: ClothingHeadHatGreensoft
+    jumpsuit: ClothingUniformJumpsuitCentcomOfficer
+    outerClothing: ClothingOuterArmorBasic
+    gloves: ClothingHandsGlovesColorBlack
+    shoes: ClothingShoesLeather
+    back: ClothingBackpackCentcomm
+    ears: ClothingHeadsetGrey
+    id: NTRLeadInternPDA # Ratbite - intern rework
+    pocket1: DrinkEnergyDrinkCan
+    pocket2: TelescopicBaton
+  #inhand:
+  #  - WeaponLaserCarbine # Ratbite - intern rework
+  storage:
+    back:
+    - NerdInternCoin
+    - InternCoin
+    - InternCoin
+    - BoxSurvivalSlotsMedical
+
+# NT Intern Gear
+- type: startingGear
+  id: NTInternGear
+  equipment:
+    eyes: ClothingEyesGlassesSunglasses
+    jumpsuit: ClothingUniformJumpsuitCentcomOfficer
+    gloves: ClothingHandsGlovesColorBlack
+    shoes: ClothingShoesLeather
+    back: ClothingBackpackCentcomm
+    ears: ClothingHeadsetGrey
+    id: NTRInternPDA # Ratbite - intern rework
+    pocket1: DrinkEnergyDrinkCan
+    pocket2: TelescopicBaton # Ratbite - intern rework
+  #inhand:
+  #  - WeaponLaserCarbine # Ratbite - intern rework
+  storage:
+    back:
+    - Vape # interns ammiright?
+    - BoxSurvivalSlotsMedical
+    #- Stunbaton # Ratbite - intern rework

@@ -158,6 +158,14 @@
   id: Wirecutter
   description: This kills the wire.
   components:
+  # Goobstation edit start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/wirecutter_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/wirecutter_drop.ogg
+  # Goobstation edit end
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/wirecutter_drop.ogg
@@ -177,7 +185,7 @@
     wideAnimationRotation: -90
     damage:
       types:
-        Piercing: 2
+        Piercing: 3 #Ratbites, used to do 3, was nerfed for whatever reason (6dps is shit for piercing anyway but why was it 4dps???)
     attackRate: 2 #open and close that shit on their arm like hell! because you sure aren't doing any damage with this
     soundHit:
       path: "/Audio/Items/wirecutter.ogg"
@@ -219,6 +227,14 @@
   id: Screwdriver
   description: Industrial grade torque in a small screwdriving package.
   components:
+  # Goobstation edit start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/screwdriver_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/screwdriver_drop.ogg
+  # Goobstation edit end
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/screwdriver_drop.ogg
@@ -238,10 +254,11 @@
   - type: MeleeWeapon
     animationRotation: -90 # WWDP
     wideAnimationRotation: -90
-    attackRate: 1
+    attackRate: 1.2 #Ratbites, realisticly this being less than a shiv or wirecutters is nutz but oh well
     damage:
       types:
-        Piercing: 6
+        Blunt: 2 #Ratbites, screwdrivers are bound to do some blunt
+        Piercing: 4 #Ratbites, keeping dps the same
     soundHit:
       path: "/Audio/Weapons/bladeslice.ogg"
   - type: Tool
@@ -274,6 +291,18 @@
   id: Wrench
   description: 'A common tool for assembly and disassembly. Remember: lefty latchy, righty removey.'
   components:
+  # Goobstation edit start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/wrench_pickup.ogg
+      params:
+        volume: -2
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/wrench_drop.ogg
+      params:
+        volume: -2
+  # Goobstation edit end
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/wrench_drop.ogg
@@ -292,10 +321,10 @@
   - type: MeleeWeapon
     animationRotation: 225 # WWDP
     wideAnimationRotation: 135
-    attackRate: 1.5
+    attackRate: 2 #Ratbites, whats the benifit of making these .5
     damage:
       types:
-        Blunt: 4.5
+        Blunt: 5 #Ratbite tider nerf/self defense buff
     soundHit:
       collection: MetalThud
   - type: Tool
@@ -307,7 +336,7 @@
     materialComposition:
       Steel: 100
   - type: StaticPrice
-    price: 22
+    price: 20 #Ratbites
   - type: GuideHelp
     guides:
     - Construction
@@ -318,6 +347,14 @@
   id: Multitool
   description: An advanced tool to copy, store, and send electrical pulses and signals through wires and machines.
   components:
+  # Goobstation edit start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/multitool_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/multitool_drop.ogg
+  # Goobstation edit end
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/multitool_drop.ogg
@@ -590,20 +627,20 @@
   id: RCDRecharging
   parent: RCD
   name: experimental RCD
-  description: Cyborg-mounted Rapid Construction Device which creates compressed matter on the fly using an internal fabricator.
+  description: Cyborg-mounted Rapid Construction Device which creates compressed matter on the fly using an internal fabricator but sacrafices some charge space. #Ratbites
   suffix: AutoRecharge
   components:
   - type: LimitedCharges
-    maxCharges: 20
+    maxCharges: 30 #Ratbites, Borg QOL
   - type: AutoRecharge
-    rechargeDuration: 10
+    rechargeDuration: 5 #Ratbites, Borg QOL
 
 - type: entity
   id: RCDExperimental
   parent: RCD
   suffix: Admeme
   name: experimental RCD
-  description: A bluespace-enhanced rapid construction device that passively generates its own compressed matter.
+  description: A bluespace-enhanced rapid construction device that passively generates its own compressed matter. You feel like you shouldn't be holding this. #Ratbites
   components:
   - type: AutoRecharge
     rechargeDuration: 1
@@ -632,7 +669,7 @@
   name: omnitool
   parent: BaseItem
   id: Omnitool
-  description: A drone's best friend.
+  description: A drone's best friend. #WHERE IS OMNITOOL, WHERE IS HE!!!!
   components:
   - type: Sprite
     sprite: Objects/Tools/omnitool.rsi

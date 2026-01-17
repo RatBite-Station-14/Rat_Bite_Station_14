@@ -11,10 +11,8 @@
   recipes:
   - Wirecutter
   - Screwdriver
-  - Welder
   - Wrench
   - CrowbarGreen
-  - Multitool
   - NetworkConfigurator
   - Signaller
   - SprayPainter
@@ -27,6 +25,12 @@
   - ClothingHeadHatWelding
   - ClothingHeadHatCone
   - WeaponHammer
+
+- type: latheRecipePack # Ratbite tider death
+  id: ToolsStaticNoTiders
+  recipes:
+  - Welder
+  - Multitool
 
 - type: latheRecipePack
   id: AtmosStatic

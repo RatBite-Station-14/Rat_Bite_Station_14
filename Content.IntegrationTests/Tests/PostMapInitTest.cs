@@ -192,6 +192,20 @@ namespace Content.IntegrationTests.Tests
             "/Maps/_Goobstation/Shuttles/retort_engineering.yml",
             "/Maps/_Goobstation/Shuttles/retort_janitorial.yml",
             "/Maps/_Goobstation/Shuttles/retort_cburn.yml",
+            "/Maps/Shuttles/AdminSpawn/ERT-Large-Base.yml",
+            "/Maps/Shuttles/AdminSpawn/ERT-Large-Med-Sec.yml",
+            "/Maps/Shuttles/AdminSpawn/ERT-Medium-Base.yml",
+            "/Maps/Shuttles/AdminSpawn/ERT-Medium-BasePlus.yml",
+            "/Maps/Shuttles/AdminSpawn/ERT-Medium-Eng-Jani.yml",
+            "/Maps/Shuttles/AdminSpawn/ERT-Medium-Med.yml",
+            "/Maps/Shuttles/AdminSpawn/ERT-Medium-Sec.yml",
+            "/Maps/Shuttles/AdminSpawn/ERT-Small-Base.yml",
+            "/Maps/Shuttles/AdminSpawn/ERT-Small-CBURN.yml",
+            "/Maps/Shuttles/AdminSpawn/ERT-Small-Deathsquad.yml",
+            "/Maps/Shuttles/AdminSpawn/ERT-Small-Eng.yml",
+            "/Maps/Shuttles/AdminSpawn/ERT-Small-Jani.yml",
+            "/Maps/Shuttles/AdminSpawn/ERT-Small-Med.yml",
+            "/Maps/Shuttles/AdminSpawn/ERT-Small-Sec.yml"
         };
 
         private static readonly string[] GameMaps =
@@ -225,7 +239,7 @@ namespace Content.IntegrationTests.Tests
             "Submarine", // Goobstation - add Submarine
             "Lambda", // Goobstation - add Lambda
             "Leonid", // Goobstation - add Leonid
-            "Amber", 
+            "Amber",
             "Gate", // Goobstation - goob changes
             "Lavatest", // Lavaland Change
             "Loop",

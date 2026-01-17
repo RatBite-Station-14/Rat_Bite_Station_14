@@ -242,12 +242,16 @@
 # SPDX-FileCopyrightText: 2025 McBosserson <148172569+McBosserson@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Milon <plmilonpl@gmail.com>
 # SPDX-FileCopyrightText: 2025 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 OnyxTheBrave <131422822+OnyxTheBrave@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Perry Fraser <perryprog@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
 # SPDX-FileCopyrightText: 2025 RatherUncreative <RatherUncreativeName@proton.me>
 # SPDX-FileCopyrightText: 2025 Rouden <149893554+Roudenn@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
 # SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
 # SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
+# SPDX-FileCopyrightText: 2025 SomethingUnbearable <mewatcher102@gmail.com>
 # SPDX-FileCopyrightText: 2025 Southbridge <7013162+southbridge-fur@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Spatison <137375981+Spatison@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Speebro <100388782+Speebr0@users.noreply.github.com>
@@ -332,6 +336,16 @@
     - !type:AutomatedMaterialStorage
       input: AutomationSlotMaterials
       output: null
+  - type: SpamEmitSound # Goobstation - random lathe sounds
+    minInterval: 300
+    maxInterval: 900
+    sound:
+      collection: RandomLatheSounds
+      params:
+        volume: -12 # Ambient
+        maxDistance: 10
+        variation: 0.05
+  - type: SpamEmitSoundRequirePower # Goobstation
 
 # a lathe that can be sped up with space lube / slowed down with glue
 - type: entity
@@ -419,10 +433,37 @@
     - MedicalVehiclesStatic
     - GrenadeTriggersStatic
     - TapeRecorderStatic
+    - MiscSignallersStatic
   - type: EmagLatheRecipes
+    emagStaticRecipes:
+       - CartridgePistol
+       - CartridgeSpecial # DeltaV - .38 Special revolver
+       - CartridgeMagnum
+       - ShellShotgun
+       - ShellShotgunFlare
+       - ShellTranquilizer
+       - CartridgeLightRifle
+       - CartridgeRifle
+       - MagazineBoxPistol
+       - MagazineBoxMagnum
+       - MagazineBoxRifle
+       - MagazineBoxLightRifle
+    emagDynamicRecipes:
+      - ShellShotgunBeanbag
+      - ShellShotgunIncendiary
+      - CartridgePistolIncendiary
+      - CartridgeMagnumIncendiary
+      - CartridgeLightRifleIncendiary
+      - CartridgeRifleIncendiary
+      - MagazineBoxPistolIncendiary
+      - MagazineBoxMagnumIncendiary
+      - MagazineBoxLightRifleIncendiary
+      - MagazineBoxRifleIncendiary
     emagStaticPacks:
     - SecurityWeaponsStatic
     - SecurityAmmoStatic
+    # Ratbite
+    - SecurityAmmoRatbiteStatic
     # Goobstation
     - SecurityWeaponsStaticGoob
     - SecurityAmmoStaticGoob
@@ -508,15 +549,20 @@
     - MedicalMisc
     - MedicalVehiclesAdvanced
     - UpgradeKits
+    # Einstein Engines Packs
+    - Translators
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - SecurityAmmo
     - SecurityExplosives
     #- SecurityEquipment # Goobstation
     - SecurityWeapons
+    # Ratbite
+    - SecurityAmmoRatbiteDynamic
     # Goobstation Packs
     - SecurityAmmoGoob
     - SecurityWeaponsGoob
+    - RestraintTechnology
     - MiningWeapons
 
 - type: entity
@@ -636,7 +682,9 @@
     - Modsuits
     - PowerCages
     - BorgModulesGoob
-    - Cybernetics
+    - BasicCybernetics
+    - MedicalCybernetics
+    - AdvancedCybernetics
     - PowerCells
   - type: EmagLatheRecipes # Goobstation
     emagStaticPacks:
@@ -721,11 +769,68 @@
   - type: Lathe
     idleState: icon
     runningState: icon
+    staticRecipes:
+      - ClothingEyesHudSecurity
+      - Flash
+      - Handcuffs
+      - Zipties
+      - Stunbaton
+      - ForensicPad
+      - ClothingEyesGlassesSecurity
+      - RiotShield
+      - ShellShotgun
+      - ShellShotgunFlare
+      - ShellTranquilizer
+      - MagazinePistol
+      - MagazinePistolSubMachineGun
+      - MagazinePistolSubMachineGunTopMounted
+      - MagazineRifle
+      - MagazineLightRifle
+      - MagazineBoxPistol
+      - MagazineBoxSpecial # DeltaV - .38 Special revolver
+      - MagazineBoxMagnum
+      - MagazineBoxRifle
+      - MagazineBoxLightRifle
+      - SpeedLoaderMagnum
+      - SpeedLoader38Special # DeltaV - .38 Special revolver Ratbite
+      - TargetHuman
+      - TargetSyndicate
+      - TargetClown
+    dynamicRecipes:
+      - ShellShotgunBeanbag
+      - ShellShotgunIncendiary
+      - CartridgePistolIncendiary
+      - CartridgeMagnumIncendiary
+      - CartridgeLightRifleIncendiary
+      - CartridgeRifleIncendiary
+      - MagazineBoxPistolIncendiary
+      - MagazineBoxMagnumIncendiary
+      - MagazineBoxLightRifleIncendiary
+      - MagazineBoxRifleIncendiary
+      - Signaller
+      - SignalTrigger
+      - VoiceTrigger
+      - TimerTrigger
+      - Truncheon
+      - TelescopicShield
+      - HoloprojectorSecurity
+      - FlashPayload
+      - ExplosivePayload
+      - WeaponLaserCarbine
+      - WeaponAdvancedLaser
+      - WeaponLaserCannon
+      - WeaponXrayCannon
+      - WeaponTaser
+      - ClothingHeadHelmetInsulated # Nyanotrasen - Insulative headgear
+      - ClothingHeadCage # Nyanotrasen - Insulative headgear
     staticPacks:
+    - ToolsStaticNoTiders
     - SecurityEquipmentStatic
     - SecurityPracticeStatic
     - SecurityAmmoStatic
     - SecurityWeaponsStatic
+    # Ratbite
+    - SecurityAmmoRatbiteStatic
     # Goobstation
     - SecurityAmmoStaticGoob
     - SecurityEquipmentStaticGoob
@@ -747,8 +852,11 @@
     - SecurityAmmo
     - SecurityWeapons
     - SecurityDisablers
+    # Ratbite
+    - SecurityAmmoRatbiteDynamic
     # Goobstation
     - SecurityWeaponsGoob
+    - RestraintTechnology
     - MechBoardsSecurity
     - MechWeaponsSecurityLight
     - MechWeaponsSecurityHeavy
@@ -794,6 +902,8 @@
       runningState: icon
       staticPacks:
       - SecurityAmmoStatic
+      # Ratbite
+      - SecurityAmmoRatbiteStatic
       # Goobstation Packs
       - SecurityAmmoStaticGoob
     - type: EmagLatheRecipes # Goobstation Packs
@@ -851,11 +961,15 @@
     # Goobstation Packs
     - Surgery
     - MedicalCybernetics
+    - EnvirosuitExtinguisherRefill
     - MedicalMisc
     - MedicalMiscRestricted
     - MedicalVehiclesAdvanced
     - MedicalBoards
     - Janitor
+    # Einstein Engines Packs
+    - Translators # Language
+    - TranslatorImplanters # Language
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: EmagLatheRecipes # Goobstation Packs
@@ -1084,3 +1198,50 @@
         - Wooden
         - RawMaterial
         - Plastic
+
+- type: entity
+  parent: BaseLathe
+  id: PrinterDoc
+  name: document printer
+  description: Bureaucratic perfection. Stores a database of all Nanotrasen documents, and lets you print them as long as you have paper.
+  components:
+  - type: Sprite
+    sprite: _Starlight/Structures/Machines/printer.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: idle
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Transform
+    noRot: false
+  - type: Machine
+    board: PrinterDocMachineCircuitboard
+  - type: Lathe
+    producingSound: /Audio/Machines/scanning.ogg
+    idleState: icon
+    runningState: building
+    staticPacks:
+    - DocumentPrinterForms
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 25
+        mask:
+        - TabletopMachineMask
+        layer:
+        - TabletopMachineLayer
+  - type: MaterialStorage
+    whitelist:
+      tags:
+      - Document
+    storage:
+      SheetPrinter: 0

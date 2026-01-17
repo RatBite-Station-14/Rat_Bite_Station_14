@@ -77,6 +77,12 @@ public sealed partial class EventHorizonComponent : Component
     [ViewVariables(VVAccess.ReadOnly)]
     public bool BeingConsumedByAnotherEventHorizon = false;
 
+    [ViewVariables(VVAccess.ReadOnly)]
+    public int LowestPowerGenBuffer = 25;
+
+    [ViewVariables(VVAccess.ReadOnly)]
+    public HashSet<Entity<ContainmentFieldGeneratorComponent>> ContainingFieldGenerators = new();
+
     #region Update Timing
 
     /// <summary>

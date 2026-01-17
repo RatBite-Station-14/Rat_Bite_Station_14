@@ -61,10 +61,13 @@ using Content.Server.Administration.Logs;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Projectiles;
+using Content.Server.Radio.EntitySystems;
 using Content.Server.Weapons.Ranged.Systems;
 using Content.Shared.Database;
 using Content.Shared.DeviceLinking.Events;
+using Content.Shared.DoAfter;
 using Content.Shared.Examine;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Lock;
 using Content.Shared.Popups;
@@ -72,6 +75,7 @@ using Content.Shared.Power;
 using Content.Shared.Projectiles;
 using Content.Shared.Singularity.Components;
 using Content.Shared.Singularity.EntitySystems;
+using Content.Shared.Singularity.Events;
 using Content.Shared.Verbs;
 using Content.Shared.Weapons.Ranged.Components;
 using JetBrains.Annotations;
@@ -80,6 +84,7 @@ using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Timer = Robust.Shared.Timing.Timer;
 
@@ -95,6 +100,9 @@ namespace Content.Server.Singularity.EntitySystems
         [Dependency] private readonly SharedPopupSystem _popup = default!;
         [Dependency] private readonly ProjectileSystem _projectile = default!;
         [Dependency] private readonly GunSystem _gun = default!;
+        [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+        [Dependency] private readonly RadioSystem _radio = default!;
+        [Dependency] private readonly IGameTiming _timing = default!;
 
         public override void Initialize()
         {
@@ -107,6 +115,7 @@ namespace Content.Server.Singularity.EntitySystems
             SubscribeLocalEvent<EmitterComponent, ExaminedEvent>(OnExamined);
             SubscribeLocalEvent<EmitterComponent, AnchorStateChangedEvent>(OnAnchorStateChanged);
             SubscribeLocalEvent<EmitterComponent, SignalReceivedEvent>(OnSignalReceived);
+            SubscribeLocalEvent<EmitterComponent, PowerOffDoAfterEvent>(OnPowerOff);
         }
 
         private void OnAnchorStateChanged(EntityUid uid, EmitterComponent component, ref AnchorStateChangedEvent args)
@@ -139,9 +148,34 @@ namespace Content.Server.Singularity.EntitySystems
                 }
                 else
                 {
-                    SwitchOff(uid, component);
-                    _popup.PopupEntity(Loc.GetString("comp-emitter-turned-off",
-                        ("target", uid)), uid, args.User);
+                    var doargs = new DoAfterArgs(EntityManager, args.User, component.PowerOffDelay, new PowerOffDoAfterEvent(), uid)
+                    {
+                        DistanceThreshold = 2f,
+                        BreakOnDamage = true,
+                        BreakOnMove = true,
+                    };
+                    args.Handled = true;
+                    _doAfter.TryStartDoAfter(doargs);
+
+                    if (component.NextWarning < _timing.CurTime)
+                    {
+                        component.NextWarning = _timing.CurTime + component.WarningCooldown;
+                        foreach (var channel in component.WarningChannels)
+                        {
+                            var title = Loc.GetString("containment-field-emitter-no-id-found");
+                            var getIdentityEvent = new TryGetIdentityShortInfoEvent(uid, args.User);
+                            RaiseLocalEvent(getIdentityEvent);
+                            if(getIdentityEvent.Title != null)
+                                title = getIdentityEvent.Title;
+
+                            _radio.SendRadioMessage(uid,
+                                Loc.GetString("containment-field-emitter-powering-off",
+                                    ("id", title)),
+                                channel,
+                                uid,
+                                escapeMarkup: false);
+                        }
+                    }
                 }
 
                 _adminLogger.Add(LogType.FieldGeneration,
@@ -155,6 +189,16 @@ namespace Content.Server.Singularity.EntitySystems
                     ("target", uid)), uid, args.User);
             }
         }
+
+        private void OnPowerOff(EntityUid uid, EmitterComponent component, PowerOffDoAfterEvent args) //Ratbite - Start
+        {
+            if (args.Cancelled)
+                return;
+
+            SwitchOff(uid, component);
+            _popup.PopupEntity(Loc.GetString("comp-emitter-turned-off",
+                ("target", uid)), uid, args.User);
+        } //Ratbite  - End
 
         private void OnGetVerb(EntityUid uid, EmitterComponent component, GetVerbsEvent<Verb> args)
         {

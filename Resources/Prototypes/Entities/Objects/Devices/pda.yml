@@ -239,7 +239,7 @@
   - type: UnpoweredFlashlight
   - type: PointLight
     enabled: false
-    radius: 1.5
+    radius: 2.5 #Ratbites, PDA light buff
     softness: 5
     autoRot: true
   - type: Ringer
@@ -298,6 +298,14 @@
     proto: robot
   - type: Speech
     speechVerb: Robotic
+  - type: LanguageSpeaker # Einstein Engines - Language
+  - type: LanguageKnowledge # Einstein Engines - Language
+    speaks:
+    - TauCetiBasic
+    - RobotTalk
+    understands:
+    - TauCetiBasic
+    - RobotTalk
 
 - type: entity
   parent: BasePDA

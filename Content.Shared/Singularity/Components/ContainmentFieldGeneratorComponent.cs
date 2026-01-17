@@ -78,7 +78,7 @@ public sealed partial class ContainmentFieldGeneratorComponent : Component
     public int PowerBuffer
     {
         get => _powerBuffer;
-        set => _powerBuffer = Math.Clamp(value, 0, 25); //have this decrease over time if not hit by a bolt
+        set => _powerBuffer = Math.Clamp(value, 0, PowerMaximum); //have this decrease over time if not hit by a bolt
     }
 
     /// <summary>
@@ -86,7 +86,14 @@ public sealed partial class ContainmentFieldGeneratorComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("powerMinimum")]
-    public int PowerMinimum = 6;
+    public int PowerMinimum = 3;
+
+    /// <summary>
+    /// The maximum charge the field generator can store
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
+    public int PowerMaximum = 30; //Ratbite
 
     /// <summary>
     /// How much power should this field generator receive from a collision
@@ -94,6 +101,13 @@ public sealed partial class ContainmentFieldGeneratorComponent : Component
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("power")]
     public int PowerReceived = 3;
+
+    /// <summary>
+    /// Punch the generator into functionality!
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
+    public int PunchPowerReceived = 2; //Ratbite
 
     /// <summary>
     /// How much power should this field generator lose if not powered?

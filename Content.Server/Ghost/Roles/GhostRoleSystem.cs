@@ -43,6 +43,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Server._BRatbite.PermaBrig;
 using Content.Server.Administration.Logs;
 using Content.Server.EUI;
 using Content.Server.Ghost.Roles.Components;
@@ -95,6 +96,7 @@ public sealed class GhostRoleSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly PermaBrigManager _permaManager = default!;
 
     private uint _nextRoleIdentifier;
     private bool _needsUpdateGhostRoleCount = true;
@@ -507,6 +509,15 @@ public sealed class GhostRoleSystem : EntitySystem
 
         if (!_ghostRoles.TryGetValue(identifier, out var roleEnt))
             return;
+
+        if (!roleEnt.Comp.AllowPerma)
+        {
+            if (_permaManager.GetBrigSentence(player.UserId) > 0)
+            {
+                _popupSystem.PopupCursor(Loc.GetString("perma-deny-ghost-role"), player);
+                return;
+            }
+        }
 
         if (roleEnt.Comp.RaffleConfig is not null)
         {

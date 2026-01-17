@@ -215,6 +215,7 @@
 # SPDX-FileCopyrightText: 2024 Арт <123451459+JustArt1m@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2025 Aineias1 <dmitri.s.kiselev@gmail.com>
 # SPDX-FileCopyrightText: 2025 Armok <155400926+ARMOKS@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
@@ -224,6 +225,9 @@
 # SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
 # SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
 # SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+# SPDX-FileCopyrightText: 2025 John Willis <143434770+CerberusWolfie@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 MarkerWicker <markerWicker@proton.me>
+# SPDX-FileCopyrightText: 2025 Rouge2t7 <81053047+Sarahon@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
@@ -317,6 +321,9 @@
         clownedon: # Not 'creampied' bc I can already see Skyrat complaining about conflicts.
           True: {visible: true}
           False: {visible: false}
+  - type: WarpPoint # Rat - Better observe menu
+    follow: true
+    mob: true
   - type: StatusIcon
     bounds: -0.5,-0.5,0.5,0.5
   - type: HasJobIcons # Goobstation
@@ -417,6 +424,7 @@
   - type: SSDIndicator
   - type: StandingState
   - type: Dna
+  - type: Scent # Einstein Engines
   - type: MindContainer
     showExamineInfo: true
   - type: CanEnterCryostorage
@@ -458,6 +466,11 @@
       Male: MaleHuman
       Female: FemaleHuman
       Unsexed: MaleHuman
+  - type: LanguageKnowledge # Einstein Engines - Languages (all mobs should speak TauCeti unless otherwise specified, to prevent universal.)
+    speaks:
+    - TauCetiBasic
+    understands:
+    - TauCetiBasic
   - type: Emoting
   - type: BodyEmotes
     soundsId: GeneralBodyEmotes
@@ -483,6 +496,8 @@
     penetrateDamage: 50
     damagePenalty: 0.2
   - type: ExaminableCharacter # WWDP
+  - type: Sprinter # Goobstation
+  - type: SprintingAffectedByScale # Goobstation: port EE height/width sliders
 
 - type: entity
   save: false
@@ -552,9 +567,21 @@
         Asphyxiation: -1.0
   - type: FireVisuals
     alternateState: Standing
+  # <Goobstation>
+  - type: Carriable
   - type: FootprintOwner # Corvax-Next-Footprints
-  - type: Carriable # Goobstation
   - type: CPRTraining # Goobstation - Just give to everyone! This ain't MRP.
+  - type: BloodstreamAffectedByMass # Goobstation: port EE height/width sliders. Also, lol at the comment above.
+    power: 0.6
+  - type: FlightAffectedByScale # Goobstation: port EE height/width sliders.
+  - type: StunVisuals
+  - type: DiseaseCarrier
+  - type: Immunity
+    affectedTypes:
+    - Viral
+    - Bacterial
+    - Parasite
+  # </Goobstation>
 
 - type: entity
   save: false

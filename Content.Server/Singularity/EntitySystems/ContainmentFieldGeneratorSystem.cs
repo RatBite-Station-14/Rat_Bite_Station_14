@@ -104,6 +104,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Administration.Logs;
+using Content.Server.Chat.Systems;
 using Content.Server.Popups;
 using Content.Server.Singularity.Events;
 using Content.Shared.Construction.Components;
@@ -113,6 +114,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Singularity.Components;
 using Content.Shared.Tag;
+using Content.Shared.Weapons.Melee.Events; //Ratbite
 using Robust.Server.GameObjects;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
@@ -129,6 +131,7 @@ public sealed class ContainmentFieldGeneratorSystem : EntitySystem
     [Dependency] private readonly SharedPointLightSystem _light = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly TagSystem _tags = default!;
+    [Dependency] private readonly ChatSystem _chat = default!;
 
     public override void Initialize()
     {
@@ -143,6 +146,7 @@ public sealed class ContainmentFieldGeneratorSystem : EntitySystem
         SubscribeLocalEvent<ContainmentFieldGeneratorComponent, ComponentRemove>(OnComponentRemoved);
         SubscribeLocalEvent<ContainmentFieldGeneratorComponent, EventHorizonAttemptConsumeEntityEvent>(PreventBreach);
         SubscribeLocalEvent<ContainmentFieldGeneratorComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<ContainmentFieldGeneratorComponent, AttackedEvent>(OnMeleeHit); //Ratbite - Generate on melee hit
     }
 
     public override void Update(float frameTime)
@@ -184,6 +188,12 @@ public sealed class ContainmentFieldGeneratorSystem : EntitySystem
             ReceivePower(generator.Comp.PowerReceived, generator);
             generator.Comp.Accumulator = 0f;
         }
+    }
+
+    private void OnMeleeHit(Entity<ContainmentFieldGeneratorComponent> generator, ref AttackedEvent args) //Ratbite, generate charge on melee hit
+    {
+        ReceivePower(generator.Comp.PunchPowerReceived, generator);
+        generator.Comp.Accumulator = 0f;
     }
 
     private void OnExamine(EntityUid uid, ContainmentFieldGeneratorComponent component, ExaminedEvent args)
@@ -328,6 +338,9 @@ public sealed class ContainmentFieldGeneratorSystem : EntitySystem
             RemoveConnections(generator);
         }
 
+        var chargeEvent = new GeneratorChargeChangedEvent(generator, generator); // Ratbite
+        RaiseLocalEvent(generator, ref chargeEvent, broadcast: true); // Ratbite
+
         ChangePowerVisualizer(power, generator);
     }
 
@@ -435,6 +448,13 @@ public sealed class ContainmentFieldGeneratorSystem : EntitySystem
                 fieldXForm.LocalRotation = rotatedAngle;
             }
 
+            if (TryComp<ContainmentFieldComponent>(newField, out var comp)) // Ratbite - Start
+            {
+                comp.BoundGenerators = new List<Entity<ContainmentFieldGeneratorComponent>>();
+                comp.BoundGenerators.Add(firstGen);
+                comp.BoundGenerators.Add(secondGen);
+            } // Ratbite - End
+
             fieldList.Add(newField);
             currentOffset += dirVec;
         }
@@ -480,14 +500,12 @@ public sealed class ContainmentFieldGeneratorSystem : EntitySystem
     private void ChangePowerVisualizer(int power, Entity<ContainmentFieldGeneratorComponent> generator)
     {
         var component = generator.Comp;
-        _visualizer.SetData(generator, ContainmentFieldGeneratorVisuals.PowerLight, component.PowerBuffer switch
-        {
-            <= 0 => PowerLevelVisuals.NoPower,
-            >= 25 => PowerLevelVisuals.HighPower,
-            _ => (component.PowerBuffer < component.PowerMinimum)
-                ? PowerLevelVisuals.LowPower
-                : PowerLevelVisuals.MediumPower
-        });
+        var visual = PowerLevelVisuals.NoPower; //Ratbite - Start
+        if (component.PowerBuffer > component.PowerMinimum)
+            visual = PowerLevelVisuals.MediumPower;
+        if (component.PowerBuffer == component.PowerMaximum)
+            visual = PowerLevelVisuals.HighPower;
+        _visualizer.SetData(generator, ContainmentFieldGeneratorVisuals.PowerLight, visual); //Ratbite - End
     }
 
     /// <summary>

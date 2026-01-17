@@ -18,12 +18,15 @@
 
 using System.Threading;
 using Content.Shared.DeviceLinking;
+using Content.Shared.Radio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Dictionary;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
 
 namespace Content.Shared.Singularity.Components;
 
@@ -117,6 +120,18 @@ public sealed partial class EmitterComponent : Component
     /// </summary>
     [DataField("setTypePorts", customTypeSerializer: typeof(PrototypeIdDictionarySerializer<string, SinkPortPrototype>))]
     public Dictionary<string, string> SetTypePorts = new();
+
+    [DataField]
+    public TimeSpan PowerOffDelay = TimeSpan.FromSeconds(0);
+
+    [DataField(customTypeSerializer:typeof(TimeOffsetSerializer))]
+    public TimeSpan NextWarning = TimeSpan.Zero;
+
+    [DataField]
+    public TimeSpan WarningCooldown = TimeSpan.FromSeconds(15);
+
+    [DataField]
+    public HashSet<ProtoId<RadioChannelPrototype>> WarningChannels = new();
 }
 
 [NetSerializable, Serializable]

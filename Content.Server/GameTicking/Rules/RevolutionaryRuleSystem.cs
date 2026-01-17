@@ -219,7 +219,7 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
 
         var alwaysConvertible = HasComp<AlwaysRevolutionaryConvertibleComponent>(ev.Target);
 
-        if (!_mind.TryGetMind(ev.Target, out var mindId, out var mind) && !alwaysConvertible)
+        if (!_mind.TryGetMind(ev.Target, out var mindId, out var mind))
             return;
 
         if (HasComp<RevolutionaryComponent>(ev.Target) ||
@@ -231,7 +231,7 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
             HasComp<HereticComponent>(ev.Target) ||
             HasComp<ChangelingComponent>(ev.Target)) // goob edit - no more ling or heretic revs
         {
-            if(ev.User != null)
+            if (ev.User != null)
                 _popup.PopupEntity("The conversion failed!", ev.User.Value, ev.User.Value);
 
             return;
@@ -344,7 +344,7 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
                     continue;
 
                 // remove their antag role
-                _role.MindTryRemoveRole<RevolutionaryRoleComponent>(mindId);
+                _role.MindRemoveRole<RevolutionaryRoleComponent>(mindId);
 
                 // make it very obvious to the rev they've been deconverted since
                 // they may not see the popup due to antag and/or new player tunnel vision

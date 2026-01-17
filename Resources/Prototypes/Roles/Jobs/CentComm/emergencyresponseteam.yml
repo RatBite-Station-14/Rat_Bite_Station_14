@@ -139,7 +139,7 @@
     back: ClothingBackpackERTLeader
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     head: ClothingHeadHelmetERTLeader
-    neck: ExecutiveIDCard # Goobstation - Executive Access!
+ #   neck: ExecutiveIDCard # Goobstation - Executive Access!
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
@@ -163,7 +163,7 @@
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
-    neck: ExecutiveIDCard # Goobstation - Executive Access!
+  #  neck: ExecutiveIDCard # Goobstation - Executive Access!
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
@@ -238,7 +238,7 @@
     - FoodBakedBunHotX
     - Nullrod # Goobstation
     - Lighter
-    - ExecutiveIDCard # Goobstation - Executive Access!
+ #   - ExecutiveIDCard # Goobstation - Executive Access!
 
 - type: startingGear
   id: ERTChaplainGearEVA
@@ -271,7 +271,7 @@
     - FoodBakedBunHotX
     - Lighter
     - Nullrod # Goobstation
-    - ExecutiveIDCard # Goobstation - Executive Access!
+#    - ExecutiveIDCard # Goobstation - Executive Access!
 
 # Engineer
 - type: job
@@ -302,7 +302,7 @@
     back: ClothingBackpackERTEngineer
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     head: ClothingHeadHelmetERTEngineer
-    neck: ExecutiveIDCard # Goobstation - Executive Access!
+#    neck: ExecutiveIDCard # Goobstation - Executive Access!
     eyes: ClothingEyesGlassesMeson
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
@@ -330,7 +330,7 @@
     jumpsuit: ClothingUniformJumpsuitERTEngineer
     back: ClothingBackpackERTEngineer
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
-    neck: ExecutiveIDCard # Goobstation - Executive Access!
+ #   neck: ExecutiveIDCard # Goobstation - Executive Access!
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesMeson
     gloves: ClothingHandsGlovesCombat
@@ -382,7 +382,7 @@
     back: ClothingBackpackERTSecurity
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     head: ClothingHeadHelmetERTSecurity
-    neck: ExecutiveIDCard # Goobstation - Executive Access!
+#    neck: ExecutiveIDCard # Goobstation - Executive Access!
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
@@ -407,7 +407,7 @@
     back: ClothingBackpackERTSecurity
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     mask: ClothingMaskGasERT
-    neck: ExecutiveIDCard # Goobstation - Executive Access!
+#    neck: ExecutiveIDCard # Goobstation - Executive Access!
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTSecurity
@@ -481,7 +481,7 @@
     back: ClothingBackpackERTMedical
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     head: ClothingHeadHelmetERTMedic
-    neck: ExecutiveIDCard # Goobstation - Executive Access!
+#    neck: ExecutiveIDCard # Goobstation - Executive Access!
     eyes: ClothingEyesGlassesMedSec # Goobstation
     gloves: ClothingHandsGlovesNitrile
     outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
@@ -509,7 +509,7 @@
     back: ClothingBackpackERTMedical
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     mask: ClothingMaskGasERT
-    neck: ExecutiveIDCard # Goobstation - Executive Access!
+#    neck: ExecutiveIDCard # Goobstation - Executive Access!
     eyes: ClothingEyesGlassesMedSec # Goobstation
     gloves: ClothingHandsGlovesNitrile
     outerClothing: ClothingOuterHardsuitERTMedical
@@ -557,7 +557,7 @@
     back: ClothingBackpackERTJanitor
     shoes: ClothingShoesGaloshes
     head: ClothingHeadHelmetERTJanitor
-    neck: ExecutiveIDCard # Goobstation - Executive Access!
+#    neck: ExecutiveIDCard # Goobstation - Executive Access!
     gloves: ClothingHandsGlovesColorPurple
     outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
     id: ERTJanitorPDA
@@ -580,7 +580,7 @@
     back: ClothingBackpackERTJanitor
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     mask: ClothingMaskGasERT
-    neck: ExecutiveIDCard # Goobstation - Executive Access!
+#    neck: ExecutiveIDCard # Goobstation - Executive Access!
     gloves: ClothingHandsGlovesColorPurple
     outerClothing: ClothingOuterHardsuitERTJanitor
     id: ERTJanitorPDA

@@ -22,6 +22,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Atmos;
+using Content.Shared.Atmos.Monitor;
 using Content.Shared.Atmos.Piping.Unary.Components;
 using Content.Shared.DeviceLinking;
 using Content.Shared.Guidebook;
@@ -57,7 +58,7 @@ namespace Content.Server.Atmos.Piping.Unary.Components
         public VentPressureBound PressureChecks { get; set; } = VentPressureBound.ExternalBound;
 
         [DataField]
-        public bool UnderPressureLockout { get; set; } = false;
+        public LockoutState VentLockout { get; set; } = LockoutState.None;
 
         /// <summary>
         ///     In releasing mode, do not pump when environment pressure is below this limit.
@@ -84,6 +85,18 @@ namespace Content.Server.Atmos.Piping.Unary.Components
         /// <summary>
         /// Is the vent pressure lockout currently manually disabled?
         /// </summary>
+
+        [DataField]
+        public HashSet<Gas> GasLockoutGases = new(GasVentScrubberData.DefaultFilterGases);
+
+        [DataField("temperatureLockoutThresholdId", customTypeSerializer: (typeof(PrototypeIdSerializer<AtmosAlarmThresholdPrototype>)))] //Ratbite - Temperature Lockout
+        public string? TemperatureLockoutThresholdId; //Ratbite - Temperature Lockout
+
+        [DataField("temperatureLockoutThreshold")] //Ratbite - Temperature Lockout
+        public AtmosAlarmThreshold? TemperatureLockoutThreshold; //Ratbite - Temperature Lockout
+
+        public float Temperature { get; set; }
+
         [DataField]
         public bool IsPressureLockoutManuallyDisabled = false;
         /// <summary>
@@ -188,7 +201,9 @@ namespace Content.Server.Atmos.Piping.Unary.Components
                 PressureChecks = PressureChecks,
                 ExternalPressureBound = ExternalPressureBound,
                 InternalPressureBound = InternalPressureBound,
-                PressureLockoutOverride = PressureLockoutOverride
+                PressureLockoutOverride = PressureLockoutOverride,
+                GasLockoutGases = GasLockoutGases, //Ratbite - Gas Lockout
+                TemperatureLockoutThreshold = TemperatureLockoutThreshold ?? new AtmosAlarmThreshold(), //Ratbite - Temperature Lockout
             };
         }
 
@@ -201,6 +216,8 @@ namespace Content.Server.Atmos.Piping.Unary.Components
             ExternalPressureBound = data.ExternalPressureBound;
             InternalPressureBound = data.InternalPressureBound;
             PressureLockoutOverride = data.PressureLockoutOverride;
+            GasLockoutGases = data.GasLockoutGases; //Ratbite - Gas Lockout
+            TemperatureLockoutThreshold = data.TemperatureLockoutThreshold; //Ratbite - Temperature Lockout
         }
 
         #region GuidebookData
@@ -209,5 +226,14 @@ namespace Content.Server.Atmos.Piping.Unary.Components
         public float DefaultExternalBound => Atmospherics.OneAtmosphere;
 
         #endregion
+    }
+
+    public enum LockoutState : byte //Ratbite - Atmos Safety
+    {
+        None,
+        Override,
+        Pressure,
+        Temperature, //Ratbite - Temperature Lockout
+        Gas
     }
 }

@@ -38,6 +38,7 @@
     damage:
       types:
         Slash: 5
+        Poison: 0.2 #Ratbite
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
   - type: Sprite

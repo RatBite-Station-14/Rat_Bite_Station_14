@@ -47,17 +47,17 @@ public sealed partial class AbductorSystem : SharedAbductorSystem
     private void OnReturn(AbductorReturnToShipEvent ev)
     {
         EnsureComp<AbductorScientistComponent>(ev.Performer, out var abductorScientistComponent);
-        AddTeleportationEffect(ev.Performer, 3.0f, TeleportationEffectEntity, out var effectEnt, true, true);
+        AddTeleportationEffect(ev.Performer, 6.0f, TeleportationEffectEntity, out var effectEnt, true, true);
 
         if (abductorScientistComponent.SpawnPosition.HasValue)
         {
             var effect = _entityManager.SpawnEntity(TeleportationEffect, abductorScientistComponent.SpawnPosition.Value);
             EnsureComp<TimedDespawnComponent>(effect, out var despawnComp);
-            despawnComp.Lifetime = 3.0f;
+            despawnComp.Lifetime = 6.0f;
             _audioSystem.PlayPvs("/Audio/_Shitmed/Misc/alien_teleport.ogg", effect);
         }
 
-        var doAfter = new DoAfterArgs(EntityManager, ev.Performer, TimeSpan.FromSeconds(3), new AbductorReturnDoAfterEvent(), ev.Performer)
+        var doAfter = new DoAfterArgs(EntityManager, ev.Performer, TimeSpan.FromSeconds(6), new AbductorReturnDoAfterEvent(), ev.Performer)
         {
             MultiplyDelay = false,
         };

@@ -36,7 +36,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 25 #RAT
+        Piercing: 19 #RatBite
 
 - type: entity
   id: BulletPistolPractice
@@ -70,5 +70,5 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 10 #RAT
-        Piercing: 20 #RAT
+        Radiation: 10 #RatBite
+        Piercing: 14 #RatBite

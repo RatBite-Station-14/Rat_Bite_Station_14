@@ -40,12 +40,18 @@
   order: 3
   lawString: law-crewsimov-3
 
+- type: siliconLaw
+  id: Crewsimov4
+  order: 4
+  lawString: law-crewsimov-4
+
 - type: siliconLawset
   id: Crewsimov
   laws:
   - Crewsimov1
   - Crewsimov2
   - Crewsimov3
+  - Crewsimov4
   obeysTo: laws-owner-crew
 
 # Goobstation - AI/borg law changes - borgs obeying AI
@@ -56,6 +62,7 @@
   - Crewsimov1
   - Crewsimov2
   - Crewsimov3
+  - Crewsimov4
   obeysTo: laws-owner-crew
 
 # Corporate

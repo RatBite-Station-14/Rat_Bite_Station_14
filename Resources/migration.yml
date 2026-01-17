@@ -862,8 +862,10 @@ LightTree06: LightTree
 
 # 2024-12-22 # Lavaland Change: Migrations
 VendingMachineRestockSalvageEquipment: null
-ComputerSalvageExpedition: ComputerShuttleMiningLavaland
-SalvageExpeditionsComputerCircuitboard: LavalandShuttleConsoleCircuitboard
+# ComputerSalvageExpedition: ComputerShuttleMiningLavaland
+# SalvageExpeditionsComputerCircuitboard: LavalandShuttleConsoleCircuitboard
+
+#Ratbite, removed because this was cringe and stupid. Just ctrl h replace things you chuds.
 
 # 2025-01-06
 BorgModuleRadiationDetection: null
@@ -918,10 +920,9 @@ ToxinChemistryBottle: ChemistryBottleToxin
 CargoMailTeleporter: MailTeleporter
 ClothingMaskBlushingMime: ClothingMaskSexyMime
 ClothingMaskBlushingClown: ClothingMaskSexyMime
-ClothingNeckGoldAutismPin: ClothingNeckAutismPin
 MachineMaterialSilo: null
 CrateMaterialSilo: null
-  
+
 # 2025-03-29
 ClothingBackpackDuffelSyndicateRaidBundle: ClothingBackpackSyndicateRaidBundle
 
@@ -980,6 +981,24 @@ PlushieBlackburnKobliska: null
 # 2025-06-13 Goobstation
 BroomWitch: Broomstick
 
+# 2025-05-02
+CigPackMixedNasty: CigPackMixed
+CigPackMixedMedical: CigPackMixed
+CigaretteIpecac: CigaretteNutriment
+CigarettePax: CigaretteSaline
+CigaretteTHC: CigaretteRobustHarvest
+CigaretteMuteToxin: CigaretteSodiumPolyacrylate
+CigaretteSpaceDrugs: CigaretteLipolicide
+CigaretteMilk: CigaretteHaloperidol
+CigaretteBread: CigaretteBbqSauce
+
+# 2025-05-09
+ClothingOuterHardsuitBasic: ClothingOuterHardsuitEVA
+ClothingHeadHelmetHardsuitBasic: null
+SuitStorageBasic: SuitStorageEVA
+
+# 2025-05-18
+ClothingNeckCloakMiner: null
 #2025 independence day Ratbite removals
 VehicleATV: null
 VehicleSecway: null

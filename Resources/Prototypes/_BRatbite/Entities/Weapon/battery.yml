@@ -1,0 +1,138 @@
+- type: entity
+  name: EP-12 Energy Pistol
+  parent: [BaseWeaponCustomCellSmall, BaseSecurityContraband]
+  id: WeaponEnergyCellPistol
+  description: A Nanotrasen energy pistol meant to resemble and be an alternative to the standard issue MK-58. Part of one of Nanotrasen’s ongoing cost-saving initiatives to cut material waste without sacrificing much stopping power.
+  components:
+  - type: AmmoCounter
+  - type: Item
+    sprite: _BRatBites/Objects/Weapon/Battery/ep-12energypistol.rsi
+  - type: Sprite
+    sprite: _BRatBites/Objects/Weapon/Battery/ep-12energypistol.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+      shader: unshaded
+  - type: MagazineVisuals
+    magState: mag
+    steps: 3
+    zeroVisible: true
+    zeroNoAmmo: true
+  - type: Clothing
+    sprite: _BRatBites/Objects/Weapon/Battery/ep-12energypistol.rsi
+    slots:
+    - Belt
+    - suitStorage
+  - type: Multishot
+    spreadAddition: 10
+  - type: Gun
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
+    soundEmpty:
+      path: /Audio/_DV/Weapons/Guns/Empty/dry_fire.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: EnergyMagPistolLethal
+        insertSound: /Audio/Weapons/Guns/MagIn/revolver_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/revolver_magout.ogg
+        whitelist:
+          tags:
+            - EnergyPistolMagAmmo
+  - type: EmitSoundOnPickup
+    sound:
+      collection: LasersPickUp
+  - type: EmitSoundOnDrop
+    sound:
+      collection: LasersDrop
+  - type: EmitSoundOnLand
+    sound:
+      collection: LasersDrop
+
+- type: entity # this is pure yaml slop fr -cr
+  name: PEW-01 Personal Energy Pistol
+  parent: [BaseWeaponBatterySmall, BaseSecurityContraband]
+  id: WeaponEnergyGunLockedEnergyPistol
+  description: A cheap energy pistol with a mindshield locked trigger, a stun mode as its default state, and a relatively weak lethal energy bolt; Purpose made for NT cadets just getting their feet wet in the station security department.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Objects/Weapon/Battery/pew-1energypistol.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mode
+      shader: unshaded
+      color: "#00B2FF"
+      map: [ "Firemode" ]
+    - state: mag-unshaded-3
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - suitStorage
+    - belt
+  - type: Gun
+    soundGunshot:
+      path: /Audio/_DV/Weapons/Guns/Gunshots/laser.ogg
+    soundEmpty:
+      path: /Audio/_DV/Weapons/Guns/Empty/dry_fire.ogg
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 1000
+  - type: ProjectileBatteryAmmoProvider
+    proto: PistolBulletEnergyGunDisablerWeak
+    fireCost: 50
+  - type: AmmoSelector
+    prototypes:
+      - BulletEnergyPistolDisabler
+      - BulletEnergyPistolLethalWeak
+  - type: UserInterface
+    interfaces:
+      enum.AmmoSelectorUiKey.Key:
+        type: AmmoSelectorMenuBoundUserInterface
+  - type: ActivatableUI
+    inHandsOnly: true
+    key: enum.AmmoSelectorUiKey.Key
+  - type: ItemToggle
+    activated: true
+    onActivate: false
+    onUse: false
+    wieldToggle: false
+  - type: MagazineVisuals
+    magState: mag
+    steps: 4
+    zeroVisible: true
+  - type: ItemToggleColor
+  - type: Appearance
+  - type: ToggleableLightVisuals
+    spriteLayer: Firemode
+    inhandVisuals:
+      left:
+      - state: mode-inhand-left
+        shader: unshaded
+      right:
+      - state: mode-inhand-right
+        shader: unshaded
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: StaticPrice
+    price: 750
+  - type: FiringPin
+  - type: Lock
+    locked: true
+  - type: AccessReader
+    access: [ [ "Security" ] ]
+  - type: EmitSoundOnPickup
+    sound:
+      collection: LasersPickUp
+  - type: EmitSoundOnDrop
+    sound:
+      collection: LasersDrop
+  - type: EmitSoundOnLand
+    sound:
+      collection: LasersDrop

@@ -33,7 +33,7 @@
       refuelMaterialID: WoodPlank
       glowDuration: 100
       refuelMaximumDuration: 205
-      fadeOutDuration: 4
+      fadeOutDuration: 7 #Ratbite
       iconStateSpent: torch_spent
       turnOnBehaviourID: turn_on
       fadeOutBehaviourID: fade_out
@@ -65,8 +65,8 @@
     - type: PointLight
       enabled: false
       color: "#E25822"
-      radius: 1.0
-      energy: 5.0
+      radius: 1.5 #Ratbite
+      energy: 5.5 #Ratbite
       netsync: false
     - type: IgnitionSource
       temperature: 400

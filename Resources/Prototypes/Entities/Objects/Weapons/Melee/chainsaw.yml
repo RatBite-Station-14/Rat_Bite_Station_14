@@ -41,7 +41,7 @@
       types:
         Slash: 2
         Blunt: 2
-        Structural: 4
+        Structural: 5 #Ratbite
     soundHit:
       path: /Audio/Weapons/chainsaw.ogg
       params:
@@ -49,8 +49,8 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Slash: 4
-        Structural: 4
+        Slash: 3 #Ratbite
+        Structural: 5 #Ratbite, HERES JOHNNY
   - type: Item
     size: Normal
     sprite: Objects/Weapons/Melee/chainsaw.rsi

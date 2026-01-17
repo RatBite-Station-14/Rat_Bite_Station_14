@@ -45,6 +45,35 @@ SPDX-License-Identifier: MIT
                 <BoxContainer Orientation="Horizontal" Margin ="0 0 0 2">
                     <Button Name="CCopySettings" Text="{Loc 'air-alarm-ui-widget-copy'}" ToolTip="{Loc 'air-alarm-ui-widget-copy-tooltip'}" />
                 </BoxContainer>
+                <!-- Lowerer row: every single gas -->
+                <Collapsible Margin="2 2 2 2">
+                    <CollapsibleHeading Title="Incoming Gas Lockout" />
+                    <CollapsibleBody Margin="20 0 0 0">
+                        <!-- Assmos changes start -->
+                        <BoxContainer Orientation="Vertical">
+                            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 0 0 5">
+                                <GridContainer HorizontalExpand="True" Columns="3" Margin="0 5 0 0">
+                                    <Button Name="CSelectAllButton" HorizontalExpand="True" Text="{Loc 'Select All'}" />
+                                    <Button Name="CDeselectAllButton" HorizontalExpand="True" Text="{Loc 'Deselect All'}" />
+                                    <Control HorizontalExpand="True" />
+                                </GridContainer>
+                            </BoxContainer>
+                            <GridContainer HorizontalExpand="True" Name="CGasContainer" Columns="3" Margin="0 5 0 0" /> <!-- Revert to just this line to undo changes -->
+                        </BoxContainer>
+                        <!-- Assmos changes end -->
+                    </CollapsibleBody>
+                </Collapsible>
+                <!-- Lowerest row: temperature lockout -->
+                <Collapsible Margin="2 2 2 2">
+                    <CollapsibleHeading Title="Incoming Temperature Lockout" />
+                    <CollapsibleBody Margin="20 0 0 0">
+                        <!-- Assmos changes start -->
+                        <BoxContainer Orientation="Vertical" Name="TemperatureThresholdContainer">
+
+                        </BoxContainer>
+                        <!-- Assmos changes end -->
+                    </CollapsibleBody>
+                </Collapsible>
             </BoxContainer>
         </CollapsibleBody>
     </Collapsible>

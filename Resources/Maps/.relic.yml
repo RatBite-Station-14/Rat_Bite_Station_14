@@ -13236,13 +13236,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 33.5,30.5
       parent: 2
-- proto: CaptainIDCard
-  entities:
-  - uid: 2373
-    components:
-    - type: Transform
-      pos: 59.49891,26.586502
-      parent: 2
 - proto: CaptainSabre
   entities:
   - uid: 2407

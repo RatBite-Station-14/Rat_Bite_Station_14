@@ -1,0 +1,12 @@
+- type: entity
+  parent: [ClothingUniformBase, BaseSecurityContraband]
+  id: ClothingUniformJumpsuitClassicSecurity
+  name: classic security jumpsuit
+  description: A jumpsuit made of strong material, providing robust protection.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Uniforms/RatbiteAltUniforms/SecClassic.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Uniforms/RatbiteAltUniforms/SecClassic.rsi
+
+

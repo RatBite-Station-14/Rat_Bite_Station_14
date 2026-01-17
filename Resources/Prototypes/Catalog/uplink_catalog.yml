@@ -152,6 +152,8 @@
 # SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
 # SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Ilya246 <ilyukarno@gmail.com>
+# SPDX-FileCopyrightText: 2025 LuciferEOS <stepanteliatnik2022@gmail.com>
+# SPDX-FileCopyrightText: 2025 LuciferMkshelter <154002422+LuciferEOS@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 IrisTheAmped <iristheamped@gmail.com>
 # SPDX-FileCopyrightText: 2025 LuciferMkshelter <154002422+LuciferEOS@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Minemoder5000 <minemoder50000@gmail.com>
@@ -168,12 +170,15 @@
 # SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Theodore Lukin <66275205+pheenty@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 TurboTracker <130304754+TurboTrackerss14@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Unkn0wn_Gh0st <shadowstalkermll@gmail.com>
 # SPDX-FileCopyrightText: 2025 Velcroboy <107660393+IamVelcroboy@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Velcroboy <107660393+iamvelcroboy@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Zachary Higgs <compgeek223@gmail.com>
 # SPDX-FileCopyrightText: 2025 crasg <109207982+Scruq445@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 hyperDelegate <zachary1064@gmail.com>
 # SPDX-FileCopyrightText: 2025 keronshb <54602815+keronshb@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 loltart <159829224+loltart@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 loltart <lo1tartyt@gmail.com>
 # SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
 # SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 terminatorbo <kovalevb059@gmail.com>
@@ -983,7 +988,10 @@
     Telecrystal: 20 # goob
   categories:
     - UplinkDeception
-
+  conditions: # EE Plasmeme Change: Plasmamen get another listing.
+  - !type:BuyerSpeciesCondition
+    blacklist:
+    - Plasmaman
 
 # - type: listing
 #   id: UplinkGigacancerScanner
@@ -1046,7 +1054,7 @@
   description: uplink-radio-jammer-desc
   productEntity: RadioJammer
   cost:
-    Telecrystal: 20 # goob
+    Telecrystal: 5 # goob
   categories:
   - UplinkDisruption
 
@@ -1151,29 +1159,33 @@
   description: uplink-antimov-law-desc
   productEntity: AntimovCircuitBoard
   cost:
-    Telecrystal: 50 # goob x2
+    Telecrystal: 50 # goob
   categories:
   - UplinkDisruption
-  conditions:
-  - !type:StoreWhitelistCondition
-     blacklist:
-       tags:
-       - NukeOpsUplink
+# Goob - Antimov was given the same price for traitors and nukies
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#     blacklist:
+#       tags:
+#       - NukeOpsUplink
 
-- type: listing
-  id: UplinkNukieAntimovCircuitBoard
-  name: uplink-antimov-law-name
-  description: uplink-antimov-law-desc
-  productEntity: AntimovCircuitBoard
-  cost:
-    Telecrystal: 50 # goob x2
-  categories:
-  - UplinkDisruption
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
+# Goob - Having two listings with the same price breaks it
+#- type: listing
+#  id: UplinkNukieAntimovCircuitBoard
+#  name: uplink-antimov-law-name
+#  description: uplink-antimov-law-desc
+#  productEntity: AntimovCircuitBoard
+#  cost:
+#    Telecrystal: 50 # goob x2
+#  categories:
+#  - UplinkDisruption
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    whitelist:
+#      tags:
+#      - NukeOpsUplink
+
+
 
 - type: listing
   id: UplinkSurplusBundle
@@ -1216,6 +1228,26 @@
       - SurplusBundle
 
 - type: listing
+  id: UplinkStarterKit
+  name: uplink-starter-kit-name
+  description: uplink-starter-kit-desc
+  productEntity: ClothingBackpackDuffelSyndicateFilledStarterKit
+  cost:
+    Telecrystal: 200
+  categories:
+  - UplinkDisruption
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+        - NukeOpsUplink
+    - !type:BuyerWhitelistCondition
+      blacklist:
+        components:
+        - SurplusBundle
+
+
+- type: listing
   id: UplinkSingarityBeacon
   name: uplink-singularity-beacon-name
   description: uplink-singularity-beacon-desc
@@ -1238,21 +1270,21 @@
 
 # Allies
 
-- type: listing
-  id: UplinkHoloparaKit
-  name: uplink-holopara-kit-name
-  description: uplink-holopara-kit-desc
-  icon: { sprite: /Textures/Objects/Misc/guardian_info.rsi, state: icon }
-  productEntity: BoxHoloparasite
-  cost:
-    Telecrystal: 70 # goob
-  categories:
-  - UplinkAllies
-  conditions:
-  - !type:StoreWhitelistCondition
-    blacklist:
-      tags:
-      - NukeOpsUplink
+# type: listing RATBITE Removed because it was crashing the server. If someone PRs the fix I'll be happy to re-add it.
+# id: UplinkHoloparaKit
+# name: uplink-holopara-kit-name
+# description: uplink-holopara-kit-desc
+# icon: { sprite: /Textures/Objects/Misc/guardian_info.rsi, state: icon }
+# productEntity: BoxHoloparasite
+# cost:
+#   Telecrystal: 70 # goob
+# categories:
+# - UplinkAllies
+# conditions:
+# - !type:StoreWhitelistCondition
+#   blacklist:
+#     tags:
+#     - NukeOpsUplink
 
 
 - type: listing
@@ -2141,20 +2173,20 @@
     - Clown
 
 
-- type: listing
-  id: UplinkHoloclownKit
-  name: uplink-holoclown-kit-name
-  description: uplink-holoclown-kit-desc
-  icon: { sprite: /Textures/Objects/Fun/figurines.rsi, state: holoclown }
-  productEntity: BoxHoloclown
-  cost:
-    Telecrystal: 60 # goob
-  categories:
-  - UplinkJob
-  conditions:
-  - !type:BuyerJobCondition
-    whitelist:
-    - Clown
+# type: listing
+# id: UplinkHoloclownKit
+# name: uplink-holoclown-kit-name
+# description: uplink-holoclown-kit-desc
+# icon: { sprite: /Textures/Objects/Fun/figurines.rsi, state: holoclown }
+# productEntity: BoxHoloclown
+# cost:
+#   Telecrystal: 60 # goob
+# categories:
+# - UplinkJob
+# conditions:
+# - !type:BuyerJobCondition
+#   whitelist:
+#   - Clown
 
 
 - type: listing

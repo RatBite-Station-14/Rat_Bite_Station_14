@@ -93,7 +93,7 @@
     pryPowered: true
     useSound: /Audio/Items/jaws_pry.ogg
   - type: UseDelay # Goobstation - For insta prying
-    delay: 1
+    delay: 0.8 #Ratbites, slightly faster recharge than crowbar
   - type: MultipleTool
     statusShowBehavior: true
     entries:
@@ -119,7 +119,7 @@
   - type: Tweezers # Shitmed
     speed: 0.6
   - type: Retractor # Shitmed
-    speed: 0.45
+    speed: 0.6 #Ratbites, considering its a jaws bro :sob:
   - type: Hemostat # Shitmed
     speed: 0.7
   - type: SurgeryTool # Shitmed

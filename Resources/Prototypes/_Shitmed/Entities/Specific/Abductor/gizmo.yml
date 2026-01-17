@@ -18,15 +18,15 @@
     state: icon
   - type: Item
     sprite: _Shitmed/Objects/Misc/gizmo.rsi
-  - type: RestrictInteractionByUserTag
+  - type: RestrictInteractionByUserTag      #Ratbite: its not pointless; it prevents other races (like humans, yowie, oni, etc.) from using them
     contains:
-    - AbductorScientist
+    - Abductor
     messages:
     - abductors-gizmo-restricted-1
     - abductors-gizmo-restricted-2
   - type: RestrictMeleeByUserTag
     contains:
-    - AbductorScientist
+    - Abductor
     messages:
     - abductors-gizmo-restricted-1
     - abductors-gizmo-restricted-2

@@ -209532,14 +209532,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -25.5,36.5
       parent: 2
-- proto: PosterLegitKSLeaders
-  entities:
-  - uid: 18188
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -18.5,75.5
-      parent: 2
   - uid: 23380
     components:
     - type: Transform

@@ -106,6 +106,7 @@
   color: "#A46106"
   roles:
   - CargoTechnician
+  - CargoInsurance #Ratbite
   - Quartermaster
   - SalvageSpecialist
 
@@ -160,6 +161,7 @@
   - SpecialOperationsOfficer
   - Diplomat
   - GovernmentMan # Goobstation - End
+  - RedsightOverseer # Ratbite
   editorHidden: true
   weight: 120
 
@@ -189,6 +191,7 @@
   - ERTEngineer
   - DeathSquad
   - HecuOperative
+  - RedsightOverseer # Ratbite
   primary: false
   weight: 100
 
@@ -200,6 +203,7 @@
   roles:
   - AtmosphericTechnician
   - ChiefEngineer
+  - EngiSentry #Ratbite
   - StationEngineer
   - TechnicalAssistant
 
@@ -211,10 +215,12 @@
   roles:
   - Chemist
   - ChiefMedicalOfficer
+  - MedOrderly #Ratbite
   - MedicalDoctor
   - MedicalIntern
   - Psychologist
   - Paramedic
+  - Virologist # Gooby goob ba gooby goob ba
 
 - type: department
   id: Security
@@ -229,6 +235,7 @@
   - Detective
   - Warden
   - Brigmedic # Goob
+  - RedsightOverseer # Ratbite
 
 - type: department
   id: Science
@@ -237,6 +244,7 @@
   color: "#D381C9"
   roles:
   - ResearchDirector
+  - ScicurityGuard # Ratbite
   - Scientist
   - ResearchAssistant
 

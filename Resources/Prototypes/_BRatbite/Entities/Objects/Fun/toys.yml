@@ -1,0 +1,89 @@
+- type: entity
+  parent: BasePlushie
+  id: PlushieAxer
+  name: axer plushie
+  description: friend-shaped creature :>
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Objects/Fun/toys.rsi
+    state: axerplushie
+  - type: Item
+    heldPrefix: axerplushie
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Nyanotrasen/Voice/Felind/cat_meow1.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Nyanotrasen/Voice/Felind/cat_meow2.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Nyanotrasen/Voice/Felind/cat_mew1.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/Nyanotrasen/Voice/Felind/cat_hiss1.ogg
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 0
+    soundHit:
+      path: /Audio/Nyanotrasen/Voice/Felind/cat_scream2
+
+- type: entity
+  parent: BasePlushie
+  id: MmarPlushie
+  name: mmarwaarr plushie
+  description: A true paramed rolemodel.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Objects/Fun/toys.rsi
+    state: mmarwaarrplushie
+  - type: Item
+    heldPrefix: mmarwaarrplushie
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 0
+    soundHit:
+      path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
+
+- type: entity
+  parent: BasePlushie
+  id: SmokeyPlushie
+  name: smokey plushie
+  description: We made smokey into a marketable plushie.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Objects/Fun/toys.rsi
+    state: smokeyplushie
+  - type: Item
+    heldPrefix: smokeyplushie
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Voice/Moth/moth_scream.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Voice/Moth/moth_laugh.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Voice/Moth/moth_chitter.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/Voice/Moth/moth_squeak.ogg
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 0
+    soundHit:
+      path: /Audio/Voice/Moth/moth_scream.ogg

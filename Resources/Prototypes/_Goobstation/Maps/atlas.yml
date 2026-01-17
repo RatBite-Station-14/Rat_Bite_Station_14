@@ -39,7 +39,7 @@
 - type: gameMap
   id: Atlas
   mapName: Atlas
-  mapPath: /Maps/_Goobstation/atlas.yml
+  mapPath: /Maps/_BRatbite/Ratbite_Supported/atlas.yml
   minPlayers: 5
   maxPlayers: 20
   stations:
@@ -68,28 +68,33 @@
             ServiceWorker: [ 1, 1 ]
             #engineering
             ChiefEngineer: [ 1, 1 ]
+            EngiSentry: [ 1, 1 ] #ratbite
             AtmosphericTechnician: [ 2, 2 ]
             StationEngineer: [ 2, 2 ]
             TechnicalAssistant: [ 1, 3 ]
             #medical
             ChiefMedicalOfficer: [ 1, 1 ]
             Chemist: [ 1, 1 ]
+            MedOrderly: [ 1, 1 ] #ratbite
             MedicalDoctor: [ 2, 2 ]
             MedicalIntern: [ 1, 3 ]
             #science
             ResearchDirector: [ 1, 1 ]
+            ScicurityGuard: [ 1, 1 ] #ratbite
             Scientist: [ 2, 2 ]
             ResearchAssistant: [ 1, 3 ]
             Borg: [ 2, 2 ]
             #security
             HeadOfSecurity: [ 1, 1 ]
-            Warden: [ 1, 1 ]
+            RedsightOverseer: [ 1, 1 ] #Ratbite
+            Warden: [ 2, 2 ] #Ratbite de protaganist-ify him!!!
+            Detective: [ 2, 2 ] #Ratbite disco elysium/sherlock larp
             SecurityOfficer: [ 3, 3 ]
             SecurityCadet: [ 1, 3 ]
-            Detective: [ 1, 1 ]
             Brigmedic: [ 1, 1 ]
             #supply
             Quartermaster: [ 1, 1 ]
+            CargoInsurance: [ 1, 1 ] #ratbite
             SalvageSpecialist: [ 4, 4 ]
             CargoTechnician: [ 2, 2 ]
             #civillian

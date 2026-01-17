@@ -1,3 +1,4 @@
+# SPDX-FileCopyrightText: 2025 Armok <155400926+ARMOKS@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
 # SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
@@ -76,7 +77,7 @@
     attackRate: 0.8
     damage:
       types:
-        Slash: 13
+        Slash: 18 #Ratbite Buff, it's a fucking claymore and other options outshine it.
         Holy: 10
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
@@ -189,11 +190,11 @@
     damage:
       types:
         Heat: 10
-        Slash: 4
+        Slash: 7 #ratbite buff
         Holy: 10
     soundHit:
       path: /Audio/Weapons/Guns/Hits/energy_meat1.ogg
-  - type: GrabbingItem
+ # - type: GrabbingItem Ratbite: What BOZO decided this was ever okay balance wise?
   - type: IgniteOnMeleeHit # emphasis on FLAMING GIFT!!
     fireStacks: 0.25
   - type: Cautery
@@ -201,6 +202,8 @@
   - type: Tool
     qualities:
     - Prying
+    useSound:
+      path: /Audio/Items/crowbar.ogg
   - type: Unremoveable
   - type: Nullrod
     DamageOnUntrainedUse:
@@ -212,6 +215,11 @@
   - type: Tag
     tags:
     - GodHand
+    - Crowbar
+  - type: ToolTileCompatible
+  - type: UseDelay
+    delay: 1
+  - type: Prying
 
 - type: entity
   parent: BaseNullrod
@@ -281,7 +289,7 @@
     soundHit:
       collection: BoxingHit
   - type: StaminaDamageOnHit
-    damage: 10
+    damage: 8 # RB Nerf
   - type: Wieldable
   - type: Tag
     tags:
@@ -303,7 +311,7 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Slash: 12
+        Slash: 8 #RB Nerf
         Holy: 12
   - type: MeleeWeapon
     attackRate: 1.5
@@ -522,6 +530,10 @@
   id: WeaponPistolCasul
   description: The first of two huge pistols, capable of firing regenerating silver bullets. Incapable of firing without its sister gun.
   components:
+  - type: Reflect
+    reflectProb: 1
+    reflects:
+    - Magic
   - type: Nullrod
     DamageOnUntrainedUse:
       types:
@@ -581,6 +593,10 @@
   id: WeaponPistolJackal
   description: The second of two huge pistols, capable of firing regenerating silver bullets. Incapable of firing without its sister gun.
   components:
+  - type: Reflect
+    reflectProb: 1
+    reflects:
+    - Magic
   - type: Sprite
     sprite: _ShitChap/Objects/Weapons/Nullrod/jackal.rsi
     state: icon

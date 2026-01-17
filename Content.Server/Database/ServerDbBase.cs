@@ -99,6 +99,7 @@
 // SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Ilya246 <ilyukarno@gmail.com>
 // SPDX-FileCopyrightText: 2025 JORJ949 <159719201+JORJ949@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 MarkerWicker <markerWicker@proton.me>
 // SPDX-FileCopyrightText: 2025 MortalBaguette <169563638+MortalBaguette@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Myra <vasilis@pikachu.systems>
 // SPDX-FileCopyrightText: 2025 PJB3005 <pieterjan.briers+git@gmail.com>
@@ -109,6 +110,8 @@
 // SPDX-FileCopyrightText: 2025 Poips <Hanakohashbrown@gmail.com>
 // SPDX-FileCopyrightText: 2025 PuroSlavKing <103608145+PuroSlavKing@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
+// SPDX-FileCopyrightText: 2025 Sara Aldrete's Top Guy <mary@thughunt.ing>
 // SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
 // SPDX-FileCopyrightText: 2025 Whisper <121047731+QuietlyWhisper@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
@@ -137,6 +140,7 @@ using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Shared._RMC14.LinkAccount;
 using Content.Shared.Administration.Logs;
+using Content.Shared.Construction.Prototypes;
 using Content.Shared.Database;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
@@ -193,7 +197,11 @@ namespace Content.Server.Database
                 profiles[profile.Slot] = ConvertProfiles(profile);
             }
 
-            return new PlayerPreferences(profiles, prefs.SelectedCharacterSlot, Color.FromHex(prefs.AdminOOCColor));
+            var constructionFavorites = new List<ProtoId<ConstructionPrototype>>(prefs.ConstructionFavorites.Count);
+            foreach (var favorite in prefs.ConstructionFavorites)
+                constructionFavorites.Add(new ProtoId<ConstructionPrototype>(favorite));
+
+            return new PlayerPreferences(profiles, prefs.SelectedCharacterSlot, Color.FromHex(prefs.AdminOOCColor), constructionFavorites);
         }
 
         public async Task SaveSelectedCharacterIndexAsync(NetUserId userId, int index)
@@ -271,7 +279,8 @@ namespace Content.Server.Database
             {
                 UserId = userId.UserId,
                 SelectedCharacterSlot = 0,
-                AdminOOCColor = Color.Red.ToHex()
+                AdminOOCColor = Color.Red.ToHex(),
+                ConstructionFavorites = [],
             };
 
             prefs.Profiles.Add(profile);
@@ -280,7 +289,7 @@ namespace Content.Server.Database
 
             await db.DbContext.SaveChangesAsync();
 
-            return new PlayerPreferences(new[] { new KeyValuePair<int, ICharacterProfile>(0, defaultProfile) }, 0, Color.FromHex(prefs.AdminOOCColor));
+            return new PlayerPreferences(new[] { new KeyValuePair<int, ICharacterProfile>(0, defaultProfile) }, 0, Color.FromHex(prefs.AdminOOCColor), []);
         }
 
         public async Task DeleteSlotAndSetSelectedIndex(NetUserId userId, int deleteSlot, int newSlot)
@@ -304,6 +313,19 @@ namespace Content.Server.Database
 
             await db.DbContext.SaveChangesAsync();
 
+        }
+
+        public async Task SaveConstructionFavoritesAsync(NetUserId userId, List<ProtoId<ConstructionPrototype>> constructionFavorites)
+        {
+            await using var db = await GetDb();
+            var prefs = await db.DbContext.Preference.SingleAsync(p => p.UserId == userId.UserId);
+
+            var favorites = new List<string>(constructionFavorites.Count);
+            foreach (var favorite in constructionFavorites)
+                favorites.Add(favorite.Id);
+            prefs.ConstructionFavorites = favorites;
+
+            await db.DbContext.SaveChangesAsync();
         }
 
         private static async Task SetSelectedCharacterSlotAsync(NetUserId userId, int newSlot, ServerDbContext db)
@@ -372,6 +394,8 @@ namespace Content.Server.Database
                 profile.CharacterName,
                 profile.FlavorText,
                 profile.Species,
+                profile.Height, // Goobstation: port EE height/width sliders
+                profile.Width, // Goobstation: port EE height/width sliders
                 profile.Age,
                 sex,
                 gender,
@@ -408,6 +432,8 @@ namespace Content.Server.Database
             profile.CharacterName = humanoid.Name;
             profile.FlavorText = humanoid.FlavorText;
             profile.Species = humanoid.Species;
+            profile.Height = humanoid.Height; // Goobstation: port EE height/width sliders
+            profile.Width = humanoid.Width; // Goobstation: port EE height/width sliders
             profile.Age = humanoid.Age;
             profile.Sex = humanoid.Sex.ToString();
             profile.Gender = humanoid.Gender.ToString();
@@ -2122,6 +2148,82 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
 
             await db.DbContext.SaveChangesAsync();
             return true;
+        }
+
+        #endregion
+
+        #region Perma Brig
+        /*
+         * PERMA TIME
+         */
+        public async Task<int> GetPermaRoundsLeft(NetUserId userId) // Ratbite
+        {
+            await using var db = await GetDb();
+
+            return await db.DbContext.Player
+                .Where(dbPlayer => dbPlayer.UserId == userId)
+                .Select(dbPlayer => dbPlayer.BrigSentence)
+                .SingleOrDefaultAsync();
+        }
+
+        public async Task SetPermaRoundsLeft(NetUserId userId, int brigSentence) // Ratbite
+        {
+            await using var db = await GetDb();
+
+            var dbPlayer = await db.DbContext.Player.Where(dbPlayer => dbPlayer.UserId == userId).SingleOrDefaultAsync();
+            if (dbPlayer == null)
+                return;
+
+            dbPlayer.BrigSentence = brigSentence;
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task<int> ModifyPermaRoundsLeft(NetUserId userId, int brigSentence) // Goobstation
+        {
+            await using var db = await GetDb();
+
+            var dbPlayer = await db.DbContext.Player.Where(dbPlayer => dbPlayer.UserId == userId).SingleOrDefaultAsync();
+            if (dbPlayer == null)
+                return brigSentence;
+
+            dbPlayer.BrigSentence += brigSentence;
+            await db.DbContext.SaveChangesAsync();
+            return dbPlayer.BrigSentence;
+        }
+
+        public async Task<int> GetPPpoints(NetUserId userId) // Ratbite
+        {
+            await using var db = await GetDb();
+
+            return await db.DbContext.Player
+                .Where(dbPlayer => dbPlayer.UserId == userId)
+                .Select(dbPlayer => dbPlayer.PPpoints)
+                .SingleOrDefaultAsync();
+        }
+
+        public async Task SetPPpoints(NetUserId userId, int pppoints) // Ratbite
+        {
+            await using var db = await GetDb();
+
+            var dbPlayer = await db.DbContext.Player.Where(dbPlayer => dbPlayer.UserId == userId).SingleOrDefaultAsync();
+            if (dbPlayer == null)
+                return;
+
+            dbPlayer.PPpoints = pppoints;
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task<int> ModifyPPpoints(NetUserId userId, int pppoints) // Goobstation
+        {
+            await using var db = await GetDb();
+
+            var dbPlayer = await db.DbContext.Player.Where(dbPlayer => dbPlayer.UserId == userId).SingleOrDefaultAsync();
+            if (dbPlayer == null)
+                return pppoints;
+
+            dbPlayer.PPpoints += pppoints;
+            await db.DbContext.SaveChangesAsync();
+            return dbPlayer.BrigSentence;
         }
 
         #endregion

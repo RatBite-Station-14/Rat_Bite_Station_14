@@ -19,7 +19,7 @@
   - type: StationEvent
     earliestStart: 15
     reoccurrenceDelay: 45
-    weight: 7.5
+    weight: 1 #RatBite
     minimumPlayers: 10
     duration: 1
     chaos:
@@ -118,7 +118,7 @@
   - type: StationEvent
     earliestStart: 15
     reoccurrenceDelay: 45
-    weight: 7.5
+    weight: 1 #RatBite
     minimumPlayers: 20
     duration: 1
     chaos:

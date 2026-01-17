@@ -31,7 +31,7 @@
     ClothingNeckGenderfluidPin: 3
     ClothingNeckTransPin: 3
     ClothingNeckAutismPin: 3
-    # ClothingNeckGoldAutismPin: 3 # somehow we don't have this one in goob so I'm commenting this out
+    ClothingNeckGoldAutismPin: 3 # somehow we don't have this one in goob so I'm commenting this out
     PlushieSharkBlue: 2
     PlushieSharkPink: 2
     PlushieSharkGrey: 2
@@ -46,6 +46,15 @@
     ClothingNeckScarfStripedNonBinary: 2
     ClothingNeckScarfStripedRainbow: 2
     ClothingNeckScarfStripedTrans: 2
+    ClothingNeckCloakAroace: 2 #Ratbite
+    ClothingNeckCloakPan: 2 #Ratbite
+    ClothingNeckCloakIntersex: 2 #Ratbite
+    ClothingNeckCloakGay: 2 #Ratbite
+    ClothingNeckCloakAce: 2 #Ratbite
+    ClothingNeckCloakLesbian: 2 #Ratbite
+    ClothingNeckCloakEnby: 2 #Ratbite
+    ClothingNeckCloakTrans: 2 #Ratbite
+    ClothingNeckCloakAro: 2 #Ratbite
     ClothingHeadHatXmasCrown: 2
     BedsheetRainbow: 2
     ClothingNeckHeadphones: 2
@@ -55,3 +64,9 @@
     ClothingUnderSocksBee: 2
   contrabandInventory:
     ClothingNeckScarfStripedLesbianLong: 2
+    ClothingUniformJumpskirtColorRainbow: 2
+  emaggedInventory:
+    ClothingNeckCloakAdmin: 1 #Ratbite
+    FoodSnackLollypopWeh: 2 #Ratbite
+    ClothingHeadWehcellentCap: 1 #Ratbite
+    ClothingShoesSlippersLizard: 1 #Ratbite

@@ -219,7 +219,7 @@
       - state: inhand-right-blade
         shader: unshaded
   - type: Reflect # Goob edit
-    reflectProb: .5
+    reflectProb: .6 #Ratbite, why not
     reflects:
       - Energy
   - type: IgnitionSource

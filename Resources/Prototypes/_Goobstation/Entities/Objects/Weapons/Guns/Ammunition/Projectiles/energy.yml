@@ -12,7 +12,7 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-- type: entity 
+- type: entity
   name: Rifle energy bolt #yes it X-01 projectile modified for rifle usage-Creatorbot
   id: RifleBulletEnergyGunLethal
   parent: BaseBullet
@@ -46,11 +46,11 @@
     impactEffect: BulletImpactEffectRedDisabler
     damage:
       types:
-        Heat: 17 
+        Heat: 22 #RATBITE
     soundHit:
       collection: MeatLaserImpact
 
-- type: entity 
+- type: entity
   name: Rifle ion bolt
   id: RifleBulletEnergyGunIon
   parent: BaseBullet
@@ -85,12 +85,12 @@
     impactEffect: BulletImpactEffectBlueDisabler
     damage:
       types:
-        Ion: 20
+        Ion: 25 #RATBITE
         Heat: 5
     soundHit:
       collection: MeatLaserImpact
 
-- type: entity 
+- type: entity
   name: Rifle disabler bolt
   id: RifleBulletEnergyGunDisabler
   parent: BaseBullet
@@ -121,7 +121,7 @@
         mask:
         - Opaque
   - type: StaminaDamageOnCollide
-    damage: 20
+    damage: 25 #RATBITE
   - type: Projectile
     impactEffect: BulletImpactEffectBlueDisabler
     damage:
@@ -130,7 +130,7 @@
     soundHit:
       collection: MeatLaserImpact
 
-- type: entity 
+- type: entity
   name: ashified energy bolt #oh dear me
   suffix: DEBUG
   id: RifleBulletEnergyGunAsh
@@ -165,11 +165,11 @@
     impactEffect: BulletImpactEffectRedDisabler
     damage:
       types:
-        Heat: 99999 
+        Heat: 99999
     soundHit:
       collection: MeatLaserImpact
 
-- type: entity 
+- type: entity
   name: overcharge rifle energy bolt #nukie killer projectile part uh i lost count
   id: RifleBulletEnergyGunOverchargeLethal
   parent: BaseBulletIncendiary
@@ -204,6 +204,6 @@
     impactEffect: BulletImpactEffectRedDisabler
     damage:
       types:
-        Heat: 25
+        Heat: 30 #RATBITE
     soundHit:
       collection: MeatLaserImpact

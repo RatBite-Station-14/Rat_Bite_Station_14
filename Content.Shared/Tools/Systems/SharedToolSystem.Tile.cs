@@ -119,6 +119,13 @@ public abstract partial class SharedToolSystem
 
         var tileRef = _maps.GetTileRef(gridUid, mapGrid, clickLocation);
         var tileDef = (ContentTileDefinition) _tileDefManager[tileRef.Tile.TypeId];
+        var anchored = _maps.GetAnchoredEntities(gridUid, mapGrid, clickLocation);
+        var tilePryEvent = new ToolPryAttemptEvent(user, ent);
+        foreach (var anchor in anchored)
+            RaiseLocalEvent(anchor, tilePryEvent);
+
+        if (tilePryEvent.Cancelled)
+            return false;
 
         if (!tool.Qualities.ContainsAny(tileDef.DeconstructTools))
             return false;

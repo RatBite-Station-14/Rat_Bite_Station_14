@@ -68,10 +68,12 @@
   name: guide-entry-sop-legal
   text: "/ServerInfo/_Goobstation/Guidebook/SoP/Legal/LegalSOP.xml"
   children:
+  - SpaceLaw
   - Execution SOP
   - PermaBrig SOP
   - Punishments SOP
   - Searches SOP
+  - Multi Round Perma SOP #Ratbite
 
 # Jobs Main Directory and Subdirectories
 - type: guideEntry
@@ -86,6 +88,7 @@
   - Science SOP
   - Security SOP
   - Service SOP
+  - Central Command SOP #Ratbite
 
 - type: guideEntry
   id: Cargo SOP
@@ -100,8 +103,8 @@
   name: guide-entry-sop-command
   text: "/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/Command/CommandSOP.xml"
   children:
-  - NanotrasenRep SOP
-  - BlueshieldOfficer SOP
+  # - NanotrasenRep SOP - Ratbite
+  # - BlueshieldOfficer SOP - Ratbite (I dont know why inverted did this instead)
   - Captain SOP
   - HeadOfPersonnel SOP
   - HeadOfSecurity SOP
@@ -143,6 +146,8 @@
   - Warden SOP
   - OfficerCadet SOP
   - Detective SOP
+  - RedsightOverseer SOP #Ratbite
+  - DepartmentalGuard SOP #Ratbite
 
 - type: guideEntry
   id: Service SOP

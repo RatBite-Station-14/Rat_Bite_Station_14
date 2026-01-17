@@ -110,4 +110,10 @@ public sealed partial class ContainmentFieldComponent : Component
     /// </summary>
     [DataField]
     public bool DestroyGarbage = true;
+
+    /// <summary>
+    /// What generators created us?
+    /// </summary>
+    [ViewVariables(VVAccess.ReadOnly)]
+    public List<Entity<ContainmentFieldGeneratorComponent>> BoundGenerators;
 }

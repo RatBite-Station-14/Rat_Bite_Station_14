@@ -94,6 +94,8 @@
       - SmokeImplant
       # - StypticStimulatorImplant # Uncomment if given to traitors, currently it's DS only implant
       - BinaryImplant
+      # RatBite
+      - PacifismImplant #Currently these implants dont even work btw so this does nothing. (Thieves also use a different system)
       deimplantFailureDamage:
         types:
           Caustic: 5 # Goobstation - unnerf implanters (why was it 50 genetic??)

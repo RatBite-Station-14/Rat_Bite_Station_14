@@ -106,6 +106,7 @@
 
 using System.Numerics;
 using Content.Server.Administration.Logs;
+using Content.Server.Chat.Systems;
 using Content.Server.Singularity.Events;
 using Content.Server.Station.Components;
 using Content.Shared.Database;
@@ -141,6 +142,7 @@ public sealed class EventHorizonSystem : SharedEventHorizonSystem
     [Dependency] private readonly SharedTransformSystem _xformSystem = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly TagSystem _tagSystem = default!;
+    [Dependency] private readonly ChatSystem _chat = default!;
     #endregion Dependencies
 
     private static readonly ProtoId<TagPrototype> HighRiskItemTag = "HighRiskItem";
@@ -162,6 +164,7 @@ public sealed class EventHorizonSystem : SharedEventHorizonSystem
         SubscribeLocalEvent<EventHorizonComponent, EventHorizonAttemptConsumeEntityEvent>(OnAnotherEventHorizonAttemptConsumeThisEventHorizon);
         SubscribeLocalEvent<EventHorizonComponent, EventHorizonConsumedEntityEvent>(OnAnotherEventHorizonConsumedThisEventHorizon);
         SubscribeLocalEvent<ContainerManagerComponent, EventHorizonConsumedEntityEvent>(OnContainerConsumed);
+        SubscribeLocalEvent<GeneratorChargeChangedEvent>(OnGenLooseCharge);
 
         var vvHandle = Vvm.GetTypeHandler<EventHorizonComponent>();
         vvHandle.AddPath(nameof(EventHorizonComponent.TargetConsumePeriod), (_, comp) => comp.TargetConsumePeriod, SetConsumePeriod);
@@ -255,10 +258,123 @@ public sealed class EventHorizonSystem : SharedEventHorizonSystem
     public bool AttemptConsumeEntity(EntityUid hungry, EntityUid morsel, EventHorizonComponent eventHorizon, BaseContainer? outerContainer = null)
     {
         if (!CanConsumeEntity(hungry, morsel, eventHorizon))
+        {
+            if (TryComp<ContainmentFieldComponent>(morsel, out var field)) //Ratbite - Start
+            {
+                foreach (var gen in field.BoundGenerators)
+                {
+                    eventHorizon.ContainingFieldGenerators.Add(gen);
+                }
+            }
             return false;
+        } //Ratbite - End
 
         ConsumeEntity(hungry, morsel, eventHorizon, outerContainer);
         return true;
+    }
+
+    private void OnGenLooseCharge(ref GeneratorChargeChangedEvent ev)
+    {
+        var horizons = AllEntityQuery<EventHorizonComponent>();
+        while (horizons.MoveNext(out var ent, out var eventHorizon))
+        {
+            var lowest = GetLowestPower(eventHorizon.ContainingFieldGenerators);
+            if (lowest == null)
+                continue;
+
+            var validLowest = lowest.Value;
+            if (validLowest.Comp.PowerBuffer != eventHorizon.LowestPowerGenBuffer)
+            {
+                UpdateBuffer(eventHorizon, validLowest);
+            }
+        }
+    }
+
+    private void UpdateBuffer(EventHorizonComponent eventHorizon, Entity<ContainmentFieldGeneratorComponent> gen)
+    {
+        var newpercent = (gen.Comp.PowerBuffer - gen.Comp.PowerMinimum) / (float)(gen.Comp.PowerMaximum - gen.Comp.PowerMinimum);
+        var oldpercent = (eventHorizon.LowestPowerGenBuffer - gen.Comp.PowerMinimum) / (float)(gen.Comp.PowerMaximum - gen.Comp.PowerMinimum);
+
+        var displayPercent = MathF.Round(newpercent * 100f);
+
+        string? message = null;
+
+        switch (newpercent)
+        {
+            case <= 0f:
+            {
+                if (oldpercent > 0f) //These checks make sure that we passed the threshold THIS buffer update
+                {
+                    message = Loc.GetString("containment-field-buffer-drop-loose", ("buffer", displayPercent));
+                }
+
+                break;
+            }
+            case <= 0.10f:
+            {
+                if (oldpercent > 0.10f)
+                {
+                    message = Loc.GetString("containment-field-buffer-drop-emergency", ("buffer", displayPercent));
+                }
+
+                break;
+            }
+            case <= 0.25f:
+            {
+                if (oldpercent > 0.25f)
+                {
+                    message = Loc.GetString("containment-field-buffer-drop-emergency", ("buffer", displayPercent));
+                }
+
+                break;
+            }
+            case <= 0.50f:
+            {
+                if (oldpercent > 0.50f)
+                {
+                    message = Loc.GetString("containment-field-buffer-drop-warning", ("buffer", displayPercent));
+                }
+
+                break;
+            }
+            case <= 0.80f:
+            {
+                if (oldpercent > 0.80f)
+                {
+                    message = Loc.GetString("containment-field-buffer-drop-warning", ("buffer", displayPercent));
+                }
+
+                break;
+            }
+        }
+
+        if(message != null)
+            MakeAnnouncement(gen, message);
+
+        eventHorizon.LowestPowerGenBuffer = gen.Comp.PowerBuffer;
+    }
+
+    private void MakeAnnouncement(EntityUid uid, string message, string? customSender = null)
+    {
+        var sender = customSender != null ? customSender : Loc.GetString("containment-field-announcement");
+        _chat.DispatchStationAnnouncement(uid, message, sender, colorOverride: Color.Yellow);
+    }
+
+    private Entity<ContainmentFieldGeneratorComponent>? GetLowestPower(HashSet<Entity<ContainmentFieldGeneratorComponent>> gens)
+    {
+        var low = 5000;
+        Entity<ContainmentFieldGeneratorComponent>? lowgen = null;
+        gens.RemoveWhere(g => !g.Owner.Valid);
+        foreach (var gen in gens)
+        {
+            if (gen.Comp.PowerBuffer < low)
+            {
+                low = gen.Comp.PowerBuffer;
+                lowgen = gen;
+            }
+        }
+
+        return lowgen;
     }
 
     /// <summary>

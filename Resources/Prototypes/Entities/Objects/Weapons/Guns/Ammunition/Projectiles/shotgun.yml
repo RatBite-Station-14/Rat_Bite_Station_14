@@ -226,8 +226,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 3
-        Slash: 3
+        Piercing: 6 #ratbite
+        Slash: 2 #ratbite
 
 - type: entity
   id: PelletShotgunImprovisedSpread

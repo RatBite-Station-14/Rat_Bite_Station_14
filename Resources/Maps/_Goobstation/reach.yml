@@ -11605,13 +11605,6 @@ entities:
     - type: Transform
       pos: 22.5,0.5
       parent: 2
-- proto: HoPIDCard
-  entities:
-  - uid: 1623
-    components:
-    - type: Transform
-      pos: 24.549932,2.4577096
-      parent: 2
 - proto: hydroponicsTray
   entities:
   - uid: 1624

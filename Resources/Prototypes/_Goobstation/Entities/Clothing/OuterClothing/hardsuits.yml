@@ -183,7 +183,7 @@
 # cybersun dreadnought suit
 
 - type: entity
-  parent: [ ClothingOuterHardsuitBase, BaseSyndicateContraband ]
+  parent: [ ClothingOuterHardsuitBase, BaseSyndicateAnchoredContraband ]
   id: ClothingOuterHardsuitCybersunDreadnought
   name: cybersun dreadnought suit
   description: The Syndicate places its glory on your shoulders, do not disappoint.
@@ -308,3 +308,5 @@
       Epinephrine: 10
       Bicaridine: 10
       TranexamicAcid: 5
+  - type: Item
+    size: Huge

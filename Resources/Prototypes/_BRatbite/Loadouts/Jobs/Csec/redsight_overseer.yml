@@ -1,0 +1,77 @@
+# SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 DarkenedSynergy <70016079+DarkenedSynergy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
+# SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
+# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+# SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
+# SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
+# SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+
+# Hats
+- type: loadout
+  id: RedsightOverseerLawHelm
+  equipment:
+    head: ClothingHeadHelmetRSOLaw #I. AM. THE. LAW!
+
+- type: loadout
+  id: RedsightOverseerCap
+  equipment:
+    head: ClothingHeadHatCapRedsight
+
+
+# Jumpsuits
+
+- type: loadout
+  id: RedsightOverseerInsideJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitRedsightOverseer
+
+
+# Outerclothing
+- type: loadout
+  id: RedsightOverseerArmoredJack
+  equipment:
+    outerClothing: RSOJack
+
+# Eyes
+
+- type: loadout
+  id: EyesGlassesRedsights
+  equipment:
+    eyes: ClothingEyesGlassesRSO
+
+# Back
+- type: loadout
+  id: RSOBackpack
+  equipment:
+    back: ClothingBackpackSecurity
+
+- type: loadout
+  id: RSOSatchel
+  equipment:
+    back: ClothingBackpackSatchelSecurity
+
+- type: loadout
+  id: RSODuffel
+  equipment:
+    back: ClothingBackpackDuffelSecurity
+
+- type: loadout
+  id: RSOMessenger
+  equipment:
+    back: ClothingBackpackMessengerSecurity
+
+# Shoes
+
+- type: loadout
+  id: RSOGloves
+  equipment:
+    shoes: ClothingShoesBootsCowboyBlackFilled

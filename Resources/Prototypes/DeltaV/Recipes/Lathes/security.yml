@@ -1,0 +1,22 @@
+- type: latheRecipe
+  id: SpeedLoaderSpecial
+  result: SpeedLoaderSpecial
+  completetime: 5
+  materials:
+    Steel: 200
+
+- type: latheRecipe
+  id: CartridgeSpecial
+  result: CartridgeSpecial
+  completetime: 2
+  materials:
+    Steel: 20
+
+
+- type: latheRecipe
+  id: MagazineBoxSpecial
+  result: MagazineBoxSpecial
+  completetime: 5
+  materials:
+    Steel: 1000
+

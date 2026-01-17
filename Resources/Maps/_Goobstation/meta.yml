@@ -50962,13 +50962,6 @@ entities:
     - type: Transform
       pos: 4.5,33.5
       parent: 2
-- proto: CaptainIDCard
-  entities:
-  - uid: 8093
-    components:
-    - type: Transform
-      pos: 8.475184,6.489711
-      parent: 2
 - proto: CarbonDioxideCanister
   entities:
   - uid: 8094

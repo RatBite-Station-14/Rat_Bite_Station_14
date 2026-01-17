@@ -54,7 +54,7 @@
   id: RedLaser
   damage:
     types:
-      Heat: 14
+      Heat: 16 #Ratbite
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_laser
@@ -84,7 +84,7 @@
   id: RedMediumLaser
   damage:
     types:
-      Heat: 17
+      Heat: 21 #RatBite
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_laser
@@ -99,7 +99,7 @@
   id: RedLightLaser
   damage:
     types:
-      Heat: 7
+      Heat: 10 #Ratbite
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_laser
@@ -114,8 +114,8 @@
   id: XrayLaser
   damage:
     types:
-      Heat: 10
-      Radiation: 10
+      Heat: 8 #Ratbite
+      Radiation: 15 #Ratbite
       Ion: 15 #Goobstation
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
@@ -131,7 +131,8 @@
   id: RedHeavyLaser
   damage:
     types:
-      Heat: 28
+      Heat: 30 #Ratbite
+      Ion: 10 #Ratbite
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_beam_heavy
@@ -147,7 +148,7 @@
   damage:
     types:
       Heat: 30 # Goobstation
-      Blunt: 5 # Split damage is cool. - Goobstation
+      #Blunt: 5 # Split damage is cool. - Goobstation, removed split damage from pulse - Ratbite.
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_blue
@@ -164,7 +165,7 @@
   damage:
     types:
       Heat: 45
-      Structural: 10
+      Structural: 20 #Ratbite
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_beam_heavy2

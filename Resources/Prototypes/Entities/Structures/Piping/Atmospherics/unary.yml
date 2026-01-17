@@ -162,6 +162,7 @@
             Welded: { state: vent_welded }
             Lockout: { state: vent_lockout }
     - type: GasVentPump
+      temperatureLockoutThresholdId: stationTemperature
       underPressureLockoutThreshold: 60
     - type: Construction
       graph: GasUnary

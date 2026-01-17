@@ -20,13 +20,14 @@
   supervisors: job-supervisors-hos
   canBeAntag: false
   goobcoins: 35
-  access: # intentionally no medical access, not even hos has it, ask chemists instead of silently stealing meds
+  access:
   - Security
   - Brig
   - Maintenance
   - Service
   - External
   - Cryogenics
+  - Medical #RatBite brigmeds deserve this
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

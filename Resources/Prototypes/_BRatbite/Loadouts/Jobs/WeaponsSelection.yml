@@ -1,0 +1,74 @@
+# RatBite Weapon Unlocks
+
+- type: loadoutEffectGroup
+  id: RevolverUnlock
+  effects:
+    - !type:JobRequirementLoadoutEffect
+      requirement:
+        !type:DepartmentTimeRequirement
+        department: Security
+        time: 36000 #10 hrs
+
+- type: loadoutEffectGroup
+  id: EnergyPistolUnlock
+  effects:
+    - !type:JobRequirementLoadoutEffect
+      requirement:
+        !type:DepartmentTimeRequirement
+        department: Security
+        time: 72000 #20 hrs
+
+# Security Weapons
+- type: loadout
+  id: SecurityMK58
+  equipment:
+    pocket1: WeaponPistolMk58
+
+- type: loadout
+  id: SecurityK38
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: RevolverUnlock
+  equipment:
+    pocket1: WeaponRevolverK38Master
+
+- type: loadout
+  id: SecurityPEW01
+  equipment:
+    pocket1: WeaponEnergyGunLockedEnergyPistol
+
+- type: loadout
+  id: SecurityEP12
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EnergyPistolUnlock
+  name: EP-12 Energy Pistol
+  equipment:
+    pocket1: WeaponEnergyCellPistol
+
+# Security Ammo
+
+- type: loadout
+  id: SecurityMK58Ammo
+  storage:
+    back:
+    - MagazinePistol
+
+- type: loadout
+  id: SecurityK38Ammo
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: RevolverUnlock
+  storage:
+    back:
+    - SpeedLoaderSpecial
+
+- type: loadout
+  id: SecurityEP12Ammo
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EnergyPistolUnlock
+  name: EP-12 Energy Pistol
+  storage:
+    back:
+    - EnergyMagPistolLethal

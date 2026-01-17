@@ -154,8 +154,8 @@
     impactEffect: BulletImpactEffectOrangeDisabler
     damage:
       types:
-        Heat: 17
-        Radiation: 2
+        Heat: 20 #RATBITE
+        Radiation: 4 #RATBITE
 
 - type: entity
   id: BulletHotshot
@@ -189,8 +189,8 @@
     impactEffect: BulletImpactEffectOrangeDisabler
     damage:
       types:
-        Blunt: 2
-        Heat: 2
+        Blunt: 5 #RATBITE
+        Heat: 5 #RATBITE
   - type: IgniteOnCollide
     fireStacks: 3
 

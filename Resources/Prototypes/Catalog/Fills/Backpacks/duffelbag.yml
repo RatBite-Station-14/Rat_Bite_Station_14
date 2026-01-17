@@ -371,6 +371,7 @@
       - id: ClothingHandsGlovesColorYellowBudget
       - id: DoubleEmergencyOxygenTankFilled
       - id: DoubleEmergencyNitrogenTankFilled
+      - id: DoubleEmergencyPlasmaTankFilled # EE Plasmeme Change
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
@@ -385,6 +386,7 @@
       - id: ClothingHandsGlovesCombat
       - id: DoubleEmergencyOxygenTankFilled
       - id: DoubleEmergencyNitrogenTankFilled
+      - id: DoubleEmergencyPlasmaTankFilled # EE Plasmeme Change
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
@@ -399,6 +401,7 @@
       - id: ClothingHandsGlovesCombat
       - id: DoubleEmergencyOxygenTankFilled
       - id: DoubleEmergencyNitrogenTankFilled
+      - id: DoubleEmergencyPlasmaTankFilled # EE Plasmeme Change
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
@@ -412,6 +415,7 @@
       - id: ClothingHandsGlovesCombat
       - id: DoubleEmergencyOxygenTankFilled
       - id: DoubleEmergencyNitrogenTankFilled
+      - id: DoubleEmergencyPlasmaTankFilled # EE Plasmeme Change
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
@@ -468,3 +472,23 @@
         amount: 2
       - id: SyndieTrickyBomb
         amount: 2
+
+- type: entity
+  parent: ClothingBackpackDuffelSyndicateBundle
+  id: ClothingBackpackDuffelSyndicateFilledStarterKit
+  name: basic operative bundle
+  description: "Contains a weapon, medical supplies, breaching tools, spare ammo, and some simple utilities."
+  components:
+  - type: StorageFill
+    contents:
+      - id: WeaponSubMachineGunC20r
+      - id: MagazinePistolSubMachineGun
+        amount: 3
+      - id: MagazinePistol
+      - id: SyndicateJawsOfLife
+      - id: C4
+        amount: 2
+      - id: MedkitCombatFilled
+      - id: EmpImplanter
+      - id: ClothingShoesBootsMagSyndie
+      - id: AgentIDCard

@@ -189,6 +189,7 @@
     tags:
     - BypassInteractionRangeChecks
   - type: PointLight
+    netsync: false
     radius: 6
     castShadows: false
     enabled: false
@@ -198,6 +199,8 @@
   - type: CollectiveMind
     hearAll: true
     seeAllNames: true
+  - type: LanguageSpeaker # Einstein Engines - Languages
+  - type: UniversalLanguageSpeaker # Einstein Engines - Languages
   - type: UserInterface
     interfaces:
       enum.RevivalContractUiKey.Key: # Goobstation - Devil
@@ -209,6 +212,10 @@
   parent: MobObserverBase
   id: MobObserver
   components:
+  - type: WarpPoint
+    follow: true
+    mob: true
+    ghost: true
   - type: Spectral
   - type: Tag
     tags:
@@ -225,6 +232,7 @@
   - type: RadarConsole
     followEntity: true
   # </Goobstation>
+
 
 # Goobstation
 - type: entity

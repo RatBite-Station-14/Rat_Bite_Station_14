@@ -63,7 +63,7 @@ public sealed partial class AbductorSystem : SharedAbductorSystem
         if (HasComp<AbductorComponent>(target))
             return;
 
-        var time = TimeSpan.FromSeconds(6);
+        var time = TimeSpan.FromSeconds(5);
         if (_tags.HasTag(target, Abductor))
             time = TimeSpan.FromSeconds(0.5);
 

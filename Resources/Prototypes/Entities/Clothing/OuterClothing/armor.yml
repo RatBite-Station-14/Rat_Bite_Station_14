@@ -169,6 +169,7 @@
   - type: Armor
     coverage:
     - Chest
+    - Groin
     traumaDeductions:
       Dismemberment: 0.2 
       OrganDamage: 0.5 #Ratbite 
@@ -551,6 +552,7 @@
   - type: Armor
     coverage:
     - Chest
+    - Groin
     traumaDeductions:
       Dismemberment: 0.2
       OrganDamage: 0.2

@@ -58437,13 +58437,6 @@ entities:
       parent: 6875
     - type: Physics
       canCollide: False
-- proto: CaptainIDCard
-  entities:
-  - uid: 1059
-    components:
-    - type: Transform
-      pos: 8.475184,6.489711
-      parent: 5350
 - proto: CarbonDioxideCanister
   entities:
   - uid: 11815

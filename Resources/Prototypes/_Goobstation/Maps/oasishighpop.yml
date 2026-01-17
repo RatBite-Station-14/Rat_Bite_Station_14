@@ -34,7 +34,7 @@
   id: OasisHighPop
   mapName: 'Oasis'
   mapPath: /Maps/_Goobstation/oasis.yml
-  minPlayers: 85
+  minPlayers: 70
   stations:
     Oasis:
       stationProto: StandardNanotrasenStation
@@ -65,11 +65,13 @@
             Reporter: [ 3, 3 ]
             #engineering
             ChiefEngineer: [ 1, 1 ]
+            EngiSentry: [ 1, 1 ] #ratbite
             AtmosphericTechnician: [ 5, 5 ]
             StationEngineer: [ 8, 8 ]
             TechnicalAssistant: [ -1, -1 ]
             #medical
             ChiefMedicalOfficer: [ 1, 1 ]
+            MedOrderly: [ 1, 1 ] #ratbite
             Chemist: [ 3, 3 ]
             MedicalDoctor: [ 10, 10 ]
             Paramedic: [ 3, 3 ]
@@ -77,19 +79,22 @@
             Psychologist: [ 2, 2 ]
             #science
             ResearchDirector: [ 1, 1 ]
+            ScicurityGuard: [ 1, 1 ] #ratbite
             Scientist: [ 10, 10 ]
             ResearchAssistant: [ -1, -1 ]
             Borg: [ 4, 4 ]
             #security
             HeadOfSecurity: [ 1, 1 ]
-            Warden: [ 1, 1 ]
+            RedsightOverseer: [ 1, 1 ] #Ratbite
+            Warden: [ 2, 2 ] #Ratbite de protaganist-ify him!!!
+            Detective: [ 2, 2 ] #Ratbite disco elysium/sherlock larp
             SecurityOfficer: [ 8, 8 ]
-            Detective: [ 1, 1 ]
-            SecurityCadet: [ -1, -1 ]
+            SecurityCadet: [ 4, 4 ]
             Lawyer: [ 3, 3 ]
             Brigmedic: [ 1, 1 ]
             #supply
             Quartermaster: [ 1, 1 ]
+            CargoInsurance: [ 1, 1 ] #ratbite
             SalvageSpecialist: [ 8, 8 ]
             CargoTechnician: [ -1, -1 ]
             #civilian

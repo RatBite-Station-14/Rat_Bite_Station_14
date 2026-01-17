@@ -94,7 +94,7 @@
         type: MagicMirrorBoundUserInterface
   - type: MeleeWeapon
     wideAnimationRotation: -135
-    attackRate: 1
+    attackRate: 1.5 #Ratbite, their scissors! of course you can stab a bit faster with them
     damage:
       types:
         Piercing: 6

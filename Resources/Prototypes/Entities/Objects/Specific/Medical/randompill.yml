@@ -152,6 +152,9 @@
       reagents:
       - Lexorin
       - Lead
+      - Romerol #Ratbite, Peak
+      - MuteToxin #Ratbite, Peak
+      - BlackPowder #Ratbite, Peak
 
 - type: entity
   name: strange pill

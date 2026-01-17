@@ -32371,13 +32371,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: -6.6078706,-304.26178
       parent: 2
-- proto: CaptainIDCard
-  entities:
-  - uid: 4756
-    components:
-    - type: Transform
-      pos: -0.49034405,-11.254525
-      parent: 2
 - proto: CarbonDioxideCanister
   entities:
   - uid: 4757

@@ -44,6 +44,23 @@
         amount: 4
 
 - type: entity
+  id: CrateArmoryAntique
+  parent: [ CrateWeaponSecure, BaseSecurityContraband ]
+  name: Antique Arms Crate
+  description: Contains a selection of antique firearms from the distant past. Supplied by NT for museum displays, often misappropriated for "Cargonian" station revolts.
+  components:
+  - type: StorageFill
+    contents:
+      - id: Boxlethalshot
+        amount: 1
+      - id: WeaponShotgunSawn
+        amount: 1
+      - id: WeaponShotgunDoubleBarreled
+        amount: 1
+      - id: WeaponSniperMosin
+        amount: 2
+
+- type: entity
   id: CrateArmoryShotgun
   parent: [ CrateWeaponSecure, BaseSecurityContraband ]
   name: shotgun crate

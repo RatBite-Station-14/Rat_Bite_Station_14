@@ -36,7 +36,7 @@ public sealed class PermaBrigCommand : LocalizedCommands
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
-    public override string Command => "permabrig";
+    public override string Command => "oldpermabrig";
 
     public override async void Execute(IConsoleShell shell, string argStr, string[] args)
     {
@@ -106,7 +106,7 @@ public sealed class PermaPardonCommand : LocalizedCommands
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
     [Dependency] private readonly IBanManager _bans = default!;
 
-    public override string Command => "permapardon";
+    public override string Command => "oldpermapardon";
 
     public override async void Execute(IConsoleShell shell, string argStr, string[] args) //_bans.PardonRoleBanByDescription("Rolebanned to imprison. Do not create bans with this exact description for they will get deleted.", data.UserId,)
     {

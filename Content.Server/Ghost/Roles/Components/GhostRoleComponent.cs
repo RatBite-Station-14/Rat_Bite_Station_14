@@ -67,6 +67,9 @@ public sealed partial class GhostRoleComponent : Component
     [DataField("prob")]
     public float Probability = 1f;
 
+    [DataField("allowPerma")]
+    public bool AllowPerma = false;
+
     // We do this so updating RoleName and RoleDescription in VV updates the open EUIs.
 
     [ViewVariables(VVAccess.ReadWrite)]
