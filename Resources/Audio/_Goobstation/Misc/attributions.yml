@@ -32,3 +32,8 @@
   license: "CC-BY-SA-3.0"
   copyright: "Taken from TG Station"
   source: "https://github.com/tgstation/tgstation/commit/ce933a1a97dbc50e4bc57bc5a40707c91a5f63cf"
+
+- files: ["phone_ring.ogg"]
+  license: "CC-BY-4.0"
+  copyright: "Recorded by nightcustard, trimmed and converted to mono by XWASHERE (github)"
+  source: "https://freesound.org/people/nightcustard/sounds/655404/"

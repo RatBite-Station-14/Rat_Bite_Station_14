@@ -139,8 +139,11 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Civilian
-      time: 10800 
-   
+      time: 36000
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 3600
+
   goobcoins: 40 #Goob content
   weight: 20
   startingGear: HoPGear

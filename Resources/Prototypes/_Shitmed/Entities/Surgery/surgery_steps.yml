@@ -646,6 +646,11 @@
     damageType: Rot
     isConsumable: true
 
+- type: entity
+  parent: SurgeryStepInsertOrgan
+  id: SurgeryStepInsertPump
+  name: Add pump
+
 # Doesn't serve much of a purpose right now. Just here for completeness-sake.
 - type: entity
   parent: SurgeryStepInsertOrgan
