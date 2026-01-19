@@ -11,6 +11,7 @@
 // SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
 // SPDX-FileCopyrightText: 2025 thebiggestbruh <199992874+thebiggestbruh@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 thebiggestbruh <marcus2008stoke@gmail.com>
+// SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -78,6 +79,7 @@ public abstract partial class SharedMartialArtsSystem : EntitySystem
         InitializeCqc();
         InitializeCorporateJudo();
         InitializeCanPerformCombo();
+        InitializeTideStyle();
 
         SubscribeLocalEvent<MartialArtsKnowledgeComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<MartialArtsKnowledgeComponent, CheckGrabOverridesEvent>(CheckGrabStageOverride);
@@ -113,6 +115,17 @@ public abstract partial class SharedMartialArtsSystem : EntitySystem
             if (_timing.CurTime < comp.BlockedTime)
                 continue;
             RemComp<KravMagaBlockedBreathingComponent>(ent);
+        }
+
+        var tideQuery = EntityQueryEnumerator<TideStyleComponent>();
+        while (tideQuery.MoveNext(out var uid, out var comp))
+        {
+            if (comp.ConsecutiveHits > 0 && _timing.CurTime > comp.LastHitTime + TimeSpan.FromSeconds(comp.HitDecayTime))
+            {
+                comp.ConsecutiveHits = Math.Max(0, comp.ConsecutiveHits - 1);
+                comp.LastHitTime = _timing.CurTime;
+                Dirty(uid, comp);
+            }
         }
     }
 

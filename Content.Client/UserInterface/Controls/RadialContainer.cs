@@ -76,7 +76,7 @@ public class RadialContainer : LayoutContainer
     /// <see cref="RadiusIncrement"/> multiplied by currently visible child button count.
     /// </summary>
     [ViewVariables(VVAccess.ReadOnly)]
-    public float CalculatedRadius { get; private set; }
+    public float CalculatedRadius { get; set; }
 
     /// <summary>
     /// Determines radial menu button sectors inner radius, is a multiplier of <see cref="InitialRadius"/>.

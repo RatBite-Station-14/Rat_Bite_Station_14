@@ -60,6 +60,7 @@
 # SPDX-FileCopyrightText: 2025 Thomas <87614336+Aeshus@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 fishbait <gnesse@gmail.com>
 # SPDX-FileCopyrightText: 2025 āda <ss.adasts@gmail.com>
+# SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 # Base Prototypes
@@ -234,11 +235,11 @@
 - type: latheRecipe
   id: ClothingShoesBootsSpeed
   result: ClothingShoesBootsSpeed
-  completetime: 2
+  completetime: 10
   materials:
-    Steel: 1500
-    Plastic: 1000
-    Silver: 500
+    Steel: 1000
+    Silver: 2000
+    BSCrystal: 100
 
 - type: latheRecipe
   id: ModularReceiver

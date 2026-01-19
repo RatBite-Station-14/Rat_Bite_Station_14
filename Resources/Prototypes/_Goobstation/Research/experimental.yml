@@ -62,7 +62,7 @@
   cost: 5000
   recipeUnlocks:
   - MaterialBSCrystal
-  position: -4,-2
+  position: -3,-2
   technologyPrerequisites:
   - DeterrenceTechnologies
 

@@ -20,6 +20,7 @@
 # SPDX-FileCopyrightText: 2025 thebiggestbruh <marcus2008stoke@gmail.com>
 # SPDX-FileCopyrightText: 2025 username <113782077+whateverusername0@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 whateverusername0 <whateveremail>
+# SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -107,11 +108,15 @@
     cost: 2000
   - id: BorgModuleAdvancedMining
     cost: 2000
+  - id: OreScannerConsoleCircuitboard
+    cost: 2000
   # TODO: super resonator for 2500
   # TODO: jump boots for 2500
   - id: ClothingOuterHardsuitSalvage
-    cost: 3000
+    cost: 2000
   - id: ShelterCapsuleLuxury
-    cost: 3000
+    cost: 2500
+  - id: ClothingShoesBootsSpeed
+    cost: 2500
   # TODO: luxury elite bar capsule for 10k
   # TODO: mining drone stuff

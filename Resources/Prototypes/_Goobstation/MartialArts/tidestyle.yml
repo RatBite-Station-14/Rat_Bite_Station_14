@@ -1,0 +1,51 @@
+# SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  id: ActionTideRip
+  name: Rip
+  description: Rips off the targeted limb on your next punch. Can always target hands, arms, legs, and feet. When the enemy is laying down, you can also rip off their head, groin, or chest. Requires precise timing during the charge window.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    icon:
+      sprite: Objects/Misc/tidestyle.rsi
+      state: ripandtear
+    useDelay: 5
+    event: !type:TideStyleAbilityEvent { }
+  - type: TideStyleAbility
+    configuration: Rip
+    name: Rip
+
+- type: entity
+  id: ActionTideStomp
+  name: Stomp
+  description: When the enemy is laying down, use this ability to destroy the targeted limb on your next punch. Requires precise timing during the charge window.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    icon:
+      sprite: Objects/Misc/tidestyle.rsi
+      state: tidestomp
+    useDelay: 2
+    event: !type:TideStyleAbilityEvent { }
+  - type: TideStyleAbility
+    configuration: Stomp
+    name: Stomp
+
+- type: entity
+  id: ActionTidePush
+  name: TidePush
+  description: Instantly performs a powerful push that violently knocks the enemy back far and stuns them.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    icon:
+      sprite: Objects/Misc/tidestyle.rsi
+      state: tideshove
+    useDelay: 3
+    event: !type:TideStyleAbilityEvent { }
+  - type: TideStyleAbility
+    configuration: Push
+    name: TidePush

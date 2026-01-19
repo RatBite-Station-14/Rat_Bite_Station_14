@@ -52,13 +52,14 @@ public sealed class HideLayerClothingSystem : EntitySystem
         hideLayers &= IsEnabled(clothing!);
 
         var hideable = user.Comp.HideLayersOnEquip;
-        var inSlot = clothing.Comp2.InSlotFlag ?? SlotFlags.NONE;
 
-        // This method should only be getting called while the clothing is equipped (though possibly currently in
-        // the process of getting unequipped).
-        DebugTools.AssertNotNull(clothing.Comp2.InSlot);
-        DebugTools.AssertNotNull(clothing.Comp2.InSlotFlag);
-        DebugTools.AssertNotEqual(inSlot, SlotFlags.NONE);
+        // Slot info can be missing during forced unequips
+        // In that case, we can't reliably restore visibility for a specific slot, so just bail.
+        var inSlotNullable = clothing.Comp2.InSlotFlag;
+        if (inSlotNullable == null || inSlotNullable == SlotFlags.NONE)
+            return;
+
+        var inSlot = inSlotNullable.Value;
 
         var dirty = false;
 

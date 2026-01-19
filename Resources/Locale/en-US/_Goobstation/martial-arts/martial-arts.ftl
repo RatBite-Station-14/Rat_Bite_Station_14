@@ -43,3 +43,17 @@ krav-maga-ready = You ready a {$action}
 
 martial-arts-action-sender = You hit {$name} with {$move}
 martial-arts-action-receiver = {$name} hit you with {$move}
+
+tide-style-ready = {$action} charging
+tide-rip-success = Limb ripped.
+tide-rip-invalid-part = You can't rip that part off!
+tide-stomp-success = Limb destroyed.
+tide-stomp-not-downed = The target must be laying down.
+tide-stomp-invalid-part = ...
+tide-push-ready = Ready!
+tide-push-success = You launch your enemy!
+tide-push-cooldown = Charging...
+tidestyle-fail-used = {CAPITALIZE(THE($manual))} is already used.
+tidestyle-success-learned = You have learned the Way of the Tide! You feel... primal.
+tidestyle-manual-used = [color=white]{CAPITALIZE(THE($manual))} looks to be already used.[/color]
+tidestyle-ability-mistimed = ...

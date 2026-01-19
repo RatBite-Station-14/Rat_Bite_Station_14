@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseItem
+  id: TideStyleManual
+  name: The Way Of The Tide
+  description: A worn, bloodstained manual. The pages depict brutal, animalistic fighting techniques focused on carnal brutality to overthrow your oppressors. Strangely, all of the users of this style seem to be wearing gas masks and yellow gloves...
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/tidestyle.rsi
+    layers:
+    - state: thewayofthetide
+  - type: Item
+    size: Small
+  - type: StaticPrice
+    price: 2000
+  - type: GrantTideStyle

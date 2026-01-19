@@ -3,6 +3,7 @@
 // SPDX-FileCopyrightText: 2025 Ilya246 <ilyukarno@gmail.com>
 // SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
+// SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -723,7 +724,7 @@ public sealed partial class WoundSystem
     /// <summary>
     /// Destroys an entity's body part if conditions are met.
     /// </summary>
-    /// <param name="parentWoundableEntity">Parent of the woundable entity. Yes.</param>
+    /// <param name="parentWoundableEntity">Parent of the woundable entity.</param>
     /// <param name="woundableEntity">The entity containing the vulnerable body part</param>
     /// <param name="woundableComp">Woundable component of woundableEntity.</param>
     public void DestroyWoundable(EntityUid parentWoundableEntity, EntityUid woundableEntity, WoundableComponent woundableComp)
@@ -744,8 +745,10 @@ public sealed partial class WoundSystem
             if (key == null)
                 return;
 
-            // if wounds amount somehow changes it triggers an enumeration error. owch
+            Set severity and mark for deletion first
             woundableComp.WoundableSeverity = WoundableSeverity.Severed;
+            woundableComp.AllowWounds = false; // Prevent wounds on destroyed part
+            Dirty(woundableEntity, woundableComp);
 
             if (TryComp<TargetingComponent>(body, out var targeting))
             {
@@ -761,42 +764,45 @@ public sealed partial class WoundSystem
                 WoundableVisualizerKeys.Wounds,
                 new WoundVisualizerGroupData(GetWoundableWounds(woundableEntity).Select(ent => GetNetEntity(ent)).ToList()));
 
-            if (TryInduceWound(parentWoundableEntity, "Blunt", 0f, out var woundInduced))
+            // Always add bleeding wounds to parent when destroying a part
+            if (TryComp<WoundableComponent>(parentWoundableEntity, out var parentWoundable) && parentWoundable.CanBleed)
             {
-                var traumaInflicter = EnsureComp<TraumaInflicterComponent>(woundInduced.Value.Owner);
+                if (TryInduceWound(parentWoundableEntity, "Blunt", 5f, out var woundInduced))
+                {
+                    if (TryComp<BleedInflicterComponent>(woundInduced.Value.Owner, out var bleedComp))
+                    {
+                        bleedComp.IsBleeding = true;
+                        bleedComp.BleedingAmountRaw = 10f;
+                        bleedComp.ScalingLimit += 10;
+                        Dirty(woundInduced.Value.Owner, bleedComp);
+                    }
+                }
+            }
+
+            if (TryInduceWound(parentWoundableEntity, "Blunt", 0f, out var traumaWound))
+            {
+                var traumaInflicter = EnsureComp<TraumaInflicterComponent>(traumaWound.Value.Owner);
 
                 _trauma.AddTrauma(
                     parentWoundableEntity,
                     (parentWoundableEntity, Comp<WoundableComponent>(parentWoundableEntity)),
-                    (woundInduced.Value.Owner, traumaInflicter),
+                    (traumaWound.Value.Owner, traumaInflicter),
                     TraumaType.Dismemberment,
                     15f,
                     (bodyPart.PartType, bodyPart.Symmetry));
             }
 
-            Dirty(woundableEntity, woundableComp);
-
             if (IsWoundableRoot(woundableEntity, woundableComp))
             {
-                /*DropWoundableOrgans(woundableEntity, woundableComp);
-                DestroyWoundableChildren(woundableEntity, woundableComp);
-                _body.GibBody(bodyPart.Body.Value);
-
-                if (_net.IsServer)
-                {
-                    if (!IsClientSide(woundableEntity))
-                        QueueDel(woundableEntity); // More blood for the blood God!
-
-                    _body.GibBody(bodyPart.Body.Value);
-                }
-                }*/
+                // Mark root parts as destroyed, don't delete
+                // The entity stays but is non-functional
             }
             else
             {
                 if (!_container.TryGetContainingContainer(parentWoundableEntity, woundableEntity, out var container))
                     return;
 
-                if (TryComp<InventoryComponent>(body, out var inventory) // Prevent error for non-humanoids
+                if (TryComp<InventoryComponent>(body, out var inventory)
                     && _body.GetBodyPartCount(body, bodyPart.PartType) == 1
                     && _body.TryGetPartSlotContainerName(bodyPart.PartType, out var containerNames))
                 {
@@ -813,36 +819,19 @@ public sealed partial class WoundSystem
 
                 DropWoundableOrgans(woundableEntity, woundableComp);
 
-                if (TryInduceWound(parentWoundableEntity, "Blunt", 0f, out var woundEnt))
-                {
-                    _trauma.AddTrauma(
-                        parentWoundableEntity,
-                        (parentWoundableEntity, Comp<WoundableComponent>(parentWoundableEntity)),
-                        (woundEnt.Value.Owner, EnsureComp<TraumaInflicterComponent>(woundEnt.Value.Owner)),
-                        TraumaType.Dismemberment,
-                        15f);
-                }
-
-                foreach (var wound in GetWoundableWounds(parentWoundableEntity))
-                {
-                    if (!TryComp<BleedInflicterComponent>(wound, out var bleeds)
-                        || !TryComp<WoundableComponent>(parentWoundableEntity, out var parentWoundable)
-                        || !parentWoundable.CanBleed)
-                        continue;
-
-                    // Bleeding :3
-                    bleeds.ScalingLimit += 6;
-                }
-
-                _body.DetachPart(parentWoundableEntity, bodyPartId.Remove(0, 15), woundableEntity);
+                // Destroy all children recursively
                 DestroyWoundableChildren(woundableEntity, woundableComp);
 
-
+                // Transfer damage to parent
                 foreach (var wound in GetWoundableWounds(woundableEntity, woundableComp))
                     TransferWoundDamage(parentWoundableEntity, woundableEntity, wound, body);
 
+                _body.DetachPart(parentWoundableEntity, bodyPartId.Remove(0, 15), woundableEntity);
+
                 if (_net.IsServer && !IsClientSide(woundableEntity))
+                {
                     QueueDel(woundableEntity);
+                }
             }
         }
     }

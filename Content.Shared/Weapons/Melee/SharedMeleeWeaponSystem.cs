@@ -114,6 +114,7 @@
 // SPDX-FileCopyrightText: 2025 username <113782077+whateverusername0@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 vanx <61917534+Vaaankas@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 whateverusername0 <whateveremail>
+// SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -1034,11 +1035,20 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
     // Goob - Shove Rework shove stamina damage based on mass
     private float CalculateShoveStaminaDamage(EntityUid disarmer, EntityUid disarmed)
     {
-        var baseStaminaDamage = TryComp<ShovingComponent>(disarmer, out var shoving) ? shoving.StaminaDamage : ShovingComponent.DefaultStaminaDamage;
+        var baseStaminaDamage = TryComp<ShovingComponent>(disarmer, out var shoving)
+            ? shoving.StaminaDamage
+            : ShovingComponent.DefaultStaminaDamage;
 
-        return
+        var damage =
             baseStaminaDamage
             * _contests.MassContest(disarmer, disarmed, false, 4f);
+
+        // Allow other systems to modify shove stamina damage.
+        var ev = new GetShoveStaminaDamageModifierEvent(1f);
+        RaiseLocalEvent(disarmer, ref ev);
+        damage *= ev.Multiplier;
+
+        return damage;
     }
 
     protected virtual bool DoDisarm(EntityUid user,

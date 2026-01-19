@@ -14,6 +14,8 @@ namespace Content.Client.UserInterface.Controls;
 public sealed partial class SimpleRadialMenu : RadialMenu
 {
     private EntityUid? _attachMenuToEntity;
+    public event Action? OnClose;
+
 
     [Dependency] private readonly IClyde _clyde = default!;
     [Dependency] private readonly IEntityManager _entManager = default!;
@@ -42,6 +44,15 @@ public sealed partial class SimpleRadialMenu : RadialMenu
     {
         var vpSize = _clyde.ScreenSize;
         OpenCenteredAt(_inputManager.MouseScreenPosition.Position / vpSize);
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            OnClose?.Invoke();
+        }
+        base.Dispose(disposing);
     }
 
     private void Fill(

@@ -150,7 +150,7 @@
   recipeUnlocks:
   - ArtifactCrusherMachineCircuitboard
   # Goobstation R&D Console rework start
-  position: -3,2
+  position: -3,0
   technologyPrerequisites:
   - BasicXenoArcheology
   # Goobstation R&D Console rework end
@@ -185,7 +185,7 @@
   - WeaponParticleDecelerator
   - HoloprojectorField
   # Goobstation R&D Console rework start
-  position: -3,-2
+  position: -2,-2
   technologyPrerequisites:
   - AlternativeResearch
   # Goobstation R&D Console rework end

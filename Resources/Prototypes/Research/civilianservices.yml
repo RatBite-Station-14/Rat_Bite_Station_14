@@ -201,7 +201,7 @@
   - AdvancedEntertainment
   - BasicRobotics
   # Goobstation R&D Console rework end
-  
+
 
 - type: technology
   id: AdvancedCleaning
@@ -310,15 +310,14 @@
     sprite: Clothing/Shoes/Boots/speedboots.rsi
     state: icon
   discipline: CivilianServices
-  tier: 3
+  tier: 2
   cost: 15000 # Goobstation 10000 -> 15000
   recipeUnlocks:
   - ClothingShoesBootsSpeed
   # Goobstation R&D Console rework start
-  position: 1,9
+  position: -4,-2
   technologyPrerequisites:
-  - BluespaceCargoTransport
-  - HighEndSurgery
+  - MagnetsTech
   # Goobstation R&D Console rework end
 
 - type: technology

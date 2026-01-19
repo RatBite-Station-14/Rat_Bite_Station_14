@@ -71,6 +71,7 @@
 // SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
 // SPDX-FileCopyrightText: 2025 kurokoTurbo <92106367+kurokoTurbo@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 paige404 <59348003+paige404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 Mond-Mann <moonmanrreal@gmail.com>
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -273,8 +274,47 @@ public sealed partial class BodySystem : SharedBodySystem // Shitmed change: mad
 
     private void OnGibTorsoAttempt(Entity<BodyPartComponent> ent, ref AttemptEntityGibEvent args)
     {
-        if (ent.Comp.PartType == BodyPartType.Chest)
+        if (ent.Comp.PartType != BodyPartType.Chest)
+            return;
+
+        // Check if limbs are still attached to the torso by checking containers
+        var hasLimbs = false;
+
+        foreach (var slotId in ent.Comp.Children.Keys)
+        {
+            var containerSlotId = GetPartSlotContainerId(slotId);
+
+            if (!Containers.TryGetContainer(ent, containerSlotId, out var container))
+                continue;
+
+            // Check if this slot has a child part
+            foreach (var childId in container.ContainedEntities)
+            {
+                if (!TryComp<BodyPartComponent>(childId, out var childPart))
+                    continue;
+
+                // Check if this child is a limb that would prevent gibbing
+                if (childPart.PartType == BodyPartType.Arm ||
+                    childPart.PartType == BodyPartType.Leg ||
+                    childPart.PartType == BodyPartType.Hand ||
+                    childPart.PartType == BodyPartType.Foot ||
+                    childPart.PartType == BodyPartType.Tail ||
+                    childPart.PartType == BodyPartType.Head)
+                {
+                    hasLimbs = true;
+                    break;
+                }
+            }
+
+            if (hasLimbs)
+                break;
+        }
+
+        // If all limbs are removed, allow the torso to be gibbed
+        if (hasLimbs)
+        {
             args.GibType = GibType.Skip;
+        }
     }
     // Shitmed Change End
 }
