@@ -1,0 +1,44 @@
+- type: entity
+  parent: [ClothingEyesBase, ShowSecurityIcons, BaseSecurityContraband]
+  id: ClothingEyesGlassesRSO
+  name: RSO redsights
+  description: Upgraded secglasses that provide rudimentary night vision on top of flash immunity and a security HUD.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Eyes/Glasses/RSOglasses.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Eyes/Glasses/RSOglasses.rsi
+  - type: FlashImmunity
+  - type: EyeProtection
+    protectionTime: 5
+  - type: Construction
+    graph: GlassesSecHUD
+    node: glassesSec
+  - type: Tag
+    tags:
+    - HamsterWearable
+    - WhitelistChameleon
+  - type: GuideHelp
+    guides:
+    - Security
+    - Antagonists
+  - type: IdentityBlocker
+    coverage: EYES
+  - type: Armor # provide more coverage than default ones. you know, it's a sec one
+    coverage:
+    - Head
+    modifiers:
+      coefficients:
+        Heat: 0.9
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+    traumaDeductions:
+      Dismemberment: 0
+      OrganDamage: 0.13
+      BoneDamage: 0.13
+      VeinsDamage: 0
+      NerveDamage: 0
+  - type: NightVision
+    isEquipment: true
+    color: "#d14343"

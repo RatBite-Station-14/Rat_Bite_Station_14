@@ -53,7 +53,7 @@
       types:
         Shock: 5
   - type: Stunbaton
-    energyPerUse: 120
+    energyPerUse: 100
     lightAttackEnergyMultiplier: 1.5 # Goob edit
   - type: MeleeWeapon # goob edited
     angle: 0
@@ -62,16 +62,14 @@
       types:
         Blunt: 9
     animation: WeaponArcThrust
-  # it was ~35 now it's 55 so it's a buff ig
+  # ratbite rebalance
   - type: StaminaDamageOnHit # goob edited
-    damage: 15
-    overtime: 40
-    lightAttackDamageMultiplier: 5
+    damage: 30
+    lightAttackDamageMultiplier: 1
     lightAttackOvertimeDamageMultiplier: 0
     sound: /Audio/Weapons/egloves.ogg
   - type: StaminaDamageOnCollide # goob edited
-    damage: 15
-    overtime: 40
+    damage: 30
     sound: /Audio/Weapons/egloves.ogg
   - type: DelayedKnockdownOnHit # Goobstation
     useDelay: stunbaton
@@ -80,8 +78,8 @@
     - stunbaton
   - type: LandAtCursor # it deals stamina damage when thrown
   - type: Battery
-    maxCharge: 360
-    startingCharge: 360
+    maxCharge: 400
+    startingCharge: 400
   - type: UseDelay
     delays: # Goobstation
       stunbaton:

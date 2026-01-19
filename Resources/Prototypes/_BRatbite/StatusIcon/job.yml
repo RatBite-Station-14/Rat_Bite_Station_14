@@ -1,0 +1,47 @@
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconRSO
+  icon:
+    sprite: /Textures/_BRatBites/Interface/Misc/job_icons.rsi
+    state: RedsightOverseer
+  jobName: job-name-redsightoverseer
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconMedicalOrderly
+  icon:
+    sprite: /Textures/_BRatBites/Interface/Misc/job_icons.rsi
+    state: MedicalOrderly
+  jobName: job-name-medicalorderly
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconScicurityGuard
+  icon:
+    sprite: /Textures/_BRatBites/Interface/Misc/job_icons.rsi
+    state: ScicurityGuard
+  jobName: job-name-scicurityguard
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconCargoInsurance
+  icon:
+    sprite: /Textures/_BRatBites/Interface/Misc/job_icons.rsi
+    state: CargoInsurance
+  jobName: job-name-CargoInsurance
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconEngiSentry
+  icon:
+    sprite: /Textures/_BRatBites/Interface/Misc/job_icons.rsi
+    state: EngiSentry
+  jobName: job-name-EngiSentry
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconIntern
+  icon:
+    sprite: /Textures/_BRatBites/Interface/Misc/job_icons.rsi
+    state: ntrintern
+  jobName: job-name-ntrintern

@@ -12,6 +12,7 @@
 // SPDX-License-Identifier: MIT
 
 using Content.Shared.Atmos.Monitor;
+using Content.Shared.Radio;
 using Content.Shared.Tag;
 using Robust.Shared.Audio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
@@ -70,4 +71,7 @@ public sealed partial class AtmosAlarmableComponent : Component
     /// </summary>
     [DataField("receiveOnly")]
     public bool ReceiveOnly { get; private set; }
+
+    public TimeSpan AllowAlarmTime = TimeSpan.Zero;
+    public TimeSpan AlarmDelay = TimeSpan.FromSeconds(20);
 }

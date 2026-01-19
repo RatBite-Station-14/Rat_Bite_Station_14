@@ -189,7 +189,7 @@
     contents:
       - id: CrowbarOrange
       - id: Wrench
-      - id: Welder
+      #- id: Welder
       - id: Wirecutter
       - id: Screwdriver
         prob: 0.5

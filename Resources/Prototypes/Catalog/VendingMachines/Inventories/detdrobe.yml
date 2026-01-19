@@ -56,5 +56,8 @@
     ClothingHandsGlovesLatex: 2
     ClothingHeadsetAltSecurityRegular: 2 # Goobstation
     ClothingHeadsetSecurity: 2
+    ClothingNeckTieDisco: 2
+    ClothingBootsSnake: 2
+    ClothingOuterCoatDiscoBlazer: 2
   contrabandInventory:
     ToyFigurineDetective: 1

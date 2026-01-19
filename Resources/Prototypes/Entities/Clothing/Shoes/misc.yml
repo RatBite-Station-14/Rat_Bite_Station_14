@@ -93,8 +93,7 @@
   parent: ClothingShoesBaseButcherable
   id: ClothingShoeSlippersDuck
   name: ducky slippers
-  # description: You wish these made quacking sounds as you walked.
-  description: Comfy, yet haunted by the ghosts of ducks you fed bread to as a child.
+  description: You wish these made quacking sounds as you walked. It's a good thing they don't, though.
   components:
   - type: Sprite
     sprite: Clothing/Shoes/Misc/duck-slippers.rsi
@@ -102,7 +101,7 @@
     sprite: Clothing/Shoes/Misc/duck-slippers.rsi
   - type: FootstepModifier
     footstepSoundCollection:
-      collection: FootstepDuck
+      collection: FootstepCarpet
       params:
         variation: 0.07
   - type: WaddleWhenWorn # Goobstation
@@ -123,7 +122,7 @@
     sprite: Clothing/Shoes/Misc/lizard-slippers.rsi
   - type: FootstepModifier
     footstepSoundCollection:
-      collection: FootstepLizardSlippers
+      collection: FootstepCarpet
       params:
         variation: 0.02
   - type: WaddleWhenWorn # Goobstation
@@ -135,7 +134,7 @@
     juiceSolution:
       reagents:
       - ReagentId: JuiceThatMakesYouWeh
-        Quantity: 60
+        Quantity: 100 #THE MORE WEH THE MERRIER, Ratbite
   - type: SolutionContainerManager
     solutions:
       food:
@@ -144,7 +143,10 @@
         - ReagentId: Fiber
           Quantity: 20
         - ReagentId: JuiceThatMakesYouWeh
-          Quantity: 20
+          Quantity: 40 #Ratbite
+  - type: TemperatureProtection #Ratbite
+    heatingCoefficient: 1.01 #Ratbite
+    coolingCoefficient: 0.75 #Ratbite
 
 - type: entity
   parent: ClothingShoesBaseButcherable

@@ -89340,13 +89340,6 @@ entities:
     - type: Transform
       pos: 39.537453,92.72029
       parent: 2
-- proto: CaptainIDCard
-  entities:
-  - uid: 13652
-    components:
-    - type: Transform
-      pos: 100.642426,172.55048
-      parent: 2
 - proto: CarbonDioxideCanister
   entities:
   - uid: 13653
@@ -245462,13 +245455,6 @@ entities:
     components:
     - type: Transform
       pos: 74.5,154.5
-      parent: 2
-- proto: PosterLegitKSLeaders
-  entities:
-  - uid: 36830
-    components:
-    - type: Transform
-      pos: 47.5,130.5
       parent: 2
 - proto: PosterLegitLoveIan
   entities:

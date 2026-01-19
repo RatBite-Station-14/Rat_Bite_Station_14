@@ -1,0 +1,11 @@
+- type: entity
+  parent: [ClothingOuterStorageBase, AllowSuitStorageClothing]
+  id: ClothingOuterCoatDanteCoat
+  name: Singed Trench Coat
+  description: For those who have been to hell's gate and pulled back a specific few.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/OuterClothing/Coats/SingedTrenchCoat.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/OuterClothing/Coats/SingedTrenchCoat.rsi
+ 

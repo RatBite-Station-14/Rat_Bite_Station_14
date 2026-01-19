@@ -139,11 +139,11 @@
   description: job-description-hos
   playTimeTracker: JobHeadOfSecurity
   requirements:
-   
-   
+
+
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 10800 # 3 hrs
+      time: 36000 # 10 hrs
   #  - !type:StyleRequirement
   #    styles:
   #    - HumanHairFloorlengthBedhead
@@ -179,11 +179,11 @@
   equipment:
     eyes: ClothingEyesGlassesSecurity
     id: HoSPDA
-    gloves: ClothingHandsGlovesCombat
+    #gloves: ClothingHandsGlovesCombat - Goobstation, moved to loadouts
     ears: ClothingHeadsetAltSecurity
-    pocket1: WeaponPistolMk58
+#    pocket1: WeaponPistolMk58 - Ratbite moved to loadouts
   storage:
     back:
     - Flash
-    - MagazinePistol
+ #   - MagazinePistol - Ratbite moved to loadouts
     - ClothingMaskGasSecurity # Goobstation

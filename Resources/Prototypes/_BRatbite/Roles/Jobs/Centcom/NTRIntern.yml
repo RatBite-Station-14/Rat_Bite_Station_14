@@ -1,0 +1,47 @@
+- type: job
+  id: NTRIntern
+  name: job-name-ntrintern
+  description: job-description-ntrintern
+  playTimeTracker: JobNTRIntern
+  setPreference: false
+  startingGear: NTRInternGear
+  icon: "JobIconIntern"
+  supervisors: job-supervisors-hire
+  canBeAntag: false
+  accessGroups:
+  - General
+  access:
+  - NanotrasenRepresentative
+  - Command
+  - Maintenance
+  special: # Goobstation
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, BluespaceLifelineImplant ] # CC gets bluespace
+  - !type:AddComponentSpecial
+    components:
+      - type: Condemned # the intern sell their soul to corporation life
+        soulOwnedNotDevil: true
+
+- type: job
+  id: NTRLeadIntern
+  name: job-name-ntrleadintern
+  description: job-description-ntrleadintern
+  playTimeTracker: JobNTRLeadIntern
+  setPreference: false
+  startingGear: NTRInternGear
+  icon: "JobIconIntern"
+  supervisors: job-supervisors-hire
+  canBeAntag: false
+  accessGroups:
+  - General
+  access:
+  - NanotrasenRepresentative
+  - Command
+  - Maintenance
+  special: # Goobstation
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, BluespaceLifelineImplant ] # CC gets bluespace
+  - !type:AddComponentSpecial
+    components:
+      - type: Condemned # the intern sell their soul to corporation life
+        soulOwnedNotDevil: true

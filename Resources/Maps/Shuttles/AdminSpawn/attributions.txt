@@ -1,0 +1,41 @@
+﻿- files: ["Shuttles/AdminSpawn/ERT-Large-Base.yml"]
+  authors: TsjipTsjip, LuckyShotPictures, IProduceWidgets
+
+- files: ["Shuttles/AdminSpawn/ERT-Large-Med-Sec.yml"]
+  authors: TsjipTsjip, LuckyShotPictures, IProduceWidgets
+
+- files: ["Shuttles/AdminSpawn/ERT-Medium-Base.yml"]
+  authors: TsjipTsjip, LuckyShotPictures, IProduceWidgets
+
+- files: ["Shuttles/AdminSpawn/ERT-Medium-BasePlus.yml"]
+  authors: TsjipTsjip, LuckyShotPictures, IProduceWidgets
+
+- files: ["Shuttles/AdminSpawn/ERT-Medium-Eng-Jani.yml"]
+  authors: TsjipTsjip, LuckyShotPictures, IProduceWidgets
+
+- files: ["Shuttles/AdminSpawn/ERT-Medium-Med.yml"]
+  authors: TsjipTsjip, LuckyShotPictures, IProduceWidgets
+   
+- files: ["Shuttles/AdminSpawn/ERT-Medium-Sec.yml"]
+  authors: TsjipTsjip, LuckyShotPictures, IProduceWidgets
+
+- files: ["Shuttles/AdminSpawn/ERT-Small-Base.yml"]
+  authors: TsjipTsjip, LuckyShotPictures, IProduceWidgets
+
+- files: ["Shuttles/AdminSpawn/ERT-Small-CBURN.yml"]
+  authors: TsjipTsjip, LuckyShotPictures, IProduceWidgets
+
+- files: ["Shuttles/AdminSpawn/ERT-Small-Deathsquad.yml"]
+  authors: TsjipTsjip, LuckyShotPictures, IProduceWidgets
+
+- files: ["Shuttles/AdminSpawn/ERT-Small-Eng.yml"]
+  authors: TsjipTsjip, LuckyShotPictures, IProduceWidgets
+
+- files: ["Shuttles/AdminSpawn/ERT-Small-Jani.yml"]
+  authors: TsjipTsjip, LuckyShotPictures, IProduceWidgets
+
+- files: ["Shuttles/AdminSpawn/ERT-Small-Med.yml"]
+  authors: TsjipTsjip, LuckyShotPictures, IProduceWidgets
+
+- files: ["Shuttles/AdminSpawn/ERT-Small-Sec.yml"]
+  authors: TsjipTsjip, LuckyShotPictures, IProduceWidgets

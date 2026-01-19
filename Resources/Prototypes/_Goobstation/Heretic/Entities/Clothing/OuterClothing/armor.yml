@@ -30,7 +30,19 @@
     state: icon
   - type: Clothing
     sprite: _Goobstation/Heretic/Clothing/OuterClothing/eldritch_armor.rsi
+  - type: PressureProtection      #Ratbite
+    highPressureMultiplier: 0.05
+    lowPressureMultiplier: 1000
+  - type: TemperatureProtection   #Ratbite
+    heatingCoefficient: 0.5
+    coolingCoefficient: 0.5
   - type: Armor
+    traumaDeductions:
+      Dismemberment: 0.3
+      OrganDamage: 0.3
+      BoneDamage: 0.3
+      VeinsDamage: 0
+      NerveDamage: 0
     coverage:
     - Chest
     - Groin
@@ -41,12 +53,12 @@
     - Tail
     modifiers:
       coefficients:
-        Blunt: 0.5
-        Slash: 0.5
-        Piercing: 0.5
-        Heat: 0.5
-        Caustic: 0.5
-        Holy: 1.25
+        Blunt: 0.3
+        Slash: 0.3
+        Piercing: 0.3
+        Heat: 0.3
+        Caustic: 0.3
+        Holy: 1.50
   - type: ExplosionResistance
     damageCoefficient: 0.25
   - type: ToggleableClothing # Goobstation - Modsuits change

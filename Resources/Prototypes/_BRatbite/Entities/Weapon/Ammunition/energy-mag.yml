@@ -1,0 +1,89 @@
+- type: entity
+  id: EnergyPistolMagBase
+  abstract: true
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Objects/Weapon/Ammunition/magazine/energypistolmag.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: o2
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Battery
+    maxCharge: 1200
+    startingCharge: 1200
+  - type: AmmoCounter
+  - type: MagazineVisuals
+    magState: mag
+    steps: 3
+    zeroVisible: true
+  - type: Appearance
+  - type: Tag
+    tags:
+      - EnergyMagAmmo #intentional :) - we are letting cr-2 use this magazine too
+      - EnergyPistolMagAmmo
+
+- type: entity
+  id: EnergyMagPistolLethal
+  parent: [ EnergyPistolMagBase, BaseSecurityContraband ]
+  name: energy pistol magazine (lethal)
+  description: Powercell with an attached power converter that create lethal bolt at the end of energy pistol.
+  components:
+  - type: Sprite
+    layers:
+    - state: lethal
+      map: [ "enum.GunVisualLayers.Base" ]
+    - state: o2
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: ProjectileBatteryAmmoProvider
+    proto: PistolBulletEnergyGunLethal
+    fireCost: 100
+# Enabling this would enable dual wielded disablers, so no.
+#- type: entity
+#  id: EnergyMagPistolDisabler
+#  parent: [ EnergyPistolMagBase, BaseSecurityContraband ]
+#  name: energy pistol magazine (disabler)
+#  description: Powercell with an attached power converter that create disabler bolt at the end of energy pistol.
+#  components:
+#  - type: Sprite
+#    layers:
+#    - state: disabler
+#      map: [ "enum.GunVisualLayers.Base" ]
+#    - state: o2
+#      map: ["enum.GunVisualLayers.Mag"]
+#  - type: ProjectileBatteryAmmoProvider
+#    proto: PistolBulletEnergyGunDisabler
+#    fireCost: 100
+
+- type: entity
+  id: EnergyMagPistolIon
+  parent: [ EnergyPistolMagBase, BaseSecurityContraband ]
+  name: energy pistol magazine (Ion)
+  description: Powercell with an attached power converter that create Ionize bolt at the end of energy pistol.
+  components:
+  - type: Sprite
+    layers:
+    - state: ion
+      map: [ "enum.GunVisualLayers.Base" ]
+    - state: o2
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: ProjectileBatteryAmmoProvider
+    proto: PistolBulletEnergyGunIon
+    fireCost: 100
+
+- type: entity
+  id: EnergyMagPistolOverchargeLethal
+  parent: [ EnergyPistolMagBase, BaseSecurityContraband ]
+  name: energy pistol magazine (overcharge)
+  description: Powercell with an attached power converter that create a bolt that set the target on fire.
+  components:
+  - type: Sprite
+    layers:
+    - state: overcharge
+      map: [ "enum.GunVisualLayers.Base" ]
+    - state: o2
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: ProjectileBatteryAmmoProvider
+    proto: PistolBulletEnergyGunOvercharge
+    fireCost: 100

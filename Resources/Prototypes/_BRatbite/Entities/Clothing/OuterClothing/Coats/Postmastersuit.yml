@@ -1,0 +1,11 @@
+- type: entity
+  parent: [ClothingOuterStorageBase, AllowSuitStorageClothing]
+  id: ClothingOuterCoatPostmasterSuit
+  name: Postmaster Overcoat
+  description: For those hold the delivery of mail to the highest standard
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/OuterClothing/Coats/Postmastersuit.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/OuterClothing/Coats/Postmastersuit.rsi
+ 

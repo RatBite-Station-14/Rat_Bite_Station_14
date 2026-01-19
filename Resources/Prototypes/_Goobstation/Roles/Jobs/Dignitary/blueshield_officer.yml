@@ -38,7 +38,7 @@
 
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 7200 # 2 hours
+      time: 36000 # 10 hours
     - !type:AgeRequirement
       requiredAge: 21
   goobcoins: 45
@@ -79,7 +79,7 @@
   id: BlueshieldOfficerGear
   equipment:
     eyes: ClothingEyesGlassesBSO
-    gloves: ClothingHandsGlovesCombat
+    #gloves: ClothingHandsGlovesCombat - Goobstation, moved to loadouts
     id: BlueshieldPDA
     ears: ClothingHeadsetAltBlueshield
     belt: ClothingBeltAssaultFilled
@@ -88,3 +88,5 @@
     back:
     - Flash
     - ClothingMaskGasSecurity
+    - BlueshieldUndeterminedWeapon # Ratbite
+    - BlueshieldUndeterminedHardsuit # Ratbite

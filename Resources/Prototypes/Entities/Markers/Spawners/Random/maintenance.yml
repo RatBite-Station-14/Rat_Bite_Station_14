@@ -167,7 +167,7 @@
       - id: ClothingShoesFakeJordans
       - id: ClothingUnderSocksCoder
       - id: ClothingHeadHatSquid
-      # Animal Masks
+      # Animal Masks (like rats)
       - !type:GroupSelector
         children:
         - id: ClothingMaskRat
@@ -338,6 +338,7 @@
     - !type:GroupSelector
       weight: 75
       children:
+      - id: ToolboxGrey # Ratbite
       - id: FlashlightLantern
       - id: ToolboxEmergencyFilled
       - !type:GroupSelector
@@ -349,7 +350,12 @@
         - id: NitrogenTankFilled
         - id: DoubleEmergencyNitrogenTankFilled
       - id: EmergencyFunnyOxygenTankFilled
-        weight: 0.5
+      - !type:GroupSelector # EE Plasmeme Change
+        children:
+        - !type:EntSelector
+          id: PlasmaTankFilled
+        - !type:EntSelector
+          id: DoubleEmergencyPlasmaTankFilled
       - !type:GroupSelector
         weight: 3
         children:
@@ -498,6 +504,7 @@
       - id: SawImprov
       - id: HydroponicsToolMiniHoe
       - id: ClothingHandsKnuckleDusters
+      - id: MeleeHammer #Ratbite
 
 - type: entity
   name: Maint Loot Spawner

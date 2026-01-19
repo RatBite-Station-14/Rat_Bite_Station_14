@@ -57,3 +57,6 @@ marking-BodyShadekinLines = Lines Marking
 marking-BodyShadekinNeck = Neck Marking
 marking-BodyShadekinShield = Protective Marking
 marking-BodyShadekinVacuum = Open Marking
+
+marking-EyeShadekinLeft = Left Eye
+marking-EyeShadekinRight = Right Eye

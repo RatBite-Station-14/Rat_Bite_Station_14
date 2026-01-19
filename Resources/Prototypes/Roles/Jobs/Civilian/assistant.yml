@@ -78,7 +78,7 @@
 
 - type: job # goob edit
   id: Passenger
-  name: job-name-passenger
+  name: Passenger
   description: job-description-passenger
   playTimeTracker: JobPassenger
   startingGear: PassengerGear
@@ -86,9 +86,10 @@
   supervisors: job-supervisors-everyone
   goobcoins: 0 #Goob content
   requirements:
-     
-  access:
-  - Maintenance
+
+  #access:
+  #- Maintenance
+  # Ratbite tider rework. Dont worry I removed maintenance access as a tag from everyone, now naked people can enter and leave maints.
 
 - type: startingGear
   id: PassengerGear

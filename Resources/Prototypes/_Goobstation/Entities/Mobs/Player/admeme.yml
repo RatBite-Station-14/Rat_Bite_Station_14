@@ -26,6 +26,15 @@
   - Resomi # Sprites look shit on them.
   - Oni # Same as above, plus it fucks over ERTs.
   - Gingerbread # Soecusn
+  - Plasmaman
+  - Reptilian
+  - Moth
+  - Shadowkin # One flash is all it takes...
+  - Arachnid
+  - Vulpkanin
+  - Rodentia
+  - SlimePerson
+  - Dwarf
   components:
   - type: RandomHumanoidAppearance
     randomizeName: false

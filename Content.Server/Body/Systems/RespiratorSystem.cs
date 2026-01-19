@@ -55,7 +55,9 @@
 // SPDX-FileCopyrightText: 2025 AftrLite <61218133+AftrLite@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
+// SPDX-FileCopyrightText: 2025 CerberusWolfie <wb.johnb.willis@gmail.com>
 // SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+// SPDX-FileCopyrightText: 2025 John Willis <143434770+CerberusWolfie@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Kayzel <43700376+KayzelW@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Lincoln McQueen <lincoln.mcqueen@gmail.com>
 // SPDX-FileCopyrightText: 2025 Marcus F <199992874+thebiggestbruh@users.noreply.github.com>
@@ -71,6 +73,7 @@
 // SPDX-FileCopyrightText: 2025 kurokoTurbo <92106367+kurokoTurbo@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 thebiggestbruh <199992874+thebiggestbruh@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 thebiggestbruh <marcus2008stoke@gmail.com>
+// SPDX-FileCopyrightText: 2025 āda <ss.adasts@gmail.com>
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -86,6 +89,7 @@ using Content.Shared.Alert;
 using Content.Shared.Atmos;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Prototypes;
+using Content.Shared.Chat; // Einstein Engines - Language
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Damage;
@@ -283,6 +287,20 @@ public sealed class RespiratorSystem : EntitySystem
     }
 
     /// <summary>
+    /// Returns true if the entity is above their SuffocationThreshold and alive.
+    /// </summary>
+    public bool IsBreathing(Entity<RespiratorComponent?> ent)
+    {
+        if (_mobState.IsIncapacitated(ent))
+            return false;
+
+        if (!Resolve(ent, ref ent.Comp))
+            return false;
+
+        return (ent.Comp.Saturation > ent.Comp.SuffocationThreshold);
+    }
+
+    /// <summary>
     /// Check whether or not an entity can metabolize inhaled air without suffocating or taking damage (i.e., no toxic
     /// gasses).
     /// </summary>
@@ -428,6 +446,13 @@ public sealed class RespiratorSystem : EntitySystem
 
         _damageableSys.TryChangeDamage(ent, HasComp<DebrainedComponent>(ent) ? ent.Comp.Damage * 4.5f : ent.Comp.Damage, targetPart: TargetBodyPart.All, interruptsDoAfters: false);
         // Shitmed Change End
+        _damageableSys.TryChangeDamage(ent, HasComp<DebrainedComponent>(ent) ? ent.Comp.Damage * 4.5f : ent.Comp.Damage, targetPart: TargetBodyPart.Vital, interruptsDoAfters: false); // Shitmed Change + Goobstation
+
+        if (ent.Comp.SuffocationCycles < ent.Comp.SuffocationCycleThreshold)
+            return;
+
+ //       var ev = new SuffocationEvent();
+ //       RaiseLocalEvent(ent, ref ev);
     }
 
     private void StopSuffocation(Entity<RespiratorComponent> ent)

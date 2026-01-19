@@ -1,0 +1,13 @@
+- type: entity
+  id: RSOUndeterminedWeapon
+  name: RedsightOverseer weapon pack
+  description: A small remote utilizing bluespace technology to drop in a loadout directly to you. Choose wisely.
+  parent: [ BaseItem, BaseSetSelector, BaseCentcommContraband ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Security/ertundetermined.rsi
+    state: icon
+  - type: SetSelector
+    possibleSets:
+    - WeaponSelectorRSOSmartgun
+    maxSelectedSets: 1

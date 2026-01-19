@@ -54,6 +54,7 @@
     - BaseStationCargo
     - BaseStationJobsSpawning
     - BaseStationRecords
+    - BaseStationNtrTasks
     - BaseStationArrivals
     - BaseStationGateway
     - BaseStationShuttles
@@ -62,6 +63,7 @@
     - BaseStationAlertLevels
     - BaseStationMagnet
     - BaseStationExpeditions
+    - BaseStationSalvageJobs
     - BaseStationSiliconLawCrewsimov
     - BaseStationAllEventsEligible
     - BaseStationNanotrasen

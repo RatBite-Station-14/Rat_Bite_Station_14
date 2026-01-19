@@ -18,6 +18,14 @@
   sexes:
     - Male
     - Female
+  # begin Goobstation: port EE height/width sliders
+  minHeight: 0.75
+  defaultHeight: 0.85
+  maxHeight: 1.15
+  minWidth: 0.77
+  defaultWidth: 0.85
+  maxWidth: 1.15
+  # end Goobstation: port EE height/width sliders
 
 - type: speciesBaseSprites
   id: MobShadowkinSprites
@@ -44,12 +52,14 @@
   points:
     Tail:
       points: 1
-      required: true
-      defaultMarkings: [TailShadowkin]
+      required: false
     HeadTop:
       points: 1
       required: true
       defaultMarkings: [EarsShadowkin]
+    Head:
+      points: 1
+      required: false
     Chest:
       points: 6
       required: false
@@ -62,7 +72,6 @@
 
 - type: humanoidBaseSprite
   id: MobShadowkinAnyMarkingFollowSkin
-  markingsMatchSkin: true
 
 - type: humanoidBaseSprite
   id: MobShadowkinAnyMarking

@@ -88,6 +88,7 @@ using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
+using Content.Shared.Construction.Prototypes;
 using Content.Shared.Database;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
@@ -122,6 +123,8 @@ namespace Content.Server.Database
         Task SaveCharacterSlotAsync(NetUserId userId, ICharacterProfile? profile, int slot);
 
         Task SaveAdminOOCColorAsync(NetUserId userId, Color color);
+
+        Task SaveConstructionFavoritesAsync(NetUserId userId, List<ProtoId<ConstructionPrototype>> constructionFavorites);
 
         // Single method for two operations for transaction.
         Task DeleteSlotAndSetSelectedIndex(NetUserId userId, int deleteSlot, int newSlot);
@@ -471,6 +474,18 @@ namespace Content.Server.Database
         Task SendNotification(DatabaseNotification notification);
 
         #endregion
+
+        #region Perma Brig
+
+        Task<int> GetPermaRoundsLeft(NetUserId userId); // Ratbite
+        Task SetPermaRoundsLeft(NetUserId userId, int BrigSentence); // Ratbite
+        Task<int> ModifyPermaRoundsLeft(NetUserId userId, int BrigSentence); // Ratbite
+
+        Task<int> GetPPpoints(NetUserId userId); // Ratbite
+        Task SetPPpoints(NetUserId userId, int BrigSentence); // Ratbite
+        Task<int> ModifyPPpoints(NetUserId userId, int BrigSentence); // Ratbite
+
+        #endregion
     }
 
     /// <summary>
@@ -598,6 +613,12 @@ namespace Content.Server.Database
         {
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.SaveAdminOOCColorAsync(userId, color));
+        }
+
+        public Task SaveConstructionFavoritesAsync(NetUserId userId, List<ProtoId<ConstructionPrototype>> constructionFavorites)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SaveConstructionFavoritesAsync(userId, constructionFavorites));
         }
 
         public Task<PlayerPreferences?> GetPlayerPreferencesAsync(NetUserId userId, CancellationToken cancel)
@@ -777,6 +798,40 @@ namespace Content.Server.Database
         {
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.SetLastRolledAntag(userId, to));
+        }
+
+        public Task<int> GetPermaRoundsLeft(NetUserId userId) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetPermaRoundsLeft(userId));
+        }
+        public Task SetPermaRoundsLeft(NetUserId userId, int permaSentence) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetPermaRoundsLeft(userId, permaSentence));
+        }
+
+        public Task<int> ModifyPermaRoundsLeft(NetUserId userId, int permaSentence) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.ModifyPermaRoundsLeft(userId, permaSentence));
+        }
+
+        public Task<int> GetPPpoints(NetUserId userId) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetPPpoints(userId));
+        }
+        public Task SetPPpoints(NetUserId userId, int permaSentence) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetPPpoints(userId, permaSentence));
+        }
+
+        public Task<int> ModifyPPpoints(NetUserId userId, int permaSentence) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.ModifyPPpoints(userId, permaSentence));
         }
 
         public Task<int> AddConnectionLogAsync(

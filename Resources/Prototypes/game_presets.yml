@@ -63,6 +63,7 @@
   showInVote: false # secret
   description: survival-description
   rules:
+    - PermaBrig # RatBite - Multi-Round brig system
     # - MeteorSwarmScheduler Goobstation - nuh uh
     - RampingStationEventScheduler
     # - SpaceTrafficControlEventScheduler - Ratbite currently has no shuttle events
@@ -80,6 +81,7 @@
   showInVote: false # secret
   description: kessler-syndrome-description
   rules:
+    - PermaBrig # RatBite - Multi-Round brig system
 #    - KesslerSyndromeScheduler
     - RampingStationEventScheduler
 #    - SpaceTrafficControlEventScheduler - Ratbite currently has no shuttle events
@@ -92,8 +94,9 @@
   - all
   name: all-at-once-title
   description: all-at-once-description
-  showInVote: false
+  showInVote: false 
   rules:
+    - PermaBrig # RatBite - Multi-Round brig system
     - Nukeops
     - Traitor
     - Revolutionary
@@ -121,6 +124,7 @@
   description: aller-at-once-description
   showInVote: false #Please god dont do this
   rules:
+    - PermaBrig # RatBite - Multi-Round brig system
     - Nukeops
     - Traitor
     - Revolutionary
@@ -147,9 +151,10 @@
   - extended
   - shittersafari
   name: extended-title
-  showInVote: false #2boring2vote
+  showInVote: true 
   description: extended-description
   rules:
+  - PermaBrig # RatBite - Multi-Round brig system
   - BasicStationEventScheduler
   # - MeteorSwarmScheduler Goobstation - nuh uh
   # - SpaceTrafficControlEventScheduler - Ratbite currently has no shuttle events
@@ -162,9 +167,10 @@
   - greenshift
   - shittersafarideluxeedition
   name: greenshift-title
-  showInVote: false #4boring4vote
+  showInVote: true 
   description: greenshift-description
   rules:
+  - PermaBrig # RatBite - Multi-Round brig system
   # - SpaceTrafficControlFriendlyEventScheduler - Ratbite currently has no shuttle events
   - BasicRoundstartVariation
   - LavalandStormScheduler # Lavaland Change
@@ -175,9 +181,10 @@
     - secret
     - sekrit
   name: secret-title
-  showInVote: false # Goob - Game Director
+  showInVote: false # Ratbite - Death
   description: secret-description
   rules:
+    - PermaBrig # RatBite - Multi-Round brig system
     - Secret
     - BasicStationEventScheduler
     # - LavalandStormScheduler # Lavaland Change # All possible secret choices already contain this
@@ -190,6 +197,7 @@
   showInVote: false #Admin Use
   description: secret-description
   rules:
+    - PermaBrig # RatBite - Multi-Round brig system
     - BasicStationEventScheduler
   #  - MeteorSwarmScheduler Goobstation - nuh uh
   #  - SpaceTrafficControlEventScheduler - Ratbite currently has no shuttle events
@@ -204,6 +212,7 @@
   showInVote: false #Admin Use
   description: secret-description
   rules:
+  - PermaBrig # RatBite - Multi-Round brig system
   # - SpaceTrafficControlFriendlyEventScheduler - Ratbite currently has no shuttle events
   - BasicRoundstartVariation
   - LavalandStormScheduler # Lavaland Change
@@ -228,6 +237,7 @@
   description: traitor-description
   showInVote: false
   rules:
+  - PermaBrig # RatBite - Multi-Round brig system
   - DummyNonAntagChance
   - Traitor
   - SubGamemodesRule
@@ -245,7 +255,7 @@
   name: death-match-title
   description: death-match-description
   maxPlayers: 15
-  showInVote: true
+  showInVote: false #Ratbites, never voted for (should be reworked maybe or just moved as an admeme mode.)
   supportedMaps: DeathMatchMapPool
   rules:
     - DeathMatch31
@@ -258,6 +268,7 @@
   description: nukeops-description
   showInVote: false
   rules:
+  - PermaBrig # RatBite - Multi-Round brig system
   - Nukeops
   - DummyNonAntagChance
   - SubGamemodesRule
@@ -277,6 +288,7 @@
   description: rev-description
   showInVote: false
   rules:
+  - PermaBrig # RatBite - Multi-Round brig system
   - DummyNonAntagChance
   - Revolutionary
   - SubGamemodesRule
@@ -298,6 +310,7 @@
   description: zombie-description
   showInVote: false
   rules:
+  - PermaBrig # RatBite - Multi-Round brig system
   - Zombie
   - BasicStationEventScheduler
 #  - MeteorSwarmScheduler Goobstation - nuh uh
@@ -315,9 +328,11 @@
   description: zombieteors-description
   showInVote: false
   rules:
+  - PermaBrig # RatBite - Multi-Round brig system
   - Zombie
   - BasicStationEventScheduler
  # - KesslerSyndromeScheduler
  # - SpaceTrafficControlEventScheduler - Ratbite currently has no shuttle events
   - BasicRoundstartVariation
   - LavalandStormScheduler # Lavaland Change
+

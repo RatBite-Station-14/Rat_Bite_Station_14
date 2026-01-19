@@ -1,0 +1,14 @@
+- type: entity
+  parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband]
+  id: ClothingHeadHelmetWarden
+  name: Warden Security Helmet
+  description: Standard security gear for wardens.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Head/Helmets/wardenhelmet.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Head/Helmets/wardenhelmet.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - SecurityHelmet

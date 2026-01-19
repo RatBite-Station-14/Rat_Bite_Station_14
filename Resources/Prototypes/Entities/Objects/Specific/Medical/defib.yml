@@ -62,7 +62,7 @@
     - type: Defibrillator
       zapHeal:
         types:
-          Asphyxiation: -40
+          Asphyxiation: -200 # Ratbite, like god intended.
     - type: DoAfter
     - type: UseDelay
     - type: StaticPrice
@@ -70,6 +70,12 @@
     - type: GuideHelp
       guides:
       - Medical Doctor
+    - type: LanguageSpeaker # Einstein Engines - Language
+    - type: LanguageKnowledge # Einstein Engines - Language
+      speaks:
+      - TauCetiBasic
+      understands:
+      - TauCetiBasic
 
 - type: entity
   id: Defibrillator
@@ -93,7 +99,7 @@
 - type: entity
   id: DefibrillatorOneHandedUnpowered
   parent: BaseDefibrillator
-  suffix: One-Handed, Unpowered
+  suffix: One-Handed, Always Powered
 
 - type: entity
   id: DefibrillatorCompact # This should be a research item at some point # Goobstation - it is.
@@ -120,7 +126,7 @@
   - type: Defibrillator
     zapHeal:
       types:
-        Asphyxiation: -40
+        Asphyxiation: -200 # Ratbite, like god intended
     doAfterDuration: 3 # Goob value
   - type: DoAfter
   - type: UseDelay

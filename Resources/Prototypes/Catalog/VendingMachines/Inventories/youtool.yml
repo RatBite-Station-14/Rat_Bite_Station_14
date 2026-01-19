@@ -27,6 +27,7 @@
 # SPDX-FileCopyrightText: 2023 c4llv07e <38111072+c4llv07e@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 lanse12 <cloudability.ez@gmail.com>
 # SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Flora <NoContact>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -34,20 +35,22 @@
   id: YouToolInventory
   startingInventory:
     CableApcStack: 5
-    Crowbar: 5
-    Welder: 4
-    Wirecutter: 4
-    Wrench: 4
-    Screwdriver: 4
-    trayScanner: 4
-    NetworkConfigurator: 3
+    Crowbar: 6 #Ratbite
+    Welder: 5 #Ratbite
+    Wirecutter: 5 #Ratbite
+    Wrench: 5 #Ratbite
+    Screwdriver: 5 #Ratbite
+    trayScanner: 5 #Ratbite
+    NetworkConfigurator: 4 #Ratbite
     GasAnalyzer: 3
     FlashlightLantern: 5
     ClothingHandsGlovesColorYellowBudget: 3
     SprayPainter: 3
   # Some engineer forgot to take the multitool out the youtool when working on it, happens.
   contrabandInventory:
-    Multitool: 2
+    Multitool: 3 #Ratbite
     ClothingBeltUtility: 3
+    WelderIndustrial: 2 #Ratbite
+    ClothingHeadHatWelding: 2 #Ratbite
   emaggedInventory:
     ClothingHandsGlovesColorYellow: 1

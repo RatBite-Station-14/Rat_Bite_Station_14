@@ -60,7 +60,7 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Blunt: 10
+        Blunt: 7 # RB Nerf
         Structural: 5
     soundHit:
       collection: MetalThud
@@ -69,7 +69,7 @@
     damage:
       types:
         Blunt: 5
-        Structural: 10
+        Structural: 5 # RB Nerf
   - type: StaminaDamageOnHit # goob - bat makes you hurt and tired (but not as much as the real stun stick)
     damage: 12 # goob - 8 hits to stamcrit someone with armor vest + helmet
   - type: MeleeThrowOnHit # Goobstation
@@ -77,7 +77,7 @@
     speed: 5
   - type: Item
     size: Large # Goob edit
-    storedRotation: 45 # Goob
+    storedRotation: 90 # Goob
   - type: Tool
     qualities:
     - Rolling
@@ -86,6 +86,7 @@
     quickEquip: false
     slots:
     - back
+    - suitStorage
   - type: Construction
     graph: WoodenBat
     node: bat

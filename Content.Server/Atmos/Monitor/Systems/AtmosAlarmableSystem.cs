@@ -80,6 +80,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.Emag.Systems;
 
 namespace Content.Server.Atmos.Monitor.Systems;
 
@@ -89,6 +90,8 @@ public sealed class AtmosAlarmableSystem : EntitySystem
     [Dependency] private readonly AudioSystem _audioSystem = default!;
     [Dependency] private readonly DeviceNetworkSystem _deviceNet = default!;
     [Dependency] private readonly AtmosDeviceNetworkSystem _atmosDevNetSystem = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly EmagSystem _emag = default!;
 
     /// <summary>
     ///     An alarm. Has three valid states: Normal, Warning, Danger.
@@ -115,6 +118,7 @@ public sealed class AtmosAlarmableSystem : EntitySystem
         SubscribeLocalEvent<AtmosAlarmableComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<AtmosAlarmableComponent, DeviceNetworkPacketEvent>(OnPacketRecv);
         SubscribeLocalEvent<AtmosAlarmableComponent, PowerChangedEvent>(OnPowerChange);
+        SubscribeLocalEvent<AtmosAlarmableComponent, GotEmaggedEvent>(OnEmagged);
     }
 
     private void OnMapInit(EntityUid uid, AtmosAlarmableComponent component, MapInitEvent args)
@@ -379,6 +383,23 @@ public sealed class AtmosAlarmableSystem : EntitySystem
     private void UpdateAppearance(EntityUid uid, AtmosAlarmType alarm)
     {
         _appearance.SetData(uid, AtmosMonitorVisuals.AlarmType, alarm);
+    }
+
+    private void OnEmagged(EntityUid uid, AtmosAlarmableComponent component, ref GotEmaggedEvent args)
+    {
+        if (!_emag.CompareFlag(args.Type, EmagType.Interaction))
+            return;
+
+        if (_emag.CheckFlag(uid, EmagType.Interaction))
+            return;
+
+        if (!TryComp<AtmosAlarmableComponent>(uid, out var alarmable))
+            return;
+
+        // Remove the atmos alarmable component permanently from this device.
+        ForceAlert(uid, AtmosAlarmType.Emagged, alarmable);
+        RemCompDeferred<AtmosAlarmableComponent>(uid);
+        args.Handled = true;
     }
 }
 

@@ -1,0 +1,28 @@
+- type: startingGear
+  id: IAACorpseGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerBlack
+    ears: ClothingHeadsetIAA
+    shoes: ClothingShoesLeather
+    pocket1: LuxuryPen
+
+- type: startingGear
+  id: NTRCorpseGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitNtrep
+    shoes: ClothingShoesLeather
+    pocket1: LuxuryPen
+
+- type: startingGear
+  id: CentcomCorpseGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomOfficial
+    shoes: ClothingShoesBootsJackFilled
+    head: ClothingHeadHatCentcomcap
+
+- type: startingGear
+  id: CaptainCorpseGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCaptain
+    shoes: ClothingShoesLeather
+    head: ClothingHeadHatCapcap

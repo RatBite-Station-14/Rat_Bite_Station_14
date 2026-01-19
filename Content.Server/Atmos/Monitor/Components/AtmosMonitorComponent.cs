@@ -99,3 +99,10 @@ public sealed partial class AtmosMonitorComponent : Component
     [DataField]
     public string NodeNameMonitoredPipe = "monitored";
 }
+
+[ByRefEvent]
+public struct AtmosMonitorUpdateAlarmEvent(EntityUid monitor, AtmosAlarmType alarmTypes)
+{
+    public EntityUid Monitor = monitor;
+    public AtmosAlarmType AlarmType = alarmTypes;
+}

@@ -1,0 +1,11 @@
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformDantessuit
+  name: Seared Jumpsuit
+  description: A black jumpsuit made of some unknown material, it feels warm to the touch.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Uniforms/searedsuit.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Uniforms/searedsuit.rsi
+

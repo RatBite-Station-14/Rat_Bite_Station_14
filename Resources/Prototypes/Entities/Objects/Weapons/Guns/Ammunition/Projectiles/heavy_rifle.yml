@@ -33,4 +33,4 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 7 #RATT
+        Piercing: 10 #RATT

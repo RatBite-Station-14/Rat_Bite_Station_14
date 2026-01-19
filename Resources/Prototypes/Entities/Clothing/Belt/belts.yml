@@ -180,7 +180,7 @@
         - JawsOfLife
         - GPS
         - WeldingMask
-        - Hammer # Goobstation
+        - MeleeHammer # Goobstation - ratbite fix
         - Nailgun # Goobstation
         - MagazineNailgun # Goobstation
       components:
@@ -263,7 +263,7 @@
         - HolofanProjector
         - Multitool
         - AppraisalTool
-        - Hammer # Goobstation
+        - MeleeHammer # Goobstation - ratbite fix
         - Nailgun # Goobstation
         - MagazineNailgun # Goobstation
       components:
@@ -652,6 +652,7 @@
         - EnergySpeedloader # Goobstation
         - MilitaryPowerCell # Goobstation
         - HandGrenade
+        - EnergyMagAmmo # Ratbite
       components:
         - Stunbaton
         - FlashOnTrigger

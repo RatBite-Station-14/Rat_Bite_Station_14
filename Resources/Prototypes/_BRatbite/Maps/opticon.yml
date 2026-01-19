@@ -3,7 +3,7 @@
 - type: gameMap
   id: Opticon
   mapName: 'Opticon'
-  mapPath: /Maps/_BRatbite/opticon.yml
+  mapPath: /Maps/_BRatbite/Ratbite_Original/opticon.yml
   minPlayers: 8
   maxPlayers: 30
   stations:
@@ -50,6 +50,7 @@
             Borg: [ 2, 2 ]
             #security
             HeadOfSecurity: [ 1, 1 ]
+            RedsightOverseer: [ 1, 1 ] #Ratbite
             Warden: [ 1, 1 ]
             Detective: [ 1, 1 ]
             SecurityOfficer: [ 4, 4 ]

@@ -131,6 +131,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server._BRatbite.PermaBrig;
 using Content.Server._Goobstation.Antag;
 using Content.Server._durkcode.ServerCurrency;
 using Content.Server.Acz;
@@ -185,6 +186,7 @@ namespace Content.Server.Entry
 
         private ServerCurrencyManager? _currencyManager; // Goobstation
         private LastRolledAntagManager? _lastAntagManager; // Goobstation
+        private PermaBrigManager? _permaBrigManager; // Goobstation
 
         /// <inheritdoc />
         public override void Init()
@@ -257,6 +259,8 @@ namespace Content.Server.Entry
                 _currencyManager.Initialize(); // Goobstation
                 _lastAntagManager = IoCManager.Resolve<LastRolledAntagManager>(); // Goobstation
                 _lastAntagManager.Initialize(); // Goobstation
+                _permaBrigManager = IoCManager.Resolve<PermaBrigManager>(); // Ratbite
+                _permaBrigManager.Initialize(); // Ratbite
             }
         }
 

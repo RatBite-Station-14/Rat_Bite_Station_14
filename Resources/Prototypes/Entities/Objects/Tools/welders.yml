@@ -108,6 +108,14 @@
   id: Welder
   description: "Melts anything as long as it's fueled, don't forget your eye protection!"
   components:
+  # Goobstation edit start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/weldingtool_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/Items/welder_drop.ogg
+  # Goobstation edit end
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/welder_drop.ogg
@@ -188,8 +196,8 @@
       Welder:
         reagents:
         - ReagentId: WeldingFuel
-          Quantity: 100
-        maxVol: 100
+          Quantity: 150 # Ratbite
+        maxVol: 150 # Ratbite
   - type: Tool
     alwaysCheckDoAfter: true # Goobstation
     useSound:
@@ -226,7 +234,7 @@
         Piercing: -20
         Slash: -20
   - type: Cautery # Shitmed
-    speed: 0.7
+    speed: 0.9 # Ratbite
   - type: SurgeryTool # Shitmed
     startSound:
       collection: Welder
@@ -252,8 +260,8 @@
       Welder:
         reagents:
         - ReagentId: WeldingFuel
-          Quantity: 250
-        maxVol: 250
+          Quantity: 300 # Ratbite
+        maxVol: 300 # Ratbite
 
 - type: entity
   name: advanced industrial welding tool
@@ -270,10 +278,10 @@
       Welder:
         reagents:
         - ReagentId: WeldingFuel
-          Quantity: 250
-        maxVol: 250
+          Quantity: 300 # Ratbite
+        maxVol: 300 # Ratbite
   - type: Tool
-    speedModifier: 1.3
+    speedModifier: 1.4 # Ratbite
 
 - type: entity
   name: experimental welding tool
@@ -301,7 +309,7 @@
     generated:
       reagents:
       - ReagentId: WeldingFuel
-        Quantity: 1
+        Quantity: 3 # Ratbite
   - type: RequiresEyeProtection
     statusEffectTime: 5 # less harmful; sunglasses can block it
   - type: PhysicalComposition #Goobstation - Recycle update

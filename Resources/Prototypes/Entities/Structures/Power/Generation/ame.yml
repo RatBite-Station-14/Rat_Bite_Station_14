@@ -118,6 +118,9 @@
     interfaces:
       enum.AmeControllerUiKey.Key:
         type: AmeControllerBoundUserInterface
+  - type: ActivatableUIRequiresAccess #Ratbite - Power Safety
+  - type: AccessReader #Ratbite - Power Safety
+    access: [ [ "Engineering" ] ]
   - type: Appearance
   - type: GenericVisualizer
     visuals:

@@ -98,12 +98,12 @@
     transferAmount: 100
   - type: UseDelay
   - type: Spray
-    transferAmount: 10
+    transferAmount: 15
     pushbackAmount: 60
     spraySound:
       path: /Audio/Effects/extinguish.ogg
     sprayedPrototype: ExtinguisherSpray
-    vaporAmount: 3
+    vaporAmount: 2
     vaporSpread: 90
     sprayVelocity: 2.0
   - type: ItemToggle

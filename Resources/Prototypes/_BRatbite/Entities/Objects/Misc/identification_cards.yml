@@ -1,0 +1,100 @@
+- type: entity
+  parent: IDCardStandard
+  id: RedsightOverseerIDcard
+  name: Redsight Overseer ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: centcom
+    - state: idcentcom
+  - type: Item
+    heldPrefix:
+  - type: PresetIdCard
+    job: RedsightOverseer
+  - type: Access
+    tags:
+    - CentralCommand
+    - RedsightOverseer
+
+- type: entity
+  parent: IDCardStandard
+  id: MedicalWatchIDCard
+  name: medical orderly ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idmedicaldoctor
+  - type: PresetIdCard
+    job: MedOrderly
+
+
+- type: entity
+  parent: IDCardStandard
+  id: SciWatchIDCard
+  name: scicurity guard ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idscientist
+  - type: PresetIdCard
+    job: ScicurityGuard
+
+- type: entity
+  parent: IDCardStandard
+  id: CargoWatchIDCard
+  name: cargo insurance ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idcargotechnician
+  - type: PresetIdCard
+    job: CargoInsurance
+
+- type: entity
+  parent: IDCardStandard
+  id: EngineeringWatchIDCard
+  name: engi sentry ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idstationengineer
+  - type: PresetIdCard
+    job: EngiSentry
+
+- type: entity
+  parent: PassengerIDCard
+  id: NTRInternIDCard
+  name: nanotrasen intern ID card
+  components:
+  - type: PresetIdCard
+    job: NTRIntern
+  - type: Sprite
+    sprite: _BRatBites/Objects/Misc/id-cards.rsi
+    layers:
+    - state: default
+    - state: idintern
+  - type: Clothing
+    slots:
+    - idcard
+    sprite: _BRatBites/Objects/Misc/id-cards.rsi
+
+- type: entity
+  parent: PassengerIDCard
+  id: NTRLeadInternIDCard
+  name: nanotrasen lead intern ID card
+  components:
+  - type: PresetIdCard
+    job: NTRLeadIntern
+  - type: Sprite
+    sprite: _BRatBites/Objects/Misc/id-cards.rsi
+    layers:
+    - state: default
+    - state: idintern
+  - type: Clothing
+    slots:
+    - idcard
+    sprite: _BRatBites/Objects/Misc/id-cards.rsi

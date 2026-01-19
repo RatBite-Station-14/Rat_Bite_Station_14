@@ -3,12 +3,13 @@ SPDX-FileCopyrightText: 2024 John Willis <143434770+CerberusWolfie@users.noreply
 SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 SPDX-FileCopyrightText: 2025 Rouge2t7 <81053047+Sarahon@users.noreply.github.com>
 SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
+SPDX-FileCopyrightText: 2025 BevvRat <beaverbitez@gmail.com>
 
 SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
 <Document>
-# Blueshield Officer (BSO) SOP
+Blueshield Officer (BSO) SOP
 This is the list of procedures, responsibilities, and duties of the [color=#1b67a5][bold]Blueshield Officer[/bold][/color] of this station.
 
 <ColorBox>
@@ -20,20 +21,23 @@ This is the list of procedures, responsibilities, and duties of the [color=#1b67
 The [bold][color=#fcd12a]most important[/color][/bold] rule of the Blueshield Officer is to protect and maintain the lives of Command personnel on the station.
 <Box>Command personnel are personnel hired by Nanotrasen (confirmed personnel in command) and any Central Command officials (including NTR).</Box>
 
-1. The Blueshield Officer is hired and entrusted with the sole responsibility of protecting command. They should only take action in matters related to command or upon request from command members, unless directed otherwise by Central Command.
-  <Box>The Blueshield Officer should remain neutral on all conflicts between command staff.</Box>
+Protect the operating command personnel and your protectorate
+Your primary job as Blueshield is to protect the heads of staff (Mindshielded individuals actively employed in a command role), and above all else, your protectorate (the one your objective is to protect) even at the cost of your safety or that of non-command personnel. However, protection does not permit reckless endangerment to the general crew. You don’t have to obey all orders by station command, and you may defend yourself or others if a head becomes violent. If you must incapacitate a command member, stabilize them medically and report the incident to the Captain, NTR, or Central Command for further action. In the event none of those people are present on the station, or CC is unresponsive, use discretion but understand you will be held accountable for your decision.
 
-2. The Blueshield Officer is to put the lives of Command over the lives of all others, including the Blueshield Officer. Their well-being is top priority.
-<Box>This includes first aid, revival, and ensuring they are safe and secure during emergencies.</Box>
+You must obey your protectorate in all but the most unreasonable circumstances, you may not violate your CC SoP to serve your protectorate's directives unless they are a ranking officer of Central Command (minimum NTR or RSO). Your protectorate may assign you to any one new protectorate who will then assume the authorities of the previous.
 
-3. The Blueshield Officer is to protect the lives of Command, not follow their orders to a fault.
+You are not part of Security, nor are you their subordinate.
+As BSO, you are expected to follow space law, but not enforce it. This is considered significantly below your pay grade and a waste of Nanotrasen resources. You are authorized to arrest individuals if their illegal actions present a credible threat to the personnel you are expected to protect. Exception to this rule is granted if you are explicitly authorized by your protectorate to go off and perform security duties on your own.
 
-4. The Blueshield Officer is not permitted to interfere with legal demotions or arrests. To do so would be a violation of their Central Command orders and Space Law.
-<Box>This primarily pertains to Command and Security work.</Box>
+Lethal force is a last resort
+Due to the advanced weaponry and training offered to you by Nanotrasen, You should always exhaust all less-than-lethal options before risking the lives of your co-workers. Clones and jumpsuits are expensive, so killing someone who is not posing an immediate and active deadly threat is a waste of Nanotrasen resources.
 
-5. The Blueshield Officer may use lethal force when actively protecting a member of Command from a clear and present danger. When the situation permits, they should warn transgressors that lethal force will be used if they continue their actions.
 
-6. If multiple command members are threatened at once, the Blueshield Officer should follow the Chain-Of-Command to know who to prioritize.
-<Box>Central Command officials are to be prioritized over Command staff.  </Box>
+Respect chain of command.
+As an employee of Centcomm, you are on a separate chain of command from the station’s command personnel. In the event of a revolution, mutiny, demotions, or any other scenario in which command personnel have confrontations of any kind with other command personnel, you are expected to aid and protect the highest-ranking command member, even if your protectorate's interests and orders don't align with this rule.
+
+
+Work with  Central Command
+Since you represent higher command, you are expected to ensure station operations align with Nanotrasen’s interests. If you observe command personnel engaging in conduct that violates their contract or harms the station but does not pose a direct and immediate threat to yourself or other command staff, you are required to report this to the NTR, or directly to Central Command if the NTR is unavailable, and follow their next orders to the letter. In the event that you hold grievances with the NTR’s orders, carry them out but immediately afterwards, communicate your concerns directly to CC.
 
 </Document>

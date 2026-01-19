@@ -386,6 +386,12 @@ public sealed class AtmosMonitorSystem : EntitySystem
             }
         }
 
+        var monitorUpdateAlarmEvent = new AtmosMonitorUpdateAlarmEvent(uid, state);
+        RaiseLocalEvent(uid, ref monitorUpdateAlarmEvent);
+
+        state = monitorUpdateAlarmEvent.AlarmType;
+
+
         // if the state of the current air doesn't match the last alarm state,
         // we update the state
         if (state != monitor.LastAlarmState || !alarmTypes.SetEquals(monitor.TrippedThresholds))

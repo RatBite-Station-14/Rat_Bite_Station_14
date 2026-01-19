@@ -98,7 +98,7 @@
   - type: Storage
     maxItemSize: Huge
     grid:
-    - 0,0,6,3
+    - 0,0,7,4
   - type: StorageFill
     contents:
       - id: WeaponSniperHristov
@@ -139,4 +139,7 @@
       - id: SpaceCash20000
         amount: 1
       - id: ClothingOuterCoatJensen
-      - id: ClothingHandsGlovesColorBlack
+      # EE Plasmeme Change: Why did they make this have combat gloves???
+      - id: ClothingHandsGlovesCombat
+      - id: ClothingMaskNeckGaiter
+      - id: ToyFigurineThief

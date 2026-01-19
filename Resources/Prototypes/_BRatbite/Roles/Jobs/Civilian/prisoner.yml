@@ -13,6 +13,6 @@
   id: PrisonerGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitPrisoner
-    shoes: ClothingShoesColorBrown
+    shoes: ClothingShoesColorBlack
     ears: ClothingHeadsetGrey
-  innerclothingskirt: ClothingUniformJumpskirtPrisoner
+    id: PrisonerIDCard

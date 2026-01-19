@@ -178,16 +178,14 @@
     bluntStaminaDamageFactor: 2.0
     angle: 0
     animation: WeaponArcThrust
-  # it was ~35 now it's 55 so it's a buff ig
+  # ratbite rebalance
   - type: StaminaDamageOnHit # goob edited
-    damage: 15
-    overtime: 40
-    lightAttackDamageMultiplier: 5
+    damage: 32
+    lightAttackDamageMultiplier: 1.3
     lightAttackOvertimeDamageMultiplier: 0
     sound: /Audio/Weapons/egloves.ogg
   - type: StaminaDamageOnCollide # goob edited
-    damage: 15
-    overtime: 40
+    damage: 32
     sound: /Audio/Weapons/egloves.ogg
   - type: DelayedKnockdownOnHit # Goobstation
     useDelay: stunbaton
@@ -290,6 +288,17 @@
   suffix: DO NOT MAP
   description: An ultrabright flashbulb with a trigger, which causes the victim to be dazed and lose their eyesight for a moment. Useless when burnt out.
   components:
+    # Goobstation edit start
+    - type: EmitSoundOnPickup
+      sound:
+        path: /Audio/_Goobstation/Items/handling/component_pickup.ogg
+    - type: EmitSoundOnDrop
+      sound:
+        path: /Audio/_Goobstation/Items/handling/component_drop.ogg
+    - type: EmitSoundOnLand
+      sound:
+        path: /Audio/_Goobstation/Items/handling/component_drop.ogg
+    # Goobstation edit end
     - type: Sprite
       sprite: Objects/Weapons/Melee/flash.rsi
       layers:

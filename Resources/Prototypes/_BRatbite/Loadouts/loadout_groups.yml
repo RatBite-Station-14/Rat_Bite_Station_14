@@ -1,0 +1,138 @@
+# SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 DarkenedSynergy <70016079+DarkenedSynergy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Theapug <159912420+Teapug@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Weide <64257676+Lyacs@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
+# SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
+# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+# SPDX-FileCopyrightText: 2025 Jarl <140098675+JarlElbowses@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Jarl <elliotacline@gmail.com>
+# SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
+# SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
+# SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 grub <unalterableness@gmail.com>
+# SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
+# SPDX-FileCopyrightText: 2025 shityaml <unalterableness@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# RATBITE WEAPON LOADOUTS
+- type: loadoutGroup
+  id: SecuritySidearm
+  name: Security Sidearm
+  minLimit: 0
+  maxLimit: 1
+  loadouts:
+  - SecurityMK58
+  - SecurityK38
+  - SecurityEP12
+  - SecurityPEW01
+
+- type: loadoutGroup
+  id: SecurityAmmo
+  name: Sidearm Ammo
+  minLimit: 0
+  maxLimit: 1
+  loadouts:
+  - SecurityMK58Ammo
+  - SecurityK38Ammo
+  - SecurityEP12Ammo
+
+# RSO
+
+- type: loadoutGroup
+  id: RedsightOverseerHead
+  name: loadout-group-rso-head
+  minLimit: 0
+  loadouts:
+  - RedsightOverseerLawHelm
+  - RedsightOverseerCap
+
+- type: loadoutGroup
+  id: RedsightOverseerJumpsuit
+  name: loadout-group-rso-jumpsuit
+  minLimit: 1
+  loadouts:
+  - RedsightOverseerInsideJumpsuit
+
+- type: loadoutGroup
+  id: RedsightOverseerOuter
+  name: loadout-group-rso-outerclothing
+  minLimit: 1
+  loadouts:
+  - RedsightOverseerArmoredJack
+
+- type: loadoutGroup
+  id: RedsightOverseerEyes
+  name: loadout-group-rso-eyes
+  minLimit: 1
+  loadouts:
+  - EyesGlassesRedsights
+
+- type: loadoutGroup
+  id: RedsightOverseerBack
+  name: loadout-group-rso-back
+  minLimit: 1
+  loadouts:
+  - RSOBackpack
+  - RSOSatchel
+  - RSODuffel
+  - RSOMessenger
+
+# Dept Guard General
+
+- type: loadoutGroup
+  id: DeptGuardHead
+  name: Department Guard Helmet
+  maxLimit: 1
+  loadouts:
+  - SecurityHelmet
+  - SecurityHelmetAlt
+
+- type: loadoutGroup
+  id: DeptGuardOuterClothing
+  name: Department Guard Outerclothing
+  minLimit: 1
+  loadouts:
+  - ArmorVest
+  - ArmorVestSlim
+
+# Medguard
+
+- type: loadoutGroup
+  id: MedOrderlyJumpsuit
+  name: Med Orderly Jumpsuits
+  minLimit: 1
+  loadouts:
+  - MedGuardInsideJumpsuit
+
+# SciGuard
+
+- type: loadoutGroup
+  id: SciguardJumpsuit
+  name: Sci-curity Guard Jumpsuit
+  minLimit: 1
+  loadouts:
+  - SciGuardInsideJumpsuit
+
+#CargoGuard
+
+- type: loadoutGroup
+  id: CargoInsuranceJumpsuit
+  name: Cargo Insurance Jumpsuit
+  minLimit: 1
+  loadouts:
+  - CargoGuardInsideJumpsuit
+
+#EngiGuard
+
+- type: loadoutGroup
+  id: EngiguardJumpsuit
+  name: Engi Sentry Jumpsuit
+  minLimit: 1
+  loadouts:
+  - EngiGuardInsideJumpsuit

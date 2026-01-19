@@ -34,9 +34,9 @@
 - type: gameMap
   id: Cluster
   mapName: 'Cluster'
-  mapPath: /Maps/_Goobstation/cluster.yml
-  minPlayers: 10
-  maxPlayers: 35
+  mapPath: /Maps/_BRatbite/Ratbite_Supported/cluster.yml
+  minPlayers: 15
+  maxPlayers: 40
   stations:
     Cluster:
       stationProto: StandardNanotrasenStation
@@ -66,28 +66,33 @@
             ServiceWorker: [ 1, 1 ]
             #engineering
             ChiefEngineer: [ 1, 1 ]
+            EngiSentry: [ 1, 1 ] #ratbite
             AtmosphericTechnician: [ 2, 2 ]
             StationEngineer: [ 3, 3 ]
             TechnicalAssistant: [ 2, 2 ]
             #medical
             ChiefMedicalOfficer: [ 1, 1 ]
+            MedOrderly: [ 1, 1 ] #ratbite
             Chemist: [ 1, 1 ]
             MedicalDoctor: [ 2, 2 ]
             MedicalIntern: [ 2, 2 ]
             #science
             ResearchDirector: [ 1, 1 ]
+            ScicurityGuard: [ 1, 1 ] #ratbite
             Scientist: [ 3, 3 ]
             ResearchAssistant: [ 2, 2 ]
             Borg: [ 1, 1 ]
             #security
             HeadOfSecurity: [ 1, 1 ]
-            Warden: [ 1, 1 ]
-            Detective: [ 1, 1 ]
+            RedsightOverseer: [ 1, 1 ] #Ratbite
+            Warden: [ 2, 2 ] #Ratbite de protaganist-ify him!!!
+            Detective: [ 2, 2 ] #Ratbite disco elysium/sherlock larp
             SecurityOfficer: [ 3, 3 ]
             SecurityCadet: [ 2, 2 ]
             Brigmedic: [ 1, 1 ]
             #supply
             Quartermaster: [ 1, 1 ]
+            CargoInsurance: [ 1, 1 ] #ratbite
             SalvageSpecialist: [ 5, 5 ]
             CargoTechnician: [ 2, 2 ]
             #civillian

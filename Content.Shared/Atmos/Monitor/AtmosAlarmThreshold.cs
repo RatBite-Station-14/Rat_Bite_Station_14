@@ -395,7 +395,8 @@ public enum AtmosMonitorThresholdType
 {
     Temperature,
     Pressure,
-    Gas
+    Gas,
+    IncomingTemperature, //Ratbite - Temperature Lockout
 }
 
 [Serializable, NetSerializable]

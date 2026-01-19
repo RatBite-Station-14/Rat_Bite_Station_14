@@ -32,7 +32,7 @@
   - type: GameRule
     chaosScore: 150
   - type: StationEvent
-    weight: 6 # Rare, but not AS rare
+    weight: 1 # RatBite
     earliestStart: 15
     reoccurrenceDelay: 20
     minimumPlayers: 4

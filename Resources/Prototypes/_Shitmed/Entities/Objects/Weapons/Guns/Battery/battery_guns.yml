@@ -24,6 +24,12 @@
     - state: mag-unshaded-4
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
+  - type: RestrictGunshotsByUserTag
+    contains:
+    - Abductor
+    messages:
+    - abductors-gun-restricted-1 
+    - abductors-gun-restricted-2 
   - type: ProjectileBatteryAmmoProvider
     proto: BulletDisabler
     fireCost: 50
@@ -42,6 +48,7 @@
     tags:
     - AbductorWeapon
 
+
 - type: entity
   parent: [BaseWeaponBattery, BaseGunWieldable, BaseMajorContraband]
   id: WeaponDecloner
@@ -58,6 +65,12 @@
     - state: mag-unshaded-4
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
+  - type: RestrictGunshotsByUserTag
+    contains:
+    - Abductor
+    messages:
+    - abductors-gun-restricted-1 
+    - abductors-gun-restricted-2 
   - type: Item
     shape:
     - 0,0,5,1

@@ -1,0 +1,16 @@
+# Used by Binglekind.
+- type: language
+  id: Bingle
+  speech:
+    color: "#008080"
+  obfuscation:
+    !type:ReplacementObfuscation
+    replacement:
+    - Bingle
+    - Bongle
+    - BINGLE
+    - BONGLE
+    - Bing
+    - Bong
+    - BING
+    - BONG

@@ -54,7 +54,9 @@ using Content.Shared.Atmos.Monitor;
 using Content.Shared.Atmos.Monitor.Components;
 using Content.Shared.Atmos.Piping.Unary.Components;
 using Content.Shared.DeviceLinking;
+using Content.Shared.Radio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
 
 namespace Content.Server.Atmos.Monitor.Components;
 
@@ -97,4 +99,19 @@ public sealed partial class AirAlarmComponent : Component
     /// </summary>
     [DataField("normalPort", customTypeSerializer: typeof(PrototypeIdSerializer<SourcePortPrototype>))]
     public string NormalPort = "AirNormal";
+
+
+    public TimeSpan NextWarning = TimeSpan.Zero;
+
+    public TimeSpan WarningCooldown = TimeSpan.FromSeconds(15);
+
+    [DataField("channels", customTypeSerializer: typeof(PrototypeIdHashSetSerializer<RadioChannelPrototype>))]
+    public HashSet<string> WarningChannels = new();
+
+    /// <summary>
+    /// Whether the panic wire is cut, forcing the alarm into panic mode.
+    /// </summary>
+    [DataField, ViewVariables]
+    public bool PanicWireCut;
+
 }

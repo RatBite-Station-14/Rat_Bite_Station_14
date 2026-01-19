@@ -151,7 +151,7 @@
     - id: AnomalySpawn
     - id: BluespaceArtifact
     - id: BluespaceLocker
-    - id: BreakerFlip
+    #- id: BreakerFlip #RatBite
     - id: BureaucraticError
     - id: ClericalError
     - id: CockroachMigration
@@ -162,7 +162,7 @@
     - id: MassHallucinations
     - id: MimicVendorRule
     - id: MouseMigration
-    - id: PowerGridCheck
+    #- id: PowerGridCheck #RatBite
     - id: RandomSentience
     - id: SlimesSpawn
     - id: SolarFlare
@@ -193,6 +193,7 @@
     - id: LoneAbductorSpawn # Shitmed - Starlight Abductors
     - id: DuoAbductorSpawn # Shitmed - Starlight Abductors
     - id: BingleSpawn #Goobstation - Bingle
+    - id: SlaughterDemonMidround # Goobstation - Slaughter Demon
 
 - type: entity
   id: BaseStationEvent
@@ -332,7 +333,7 @@
   id: ClosetSkeleton
   components:
   - type: StationEvent
-    weight: 5
+    weight: 3
     duration: 1
     minimumPlayers: 10
     eventType: Chaotic # Goobstation
@@ -483,6 +484,7 @@
       startingGear: ParadoxCloneGear
       roleLoadout:
       - RoleSurvivalVoxTank # give vox something to breath in case they don't get a copy
+      - RoleSurvivalPlasmaTank # Goobstation
       briefing:
         text: paradox-clone-role-greeting
         color: lightblue
@@ -599,25 +601,25 @@
     chaosScore: 80
   - type: KudzuGrowthRule
 
-- type: entity
-  id: PowerGridCheck
-  parent: BaseStationEventShortDelay
-  components:
-  - type: StationEvent
-    weight: 5
-    startAnnouncement: station-event-power-grid-check-start-announcement
-    endAnnouncement: station-event-power-grid-check-end-announcement
-    startAudio:
-      path: /Audio/Announcements/power_off.ogg
-      params:
-        volume: -4
-    duration: 60
-    maxDuration: 120
-    eventType: Interference # Goobstation
-  # Goobstation
-  - type: GameRule
-    chaosScore: 80
-  - type: PowerGridCheckRule
+#- type: entity #RatBite removal
+#  id: PowerGridCheck
+#  parent: BaseStationEventShortDelay
+#  components:
+#  - type: StationEvent
+#    weight: 5
+#    startAnnouncement: station-event-power-grid-check-start-announcement
+#    endAnnouncement: station-event-power-grid-check-end-announcement
+#    startAudio:
+#      path: /Audio/Announcements/power_off.ogg
+#      params:
+#        volume: -4
+#    duration: 60
+#    maxDuration: 120
+#    eventType: Interference # Goobstation
+#  # Goobstation
+#  - type: GameRule
+#    chaosScore: 80
+#  - type: PowerGridCheckRule
 
 - type: entity
   parent: BaseGameRule
@@ -1002,7 +1004,7 @@
   id: DerelictCyborgSpawn
   components:
   - type: StationEvent
-    weight: 5
+    weight: 1
     earliestStart: 15
     reoccurrenceDelay: 20
     minimumPlayers: 4
@@ -1025,3 +1027,27 @@
       min: 1
       max: 1
       pickPlayer: false
+#Ratbite
+- type: entityTable
+  id: CalmerAntagTable #Used for SqueakRat, holds ghostrole antags for now
+  table: !type:AllSelector
+    children:
+    - id: ClosetSkeleton
+    - id: DragonSpawn
+    - id: KingRatMigration
+    - id: NinjaSpawn
+    - id: ParadoxCloneSpawn
+    - id: DerelictCyborgSpawn
+    - id: LoneAbductorSpawn
+    - id: DuoAbductorSpawn
+    - id: BingleSpawn
+
+- type: entityTable
+  id: HeavierAntagTable #Used for SqueakRat, holds round changing antags
+  table: !type:AllSelector
+    children:
+    - id: ZombieOutbreak
+    - id: SleeperAgents
+    - id: HereticMidround #We should work on a better solution to adding heretics to squeakrat, HereticMidround does exsist.
+    - id: LoneOpsSpawn
+

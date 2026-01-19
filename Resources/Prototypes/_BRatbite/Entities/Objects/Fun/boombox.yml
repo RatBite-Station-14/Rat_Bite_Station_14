@@ -1,0 +1,22 @@
+- type: entity
+  id: MoblileSpeaker
+  parent: BaseItem
+  name: JLB speaker
+  description: An old earth patent of a mobile jukebox.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Objects/Fun/mobilespeaker.rsi
+    state: icon
+  - type: Jukebox
+    onState: on
+    offState: off
+    selectState: select
+  - type: Item
+    size: Normal
+    sprite: _BRatBites/Objects/Fun/moblilespeaker.rsi
+  - type: ActivatableUI
+    key: enum.JukeboxUiKey.Key
+  - type: UserInterface
+    interfaces:
+        enum.JukeboxUiKey.Key:
+          type: JukeboxBoundUserInterface

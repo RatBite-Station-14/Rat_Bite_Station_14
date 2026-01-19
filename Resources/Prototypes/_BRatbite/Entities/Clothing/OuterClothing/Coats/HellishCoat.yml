@@ -1,0 +1,11 @@
+- type: entity
+  parent: [ClothingOuterStorageBase, AllowSuitStorageClothing]
+  id: ClothingOuterCoatHellishCoat
+  name: Hellish Coat
+  description: For those who look like a strawberry.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/OuterClothing/Coats/HellishCoat.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/OuterClothing/Coats/HellishCoat.rsi
+ 

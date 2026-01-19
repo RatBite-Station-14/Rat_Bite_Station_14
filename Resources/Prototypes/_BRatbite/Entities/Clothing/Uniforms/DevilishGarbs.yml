@@ -1,0 +1,11 @@
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformDevilGarbs
+  name: Devilish Garbs
+  description: The perfect attire for those taking a casual waltz through hell.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Uniforms/DevilishGarbs.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Uniforms/DevilishGarbs.rsi
+

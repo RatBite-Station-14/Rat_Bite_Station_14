@@ -9,3 +9,63 @@
     layers:
       - state: green
       - state: prisoner
+
+- type: entity
+  id: SpawnPointRedsightOverseer
+  parent: SpawnPointJobBase
+  name: redsightoverseer
+  components:
+  - type: SpawnPoint
+    job_id: RedsightOverseer
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ertleader
+
+- type: entity
+  id: SpawnPointMedWatch
+  parent: SpawnPointJobBase
+  name: medicalorderly
+  components:
+  - type: SpawnPoint
+    job_id: MedOrderly
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ertleader
+
+- type: entity
+  id: SpawnPointCargoWatch
+  parent: SpawnPointJobBase
+  name: cargoinsurance
+  components:
+  - type: SpawnPoint
+    job_id: CargoInsurance
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ertleader
+
+- type: entity
+  id: SpawnPointSciWatch
+  parent: SpawnPointJobBase
+  name: scicurityguard
+  components:
+  - type: SpawnPoint
+    job_id: ScicurityGuard
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ertleader
+
+- type: entity
+  id: SpawnPointEngiWatch
+  parent: SpawnPointJobBase
+  name: engisentry
+  components:
+  - type: SpawnPoint
+    job_id: EngiSentry
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ertleader

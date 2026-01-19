@@ -162,6 +162,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server._BRatbite.PermaBrig;
 using Content.Server._durkcode.ServerCurrency;
 using Content.Server._Goobstation.Antag;
 using Content.Server._RMC14.LinkAccount; // RMC - Patreon
@@ -246,6 +247,7 @@ namespace Content.Server.IoC
             IoCManager.Register<CVarControlManager>();
             IoCManager.Register<ServerCurrencyManager>(); // Goobstation - Server Currency
             IoCManager.Register<LastRolledAntagManager>(); // Goobstation - antag pity
+            IoCManager.Register<PermaBrigManager>(); // Ratbite - Multi-round permas
             IoCManager.Register<LinkAccountManager>(); // RMC - Patreon
         }
     }

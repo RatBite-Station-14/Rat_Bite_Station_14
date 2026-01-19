@@ -1,0 +1,25 @@
+- type: entity
+  parent: [ClothingHeadBase]
+  id: ClothingHeadHatShadowMask
+  name: Nameless Shadow Mask
+  description: A mask imitating some formless being. You swear you can hear faint voices muttering something about a path in the woods. 
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Head/Helmets/NamelessShadowMask.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Head/Helmets/NamelessShadowMask.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: Armor
+    coverage:
+    - Head
+    modifiers:
+      coefficients:
+        Blunt: 0.35
+        Slash: 0.35
+        Piercing: 0.35
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+  

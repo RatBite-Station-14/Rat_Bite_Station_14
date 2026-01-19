@@ -115,7 +115,7 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Blunt: 2
+        Blunt: 3 #Ratbite
   - type: EmbeddableProjectile
     sound: /Audio/Weapons/star_hit.ogg
   - type: Stack

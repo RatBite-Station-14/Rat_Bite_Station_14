@@ -73,9 +73,13 @@
       visible: false
       map: ["enum.LockVisualLayers.Lock"]
   - type: Emitter
+    powerOffDelay: 15 # Ratbite - Power Safety
+    warningChannels: # Ratbite - Power Safety
+    - Security
+    - Engineering
   - type: Gun
     showExamineText: false
-    fireRate: 10 #just has to be fast enough to keep up with upgrades
+    fireRate: 10 # Just has to be fast enough to keep up with upgrades
     selectedMode: SemiAuto
     availableModes:
       - SemiAuto

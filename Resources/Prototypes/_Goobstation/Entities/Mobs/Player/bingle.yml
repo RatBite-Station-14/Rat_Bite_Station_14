@@ -48,7 +48,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Dead # by request
+      70: Dead # by request
   - type: MobState
     allowedStates:
       - Alive
@@ -82,7 +82,7 @@
     critThreshold: 120
   - type: StaminaDamageOnHit # from stunbaton
     damage: 15
-    overtime: 40
+    overtime: 24
     sound: /Audio/Weapons/egloves.ogg
   - type: Damageable
     damageContainer: Biological
@@ -97,14 +97,20 @@
   - type: Speech
     speechVerb: Bingle
     speechSounds: Slime
-  - type: ReplacementAccent # prevent talking
-    accent: bingle
+  - type: LanguageSpeaker 
+  - type: LanguageKnowledge 
+    speaks:
+    - Bingle
+    understands:
+    - Bingle
+  # - type: ReplacementAccent
+  #   accent: bingle
   - type: CollectiveMind
     defaultChannel: Binglemind
     respectAccents: true
     channels:
     - Binglemind
-  - type: PassiveDamage #passive Healing
+  - type: PassiveDamage #passive healing
     allowedStates:
     - Alive
     damage:
@@ -118,6 +124,8 @@
     activateSound: null
     deactivateSound: null
   - type: FlashImmunity
+  - type: ScannableForPoints # NTR update
+    points: 2 # this would be abused so much if i made it more
   - type: Butcherable
     spawned:
     - id: FoodMeatBingle
@@ -130,6 +138,7 @@
   components:
   - type: Bingle
     prime: true
+  - type: ScannableForPoints # NTR update, 5 points is the default.
 
 - type: entity
   id: MobBingleUpgraded

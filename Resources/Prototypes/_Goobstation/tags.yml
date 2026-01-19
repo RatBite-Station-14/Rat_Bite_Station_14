@@ -19,6 +19,8 @@
 # SPDX-FileCopyrightText: 2025 GreenArg7 <GreenArc12@outlook.com>
 # SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Ilya246 <ilyukarno@gmail.com>
+# SPDX-FileCopyrightText: 2025 LuciferEOS <stepanteliatnik2022@gmail.com>
+# SPDX-FileCopyrightText: 2025 LuciferMkshelter <154002422+LuciferEOS@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 John Willis <143434770+CerberusWolfie@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 LuciferEOS <stepanteliatnik2022@gmail.com>
 # SPDX-FileCopyrightText: 2025 LuciferMkshelter <154002422+LuciferEOS@users.noreply.github.com>
@@ -140,6 +142,9 @@
   id: CombatMech
 
 - type: Tag
+  id: CorporateOverride
+
+- type: Tag
   id: ContrabandDetectorCircuitboard
 
 - type: Tag
@@ -185,6 +190,9 @@
   id: EmergencyOxygenTank
 
 - type: Tag
+  id: EmergencyPlasmaTank
+
+- type: Tag
   id: EnergySpeedloader
 
 - type: Tag
@@ -198,6 +206,12 @@
 
 - type: Tag
   id: ExtendedEmergencyOxygenTank
+
+- type: Tag
+  id: ExtendedEmergencyNitrogenTank
+
+- type: Tag
+  id: ExtendedEmergencyPlasmaTank
 
 - type: Tag
   id: Eyes
@@ -269,7 +283,7 @@
   id: GunCanAimShooter
 
 - type: Tag
-  id: Hammer
+  id: MeleeHammer
 
 - type: Tag
   id: HardHat
@@ -567,6 +581,9 @@
   id: VulpEmotes
 
 - type: Tag
+  id: Vial
+
+- type: Tag
   id: WaterTank
 
 - type: Tag
@@ -585,6 +602,9 @@
   id: WeaponPistolJackal
 
 - type: Tag
+  id: WoodenHandle
+
+- type: Tag
   id: WeldingTool
 
 - type: Tag
@@ -601,6 +621,12 @@
 
 - type: Tag
   id: HudMedicalDiagnostic
+
+- type: Tag
+  id: HudChemistry
+
+- type: Tag
+  id: HudMedichem
 
 - type: Tag
   id: ReverseBearTrapKey

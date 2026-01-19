@@ -109,7 +109,7 @@
       groups:
         Brute: 10
       types:
-        Structural: 30
+        Structural: 50 #Ratbite, make pickaxes worth carrying lol
   - type: Item
     size: Normal
     shape:
@@ -150,7 +150,7 @@
       groups:
         Brute: 3
       types:
-        Structural: 15
+        Structural: 18 #Ratbite, Salv must win
   - type: PhysicalComposition #Goobstation - Recycle update
     materialComposition:
       Steel: 125
@@ -177,7 +177,7 @@
       groups:
         Brute: 6
       types:
-        Structural: 31 #Goob
+        Structural: 36 #Ratbite, Salv must win
   - type: PhysicalComposition #Goobstation - Recycle update
     materialComposition:
       Steel: 150
@@ -188,11 +188,13 @@
 - type: entity
   abstract: true
   parent: BaseItem
-  id: BaseWeaponCrusher # Crusher? But I...
+  id: BaseWeaponCrusher # Crusher? But I... HARDLY KNOW HER
   name: crusher
   description: An early design of the proto-kinetic accelerator.
   components:
   - type: Sharp
+  - type: Execution
+    doAfterDuration: 4.0
   - type: UnpoweredFlashlight
   - type: MegafaunaWeaponLooter # So that the crusher, glaive, and dagger get this as well
   - type: PointLight
@@ -243,6 +245,7 @@
       types:
         Blunt: 10 # Lavaland Change: no damage when unwielded2
         Slash: 5
+        Structural: 20 #Ratbite, Salv must win
     soundHit:
       collection: MetalThud
   - type: Wieldable
@@ -279,6 +282,7 @@
     damage:
       types:
         Slash: 15
+        Structural: 10 #Ratbite, salv must win
   - type: Tag
     tags:
     - Knife
@@ -315,7 +319,7 @@
     - Back
     - suitStorage
   - type: UseDelay
-    delay: 1.9
+    delay: 1.6 #Ratbite, salv must win
   - type: LeechOnMarker
     leech:
       groups:

@@ -26,12 +26,12 @@
       components:
       - Anchorable
       - Item
-      tags: 
+      tags:
       - Bot # for funny bot moments
     blacklist:
       components:
       - ChameleonDisguise # no becoming kleiner
-      - MindContainer # no
+      - MindContainer # 1984
       - Pda # PDAs currently make you invisible /!\
     disguiseProto: ChameleonDisguise
 

@@ -64,7 +64,7 @@
   playTimeTracker: JobTechnicalAssistant
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 1800 # 30 Minutes
+      time: 500 # 15 Minutes. Ratbite
     - !type:DepartmentTimeRequirement
       department: Engineering
       time: 18000 #5 hrs

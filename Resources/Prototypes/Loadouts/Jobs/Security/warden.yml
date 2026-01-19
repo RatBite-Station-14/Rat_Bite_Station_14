@@ -76,14 +76,21 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 # Head
 - type: loadout
+  id: WardenHelmet
+  equipment:
+    head: ClothingHeadHelmetWarden
+
+- type: loadout
   id: WardenHead
   equipment:
     head: ClothingHeadHatWarden
+
 
 - type: loadout
   id: WardenBeret
   equipment:
     head: ClothingHeadHatBeretWarden
+
 
 # Jumpsuit
 - type: loadout
@@ -91,12 +98,19 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitWarden
 
+
 - type: loadout
   id: WardenJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtWarden
 
+
 # OuterClothing
+- type: loadout
+  id: WardenArmor
+  equipment:
+    outerClothing: ClothingOuterArmorBasicWarden
+
 - type: loadout
   id: WardenCoat
   equipment:

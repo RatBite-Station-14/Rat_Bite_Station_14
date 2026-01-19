@@ -182,6 +182,8 @@
     - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
       state: eyes
       shader: unshaded
+  - type: TypingIndicator
+    proto: regal
   - type: Physics
     bodyType: KinematicController
   - type: Fixtures
@@ -264,6 +266,13 @@
   - type: MobsterAccent
   - type: Speech
     speechVerb: SmallMob
+  - type: LanguageKnowledge # Einstein Engines - Languages
+    speaks:
+    - TauCetiBasic
+    - Mouse
+    understands:
+    - TauCetiBasic
+    - Mouse
   - type: Butcherable
     spawned:
     - id: ClothingHeadHatFancyCrown #how did that get there?
@@ -370,7 +379,19 @@
       state: eyes
       shader: unshaded
   - type: Insulated # Goobstation
-
+  - type: LanguageKnowledge # Einstein Engines - Language
+    speaks:
+    - Mouse
+    understands:
+    - Mouse
+    - TauCetiBasic
+  - type: PassiveDamage #passive Healing
+    allowedStates:
+    - Alive
+    damage:
+      groups:
+        Brute: -0.1
+        Burn: -0.1
   - type: SpriteMovement
     movementLayers:
       movement:
@@ -397,6 +418,15 @@
       0: Alive
       15: Critical
       30: Dead
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Blunt
+        damage: 60
+      behaviors:
+      - !type:GibBehavior
+        recursive: false
   - type: Stamina
     critThreshold: 60
   - type: MeleeWeapon
@@ -448,6 +478,7 @@
     wilhelmProbability: 0.001
   - type: Tag
     tags:
+      - Trash
       - CannotSuicide
       - FootstepSound
   - type: NoSlip

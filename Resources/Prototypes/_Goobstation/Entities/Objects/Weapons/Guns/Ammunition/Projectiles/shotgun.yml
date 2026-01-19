@@ -25,7 +25,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 15
+        Piercing: 17 #RATBITE
 
 - type: entity
   id: HighCaliberPelletShotgunSpread
@@ -51,8 +51,8 @@
     - type: Projectile
       damage:
         types:
-          Blunt: 6
-          Heat: 6
+          Blunt: 7 #RATBITE
+          Heat: 7 #RATBITE
     - type: IgnitionSource
       ignited: true
 
@@ -106,8 +106,8 @@
     - type: Projectile
       damage:
         types:
-          Radiation: 8
-          Piercing: 8
+          Radiation: 10 #RATBITE
+          Piercing: 10 #RATBITE
 
 - type: entity
   id: HighCaliberPelletShotgunUraniumSpread
@@ -133,7 +133,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 65
+        Piercing: 75 #RATBITE
 
 - type: entity
   id: BulletSlugEnsnaring
@@ -183,7 +183,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 12
+        Piercing: 20 #RATBITE
         Ion: 20
 
 - type: entity
@@ -211,7 +211,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 20
+        Piercing: 30 #RATBITE
 
 - type: entity
   id: BulletSlugBeanbagHighCaliber

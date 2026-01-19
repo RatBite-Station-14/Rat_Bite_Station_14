@@ -39,6 +39,7 @@
   description: changeling-gamemode-description
   showInVote: false
   rules:
+    - PermaBrig # RatBite - Multi-Round brig system
     - Changeling
     - SubGamemodesRule
     - BasicStationEventScheduler
@@ -55,6 +56,7 @@
   description: traitorling-description
   showInVote: false
   rules:
+    - PermaBrig # RatBite - Multi-Round brig system
     - CalmLing
     - CalmTraitor
     - BasicStationEventScheduler
@@ -72,6 +74,7 @@
   description: nukeops-description
   showInVote: false
   rules:
+    - PermaBrig # RatBite - Multi-Round brig system
     - Calmops
     - CalmTraitor
     - BasicStationEventScheduler
@@ -88,6 +91,7 @@
   description: nukeops-description
   showInVote: false
   rules:
+    - PermaBrig # RatBite - Multi-Round brig system
     - Calmops
     - CalmLing
     - BasicStationEventScheduler
@@ -105,6 +109,7 @@
   description: revtraitor-description
   showInVote: false
   rules:
+    - PermaBrig # RatBite - Multi-Round brig system
     - CalmRevs
     - CalmTraitor
     - BasicStationEventScheduler
@@ -120,6 +125,7 @@
   description: revling-description
   showInVote: false
   rules:
+    - PermaBrig # RatBite - Multi-Round brig system
     - CalmRevs
     - CalmLing
     - BasicStationEventScheduler
@@ -136,6 +142,7 @@
   description: blob-description
   showInVote: false
   rules:
+  - PermaBrig # RatBite - Multi-Round brig system
   - BlobGameMode
   - BasicStationEventScheduler
   - AntagStationEventScheduler
@@ -151,6 +158,7 @@
   description: honkops-description
   showInVote: false
   rules:
+    - PermaBrig # RatBite - Multi-Round brig system
     - Honkops
     - SubGamemodesRule
     - BasicStationEventScheduler
@@ -166,9 +174,10 @@
     - calmdynamic
   name: sleeper-title
   description: sleeper-description
-  showInVote: true
-  minPlayers: 5
+  showInVote: false #Ratbite, Secret Supremacy
+  minPlayers: 3 # Ratbites, lowering pop needed.
   rules:
+    - PermaBrig # RatBite - Multi-Round brig system
     - CalmDynamic
     - LavalandStormScheduler
     - SubGamemodesRule
@@ -182,9 +191,10 @@
     - combatdynamic
   name: guide-title
   description: guide-description
-  showInVote: false
-  minPlayers: 25
+  showInVote: false #Ratbite, Secret Supremacy
+  minPlayers: 18 # Ratbites, lowering pop needed.
   rules:
+    - PermaBrig # RatBite - Multi-Round brig system
     - CombatDynamic
     - LavalandStormScheduler
     - SubGamemodesRule
@@ -199,8 +209,9 @@
     - turbulence
   name: secretplus-low-title
   description: secretplus-low-description
-  showInVote: true
+  showInVote: false #Ratbites, Secretplus violates gamerules and is impossible to track, fuck ts shit...
   rules:
+    - PermaBrig # RatBite - Multi-Round brig system
     - SecretPlusLow
     - LavalandStormScheduler
 
@@ -212,8 +223,9 @@
     - entropy
   name: secretplus-mid-title
   description: secretplus-mid-description
-  showInVote: true
+  showInVote: false #Ratbites
   rules:
+    - PermaBrig # RatBite - Multi-Round brig system
     - SecretPlusMid
     - LavalandStormScheduler
 
@@ -226,7 +238,7 @@
     - chaos
   name: secretplus-admeme-title
   description: secretplus-admeme-description
-  showInVote: false # 1984
+  showInVote: false # Meds.
   rules:
     - SecretPlusAdmeme
     - LavalandStormScheduler
@@ -239,7 +251,8 @@
     - survivalnew
   name: survivalplus-title
   description: survivalplus-description
-  showInVote: true
+  showInVote: false #Ratbite, Secret Supremacy
   rules:
+    - PermaBrig # RatBite - Multi-Round brig system
     - SecretPlusRampingMid
     - LavalandStormScheduler

@@ -20,9 +20,9 @@
     Changeling: 0.10
     Nukeops: 0.05
     Revolutionary: 0.05
-    Zombie: 0.04
+    Zombie: 0.06 #Ratbites
     Heretic: 0.11
-    BlobGameMode: 0.05
+    BlobGameMode: 0.03 #Ratbites
     Wizard: 0.025
     CosmicCult: 0.05 # make it semi often so we can test it
     #HonkOps: 0.01 # this test fail was real holy shit it was only a preset the entire a time i was lied too by myself
@@ -52,12 +52,15 @@
   id: Wizard
   modes:
   - Wizard
+  - Heretic #Ratbites, one magic threat at a time.
+  - CosmicCult #Ratbites, one magic threat at a time.
 
 - type: incompatibleModes
   id: Heretic
   modes:
   - Heretic
   - CosmicCult
+  - Wizard #Ratbites, one magic threat at a time.
 
 - type: incompatibleModes
   id: BlobGameMode
@@ -73,6 +76,7 @@
   - Nukeops
   - CosmicCult
   - HonkOps
+  - BlobGameMode #Ratbites
 
 - type: incompatibleModes
   id: Revolutionary
@@ -80,6 +84,7 @@
   - Nukeops
   - CosmicCult
   - HonkOps
+  - BlobGameMode #Ratbites, can mess with gameflow.
 
 - type: incompatibleModes
   id: CosmicCult
