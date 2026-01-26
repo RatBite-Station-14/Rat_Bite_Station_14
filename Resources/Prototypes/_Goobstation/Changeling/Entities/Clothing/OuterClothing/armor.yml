@@ -71,7 +71,7 @@
   - type: ModifyDelayedKnockdown
     cancel: true
   - type: StaminaResistance
-    damageCoefficient: 0.4
+    damageCoefficient: 0.7 #Ratbite
   - type: HideClothingLayerClothing
     hiddenSlots:
     - jumpsuit

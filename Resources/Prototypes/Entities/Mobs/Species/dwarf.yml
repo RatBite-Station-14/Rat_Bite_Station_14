@@ -74,7 +74,7 @@
         shape:
           !type:PhysShapeCircle
           radius: 0.35 # Goobstation: port EE height/width sliders (previous value was lower (also a goobstation change), but the height/width sliders will lower this size automatically)
-        density: 240 # goob edit - but they r buff
+        density: 195 # Ratbite, normalizing density so it isn't quite as insane, making size sliders more impactful in contests.
         restitution: 0.0
         mask:
         - MobMask

@@ -239,7 +239,7 @@
   - type: UnpoweredFlashlight
   - type: PointLight
     enabled: false
-    radius: 1.5
+    radius: 2.2 #Ratbite
     softness: 5
     autoRot: true
   - type: Ringer

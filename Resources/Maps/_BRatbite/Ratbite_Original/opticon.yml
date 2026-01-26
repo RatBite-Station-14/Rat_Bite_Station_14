@@ -26026,71 +26026,71 @@ entities:
     - type: Physics
       angularDamping: 0
       linearDamping: 0
-- proto: ClothingMaskBear
-  entities:
-  - uid: 2383
-    components:
-    - type: Transform
-      parent: 2380
-    - type: Physics
-      angularDamping: 0
-      linearDamping: 0
-      canCollide: False
-- proto: ClothingMaskCow
-  entities:
-  - uid: 2384
-    components:
-    - type: Transform
-      parent: 2380
-    - type: Physics
-      angularDamping: 0
-      linearDamping: 0
-      canCollide: False
-- proto: ClothingMaskFox
-  entities:
-  - uid: 2385
-    components:
-    - type: Transform
-      parent: 2380
-    - type: Physics
-      angularDamping: 0
-      linearDamping: 0
-      canCollide: False
-  - uid: 2386
-    components:
-    - type: Transform
-      parent: 2380
-    - type: Physics
-      angularDamping: 0
-      linearDamping: 0
-      canCollide: False
-- proto: ClothingMaskJackal
-  entities:
-  - uid: 2387
-    components:
-    - type: Transform
-      parent: 2380
-    - type: Physics
-      angularDamping: 0
-      linearDamping: 0
-      canCollide: False
-- proto: ClothingMaskMuzzle
-  entities:
-  - uid: 2388
-    components:
-    - type: Transform
-      parent: 2380
-    - type: Physics
-      angularDamping: 0
-      linearDamping: 0
-      canCollide: False
-- proto: ClothingMaskPig
-  entities:
-  - uid: 4314
-    components:
-    - type: Transform
-      pos: 52.420918,-17.342705
-      parent: 2
+#- proto: ClothingMaskBear
+#  entities:
+#  - uid: 2383
+#    components:
+#    - type: Transform
+#      parent: 2380
+#    - type: Physics
+#      angularDamping: 0
+#      linearDamping: 0
+#      canCollide: False
+#- proto: ClothingMaskCow
+#  entities:
+#  - uid: 2384
+#    components:
+#    - type: Transform
+#      parent: 2380
+#    - type: Physics
+#      angularDamping: 0
+#      linearDamping: 0
+#      canCollide: False
+#- proto: ClothingMaskFox
+#  entities:
+#  - uid: 2385
+#    components:
+#    - type: Transform
+#      parent: 2380
+#    - type: Physics
+#      angularDamping: 0
+#      linearDamping: 0
+#      canCollide: False
+#  - uid: 2386
+#    components:
+#    - type: Transform
+#      parent: 2380
+#    - type: Physics
+#      angularDamping: 0
+#      linearDamping: 0
+#      canCollide: False
+#- proto: ClothingMaskJackal
+#  entities:
+#  - uid: 2387
+#    components:
+#    - type: Transform
+#      parent: 2380
+#    - type: Physics
+#      angularDamping: 0
+#      linearDamping: 0
+#      canCollide: False
+#- proto: ClothingMaskMuzzle
+#  entities:
+#  - uid: 2388
+#    components:
+#    - type: Transform
+#      parent: 2380
+#    - type: Physics
+#      angularDamping: 0
+#      linearDamping: 0
+#      canCollide: False
+#- proto: ClothingMaskPig
+#  entities:
+#  - uid: 4314
+#    components:
+#    - type: Transform
+#      pos: 52.420918,-17.342705
+#      parent: 2
 - proto: ClothingNeckStethoscope
   entities:
   - uid: 4315

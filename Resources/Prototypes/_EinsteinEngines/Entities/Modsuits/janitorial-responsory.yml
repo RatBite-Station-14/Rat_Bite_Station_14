@@ -142,8 +142,6 @@
         - state: equipped-OUTERCLOTHING-sealed
         - state: equipped-OUTERCLOTHING-sealed-unshaded
           shader: unshaded
-    - type: StaminaResistance
-      damageCoefficient: 0.45 # 50%
 
 - type: entity
   parent: ClothingModsuitBootsStandard

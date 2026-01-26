@@ -139,8 +139,6 @@
       clothingVisuals:
         outerClothing:
         - state: equipped-OUTERCLOTHING-sealed
-    - type: StaminaResistance
-      damageCoefficient: 0.45
 
 
 - type: entity

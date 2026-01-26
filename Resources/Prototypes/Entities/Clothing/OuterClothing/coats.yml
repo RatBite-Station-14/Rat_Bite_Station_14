@@ -228,8 +228,6 @@
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: 2
     knockdownTimeDelta: -2
-  - type: StaminaResistance # Goobstation
-    damageCoefficient: 0.7
 
 - type: entity
   abstract: true

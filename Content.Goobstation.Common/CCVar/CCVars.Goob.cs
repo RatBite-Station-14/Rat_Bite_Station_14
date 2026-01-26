@@ -411,7 +411,7 @@ public sealed partial class GoobCVars
     ///     Default of 0.25f outputs between * 0.75f and 1.25f
     /// </summary>
     public static readonly CVarDef<float> MassContestsMaxPercentage =
-        CVarDef.Create("contests.max_percentage", 1f, CVar.REPLICATED | CVar.SERVER);
+        CVarDef.Create("contests.max_percentage", 0.5f, CVar.REPLICATED | CVar.SERVER);
 
     #endregion
 
@@ -432,7 +432,7 @@ public sealed partial class GoobCVars
     /// How much should the mass difference affect shove range & speed.
     /// </summary>
     public static readonly CVarDef<float> ShoveMassFactor =
-        CVarDef.Create("game.shove_mass_factor", 3f, CVar.SERVER | CVar.ARCHIVE);
+        CVarDef.Create("game.shove_mass_factor", 0.2f, CVar.SERVER | CVar.ARCHIVE);
     #endregion
 
     #region Chat

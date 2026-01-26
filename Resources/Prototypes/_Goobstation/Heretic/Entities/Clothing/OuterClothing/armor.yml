@@ -62,7 +62,7 @@
     delayDelta: 3
     knockdownTimeDelta: -3
   - type: StaminaResistance
-    damageCoefficient: 0.5
+    damageCoefficient: 0.7 # ratbite antag standard stamres
   - type: HideClothingLayerClothing
     hiddenSlots:
     - jumpsuit
@@ -190,7 +190,7 @@
     delayDelta: 2
     knockdownTimeDelta: -2
   - type: StaminaResistance
-    damageCoefficient: 0.7
+    damageCoefficient: 0.7 #Ratbite standard antag stamres
   - type: HideContrabandContent #Goobstation Contraband detector
   - type: UndetectableContraband #Goobstation Contraband detector
   - type: Storage

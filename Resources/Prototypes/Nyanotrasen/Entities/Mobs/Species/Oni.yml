@@ -59,7 +59,7 @@
         shape:
           !type:PhysShapeCircle
           radius: 0.35 # Goobstation: port EE height/width sliders
-        density: 220
+        density: 200 # Ratbite density normalization making size sliders more important, second only to diona.
         restitution: 0.0
         mask:
         - MobMask

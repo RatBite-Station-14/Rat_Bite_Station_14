@@ -138,7 +138,7 @@
         shape:
           !type:PhysShapeCircle
           radius: 0.35
-        density: 120
+        density: 160 # Ratbite, species density normalization making size sliders more important.
         restitution: 0.0
         mask:
         - MobMask

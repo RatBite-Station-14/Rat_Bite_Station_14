@@ -53,4 +53,4 @@
   - type: ModifyDelayedKnockdown # Goobstation
     cancel: true
   - type: StaminaResistance # Goobstation
-    damageCoefficient: 0.4
+    damageCoefficient: 0.7 #Ratbite

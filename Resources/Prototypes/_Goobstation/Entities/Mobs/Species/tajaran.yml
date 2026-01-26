@@ -25,7 +25,7 @@
         shape:
           !type:PhysShapeCircle
           radius: 0.35
-        density: 140
+          density: 180 # Ratbite density normalization, making size sliders more important for weight contests.
         restitution: 0.0
         mask:
         - MobMask

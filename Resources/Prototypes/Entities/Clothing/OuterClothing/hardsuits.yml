@@ -1408,7 +1408,7 @@
   - type: FireProtection
     reduction: 0.8
   - type: StaminaResistance # Goobstation - Start
-    damageCoefficient: 0.1 #Ratbite
+    damageCoefficient: 0.5 #Ratbite
   - type: ClothingSlowOnDamageModifier
     modifier: 0.1
   - type: ClothingModifyStunTime
@@ -1424,14 +1424,14 @@
       NerveDamage: 1
     modifiers:
       coefficients:
-        Blunt: 0.15 #Ratbite
-        Slash: 0.15 #Ratbite
-        Piercing: 0.15 #Ratbite
-        Heat: 0.15 #Ratbite
-        Cold: 0.15 #Ratbite
-        Cellular: 0.15 #Ratbite
-        Radiation: 0.15 #Ratbite
-        Caustic: 0.15 #Ratbite
+        Blunt: 0.3 #Ratbite
+        Slash: 0.3 #Ratbite
+        Piercing: 0.3 #Ratbite
+        Heat: 0.3 #Ratbite
+        Cold: 0.3 #Ratbite
+        Cellular: 0.3 #Ratbite
+        Radiation: 0.3 #Ratbite
+        Caustic: 0.3 #Ratbite
   - type: ClothingSpeedModifier
     walkModifier: 1.0
     sprintModifier: 1.0
@@ -1472,8 +1472,8 @@
         Heat: 0.30 #Ratbite
         Cold: 0.30 #Ratbite
         Shock: 0.30 #Ratbite
-        Radiation: 0.15 #Ratbite
-        Caustic: 0.15 #Ratbite
+        Radiation: 0.3 #Ratbite
+        Caustic: 0.3 #Ratbite
   - type: ZombificationResistance
     zombificationResistanceCoefficient: 0.25
   - type: ClothingSpeedModifier

@@ -46,8 +46,6 @@
     clothingPrototypes: #goobstation change
       head: ClothingHeadHelmetHardsuitCombatStandard
   - type: AllowSuitStorage
-  - type: StaminaResistance # Goobstation
-    damageCoefficient: 0.6
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: 3
     knockdownTimeDelta: -3
@@ -105,8 +103,6 @@
     clothingPrototypes: #goobstation change
       head: ClothingHeadHelmetHardsuitCombatMedical
   - type: AllowSuitStorage
-  - type: StaminaResistance # Goobstation
-    damageCoefficient: 0.6
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: 3
     knockdownTimeDelta: -3
@@ -150,7 +146,5 @@
     clothingPrototypes: #goobstation change
       head: ClothingHeadHelmetHardsuitCombatRiot
   - type: AllowSuitStorage
-  - type: StaminaResistance # Goobstation
-    damageCoefficient: 0.5
   - type: ModifyDelayedKnockdown # Goobstation
     cancel: true

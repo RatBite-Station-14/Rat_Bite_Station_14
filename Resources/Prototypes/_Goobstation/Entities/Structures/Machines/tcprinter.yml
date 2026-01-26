@@ -19,7 +19,7 @@
     locationAt: 100 # breakeven
   - type: ItemMiner
     interval: 30
-    amount: 5
+    amount: 3 #Ratbite TC miner nerf
     proto: Telecrystal1
     itemSlotId: tc_slot
   - type: Sprite

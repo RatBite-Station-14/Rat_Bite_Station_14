@@ -374,7 +374,7 @@
       fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
-    damage: 20 # Goob edit
+    damage: 25
   - type: Projectile
     impactEffect: BulletImpactEffectDisabler
     damage:

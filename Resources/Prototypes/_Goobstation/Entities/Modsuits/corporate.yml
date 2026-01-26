@@ -46,7 +46,7 @@
         back:
         - state: equipped-BACKPACK-sealed
         - state: equipped-BACKPACK-sealed-unshaded
-          shader: unshaded      
+          shader: unshaded
 
 - type: entity
   parent: [ClothingModsuitGauntletsStandard, BaseCentcommContraband]
@@ -191,7 +191,7 @@
         outerClothing-vox:
         - state: equipped-OUTERCLOTHING-sealed-vox
     - type: StaminaResistance
-      damageCoefficient: 0 # 100%
+      damageCoefficient: 0.5 #Stun meta forever - ratbite
     - type: PressureProtection
       highPressureMultiplier: 0.02
       lowPressureMultiplier: 1000
@@ -284,7 +284,7 @@
           - id: WelderExperimental
           - id: Multitool
           - id: MedkitCombatFilled
-          
+
 #NCT
 - type: entity
   parent: [ClothingModsuitCorporate, ClothingModsuitStandard, BaseCentcommContraband]
@@ -370,8 +370,6 @@
           Radiation: 0
     - type: ExplosionResistance
       damageCoefficient: 0.4
-    - type: StaminaResistance
-      damageCoefficient: 0.7
     - type: FireProtection
       reduction: 0.8
 

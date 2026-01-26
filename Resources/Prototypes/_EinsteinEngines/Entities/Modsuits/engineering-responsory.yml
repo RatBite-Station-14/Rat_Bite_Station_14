@@ -133,8 +133,6 @@
       clothingVisuals:
         outerClothing:
         - state: equipped-OUTERCLOTHING-sealed
-    - type: StaminaResistance
-      damageCoefficient: 0.5 # 50%
     - type: FireProtection
       reduction: 1
     - type: ClothingGrantComponent

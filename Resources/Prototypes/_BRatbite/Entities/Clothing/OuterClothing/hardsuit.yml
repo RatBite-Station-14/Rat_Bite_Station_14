@@ -38,8 +38,7 @@
   - type: ModifyDelayedKnockdown
     delayDelta: 3
     knockdownTimeDelta: -3
-  - type: StaminaResistance
-    damageCoefficient: 0.60
+# Ratbite removes stam resist
   - type: ClothingAutoInject
     reagents: #god forbid you from dying.RAISE FROM THY DEATH.
       Atropine: 10
@@ -86,5 +85,3 @@
   - type: ModifyDelayedKnockdown
     delayDelta: 3
     knockdownTimeDelta: -3
-  - type: StaminaResistance
-    damageCoefficient: 0.50

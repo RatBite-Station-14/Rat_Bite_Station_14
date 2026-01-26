@@ -68,8 +68,7 @@
       head: ClothingHeadHelmetHardsuitChronolegioneer
   - type: ModifyDelayedKnockdown
     cancel: true
-  - type: StaminaResistance
-    damageCoefficient: 0
+# Ratbite removes stam resist 0
 
 - type: entity
   parent: ClothingOuterHardsuitChronolegioneer
@@ -120,8 +119,7 @@
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: 2
     knockdownTimeDelta: -2
-  - type: StaminaResistance
-    damageCoefficient: 0.6
+# Ratbite removes stam resist 0.6
 
 # Cybersun Stealth
 
@@ -177,8 +175,7 @@
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: 3
     knockdownTimeDelta: -3
-  - type: StaminaResistance
-    damageCoefficient: 0.5
+# Ratbite removes stam resist 0.5
 
 # cybersun dreadnought suit
 
@@ -237,8 +234,7 @@
           Slash: 0.3
       interval: 1.0
       ignoreResistances: true
-  - type: StaminaResistance
-    damageCoefficient: 0.1
+# Ratbite removes stam resist 0.1
   - type: ModifyDelayedKnockdown
     cancel: true
 
@@ -283,8 +279,7 @@
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: 2
     knockdownTimeDelta: -2
-  - type: StaminaResistance
-    damageCoefficient: 0.6
+# Ratbite removes stam resist 0.6
 
 # Head of Security's experimental voidsuit
 - type: entity

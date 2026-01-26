@@ -1158,15 +1158,15 @@
   - type: ProjectileBatteryAmmoProvider
     proto: BulletLaserSpread
     fireCost: 150
-  # Goob edit start
-  #- type: BatteryWeaponFireModes
-  #  fireModes:
-  #  - proto: BulletLaserSpread
-  #    fireCost: 150
-  #  - proto: BulletLaserSpreadNarrow
-  #    fireCost: 200
-  #  - proto: BulletDisablerSmgSpread
-  #    fireCost: 120
+  # Ratbite true and proud fix
+  - type: BatteryWeaponFireModes
+    fireModes:
+    - proto: BulletLaserSpread
+      fireCost: 150
+    - proto: BulletLaserSpreadNarrow
+      fireCost: 200
+    - proto: BulletDisablerSmgSpread
+      fireCost: 120
   - type: AmmoSelector
     prototypes:
       - BulletLaserSpread

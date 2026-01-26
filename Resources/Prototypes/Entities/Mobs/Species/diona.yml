@@ -119,7 +119,7 @@
         shape:
           !type:PhysShapeCircle
           radius: 0.35
-        density: 300 #weighs more than humans because wood
+        density: 250 #Ratbite, rare exception, these guys can weigh a fuckload, groot beat people's asses. They made of wood
         restitution: 0.0
         mask:
           - MobMask

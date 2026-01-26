@@ -75,9 +75,8 @@
       outerClothing:
       - state: equipped-OUTERCLOTHING-sealed
       outerClothing-resomi:
-      - state: equipped-OUTERCLOTHING-sealed-resomi   
-  - type: StaminaResistance
-    damageCoefficient: 0.9
+      - state: equipped-OUTERCLOTHING-sealed-resomi
+# Ratbite removes stam resist 0.9
   - type: Armor
     coverage:
     - Chest
@@ -152,8 +151,7 @@
   - type: ModifyDelayedKnockdown
     delayDelta: 2.5
     knockdownTimeDelta: -2.5
-  - type: StaminaResistance
-    damageCoefficient: 0.7
+# Ratbite removes stam resist 0.7
   - type: Armor
     traumaDeductions:
       Dismemberment: 0.3
@@ -223,14 +221,13 @@
       outerClothing-resomi:
       - state: equipped-OUTERCLOTHING-sealed-resomi
       outerClothing-vox:
-      - state: equipped-OUTERCLOTHING-sealed-vox     
+      - state: equipped-OUTERCLOTHING-sealed-vox
   - type: ExplosionResistance
     damageCoefficient: 0.4
   - type: ModifyDelayedKnockdown
     delayDelta: 3
     knockdownTimeDelta: -3
-  - type: StaminaResistance
-    damageCoefficient: 0.7
+# Ratbite removes stam resist 0.7
   - type: Armor
     traumaDeductions:
       Dismemberment: 0.3
@@ -306,7 +303,7 @@
       outerClothing-resomi:
       - state: equipped-OUTERCLOTHING-sealed-resomi
       outerClothing-vox:
-      - state: equipped-OUTERCLOTHING-sealed-vox     
+      - state: equipped-OUTERCLOTHING-sealed-vox
   - type: ExplosionResistance
     damageCoefficient: 0.85
   - type: Armor
@@ -344,8 +341,7 @@
   - type: ModifyDelayedKnockdown
     delayDelta: 1
     knockdownTimeDelta: -1
-  - type: StaminaResistance
-    damageCoefficient: 0.9
+# Ratbite removes stam resist 0.9
   - type: FireProtection
     reduction: 0.5
 
@@ -383,7 +379,7 @@
       outerClothing-resomi:
       - state: equipped-OUTERCLOTHING-sealed-resomi
       outerClothing-vox:
-      - state: equipped-OUTERCLOTHING-sealed-vox     
+      - state: equipped-OUTERCLOTHING-sealed-vox
   - type: ExplosionResistance
     damageCoefficient: 0.35
   - type: Armor
@@ -422,8 +418,7 @@
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: 1
     knockdownTimeDelta: -1
-  - type: StaminaResistance
-    damageCoefficient: 0.9
+# Ratbite removes stam resist 0.9
   - type: FireProtection
     reduction: 0.7
 
@@ -461,7 +456,7 @@
       outerClothing-resomi:
       - state: equipped-OUTERCLOTHING-sealed-resomi
       outerClothing-vox:
-      - state: equipped-OUTERCLOTHING-sealed-vox     
+      - state: equipped-OUTERCLOTHING-sealed-vox
   - type: ExplosionResistance
     damageCoefficient: 0.45
   - type: Armor
@@ -498,8 +493,7 @@
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: 1
     knockdownTimeDelta: -1
-  - type: StaminaResistance
-    damageCoefficient: 0.9
+# Ratbite removes stam resist 0.9
   - type: FireProtection
     reduction: 0.75
 
@@ -537,7 +531,7 @@
       outerClothing-resomi:
       - state: equipped-OUTERCLOTHING-sealed-resomi
       outerClothing-vox:
-      - state: equipped-OUTERCLOTHING-sealed-vox     
+      - state: equipped-OUTERCLOTHING-sealed-vox
   - type: ExplosionResistance
     damageCoefficient: 0.1
   - type: Armor
@@ -576,8 +570,7 @@
   - type: ModifyDelayedKnockdown
     delayDelta: 3
     knockdownTimeDelta: -3
-  - type: StaminaResistance
-    damageCoefficient: 0.5
+# Ratbite removes stam resist 0.5
   - type: FireProtection
     reduction: 0.5
   - type: GroupExamine
@@ -617,7 +610,7 @@
       outerClothing-resomi:
       - state: equipped-OUTERCLOTHING-sealed-resomi
       outerClothing-vox:
-      - state: equipped-OUTERCLOTHING-sealed-vox     
+      - state: equipped-OUTERCLOTHING-sealed-vox
   - type: ExplosionResistance
     damageCoefficient: 0.5
   - type: Armor
@@ -655,7 +648,6 @@
   - type: ModifyDelayedKnockdown
     delayDelta: 3
     knockdownTimeDelta: -3
-  - type: StaminaResistance
-    damageCoefficient: 0.6
+# Ratbite removes stam resist 0.6
   - type: FireProtection
     reduction: 0.5
