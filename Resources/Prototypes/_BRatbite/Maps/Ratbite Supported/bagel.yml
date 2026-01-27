@@ -142,6 +142,7 @@
             Quartermaster: [ 1, 1 ]
             CargoInsurance: [ 1, 1 ] #ratbite
             SalvageSpecialist: [ 3, 3 ]
+            ShaftMiner: [ 3, 3 ]
             CargoTechnician: [ 3, 3 ]
             #civilian
             Passenger: [ -1, -1 ]

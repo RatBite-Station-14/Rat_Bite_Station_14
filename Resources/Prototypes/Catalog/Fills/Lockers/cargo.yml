@@ -40,65 +40,65 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-- type: entity
-  id: LockerSalvageSpecialistFilledHardsuit
-  suffix: Filled, Hardsuit
-  parent: LockerSalvageSpecialist
-  components:
-  - type: StorageFill
-    contents:
-      - id: ClothingOuterHardsuitSalvage #Goobstation
-      - id: OxygenTankFilled
-      - id: NitrogenTankFilled
-      - id: ClothingShoesBootsMag
-      - id: ClothingMaskGasExplorer
-      - id: ClothingBeltUtilityFilled
-      - id: SurvivalKnife
-      - id: HandheldGPSBasic
-      - id: RadioHandheld
-      - id: Flare
-        prob: 0.3
-      - id: Flare
-        prob: 0.3
-      - id: Flare
-        prob: 0.3
-      - id: WeaponProtoKineticAccelerator
-      - id: OreBag
-      - id: Pickaxe
-      - id: LavalandJaunter
-      - id: LavalandEquipmentExplorerSuit
-      - id: ShelterCapsule
-      - id: ClothingMaskGasExplorer
-      - id: MineralScanner
-      - id: FlashlightSeclite
-      - id: ClothingEyesGlassesMeson
-      - id: WeaponGrapplingGun
+# - type: entity # Ratbite Lavaland 1.5 - Mass Comment for easy reversion
+#   id: LockerSalvageSpecialistFilledHardsuit
+#   suffix: Filled, Hardsuit
+#   parent: LockerSalvageSpecialist
+#   components:
+#   - type: StorageFill
+#     contents:
+#       - id: ClothingOuterHardsuitSalvage #Goobstation
+#       - id: OxygenTankFilled
+#       - id: NitrogenTankFilled
+#       - id: ClothingShoesBootsMag
+#       - id: ClothingMaskGasExplorer
+#       - id: ClothingBeltUtilityFilled
+#       - id: SurvivalKnife
+#       - id: HandheldGPSBasic
+#       - id: RadioHandheld
+#       - id: Flare
+#         prob: 0.3
+#       - id: Flare
+#         prob: 0.3
+#       - id: Flare
+#         prob: 0.3
+#       - id: WeaponProtoKineticAccelerator
+#       - id: OreBag
+#       - id: Pickaxe
+#       - id: LavalandJaunter
+#       - id: LavalandEquipmentExplorerSuit
+#       - id: ShelterCapsule
+#       - id: ClothingMaskGasExplorer
+#       - id: MineralScanner
+#       - id: FlashlightSeclite
+#       - id: ClothingEyesGlassesMeson
+#       - id: WeaponGrapplingGun
 
-- type: entity
-  id: LockerSalvageSpecialistFilled
-  suffix: Filled
-  parent: LockerSalvageSpecialist
-  components:
-  - type: StorageFill
-    contents:
-      - id: ClothingEyesGlassesMeson
-      - id: ClothingBeltUtilityFilled
-      - id: SurvivalKnife
-      - id: HandheldGPSBasic
-      - id: RadioHandheld
-      - id: Flare
-        prob: 0.3
-      - id: Flare
-        prob: 0.3
-      - id: Flare
-        prob: 0.3
-      - id: WeaponProtoKineticAccelerator
-      - id: OreBag
-      - id: Pickaxe
-      - id: LavalandJaunter
-      - id: LavalandEquipmentExplorerSuit
-      - id: ShelterCapsule
-      - id: ClothingMaskGasExplorer
-      - id: MineralScanner
-      - id: FlashlightSeclite
-      - id: WeaponGrapplingGun
+# - type: entity
+#   id: LockerSalvageSpecialistFilled
+#   suffix: Filled
+#   parent: LockerSalvageSpecialist
+#   components:
+#   - type: StorageFill
+#     contents:
+#       - id: ClothingEyesGlassesMeson
+#       - id: ClothingBeltUtilityFilled
+#       - id: SurvivalKnife
+#       - id: HandheldGPSBasic
+#       - id: RadioHandheld
+#       - id: Flare
+#         prob: 0.3
+#       - id: Flare
+#         prob: 0.3
+#       - id: Flare
+#         prob: 0.3
+#       - id: WeaponProtoKineticAccelerator
+#       - id: OreBag
+#       - id: Pickaxe
+#       - id: LavalandJaunter
+#       - id: LavalandEquipmentExplorerSuit
+#       - id: ShelterCapsule
+#       - id: ClothingMaskGasExplorer
+#       - id: MineralScanner
+#       - id: FlashlightSeclite
+#       - id: WeaponGrapplingGun
