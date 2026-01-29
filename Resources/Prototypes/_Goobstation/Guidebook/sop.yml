@@ -101,22 +101,20 @@
   children:
   - CargoTech SOP
   - SalvageSpecialist SOP
-  - Quartermaster SOP
+  - ShaftMiner SOP
 
 - type: guideEntry # Causing testfails probably
   id: Command SOP
   name: guide-entry-sop-command
   text: "/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/Command/CommandSOP.xml"
   children:
-  - Captain SOP # nowhere else to put it, commandassistant just a week away :smile:
-#  #- NanotrasenRep SOP # moved to _BRatbite
-#  #- BlueshieldOfficer SOP # moved to _BRatbite
-#  - HeadOfPersonnel SOP
-#  - HeadOfSecurity SOP
-#  - ResearchDirector SOP
-#  - ChiefMedicalOfficer SOP
-#  - ChiefEngineer SOP
-#  - Quartermaster SOP
+  - Captain SOP
+  - HeadOfPersonnel SOP
+  - HeadOfSecurity SOP
+  - ResearchDirector SOP
+  - ChiefMedicalOfficer SOP
+  - ChiefEngineer SOP
+  - Quartermaster SOP
 
 - type: guideEntry
   id: Engineering SOP
@@ -125,7 +123,6 @@
   children:
   - AtmosTech SOP
   - StationEngineer SOP
-  - ChiefEngineer SOP
 
 - type: guideEntry
   id: Medical SOP
@@ -134,7 +131,6 @@
   children:
   - DoctorIntern SOP
   - Chemist SOP
-  - ChiefMedicalOfficer SOP
 
 - type: guideEntry
   id: Science SOP
@@ -143,27 +139,23 @@
   children:
   - Scientist SOP
   - Roboticist SOP
-  - ResearchDirector SOP
 
 - type: guideEntry
   id: Security SOP
   name: guide-entry-sop-security
   text: "/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/Security/SecuritySOP.xml"
   children:
-  #- SpaceLaw # Ratbite - Deduplicate guidebook entries
   - Brigmedic SOP
   - Warden SOP
   - OfficerCadet SOP
   - Detective SOP
   - DepartmentalGuard SOP
-  - HeadOfSecurity SOP
 
 - type: guideEntry
   id: Service SOP
   name: guide-entry-sop-service
   text: "/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/Service/ServiceSOP.xml"
   children:
-  - HeadOfPersonnel SOP
   - Bartender SOP
   - Botanist SOP
   - Chef SOP
@@ -321,6 +313,11 @@
   id: SalvageSpecialist SOP
   name: guide-entry-sop-salvage
   text: "/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/Cargo/SalvageSpecialistSOP.xml"
+
+- type: guideEntry
+  id: ShaftMiner SOP
+  name: guide-entry-sop-shaft-miner
+  text: "/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/Cargo/ShaftMinerSOP.xml"
 
 # Command SOP Entries
 - type: guideEntry
