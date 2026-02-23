@@ -397,6 +397,7 @@
     - id: MedicalTechFabCircuitboard
     - id: ComputerCargoRequestMedicalFlatpack # Goobstation
     - id: MedkitFilled
+    - id: ClothingHandsGlovesSurgical # Ratbite - the return of bluespace gloves
     - id: RubberStampCMO
     # Goobstation Start
     - id: ChemistryHotplateFlatPack

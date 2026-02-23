@@ -200,7 +200,7 @@
   table: !type:AllSelector
     children:
     - id: BoxAutoinjectorCartidges
-    - id: ClothingBackpackDuffelSurgeryFilled
+    #- id: ClothingBackpackDuffelSurgeryFilled # ratbite - redundant
     - id: ClothingHandsGlovesLatex
     - id: ClothingOuterHardsuitBrigmedic
     - id: OxygenTankFilled
@@ -209,8 +209,15 @@
       prob: 0.1
     - id: MedkitOxygenFilled
     - id: MedkitAdvancedFilled
-    - id: BoxSyringe
+    #- id: BoxSyringe # ratbite - redundant
     - id: BoxBodyBag # Goob Station
+    # Ratbite Edit begin
+    - id: MedkitBurnFilled
+    - id: MedkitBruteFilled
+    - id: BrigmedChemicalBag
+    - id: BrigMedHypospray
+    - id: CombatSurgeryKit
+    # Ratbite Edit end
 
 - type: entity
   id: LockerDetectiveFilled

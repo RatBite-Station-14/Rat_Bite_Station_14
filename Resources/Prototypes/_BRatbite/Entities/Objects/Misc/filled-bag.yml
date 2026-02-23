@@ -1,0 +1,46 @@
+- type: entity
+  parent: [ClothingBackpackDuffel, ContentsExplosionResistanceBase, BaseSecurityContraband]
+  id: BrigmedChemicalBagBase
+  name: brigmed chemical bag
+  description: A large duffel bag for holding brigmedic chemical jugs.
+  components:
+  - type: Sprite
+    sprite: Clothing/Back/Duffels/brigmedic.rsi
+  - type: Storage
+    maxItemSize: Huge
+    grid:
+    - 0,0,6,4
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 0.90
+  - type: ExplosionResistance
+    damageCoefficient: 0.05
+
+- type: entity
+  parent: BrigmedChemicalBagBase
+  id: BrigmedChemicalBag
+  suffix: filled.
+  components:
+  - type: StorageFill
+    contents:
+      - id: JugBicaridine
+      - id: JugDermaline
+      - id: JugDylovene
+      - id: JugHyronalin
+      - id: JugDexalinPlus
+      - id: JugTricordrazine
+      - id: SprayBottleSilverSulfadiazine
+      - id: SprayBottleStypticPowder
+
+- type: entity
+  parent: MedkitCombat
+  id: CombatSurgeryKit
+  name: Combat Surgery Kit
+  description: A combat surgery kit for treating severe injuries in the field. Contains advance surgery tool.
+  components:
+  - type: StorageFill
+    contents:
+      - id: AdvancedBoneGel
+      - id: EnergyCautery
+      - id: EnergyScalpel
+      - id: AdvancedRetractor

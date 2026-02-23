@@ -1,0 +1,83 @@
+- type: entity
+  parent: Jug
+  suffix: bic
+  id: JugBicaridine
+  components:
+  - type: Label
+    currentLabel: reagent-name-bicaridine
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        reagents:
+        - ReagentId: Bicaridine
+          Quantity: 200
+
+- type: entity
+  parent: Jug
+  suffix: derma
+  id: JugDermaline
+  components:
+  - type: Label
+    currentLabel: reagent-name-dermaline
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        reagents:
+        - ReagentId: Dermaline
+          Quantity: 200
+
+- type: entity
+  parent: Jug
+  suffix: dylo
+  id: JugDylovene
+  components:
+  - type: Label
+    currentLabel: reagent-name-dylovene
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        reagents:
+        - ReagentId: Dylovene
+          Quantity: 200
+
+- type: entity
+  parent: Jug
+  suffix: hyro
+  id: JugHyronalin
+  components:
+  - type: Label
+    currentLabel: reagent-name-hyronalin
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        reagents:
+        - ReagentId: Hyronalin
+          Quantity: 200
+
+- type: entity
+  parent: Jug
+  suffix: dex+
+  id: JugDexalinPlus
+  components:
+  - type: Label
+    currentLabel: reagent-name-dexalin-plus
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        reagents:
+        - ReagentId: DexalinPlus
+          Quantity: 200
+
+- type: entity
+  parent: Jug
+  suffix: tricord
+  id: JugTricordrazine
+  components:
+  - type: Label
+    currentLabel: reagent-name-tricordrazine
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        reagents:
+        - ReagentId: Tricordrazine
+          Quantity: 200

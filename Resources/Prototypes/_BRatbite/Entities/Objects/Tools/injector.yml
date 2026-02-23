@@ -1,0 +1,26 @@
+- type: entity
+  parent: [SyndiHypo, BaseSecurityContraband]
+  id: BrigMedHypospray
+  name: Combat Hypospray
+  description: NT Hypospray that were cheaply mass produced for corpsman staff.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      hypospray:
+        maxVol: 10
+  - type: UseDelay
+    delay: 3.5
+  - type: Sprite
+    sprite: _BRatBites/Objects/Tools/brigmedhypo.rsi
+    layers:
+      - state: hypo
+        map: ["enum.SolutionContainerLayers.Base"]
+      - state: hypo_fill1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: Item
+    sprite: _BRatBites/Objects/Tools/brigmedhypo.rsi
+  - type: SolutionContainerVisuals
+    maxFillLevels: 6
+    fillBaseName: hypo_fill
+    solutionName: hypospray
