@@ -8,4 +8,6 @@
   id: SecurityAmmoRatbiteStatic
   recipes:
   - EnergyMagPistolLethal
+  - SpeedLoaderSpecial
+  - MagazineBoxSpecial
  # - EnergyMagPistolDisabler - Kill double disabler

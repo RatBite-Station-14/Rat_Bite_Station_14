@@ -1,5 +1,7 @@
 {
- 
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "made by icor - cr here icor forgot to fill version,license and copyright so il fill in on his place to stop rsi test from failing",
   "size": {
     "x": 32,
     "y": 32

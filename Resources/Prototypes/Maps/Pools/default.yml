@@ -55,7 +55,7 @@
   - Atlas
   - Amber
   - Bagel
-  - Box
+#  - Box - Ratbite - not supported
   - Cluster
   - Core
 #  - Fland
@@ -65,7 +65,7 @@
 #  - Meta
  # - Oasis
   - Omega
-  - Origin
+#  - Origin - Ratbite - not supported
   - Saltern
   - Packed
   - Reach # Goobstation, removed from map pool

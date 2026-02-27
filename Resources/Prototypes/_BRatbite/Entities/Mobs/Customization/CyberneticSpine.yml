@@ -1,0 +1,9 @@
+
+- type: marking
+  id: cyberneticspine
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Human, SlimePerson, Reptilian, Dwarf, Felinid, Harpy, Rodentia, Tajaran, Oni, Shadowkin]
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/chest.rsi
+            state: cyberneticspine

@@ -186,7 +186,7 @@ public sealed partial class GoobCVars
     ///     Log ragequits to a discord webhook, set to empty to disable.
     /// </summary>
     public static readonly CVarDef<string> PlayerRageQuitDiscordWebhook =
-        CVarDef.Create("ragequit.discord_webhook", "https://discord.com/api/webhooks/1469248531339415658/bLTh9aPuFVlSL01Kq18dmfwexTFtB_4nNXkzye6Jkqk5UjzivZkXrP9yQAGrBT0T8e-s", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+        CVarDef.Create("ragequit.discord_webhook", string.Empty, CVar.SERVERONLY | CVar.CONFIDENTIAL);
 
     #endregion PlayerListener
 
@@ -235,7 +235,7 @@ public sealed partial class GoobCVars
     ///     Discord Webhook for the station report
     /// </summary>
     public static readonly CVarDef<string> StationReportDiscordWebHook =
-        CVarDef.Create("stationreport.discord_webhook", "https://discord.com/api/webhooks/1432091455253385287/A9eBQf5dqchO-ka38yYQVvuomuNHvKySBpB_SxvVBi1GHi-NR3LeqG1L6nUwYUpMh_sL", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+        CVarDef.Create("stationreport.discord_webhook", string.Empty, CVar.SERVERONLY | CVar.CONFIDENTIAL);
 
     #endregion
 
