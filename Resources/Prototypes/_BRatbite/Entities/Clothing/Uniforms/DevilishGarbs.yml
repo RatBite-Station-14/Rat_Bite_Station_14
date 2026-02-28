@@ -5,7 +5,7 @@
   description: The perfect attire for those taking a casual waltz through hell.
   components:
   - type: Sprite
-    sprite: _BRatBites/Clothing/Uniforms/DevilishGarbs.rsi
+    sprite: _BRatBites/Clothing/Uniforms/Devilishgarbs.rsi
   - type: Clothing
-    sprite: _BRatBites/Clothing/Uniforms/DevilishGarbs.rsi
+    sprite: _BRatBites/Clothing/Uniforms/Devilishgarbs.rsi
 

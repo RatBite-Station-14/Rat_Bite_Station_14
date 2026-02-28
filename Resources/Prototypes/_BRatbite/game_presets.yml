@@ -1,10 +1,9 @@
 # SPDX-FileCopyrightText: 2025 FloraMillhouse <no email, contact on discord.>
 - type: gamePreset
   id: SqueakRat
-
-  name: SqueakRat
+  name: squeakrat-title
   showInVote: true
-  description: The basic Ratbite experience
+  description: squeakrat-description
   rules:
     - PermaBrig # Needed
     - RatbiteBasicEventsScheduler
@@ -22,5 +21,17 @@
     - RatbiteBasicEventsScheduler
     - SusStationEventScheduler
 
-
-
+- type: gamePreset
+  id: RatGuide
+  alias:
+  - ratcombat
+  - ratcombatdynamic
+  name: ratguide-title
+  showInVote: true
+  description: ratguide-description
+  minPlayers: 25
+  rules:
+  - PermaBrig
+  - RatCombatDynamic
+  - SubGamemodesRule
+  - IonStormScheduler

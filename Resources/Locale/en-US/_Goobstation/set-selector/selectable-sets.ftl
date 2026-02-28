@@ -134,7 +134,7 @@ selectable-set-syndicate-builder-description =
 selectable-set-blueshield-shield-name = blueshield set
 selectable-set-blueshield-shield-description =
     The iconic namesake of these soldiers.
-    Includes: The greatshield, and the DT-4 Atrocity customized stun baton.
+    Includes: The greatshield, and the DT-4 Atrocity customized stun baton. Now include new and improved disabler.
 
 selectable-set-blueshield-revolver-name = revolver set
 selectable-set-blueshield-revolver-description =

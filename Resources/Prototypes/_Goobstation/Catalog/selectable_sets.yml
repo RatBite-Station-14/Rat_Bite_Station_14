@@ -373,6 +373,7 @@
     state: icon-on
   content:
     - BlueShieldShieldFilled
+    - WeaponDisablerAdvanced
 
 - type: selectableSet
   id: BSORevolverSet
