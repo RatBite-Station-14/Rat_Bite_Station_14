@@ -215,7 +215,7 @@
     - id: MedkitBurnFilled
     - id: MedkitBruteFilled
     - id: BrigmedChemicalBag
-    - id: BrigMedHypospray
+    - id: BrigMedInjector
     - id: CombatSurgeryKit
     # Ratbite Edit end
 
