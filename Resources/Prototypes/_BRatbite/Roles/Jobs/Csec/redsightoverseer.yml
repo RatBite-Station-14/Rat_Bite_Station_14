@@ -38,6 +38,7 @@
   - Service
   - Detective
   - Cryogenics
+  - RedsightOverseer
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, BluespaceLifelineImplant ] # CC gets bluespace

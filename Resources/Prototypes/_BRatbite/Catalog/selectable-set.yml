@@ -33,3 +33,51 @@
   - WeaponSubMachineSmart
   - MagazineSmart
   - MagazineSmart
+
+- type: selectableSet
+  id: WeaponSelectorRSOWT
+  name: selectable-set-rso-weaponkit-smartgun-name
+  description: selectable-set-rso-weaponkit-smartgun-desc
+  sprite:
+    sprite: _Goobstation/Objects/Weapons/Guns/SMGs/smartgun.rsi
+    state: icon
+  content:
+  - WeaponSubMachineSmart
+  - MagazineSmart
+  - MagazineSmart
+
+- type: selectableSet
+  id: WeaponSelectorRSOMartialArt
+  name: selectable-set-rso-weaponkit-smartgun-name
+  description: selectable-set-rso-weaponkit-smartgun-desc
+  sprite:
+    sprite: _Goobstation/Objects/Weapons/Guns/SMGs/smartgun.rsi
+    state: icon
+  content:
+  - WeaponSubMachineSmart
+  - MagazineSmart
+  - MagazineSmart
+
+- type: selectableSet
+  id: WeaponSelectorRSOAnihilator
+  name: selectable-set-rso-weaponkit-smartgun-name
+  description: selectable-set-rso-weaponkit-smartgun-desc
+  sprite:
+    sprite: _Goobstation/Objects/Weapons/Guns/SMGs/smartgun.rsi
+    state: icon
+  content:
+  - WeaponSubMachineSmart
+  - MagazineSmart
+  - MagazineSmart
+
+- type: selectableSet
+  id: WeaponSelectorRSOOrder
+  name: selectable-set-rso-weaponkit-smartgun-name
+  description: selectable-set-rso-weaponkit-smartgun-desc
+  sprite:
+    sprite: _Goobstation/Objects/Weapons/Guns/SMGs/smartgun.rsi
+    state: icon
+  content:
+  - WeaponSubMachineSmart
+  - MagazineSmart
+  - MagazineSmart
