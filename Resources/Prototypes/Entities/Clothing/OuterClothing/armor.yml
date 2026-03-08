@@ -187,6 +187,9 @@
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: 2
     knockdownTimeDelta: -2
+  - type: Tag
+    tags:
+    - ScurretWearable #Ratbite
 
 #Standard armor vest, allowed for security and bartenders
 - type: entity
@@ -233,7 +236,7 @@
       coefficients:
         Blunt: 0.35
         Slash: 0.35
-        Piercing: 0.3 # Ratbite Balance
+        Piercing: 0.4 # Ratbite Balance
         Heat: 0.6
         Caustic: 0.75
   - type: ClothingSpeedModifier
@@ -277,7 +280,10 @@
         Blunt: 0.8
         Slash: 0.8
         Piercing: 0.3
-        Heat: 0.8
+        Heat: 0.6
+  - type: ClothingSpeedModifier #Ratbite add
+    walkModifier: 0.80
+    sprintModifier: 0.80
   - type: ExplosionResistance
     damageCoefficient: 0.8
 
@@ -350,7 +356,7 @@
     walkModifier: 0.9
     sprintModifier: 0.9
   #Shoulder mounted flashlight
-  - type: ToggleableLightVisuals
+  - type: ToggleableVisuals
     spriteLayer: light
     clothingVisuals:
       outerClothing:
@@ -362,6 +368,7 @@
       outerClothing-resomi:
       - state: equipped-OUTERCLOTHING-light-resomi
         shader: unshaded
+  - type: ItemTogglePointLight
   - type: Appearance
   - type: HandheldLight
     addPrefix: false
@@ -389,8 +396,8 @@
       id: blinking
       interpolate: Nearest
       maxDuration: 1.0
-      minValue: 0.1
-      maxValue: 2.0
+      startValue: 0.1
+      endValue: 2.0
       isLooped: true
   - type: Battery
     maxCharge: 600
@@ -580,6 +587,9 @@
     damageCoefficient: 0.8 #Ratbite
   - type: StaticPrice # Goob
     price: 1000
+  - type: Tag
+    tags:
+    - ScurretWearable #ratbite
 
 - type: entity # This is from upstream, so it goes in wizden code.
   parent: [ClothingOuterArmorCaptainCarapace, BaseCentcommContraband]

@@ -69,3 +69,28 @@
     whitelist:
       tags:
       - ScurretWearable
+  - name: belt
+    slotTexture: belt
+    fullTextureName: template_small
+    slotFlags: BELT
+    slotGroup: SecondHotbar
+    stripTime: 6
+    uiWindowPos: 3,1
+    strippingWindowPos: 1,5
+    displayName: Belt
+    whitelist:
+      tags:
+      - ScurretWearable
+  - name: back
+    slotTexture: back
+    fullTextureName: template_small
+    slotFlags: BACK
+    slotGroup: SecondHotbar
+    stripTime: 6
+    uiWindowPos: 3,2
+    strippingWindowPos: 0,5
+    displayName: Back
+    whitelist:
+      tags:
+      - ScurretWearable
+

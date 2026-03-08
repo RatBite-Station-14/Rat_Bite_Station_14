@@ -21,7 +21,7 @@
   name: species-name-chitinid
   text: "/ServerInfo/Guidebook/Mobs/_DV/Chitinid.xml"
 
-- type: guideEntry
-  id: Feroxi
-  name: species-name-feroxi
-  text: "/ServerInfo/Guidebook/Mobs/_DV/Feroxi.xml"
+#- type: guideEntry
+#  id: Feroxi
+#  name: species-name-feroxi
+#  text: "/ServerInfo/Guidebook/Mobs/_DV/Feroxi.xml" # didn't get grabbed during upstream so bye bye

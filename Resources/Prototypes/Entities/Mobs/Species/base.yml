@@ -329,6 +329,9 @@
         clownedon: # Not 'creampied' bc I can already see Skyrat complaining about conflicts.
           True: {visible: true}
           False: {visible: false}
+  - type: WarpPoint # Rat - Better observe menu
+    follow: true
+    mob: true
   - type: StatusIcon
     bounds: -0.5,-0.5,0.5,0.5
   - type: HasJobIcons # Goobstation

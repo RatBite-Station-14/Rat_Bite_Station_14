@@ -279,9 +279,9 @@
       path: /Audio/Ambience/Objects/gas_hiss.ogg
   - type: AtmosMonitoringConsoleDevice
     navMapBlip: GasFlowRegulator
-  - type: GuideHelp
-    guides:
-    - PressureRegulator
+  #- type: GuideHelp
+  #  guides: # you want your guide? pull it from upstream first
+  #  - PressureRegulator
 
 - type: entity
   parent: GasBinaryBase

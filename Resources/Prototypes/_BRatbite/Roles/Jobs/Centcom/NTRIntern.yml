@@ -4,7 +4,7 @@
   description: job-description-ntrintern
   playTimeTracker: JobNTRIntern
   setPreference: false
-  startingGear: NTRInternGear
+  startingGear: NTInternGear
   icon: "JobIconIntern"
   supervisors: job-supervisors-hire
   canBeAntag: false
@@ -28,7 +28,7 @@
   description: job-description-ntrleadintern
   playTimeTracker: JobNTRLeadIntern
   setPreference: false
-  startingGear: NTRInternGear
+  startingGear: LeadInternGear
   icon: "JobIconIntern"
   supervisors: job-supervisors-hire
   canBeAntag: false

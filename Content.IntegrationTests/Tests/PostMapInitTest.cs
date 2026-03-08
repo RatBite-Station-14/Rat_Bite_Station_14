@@ -208,36 +208,37 @@ namespace Content.IntegrationTests.Tests
             "Barratry",
             "Box",            // Not in pool
             "CentComm",       // CentComm
-            "Chloris",
+            "Chloris",        // Not in pool
             "Cluster",
-            "Cog",
-            "Core",           // Not in pool.
-            "Delta",
+            "Cog",            // Not in pool
+            "Core",
+            "Delta",          // Not in pool
             "Dev",            // Dev map
             "dm01-entryway",  // Deathmatch
-            "Europa",         // Not in pool.
-            "Fland",
-            "FlandHighPop",
+            "Europa",         // Not in pool
+            "Fland",          // Not in pool
+            "FlandHighPop",   // Not in pool
             "Gate",           // Not in pool
             "Kettle",
             "Lambda",         // Not in pool
             "Lavatest",       // Dev map
-            "Leonid",
+            "Leonid",         // Not in pool
             "Loop",
             "Marathon",
-            "Meta",
+            "Meta",           // Not in pool
             "MeteorArena",    // Deathmatch
             "Oasis",
             "OasisHighPop",
             "Omega",
-            "Origin",
+            "Opticon", // Ratbite original work
+            "Origin",         // Not in pool
             "OriginHighPop",  // Not in pool
             "Packed",
-            "Prison",
+            "Prison",         // Not in pool
             "Reach",
             "Saltern",
-            "Serpentcrest",
-            "Submarine",
+            "Serpentcrest",   // Not in pool
+            "Submarine",      // Not in pool
             "TestTeg",        // Dev map
             "Train"           // Not in pool
             // Goob end
@@ -252,37 +253,39 @@ namespace Content.IntegrationTests.Tests
               "Barratry",
             //"Box",            // Not in pool
               "CentComm",      // CentComm
-              "Chloris",
+            //"Chloris",
               "Cluster",
-              "Cog",
-            //"Core",           // Not in pool.
-              "Delta",
+            //"Cog",
+              "Core",
+            //"Delta",
               "Dev",            // Dev map
             //"dm01-entryway",  // Deathmatch
             //"Europa",         // Not in pool.
-              "Fland",
-              "FlandHighPop",
+            //"Fland",          // Not in pool
+            //"FlandHighPop",   // Not in pool
             //"Gate",           // Not in pool
               "Kettle",
             //"Lambda",         // Not in pool
-              "Lavatest",       //Dev map
-              "Leonid",
+              "Lavatest",       // Dev map
+            //"Leonid",         // Not in pool
               "Loop",
               "Marathon",
-              "Meta",
+            //"Meta",           // Not in pool
             //"MeteorArena",    // Deathmatch
               "Oasis",
               "OasisHighPop",
               "Omega",
-              "Origin",
-            //"OriginHighPop",  //Not in pool
-              "TestTeg",        //Dev map
-            //"Train",          //Not in pool
+              "Opticon",
+            //"Origin",         // Not in pool
+            //"OriginHighPop",  // Not in pool
+              "TestTeg",        // Dev map
+            //"Train",          // Not in pool
               "Packed",
+            //"Prison",         // Not in pool
               "Reach",
               "Saltern",
-              "Serpentcrest",
-              "Submarine"
+            //"Serpentcrest",   // Not in pool
+            //"Submarine"       // Not in pool
         };
         // Goobstation edit end
 

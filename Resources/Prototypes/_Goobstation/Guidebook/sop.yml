@@ -85,7 +85,7 @@
   priority: 2
   children:
   - Cargo SOP
-  - Command SOP
+  #- Command SOP # Probably causing testfail
   - Engineering SOP
   - Medical SOP
   - Science SOP
@@ -100,20 +100,20 @@
   - CargoTech SOP
   - SalvageSpecialist SOP
 
-- type: guideEntry
-  id: Command SOP
-  name: guide-entry-sop-command
-  text: "/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/Command/CommandSOP.xml"
-  children:
-  - NanotrasenRep SOP
-  - BlueshieldOfficer SOP
-  - Captain SOP
-  - HeadOfPersonnel SOP
-  - HeadOfSecurity SOP
-  - ResearchDirector SOP
-  - ChiefMedicalOfficer SOP
-  - ChiefEngineer SOP
-  - Quartermaster SOP
+#- type: guideEntry # Causing testfails probably
+#  id: Command SOP
+#  name: guide-entry-sop-command
+#  text: "/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/Command/CommandSOP.xml"
+#  children:
+#  - NanotrasenRep SOP
+#  - BlueshieldOfficer SOP
+#  - Captain SOP
+#  - HeadOfPersonnel SOP
+#  - HeadOfSecurity SOP
+#  - ResearchDirector SOP
+#  - ChiefMedicalOfficer SOP
+#  - ChiefEngineer SOP
+#  - Quartermaster SOP
 
 - type: guideEntry
   id: Engineering SOP

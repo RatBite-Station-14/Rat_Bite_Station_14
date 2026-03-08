@@ -1667,7 +1667,7 @@
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AccessReader
-    access: [["Security"], ["Command"], ["Engineering"], ["Science"], ["Medical"], ["Service"], ["Cargo",]]
+    access: [["Security"], ["Command"], ["Engineering"], ["Research"], ["Medical"], ["Service"], ["Cargo",]]
   - type: PointLight
     radius: 2
     energy: 1.6

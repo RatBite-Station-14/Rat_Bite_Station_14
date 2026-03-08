@@ -144,7 +144,7 @@
   - SignalValve
   - PneumaticValve
   - PassiveGate
-  - PressureRegulator
+  #- PressureRegulator #pull the upstream file for this before you uncomment it
 
 - type: guideEntry
   id: ManualValve
@@ -166,10 +166,10 @@
   name: guide-entry-passivegate
   text: "/ServerInfo/Guidebook/Engineering/PassiveGate.xml"
 
-- type: guideEntry
-  id: PressureRegulator
-  name: guide-entry-ressureregulator
-  text: "/ServerInfo/Guidebook/Engineering/PressureRegulator.xml"
+#- type: guideEntry
+#  id: PressureRegulator
+#  name: guide-entry-ressureregulator
+#  text: "/ServerInfo/Guidebook/Engineering/PressureRegulator.xml" this didn't get grabbed with upstream
 
 - type: guideEntry
   id: MixingAndFiltering

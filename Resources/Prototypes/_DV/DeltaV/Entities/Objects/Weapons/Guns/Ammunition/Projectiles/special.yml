@@ -2,7 +2,7 @@
   id: BulletSpecial
   name: bullet (.38 special)
   parent: BaseBullet
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
     damage:
@@ -13,11 +13,5 @@
   id: BulletSpecialPractice
   name: bullet (.38 special practice)
   parent: BaseBulletPractice
-  noSpawn: true
-  components:
-  - type: Projectile
-    damage:
-      types:
-        Blunt: 1
-
+  categories: [ HideSpawnMenu ]
 

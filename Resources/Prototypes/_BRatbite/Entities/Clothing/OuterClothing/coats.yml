@@ -43,4 +43,5 @@
     - Tail # cant even aim at tails what is the point of this actually? - eirin
     - Arm
     modifiers:
+      coefficients: # foolish YML chud read your shit - Ducks
         Heat: 0.4 # i heart copy and pasting floras shit! -eirin

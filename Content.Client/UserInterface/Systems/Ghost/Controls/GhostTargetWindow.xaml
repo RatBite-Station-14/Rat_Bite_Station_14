@@ -11,14 +11,53 @@ SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<DefaultWindow xmlns="https://spacestation14.io" Title="{Loc 'ghost-target-window-title'}" MinSize="450 450" SetSize="450 450">
+<DefaultWindow xmlns="https://spacestation14.io" Title="{Loc 'ghost-target-window-title'}" MinSize="350 350" SetSize="450 450">
     <BoxContainer Orientation="Vertical" HorizontalExpand="True" SizeFlagsStretchRatio="0.4">
         <Button Name="GhostnadoButton" Text="{Loc 'ghost-target-window-warp-to-most-followed'}" HorizontalAlignment="Center" Margin="0 4" />
         <LineEdit Name="SearchBar" PlaceHolder="Search" HorizontalExpand="True" Margin="0 4" />
         <ScrollContainer Name="GhostScroll" VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
-            <BoxContainer Name="ButtonContainer" Orientation="Vertical" VerticalExpand="True" SeparationOverride="5">
-                <!-- Target buttons get added here by code -->
+        <BoxContainer Orientation="Vertical" >
+            <BoxContainer Name="AntagBox" HorizontalExpand="True" >
+                <Collapsible HorizontalExpand="True" BodyVisible="True">
+                    <CollapsibleHeading Name="AntagonistHeading" />
+                    <CollapsibleBody>
+                        <GridContainer Name="AntagonistContainer" MaxGridWidth="440"/> <!-- These contain buttons on runtime-->
+                    </CollapsibleBody>
+                </Collapsible>
             </BoxContainer>
+            <BoxContainer HorizontalExpand="True" >
+                <Collapsible HorizontalExpand="True" BodyVisible="True">
+                    <CollapsibleHeading Name="LivingHeading" />
+                    <CollapsibleBody>
+                        <GridContainer Name="LivingContainer" MaxGridWidth="440"/>
+                    </CollapsibleBody>
+                </Collapsible>
+            </BoxContainer>
+            <BoxContainer Name="DeadBox" HorizontalExpand="True" >
+                <Collapsible HorizontalExpand="True" BodyVisible="True">
+                    <CollapsibleHeading Name="DeadHeading" />
+                    <CollapsibleBody>
+                        <GridContainer Name="DeadContainer" MaxGridWidth="440"/>
+                    </CollapsibleBody>
+                </Collapsible>
+            </BoxContainer>
+            <BoxContainer HorizontalExpand="True" >
+                <Collapsible HorizontalExpand="True" BodyVisible="True">
+                    <CollapsibleHeading Name="GhostHeading" />
+                    <CollapsibleBody>
+                        <GridContainer Name="GhostContainer" MaxGridWidth="440"/>
+                    </CollapsibleBody>
+                </Collapsible>
+            </BoxContainer>
+            <BoxContainer HorizontalExpand="True" >
+                <Collapsible HorizontalExpand="True" BodyVisible="True">
+                    <CollapsibleHeading Name="MiscHeading" />
+                    <CollapsibleBody>
+                        <GridContainer Name="MiscContainer" MaxGridWidth="440"/>
+                    </CollapsibleBody>
+                </Collapsible>
+            </BoxContainer>
+        </BoxContainer>
         </ScrollContainer>
     </BoxContainer>
 </DefaultWindow>

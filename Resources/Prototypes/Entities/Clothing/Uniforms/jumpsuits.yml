@@ -643,12 +643,15 @@
         color: "#ff8300"
       - state: prisoner-inhand-right
   - type: Clothing
+    stripDelay: 10
+    equipDelay: 2 # to avoid accidentally falling into the trap associated with SelfUnremovableClothing
     sprite: Clothing/Uniforms/Jumpsuit/color.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
         color: "#ff8300"
       - state: prisoner-equipped-INNERCLOTHING
+  - type: SelfUnremovableClothing # Ratbite, make prisoners have to work together or find help to be unmarked.
   - type: SuitSensor
     controlsLocked: true
     randomMode: false

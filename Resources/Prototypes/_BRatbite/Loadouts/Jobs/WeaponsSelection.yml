@@ -42,7 +42,6 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: EnergyPistolUnlock
-  name: EP-12 Energy Pistol
   equipment:
     pocket1: WeaponEnergyCellPistol
 
@@ -68,7 +67,6 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: EnergyPistolUnlock
-  name: EP-12 Energy Pistol
   storage:
     back:
     - EnergyMagPistolLethal

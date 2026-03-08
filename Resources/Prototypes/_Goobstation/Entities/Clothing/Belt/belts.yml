@@ -61,6 +61,9 @@
         - GunApplySolution # Goobstation - Syndicate dart gun
   - type: ExplosionResistance
     damageCoefficient: 0.25
+  - type: Tag
+    tags:
+    - ScurretWearable # Ratbite
 
 - type: entity
   parent: [ ClothingBeltStorageBase, ContentsExplosionResistanceBase, BaseCentcommContraband ]
@@ -75,6 +78,9 @@
     sprite: _Goobstation/Clothing/Belt/deathsquadwebbing.rsi
   - type: ExplosionResistance
     damageCoefficient: 0.01
+  - type: Tag
+    tags:
+    - ScurretWearable # Ratbite because funny goidaaa and if somehow a scurret is a DS/ERT its not Completely fucked
 
 
 - type: entity
@@ -93,6 +99,10 @@
     - 0,0,6,2
   - type: ExplosionResistance
     damageCoefficient: 0.05
+  - type: Tag
+    tags:
+    - ScurretWearable # Ratbite because funny goidaaa and if somehow a scurret is a DS/ERT its not Completely fucked
+
 
 - type: entity
   parent: ClothingBeltSecurity
@@ -261,6 +271,9 @@
       - SurgeryTool
       - SolutionTransfer
       - SlimeExtract
+  - type: Tag
+    tags:
+    - ScurretWearable # Ratbite because funny goidaaa and if somehow a scurret is a DS/ERT its not Completely fucked
       
 - type: entity
   parent: [ClothingBeltStorageBase, ContentsExplosionResistanceBase, BaseCentcommContraband]
@@ -295,3 +308,6 @@
   suffix: Unremoveable
   components:
   - type: Unremoveable
+  - type: Tag
+    tags:
+    - ScurretWearable # Ratbite because if this somehow happens scurrets aren't causing any problems

@@ -23,7 +23,7 @@
 # RATBITE WEAPON LOADOUTS
 - type: loadoutGroup
   id: SecuritySidearm
-  name: Security Sidearm
+  name: loadout-group-security-sidearms
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -34,7 +34,7 @@
 
 - type: loadoutGroup
   id: SecurityAmmo
-  name: Sidearm Ammo
+  name: loadout-group-security-ammo
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -87,7 +87,7 @@
 
 - type: loadoutGroup
   id: DeptGuardHead
-  name: Department Guard Helmet
+  name: loadout-group-deptguard-head
   maxLimit: 1
   loadouts:
   - SecurityHelmet
@@ -95,7 +95,7 @@
 
 - type: loadoutGroup
   id: DeptGuardOuterClothing
-  name: Department Guard Outerclothing
+  name: loadout-group-deptguard-outer
   minLimit: 1
   loadouts:
   - ArmorVest
@@ -105,7 +105,7 @@
 
 - type: loadoutGroup
   id: MedOrderlyJumpsuit
-  name: Med Orderly Jumpsuits
+  name: loadout-group-medguard-jumpsuit
   minLimit: 1
   loadouts:
   - MedGuardInsideJumpsuit
@@ -114,7 +114,7 @@
 
 - type: loadoutGroup
   id: SciguardJumpsuit
-  name: Sci-curity Guard Jumpsuit
+  name: loadout-group-sciguard-jumpsuit
   minLimit: 1
   loadouts:
   - SciGuardInsideJumpsuit
@@ -123,7 +123,7 @@
 
 - type: loadoutGroup
   id: CargoInsuranceJumpsuit
-  name: Cargo Insurance Jumpsuit
+  name: loadout-group-cargoguard-jumpsuit
   minLimit: 1
   loadouts:
   - CargoGuardInsideJumpsuit
@@ -132,7 +132,7 @@
 
 - type: loadoutGroup
   id: EngiguardJumpsuit
-  name: Engi Sentry Jumpsuit
+  name: loadout-group-engiguard-jumpsuit
   minLimit: 1
   loadouts:
   - EngiGuardInsideJumpsuit
