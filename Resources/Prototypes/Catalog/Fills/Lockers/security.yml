@@ -207,10 +207,14 @@
     - id: NitrogenTankFilled
     - id: ClothingUniformJumpskirtOfLife
       prob: 0.1
-    - id: MedkitOxygenFilled
-    - id: MedkitAdvancedFilled
-    - id: BoxSyringe
+    #- id: MedkitOxygenFilled # Ratbite station - redundant
+    #- id: MedkitAdvancedFilled # Ratbite station - redundant
+    #- id: BoxSyringe # Ratbite station - redundant
     - id: BoxBodyBag # Goob Station
+    - id: MedSupplyCrateBasicFilled # Rabite station - replacement for medkit
+    - id: MedSupplyCrateTopicalFilled # Ratbite station - now they have chem too
+    - id: BrigMedInjector # Ratbite station - better syringes
+    - id: SecHypo # Ratbite station - sec autoinjector
 
 - type: entity
   id: LockerDetectiveFilled

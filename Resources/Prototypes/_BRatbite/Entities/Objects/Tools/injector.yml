@@ -1,0 +1,33 @@
+- type: entity
+  parent: [BaseItem, BaseSecurityContraband]
+  id: BrigMedInjector
+  name: Chemical Injector
+  description: NT Chemical Injector that were cheaply mass produced for corpsman staff. Due to lack of durability, melee injection of armored targets are not recommended.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Objects/Tools/brigmed_injector.rsi
+    state: icon
+  - type: Item
+    size: Small
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 10
+  - type: Injector
+    delay: 1.5
+    maxTransferAmount: 10
+    minTransferAmount: 5
+    injectOnly: false
+  - type: MeleeChemicalInjector
+    transferAmount: 2
+    solution: injector
+    pierceArmor: false
+  - type: MeleeWeapon
+    angle: 0
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Piercing: 1
+    animation: WeaponArcThrust
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg

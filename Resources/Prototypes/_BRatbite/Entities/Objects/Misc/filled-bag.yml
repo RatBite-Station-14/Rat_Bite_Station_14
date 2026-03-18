@@ -1,0 +1,140 @@
+- type: entity
+  parent: [BaseStorageItem, BaseBagOpenClose, ContentsExplosionResistanceBase]
+  id: MedSupplyCrateBase
+  name: medical supply crate
+  description: A small crate for holding medical supplies.
+  components:
+  - type: MultiHandedItem
+  - type: Sprite
+    sprite: _BRatBites/Objects/Misc/chemjugbox.rsi
+    layers:
+    - state: closed
+    - state: open
+      map: ["openLayer"]
+      visible: false
+  - type: Storage # this is wonky but eh. filter only med shit in this crate.
+    maxItemSize: Huge
+    grid:
+    - 0,0,6,4
+    whitelist:
+      tags:
+        - Wrench
+        - Bottle
+        - Spray
+        - Brutepack
+        - Bloodpack
+        - Gauze
+        - Ointment
+        - CigPack
+        - PillCanister
+        - Radio
+        - DiscreteHealthAnalyzer
+        - SurgeryTool
+        - Dropper
+        - Tourniquet
+        - MedicalPatch
+        - AutoinjectorCartridge
+        - HandheldCrewMonitor
+        - ChemDispensable
+      components:
+        - FitsInDispenser
+        - Hypospray
+        - Injector
+        - Pill
+        - HandLabeler
+        - SurgeryTool
+        - Defibrillator
+        - SyringeGun
+        - GunApplySolution
+  - type: ClothingSpeedModifier
+    walkModifier: 0.90
+    sprintModifier: 0.80
+  - type: ExplosionResistance
+    damageCoefficient: 0.05
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/backpack_pickup.ogg
+      params:
+        volume: -9
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Goobstation/Items/handling/backpack_drop.ogg
+      params:
+        volume: -11
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/backpack_drop.ogg
+      params:
+        volume: -11
+  - type: UseDelay
+    delay: 0.5
+  - type: Appearance
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,7,7 #7X7, now you can put it on droppod and bluespace bag but you cant put in any other backpack.
+
+- type: entity
+  parent: MedSupplyCrateBase
+  id: MedSupplyCrateBasicFilled
+  name: medical chemical supply
+  suffix: basicTier1
+  components:
+  - type: StorageFill
+    contents:
+      - id: JugBicaridine
+      - id: JugDermaline
+      - id: JugDylovene
+      - id: JugHyronalin
+      - id: JugDexalinPlus
+      - id: JugTricordrazine
+      - id: SprayBottleSilverSulfadiazine
+      - id: SprayBottleStypticPowder
+
+- type: entity
+  parent: MedSupplyCrateBase
+  id: MedSupplyCrateTopicalFilled
+  name: medical topical supply
+  suffix: topical
+  components:
+  - type: StorageFill
+    contents:
+      - id: Ointment
+        amount: 3
+      - id: Brutepack
+        amount: 3
+      - id: MedicatedSuture
+      - id: Gauze
+        amount: 3
+      - id: Bloodpack
+        amount: 3
+      - id: RegenerativeMesh
+
+# this one for admeme to easily deploy if station got shit upon disease so badly. well until we got better viro.
+- type: entity
+  parent: MedSupplyCrateBase
+  id: MedSupplyCrateViroFilled
+  name: medical chemical supply
+  suffix: ViroCure
+  components:
+  - type: StorageFill
+    contents:
+      - id: JugSpaceacilin
+      - id: JugDevirate
+      - id: JugImmurin
+      - id: JugSpaceacilin
+      - id: JugDevirate
+      - id: JugImmurin
+
+- type: entity
+  parent: MedkitCombat
+  id: CombatSurgeryKit
+  name: Combat Surgery Kit
+  description: A combat surgery kit for treating severe injuries in the field. Contains advance surgery tool.
+  components:
+  - type: StorageFill
+    contents:
+      - id: AdvancedBoneGel
+      - id: EnergyCautery
+      - id: EnergyScalpel
+      - id: AdvancedRetractor
