@@ -76,12 +76,10 @@
   - type: Battery
     pricePerJoule: 0.15
   - type: PowerCell
-  # Ratbite - no thank you liltenhead
- # - type: Explosive
- #   explosionType: Default
- #   maxIntensity: 200
- #   intensitySlope: 1.5
-  # Ratbite
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 200
+    intensitySlope: 1.5
   - type: Sprite
     sprite: Objects/Power/power_cells.rsi
   - type: SolutionContainerManager
