@@ -78,8 +78,8 @@
   - type: PowerCell
   - type: Explosive
     explosionType: Default
-    maxIntensity: 100
-    intensitySlope: 1.5
+    maxIntensity: 60
+    intensitySlope: 1
   - type: Sprite
     sprite: Objects/Power/power_cells.rsi
   - type: SolutionContainerManager
