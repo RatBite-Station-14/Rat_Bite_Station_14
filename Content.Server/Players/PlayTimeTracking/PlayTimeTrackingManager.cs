@@ -20,6 +20,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using Content.Server._BRatbite.PermaBrig;
 using Content.Server.Database;
 using Content.Shared.CCVar;
 using Content.Shared.Players.PlayTimeTracking;
@@ -81,6 +82,7 @@ public sealed class PlayTimeTrackingManager : ISharedPlaytimeManager, IPostInjec
     [Dependency] private readonly ITaskManager _task = default!;
     [Dependency] private readonly IRuntimeLog _runtimeLog = default!;
     [Dependency] private readonly UserDbDataManager _userDb = default!;
+    [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -164,6 +166,7 @@ public sealed class PlayTimeTrackingManager : ISharedPlaytimeManager, IPostInjec
     {
         DebugTools.Assert(data.Initialized);
 
+        FlushPermaTime(dirty);
         FlushSingleTracker(data, time);
 
         data.NeedRefreshTackers = false;
@@ -195,6 +198,20 @@ public sealed class PlayTimeTrackingManager : ISharedPlaytimeManager, IPostInjec
         {
             FlushSingleTracker(data, time);
         }
+    }
+
+
+    public void FlushPermaTime(ICommonSession session)
+    {
+        var data = _playTimeData[session];
+        if (data.ActiveTrackers.Contains(PlayTimeTrackingShared.TrackerPerma))
+        {
+            var time = _timing.RealTime;
+            var delta = time - data.LastUpdate;
+
+            _permaBrigManager.UpdateTimeServed(delta, session);
+        }
+        _permaBrigManager.UpdateTimeLastSeen(session);
     }
 
     /// <summary>

@@ -743,6 +743,10 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("integer")
                         .HasColumnName("brig_sentence");
 
+                    b.Property<int>("BrigTime")
+                        .HasColumnType("integer")
+                        .HasColumnName("brig_time");
+
                     b.Property<DateTime>("FirstSeenTime")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("first_seen_time");

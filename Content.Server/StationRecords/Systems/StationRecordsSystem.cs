@@ -26,6 +26,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
+using Content.Server._BRatbite.PermaBrig;
 using Content.Server.Access.Systems;
 using Content.Server.Administration;
 using Content.Server.CriminalRecords.Systems;
@@ -37,6 +38,7 @@ using Content.Shared.Inventory;
 using Content.Shared.PDA;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
+using Content.Shared.Security;
 using Content.Shared.StationRecords;
 using Robust.Shared.Enums;
 using Robust.Shared.Player;
@@ -74,6 +76,7 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IServerDbManager _dbManager = default!;
     [Dependency] private readonly IPlayerLocator _locator = default!;
+    [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
 
     public override void Initialize()
     {
@@ -99,7 +102,6 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
         var recordByName = GetRecordByName(station, name, records);
         if (recordByName is not { } uid)
         {
-            // shell.WriteError("Unable to find a record with that name.");
             return;
         }
 
@@ -109,7 +111,6 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
 
         if (data == null)
         {
-            // shell.WriteError("Unable to find a player with that name or id.");
             return;
         }
 
@@ -133,7 +134,18 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
         {
             _criminalRecords.TryAddHistory(stationRecordKey, "Is not banned from any roles.");
         }
+
+        var brigTime = _permaBrigManager.GetBrigTime(session.UserId);
+        if (brigTime > 0)
+        {
+            var reason = "Sentenced to perma for "+_permaBrigManager.GetTimeLabel(brigTime);
+            _criminalRecords.TryChangeStatus(stationRecordKey,
+                SecurityStatus.Perma,
+                reason);
+        }
     }
+
+
 
     private void OnRename(ref EntityRenamedEvent ev)
     {

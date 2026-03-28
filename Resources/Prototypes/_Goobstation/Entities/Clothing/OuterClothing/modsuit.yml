@@ -76,6 +76,9 @@
       - state: equipped-OUTERCLOTHING-sealed
       outerClothing-resomi:
       - state: equipped-OUTERCLOTHING-sealed-resomi
+  - type: Tag
+    tags:
+    - ScurretWearable
 # Ratbite removes stam resist 0.9
   - type: Armor
     coverage:
@@ -132,7 +135,7 @@
     unequipSound: /Audio/Mecha/mechmove03.ogg
     slots: [ outerClothing ]
   - type: ClothingSpeedModifier
-    walkModifier: 0.8
+    walkModifier: 0.75
     sprintModifier: 0.8
   - type: SealableClothing
     sealUpPopup: sealable-clothing-seal-up-chestplate
@@ -170,10 +173,10 @@
     - Other
     modifiers:
       coefficients:
-        Blunt: 0.6
-        Slash: 0.6
-        Piercing: 0.6
-        Heat: 0.6
+        Blunt: 0.55
+        Slash: 0.55
+        Piercing: 0.55
+        Heat: 0.55
         Radiation: 0.6
   - type: ComponentToggler
     components:
@@ -208,8 +211,8 @@
     unequipSound: /Audio/Mecha/mechmove03.ogg
     slots: [ outerClothing ]
   - type: ClothingSpeedModifier
-    walkModifier: 0.80
-    sprintModifier: 0.80
+    walkModifier: 0.75
+    sprintModifier: 0.8
   - type: SealableClothing
     sealUpPopup: sealable-clothing-seal-up-chestplate
     sealDownPopup: sealable-clothing-seal-down-chestplate
@@ -246,12 +249,13 @@
     - Other
     modifiers:
       coefficients:
-        Blunt: 0.5
-        Slash: 0.5
-        Piercing: 0.45
-        Heat: 0.5
+        Blunt: 0.45
+        Slash: 0.45
+        Piercing: 0.4
+        Heat: 0.45
         Caustic: 0.5
-        Radiation: 0.5
+        Radiation: 0.4
+        #ratbite lil more protection, lil less speed
   - type: ComponentToggler
     components:
     - type: PressureProtection
@@ -326,10 +330,10 @@
       coefficients:
         Blunt: 0.9
         Slash: 0.9
-        Piercing: 0.85
+        Piercing: 0.8
         Heat: 0.8
         Caustic: 0.6
-        Radiation: 0.3
+        Radiation: 0.2
   - type: ComponentToggler
     components:
     - type: PressureProtection
@@ -443,8 +447,8 @@
     unequipSound: /Audio/Mecha/mechmove03.ogg
     slots: [ outerClothing ]
   - type: ClothingSpeedModifier
-    walkModifier: 0.75
-    sprintModifier: 0.75
+    walkModifier: 0.8
+    sprintModifier: 0.8
   - type: SealableClothing
     sealUpPopup: sealable-clothing-seal-up-chestplate
     sealDownPopup: sealable-clothing-seal-down-chestplate
@@ -458,7 +462,7 @@
       outerClothing-vox:
       - state: equipped-OUTERCLOTHING-sealed-vox
   - type: ExplosionResistance
-    damageCoefficient: 0.45
+    damageCoefficient: 0.4
   - type: Armor
     traumaDeductions:
       Dismemberment: 0.2
@@ -479,8 +483,8 @@
       coefficients:
         Blunt: 0.8
         Slash: 0.85
-        Piercing: 0.85
-        Heat: 0.2
+        Piercing: 0.9
+        Heat: 0.15
         Radiation: 0.05
   - type: ComponentToggler
     components:
@@ -501,7 +505,7 @@
   parent: ClothingOuterBase
   id: ClothingModsuitChestplateResearchDirector
   name: minerva modsuit chestplate
-  description: A bulky bomb and bat proof chunk of steel.
+  description: A true beauty of the Nanotrasen RnD department, any tider will regret fighting it.
   categories: [ HideSpawnMenu ]
   components:
   - type: Appearance
@@ -518,8 +522,9 @@
     unequipSound: /Audio/Mecha/mechmove03.ogg
     slots: [ outerClothing ]
   - type: ClothingSpeedModifier
-    walkModifier: 0.75
-    sprintModifier: 0.75
+    walkModifier: 0.7
+    sprintModifier: 0.65
+    #ratbite - Aurafarming RDs ONLY, no robusto speed (prevents combat unless stims or other methods)
   - type: SealableClothing
     sealUpPopup: sealable-clothing-seal-up-chestplate
     sealDownPopup: sealable-clothing-seal-down-chestplate
@@ -536,7 +541,7 @@
     damageCoefficient: 0.1
   - type: Armor
     traumaDeductions:
-      Dismemberment: 0.2
+      Dismemberment: 0.1
       OrganDamage: 0.2
       BoneDamage: 0.2
       VeinsDamage: 0
@@ -554,11 +559,12 @@
       coefficients:
         Blunt: 0.55
         Slash: 0.75
-        Piercing: 0.85
+        Piercing: 0.4
         Heat: 0.25
         Shock: 0.75
         Caustic: 0.25
-        Radiation: 0.01
+        Radiation: 0
+        # ratbite changes- makes it inline with standard suit but lower speed
   - type: ComponentToggler
     components:
     - type: PressureProtection
@@ -597,7 +603,7 @@
     unequipSound: /Audio/Mecha/mechmove03.ogg
     slots: [ outerClothing ]
   - type: ClothingSpeedModifier
-    walkModifier: 0.8
+    walkModifier: 0.75
     sprintModifier: 0.8
   - type: SealableClothing
     sealUpPopup: sealable-clothing-seal-up-chestplate
@@ -631,12 +637,13 @@
     - Other
     modifiers:
       coefficients:
-        Blunt: 0.7
-        Slash: 0.7
-        Piercing: 0.55
-        Heat: 0.5
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.45
+        Heat: 0.45
         Radiation: 0.1
         Caustic: 0.5
+        #ratbite its fucking CAPTAIN man
   - type: ComponentToggler
     components:
     - type: PressureProtection

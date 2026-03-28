@@ -824,6 +824,7 @@ namespace Content.Server.Database
         public TimeSpan? LastRolledAntag { get; set; } // Goobstation
 
         public int BrigSentence { get; set; } //Ratbite - Perma Brigs
+        public int BrigTime { get; set; } //Ratbite - Perma Brigs
         public int PPpoints  { get; set; } //Ratbite - Perma Brigs
 
         public DateTime? LastReadRules { get; set; }

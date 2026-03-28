@@ -1,4 +1,5 @@
 using Robust.Shared.GameStates;
+using Robust.Shared.Player;
 
 namespace Content.Shared.Security.Components;
 

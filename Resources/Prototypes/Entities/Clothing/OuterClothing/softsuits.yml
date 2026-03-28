@@ -108,7 +108,7 @@
     - SuitEVA
     - MonkeyWearable
     - CorgiWearable
-    - ScurretWearable
+    - ScurretWearable #ratbite
     - WhitelistChameleon
     - Softsuit # OuterSlotClothingPenalty
 
@@ -127,7 +127,7 @@
     tags:
     - SuitEVA
     - MonkeyWearable
-    - ScurretWearable
+    - ScurretWearable #ratbite
     - WhitelistChameleon
     - Softsuit # OuterSlotClothingPenalty
   - type: StaticPrice
@@ -178,7 +178,7 @@
     tags:
     - SuitEVA
     - MonkeyWearable
-    - ScurretWearable
+    - ScurretWearable #ratbite
     - WhitelistChameleon
     - Softsuit # OuterSlotClothingPenalty
 

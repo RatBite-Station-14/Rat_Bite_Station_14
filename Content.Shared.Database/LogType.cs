@@ -617,4 +617,9 @@ public enum LogType
     /// Antag objective info.
     /// </summary>
     AntagObjective = 10004, // Goobstation
+
+    /// <summary>
+    /// Perma events, mostly used when players join
+    /// </summary>
+    Perma = 20001, // Ratbite
 }

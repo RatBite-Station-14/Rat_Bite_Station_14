@@ -496,7 +496,9 @@ namespace Content.Server.Database
         Task<int> GetPermaRoundsLeft(NetUserId userId); // Ratbite
         Task SetPermaRoundsLeft(NetUserId userId, int BrigSentence); // Ratbite
         Task<int> ModifyPermaRoundsLeft(NetUserId userId, int BrigSentence); // Ratbite
-
+        Task<int> GetPermaTimeLeft(NetUserId userId); // Ratbite
+        Task SetPermaTimeLeft(NetUserId userId, int minutes); // Ratbite
+        Task<int> ModifyPermaTimeLeft(NetUserId userId, int minutes); // Ratbite
         Task<int> GetPPpoints(NetUserId userId); // Ratbite
         Task SetPPpoints(NetUserId userId, int BrigSentence); // Ratbite
         Task<int> ModifyPPpoints(NetUserId userId, int BrigSentence); // Ratbite
@@ -817,23 +819,42 @@ namespace Content.Server.Database
             return RunDbCommand(() => _db.SetLastRolledAntag(userId, to));
         }
 
+        [Obsolete]
         public Task<int> GetPermaRoundsLeft(NetUserId userId) // Ratbite
         {
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.GetPermaRoundsLeft(userId));
         }
+        [Obsolete]
         public Task SetPermaRoundsLeft(NetUserId userId, int permaSentence) // Ratbite
         {
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.SetPermaRoundsLeft(userId, permaSentence));
         }
 
+        [Obsolete]
         public Task<int> ModifyPermaRoundsLeft(NetUserId userId, int permaSentence) // Ratbite
         {
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.ModifyPermaRoundsLeft(userId, permaSentence));
         }
 
+        public Task<int> GetPermaTimeLeft(NetUserId userId) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetPermaTimeLeft(userId));
+        }
+        public Task SetPermaTimeLeft(NetUserId userId, int minutes) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetPermaTimeLeft(userId, minutes));
+        }
+
+        public Task<int> ModifyPermaTimeLeft(NetUserId userId, int minutes) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.ModifyPermaTimeLeft(userId, minutes));
+        }
         public Task<int> GetPPpoints(NetUserId userId) // Ratbite
         {
             DbReadOpsMetric.Inc();

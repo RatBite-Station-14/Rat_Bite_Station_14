@@ -22,7 +22,7 @@
     prototype: Scurret
     bodyType: Complex
     requiredLegs: 2
-  - type: AntagImmune # Goob, no evil wawa
+  #- type: AntagImmune # Goob, no evil wawa # Ratbite, Yes evil wawa
   - type: Sprite
     layers:
     - map: [ "enum.HumanoidVisualLayers.Chest" ]

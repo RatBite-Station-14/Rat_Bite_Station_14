@@ -1,6 +1,9 @@
 using Content.Server.Administration;
+using Content.Server.Administration.Commands;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
+using Content.Server.Commands;
+using Content.Server.Players.PlayTimeTracking;
 using Content.Shared.Administration;
 using Content.Shared.Chat;
 using Robust.Server.Player;
@@ -15,30 +18,45 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
         [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
         [Dependency] private readonly IChatManager _chatManager = default!;
         [Dependency] private readonly IAdminManager _adminManager = default!;
+        [Dependency] private readonly PlayTimeTrackingManager _tracking = default!;
         public string Command => "perma:sentence";
         public string Description => "check your/another players Brig Sentence";
+
         public string Help => "Usage: perma:sentence <optional: player>"
                               + "\n    player: (optional) who to view brigsentence of.";
+
         public void Execute(IConsoleShell shell, string argStr, string[] args)
         {
             string balance;
+            var commonSession = shell.Player;
+            if (commonSession != null)
+            {
+                _tracking.QueueRefreshTrackers(commonSession);
+            }
+
             switch (args.Length)
             {
                 case 0:
-                    if(shell.Player is not { } player){
+                    if (commonSession is not { } player)
+                    {
                         shell.WriteError(Loc.GetString("shell-cannot-run-command-from-server"));
                         break;
                     }
 
                     balance = Loc.GetString("perma-your-current-sentence",
-                        ("sentence", _permaBrigManager.GetBrigSentence(shell.Player.UserId)));
+                        ("sentence", _permaBrigManager.GetBrigTimeLabel(commonSession.UserId)));
 
-                    _chatManager.ChatMessageToOne(ChatChannel.Local, balance, balance, EntityUid.Invalid, false, shell.Player.Channel);
+                    _chatManager.ChatMessageToOne(ChatChannel.Local,
+                        balance,
+                        balance,
+                        EntityUid.Invalid,
+                        false,
+                        commonSession.Channel);
                     shell.WriteLine(balance);
 
                     break;
                 case 1:
-                    if(shell.Player is { } player2)
+                    if (commonSession is { } player2)
                     {
                         var plyMgrm = IoCManager.Resolve<IPlayerManager>();
                         if (!plyMgrm.TryGetUserId(args[0], out var targetPlayerm))
@@ -47,8 +65,8 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
                             break;
                         }
 
-                        if ((targetPlayerm != shell.Player.UserId)
-                            && !_adminManager.HasAdminFlag(shell.Player, AdminFlags.ViewNotes, false))
+                        if ((targetPlayerm != commonSession.UserId)
+                            && !_adminManager.HasAdminFlag(commonSession, AdminFlags.ViewNotes, false))
                         {
                             Loc.GetString("perma-other-current-sentence-deny");
                             break;
@@ -56,14 +74,14 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
 
                         balance = Loc.GetString("perma-other-current-sentence",
                             ("player", targetPlayerm.UserId),
-                            ("sentence", _permaBrigManager.GetBrigSentence(targetPlayerm)));
+                            ("sentence", _permaBrigManager.GetBrigTimeLabel(targetPlayerm)));
 
                         _chatManager.ChatMessageToOne(ChatChannel.Local,
                             balance,
                             balance,
                             EntityUid.Invalid,
                             false,
-                            shell.Player.Channel);
+                            commonSession.Channel);
 
                         shell.WriteLine(balance);
 
@@ -79,7 +97,7 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
 
                     balance = Loc.GetString("perma-other-current-sentence",
                         ("player", targetPlayer.UserId),
-                        ("sentence", _permaBrigManager.GetBrigSentence(targetPlayer)));
+                        ("sentence", _permaBrigManager.GetBrigTimeLabel(targetPlayer)));
 
                     shell.WriteLine(balance);
 
@@ -103,10 +121,12 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
         [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
         [Dependency] private readonly IChatManager _chatManager = default!;
         public string Command => "perma:brig";
-        public string Description => "Add rounds to player's brig sentence";
+        public string Description => "Add time to player's brig sentence";
+
         public string Help => "Usage: perma:brig <player> <rounds>"
                               + "\n    player: who to add time to."
-                              + "\n    rounds: number of rounds to add to sentence.";
+                              + "\n    time: time to add to sentence. (ex: 1h20m is an hour and 20 minutes)";
+
         public void Execute(IConsoleShell shell, string argStr, string[] args)
         {
             if (args.Length != 2)
@@ -121,21 +141,17 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
                 return;
             }
 
-            if (!int.TryParse(args[1], out var roundCount))
-            {
-                shell.WriteError(Loc.GetString("perma-command-invalid-time"));
-                return;
-            }
+            var minutes = PlayTimeCommandUtilities.CountMinutes(args[1]);
 
-            _permaBrigManager.AddBrigSentence(targetPlayer, roundCount);
+            _permaBrigManager.AddBrigTime(targetPlayer, minutes);
 
             var message = Loc.GetString("perma-add-time-to-player",
-                ("rounds", roundCount),
+                ("minutes", minutes),
                 ("player", targetPlayer.UserId));
 
             shell.WriteLine(message);
 
-            if(shell.Player is { } player)
+            if (shell.Player is { } player)
             {
                 _chatManager.ChatMessageToOne(ChatChannel.Local,
                     message,
@@ -151,7 +167,7 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
             return args.Length switch
             {
                 1 => CompletionResult.FromHintOptions(CompletionHelper.SessionNames(), "<Player>"),
-                2 => CompletionResult.FromHint("<Rounds>"),
+                2 => CompletionResult.FromHint("<Time>"),
                 _ => CompletionResult.Empty
             };
         }
@@ -163,10 +179,12 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
         [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
         [Dependency] private readonly IChatManager _chatManager = default!;
         public string Command => "perma:pardon";
-        public string Description => "Remove rounds from player's brig sentence";
+        public string Description => "Remove time from player's brig sentence";
+
         public string Help => "Usage: perma:pardon <player> <rounds>"
                               + "\n    player: who to remove time from."
-                              + "\n    rounds: number of rounds to remove from sentence.";
+                              + "\n    time: time to remove from sentence. (ex: 1h20m is an hour and 20 minutes)";
+
         public void Execute(IConsoleShell shell, string argStr, string[] args)
         {
             if (args.Length != 2)
@@ -181,21 +199,16 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
                 return;
             }
 
-            if (!int.TryParse(args[1], out var roundCount))
-            {
-                shell.WriteError(Loc.GetString("perma-command-invalid-time"));
-                return;
-            }
-
-            _permaBrigManager.RemoveBrigSentence(targetPlayer, roundCount);
+            var minutes = PlayTimeCommandUtilities.CountMinutes(args[1]);
+            _permaBrigManager.RemoveBrigTime(targetPlayer, minutes);
 
             var message = Loc.GetString("perma-rem-time-to-player",
-                ("rounds", roundCount),
+                ("minutes", minutes),
                 ("player", targetPlayer.UserId));
 
             shell.WriteLine(message);
 
-            if(shell.Player is { } player)
+            if (shell.Player is { } player)
             {
                 _chatManager.ChatMessageToOne(ChatChannel.Local,
                     message,
@@ -211,7 +224,7 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
             return args.Length switch
             {
                 1 => CompletionResult.FromHintOptions(CompletionHelper.SessionNames(), "<Player>"),
-                2 => CompletionResult.FromHint("<Rounds>"),
+                2 => CompletionResult.FromHint("<Time>"),
                 _ => CompletionResult.Empty
             };
         }
@@ -223,10 +236,12 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
         [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
         [Dependency] private readonly IChatManager _chatManager = default!;
         public string Command => "perma:set";
-        public string Description => "Set the number rounds player is serving in brig";
+        public string Description => "Set the time player is serving in brig";
+
         public string Help => "Usage: permaset <player> <rounds>"
                               + "\n    player: who to set time from."
-                              + "\n    rounds: number of rounds to set perma time to.";
+                              + "\n    time: time to set the sentence to. (1h20m is an hour and 20 minutes)";
+
         public void Execute(IConsoleShell shell, string argStr, string[] args)
         {
             if (args.Length != 2)
@@ -241,21 +256,17 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
                 return;
             }
 
-            if (!int.TryParse(args[1], out var roundCount))
-            {
-                shell.WriteError(Loc.GetString("perma-command-invalid-time"));
-                return;
-            }
+            var minutes = PlayTimeCommandUtilities.CountMinutes(args[1]);
 
-            _permaBrigManager.SetBrigSentence(targetPlayer, roundCount);
+            _permaBrigManager.SetBrigTime(targetPlayer, minutes);
 
             var message = Loc.GetString("perma-set-time-to-player",
-                ("rounds", roundCount),
+                ("minutes", minutes),
                 ("player", targetPlayer.UserId));
 
             shell.WriteLine(message);
 
-            if(shell.Player is { } player)
+            if (shell.Player is { } player)
             {
                 _chatManager.ChatMessageToOne(ChatChannel.Local,
                     message,
@@ -271,7 +282,7 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
             return args.Length switch
             {
                 1 => CompletionResult.FromHintOptions(CompletionHelper.SessionNames(), "<Player>"),
-                2 => CompletionResult.FromHint("<Rounds>"),
+                2 => CompletionResult.FromHint("<Time>"),
                 _ => CompletionResult.Empty
             };
         }

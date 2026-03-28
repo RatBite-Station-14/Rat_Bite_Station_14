@@ -39,6 +39,7 @@ criminal-records-console-wanted-reason = Wanted Reason
 criminal-records-console-suspected-reason = Suspected Reason
 criminal-records-console-search-reason = Search Reason
 criminal-records-console-dangerous-reason = Dangerous Reason
+criminal-records-console-perma-reason = Perma Times
 
 criminal-records-console-reason = Reason
 criminal-records-console-reason-placeholder = For example: {$placeholder}
