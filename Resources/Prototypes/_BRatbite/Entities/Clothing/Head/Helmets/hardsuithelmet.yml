@@ -39,7 +39,7 @@
   parent: ClothingHeadHardsuitBase
   id: ClothingHeadHelmetVoidsuitRSO
   name: RSO voidsuit helmet
-  description: A lightweight helmet with night vision, designed for visibility and speed in dark environments.
+  description: A lightweight helmet, designed specifically for speed.
   components:
   - type: BreathMask
   - type: Sprite
@@ -65,6 +65,3 @@
         Radiation: 0.7
   - type: FlashImmunity
   - type: FlashSoundSuppression
-  - type: NightVision
-    flashDurationMultiplier: 2
-    isEquipment: true

@@ -18,3 +18,19 @@ selectable-set-rso-weaponkit-smartgun-name = Abielle Smart-SMG Set
 selectable-set-rso-weaponkit-smartgun-desc =
     you will never miss with this weapon.
     Include : Abielle Smart-SMG and 2 smart magazine.
+
+selectable-set-rso-weaponkit-anihilator-name = EX-03 Anihilator Set
+selectable-set-rso-weaponkit-anihilator-desc =
+    Swift execution, just the way of the nanotransen security.
+    Include : EX-03 Anihilator and 8 gauge carpshot box and 8 gauge beanbag box.
+
+selectable-set-rso-weaponkit-order-name = EX-04 Order Set
+selectable-set-rso-weaponkit-order-desc =
+    Exercise order with the Order energy pistol. Only can be use by the worthy.
+    Include : EX-04 Order.
+
+selectable-set-rso-weaponkit-martialart-name = CapoeiraManual Set
+selectable-set-rso-weaponkit-martialart-desc =
+    A book that will teach you the move of a Capoeira dance.
+    Dont question where we got you this.
+    Include : choreography manual.

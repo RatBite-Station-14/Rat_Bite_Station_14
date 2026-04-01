@@ -10,4 +10,7 @@
   - type: SetSelector
     possibleSets:
     - WeaponSelectorRSOSmartgun
+    - WeaponSelectorRSOMartialArt
+    - WeaponSelectorRSOAnihilator
+    - WeaponSelectorRSOOrder
     maxSelectedSets: 1

@@ -35,49 +35,33 @@
   - MagazineSmart
 
 - type: selectableSet
-  id: WeaponSelectorRSOWT
-  name: selectable-set-rso-weaponkit-smartgun-name
-  description: selectable-set-rso-weaponkit-smartgun-desc
-  sprite:
-    sprite: _Goobstation/Objects/Weapons/Guns/SMGs/smartgun.rsi
-    state: icon
-  content:
-  - WeaponSubMachineSmart
-  - MagazineSmart
-  - MagazineSmart
-
-- type: selectableSet
   id: WeaponSelectorRSOMartialArt
-  name: selectable-set-rso-weaponkit-smartgun-name
-  description: selectable-set-rso-weaponkit-smartgun-desc
+  name: selectable-set-rso-weaponkit-martialart-name
+  description: selectable-set-rso-weaponkit-martialart-desc
   sprite:
-    sprite: _Goobstation/Objects/Weapons/Guns/SMGs/smartgun.rsi
-    state: icon
+    sprite: _Goobstation/Objects/Misc/martial_arts.rsi
+    state: capoeira
   content:
-  - WeaponSubMachineSmart
-  - MagazineSmart
-  - MagazineSmart
+  - CapoeiraManual
 
 - type: selectableSet
   id: WeaponSelectorRSOAnihilator
-  name: selectable-set-rso-weaponkit-smartgun-name
-  description: selectable-set-rso-weaponkit-smartgun-desc
+  name: selectable-set-rso-weaponkit-anihilator-name
+  description: selectable-set-rso-weaponkit-anihilator-desc
   sprite:
-    sprite: _Goobstation/Objects/Weapons/Guns/SMGs/smartgun.rsi
+    sprite: _BRatBites/Objects/Weapon/Shotgun/rsodestroyer.rsi
     state: icon
   content:
-  - WeaponSubMachineSmart
-  - MagazineSmart
-  - MagazineSmart
+  - WeaponShotgunRSOAnihilator
+  - MagazineBoxShotgunHighCaliber
+  - MagazineBoxShotgunBeanbagHighCaliber
 
 - type: selectableSet
   id: WeaponSelectorRSOOrder
-  name: selectable-set-rso-weaponkit-smartgun-name
-  description: selectable-set-rso-weaponkit-smartgun-desc
+  name: selectable-set-rso-weaponkit-order-name
+  description: selectable-set-rso-weaponkit-order-desc
   sprite:
-    sprite: _Goobstation/Objects/Weapons/Guns/SMGs/smartgun.rsi
+    sprite: _BRatBites/Objects/Weapon/Battery/rsoorder.rsi
     state: icon
   content:
-  - WeaponSubMachineSmart
-  - MagazineSmart
-  - MagazineSmart
+  - WeaponEnergyGunRSOOrder

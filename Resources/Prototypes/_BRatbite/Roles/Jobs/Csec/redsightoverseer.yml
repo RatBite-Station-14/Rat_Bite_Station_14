@@ -59,8 +59,8 @@
     pocket1: ClothingMaskGasSecurity
   storage:
     back:
-   # - CQCManual, No fuck you
+   # - CQCManual, No fuck you - For real damn
     - BookSpaceLaw
     - Flash
     - RSOUndeterminedWeapon
-#    - UndeterminedRSOHardsuit  Removed until rework
+    - UndeterminedRSOHardsuit
