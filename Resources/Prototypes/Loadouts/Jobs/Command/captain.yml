@@ -204,3 +204,15 @@
   id: CaptainWintercoat
   equipment:
     outerClothing: ClothingOuterWinterCapArmored # Goob edit
+
+# RATBITE belt loadouts
+
+- type: loadout
+  id: UtilityBelt
+  equipment:
+    belt: ClothingBeltUtilityEngineering
+
+- type: loadout
+  id: MedicalBelt
+  equipment:
+    belt: ClothingBeltMedicalFilled

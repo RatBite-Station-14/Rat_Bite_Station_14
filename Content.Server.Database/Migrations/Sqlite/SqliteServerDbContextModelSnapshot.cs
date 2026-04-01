@@ -701,6 +701,10 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("INTEGER")
                         .HasColumnName("brig_sentence");
 
+                    b.Property<int>("BrigTime")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("brig_time");
+
                     b.Property<DateTime>("FirstSeenTime")
                         .HasColumnType("TEXT")
                         .HasColumnName("first_seen_time");

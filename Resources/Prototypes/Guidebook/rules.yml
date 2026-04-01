@@ -43,7 +43,7 @@
   id: DefaultRuleset
   name: guide-entry-rules
   priority: 60
-  text: "/ServerInfo/Guidebook/ServerRules/Ratbite Station/DefaultServerRules.xml"
+  text: "/ServerInfo/_BRatbite/Guidebook/ServerRules/DefaultServerRules.xml"
 #  children:
 #  - CoreRules
 #  - RoleplayRules

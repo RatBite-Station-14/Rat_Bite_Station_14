@@ -512,7 +512,7 @@ public sealed class GhostRoleSystem : EntitySystem
 
         if (!roleEnt.Comp.AllowPerma)
         {
-            if (_permaManager.GetBrigSentence(player.UserId) > 0)
+            if (_permaManager.GetBrigTime(player.UserId) > 0)
             {
                 _popupSystem.PopupCursor(Loc.GetString("perma-deny-ghost-role"), player);
                 return;

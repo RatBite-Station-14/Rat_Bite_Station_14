@@ -11,3 +11,8 @@
   - SpeedLoaderSpecial
   - MagazineBoxSpecial
  # - EnergyMagPistolDisabler - Kill double disabler
+
+- type: latheRecipePack
+  id: SecurityMiscRatbiteStatic
+  recipes:
+  - ClothingOuterStraightjacket

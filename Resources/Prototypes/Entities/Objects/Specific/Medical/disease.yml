@@ -96,7 +96,7 @@
   - type: BotanySwab
   - type: GuideHelp
     guides:
-  # - Virology (when it's back)
+    - Virology
     - Botany
     - Chemicals
   - type: DiseaseSwab # Goobstation
@@ -119,7 +119,7 @@
     capacity: 30
   - type: GuideHelp
     guides:
-  # - Virology (when it's back)
+    - Virology
     - Botany
     - Chemicals
 
@@ -132,8 +132,9 @@
   - type: Item
     size: Tiny
   - type: Tag
-  tags:
-  - Trash
+    tags:
+    - Recyclable
+    - Trash
   - type: Sprite
     # <Goobstation>
     sprite: Objects/Specific/Medical/medipen.rsi

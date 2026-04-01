@@ -22,7 +22,7 @@
     prototype: Scurret
     bodyType: Complex
     requiredLegs: 2
-  - type: AntagImmune # Goob, no evil wawa
+  #- type: AntagImmune # Goob, no evil wawa # Ratbite, Yes evil wawa
   - type: Sprite
     layers:
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
@@ -215,6 +215,7 @@
     attributes:
       gender: epicene
       proper: true
+  - type: CanEnterCryostorage # Ratbite make em playable but forgot to allow cryostorage
   # Strips the name identifier from them, so they're just "Confident Waters" rather than "Confident Waters (123)"
   - type: NameIdentifier
     group: null

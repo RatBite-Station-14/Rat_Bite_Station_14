@@ -5,12 +5,17 @@ using Content.Server.GameTicking.Rules;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Systems;
+using Content.Shared.Access;
+using Content.Shared.Access.Components;
+using Content.Shared.Access.Systems;
 using Content.Shared.Chat;
 using Content.Shared.GameTicking;
+using Content.Shared.Inventory;
 using Content.Shared.Mind;
 using Content.Shared.Players;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
+using Content.Shared.Security.Components;
 using Robust.Server.Audio;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
@@ -40,6 +45,9 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
     [Dependency] private readonly SharedRoleSystem _roles = default!;
     [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly SharedIdCardSystem _idCard = default!;
+    [Dependency] private readonly EntityManager _ent = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
 
     public HashSet<ICommonSession> PermaIndividuals = new();
     public Dictionary<ICommonSession, (TimeSpan, TimeSpan)> PermaIndividualJoinedTime = new();
@@ -70,10 +78,9 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
 
         foreach (var session in pool)
         {
-            if (_permaBrigManager.GetBrigSentence(session.UserId) == 0)
+            if (_permaBrigManager.GetBrigTime(session.UserId) == 0)
                 continue;
             PermaIndividuals.Add(session);
-            _permaBrigManager.RemoveBrigSentence(session.UserId, 1);
             _sawmill.Info($"Player intercepted for perma: {session}");
         }
 
@@ -90,17 +97,17 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
 
     private void OnPlayerBeforeSpawning(PlayerBeforeSpawnEvent ev)
     {
-        if (!_ticker.IsGameRuleActive<PermaBrigComponent>())
-            return;
-
         if (!ev.LateJoin) //OnPlayerSpawning handles the start round spawning, before traitor picking, so this just needs to handle late joiners.
             return;
 
-        if (_permaBrigManager.GetBrigSentence(ev.Player.UserId) == 0)
+
+        if (!_ticker.IsGameRuleActive<PermaBrigComponent>())
+            return;
+
+        if (_permaBrigManager.GetBrigTime(ev.Player.UserId) == 0)
             return;
 
         PermaIndividuals.Add(ev.Player);
-        _permaBrigManager.RemoveBrigSentence(ev.Player.UserId, 1);
 
         SpawnPrisonerPlayer(ev.Player);
 
@@ -114,9 +121,9 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
         var points = EntityQueryEnumerator<SpawnPointComponent, TransformComponent>();
         var possiblePositions = new List<EntityCoordinates>();
 
-        while ( points.MoveNext(out var uid, out var spawnPoint, out var xform))
+        while (points.MoveNext(out var uid, out var spawnPoint, out var xform))
         {
-            if (spawnPoint.SpawnType == SpawnPointType.Job&&
+            if (spawnPoint.SpawnType == SpawnPointType.Job &&
                 (spawnPoint.Job == "Prisoner"))
             {
                 possiblePositions.Add(xform.Coordinates);
@@ -155,7 +162,7 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
 
         spawnLoc = GetSpawnLocation();
 
-        if (spawnLoc!=null)
+        if (spawnLoc != null)
         {
             mobMaybe = _stationSpawning.SpawnPlayerMob(
                 spawnLoc.Value,
@@ -171,17 +178,40 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
         DebugTools.AssertNotNull(mobMaybe);
         var mob = mobMaybe!.Value;
 
+        var brigTime = _permaBrigManager.GetBrigTime(player.UserId);
+        if (_inventory.TryGetSlotEntity(mob, "id", out var idUid))
+        {
+            var cardId = idUid.Value;
+            if (TryComp<GenpopIdCardComponent>(cardId, out var card))
+            {
+                card.Crime = Loc.GetString("perma-prisoner-crime");
+                card.SentenceDuration = TimeSpan.FromMinutes(brigTime);
+                if (TryComp<ExpireIdCardComponent>(cardId, out var expire))
+                {
+                    expire.ExpireChannel = "Security";
+                    expire.ExpireMessage = "perma-prisoner-release";
+                }
+                Dirty(cardId,card);
+            }
+            _idCard.SetExpireTime(cardId, TimeSpan.FromMinutes(brigTime) + Timing.CurTime);
+        }
+
         _mind.TransferTo(newMind, mob);
         _admin.UpdatePlayerList(player);
 
-        _roles.MindAddJobRole(newMind, silent: false, jobPrototype:"Prisoner");
+        _roles.MindAddJobRole(newMind, silent: false, jobPrototype: "Prisoner");
 
         var briefing = Loc.GetString("perma-prisoner-briefing",
-            ("rounds", _permaBrigManager.GetBrigSentence(player.UserId)));
+            ("minutes", brigTime));
 
         _audio.PlayGlobal(_lockUpSound, player);
         var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", briefing));
-        _chat.ChatMessageToOne(ChatChannel.Server, briefing, wrappedMessage, default, false, player.Channel,
+        _chat.ChatMessageToOne(ChatChannel.Server,
+            briefing,
+            wrappedMessage,
+            default,
+            false,
+            player.Channel,
             Color.Red);
 
         _admin.UpdatePlayerList(player);

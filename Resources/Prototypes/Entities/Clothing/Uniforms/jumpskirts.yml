@@ -439,6 +439,8 @@
         color: "#ff8300"
       - state: prisoner-inhand-right
   - type: Clothing
+    stripDelay: 10
+    equipDelay: 2 # to avoid accidentally falling into the trap associated with SelfUnremovableClothing
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     clothingVisuals:
       jumpsuit:

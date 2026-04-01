@@ -154,6 +154,8 @@
     - DoorBumpOpener
     - AnomalyHost
     - VulpEmotes
+  - type: Sprinter
+    staminaDrainRate: 14 # Ratbite
 
 - type: entity
   save: false

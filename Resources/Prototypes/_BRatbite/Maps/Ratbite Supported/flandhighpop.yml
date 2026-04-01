@@ -34,83 +34,84 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-- type: gameMap
-  id: FlandHighPop
-  mapName: 'Fland Installation'
-  mapPath: /Maps/_BRatbite/Ratbite_Supported/fland.yml
-  minPlayers: 85
-  stations:
-    Fland:
-      stationProto: StandardNanotrasenStation
-      components:
-        - type: StationNameSetup
-          mapNameTemplate: '{0} Fland Installation {1}'
-          nameGenerator:
-            !type:NanotrasenNameGenerator
-            prefixCreator: 'B'
-        - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/Shuttles/emergency_delta.yml
-        - type: StationCargoShuttle
-          path: /Maps/Shuttles/cargo_fland.yml
-        - type: StationJobs
-          availableJobs:
-            #service
-            Captain: [ 1, 1 ]
-            NanotrasenRepresentative: [ 1, 1 ]
-            BlueshieldOfficer: [ 1, 1 ]
-            HeadOfPersonnel: [ 1, 1 ]
-            Bartender: [ 3, 3 ]
-            Botanist: [ 5, 5 ]
-            Chef: [ 4, 4 ]
-            Janitor: [ 6, 6 ]
-            Chaplain: [ 1, 1 ]
-            Librarian: [ 2, 2 ]
-            ServiceWorker: [ 4, 4 ]
-            #engineering
-            ChiefEngineer: [ 1, 1 ]
-            EngiSentry: [ 1, 1 ] #ratbite
-            AtmosphericTechnician: [ 5, 5 ]
-            StationEngineer: [ 8, 8 ]
-            TechnicalAssistant: [ -1, -1 ]
-            #medical
-            ChiefMedicalOfficer: [ 1, 1 ]
-            MedOrderly: [ 1, 1 ] #ratbite
-            Chemist: [ 3, 3 ]
-            MedicalDoctor: [ 10, 10 ]
-            Paramedic: [ 3, 3 ]
-            MedicalIntern: [ -1, -1 ]
-            #science
-            ResearchDirector: [ 1, 1 ]
-            ScicurityGuard: [ 1, 1 ] #ratbite
-            Scientist: [ 10, 10 ]
-            ResearchAssistant: [ -1, -1 ]
-            #security
-            HeadOfSecurity: [ 1, 1 ]
-            RedsightOverseer: [ 1, 1 ] #Ratbite
-            Warden: [ 2, 2 ] #Ratbite de protaganist-ify him!!!
-            Detective: [ 2, 2 ] #Ratbite disco elysium/sherlock larp
-            SecurityOfficer: [ 8, 8 ]
-            SecurityCadet: [ -1, -1 ]
-            Lawyer: [ 3, 3 ]
-            Brigmedic: [ 1, 1 ]
-            #supply
-            Quartermaster: [ 1, 1 ]
-            CargoInsurance: [ 1, 1 ] #ratbite
-            SalvageSpecialist: [ 8, 8 ]
-            CargoTechnician: [ -1, -1 ]
-            #civilian
-            Passenger: [ -1, -1 ]
-            Clown: [ 2, 2 ]
-            Mime: [ 2, 2 ]
-            Musician: [ 3, 3 ]
-            Prisoner: [ -1, -1 ] #Ratbite
-            #silicon
-            StationAi: [ 1, 1 ]
-            Borg: [ 4, 4 ]
-
-        # Goobstation blob-config-start HUGE
-        - type: StationBlobConfig
-          stageBegin: 40
-          stageCritical: 450
-          stageTheEnd: 900
-        # backmen blob-config-end
+# Create additional cursors if you're uncommenting this because you're maintaining it with CTRL+ALT+Arrow Keys on Rider or VS Code - Ducks
+#- type: gameMap
+#  id: FlandHighPop
+#  mapName: 'Fland Installation'
+#  mapPath: /Maps/_BRatbite/Ratbite_Supported/fland.yml
+#  minPlayers: 85
+#  stations:
+#    Fland:
+#      stationProto: StandardNanotrasenStation
+#      components:
+#        - type: StationNameSetup
+#          mapNameTemplate: '{0} Fland Installation {1}'
+#          nameGenerator:
+#            !type:NanotrasenNameGenerator
+#            prefixCreator: 'B'
+#        - type: StationEmergencyShuttle
+#          emergencyShuttlePath: /Maps/Shuttles/emergency_delta.yml
+#        - type: StationCargoShuttle
+#          path: /Maps/Shuttles/cargo_fland.yml
+#        - type: StationJobs
+#          availableJobs:
+#            #service
+#            Captain: [ 1, 1 ]
+#            NanotrasenRepresentative: [ 1, 1 ]
+#            BlueshieldOfficer: [ 1, 1 ]
+#            HeadOfPersonnel: [ 1, 1 ]
+#            Bartender: [ 3, 3 ]
+#            Botanist: [ 5, 5 ]
+#            Chef: [ 4, 4 ]
+#            Janitor: [ 6, 6 ]
+#            Chaplain: [ 1, 1 ]
+#            Librarian: [ 2, 2 ]
+#            ServiceWorker: [ 4, 4 ]
+#            #engineering
+#            ChiefEngineer: [ 1, 1 ]
+#            EngiSentry: [ 1, 1 ] #ratbite
+#            AtmosphericTechnician: [ 5, 5 ]
+#            StationEngineer: [ 8, 8 ]
+#            TechnicalAssistant: [ -1, -1 ]
+#            #medical
+#            ChiefMedicalOfficer: [ 1, 1 ]
+#            MedOrderly: [ 1, 1 ] #ratbite
+#            Chemist: [ 3, 3 ]
+#            MedicalDoctor: [ 10, 10 ]
+#            Paramedic: [ 3, 3 ]
+#            MedicalIntern: [ -1, -1 ]
+#            #science
+#            ResearchDirector: [ 1, 1 ]
+#            ScicurityGuard: [ 1, 1 ] #ratbite
+#            Scientist: [ 10, 10 ]
+#            ResearchAssistant: [ -1, -1 ]
+#            #security
+#            HeadOfSecurity: [ 1, 1 ]
+#            RedsightOverseer: [ 1, 1 ] #Ratbite
+#            Warden: [ 2, 2 ] #Ratbite de protaganist-ify him!!!
+#            Detective: [ 2, 2 ] #Ratbite disco elysium/sherlock larp
+#            SecurityOfficer: [ 8, 8 ]
+#            SecurityCadet: [ -1, -1 ]
+#            Lawyer: [ 3, 3 ]
+#            Brigmedic: [ 1, 1 ]
+#            #supply
+#            Quartermaster: [ 1, 1 ]
+#            CargoInsurance: [ 1, 1 ] #ratbite
+#            SalvageSpecialist: [ 8, 8 ]
+#            CargoTechnician: [ -1, -1 ]
+#            #civilian
+#            Passenger: [ -1, -1 ]
+#            Clown: [ 2, 2 ]
+#            Mime: [ 2, 2 ]
+#            Musician: [ 3, 3 ]
+#            Prisoner: [ -1, -1 ] #Ratbite
+#            #silicon
+#            StationAi: [ 1, 1 ]
+#            Borg: [ 4, 4 ]
+#
+#        # Goobstation blob-config-start HUGE
+#        - type: StationBlobConfig
+#          stageBegin: 40
+#          stageCritical: 450
+#          stageTheEnd: 900
+#        # backmen blob-config-end

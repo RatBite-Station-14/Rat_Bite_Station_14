@@ -27,7 +27,7 @@
   - ratcombat
   - ratcombatdynamic
   name: ratguide-title
-  showInVote: true
+  showInVote: false #Pending rework
   description: ratguide-description
   minPlayers: 25
   rules:

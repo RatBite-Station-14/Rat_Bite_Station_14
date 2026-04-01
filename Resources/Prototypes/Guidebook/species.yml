@@ -45,7 +45,7 @@
     - Tajaran
     - Chitinid
     - Plasmaman
-    - Feroxi
+    #- Feroxi # The file's missing. Go find it if you want the entry back. -Ducks
 
 - type: guideEntry
   id: Arachnid

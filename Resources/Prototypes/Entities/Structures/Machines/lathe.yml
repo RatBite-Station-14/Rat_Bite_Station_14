@@ -770,6 +770,7 @@
     - SecurityWeaponsStaticGoob
     # Ratbite
     - SecurityAmmoRatbiteStatic
+    - SecurityMiscRatbiteStatic
     dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons

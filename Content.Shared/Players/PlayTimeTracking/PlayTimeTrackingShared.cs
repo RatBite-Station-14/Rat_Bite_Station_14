@@ -23,4 +23,9 @@ public static class PlayTimeTrackingShared
     /// The prototype ID of the play time tracker that represents admin time, when a player is in game as admin.
     /// </summary>
     public static readonly ProtoId<PlayTimeTrackerPrototype> TrackerAdmin = "Admin";
+
+    /// <summary>
+    /// The prototype ID of the play time tracker that represents time served in perma.
+    /// </summary>
+    public static readonly ProtoId<PlayTimeTrackerPrototype> TrackerPerma = "Perma";
 }

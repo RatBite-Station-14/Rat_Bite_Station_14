@@ -22,6 +22,9 @@
   parent: [BaseMob, MobDamageable, MobCombat, MobAtmosExposed, MobFlammable]
   abstract: true
   components:
+    - type: WarpPoint # Rat - Better observe menu
+      follow: true
+      mob: true
     - type: ContentEye
     - type: CameraRecoil
     - type: Reactive

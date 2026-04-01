@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "From tgstation - https://github.com/tgstation/tgstation/pull/59109",
+  "copyright": "From tgstation - https://github.com/tgstation/tgstation/pull/59109, scurret sprites by eirin-n",
   "size": {
     "x": 32,
     "y": 32
@@ -19,6 +19,14 @@
 		},
 		{
 			"name": "equipped-HAND-sealed",
+			"directions": 4
+		},
+        		{
+			"name": "equipped-HAND-scurret",
+			"directions": 4
+		},
+		{
+			"name": "equipped-HAND-sealed-scurret",
 			"directions": 4
 		}
   ]

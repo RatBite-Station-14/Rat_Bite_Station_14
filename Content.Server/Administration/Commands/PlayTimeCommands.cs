@@ -90,6 +90,10 @@ public sealed class PlayTimeCommandUtilities
 
     public static int CountMinutes(string timeString)
     {
+        if (int.TryParse(timeString, out var time))
+        {
+            return time * 60;
+        }
         List<TimeUnit> timeUnits = ConvertToTimeUnits(timeString);
         int total = 0;
 

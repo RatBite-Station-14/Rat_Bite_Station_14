@@ -138,7 +138,7 @@ public sealed partial class ZombieComponent : Component
     /// being overly protected by bundling up.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
-    public float MinZombieInfectionChance = 0.05f;
+    public float MinZombieInfectionChance = 0f; // Ratbite, this antag is already insanely strong. Let armored goons have their W, zombies can still damage/drag you down. Think the armor in TWD comics.
 
     /// <summary>
     /// How effective each resistance type on a piece of armor is. Using a damage specifier for this seems illegal.
@@ -147,9 +147,9 @@ public sealed partial class ZombieComponent : Component
     {
         DamageDict = new ()
         {
-            {"Slash", 0.5},
-            {"Piercing", 0.3},
-            {"Blunt", 0.1},
+            {"Slash", 1},
+            {"Piercing", 1},
+            {"Blunt", 0.4},
         }
     };
 
@@ -259,9 +259,8 @@ public sealed partial class ZombieComponent : Component
     {
         DamageDict = new()
         {
-            { "Slash", 13 },
-            { "Piercing", 7 },
-            { "Structural", 10 }
+            { "Slash", 19 },
+            { "Piercing", 1 }, // Ratbite edit, zombies do no strut. Strongholds against the dead.
         }
     };
 

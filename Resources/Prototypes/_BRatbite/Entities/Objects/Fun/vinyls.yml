@@ -1,0 +1,11 @@
+- type: entity
+  name: "ancient and wretched vinyl disk"
+  id: VinylDiskWorldOrder
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/RadioStation/vinyls.rsi
+    state: broken-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/Radiostation/music/worldorder.ogg

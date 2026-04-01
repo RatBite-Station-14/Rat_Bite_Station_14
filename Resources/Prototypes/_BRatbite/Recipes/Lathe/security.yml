@@ -1,0 +1,6 @@
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: ClothingOuterStraightjacket
+  result: ClothingOuterStraightjacket
+  materials:
+    Cloth: 300

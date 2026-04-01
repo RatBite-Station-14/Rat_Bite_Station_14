@@ -944,6 +944,7 @@
     expireMessage: genpop-prisoner-id-expire
     expiredAccess:
     - GenpopLeave
+    - Maintenance
   - type: Speech
     speechVerb: Robotic
   - type: Tag

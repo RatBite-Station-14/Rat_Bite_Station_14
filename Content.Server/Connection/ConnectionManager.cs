@@ -124,7 +124,8 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
-using Content.Goobstation.Common.CCVar; // Goobstation - Queue
+using Content.Goobstation.Common.CCVar;
+using Content.Server._BRatbite.PermaBrig; // Goobstation - Queue
 
 /*
  * TODO: Remove baby jail code once a more mature gateway process is established. This code is only being issued as a stopgap to help with potential tiding in the immediate future.
@@ -169,6 +170,7 @@ namespace Content.Server.Connection
         [Dependency] private readonly IChatManager _chatManager = default!;
         [Dependency] private readonly IHttpClientHolder _http = default!;
         [Dependency] private readonly IAdminManager _adminManager = default!;
+        [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
 
         private ISawmill _sawmill = default!;
         private readonly Dictionary<NetUserId, TimeSpan> _temporaryBypasses = [];
@@ -266,6 +268,8 @@ namespace Content.Server.Connection
 
                 if (!ServerPreferencesManager.ShouldStorePrefs(e.AuthType))
                     return;
+
+                _permaBrigManager.UpdatePlayerOnJoin(userId, e.UserName);
 
                 await _db.UpdatePlayerRecordAsync(userId, e.UserName, addr, hwid);
             }
