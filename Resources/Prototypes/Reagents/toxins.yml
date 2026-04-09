@@ -417,8 +417,8 @@
       - !type:HealthChange
         damage:
           groups:
-            Airloss: 10
-
+            Airloss: 5
+			Slash: 5
 - type: reagent
   id: MindbreakerToxin
   name: reagent-name-mindbreaker-toxin
