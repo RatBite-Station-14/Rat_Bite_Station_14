@@ -38,9 +38,10 @@ heretic-ascension-rust =
     I am decay incarnate. INEVITABLE AS A DYING STAR; IMPASSIVE AS THE WATERS. WITNESS MY ASCENSION!
 
 heretic-ascension-cosmos =
-    The Beast held out its hand, I grabbed hold and they pulled me to them. Their body was towering, but it seemed so small and feeble after all their tales compiled in my head.
-    I clung on to them, they would protect me, and I would protect it.
-    I closed my eyes with my head laid against their form. I was safe.
-    WITNESS MY ASCENSION!
+    The red mist came.
+    Not as an event, but as a realization.
+    It was always there, building in the background of your stillness,
+    feeding on your certainty that nothing would change.
+    You laughed at the man reaching for God but we never noticed what was reaching back.
 
 heretic-ascension-bingle = bungle
