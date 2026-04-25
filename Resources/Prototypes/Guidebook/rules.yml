@@ -404,6 +404,7 @@
   children:
   - SpaceLawCrimeList
   - SpaceLawBillOfRights #Ratbite
+  - SpaceLawPermaBrigRules # Ratbite
   - SpaceLawSearches
   - SpaceLawPunishments
   - SpaceLawPerma

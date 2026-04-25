@@ -22,7 +22,7 @@
   parent: [ ClothingOuterStorageToggleableBase, AllowSuitStorageClothing, BaseMagicalContraband ]
   id: ClothingOuterArmorHeretic
   name: ominous armor
-  description: A ragged, dusty set of robes. Strange eyes line the inside.
+  description: A ragged, dusty set of robes. Strange eyes line the inside. Whenever you push into it hardens.
   components:
   - type: UnholyItem
   - type: Sprite
@@ -43,14 +43,14 @@
       coefficients:
         Blunt: 0.5
         Slash: 0.5
-        Piercing: 0.5
-        Heat: 0.5
-        Caustic: 0.5
-        Holy: 1.25
+        Piercing: 0.35 # ratbite
+        Heat: 0.35 # ratbite
+        Caustic: 0.35 # ratbite
+        Holy: 1.4 # ratbite
     traumaDeductions:
-      Dismemberment: 0.5
+      Dismemberment: 0.2 # ratbite
       OrganDamage: 0.5
-      BoneDamage: 0.5
+      BoneDamage: 0.2 # ratbite
       VeinsDamage: 0.0
       NerveDamage: 0.0
   - type: ExplosionResistance
@@ -170,10 +170,10 @@
       coefficients:
         Blunt: 0.7
         Slash: 0.7
-        Piercing: 0.7
+        Piercing: 0.5
         Heat: 0.7
         Caustic: 0.7
-        # Holy: 1.25
+       #  Holy: 1.25
     traumaDeductions:
       Dismemberment: 0.3
       OrganDamage: 0.3

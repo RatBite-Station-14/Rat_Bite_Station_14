@@ -220,7 +220,7 @@
       coefficients:
         Blunt: 0.6
         Slash: 0.6
-        Piercing: 0.55
+        Piercing: 0.40 # Ratbite balance, cannot believe I forgot this lmfao I've been so cooked for so long. -bevv
         Heat: 0.55
         Caustic: 0.6
   - type: ExplosionResistance

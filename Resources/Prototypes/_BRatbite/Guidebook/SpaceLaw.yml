@@ -6,3 +6,9 @@
   name: Bill of Rights
   priority: 1
   text: "/ServerInfo/_BRatbite/Guidebook/ServerRules/BillOfRights.xml"
+
+- type: guideEntry
+  id: SpaceLawPermaBrigRules
+  name: Permanent Brig
+  priority: 1
+  text: "/ServerInfo/_BRatbite/Guidebook/ServerRules/PermanentBrig.xml"
