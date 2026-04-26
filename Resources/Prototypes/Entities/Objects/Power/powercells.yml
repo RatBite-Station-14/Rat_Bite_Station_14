@@ -78,8 +78,8 @@
   - type: PowerCell
   - type: Explosive
     explosionType: Default
-    maxIntensity: 60
-    intensitySlope: 1
+    maxIntensity: 40
+    intensitySlope: .5 # Ratbite - bevv wanted it FUCKING NERFED for it to come back
   - type: Sprite
     sprite: Objects/Power/power_cells.rsi
   - type: SolutionContainerManager
