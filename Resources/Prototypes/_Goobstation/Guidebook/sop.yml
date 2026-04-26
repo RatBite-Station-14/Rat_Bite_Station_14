@@ -72,6 +72,7 @@
   text: "/ServerInfo/_Goobstation/Guidebook/SoP/Legal/LegalSOP.xml"
   priority: 2
   children:
+  - SpaceLaw
   - Execution SOP
   - PermaBrig SOP
   - Punishments SOP
@@ -85,7 +86,7 @@
   priority: 2
   children:
   - Cargo SOP
-  #- Command SOP # Probably causing testfail
+  - Command SOP # Probably causing testfail
   - Engineering SOP
   - Medical SOP
   - Science SOP
@@ -99,21 +100,22 @@
   children:
   - CargoTech SOP
   - SalvageSpecialist SOP
+  - Quartermaster SOP
 
-#- type: guideEntry # Causing testfails probably
-#  id: Command SOP
-#  name: guide-entry-sop-command
-#  text: "/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/Command/CommandSOP.xml"
-#  children:
-#  - NanotrasenRep SOP
-#  - BlueshieldOfficer SOP
-#  - Captain SOP
-#  - HeadOfPersonnel SOP
-#  - HeadOfSecurity SOP
-#  - ResearchDirector SOP
-#  - ChiefMedicalOfficer SOP
-#  - ChiefEngineer SOP
-#  - Quartermaster SOP
+- type: guideEntry # Causing testfails probably
+  id: Command SOP
+  name: guide-entry-sop-command
+  text: "/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/Command/CommandSOP.xml"
+  children:
+  - NanotrasenRep SOP
+  - BlueshieldOfficer SOP
+  - Captain SOP
+  - HeadOfPersonnel SOP
+  - HeadOfSecurity SOP
+  - ResearchDirector SOP
+  - ChiefMedicalOfficer SOP
+  - ChiefEngineer SOP
+  - Quartermaster SOP
 
 - type: guideEntry
   id: Engineering SOP
@@ -122,6 +124,7 @@
   children:
   - AtmosTech SOP
   - StationEngineer SOP
+  - ChiefEngineer SOP
 
 - type: guideEntry
   id: Medical SOP
@@ -130,6 +133,7 @@
   children:
   - DoctorIntern SOP
   - Chemist SOP
+  - ChiefMedicalOfficer SOP
 
 - type: guideEntry
   id: Science SOP
@@ -138,22 +142,27 @@
   children:
   - Scientist SOP
   - Roboticist SOP
+  - ResearchDirector SOP
 
 - type: guideEntry
   id: Security SOP
   name: guide-entry-sop-security
   text: "/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/Security/SecuritySOP.xml"
   children:
+  - SpaceLaw
   - Brigmedic SOP
   - Warden SOP
   - OfficerCadet SOP
   - Detective SOP
+  - DepartmentalGuard SOP
+  - HeadOfSecurity SOP
 
 - type: guideEntry
   id: Service SOP
   name: guide-entry-sop-service
   text: "/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/Service/ServiceSOP.xml"
   children:
+  - HeadOfPersonnel SOP
   - Bartender SOP
   - Botanist SOP
   - Chef SOP

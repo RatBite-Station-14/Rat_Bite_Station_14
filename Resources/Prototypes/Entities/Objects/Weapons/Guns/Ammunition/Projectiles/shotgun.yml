@@ -123,6 +123,7 @@
       types:
         Piercing: 60 #Ratbite balance
         Structural: 15
+      armorPenetration: 0.10 # Ratbite - Did you know? Slug pen armor plate yes? Woooow. -Ducks
 
 
 - type: entity
@@ -137,7 +138,7 @@
   - type: Projectile
     damage:
       types:
-        Blunt: 20 #Ratbite balance
+        Blunt: 7.5
   - type: StaminaDamageOnCollide
     damage: 60 # Goob edit
 
@@ -153,8 +154,9 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 15 #Ratbite balance
-        Structural: 15
+        Piercing: 12 # Ratbite - TRVTHNVKE buckshit shitgun meta
+        Structural: 5 # Ratbite - they'll bleed out anyways from the pierce before you whine
+      armorPenetration: -0.2 # Ratbite - Body armor does what it's >>>explicitly designed to<<< against buckshot.
 
 
 - type: entity
@@ -164,8 +166,8 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgun
-    count: 10 #Ratbite balance
-    spread: 15
+    count: 9 # Ratbite - 10*9=90 + bloodloss DOT it's FINEEE
+    spread: 10 # Ratbite - tighten up the spread doe
 
 - type: entity
   id: PelletShotgunIncendiary
@@ -329,8 +331,9 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 8 #Ratbite balance
-        Piercing: 8 #Ratbite balance
+        Radiation: 5 # Ratbite - Lingering radiation from DU fragments
+        Piercing: 10 # Ratbite
+      armorPenetration: 0.3 # Ratbite - Who knew depleted uranium was good at piercing armor?
 
 - type: entity
   id: PelletShotgunUraniumSpread
@@ -339,7 +342,7 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgunUranium
-    count: 5
+    count: 5 # 15*5=75 with tight spread and okay AP
     spread: 6
 
 - type: entity

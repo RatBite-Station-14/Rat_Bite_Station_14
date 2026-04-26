@@ -7,7 +7,7 @@
   startingGear: PrisonerGear
   icon: "JobIconPrisoner"
   supervisors: job-supervisors-security
-  canBeAntag: true
+  canBeAntag: false
 
 - type: startingGear
   id: PrisonerGear
