@@ -141,7 +141,7 @@ using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
-using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared.FixedPoint;
 using System.Linq;
 using Content.Shared.Mobs.Systems; // Goobstation
 

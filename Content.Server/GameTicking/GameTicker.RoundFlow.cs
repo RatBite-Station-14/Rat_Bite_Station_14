@@ -110,7 +110,7 @@ using Content.Goobstation.Common.LastWords;
 using Content.Shared.Damage;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
-using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared.FixedPoint;
 using Content.Goobstation.Shared.Mind.Components;
 
 namespace Content.Server.GameTicking

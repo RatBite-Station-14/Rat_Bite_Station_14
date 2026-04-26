@@ -4,7 +4,7 @@ using Content.Shared.Speech;
 using Content.Shared.Speech.EntitySystems;
 using Content.Shared.Speech.Muting;
 using Content.Shared.Actions.Events;
-using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared.FixedPoint;
 using Content.Shared._Goobstation.Wizard.Chuuni;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Magic.Components;

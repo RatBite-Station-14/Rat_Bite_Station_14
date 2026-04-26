@@ -3,7 +3,7 @@ using Content.Shared.Clothing.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Server.Nutrition.Components;
 using Content.Server.Nutrition.EntitySystems;
-using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared.FixedPoint;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Shared.Body.Components;

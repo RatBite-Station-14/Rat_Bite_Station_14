@@ -3,7 +3,7 @@ using Content.Server.Destructible;
 using Content.Server.PowerCell;
 using Content.Shared.Speech.Components;
 using Content.Shared.Damage;
-using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared.FixedPoint;
 using Content.Server.Power.Components; // Goobstation
 using Content.Shared.Speech;
 using Robust.Shared.Random;
