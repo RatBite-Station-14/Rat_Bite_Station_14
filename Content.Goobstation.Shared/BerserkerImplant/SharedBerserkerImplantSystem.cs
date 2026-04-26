@@ -1,13 +1,16 @@
-using Content.Shared._Goobstation.Wizard.Projectiles;
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Events;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Jittering;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Events;
-using Robust.Shared.Audio.Systems;
+using Content.Trauma.Common.Wizard.Projectile;
 using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Shared.BerserkerImplant;
@@ -18,7 +21,6 @@ public abstract class SharedBerserkerImplantSystem : EntitySystem
     [Dependency] protected readonly SharedPopupSystem Popup = default!;
     [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedJitteringSystem _jitter = default!;
 
     public override void Initialize()
@@ -85,7 +87,7 @@ public abstract class SharedBerserkerImplantSystem : EntitySystem
         if (!TryComp<DamageableComponent>(ent, out var damageable))
             return;
 
-        if (_mobThreshold.CheckVitalDamage(ent, damageable) + args.Damage.GetTotal() < threshold)
+        if (_mobThreshold.CheckVitalDamage((ent, damageable)) + args.Damage.GetTotal() < threshold)
             return;
 
         args.Cancelled = true;

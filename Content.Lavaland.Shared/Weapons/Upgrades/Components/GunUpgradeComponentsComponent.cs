@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+
+namespace Content.Lavaland.Shared.Weapons.Upgrades.Components;
+
+/// <summary>
+/// Adds components when inserted and removes them when ejected from a weapon.
+/// </summary>
+[RegisterComponent, NetworkedComponent, Access(typeof(GunUpgradeSystem))]
+public sealed partial class GunUpgradeComponentsComponent : Component
+{
+    [DataField(required: true)]
+    public ComponentRegistry Components = new();
+}

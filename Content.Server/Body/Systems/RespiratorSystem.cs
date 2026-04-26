@@ -1,116 +1,38 @@
-// SPDX-FileCopyrightText: 2021 Fishfish458 <47410468+Fishfish458@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2021 fishfish458 <fishfish458>
-// SPDX-FileCopyrightText: 2021 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2022 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2022 Illiux <newoutlook@gmail.com>
-// SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2022 Kevin Zheng <kevinz5000@gmail.com>
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2023 ElectroJr <leonsfriedrich@gmail.com>
-// SPDX-FileCopyrightText: 2023 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Jezithyr <jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Alice "Arimah" Heurlin <30327355+arimah@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 HS <81934438+HolySSSS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Rouge2t7 <81053047+Sarahon@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 Truoizys <153248924+Truoizys@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
-// SPDX-FileCopyrightText: 2024 Verm <32827189+Vermidia@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 osjarw <62134478+osjarw@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2024 Арт <123451459+JustArt1m@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 AftrLite <61218133+AftrLite@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 CerberusWolfie <wb.johnb.willis@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 John Willis <143434770+CerberusWolfie@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Kayzel <43700376+KayzelW@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Lincoln McQueen <lincoln.mcqueen@gmail.com>
-// SPDX-FileCopyrightText: 2025 Marcus F <199992874+thebiggestbruh@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Marcus F <marcus2008stoke@gmail.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 Roudenn <romabond091@gmail.com>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 Spatison <137375981+Spatison@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Trest <144359854+trest100@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 kurokoTurbo <92106367+kurokoTurbo@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 thebiggestbruh <199992874+thebiggestbruh@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 thebiggestbruh <marcus2008stoke@gmail.com>
-// SPDX-FileCopyrightText: 2025 āda <ss.adasts@gmail.com>
-// SPDX-FileCopyrightText: 2025 ThanosDeGraf <richardgirgindontstop@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+// <Trauma>
+using Content.Medical.Common.Body;
+using Content.Medical.Common.Damage;
+using Content.Medical.Common.Targeting;
 using Content.Goobstation.Common.Body.Components;
-using Content.Goobstation.Common.MartialArts;
-using Content.Goobstation.Shared.Body; // goob
+using Content.Trauma.Common.MartialArts;
+using Content.Trauma.Common.Body;
+using Content.Shared.Movement.Pulling.Components;
+// </Trauma>
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body.Components;
 using Content.Server.Chat.Systems;
-using Content.Server.EntityEffects.EffectConditions;
-using Content.Server.EntityEffects.Effects;
-using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Body.Systems;
 using Content.Shared.Alert;
 using Content.Shared.Atmos;
+using Content.Shared.Body;
 using Content.Shared.Body.Components;
-using Content.Shared.Body.Prototypes;
-using Content.Shared.Chat; // Einstein Engines - Language
+using Content.Shared.Body.Events;
+using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
+using Content.Shared.EntityConditions;
+using Content.Shared.EntityConditions.Conditions.Body;
 using Content.Shared.EntityEffects;
+using Content.Shared.EntityEffects.Effects.Body;
+using Content.Shared.EntityEffects.Effects.Damage;
+using Content.Shared.Metabolism;
 using Content.Shared.Mobs.Systems;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
-using Content.Shared.Movement.Pulling.Components; // Goobstation
-using Content.Shared._DV.CosmicCult.Components; // DeltaV
-
-// Shitmed Change
-using Content.Shared._Shitmed.Targeting;
-using Content.Shared._Shitmed.Body.Components;
-using Content.Shared._Shitmed.Body.Organ;
-using Content.Shared._Shitmed.Medical.Surgery.Consciousness;
-using Content.Shared._Shitmed.Medical.Surgery.Consciousness.Systems;
 
 namespace Content.Server.Body.Systems;
 
@@ -119,18 +41,18 @@ public sealed class RespiratorSystem : EntitySystem
 {
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly IPrototypeManager _protoMan = default!;
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly AtmosphereSystem _atmosSys = default!;
-    [Dependency] private readonly BodySystem _bodySystem = default!;
+    [Dependency] private readonly BodySystem _body = default!;
+    [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly DamageableSystem _damageableSys = default!;
     [Dependency] private readonly LungSystem _lungSystem = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly IPrototypeManager _protoMan = default!;
+    [Dependency] private readonly SharedEntityConditionsSystem _entityConditions = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly ConsciousnessSystem _consciousness = default!; // Shitmed Change
 
-    private static readonly ProtoId<MetabolismGroupPrototype> GasId = new("Gas");
+    private static readonly ProtoId<MetabolismStagePrototype> RespirationStage = new("Respiration");
 
     public override void Initialize()
     {
@@ -142,30 +64,30 @@ public sealed class RespiratorSystem : EntitySystem
         SubscribeLocalEvent<RespiratorComponent, ApplyMetabolicMultiplierEvent>(OnApplyMetabolicMultiplier);
 
         // BodyComp stuff
-        SubscribeLocalEvent<BodyComponent, InhaledGasEvent>(OnGasInhaled);
-        SubscribeLocalEvent<BodyComponent, ExhaledGasEvent>(OnGasExhaled);
-        SubscribeLocalEvent<BodyComponent, CanMetabolizeGasEvent>(CanBodyMetabolizeGas);
-        SubscribeLocalEvent<BodyComponent, SuffocationEvent>(OnSuffocation);
-        SubscribeLocalEvent<BodyComponent, StopSuffocatingEvent>(OnStopSuffocating);
+        SubscribeLocalEvent<BodyComponent, InhaledGasEvent>(_body.RelayEvent);
+        SubscribeLocalEvent<BodyComponent, ExhaledGasEvent>(_body.RelayEvent);
+        SubscribeLocalEvent<BodyComponent, CanMetabolizeGasEvent>(_body.RelayEvent);
+        SubscribeLocalEvent<BodyComponent, SuffocationEvent>(_body.RelayEvent);
+        SubscribeLocalEvent<BodyComponent, StopSuffocatingEvent>(_body.RelayEvent);
+
+        SubscribeLocalEvent<LungComponent, BodyRelayedEvent<InhaledGasEvent>>(OnGasInhaled);
+        SubscribeLocalEvent<LungComponent, BodyRelayedEvent<ExhaledGasEvent>>(OnGasExhaled);
+        SubscribeLocalEvent<LungComponent, BodyRelayedEvent<CanMetabolizeGasEvent>>(CanBodyMetabolizeGas);
+        SubscribeLocalEvent<LungComponent, BodyRelayedEvent<SuffocationEvent>>(OnSuffocation);
+        SubscribeLocalEvent<LungComponent, BodyRelayedEvent<StopSuffocatingEvent>>(OnStopSuffocating);
     }
 
     // Goobstation start
-    // Can breathe check for grab or if they need air
+    // Can breathe check for grab
     public bool CanBreathe(EntityUid uid, RespiratorComponent respirator)
     {
-        var airEv = new CheckNeedsAirEvent();
-        RaiseLocalEvent(uid, ref airEv);
-
-        if (airEv.Cancelled)
-            return true;
-
         if (respirator.Saturation < respirator.SuffocationThreshold)
             return false;
         if (TryComp<PullableComponent>(uid, out var pullable)
             && pullable.GrabStage == GrabStage.Suffocate)
             return false;
 
-        return !HasComp<KravMagaBlockedBreathingComponent>(uid);
+        return !HasComp<BlockedBreathingComponent>(uid);
     }
     // Goobstation end
     private void OnMapInit(Entity<RespiratorComponent> ent, ref MapInitEvent args)
@@ -188,17 +110,9 @@ public sealed class RespiratorSystem : EntitySystem
             if (_mobState.IsDead(uid) || HasComp<BreathingImmunityComponent>(uid) || HasComp<SpecialBreathingImmunityComponent>(uid)) // Shitmed: BreathingImmunity
                 continue;
 
-            // Begin DeltaV Code: Addition:
-            var organs = _bodySystem.GetBodyOrganEntityComps<LungComponent>((uid, body));
-            var multiplier = -1f;
-            foreach (var (_, lung, _) in organs)
-            {
-                multiplier *= lung.SaturationLoss * respirator.SaturationLoss; // Goob Edit - In a DeltaV Edit :o
-            }
-            // End DeltaV Code
-            UpdateSaturation(uid,  multiplier * (float) respirator.UpdateInterval.TotalSeconds, respirator); // DeltaV: use multiplier instead of negating
+            UpdateSaturation(uid, -(float)respirator.UpdateInterval.TotalSeconds, respirator);
 
-            if (!_mobState.IsIncapacitated(uid) && !HasComp<DebrainedComponent>(uid)) // Shitmed Change - Cannot breathe in crit or when no brain.
+            if (!_mobState.IsHardCrit(uid) && !HasComp<DebrainedComponent>(uid)) // Trauma - Cannot breathe in hardcrit or when no brain.
             {
                 switch (respirator.Status)
                 {
@@ -215,12 +129,10 @@ public sealed class RespiratorSystem : EntitySystem
 
             if (!CanBreathe(uid, respirator)) // Goobstation edit
             {
-                // DeltaV: Cosmic Cult - One line change but a refactor would be better. this is kinda cringe.
-                // Makes cultists gasp and respirate but not asphyxiate in space.
-                if (TryComp<CosmicCultComponent>(uid, out var cultComponent)
-                    && !cultComponent.Respiration
-                    && !_mobState.IsIncapacitated(uid))
-                    return;
+                var ev = new SuffocationBeforeEvent();
+                RaiseLocalEvent(uid, ref ev);
+                if (ev.Cancelled)
+                    continue;
 
                 if (_gameTiming.CurTime >= respirator.LastGaspEmoteTime + respirator.GaspEmoteCooldown)
                 {
@@ -258,7 +170,11 @@ public sealed class RespiratorSystem : EntitySystem
         if (ev.Gas is null)
             return;
 
-        var gas = ev.Gas.RemoveVolume(entity.Comp.BreathVolume);
+        // <Trauma> - let event change how much you inhale
+        var volumeEv = new ModifyInhaledVolumeEvent(entity.Comp.BreathVolume);
+        RaiseLocalEvent(entity, ref volumeEv);
+        var gas = ev.Gas.RemoveVolume(volumeEv.Volume);
+        // </Trauma>
 
         var inhaleEv = new InhaledGasEvent(gas);
         RaiseLocalEvent(entity, ref inhaleEv);
@@ -303,7 +219,7 @@ public sealed class RespiratorSystem : EntitySystem
     /// </summary>
     public bool IsBreathing(Entity<RespiratorComponent?> ent)
     {
-        if (_mobState.IsIncapacitated(ent))
+        if (_mobState.IsIncapacitated(ent) && !_mobState.IsSoftCrit(ent.Owner)) // Trauma - can still breathe in softcrit
             return false;
 
         if (!Resolve(ent, ref ent.Comp))
@@ -319,7 +235,7 @@ public sealed class RespiratorSystem : EntitySystem
     /// <returns>Returns true only if the air is not toxic, and it wouldn't suffocate.</returns>
     public bool CanMetabolizeInhaledAir(Entity<RespiratorComponent?> ent)
     {
-        if (!Resolve(ent, ref ent.Comp))
+        if (!Resolve(ent, ref ent.Comp, false))
             return false;
 
         // Get the gas at our location but don't actually remove it from the gas mixture.
@@ -358,72 +274,22 @@ public sealed class RespiratorSystem : EntitySystem
     /// <summary>
     /// Tries to safely metabolize the current solutions in a body's lungs.
     /// </summary>
-    private void CanBodyMetabolizeGas(Entity<BodyComponent> ent, ref CanMetabolizeGasEvent args)
+    private void CanBodyMetabolizeGas(Entity<LungComponent> ent, ref BodyRelayedEvent<CanMetabolizeGasEvent> args)
     {
-        if (args.Handled)
+        if (args.Args.Handled)
             return;
 
-        var organs = _bodySystem.GetBodyOrganEntityComps<LungComponent>((ent, null));
-        if (organs.Count == 0)
-            return;
-
-        var solution = _lungSystem.GasToReagent(args.Gas);
+        var solution = _lungSystem.GasToReagent(args.Args.Gas);
 
         var saturation = 0f;
-        foreach (var organ in organs)
+        saturation += GetSaturation(solution, ent.Owner, out var toxic);
+
+        args.Args = args.Args with
         {
-            saturation += GetSaturation(solution, organ.Owner, out var toxic);
-            if (!toxic)
-                continue;
-
-            args.Handled = true;
-            args.Toxic = true;
-            return;
-        }
-
-        args.Handled = true;
-        args.Saturation = saturation;
-    }
-
-    public bool TryInhaleGasToBody(Entity<BodyComponent?> entity, GasMixture gas)
-    {
-        if (!Resolve(entity, ref entity.Comp))
-            return false;
-
-        var organs = _bodySystem.GetBodyOrganEntityComps<LungComponent>((entity, entity.Comp));
-        if (organs.Count == 0)
-            return false;
-
-        var lungRatio = 1.0f / organs.Count;
-        var splitGas = organs.Count == 1 ? gas : gas.RemoveRatio(lungRatio);
-        foreach (var (organUid, lung, _) in organs)
-        {
-            // Merge doesn't remove gas from the giver.
-            _atmosSys.Merge(lung.Air, splitGas);
-            _lungSystem.GasToReagent(organUid, lung);
-        }
-
-        return true;
-    }
-
-    public void RemoveGasFromBody(Entity<BodyComponent> ent, GasMixture gas)
-    {
-        var outGas = new GasMixture(gas.Volume);
-
-        var organs = _bodySystem.GetBodyOrganEntityComps<LungComponent>((ent, ent.Comp));
-        if (organs.Count == 0)
-            return;
-
-        foreach (var (organUid, lung, _) in organs)
-        {
-            _atmosSys.Merge(outGas, lung.Air);
-            lung.Air.Clear();
-
-            if (_solutionContainerSystem.ResolveSolution(organUid, lung.SolutionName, ref lung.Solution))
-                _solutionContainerSystem.RemoveAllSolution(lung.Solution.Value);
-        }
-
-        _atmosSys.Merge(gas, outGas);
+            Saturation = saturation,
+            Toxic = toxic,
+            Handled = true
+        };
     }
 
     /// <summary>
@@ -442,7 +308,7 @@ public sealed class RespiratorSystem : EntitySystem
         if (!Resolve(lung, ref lung.Comp))
             return 0;
 
-        if (lung.Comp.MetabolismGroups == null)
+        if (lung.Comp.Stages == null)
             return 0;
 
         float saturation = 0;
@@ -452,7 +318,7 @@ public sealed class RespiratorSystem : EntitySystem
             if (reagent.Metabolisms == null)
                 continue;
 
-            if (!reagent.Metabolisms.TryGetValue(GasId, out var entry))
+            if (!reagent.Metabolisms.Metabolisms.TryGetValue(RespirationStage, out var entry))
                 continue;
 
             foreach (var effect in entry.Effects)
@@ -464,7 +330,6 @@ public sealed class RespiratorSystem : EntitySystem
             }
         }
 
-        // TODO generalize condition checks
         // this is pretty janky, but I just want to bodge a method that checks if an entity can breathe a gas mixture
         // Applying actual reaction effects require a full ReagentEffectArgs struct.
         bool CanMetabolize(EntityEffect effect)
@@ -472,9 +337,10 @@ public sealed class RespiratorSystem : EntitySystem
             if (effect.Conditions == null)
                 return true;
 
+            // TODO: Use Metabolism Public API to do this instead, once that API has been built.
             foreach (var cond in effect.Conditions)
             {
-                if (cond is OrganType organ && !organ.Condition(lung, EntityManager))
+                if (cond is MetabolizerTypeCondition organ && !_entityConditions.TryCondition(lung, organ))
                     return false;
             }
 
@@ -489,31 +355,8 @@ public sealed class RespiratorSystem : EntitySystem
         if (ent.Comp.SuffocationCycles == 2)
             _adminLogger.Add(LogType.Asphyxiation, $"{ToPrettyString(ent):entity} started suffocating");
 
-        // Shitmed Change Start
-        if (_consciousness.TryGetNerveSystem(ent, out var nerveSys))
-        {
-            if (!_consciousness.TryGetConsciousnessModifier(ent, nerveSys.Value, out var modifier, "Suffocation"))
-            {
-                _consciousness.AddConsciousnessModifier(
-                    ent,
-                    nerveSys.Value,
-                    -ent.Comp.Damage.GetTotal(),
-                    identifier: "Suffocation",
-                    type: ConsciousnessModType.Pain);
-            }
-            else
-            {
-                _consciousness.SetConsciousnessModifier(
-                    ent,
-                    nerveSys.Value,
-                    modifier.Value.Change - ent.Comp.Damage.GetTotal(),
-                    identifier: "Suffocation",
-                    type: ConsciousnessModType.Pain);
-            }
-        }
-
-        // Shitmed Change End
-        _damageableSys.TryChangeDamage(ent, HasComp<DebrainedComponent>(ent) ? ent.Comp.Damage * 4.5f : ent.Comp.Damage, targetPart: TargetBodyPart.All, interruptsDoAfters: false); // Shitmed Change
+        _damageableSys.ChangeDamage(ent.Owner, HasComp<DebrainedComponent>(ent) ? ent.Comp.Damage * 4.5f : ent.Comp.Damage,
+            targetPart: TargetBodyPart.Vital, interruptsDoAfters: false, ignoreResistances: true); // Trauma
 
         if (ent.Comp.SuffocationCycles < ent.Comp.SuffocationCycleThreshold)
             return;
@@ -527,69 +370,27 @@ public sealed class RespiratorSystem : EntitySystem
         if (ent.Comp.SuffocationCycles >= 2)
             _adminLogger.Add(LogType.Asphyxiation, $"{ToPrettyString(ent):entity} stopped suffocating");
 
-        _damageableSys.TryChangeDamage(ent, ent.Comp.DamageRecovery);
+        _damageableSys.ChangeDamage(ent.Owner, ent.Comp.DamageRecovery,
+            splitDamage: SplitDamageBehavior.SplitEnsureAllDamagedAndOrganic, targetPart: TargetBodyPart.All, ignoreBlockers: true); // Trauma
 
         var ev = new StopSuffocatingEvent();
         RaiseLocalEvent(ent, ref ev);
     }
 
-    private void OnSuffocation(Entity<BodyComponent> ent, ref SuffocationEvent args)
+    private void OnSuffocation(Entity<LungComponent> ent, ref BodyRelayedEvent<SuffocationEvent> args)
     {
-        // TODO: This is not going work with multiple different lungs, if that ever becomes a possibility
-        var organs = _bodySystem.GetBodyOrganEntityComps<LungComponent>((ent, null));
-        foreach (var entity in organs)
-        {
-            _alertsSystem.ShowAlert(ent, entity.Comp1.Alert);
-        }
+        _alertsSystem.ShowAlert(args.Body.Owner, ent.Comp.Alert);
     }
 
-    private void OnStopSuffocating(Entity<BodyComponent> ent, ref StopSuffocatingEvent args)
+    private void OnStopSuffocating(Entity<LungComponent> ent, ref BodyRelayedEvent<StopSuffocatingEvent> args)
     {
-        // TODO: This is not going work with multiple different lungs, if that ever becomes a possibility
-        var organs = _bodySystem.GetBodyOrganEntityComps<LungComponent>((ent, null));
-        foreach (var entity in organs)
-        {
-            _alertsSystem.ClearAlert(ent, entity.Comp1.Alert);
-        }
-
-        if (!TryComp<RespiratorComponent>(ent.Owner, out var respirator))
-            return;
-
-        // Shitmed Change Start
-        if (_consciousness.TryGetNerveSystem(ent, out var nerveSys)
-            && _consciousness.TryGetConsciousnessModifier(ent, nerveSys.Value, out var modifier, "Suffocation"))
-        {
-            if (modifier.Value.Change < respirator.DamageRecovery.GetTotal())
-            {
-                _consciousness.RemoveConsciousnessModifier(ent, nerveSys.Value, "Suffocation");
-            }
-            else
-            {
-                _consciousness.SetConsciousnessModifier(
-                    ent,
-                    nerveSys.Value,
-                    modifier.Value.Change + respirator.DamageRecovery.GetTotal(),
-                    identifier: "Suffocation",
-                    type: ConsciousnessModType.Pain);
-            }
-        }
-
-        _damageableSys.TryChangeDamage(ent, respirator.DamageRecovery, targetPart: TargetBodyPart.All, ignoreBlockers: true);
-        // Shitmed Change End
+        _alertsSystem.ClearAlert(args.Body.Owner, ent.Comp.Alert);
     }
 
     public void UpdateSaturation(EntityUid uid, float amount, RespiratorComponent? respirator = null)
     {
         if (!Resolve(uid, ref respirator, false))
             return;
-
-        // Goob start
-        var airEv = new CheckNeedsAirEvent();
-        RaiseLocalEvent(uid, ref airEv);
-
-        if (airEv.Cancelled)
-            return;
-        // Goob end
 
         respirator.Saturation += amount;
         respirator.Saturation =
@@ -601,24 +402,33 @@ public sealed class RespiratorSystem : EntitySystem
         ent.Comp.UpdateIntervalMultiplier = args.Multiplier;
     }
 
-    private void OnGasInhaled(Entity<BodyComponent> entity, ref InhaledGasEvent args)
+    private void OnGasInhaled(Entity<LungComponent> ent, ref BodyRelayedEvent<InhaledGasEvent> args)
     {
-        if (args.Handled)
+        if (args.Args.Handled)
             return;
 
-        args.Handled = true;
+        _atmosSys.Merge(ent.Comp.Air, args.Args.Gas);
+        _lungSystem.GasToReagent(ent, ent);
 
-        args.Succeeded = TryInhaleGasToBody((entity, entity.Comp), args.Gas);
+        args.Args = args.Args with
+        {
+            Handled = true,
+            Succeeded = true
+        };
     }
 
-    private void OnGasExhaled(Entity<BodyComponent> entity, ref ExhaledGasEvent args)
+    private void OnGasExhaled(Entity<LungComponent> ent, ref BodyRelayedEvent<ExhaledGasEvent> args)
     {
-        if (args.Handled)
-            return;
+        _atmosSys.Merge(args.Args.Gas, ent.Comp.Air);
+        ent.Comp.Air.Clear();
 
-        args.Handled = true;
+        if (_solutionContainerSystem.ResolveSolution(ent.Owner, ent.Comp.SolutionName, ref ent.Comp.Solution))
+            _solutionContainerSystem.RemoveAllSolution(ent.Comp.Solution.Value);
 
-        RemoveGasFromBody(entity, args.Gas);
+        args.Args = args.Args with
+        {
+            Handled = true
+        };
     }
 }
 

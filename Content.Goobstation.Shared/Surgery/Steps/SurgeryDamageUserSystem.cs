@@ -1,5 +1,7 @@
-using Content.Shared._Shitmed.Medical.Surgery;
-using Content.Shared.Damage;
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Content.Medical.Shared.Surgery;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Popups;
 
 namespace Content.Goobstation.Shared.Surgery.Steps;

@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Construction.Components;
@@ -17,7 +13,6 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
-using Robust.Shared.Prototypes;
 
 namespace Content.Goobstation.Shared.Factory.Filters;
 
@@ -177,7 +172,8 @@ public sealed class AutomationFilterSystem : EntitySystem
             NameFilterMode.Contain => name.Contains(check),
             NameFilterMode.Start => name.StartsWith(check),
             NameFilterMode.End => name.EndsWith(check),
-            NameFilterMode.Match => name == check
+            NameFilterMode.Match => name == check,
+            _ => false
         };
         // entity names usually don't change except for the end including a label
         args.CouldAllow = ent.Comp.Mode switch
@@ -280,7 +276,8 @@ public sealed class AutomationFilterSystem : EntitySystem
             LogicGate.Xor => a != b,
             LogicGate.Nor => !(a || b),
             LogicGate.Nand => !(a && b),
-            LogicGate.Xnor => a == b
+            LogicGate.Xnor => a == b,
+            _ => false
         };
         args.CouldAllow = couldAllowA || couldAllowB; // if any subfilter could allow it, this could allow it too
     }
@@ -450,14 +447,14 @@ public sealed class AutomationFilterSystem : EntitySystem
             return item;
 
         // don't need to split if it's already a multiple of the split size
-        var stack = Comp<StackComponent>(item);
+        var stack = _stackQuery.Comp(item);
         var excess = stack.Count % split;
         if (excess == 0)
             return item;
 
         // have to split it, client will return null here
         var coords = Transform(item).Coordinates;
-        return _stack.Split(item, stack.Count - excess, coords, stack);
+        return _stack.Split((item, stack), stack.Count - excess, coords);
     }
 
     /// <summary>

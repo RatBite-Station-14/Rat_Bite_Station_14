@@ -1,14 +1,8 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
-// SPDX-FileCopyrightText: 2025 Fishbait <Fishbait@git.ml>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 fishbait <gnesse@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Stealth.Components;
 using Content.Shared.Stealth;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Ninja.Components;
 using Content.Shared.Ninja.Systems;
 using Content.Shared.Weapons.Melee.Events;
@@ -86,9 +80,6 @@ public sealed class SharedGoobStealthSystem : EntitySystem
     private void OnThrow(Entity<StealthComponent> ent, ref BeforeThrowEvent args)
     {
         if (!ent.Comp.RevealOnAttack)
-            return;
-
-        if (ent.Owner != args.PlayerUid)
             return;
 
         // Some goida stuff. If a slasher attempts to throw an item it stops them from throwing it BUTTTTT THEY STILL GET REVEALED, so here we are.

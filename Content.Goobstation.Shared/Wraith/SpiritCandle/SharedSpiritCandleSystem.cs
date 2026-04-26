@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Linq;
 using Content.Shared.Atmos;
 using Content.Shared.Charges.Systems;
@@ -10,7 +12,6 @@ using Content.Shared.StatusEffectNew;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.Network;
 using Robust.Shared.Physics.Events;
 
 namespace Content.Goobstation.Shared.Wraith.SpiritCandle;
@@ -119,6 +120,9 @@ public sealed partial class SharedSpiritCandleSystem : EntitySystem
         if (ent.Comp.AreaUid is {} areaUid)
             QueueDel(areaUid);
 
+        if (TerminatingOrDeleted(args.Entity))
+            return;
+
         var spawn = SpawnAttachedTo(ent.Comp.SpiritArea, Transform(args.Entity).Coordinates);
         _transform.SetParent(spawn, args.Entity);
         ent.Comp.AreaUid = spawn;
@@ -211,4 +215,3 @@ public sealed partial class SharedSpiritCandleSystem : EntitySystem
 
     #endregion
 }
-

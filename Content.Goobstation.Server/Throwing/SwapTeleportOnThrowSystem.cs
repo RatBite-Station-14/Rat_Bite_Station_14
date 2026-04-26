@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.Throwing;
 using Content.Shared.Mobs.Components;
 using Robust.Shared.Audio.Systems;
@@ -20,9 +22,6 @@ public sealed class SwapTeleportOnThrowSystem : EntitySystem
 
     private void OnThrowHit(Entity<SwapTeleportOnThrowComponent> ent, ref ThrowDoHitEvent args)
     {
-        if (args.Handled)
-            return;
-
         var thrower = args.Component.Thrower;
         var target = args.Target;
 
@@ -42,7 +41,6 @@ public sealed class SwapTeleportOnThrowSystem : EntitySystem
         _audio.PlayPvs(ent.Comp.OriginSound, throwerPos);
         _audio.PlayPvs(ent.Comp.TargetSound, targetPos);
 
-        PredictedQueueDel(ent.Owner);
-        args.Handled = true;
+        PredictedQueueDel(ent);
     }
 }

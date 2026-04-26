@@ -1,16 +1,3 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Actions;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -171,6 +158,12 @@ public sealed partial class ActionComponent : Component
     public EntityUid? AttachedEntity;
 
     /// <summary>
+    /// Trauma - Raise event on the action entity instead of user/container.
+    /// </summary>
+    [DataField]
+    public bool RaiseOnAction;
+
+    /// <summary>
     ///     If true, this will cause the the action event to always be raised directed at the action performer/user instead of the action's container/provider.
     /// </summary>
     [DataField, AutoNetworkedField]
@@ -199,24 +192,24 @@ public sealed partial class ActionComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public SoundSpecifier? Sound;
-    
+
     /// <summary>
     ///     Goobstation.
     ///     If true, ghosts will be granted this action.
     /// </summary>
-    [DataField] 
+    [DataField]
     public bool AllowGhostAction;
 
     /// <summary>
     ///     Goobstation.
     ///     Is this action predicted.
     /// </summary>
-    [DataField] 
+    [DataField]
     public bool Predicted = true;
 }
 
 [DataRecord, Serializable, NetSerializable]
-public record struct ActionCooldown
+public partial record struct ActionCooldown
 {
     [DataField(required: true, customTypeSerializer: typeof(TimeOffsetSerializer))]
     public TimeSpan Start;

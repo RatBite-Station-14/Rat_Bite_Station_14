@@ -1,16 +1,9 @@
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 YourUsername <you@example.com>
-// SPDX-FileCopyrightText: 2025 godisdeadLOL <169250097+godisdeadLOL@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Serialization;
+using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.Emag.Components;
 using Content.Shared.Emag.Systems;
@@ -19,9 +12,6 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.NPC.Components;
 using Content.Shared.Popups;
-using Robust.Shared.Audio.Systems;
-using Robust.Shared.Serialization;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.Silicons.Bots;
 
@@ -36,6 +26,7 @@ public sealed class MedibotSystem : EntitySystem
     [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private readonly DamageableSystem _damageable = default!;
 
     public override void Initialize()
     {
@@ -118,14 +109,14 @@ public sealed class MedibotSystem : EntitySystem
             return false;
         }
 
-        var total = damageable.TotalDamage;
+        var total = _damageable.GetTotalDamage((target, damageable));
         if (total == 0 && !HasComp<EmaggedComponent>(medibot))
         {
             _popup.PopupClient(Loc.GetString("medibot-target-healthy"), medibot, medibot);
             return false;
         }
 
-        if (!TryGetTreatment(medibot.Comp, mobState.CurrentState, out var treatment) || !treatment.IsValid(total) && !manual) return false;
+        if (!TryGetTreatment(medibot.Comp, mobState.CurrentState, out var treatment) || !manual) return false;
 
         return true;
     }
@@ -143,10 +134,9 @@ public sealed class MedibotSystem : EntitySystem
         if (!TryGetTreatment(medibot.Comp, mobState.CurrentState, out var treatment)) return false;
         if (!_solutionContainer.TryGetInjectableSolution(target, out var injectable, out _)) return false;
 
-        EnsureComp<NPCRecentlyInjectedComponent>(target);
         _solutionContainer.TryAddReagent(injectable.Value, treatment.Reagent, treatment.Quantity, out _);
 
-        _popup.PopupEntity(Loc.GetString("hypospray-component-feel-prick-message"), target, target);
+        _popup.PopupEntity(Loc.GetString("injector-component-feel-prick-message"), target, target);
         _popup.PopupClient(Loc.GetString("medibot-target-injected"), medibot, medibot);
 
         _audio.PlayPredicted(medibot.Comp.InjectSound, medibot, medibot);

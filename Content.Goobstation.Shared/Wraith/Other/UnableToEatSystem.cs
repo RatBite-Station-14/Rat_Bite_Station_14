@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Nutrition;
 using Content.Shared.Popups;
 
@@ -17,6 +19,6 @@ public sealed class UnableToEatSystem : EntitySystem
     private void OnIngestionAttempt(Entity<UnableToEatComponent> ent, ref IngestionAttemptEvent args)
     {
         _popup.PopupEntity(Loc.GetString("curse-rot-cant-eat"), ent.Owner, ent.Owner);
-        args.Cancel();
+        args.Cancelled = true;
     }
 }

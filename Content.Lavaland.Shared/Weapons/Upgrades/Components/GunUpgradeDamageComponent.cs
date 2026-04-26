@@ -1,0 +1,21 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Content.Shared.Damage;
+
+namespace Content.Lavaland.Shared.Weapons.Upgrades.Components;
+
+/// <summary>
+/// A <see cref="GunUpgradeComponent"/> for increasing the damage of a gun's projectile.
+/// </summary>
+[RegisterComponent, NetworkedComponent, Access(typeof(GunUpgradeSystem))]
+public sealed partial class GunUpgradeDamageComponent : Component
+{
+    [DataField]
+    public DamageSpecifier? BonusDamage;
+
+    /// <summary>
+    /// How much should we multiply the total projectile's damage.
+    /// </summary>
+    [DataField]
+    public float Modifier = 1f;
+}

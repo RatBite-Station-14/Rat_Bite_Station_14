@@ -1,11 +1,3 @@
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.StationEvents.Components;
 using Content.Shared.Access;
 using Content.Shared.Access.Systems;
@@ -29,7 +21,6 @@ public sealed class GreytideVirusRule : StationEventSystem<GreytideVirusRuleComp
 {
     [Dependency] private readonly AccessReaderSystem _access = default!;
     [Dependency] private readonly SharedAirlockSystem _airlock = default!; // Goobstation - Greytide Virus EA instead of open-bolt
-    [Dependency] private readonly SharedDoorSystem _door = default!;
     [Dependency] private readonly LockSystem _lock = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -63,7 +54,7 @@ public sealed class GreytideVirusRule : StationEventSystem<GreytideVirusRuleComp
         var accessIds = new HashSet<ProtoId<AccessLevelPrototype>>();
         foreach (var group in chosen)
         {
-            if (_prototype.TryIndex(group, out var proto))
+            if (_prototype.Resolve(group, out var proto))
                 accessIds.UnionWith(proto.Tags);
         }
 

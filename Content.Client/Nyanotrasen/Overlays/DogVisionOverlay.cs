@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
@@ -18,15 +13,16 @@ public sealed partial class DogVisionOverlay : Overlay
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] IEntityManager _entityManager = default!;
 
-
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
     private readonly ShaderInstance _dogVisionShader;
 
+    public static readonly ProtoId<ShaderPrototype> DogVisionShader = "DogVision";
+
     public DogVisionOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _dogVisionShader = _prototypeManager.Index<ShaderPrototype>("DogVision").Instance().Duplicate();
+        _dogVisionShader = _prototypeManager.Index(DogVisionShader).InstanceUnique();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)

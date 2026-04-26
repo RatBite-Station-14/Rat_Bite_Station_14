@@ -1,21 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <OutputPath>..\bin\Content.YAMLLinter\</OutputPath>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <ServerGarbageCollection>true</ServerGarbageCollection>
-    <IsTestingPlatformApplication>false</IsTestingPlatformApplication>
-    <Nullable>disable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <OutputPath>..\bin\Content.YAMLLinter\</OutputPath>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <ServerGarbageCollection>true</ServerGarbageCollection>
+        <IsTestingPlatformApplication>false</IsTestingPlatformApplication>
+      <Nullable>disable</Nullable>
+    </PropertyGroup>
 
   <Import Project="../MSBuild/Content.props" />
 
   <ItemGroup>
-    <ProjectReference Include="..\Content.Client\Content.Client.csproj" />
-    <ProjectReference Include="..\Content.Server\Content.Server.csproj" />
-    <ProjectReference Include="..\Content.Shared\Content.Shared.csproj" />
-    <ProjectReference Include="..\Content.IntegrationTests\Content.IntegrationTests.csproj" />
-  </ItemGroup>
+      <ProjectReference Include="..\Content.Client\Content.Client.csproj" />
+      <ProjectReference Include="..\Content.Server\Content.Server.csproj" />
+      <ProjectReference Include="..\Content.Shared\Content.Shared.csproj" />
+      <ProjectReference Include="..\Content.IntegrationTests\Content.IntegrationTests.csproj" />
+    </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="NUnit" />

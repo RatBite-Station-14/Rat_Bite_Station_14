@@ -1,114 +1,30 @@
-// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2021 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2022 Illiux <newoutlook@gmail.com>
-// SPDX-FileCopyrightText: 2022 Jacob Tong <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Júlio César Ueti <52474532+Mirino97@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 J�lio C�sar Ueti <52474532+Mirino97@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2023 Jezithyr <jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 12rabbits <53499656+12rabbits@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 AJCM <AJCM@tutanota.com>
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 AutoOtter <joshuademorris@gmail.com>
-// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DieselMohawk <gavin.drinka@gmail.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <65184747+Dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <51352440+JIPDawg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <JIPDawg93@gmail.com>
-// SPDX-FileCopyrightText: 2024 JustCone <141039037+JustCone14@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 MisterMecky <mrmecky@hotmail.com>
-// SPDX-FileCopyrightText: 2024 Moomoobeef <62638182+Moomoobeef@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Partmedia <kevinz5000@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PopGamer46 <yt1popgamer@gmail.com>
-// SPDX-FileCopyrightText: 2024 PursuitInAshes <pursuitinashes@gmail.com>
-// SPDX-FileCopyrightText: 2024 QueerNB <176353696+QueerNB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 RumiTiger <154005209+RumiTiger@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Saphire Lattice <lattice@saphi.re>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <shadowjjt@gmail.com>
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Spessmann <156740760+Spessmann@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Unisol <1929445+Unisol@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 coolboy911 <85909253+coolboy911@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lunarcomets <140772713+lunarcomets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 osjarw <oskariwjarvinen@gmail.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2024 saintmuntzer <47153094+saintmuntzer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 stellar-novas <stellar_novas@riseup.net>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 J <billsmith116@gmail.com>
-// SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 SpaceManiac <tad@platymuus.com>
-// SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+// <Trauma>
+using Content.Medical.Common.Targeting;
+using Content.Trauma.Common.Body;
+using Content.Trauma.Common.Wizard;
+using Content.Trauma.Common.Xenomorphs;
+using Content.Shared.Body;
+using Robust.Shared.Utility;
+// </Trauma>
 using System.Linq;
 using System.Numerics;
-using Content.Server._Goobstation.Wizard.Systems;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
-using Content.Server.Ghost.Components;
 using Content.Server.Mind;
 using Content.Server.Roles.Jobs;
-using Content.Server.Warps;
 using Content.Shared.Actions;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
-using Content.Shared.Examine;
 using Content.Shared.Eye;
 using Content.Shared.FixedPoint;
 using Content.Shared.Follower;
-using Content.Shared.Follower.Components;
 using Content.Shared.Ghost;
+using Content.Shared.GhostTypes;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
@@ -120,9 +36,8 @@ using Content.Shared.NameModifier.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
-using Content.Shared._White.Xenomorphs.Infection;
+using Content.Shared.Warps;
 using Robust.Server.GameObjects;
-using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
@@ -130,26 +45,19 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Timing;
-
-// Shitmed Change
-using Content.Shared.Body.Components;
-using Content.Shared.Body.Systems;
-using Content.Shared._Shitmed.Body;
-using Content.Shared._Shitmed.Damage;
-using Content.Shared._Shitmed.Targeting;
-using Content.Shared._EinsteinEngines.Silicon.Components;
-using Robust.Shared.Utility;
 
 namespace Content.Server.Ghost
 {
     public sealed class GhostSystem : SharedGhostSystem
     {
+        // <Trauma>
+        [Dependency] private readonly CommonGhostVisibilitySystem _ghostVisibility = default!;
+        [Dependency] private readonly CommonXenomorphSystem _xeno = default!;
+        // </Trauma>
         [Dependency] private readonly SharedActionsSystem _actions = default!;
         [Dependency] private readonly IAdminLogManager _adminLog = default!;
         [Dependency] private readonly SharedEyeSystem _eye = default!;
         [Dependency] private readonly FollowerSystem _followerSystem = default!;
-        [Dependency] private readonly IGameTiming _gameTiming = default!;
         [Dependency] private readonly JobSystem _jobs = default!;
         [Dependency] private readonly EntityLookupSystem _lookup = default!;
         [Dependency] private readonly MindSystem _minds = default!;
@@ -170,14 +78,13 @@ namespace Content.Server.Ghost
         [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly TagSystem _tag = default!;
         [Dependency] private readonly NameModifierSystem _nameMod = default!;
-        [Dependency] private readonly GhostVisibilitySystem _ghostVisibility = default!;
-        [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
+        [Dependency] private readonly GhostSpriteStateSystem _ghostState = default!;
+
         private EntityQuery<GhostComponent> _ghostQuery;
         private EntityQuery<PhysicsComponent> _physicsQuery;
 
         private static readonly ProtoId<TagPrototype> AllowGhostShownByEventTag = "AllowGhostShownByEvent";
         private static readonly ProtoId<DamageTypePrototype> AsphyxiationDamageType = "Asphyxiation";
-        private static readonly ProtoId<DamageTypePrototype> IonDamageType = "Ion";
 
         public override void Initialize()
         {
@@ -189,8 +96,6 @@ namespace Content.Server.Ghost
             SubscribeLocalEvent<GhostComponent, ComponentStartup>(OnGhostStartup);
             SubscribeLocalEvent<GhostComponent, MapInitEvent>(OnMapInit);
             SubscribeLocalEvent<GhostComponent, ComponentShutdown>(OnGhostShutdown);
-
-            SubscribeLocalEvent<GhostComponent, ExaminedEvent>(OnGhostExamine);
 
             SubscribeLocalEvent<GhostComponent, MindRemovedMessage>(OnMindRemovedMessage);
             SubscribeLocalEvent<GhostComponent, MindUnvisitedMessage>(OnMindUnvisitedMessage);
@@ -219,6 +124,9 @@ namespace Content.Server.Ghost
             if (ent.Comp.LifeStage <= ComponentLifeStage.Running)
             {
                 args.VisibilityMask |= (int)VisibilityFlags.Ghost;
+                // Begin DeltaV additions
+                args.VisibilityMask |= (int)VisibilityFlags.CosmicCultMonument;
+                // End DeltaV additions
             }
         }
 
@@ -288,7 +196,7 @@ namespace Content.Server.Ghost
             if (!_minds.TryGetMind(uid, out var mindId, out var mind) || mind.IsVisitingEntity)
                 return;
 
-            if (component.MustBeDead && (_mobState.IsAlive(uid) || _mobState.IsCritical(uid)))
+            if (component.MustBeDead && !_mobState.IsDead(uid)) // Trauma - use the right check to not fuck softcrit
                 return;
 
             OnGhostAttempt(mindId, component.CanReturn, mind: mind);
@@ -299,7 +207,8 @@ namespace Content.Server.Ghost
             // Allow this entity to be seen by other ghosts.
             var visibility = EnsureComp<VisibilityComponent>(uid);
 
-            if (_gameTicker.RunLevel != GameRunLevel.PostRound && !_ghostVisibility.IsVisible(component))
+            if (_gameTicker.RunLevel != GameRunLevel.PostRound
+                && !_ghostVisibility.IsVisible(uid)) // Goob
             {
                 _visibilitySystem.AddLayer((uid, visibility), (int) VisibilityFlags.Ghost, false);
                 _visibilitySystem.RemoveLayer((uid, visibility), (int) VisibilityFlags.Normal, false);
@@ -307,8 +216,10 @@ namespace Content.Server.Ghost
             }
 
             _eye.RefreshVisibilityMask(uid);
-            var time = _gameTiming.CurTime;
+            var time = _gameTiming.RealTime;
             component.TimeOfDeath = time;
+
+            Dirty(uid, component);
         }
 
         private void OnGhostShutdown(EntityUid uid, GhostComponent component, ComponentShutdown args)
@@ -337,16 +248,6 @@ namespace Content.Server.Ghost
             _actions.AddAction(uid, ref component.ToggleLightingActionEntity, component.ToggleLightingAction);
             _actions.AddAction(uid, ref component.ToggleFoVActionEntity, component.ToggleFoVAction);
             _actions.AddAction(uid, ref component.ToggleGhostsActionEntity, component.ToggleGhostsAction);
-        }
-
-        private void OnGhostExamine(EntityUid uid, GhostComponent component, ExaminedEvent args)
-        {
-            var timeSinceDeath = _gameTiming.RealTime.Subtract(component.TimeOfDeath);
-            var deathTimeInfo = timeSinceDeath.Minutes > 0
-                ? Loc.GetString("comp-ghost-examine-time-minutes", ("minutes", timeSinceDeath.Minutes))
-                : Loc.GetString("comp-ghost-examine-time-seconds", ("seconds", timeSinceDeath.Seconds));
-
-            args.PushMarkup(deathTimeInfo);
         }
 
         #region Ghost Deletion
@@ -437,14 +338,15 @@ namespace Content.Server.Ghost
             if (_followerSystem.GetMostGhostFollowed() is not {} target)
                 return;
 
-            WarpTo(uid, target);
+            // If there is a ghostnado happening you almost definitely wanna join it, so we automatically follow instead of just warping.
+            _followerSystem.StartFollowingEntity(uid, target);
         }
 
         private void WarpTo(EntityUid uid, EntityUid target)
         {
             _adminLog.Add(LogType.GhostWarp, $"{ToPrettyString(uid)} ghost warped to {ToPrettyString(target)}");
 
-            if (uid != target && ((TryComp(target, out WarpPointComponent? warp) && warp.Follow) || HasComp<MobStateComponent>(target)))
+            if ((TryComp(target, out WarpPointComponent? warp) && warp.Follow) || HasComp<MobStateComponent>(target))
             {
                 _followerSystem.StartFollowingEntity(uid, target);
                 return;
@@ -463,26 +365,7 @@ namespace Content.Server.Ghost
 
             while (allQuery.MoveNext(out var uid, out var warp))
             {
-                var entity = GetNetEntity(uid);
-                if (warp.Mob)
-                {
-                    var followers = 0;
-                    if (TryComp<FollowedComponent>(uid, out var followComponent))
-                    {
-                        foreach(var _ in followComponent.Following)
-                            followers++;
-                    }
-                    TryComp<MindContainerComponent>(uid, out var mind);
-                    if (mind?.Mind != null)
-                    {
-                        var player_name = $"{warp.Location ?? Name(uid)} ({_jobs.MindTryGetJobName(mind.Mind)})";
-                        yield return new GhostWarp(entity, player_name, warp.Mob, _mobState.IsDead(uid), warp.Ghost, warp.Antagonist, followers);
-                    }
-                }
-                else
-                {
-                    yield return new GhostWarp(entity, warp.Location ?? Name(uid), warp.Mob, true, warp.Ghost, warp.Antagonist, 0);
-                }
+                yield return new GhostWarp(GetNetEntity(uid), warp.Location ?? Name(uid), true);
             }
         }
 
@@ -495,16 +378,13 @@ namespace Content.Server.Ghost
 
                 if (attached == except) continue;
 
-                if(HasComp<WarpPointComponent>(attached)) // We're only a backup, they got better filtering than us.
-                {
-                    continue;
-                }
-
                 TryComp<MindContainerComponent>(attached, out var mind);
+
                 var jobName = _jobs.MindTryGetJobName(mind?.Mind);
                 var playerInfo = $"{Comp<MetaDataComponent>(attached).EntityName} ({jobName})";
 
-                yield return new GhostWarp(GetNetEntity(attached), playerInfo, true, _mobState.IsDead(attached), false, false, 0);
+                if (_mobState.IsAlive(attached) || _mobState.IsCritical(attached))
+                    yield return new GhostWarp(GetNetEntity(attached), playerInfo, false);
             }
         }
 
@@ -606,6 +486,11 @@ namespace Content.Server.Ghost
             var ghost = SpawnAtPosition(GameTicker.ObserverPrototypeName, spawnPosition.Value);
             var ghostComponent = Comp<GhostComponent>(ghost);
 
+            if (TryComp<GhostSpriteStateComponent>(ghost, out var state))  // If more TryComps are added this should be turned into an event
+            {
+                _ghostState.SetGhostSprite((ghost, state), mind);
+            }
+
             // Try setting the ghost entity name to either the character name or the player name.
             // If all else fails, it'll default to the default entity prototype name, "observer".
             // However, that should rarely happen.
@@ -699,7 +584,8 @@ namespace Content.Server.Ghost
                 {
                     canReturn = true;
 
-                    if (!HasComp<XenomorphPreventSuicideComponent>(playerEntity.Value))
+                    // <Goob> - added this check
+                    if (!_xeno.IsSlimed(playerEntity.Value))
                     {
                         FixedPoint2 dealtDamage = 200;
 
@@ -707,26 +593,20 @@ namespace Content.Server.Ghost
                             && TryComp<MobThresholdsComponent>(playerEntity, out var thresholds))
                         {
                             var playerDeadThreshold = _mobThresholdSystem.GetThresholdForState(playerEntity.Value, MobState.Dead, thresholds);
-                            dealtDamage = playerDeadThreshold - damageable.TotalDamage;
+                            dealtDamage = playerDeadThreshold -
+                                _mobThresholdSystem.CheckVitalDamage((playerEntity.Value, damageable)); // Trauma - use vital damage
                         }
 
-                        // Shitmed Change Start
-                        var damageType = HasComp<SiliconComponent>(playerEntity)
-                            ? IonDamageType
-                            : AsphyxiationDamageType;
-                        DamageSpecifier damage = new(_prototypeManager.Index<DamageTypePrototype>(damageType), dealtDamage);
+                        // <Trauma>
+                        var ev = new SuicideDamageEvent(AsphyxiationDamageType);
+                        RaiseLocalEvent(playerEntity.Value, ref ev);
+                        DamageSpecifier damage = new(_prototypeManager.Index<DamageTypePrototype>(ev.DamageType), dealtDamage);
 
-                        if (TryComp<BodyComponent>(playerEntity, out var body)
-                            && body.BodyType == BodyType.Complex
-                            && body.RootContainer.ContainedEntities.FirstOrNull() is { } root)
-                            _damageable.TryChangeDamage(playerEntity,
-                                damage,
-                                true,
-                                targetPart: TargetBodyPart.All);
-                        else
-                            _damageable.TryChangeDamage(playerEntity, damage, true);
-                        // Shitmed Change End
+                        TargetBodyPart? targetPart = HasComp<BodyComponent>(playerEntity) ? TargetBodyPart.Chest : null;
+                        _damageable.ChangeDamage(playerEntity.Value, damage, true, targetPart: targetPart);
+                        // </Trauma>
                     }
+                    // </Goob>
                 }
             }
 

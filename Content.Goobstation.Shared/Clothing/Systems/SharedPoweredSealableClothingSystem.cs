@@ -1,16 +1,9 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Clothing.Components;
 using Content.Shared.Popups;
 using Content.Shared.PowerCell;
+using Content.Shared.PowerCell.Components;
 using Content.Shared.Wires;
 
 namespace Content.Goobstation.Shared.Clothing.Systems;
@@ -21,7 +14,7 @@ namespace Content.Goobstation.Shared.Clothing.Systems;
 public abstract class SharedPoweredSealableClothingSystem : EntitySystem
 {
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-    [Dependency] private readonly SharedPowerCellSystem _powerCellSystem = default!;
+    [Dependency] private readonly PowerCellSystem _powerCell = default!;
 
     public override void Initialize()
     {
@@ -60,7 +53,8 @@ public abstract class SharedPoweredSealableClothingSystem : EntitySystem
         if (controlComp.IsCurrentlySealed)
             return;
 
-        if (!_powerCellSystem.HasDrawCharge(entity, cellDrawComp) || !_powerCellSystem.HasActivatableCharge(entity, cellDrawComp))
+        var ent = (entity.Owner, cellDrawComp);
+        if (!_powerCell.HasDrawCharge(ent) || !_powerCell.HasActivatableCharge(ent))
         {
             _popupSystem.PopupClient(Loc.GetString(entity.Comp.NotPoweredPopup), entity, args.User);
             args.Cancel();
@@ -82,4 +76,3 @@ public abstract class SharedPoweredSealableClothingSystem : EntitySystem
         }
     }
 }
-

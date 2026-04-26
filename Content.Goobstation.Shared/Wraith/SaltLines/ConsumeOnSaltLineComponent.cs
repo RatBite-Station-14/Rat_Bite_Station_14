@@ -1,5 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.FixedPoint;
-using Robust.Shared.GameStates;
 
 namespace Content.Goobstation.Shared.Wraith.SaltLines;
 
@@ -18,4 +19,3 @@ public sealed partial class ConsumeOnSaltLineComponent : Component
 /// </summary>
 [ByRefEvent]
 public record struct AttemptSaltLineEvent(EntityUid User,bool Cancelled = false);
-

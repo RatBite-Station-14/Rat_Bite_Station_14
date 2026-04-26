@@ -1,5 +1,6 @@
-﻿using Content.Shared.Whitelist;
-using Robust.Shared.GameStates;
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Content.Shared.Whitelist;
 
 namespace Content.Goobstation.Shared.Interaction;
 

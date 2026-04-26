@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Globalization;
 using Robust.Client.UserInterface.RichText;
 using Robust.Shared.Utility;
@@ -11,7 +6,7 @@ namespace Content.Client.Guidebook.RichText;
 
 /// <summary>
 /// RichText tag that can display values extracted from entity prototypes.
-/// In order to be accessed by this tag, the desired field/property must
+/// To be accessed by this tag, the desired field/property must
 /// be tagged with <see cref="Shared.Guidebook.GuidebookDataAttribute"/>.
 /// </summary>
 public sealed class ProtodataTag : IMarkupTagHandler

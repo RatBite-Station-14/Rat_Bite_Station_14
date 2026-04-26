@@ -1,5 +1,7 @@
-using Content.Shared._Shitmed.Targeting;
-using Content.Shared.Damage;
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Content.Medical.Common.Targeting;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Timing;
@@ -54,7 +56,7 @@ public sealed class DamageNearbySystem : EntitySystem
             if (!_whitelist.IsWhitelistPassOrNull(ent.Comp.Whitelist, entity))
                 continue;
 
-            _damageable.TryChangeDamage(entity, ent.Comp.Damage, targetPart: TargetBodyPart.All);
+            _damageable.TryChangeDamage(entity.Owner, ent.Comp.Damage, targetPart: TargetBodyPart.All);
         }
     }
 }

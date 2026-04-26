@@ -1,43 +1,34 @@
-// SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Content.Goobstation.Common.CCVar; //Goobstation - Crawling
+// <Trauma>
+using Content.Goobstation.Common.CCVar;
 using Content.Goobstation.Common.Projectiles;
-using Content.Shared._DV.Abilities;
-using Content.Shared.Projectiles;
-using Content.Shared.Weapons.Ranged.Components;
-using Content.Shared.Standing;
-using Robust.Shared.Physics.Events;
-using Robust.Shared.Containers;
+using Robust.Shared.Configuration;
 using Robust.Shared.Physics.Components;
-using Robust.Shared.Configuration; //Goobstation - Crawling
+// </Trauma>
+using Content.Shared.Damage.Components;
+using Content.Shared.Projectiles;
+using Content.Shared.Standing;
+using Content.Shared.Weapons.Ranged.Components;
+using Robust.Shared.Containers;
+using Robust.Shared.Physics.Events;
 
-namespace Content.Shared.Damage.Components;
+namespace Content.Shared.Damage.Systems;
 
 public sealed class RequireProjectileTargetSystem : EntitySystem
 {
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-
-    // Goobstation
+    // <Trauma>
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
+    // </Trauma>
+    [Dependency] private readonly SharedContainerSystem _container = default!;
 
-    private float _crawlHitzoneSize; //Goobstation
+    private float _crawlHitzoneSquared; // Goob
 
     public override void Initialize()
     {
+        _cfg.OnValueChanged(GoobCVars.CrawlHitzoneSize, x => _crawlHitzoneSquared = x * x, true); // Goob - squared now as a micro-optimisation
         SubscribeLocalEvent<RequireProjectileTargetComponent, PreventCollideEvent>(PreventCollide);
         SubscribeLocalEvent<RequireProjectileTargetComponent, StoodEvent>(StandingBulletHit);
         SubscribeLocalEvent<RequireProjectileTargetComponent, DownedEvent>(LayingBulletPass);
-        _cfg.OnValueChanged(GoobCVars.CrawlHitzoneSize, value => _crawlHitzoneSize = value, true); //Goobstation - Crawling
     }
 
     private void PreventCollide(Entity<RequireProjectileTargetComponent> ent, ref PreventCollideEvent args)
@@ -52,10 +43,10 @@ public sealed class RequireProjectileTargetSystem : EntitySystem
         // Goob edit start
         if (TryComp(other, out TargetedProjectileComponent? targeted))
         {
-            if (targeted.Target == null || targeted.Target == ent)
+            if (GetEntity(targeted.Target) is not {} target || target == ent.Owner)
                 return;
 
-            var ev = new ShouldTargetedProjectileCollideEvent(targeted.Target.Value);
+            var ev = new ShouldTargetedProjectileCollideEvent(target);
             RaiseLocalEvent(ent, ev);
             if (ev.Handled)
                 return;
@@ -70,10 +61,6 @@ public sealed class RequireProjectileTargetSystem : EntitySystem
             if (!shooter.HasValue)
                 return;
 
-            // Goobstation - Crawling
-            if (TryComp<CrawlUnderObjectsComponent>(shooter, out var crawl) && crawl.Enabled)
-                return;
-
             if (TryComp(ent, out PhysicsComponent? physics) && physics.LinearVelocity.Length() > 2.5f) // Goobstation
                 return;
 
@@ -82,8 +69,10 @@ public sealed class RequireProjectileTargetSystem : EntitySystem
             if (TerminatingOrDeleted(shooter.Value))
                 return;
 
-            if ((_transform.GetMapCoordinates(ent).Position - projectile.TargetCoordinates).Length() <= _crawlHitzoneSize) //Goobstation
+            // <Goob>
+            if ((_transform.GetMapCoordinates(ent).Position - projectile.TargetCoordinates).LengthSquared() <= _crawlHitzoneSquared)
                 return;
+            // </Goob>
 
             if (!_container.IsEntityOrParentInContainer(shooter.Value))
                 args.Cancelled = true;

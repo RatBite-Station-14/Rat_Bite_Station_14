@@ -22,28 +22,36 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.IntegrationTests.Fixtures;
 using Content.Server.GameTicking;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
-using Content.Server.Station.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Shuttles.Components;
+using Content.Shared.Station.Components;
 using Robust.Shared.GameObjects;
+using Robust.Shared.Log; // Trauma
 using Robust.Shared.Map.Components;
 
 namespace Content.IntegrationTests.Tests.Station;
 
 [TestFixture]
 [TestOf(typeof(EmergencyShuttleSystem))]
-public sealed class EvacShuttleTest
+public sealed class EvacShuttleTest : GameTest
 {
+    public override PoolSettings PoolSettings => new PoolSettings()
+    {
+        DummyTicker = true,
+        Dirty = true,
+    };
+
     /// <summary>
     /// Ensure that the emergency shuttle can be called, and that it will travel to centcomm
     /// </summary>
     [Test]
     public async Task EmergencyEvacTest()
     {
-        await using var pair = await PoolManager.GetServerClient(new PoolSettings { DummyTicker = true, Dirty = true });
+        var pair = Pair;
         var server = pair.Server;
         var entMan = server.EntMan;
         var ticker = server.System<GameTicker>();
@@ -63,6 +71,16 @@ public sealed class EvacShuttleTest
 
         // Find the station, centcomm, and shuttle, and ftl map.
 
+        // <Trauma> temporary thing to try fix heisentest
+        var sawmill = server.ResolveDependency<ILogManager>().GetSawmill("troll_evac_test");
+        var query = entMan.AllEntityQueryEnumerator<StationDataComponent>();
+        sawmill.Info($"Stations: {entMan.Count<StationDataComponent>()}");
+        sawmill.Info($"Stations with centcomm: {entMan.Count<StationCentcommComponent>()}");
+        while (query.MoveNext(out var uid, out _))
+        {
+            sawmill.Info($"Station {uid}: {entMan.HasComponent<StationCentcommComponent>(uid)}");
+        }
+        // </Trauma>
         Assert.That(entMan.Count<StationCentcommComponent>(), Is.EqualTo(1));
         Assert.That(entMan.Count<StationEmergencyShuttleComponent>(), Is.EqualTo(1));
         Assert.That(entMan.Count<StationDataComponent>(), Is.EqualTo(1));
@@ -73,7 +91,7 @@ public sealed class EvacShuttleTest
         var data = entMan.GetComponent<StationDataComponent>(station);
         var shuttleData = entMan.GetComponent<StationEmergencyShuttleComponent>(station);
 
-        var saltern = data.Grids.First(x => !entMan.HasComponent<Content.Server._Lavaland.Procedural.Components.LavalandStationComponent>(x)); // Lavaland change - ignore lavaland outpost
+        var saltern = data.Grids.First(x => !entMan.HasComponent<Content.Lavaland.Server.Procedural.Components.LavalandStationComponent>(x)); // Lavaland change - ignore lavaland outpost
         Assert.That(entMan.HasComponent<MapGridComponent>(saltern));
 
         var shuttle = shuttleData.EmergencyShuttle!.Value;
@@ -145,6 +163,5 @@ public sealed class EvacShuttleTest
         server.CfgMan.SetCVar(CCVars.EmergencyShuttleDockTime, dockTime);
         pair.Server.CfgMan.SetCVar(CCVars.EmergencyShuttleEnabled, false);
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, gameMap);
-        await pair.CleanReturnAsync();
     }
 }

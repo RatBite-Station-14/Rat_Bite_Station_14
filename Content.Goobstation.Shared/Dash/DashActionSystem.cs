@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-// SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Emoting;
@@ -20,10 +14,12 @@ namespace Content.Goobstation.Shared.Dash;
 public sealed class DashActionSystem : EntitySystem
 {
     [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private readonly SharedAnimatedEmotesSystem _animatedEmotes = default!;
     [Dependency] private readonly SharedGravitySystem _gravity = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedStaminaSystem _stamina = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -58,11 +54,8 @@ public sealed class DashActionSystem : EntitySystem
         if (args.StaminaDrain != null)
             _stamina.TakeStaminaDamage(args.Performer, args.StaminaDrain.Value, visual: false, immediate: false);
 
-        if (args.Emote != null && TryComp<AnimatedEmotesComponent>(args.Performer, out var emotes))
-        {
-            emotes.Emote = args.Emote;
-            Dirty(args.Performer, emotes);
-        }
+        if (args.Emote is {} emote)
+            _animatedEmotes.PlayEmoteAnimation(args.Performer, emote);
     }
 
     private void OnComponentInit(EntityUid uid, DashActionComponent comp, ref ComponentInit args)

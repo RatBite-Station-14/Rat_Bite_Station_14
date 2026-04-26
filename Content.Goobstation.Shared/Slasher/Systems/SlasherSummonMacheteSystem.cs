@@ -1,10 +1,11 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.Slasher.Components;
 using Content.Goobstation.Shared.Slasher.Events;
 using Content.Shared.Actions;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Popups;
-using Robust.Shared.Prototypes;
 
 namespace Content.Goobstation.Shared.Slasher.Systems;
 
@@ -56,7 +57,7 @@ public sealed class SlasherSummonMacheteSystem : EntitySystem
             if (!_protos.TryIndex(ent.Comp.MachetePrototype, out EntityPrototype? _))
                 return;
 
-            machete = Spawn(ent.Comp.MachetePrototype, _xform.GetMoverCoordinates(ent.Owner));
+            machete = PredictedSpawnAtPosition(ent.Comp.MachetePrototype, _xform.GetMoverCoordinates(ent.Owner));
             ent.Comp.MacheteUid = machete;
             Dirty(ent);
         }

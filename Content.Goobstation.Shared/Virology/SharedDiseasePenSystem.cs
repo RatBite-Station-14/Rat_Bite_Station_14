@@ -1,4 +1,6 @@
-﻿using Content.Goobstation.Shared.Disease;
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Content.Goobstation.Shared.Disease;
 using Content.Goobstation.Shared.Disease.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;

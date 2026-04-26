@@ -1,21 +1,22 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Common.Changeling;
 using Content.Shared.FixedPoint;
 using Content.Goobstation.Shared.Changeling.Components;
-using Content.Shared._Shitmed.Damage;
-using Content.Shared._Shitmed.Targeting;
+using Content.Medical.Common.Damage;
+using Content.Medical.Common.Targeting;
 using Content.Shared.Alert;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Fluids;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Stunnable;
-using Robust.Shared.Network;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Shared.Changeling.Systems;
@@ -67,7 +68,7 @@ public abstract class SharedChangelingBiomassSystem : EntitySystem
 
     private void OnRemoved(Entity<ChangelingBiomassComponent> ent, ref ComponentRemove args)
     {
-        _alerts.ClearAlert(ent, ent.Comp.AlertId);
+        _alerts.ClearAlert(ent.Owner, ent.Comp.AlertId);
 
         if (_lingQuery.TryComp(ent, out var ling))
             ling.ChemicalRegenMultiplier -= ent.Comp.ChemicalBoost;
@@ -115,7 +116,7 @@ public abstract class SharedChangelingBiomassSystem : EntitySystem
 
             DoPopup(ent, ent.Comp.SecondWarnPopup, PopupType.MediumCaution);
 
-            _stun.TryStun(ent, ent.Comp.SecondWarnStun, false);
+            _stun.TryAddParalyzeDuration(ent, ent.Comp.SecondWarnStun);
         }
         else if (ent.Comp.Biomass > ent.Comp.SecondWarnThreshold)
             ent.Comp.SecondWarnReached = false;
@@ -128,18 +129,19 @@ public abstract class SharedChangelingBiomassSystem : EntitySystem
 
             DoPopup(ent, ent.Comp.ThirdWarnPopup, PopupType.LargeCaution);
 
-            _stun.TryStun(ent, ent.Comp.ThirdWarnStun, false);
+            _stun.TryAddParalyzeDuration(ent, ent.Comp.ThirdWarnStun);
 
             // do the blood cough
             if (!_blood.TryModifyBloodLevel(ent.Owner, -ent.Comp.BloodCoughAmount)
                 || !_bloodQuery.TryComp(ent, out var bloodComp))
             {
-                _stun.TryKnockdown(ent, ent.Comp.ThirdWarnStun, false);
+                _stun.TryKnockdown(ent.Owner, ent.Comp.ThirdWarnStun, false);
                 return;
             }
 
-            var cough = new Solution();
-            cough.AddReagent(bloodComp.BloodReagent, ent.Comp.BloodCoughAmount);
+            var cough = bloodComp.BloodReferenceSolution;
+            cough = cough.Clone(); // don't modify the original blood...
+            cough.ScaleTo(ent.Comp.BloodCoughAmount);
 
             _puddle.TrySpillAt(Transform(ent).Coordinates, cough, out _, false);
             DoCough(ent);
@@ -161,7 +163,7 @@ public abstract class SharedChangelingBiomassSystem : EntitySystem
         var newBiomass = ent.Comp.Biomass -= ent.Comp.DrainAmount;
         ent.Comp.Biomass = Math.Clamp(newBiomass, 0, ent.Comp.MaxBiomass);
 
-        _alerts.ShowAlert(ent, ent.Comp.AlertId);
+        _alerts.ShowAlert(ent.Owner, ent.Comp.AlertId);
     }
 
     public readonly ProtoId<DamageTypePrototype> Genetic = "Cellular";
@@ -173,7 +175,7 @@ public abstract class SharedChangelingBiomassSystem : EntitySystem
             return;
 
         var damagespec = new DamageSpecifier(genetic, (FixedPoint2) totalDamage);
-        _dmg.TryChangeDamage(ent, damagespec, targetPart: TargetBodyPart.All, splitDamage: SplitDamageBehavior.SplitEnsureAllOrganic);
+        _dmg.ChangeDamage(ent.Owner, damagespec, targetPart: TargetBodyPart.All, splitDamage: SplitDamageBehavior.SplitEnsureAllOrganic);
 
         EnsureComp<AbsorbedComponent>(ent);
 

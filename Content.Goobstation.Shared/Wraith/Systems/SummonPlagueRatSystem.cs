@@ -1,10 +1,11 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.Wraith.Components;
 using Content.Goobstation.Shared.Wraith.Events;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
-using Robust.Shared.Network;
 using Robust.Shared.Physics.Systems;
 
 namespace Content.Goobstation.Shared.Wraith.Systems;

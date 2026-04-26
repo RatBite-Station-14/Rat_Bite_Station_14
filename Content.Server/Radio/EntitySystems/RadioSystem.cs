@@ -1,55 +1,21 @@
-// SPDX-FileCopyrightText: 2020 Bright <nsmoak10@yahoo.com>
-// SPDX-FileCopyrightText: 2020 Bright0 <55061890+Bright0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2020 Swept <jamesurquhartwebb@gmail.com>
-// SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2021 Metal Gear Sloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Kevin Zheng <kevinz5000@gmail.com>
-// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 AJCM <AJCM@tutanota.com>
-// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 adamsong <adamsong@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 SkaldetSkaeg <impotekh@gmail.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
-// SPDX-FileCopyrightText: 2025 CerberusWolfie <wb.johnb.willis@gmail.com>
-// SPDX-FileCopyrightText: 2025 GabyChangelog <agentepanela2@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 John Willis <143434770+CerberusWolfie@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Kyoth25f <kyoth25f@gmail.com>
-// SPDX-FileCopyrightText: 2025 Panela <107573283+AgentePanela@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 cosmosgc <cosmoskitsune@hotmail.com>
-// SPDX-FileCopyrightText: 2025 the biggest bruh <199992874+thebiggestbruh@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using System.Linq;  // goob - intermap transmitters
-using Content.Goobstation.Shared.Communications; // goob - intermap transmitters
-using Content.Goobstation.Shared.Loudspeaker.Events; // goob - loudspeakers
+// <Trauma>
+using Content.Goobstation.Shared.Communications;
+using Content.Goobstation.Shared.Loudspeaker.Events;
+using Content.Goobstation.Shared.Radio;
+using Content.Trauma.Common.Language;
+using Content.Trauma.Common.Language.Systems;
+using Content.Shared.Access.Systems;
+using Content.Shared.Chat.RadioIconsEvents;
+using Content.Shared.StatusIcon;
+using Content.Shared.Whitelist;
+using Content.Trauma.Common.Speech;
+using System.Linq;
+// </Trauma>
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
-using Content.Server._EinsteinEngines.Language;
 using Content.Server.Power.Components;
-using Content.Server.Radio.Components;
 using Content.Shared.Chat;
 using Content.Shared.Database;
-using Content.Shared._EinsteinEngines.Language;
 using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
 using Content.Shared.Speech;
@@ -60,28 +26,25 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
-using Content.Shared.Access.Systems; // Goobstation
-using Content.Shared.Chat.RadioIconsEvents; // Goobstation
-using Content.Shared.Whitelist; // Goobstation
-using Content.Shared.StatusIcon; // Goobstation
-using Content.Goobstation.Shared.Radio; // Goobstation
 
 namespace Content.Server.Radio.EntitySystems;
 
 /// <summary>
 ///     This system handles intrinsic radios and the general process of converting radio messages into chat messages.
 /// </summary>
-public sealed partial class RadioSystem : EntitySystem
+public sealed partial class RadioSystem : EntitySystem // Trauma - made partial
 {
+    // <Trauma>
+    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private readonly CommonLanguageSystem _language = default!;
+    [Dependency] private readonly RadioJobIconSystem _radioIcon = default!;
+    // </Trauma>
     [Dependency] private readonly INetManager _netMan = default!;
     [Dependency] private readonly IReplayRecordingManager _replay = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly RadioJobIconSystem _radioIconSystem = default!; // Goobstation - radio icons
-    [Dependency] private readonly LanguageSystem _language = default!; // Einstein Engines - Language
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!; // Goobstation - Whitelisted radio channels
 
     // set used to prevent radio feedback loops.
     private readonly HashSet<string> _messages = new();
@@ -114,10 +77,9 @@ public sealed partial class RadioSystem : EntitySystem
         if (TryComp(uid, out ActorComponent? actor))
         {
             // Einstein Engines - Languages begin
-            var listener = component.Owner;
             var msg = args.OriginalChatMsg;
 
-            if (listener != null && !_language.CanUnderstand(listener, args.Language.ID))
+            if (!_language.CanUnderstand(uid, args.Language.ID))
                 msg = args.LanguageObfuscatedChatMsg;
 
             _netMan.ServerSendMessage(new MsgChatMessage { Message = msg }, actor.PlayerSession.Channel);
@@ -173,21 +135,22 @@ public sealed partial class RadioSystem : EntitySystem
         var evt = new TransformSpeakerNameEvent(messageSource, MetaData(messageSource).EntityName);
         RaiseLocalEvent(messageSource, evt);
 
-        // Goob - Job icons
-        if (_radioIconSystem.TryGetJobIcon(messageSource, out var jobIcon, out var jobName))
+        // <Goob>
+        if (_radioIcon.TryGetJobIcon(messageSource, out var jobIcon, out var jobName))
         {
             var iconEvent = new TransformSpeakerJobIconEvent(messageSource, jobIcon.Value, jobName);
-            RaiseLocalEvent(messageSource, iconEvent);
+            RaiseLocalEvent(messageSource, ref iconEvent);
 
             jobIcon = iconEvent.JobIcon;
             jobName = iconEvent.JobName;
         }
+        // </Goob>
 
         var name = evt.VoiceName;
         name = FormattedMessage.EscapeText(name);
 
         SpeechVerbPrototype speech;
-        if (evt.SpeechVerb != null && _prototype.TryIndex(evt.SpeechVerb, out var evntProto))
+        if (evt.SpeechVerb != null && _prototype.Resolve(evt.SpeechVerb, out var evntProto))
             speech = evntProto;
         else
             speech = _chat.GetSpeechVerb(messageSource, message);
@@ -204,7 +167,7 @@ public sealed partial class RadioSystem : EntitySystem
         //     ("channel", $"\\[{channel.LocalizedName}\\]"),
         //     ("name", name),
         //     ("message", content));
-        var wrappedMessage = WrapRadioMessage(messageSource, channel, name, content, language, jobIcon, jobName); // Einstein Engines - Language
+        var wrappedMessage = WrapRadioMessage(messageSource, channel, name, content, language, speech, jobIcon, jobName); // Einstein Engines - Language
 
         // most radios are relayed to chat, so lets parse the chat message beforehand
         // var chat = new ChatMessage(
@@ -223,7 +186,7 @@ public sealed partial class RadioSystem : EntitySystem
         var obfuscated = _language.ObfuscateSpeech(content, language);
         // Goobstation - Chat Pings
         // Added GetNetEntity(messageSource), to source
-        var obfuscatedWrapped = WrapRadioMessage(messageSource, channel, name, obfuscated, language, jobIcon, jobName);
+        var obfuscatedWrapped = WrapRadioMessage(messageSource, channel, name, obfuscated, language, speech, jobIcon, jobName);
         var notUdsMsg = new ChatMessage(ChatChannel.Radio, obfuscated, obfuscatedWrapped, GetNetEntity(messageSource), null);
         var ev = new RadioReceiveEvent(messageSource, channel, msg, notUdsMsg, language, radioSource);
         // Einstein Engines - Language end
@@ -231,6 +194,7 @@ public sealed partial class RadioSystem : EntitySystem
         var sendAttemptEv = new RadioSendAttemptEvent(channel, radioSource);
         RaiseLocalEvent(ref sendAttemptEv);
         RaiseLocalEvent(radioSource, ref sendAttemptEv);
+        RaiseLocalEvent(messageSource, ref sendAttemptEv); // Trauma
         var canSend = !sendAttemptEv.Cancelled;
 
         var sourceMapId = Transform(radioSource).MapID;
@@ -283,11 +247,11 @@ public sealed partial class RadioSystem : EntitySystem
         string name,
         string message,
         LanguagePrototype language,
+        SpeechVerbPrototype speech,
         ProtoId<JobIconPrototype>? jobIcon, // Goob edit
         string? jobName = null) // Gaby Radio icons
     {
         // TODO: code duplication with ChatSystem.WrapMessage
-        var speech = _chat.GetSpeechVerb(source, message);
         var languageColor = channel.Color;
 
         // Goobstation - Bolded Language Overrides begin
@@ -328,10 +292,15 @@ public sealed partial class RadioSystem : EntitySystem
             : Loc.GetString("chat-radio-message-name-with-icon", ("jobIcon", jobIcon), ("jobName", jobName ?? ""), ("name", name));
         // goob end
 
+        // <Trauma> - allow source entity to replace font
+        var fontEv = new SpeechFontOverrideEvent(source, language.SpeechOverride.FontId ?? speech.FontId);
+        RaiseLocalEvent(source, ref fontEv);
+        // </Trauma>
+
         return Loc.GetString(wrapId,
             ("color", channel.Color),
             ("languageColor", languageColor),
-            ("fontType", language.SpeechOverride.FontId ?? speech.FontId),
+            ("fontType", fontEv.Font), // Trauma - use Font from above
             ("fontSize", loudSpeakFont ?? language.SpeechOverride.FontSize ?? speech.FontSize), // goob edit - "loudSpeakFont"
             ("boldFontType", language.SpeechOverride.BoldFontId ?? language.SpeechOverride.FontId ?? speech.FontId), // Goob Edit - Custom Bold Fonts
             ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
@@ -357,12 +326,4 @@ public sealed partial class RadioSystem : EntitySystem
         }
         return false;
     }
-
-    /// <inheritdoc cref="TelecomServerComponent"/>
-    private bool HasActiveTransmitter(MapId mapId)
-    {
-        return EntityQuery<TelecomTransmitterComponent, ApcPowerReceiverComponent, TransformComponent>()
-            .Any(server => server.Item3.MapID == mapId && server.Item2.Powered);
-    }
-    // goob end
 }

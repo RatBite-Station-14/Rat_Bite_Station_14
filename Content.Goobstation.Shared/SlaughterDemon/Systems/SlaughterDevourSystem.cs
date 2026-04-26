@@ -1,9 +1,8 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.SlaughterDemon.Objectives;
 using Content.Goobstation.Shared.SlaughterDemon.Other;
-using Content.Shared._EinsteinEngines.Silicon.Components;
-using Content.Shared._Shitmed.Damage;
-using Content.Shared._Shitmed.Targeting;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
@@ -11,6 +10,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Popups;
 using Content.Shared.Silicons.Borgs.Components;
+using Content.Trauma.Common.Silicon;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
 
@@ -27,9 +27,10 @@ public sealed class SlaughterDevourSystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private readonly CommonSiliconSystem _silicon = default!;
 
     private EntityQuery<PullerComponent> _pullerQuery;
-    private EntityQuery<HumanoidAppearanceComponent> _humanoid;
+    private EntityQuery<HumanoidProfileComponent> _humanoid;
     private EntityQuery<ActorComponent> _actorQuery;
     /// <inheritdoc/>
     public override void Initialize()
@@ -37,7 +38,7 @@ public sealed class SlaughterDevourSystem : EntitySystem
         base.Initialize();
 
         _pullerQuery = GetEntityQuery<PullerComponent>();
-        _humanoid = GetEntityQuery<HumanoidAppearanceComponent>();
+        _humanoid = GetEntityQuery<HumanoidProfileComponent>();
         _actorQuery = GetEntityQuery<ActorComponent>();
 
         SubscribeLocalEvent<SlaughterDevourComponent, MapInitEvent>(OnMapInit);
@@ -62,8 +63,8 @@ public sealed class SlaughterDevourSystem : EntitySystem
             || args.Cancelled)
             return;
 
-        var ev = new SlaughterDevourEvent(args.Target.Value, ent.Owner);
-        RaiseLocalEvent(ent.Owner, ref ev, true);
+        var ev = new SlaughterDevourEvent(args.Target.Value, Transform(ent.Owner).Coordinates);
+        RaiseLocalEvent(ent.Owner, ref ev);
     }
 
     /// <summary>
@@ -123,29 +124,23 @@ public sealed class SlaughterDevourSystem : EntitySystem
 
     public void HealAfterDevouring(EntityUid target, EntityUid devourer, SlaughterDevourComponent component)
     {
+        var popup = "slaughter-devour-other";
+        var amount = component.ToHealAnythingElse;
         // I dont know how to refactor this into events so im leaving it like this
-        var toHeal = component.ToHeal;
-        if (HasComp<HumanoidAppearanceComponent>(target) && !HasComp<SiliconComponent>(target))
+        if (HasComp<BorgChassisComponent>(target) || _silicon.IsSilicon(target))
         {
-            _popup.PopupEntity(Loc.GetString("slaughter-devour-humanoid"), devourer);
+            popup = "slaughter-devour-robot";
+            amount = component.ToHealNonCrew;
         }
-        else if (HasComp<BorgChassisComponent>(target) || HasComp<SiliconComponent>(target))
+        else if (HasComp<HumanoidProfileComponent>(target))
         {
-            _popup.PopupEntity(Loc.GetString("slaughter-devour-robot"), devourer);
-            toHeal = component.ToHealNonCrew;
-        }
-        else
-        {
-            _popup.PopupEntity(Loc.GetString("slaughter-devour-other"), devourer);
-            toHeal = component.ToHealAnythingElse;
+            popup = "slaughter-devour-humanoid";
+            amount = component.ToHeal;
         }
 
-        _damageable.TryChangeDamage(devourer,
-            toHeal,
-            true,
-            false,
-            targetPart: TargetBodyPart.All,
-            splitDamage: SplitDamageBehavior.SplitEnsureAll);
+        _popup.PopupClient(Loc.GetString(popup), devourer, devourer);
+        var damage = component.HealDamage * amount;
+        _damageable.ChangeDamage(devourer, damage, true);
     }
 
     /// <summary>

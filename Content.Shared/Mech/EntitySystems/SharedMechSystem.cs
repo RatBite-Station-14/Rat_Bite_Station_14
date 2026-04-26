@@ -1,37 +1,9 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Rane <60792108+Elijahrane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 brainfood1183 <113240905+brainfood1183@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2023 keronshb <keronshb@live.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Arendian <137322659+Arendian@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 NULL882 <gost6865@yandex.ru>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ScyronX <166930367+ScyronX@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Ilya246 <ilyukarno@gmail.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+// <Trauma>
+using Content.Goobstation.Common.CCVar;
+using Content.Goobstation.Common.Mech;
+using Content.Trauma.Common.TileMovement;
+// </Trauma>
 using System.Linq;
-using Content.Goobstation.Common.CCVar; // Goob Edit
-using Content.Goobstation.Common.Mech; // Goobstation
-using Content.Shared._vg.TileMovement; // Goobstation
 using Content.Shared.Access.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
@@ -47,19 +19,13 @@ using Content.Shared.Mech.Equipment.Components;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Storage.Components;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Whitelist;
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
-
-using Content.Shared.Emag.Systems;
-using Content.Shared.Weapons.Ranged.Events;
-using Content.Shared.Hands.Components;
-using Content.Shared.Hands.EntitySystems;
-using Content.Shared.Inventory.VirtualItem;
-using Robust.Shared.Configuration;
 
 namespace Content.Shared.Mech.EntitySystems;
 
@@ -79,13 +45,6 @@ public abstract partial class SharedMechSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private readonly EmagSystem _emag = default!; // Goobstation change
-    [Dependency] private readonly SharedHandsSystem _hands = default!; // Goobstation Change
-    [Dependency] private readonly SharedVirtualItemSystem _virtualItem = default!; // Goobstation Change
-    [Dependency] private readonly IConfigurationManager _config = default!; // Goobstation Change
-
-    // Goobstation: Local variable for checking if mech guns can be used out of them.
-    private bool _canUseMechGunOutside;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -95,25 +54,17 @@ public abstract partial class SharedMechSystem : EntitySystem
         SubscribeLocalEvent<MechComponent, UserActivateInWorldEvent>(RelayInteractionEvent);
         SubscribeLocalEvent<MechComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<MechComponent, DestructionEventArgs>(OnDestruction);
+        SubscribeLocalEvent<MechComponent, EntityStorageIntoContainerAttemptEvent>(OnEntityStorageDump);
         SubscribeLocalEvent<MechComponent, GetAdditionalAccessEvent>(OnGetAdditionalAccess);
         SubscribeLocalEvent<MechComponent, DragDropTargetEvent>(OnDragDrop);
         SubscribeLocalEvent<MechComponent, CanDropTargetEvent>(OnCanDragDrop);
-        SubscribeLocalEvent<MechComponent, GotEmaggedEvent>(OnEmagged);
 
         SubscribeLocalEvent<MechPilotComponent, GetMeleeWeaponEvent>(OnGetMeleeWeapon);
         SubscribeLocalEvent<MechPilotComponent, CanAttackFromContainerEvent>(OnCanAttackFromContainer);
         SubscribeLocalEvent<MechPilotComponent, AttackAttemptEvent>(OnAttackAttempt);
-        SubscribeLocalEvent<MechPilotComponent, EntGotRemovedFromContainerMessage>(OnEntGotRemovedFromContainer);
-        SubscribeLocalEvent<MechEquipmentComponent, ShotAttemptedEvent>(OnShotAttempted); // Goobstation
-        Subs.CVar(_config, GoobCVars.MechGunOutsideMech, value => _canUseMechGunOutside = value, true); // Goobstation
 
+        InitializeTrauma(); // Trauma
         InitializeRelay();
-    }
-
-    // GoobStation: Fixes scram implants or teleports locking the pilot out of being able to move.
-    private void OnEntGotRemovedFromContainer(EntityUid uid, MechPilotComponent component, EntGotRemovedFromContainerMessage args)
-    {
-        TryEject(component.Mech, pilot: uid);
     }
 
     private void OnToggleEquipmentAction(EntityUid uid, MechComponent component, MechToggleEquipmentEvent args)
@@ -161,6 +112,12 @@ public abstract partial class SharedMechSystem : EntitySystem
         BreakMech(uid, component);
     }
 
+    private void OnEntityStorageDump(Entity<MechComponent> entity, ref EntityStorageIntoContainerAttemptEvent args)
+    {
+        // There's no reason we should dump into /any/ of the mech's containers.
+        args.Cancelled = true;
+    }
+
     private void OnGetAdditionalAccess(EntityUid uid, MechComponent component, ref GetAdditionalAccessEvent args)
     {
         var pilot = component.PilotSlot.ContainedEntity;
@@ -177,8 +134,7 @@ public abstract partial class SharedMechSystem : EntitySystem
 
         var rider = EnsureComp<MechPilotComponent>(pilot);
 
-        if (HasComp<TileMovementComponent>(pilot)) // Goob change - Prevent mech jank.
-            EnsureComp<TileMovementComponent>(mech);
+        CopyTileMovement(mech, pilot); // Trauma
 
         // Warning: this bypasses most normal interaction blocking components on the user, like drone laws and the like.
         var irelay = EnsureComp<InteractionRelayComponent>(pilot);
@@ -194,13 +150,12 @@ public abstract partial class SharedMechSystem : EntitySystem
         _actions.AddAction(pilot, ref component.MechCycleActionEntity, component.MechCycleAction, mech);
         _actions.AddAction(pilot, ref component.MechUiActionEntity, component.MechUiAction, mech);
         _actions.AddAction(pilot, ref component.MechEjectActionEntity, component.MechEjectAction, mech);
-        _actions.AddAction(pilot, ref component.ToggleActionEntity, component.ToggleAction, mech); //Goobstation Mech Lights toggle action
+        _actions.AddAction(pilot, ref component.ToggleActionEntity, component.ToggleAction, mech); // Trauma
     }
 
     private void RemoveUser(EntityUid mech, EntityUid pilot)
     {
-        if (HasComp<TileMovementComponent>(mech)) // Goob change - Prevent mech jank.
-            RemComp<TileMovementComponent>(mech);
+        ResetTileMovement(mech); // Trauma
 
         if (!RemComp<MechPilotComponent>(pilot))
             return;
@@ -211,7 +166,7 @@ public abstract partial class SharedMechSystem : EntitySystem
     }
 
     /// <summary>
-    /// Destroys the mech, removing the user and ejecting all installed equipment.
+    /// Destroys the mech, removing the user and ejecting anything contained.
     /// </summary>
     /// <param name="uid"></param>
     /// <param name="component"></param>
@@ -301,14 +256,19 @@ public abstract partial class SharedMechSystem : EntitySystem
     /// <param name="toRemove"></param>
     /// <param name="component"></param>
     /// <param name="equipmentComponent"></param>
-    /// <param name="forced">Whether or not the removal can be cancelled</param>
+    /// <param name="forced">
+    ///     Whether or not the removal can be cancelled, and if non-mech equipment should be ejected.
+    /// </param>
     public void RemoveEquipment(EntityUid uid, EntityUid toRemove, MechComponent? component = null,
         MechEquipmentComponent? equipmentComponent = null, bool forced = false)
     {
         if (!Resolve(uid, ref component))
             return;
 
-        if (!Resolve(toRemove, ref equipmentComponent))
+        // When forced, we also want to handle the possibility that the "equipment" isn't actually equipment.
+        // This /shouldn't/ be possible thanks to OnEntityStorageDump, but there's been quite a few regressions
+        // with entities being hardlock stuck inside mechs.
+        if (!Resolve(toRemove, ref equipmentComponent) && !forced)
             return;
 
         if (!forced)
@@ -325,13 +285,16 @@ public abstract partial class SharedMechSystem : EntitySystem
         if (component.CurrentSelectedEquipment == toRemove)
             CycleEquipment(uid, component);
 
-        equipmentComponent.EquipmentOwner = null;
+        if (forced && equipmentComponent != null)
+            equipmentComponent.EquipmentOwner = null;
+
         _container.Remove(toRemove, component.EquipmentContainer);
         UpdateUserInterface(uid, component);
     }
 
     /// <summary>
     /// Attempts to change the amount of energy in the mech.
+    /// TODO: Power cells are predicted now, so no need to duplicate the charge level
     /// </summary>
     /// <param name="uid">The mech itself</param>
     /// <param name="delta">The change in energy</param>
@@ -434,12 +397,12 @@ public abstract partial class SharedMechSystem : EntitySystem
         SetupUser(uid, toInsert.Value);
         _container.Insert(toInsert.Value, component.PilotSlot);
         UpdateAppearance(uid, component);
-        // <Goobstation>
-        UpdateHands(toInsert.Value, uid, true);
+        // <Trauma>
+        BlockHands(toInsert.Value, uid);
 
         var ev = new MechInsertedEvent(uid);
         RaiseLocalEvent(toInsert.Value, ev);
-        // </Goobstation>
+        // </Trauma>
         return true;
     }
 
@@ -448,76 +411,35 @@ public abstract partial class SharedMechSystem : EntitySystem
     /// </summary>
     /// <param name="uid"></param>
     /// <param name="component"></param>
-    /// <param name="pilot">The pilot to eject</param>
     /// <returns>Whether or not the pilot was ejected.</returns>
-    public bool TryEject(EntityUid uid, MechComponent? component = null, EntityUid? pilot = null)
+    public bool TryEject(EntityUid uid, MechComponent? component = null,
+        EntityUid pilot = default) // Trauma
     {
         if (!Resolve(uid, ref component))
             return false;
 
-        if (component.PilotSlot.ContainedEntity != null)
-            pilot = component.PilotSlot.ContainedEntity.Value;
+        // <Trauma> - take pilot from the arg and only use the current pilot as a fallback
+        if (!pilot.IsValid())
+        {
+            if (component.PilotSlot.ContainedEntity is not {} currentPilot)
+                return false;
 
-        if (pilot == null)
-            return false;
+            pilot = currentPilot;
+        }
+        // </Trauma>
 
-        RemoveUser(uid, pilot.Value);
-        _container.RemoveEntity(uid, pilot.Value);
+        RemoveUser(uid, pilot);
+        _container.RemoveEntity(uid, pilot);
         UpdateAppearance(uid, component);
-        // <Goobstation>
-        UpdateHands(pilot.Value, uid, false);
+        // <Trauma>
+        FreeHands(pilot, uid);
 
         var ev = new MechEjectedEvent(uid);
-        RaiseLocalEvent(pilot.Value, ev);
-        // </Goobstation>
+        RaiseLocalEvent(pilot, ev);
+        // </Trauma>
         return true;
     }
 
-    // Goobstation Change Start
-    private void UpdateHands(EntityUid uid, EntityUid mech, bool active)
-    {
-        if (!TryComp<HandsComponent>(uid, out var handsComponent))
-            return;
-
-        if (active)
-            BlockHands(uid, mech, handsComponent);
-        else
-            FreeHands(uid, mech);
-    }
-
-    private void BlockHands(EntityUid uid, EntityUid mech, HandsComponent handsComponent)
-    {
-        var freeHands = 0;
-        foreach (var hand in _hands.EnumerateHands((uid, handsComponent)))
-        {
-            if (!_hands.TryGetHeldItem((uid, handsComponent), hand, out var held))
-            {
-                freeHands++;
-                continue;
-            }
-
-            // Is this entity removable? (they might have handcuffs on)
-            if (HasComp<UnremoveableComponent>(held) && held != mech)
-                continue;
-
-            _hands.DoDrop((uid, handsComponent), hand);
-            freeHands++;
-            if (freeHands == 2)
-                break;
-        }
-        if (_virtualItem.TrySpawnVirtualItemInHand(mech, uid, out var virtItem1))
-            EnsureComp<UnremoveableComponent>(virtItem1.Value);
-
-        if (_virtualItem.TrySpawnVirtualItemInHand(mech, uid, out var virtItem2))
-            EnsureComp<UnremoveableComponent>(virtItem2.Value);
-    }
-
-    private void FreeHands(EntityUid uid, EntityUid mech)
-    {
-        _virtualItem.DeleteInHandsMatching(uid, mech);
-    }
-
-    // Goobstation Change End
     private void OnGetMeleeWeapon(EntityUid uid, MechPilotComponent component, GetMeleeWeaponEvent args)
     {
         if (args.Handled)
@@ -540,21 +462,6 @@ public abstract partial class SharedMechSystem : EntitySystem
     {
         if (args.Target == component.Mech)
             args.Cancel();
-    }
-
-    // Goobstation: Prevent guns being used out of mechs if CCVAR is set.
-    private void OnShotAttempted(EntityUid uid, MechEquipmentComponent component, ref ShotAttemptedEvent args)
-    {
-        if (!component.EquipmentOwner.HasValue
-            || !HasComp<MechComponent>(component.EquipmentOwner.Value))
-        {
-            if (!_canUseMechGunOutside)
-                args.Cancel();
-            return;
-        }
-
-        var ev = new HandleMechEquipmentBatteryEvent();
-        RaiseLocalEvent(uid, ev);
     }
 
     private void UpdateAppearance(EntityUid uid, MechComponent? component = null,
@@ -589,15 +496,6 @@ public abstract partial class SharedMechSystem : EntitySystem
 
         args.CanDrop |= !component.Broken && CanInsert(uid, args.Dragged, component);
     }
-
-    private void OnEmagged(EntityUid uid, MechComponent component, ref GotEmaggedEvent args) // Goobstation
-    {
-        if (!component.BreakOnEmag || !_emag.CompareFlag(args.Type, EmagType.Interaction))
-            return;
-        args.Handled = true;
-        component.EquipmentWhitelist = null;
-        Dirty(uid, component);
-    }
 }
 
 /// <summary>
@@ -623,14 +521,5 @@ public sealed partial class MechExitEvent : SimpleDoAfterEvent
 /// </summary>
 [Serializable, NetSerializable]
 public sealed partial class MechEntryEvent : SimpleDoAfterEvent
-{
-}
-
-/// <summary>
-///     Event raised when an user attempts to fire a mech weapon to check if its battery is drained
-/// </summary>
-
-[Serializable, NetSerializable]
-public sealed partial class HandleMechEquipmentBatteryEvent : EntityEventArgs
 {
 }

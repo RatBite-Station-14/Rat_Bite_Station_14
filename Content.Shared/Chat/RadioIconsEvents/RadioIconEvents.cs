@@ -5,13 +5,10 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared.Chat.RadioIconsEvents;
 
 /// <summary>
-///     Raised whenever a radio message is sent, contains the job icon and name of the sender, Added by goobstation
+/// Goob - Raised whenever a radio message is sent, contains the job icon and name of the sender.
 /// </summary>
-public sealed class TransformSpeakerJobIconEvent(EntityUid sender, ProtoId<JobIconPrototype> jobIcon, string? jobName)
-    : EntityEventArgs, IInventoryRelayEvent
+[ByRefEvent]
+public record struct TransformSpeakerJobIconEvent(EntityUid Sender, ProtoId<JobIconPrototype> JobIcon, string? JobName) : IInventoryRelayEvent
 {
-    public SlotFlags TargetSlots { get; } = SlotFlags.WITHOUT_POCKET;
-    public EntityUid Sender = sender;
-    public ProtoId<JobIconPrototype> JobIcon = jobIcon;
-    public string? JobName = jobName;
+    public SlotFlags TargetSlots => SlotFlags.WITHOUT_POCKET;
 }

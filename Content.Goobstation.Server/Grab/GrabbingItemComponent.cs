@@ -1,0 +1,15 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Content.Trauma.Common.MartialArts;
+
+namespace Content.Goobstation.Server.Grab;
+
+[RegisterComponent]
+public sealed partial class GrabbingItemComponent : Component
+{
+    [DataField]
+    public GrabStage GrabStageOverride = GrabStage.Hard;
+
+    [DataField]
+    public float EscapeAttemptModifier = 2f;
+}

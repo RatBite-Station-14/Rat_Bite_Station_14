@@ -1,16 +1,5 @@
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Tom Leys <tom@crump-leys.com>
-// SPDX-FileCopyrightText: 2023 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
-using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Spreader;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -41,7 +30,7 @@ public sealed class KudzuSystem : EntitySystem
     {
         // Every time we take any damage, we reduce growth depending on all damage over the growth impact
         //   So the kudzu gets slower growing the more it is hurt.
-        var growthDamage = (int) (args.Damageable.TotalDamage / component.GrowthHealth);
+        var growthDamage = (int) (_damageable.GetTotalDamage((uid, args.Damageable)) / component.GrowthHealth);
         if (growthDamage > 0)
         {
             if (!EnsureComp<GrowingKudzuComponent>(uid, out _))
@@ -65,10 +54,6 @@ public sealed class KudzuSystem : EntitySystem
             RemCompDeferred<ActiveEdgeSpreaderComponent>(uid);
             return;
         }
-        component.TimeAccumulated += SpreaderSystem.SpreadCooldownSeconds;
-        if (component.TimeAccumulated < 1f)
-            return;
-        component.TimeAccumulated = 0f;
 
         if (!_robustRandom.Prob(component.SpreadChance))
             return;
@@ -133,14 +118,15 @@ public sealed class KudzuSystem : EntitySystem
 
             if (damageableQuery.TryGetComponent(uid, out var damage))
             {
-                if (damage.TotalDamage > 1.0)
+                var totalDamage = _damageable.GetTotalDamage((uid, damage));
+                if (totalDamage > 1.0)
                 {
                     if (kudzu.DamageRecovery != null)
                     {
                         // This kudzu features healing, so Gradually heal
                         _damageable.TryChangeDamage(uid, kudzu.DamageRecovery, true);
                     }
-                    if (damage.TotalDamage >= kudzu.GrowthBlock)
+                    if (totalDamage >= kudzu.GrowthBlock)
                     {
                         // Don't grow when quite damaged
                         if (_robustRandom.Prob(0.95f))

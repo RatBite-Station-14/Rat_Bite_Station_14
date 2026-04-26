@@ -1,12 +1,8 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.DeviceLinking.Events;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.DeviceLinking;
-using Robust.Shared.Prototypes;
 using Content.Shared.Disposal.Components;
 using Content.Server.Disposal.Unit;
 

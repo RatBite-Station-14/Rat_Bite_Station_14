@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.Wraith.Components.Mobs;
 using Content.Goobstation.Shared.Wraith.Events;
 using Content.Shared.Mobs.Components;
@@ -61,7 +63,7 @@ public sealed class RushdownSystem : EntitySystem
             if (target.Owner == ent.Owner) // skip self
                 continue;
 
-            _stun.KnockdownOrStun(target, ent.Comp.CollideKnockdown, true);
+            _stun.KnockdownOrStun(target, ent.Comp.CollideKnockdown);
         }
 
         _audio.PlayPredicted(ent.Comp.ShockwaveSound, ent.Owner, null);

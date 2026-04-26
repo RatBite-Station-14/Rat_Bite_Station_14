@@ -1,13 +1,9 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 ThunderBear2006 <bearthunder06@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Silicon.AiCameraWarping;
 using Content.Server.Station.Systems;
-using Content.Server.SurveillanceCamera;
 using Content.Shared.Silicons.StationAi;
-using Microsoft.VisualBasic;
+using Content.Shared.SurveillanceCamera.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Player;
 
@@ -60,7 +56,7 @@ public sealed class StationAiWarpSystem : SharedStationAiWarpSystem
     {
         List<CameraWarpData> cameras = new();
 
-        var query = EntityManager.EntityQueryEnumerator<SurveillanceCameraComponent>();
+        var query = EntityQueryEnumerator<SurveillanceCameraComponent>();
 
         var aiGrid = _xformSystem.GetGrid(coreUid);
 

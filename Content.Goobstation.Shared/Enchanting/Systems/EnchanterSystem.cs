@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 TheBorzoiMustConsume <197824988+TheBorzoiMustConsume@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Enchanting.Components;
@@ -13,8 +8,6 @@ using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Network;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Goobstation.Shared.Enchanting.Systems;
@@ -134,7 +127,7 @@ public sealed class EnchanterSystem : EntitySystem
         _adminLogger.Add(LogType.EntityDelete, LogImpact.Low,
             $"{ToPrettyString(user):player} enchanted {ToPrettyString(item):item} using {ToPrettyString(ent):enchanter}");
 
-        if (!TryComp<StackComponent>(ent, out var stack) || !_stack.Use(ent, 1, stack))
+        if (!TryComp<StackComponent>(ent, out var stack) || !_stack.TryUse((ent, stack), 1))
         {
             ent.Comp.Enchants = new(); // prevent double enchanting by malf client
             QueueDel(ent);

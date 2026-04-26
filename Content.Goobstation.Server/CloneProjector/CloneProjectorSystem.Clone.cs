@@ -1,14 +1,10 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.CloneProjector.Clone;
-using Content.Server.Emp;
-using Content.Shared._Shitmed.Medical.Surgery.Wounds.Components;
-using Content.Shared._Shitmed.Targeting;
-using Content.Shared.Body.Systems;
+using Content.Shared.Emp;
+using Content.Medical.Shared.Wounds;
+using Content.Medical.Common.Targeting;
+using Content.Shared.Body;
 using Content.Shared.Examine;
 using Content.Shared.Mobs;
 using Content.Shared.Popups;
@@ -16,9 +12,11 @@ using Content.Shared.Rejuvenate;
 
 namespace Content.Goobstation.Server.CloneProjector;
 
+// TODO: move parts that dont use HostProjector to shared...
 public partial class CloneProjectorSystem
 {
-    [Dependency] private readonly SharedBodySystem _body = default!;
+    [Dependency] private readonly BodySystem _body = default!;
+
     public void InitializeClone()
     {
         SubscribeLocalEvent<HolographicCloneComponent, MapInitEvent>(OnInit);
@@ -30,18 +28,15 @@ public partial class CloneProjectorSystem
 
     private void OnInit(Entity<HolographicCloneComponent> clone, ref MapInitEvent args)
     {
-        foreach (var part in _body.GetBodyChildren(clone))
+        foreach (var part in _body.GetOrgans<WoundableComponent>(clone.Owner))
         {
-            if (!TryComp(part.Id, out WoundableComponent? woundable))
-                continue;
-
-            woundable.CanRemove = false;
-            woundable.CanBleed = false;
-            woundable.AllowWounds = false;
-
-            Dirty(part.Id, woundable);
+            part.Comp.CanRemove = false;
+            part.Comp.CanBleed = false;
+            part.Comp.AllowWounds = false;
+            Dirty(part);
         }
     }
+
     private void OnCloneStateChanged(Entity<HolographicCloneComponent> clone, ref MobStateChangedEvent args)
     {
         if (!_mobState.IsIncapacitated(clone)
@@ -60,7 +55,7 @@ public partial class CloneProjectorSystem
         if (!projector.Comp.DoStun)
             return;
 
-        _stun.TryParalyze(host, projector.Comp.StunDuration, true);
+        _stun.TryUpdateParalyzeDuration(host, projector.Comp.StunDuration);
         _damageable.TryChangeDamage(host, projector.Comp.DamageOnDestroyed, true, targetPart: TargetBodyPart.Groin);
     }
     private void OnExamined(Entity<HolographicCloneComponent> clone, ref ExaminedEvent args)
@@ -88,7 +83,7 @@ public partial class CloneProjectorSystem
 
         TryInsertClone(projector, true);
         if (projector.Comp.DoStun)
-            _stun.TryParalyze(host, duration, true);
+            _stun.TryUpdateParalyzeDuration(host, duration);
 
         var destroyedPopup = Loc.GetString("gemini-projector-clone-destroyed");
         _popup.PopupEntity(destroyedPopup, host, host, PopupType.LargeCaution);

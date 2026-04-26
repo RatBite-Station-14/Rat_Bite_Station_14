@@ -1,5 +1,7 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.Disease.Components;
-using Robust.Shared.Prototypes;
+using Content.Shared.Random.Helpers;
 using Robust.Shared.Random;
 
 namespace Content.Goobstation.Shared.Disease.Systems;
@@ -9,10 +11,15 @@ public partial class SharedDiseaseSystem
     /// <summary>
     /// Makes a clone of the provided disease entity
     /// </summary>
-    public virtual EntityUid? TryClone(Entity<DiseaseComponent?> ent)
+    public EntityUid? TryClone(Entity<DiseaseComponent?> source)
     {
-        // do nothing on client
-        return null;
+        if (!Resolve(source, ref source.Comp))
+            return null;
+
+        var ent = EntityManager.PredictedSpawn(BaseDisease);
+        var ev = new DiseaseCloneEvent((ent, Comp<DiseaseComponent>(ent)));
+        RaiseLocalEvent(source, ref ev);
+        return ent;
     }
 
     /// <summary>
@@ -26,9 +33,13 @@ public partial class SharedDiseaseSystem
     /// <summary>
     /// Tries to infect the given target with the given disease prototype
     /// </summary>
-    public virtual EntityUid? DoInfectionAttempt(EntityUid target, EntProtoId proto, float power, float chance, ProtoId<DiseaseSpreadPrototype> spreadType)
+    public EntityUid? DoInfectionAttempt(EntityUid target, EntProtoId proto, float power, float chance, ProtoId<DiseaseSpreadPrototype> spreadType)
     {
-        // do nothing on client
+        var ent = EntityManager.PredictedSpawn(proto);
+        if (DoInfectionAttempt(target, ent, power, chance, spreadType, false))
+            return ent;
+
+        PredictedDel(ent);
         return null;
     }
 
@@ -42,7 +53,7 @@ public partial class SharedDiseaseSystem
     /// </summary>
     public bool DoInfectionAttempt(EntityUid target, EntityUid disease, float power, float chance, ProtoId<DiseaseSpreadPrototype> spreadType, bool clone = true)
     {
-        if (!TryComp<DiseaseComponent>(disease, out var diseaseComp))
+        if (!_query.TryComp(disease, out var diseaseComp))
             return false;
 
         // prevent the disease mutating a new genotype in-transmission so if you cough at one person many times they can't get infected many times
@@ -61,27 +72,26 @@ public partial class SharedDiseaseSystem
         if (power < 0 || chance < 0)
             return false;
 
-        if (_random.Prob(Math.Min(power * chance, 1f)))
+        if (!SharedRandomExtensions.PredictedProb(_timing, Math.Min(power * chance, 1f), GetNetEntity(target)))
+            return false;
+
+        var infectDisease = disease;
+        EntityUid? newDisease = null;
+        if (clone)
         {
-            var infectDisease = disease;
-            EntityUid? newDisease = null;
-            if (clone)
-            {
-                newDisease = TryClone((disease, diseaseComp));
-                if (newDisease == null)
-                    return false;
+            newDisease = TryClone((disease, diseaseComp));
+            if (newDisease == null)
+                return false;
 
-                MutateDisease(newDisease.Value);
-                infectDisease = newDisease.Value;
-            }
-
-            bool success = TryInfect(target, infectDisease);
-            if (!success && newDisease != null)
-                QueueDel(newDisease);
-
-            return success;
+            MutateDisease(newDisease.Value);
+            infectDisease = newDisease.Value;
         }
-        return false;
+
+        bool success = TryInfect(target, infectDisease);
+        if (!success && newDisease != null)
+            PredictedDel(newDisease);
+
+        return success;
     }
 
     /// <summary>

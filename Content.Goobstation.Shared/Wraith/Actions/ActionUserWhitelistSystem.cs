@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Actions.Events;
 using Content.Shared.Popups;
 using Content.Shared.Whitelist;
@@ -8,7 +10,7 @@ public sealed class ActionUserWhitelistSystem : EntitySystem
 {
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    
+
     public override void Initialize()
     {
         base.Initialize();

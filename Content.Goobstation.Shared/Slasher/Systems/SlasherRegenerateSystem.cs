@@ -1,9 +1,12 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.FixedPoint;
 using Content.Goobstation.Shared.Slasher.Components;
 using Content.Goobstation.Shared.Slasher.Events;
 using Content.Shared.Actions;
 using Content.Shared.Body.Components;
-using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Body.Systems;
+using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Cuffs;
 using Content.Shared.Cuffs.Components;
@@ -15,7 +18,7 @@ namespace Content.Goobstation.Shared.Slasher.Systems;
 
 public sealed class SlasherRegenerateSystem : EntitySystem
 {
-    [Dependency] private readonly SharedSolutionContainerSystem _solutions = default!;
+    [Dependency] private readonly SharedBloodstreamSystem _bloodstream = default!;
     [Dependency] private readonly SharedCuffableSystem _cuffs = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
@@ -66,8 +69,8 @@ public sealed class SlasherRegenerateSystem : EntitySystem
         // If our entity is cuffed/in-cuffs --> uncuff them
         if (TryComp<CuffableComponent>(uid, out var cuffs) && cuffs.Container.ContainedEntities.Count > 0)
         {
-            var cuff = cuffs.LastAddedCuffs;
-            _cuffs.Uncuff(uid, uid, cuff);
+            var cuff = cuffs.Container.ContainedEntities[cuffs.Container.ContainedEntities.Count - 1];
+            _cuffs.Uncuff(uid, uid, cuff, cuffs);
             QueueDel(cuff);
         }
 
@@ -92,13 +95,9 @@ public sealed class SlasherRegenerateSystem : EntitySystem
     /// <param name="comp">The SlasherRegenerateComponent</param>
     private void TryInjectReagent(EntityUid target, SlasherRegenerateComponent comp)
     {
-        if (!TryComp<BloodstreamComponent>(target, out var bloodstream))
-            return;
-
-        if (!_solutions.ResolveSolution(target, bloodstream.ChemicalSolutionName, ref bloodstream.ChemicalSolution))
-            return;
-
-        _solutions.TryAddReagent(bloodstream.ChemicalSolution.Value, new ReagentId(comp.Reagent, null), FixedPoint2.New(comp.ReagentAmount), out _);
+        var solution = new Solution();
+        solution.AddReagent(comp.Reagent, FixedPoint2.New(comp.ReagentAmount));
+        _bloodstream.TryAddToBloodstream(target, solution);
     }
 
     /// <summary>

@@ -1,19 +1,21 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Linq;
 using System.Numerics;
 using Content.Goobstation.Shared.Wraith.Events;
-using Content.Shared._White.Grab;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Popups;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Trauma.Common.Grab;
 
 namespace Content.Goobstation.Shared.Wraith.Revenant;
 
 public sealed class TouchOfEvilSystem : EntitySystem
 {
-    [Dependency] private readonly GrabThrownSystem _throw = default!;
+    [Dependency] private readonly CommonGrabThrownSystem _throw = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly SharedPopupSystem _popups = default!;

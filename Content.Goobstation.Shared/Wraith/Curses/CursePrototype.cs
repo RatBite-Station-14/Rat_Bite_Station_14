@@ -1,18 +1,19 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.EntityEffects;
 using Content.Shared.StatusIcon;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
 
 namespace Content.Goobstation.Shared.Wraith.Curses;
 
 [Prototype]
-public sealed class CursePrototype : IPrototype
+public sealed partial class CursePrototype : IPrototype
 {
     [IdDataField]
-    public string ID { get; } = default!;
+    public string ID { get; private set; } = default!;
 
     [DataField]
-    public string Name { get; } = string.Empty;
+    public string Name = string.Empty;
 
     /// <summary>
     /// A dictionary that holds the random value that determines which list of entity effects will happen on the user.
@@ -20,7 +21,7 @@ public sealed class CursePrototype : IPrototype
     /// The (internal) probability of all EntityEffects should be 1.0 (when defined)
     /// </summary>
     [DataField(required: true, serverOnly: true)]
-    public Dictionary<float, List<EntityEffect>> Effects = new();
+    public Dictionary<float, EntityEffect[]> Effects = new();
 
     /// <summary>
     /// Components added to the entity when this curse gets added

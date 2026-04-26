@@ -1,17 +1,8 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 IrisTheAmped <iristheamped@gmail.com>
-// SPDX-FileCopyrightText: 2025 McBosserson <mcbosserson@hotmail.com>
-// SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 SoundingExpert <204983230+SoundingExpert@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 john git <113782077+whateverusername0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 whateverusername0 <whateveremail>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Power.PTL;
 using Content.Server.Flash;
 using Content.Server.Popups;
-using Content.Server.Power.Components;
 using Content.Server.Power.SMES;
 using Content.Server.Stack;
 using Content.Server.Weapons.Ranged.Systems;
@@ -19,17 +10,20 @@ using Content.Shared.Emag.Components;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
+using Content.Shared.Power.Components;
+using Content.Shared.Power.EntitySystems;
 using Content.Shared.Radiation.Components;
+using Content.Shared.Radiation.Systems;
 using Content.Shared.Stacks;
 using Content.Shared.Tag;
+using Content.Shared.Weapons.Hitscan.Components;
 using Content.Shared.Weapons.Ranged;
 using Content.Shared.Weapons.Ranged.Components;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using System.Numerics;
 using System.Text;
@@ -40,17 +34,18 @@ public sealed partial class PTLSystem : EntitySystem
 {
     [Dependency] private readonly GunSystem _gun = default!;
     [Dependency] private readonly IGameTiming _time = default!;
-    [Dependency] private readonly IPrototypeManager _protMan = default!;
     [Dependency] private readonly FlashSystem _flash = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly AudioSystem _aud = default!;
     [Dependency] private readonly EmagSystem _emag = default!;
+    [Dependency] private readonly SharedBatterySystem _battery = default!;
+    [Dependency] private readonly SharedRadiationSystem _radiation = default!;
 
-    [ValidatePrototypeId<StackPrototype>] private readonly string _stackCredits = "Credit";
-    [ValidatePrototypeId<TagPrototype>] private readonly string _tagScrewdriver = "Screwdriver";
-    [ValidatePrototypeId<TagPrototype>] private readonly string _tagMultitool = "Multitool";
+    private static readonly EntProtoId _credits = "SpaceCash";
+    private static readonly ProtoId<TagPrototype> _tagScrewdriver = "Screwdriver";
+    private static readonly ProtoId<TagPrototype> _tagMultitool = "Multitool";
 
     private readonly SoundPathSpecifier _soundKaching = new("/Audio/Effects/kaching.ogg");
     private readonly SoundPathSpecifier _soundSparks = new("/Audio/Effects/sparks4.ogg");
@@ -65,6 +60,7 @@ public sealed partial class PTLSystem : EntitySystem
         SubscribeLocalEvent<PTLComponent, AfterInteractUsingEvent>(OnAfterInteractUsing);
         SubscribeLocalEvent<PTLComponent, ExaminedEvent>(OnExamine);
         SubscribeLocalEvent<PTLComponent, GotEmaggedEvent>(OnEmagged);
+        SubscribeLocalEvent<PTLComponent, GunShotEvent>(OnShot);
     }
 
     public override void Update(float frameTime)
@@ -96,77 +92,67 @@ public sealed partial class PTLSystem : EntitySystem
     {
         if (TryComp<RadiationSourceComponent>(ent, out var rad)
             && rad.Intensity > 0)
-            rad.Intensity = MathF.Max(0, rad.Intensity - (rad.Intensity * 0.2f + 0.1f)); // Making sure the radition value doesn't go below
+            _radiation.SetIntensity((ent, rad), MathF.Max(0, rad.Intensity - (rad.Intensity * 0.2f + 0.1f))); // Making sure the radition value doesn't go below
     }
 
     private void Tick(Entity<PTLComponent> ent)
     {
-        if (!TryComp<BatteryComponent>(ent, out var battery)
-        || battery.CurrentCharge < ent.Comp.MinShootPower)
+        if (!TryComp<BatteryComponent>(ent, out var battery))
             return;
 
-        Shoot((ent, ent.Comp, battery));
+        var charge = _battery.GetCharge((ent, battery));
+        if (charge < ent.Comp.MinShootPower)
+            return;
+
+        Shoot((ent, ent.Comp, battery), charge);
         Dirty(ent);
     }
 
-    private void Shoot(Entity<PTLComponent, BatteryComponent> ent)
+    private void Shoot(Entity<PTLComponent, BatteryComponent> ent, float chargeBefore)
     {
         var megajoule = 1e6;
 
         // Measure battery before firing.
-        var chargeBefore = ent.Comp2.CurrentCharge;
         if (chargeBefore <= 0)
             return;
 
-        // Configure consumption and damage based on planned energy use (capped).
-        if (TryComp<HitscanBatteryAmmoProviderComponent>(ent, out var hitscan))
-        {
-            var desiredFireCost = (float) Math.Min(chargeBefore, ent.Comp1.MaxEnergyPerShot);
-            if (desiredFireCost <= 0)
-                return;
+        var desiredFireCost = (float) Math.Min(chargeBefore, ent.Comp1.MaxEnergyPerShot);
+        if (desiredFireCost <= 0)
+            return;
 
-            hitscan.FireCost = desiredFireCost;
+        if (!TryComp<BatteryAmmoProviderComponent>(ent, out var provider))
+            return;
 
-            // Scale damage from the planned energy use (in MJ);
-            var plannedMJ = desiredFireCost / (float) megajoule;
-            var prot = _protMan.Index<HitscanPrototype>(hitscan.Prototype);
-            prot.Damage = ent.Comp1.BaseBeamDamage * plannedMJ * 2f;
-        }
+        provider.FireCost = desiredFireCost;
+        Dirty(ent, provider);
 
-        if (TryComp<GunComponent>(ent, out var gun))
-        {
-            if (!TryComp<TransformComponent>(ent, out var xform))
-                return;
+        var gun = Comp<GunComponent>(ent);
+        var xform = Transform(ent);
 
-            var localDirectionVector = Vector2.UnitY * -1;
-            if (ent.Comp1.ReversedFiring)
-                localDirectionVector *= -1f;
+        var localDirectionVector = Vector2.UnitY * -1;
+        if (ent.Comp1.ReversedFiring)
+            localDirectionVector *= -1f;
 
-            var directionInParentSpace = xform.LocalRotation.RotateVec(localDirectionVector);
-
-            var targetCoords = xform.Coordinates.Offset(directionInParentSpace);
-
-            _gun.AttemptShoot(ent, ent, gun, targetCoords);
-        }
+        // shoot the laser
+        var directionInParentSpace = xform.LocalRotation.RotateVec(localDirectionVector);
+        var targetCoords = xform.Coordinates.Offset(directionInParentSpace);
+        _gun.AttemptShoot(ent, ent, gun, targetCoords);
 
         // Determine actual energy used.
-        var chargeAfter = ent.Comp2.CurrentCharge;
+        var chargeAfter = _battery.GetCharge((ent, ent.Comp2));
         var energyUsed = Math.Max(0.0, chargeBefore - chargeAfter);
         if (energyUsed <= 0)
             return;
 
         var usedMJ = energyUsed / megajoule;
         // some random formula i found in bounty thread i popped it into desmos i think it looks good
-        var spesos = (int) (usedMJ * 500 / (Math.Log(usedMJ * 5) + 1));
-
+        var spesos = (int) (usedMJ * 650 / (Math.Log(usedMJ * 2) + 1));
         if (!double.IsFinite(spesos) || spesos < 0)
             return;
 
         // EVIL behavior based on energy actually used.
         var evil = (float) (usedMJ * ent.Comp1.EvilMultiplier);
-
-        if (TryComp<RadiationSourceComponent>(ent, out var rad))
-            rad.Intensity = evil;
+        _radiation.SetIntensity(ent.Owner, evil);
 
         _flash.FlashArea(ent.Owner, ent, evil/2, TimeSpan.FromSeconds(evil / 2));
 
@@ -211,8 +197,8 @@ public sealed partial class PTLSystem : EntitySystem
         {
             if (!Transform(ent).Anchored) // Check if Anchored.
                 return;
-            var stackPrototype = _protMan.Index<StackPrototype>(_stackCredits);
-            _stack.Spawn((int) ent.Comp.SpesosHeld, stackPrototype, Transform(args.User).Coordinates);
+            var spesos = Spawn(_credits, Transform(args.User).Coordinates);
+            _stack.SetCount(spesos, (int) ent.Comp.SpesosHeld);
             ent.Comp.SpesosHeld = 0;
             _popup.PopupEntity(Loc.GetString("ptl-interact-spesos"), ent);
             _aud.PlayPvs(_soundKaching, args.User);
@@ -246,5 +232,25 @@ public sealed partial class PTLSystem : EntitySystem
 
         component.ReversedFiring = true;
         args.Handled = true;
+    }
+
+    private void OnShot(Entity<PTLComponent> ent, ref GunShotEvent args)
+    {
+        if (!TryComp<BatteryAmmoProviderComponent>(ent, out var provider))
+            return;
+
+        var megajoule = 1e6;
+        var plannedMJ = provider.FireCost / (float) megajoule;
+        var modifier = 2f * plannedMJ;
+
+        // Configure consumption and damage based on planned energy use (capped).
+        foreach (var (ammo, _) in args.Ammo)
+        {
+            if (!TryComp<HitscanBasicDamageComponent>(ammo, out var hitscan))
+                continue;
+
+            hitscan.Damage *= modifier;
+            Dirty(ammo.Value, hitscan);
+        }
     }
 }

@@ -1,26 +1,7 @@
-// SPDX-FileCopyrightText: 2022 Kevin Zheng <kevinz5000@gmail.com>
-// SPDX-FileCopyrightText: 2022 Veritius <veritiusgaming@gmail.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Firewatch <54725557+musicmanvr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <koolthunder019@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Content.Server._BRatbite.PermaBrig;
 using Content.Server.Database;
 using Content.Shared.CCVar;
 using Content.Shared.Players.PlayTimeTracking;
@@ -82,7 +63,6 @@ public sealed class PlayTimeTrackingManager : ISharedPlaytimeManager, IPostInjec
     [Dependency] private readonly ITaskManager _task = default!;
     [Dependency] private readonly IRuntimeLog _runtimeLog = default!;
     [Dependency] private readonly UserDbDataManager _userDb = default!;
-    [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -166,7 +146,6 @@ public sealed class PlayTimeTrackingManager : ISharedPlaytimeManager, IPostInjec
     {
         DebugTools.Assert(data.Initialized);
 
-        FlushPermaTime(dirty);
         FlushSingleTracker(data, time);
 
         data.NeedRefreshTackers = false;
@@ -198,20 +177,6 @@ public sealed class PlayTimeTrackingManager : ISharedPlaytimeManager, IPostInjec
         {
             FlushSingleTracker(data, time);
         }
-    }
-
-
-    public void FlushPermaTime(ICommonSession session)
-    {
-        var data = _playTimeData[session];
-        if (data.ActiveTrackers.Contains(PlayTimeTrackingShared.TrackerPerma))
-        {
-            var time = _timing.RealTime;
-            var delta = time - data.LastUpdate;
-
-            _permaBrigManager.UpdateTimeServed(delta, session);
-        }
-        _permaBrigManager.UpdateTimeLastSeen(session);
     }
 
     /// <summary>

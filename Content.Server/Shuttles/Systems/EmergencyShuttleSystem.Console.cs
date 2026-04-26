@@ -1,66 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 LittleBuilderJane <63973502+LittleBuilderJane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Morber <14136326+Morb0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Myctai <108953437+Myctai@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
-// SPDX-FileCopyrightText: 2023 Morb <14136326+Morb0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 12rabbits <53499656+12rabbits@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <65184747+Dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <51352440+JIPDawg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <JIPDawg93@gmail.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 Moomoobeef <62638182+Moomoobeef@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 PopGamer46 <yt1popgamer@gmail.com>
-// SPDX-FileCopyrightText: 2024 PursuitInAshes <pursuitinashes@gmail.com>
-// SPDX-FileCopyrightText: 2024 QueerNB <176353696+QueerNB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Saphire Lattice <lattice@saphi.re>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Spessmann <156740760+Spessmann@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 avery <51971268+graevy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 stellar-novas <stellar_novas@riseup.net>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Threading;
 using Content.Server.Screens.Components;
 using Content.Server.Shuttles.Components;
@@ -72,16 +9,14 @@ using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.Popups;
 using Content.Shared.Shuttles.BUIStates;
+using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Events;
 using Content.Shared.Shuttles.Systems;
-using Content.Shared.UserInterface;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Timer = Robust.Shared.Timing.Timer;
-using Content.Server.Explosion.EntitySystems;
-using Content.Server.Chat.Systems;
-using Content.Shared.Chat;
+using Robust.Shared.Random;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -96,7 +31,6 @@ public sealed partial class EmergencyShuttleSystem
     /// <summary>
     /// Has the emergency shuttle arrived?
     /// </summary>
-
     public bool EmergencyShuttleArrived { get; private set; }
 
     public bool EarlyLaunchAuthorized { get; private set; }
@@ -104,7 +38,7 @@ public sealed partial class EmergencyShuttleSystem
     /// <summary>
     /// How much time remaining until the shuttle consoles for emergency shuttles are unlocked?
     /// </summary>
-    public float ConsoleAccumulator = float.MinValue;
+    public float ConsoleAccumulator = float.MinValue; // Goob - made public
 
     /// <summary>
     /// How long after the transit is over to end the round.
@@ -129,7 +63,7 @@ public sealed partial class EmergencyShuttleSystem
     /// <summary>
     /// <see cref="CCVars.EmergencyShuttleAuthorizeTime"/>
     /// </summary>
-    public float AuthorizeTime;
+    public float AuthorizeTime; // Goob - made public
 
     private CancellationTokenSource? _roundEndCancelToken;
 
@@ -151,30 +85,15 @@ public sealed partial class EmergencyShuttleSystem
     /// </summary>
     private bool _announced;
 
-    private EntityUid? _lastRepealUser;
-    private double _repealTimestamp = 0;
-    private int _consoleSpams = 0;
-
     private void InitializeEmergencyConsole()
     {
-        Subs.CVar(_configManager, CCVars.EmergencyShuttleMinTransitTime, SetMinTransitTime, true);
-        Subs.CVar(_configManager, CCVars.EmergencyShuttleMaxTransitTime, SetMaxTransitTime, true);
-        Subs.CVar(_configManager, CCVars.EmergencyShuttleAuthorizeTime, SetAuthorizeTime, true);
+        Subs.CVar(ConfigManager, CCVars.EmergencyShuttleMinTransitTime, SetMinTransitTime, true);
+        Subs.CVar(ConfigManager, CCVars.EmergencyShuttleMaxTransitTime, SetMaxTransitTime, true);
+        Subs.CVar(ConfigManager, CCVars.EmergencyShuttleAuthorizeTime, SetAuthorizeTime, true);
         SubscribeLocalEvent<EmergencyShuttleConsoleComponent, ComponentStartup>(OnEmergencyStartup);
         SubscribeLocalEvent<EmergencyShuttleConsoleComponent, EmergencyShuttleAuthorizeMessage>(OnEmergencyAuthorize);
         SubscribeLocalEvent<EmergencyShuttleConsoleComponent, EmergencyShuttleRepealMessage>(OnEmergencyRepeal);
         SubscribeLocalEvent<EmergencyShuttleConsoleComponent, EmergencyShuttleRepealAllMessage>(OnEmergencyRepealAll);
-        SubscribeLocalEvent<EmergencyShuttleConsoleComponent, ActivatableUIOpenAttemptEvent>(OnEmergencyOpenAttempt);
-    }
-
-    private void OnEmergencyOpenAttempt(EntityUid uid, EmergencyShuttleConsoleComponent component, ActivatableUIOpenAttemptEvent args)
-    {
-        // I'm hoping ActivatableUI checks it's open before allowing these messages.
-        if (!_configManager.GetCVar(CCVars.EmergencyEarlyLaunchAllowed))
-        {
-            args.Cancel();
-            _popup.PopupEntity(Loc.GetString("emergency-shuttle-console-no-early-launches"), uid, args.User);
-        }
     }
 
     private void SetAuthorizeTime(float obj)
@@ -319,7 +238,7 @@ public sealed partial class EmergencyShuttleSystem
 
         if (!_reader.FindAccessTags(player).Contains(EmergencyRepealAllAccess))
         {
-            _popup.PopupCursor(Loc.GetString("emergency-shuttle-console-denied"), player, PopupType.Medium);
+            Popup.PopupCursor(Loc.GetString("emergency-shuttle-console-denied"), player, PopupType.Medium);
             return;
         }
 
@@ -329,7 +248,7 @@ public sealed partial class EmergencyShuttleSystem
         _logger.Add(LogType.EmergencyShuttle, LogImpact.High, $"Emergency shuttle early launch REPEAL ALL by {args.Actor:user}");
         _chatSystem.DispatchGlobalAnnouncement(Loc.GetString("emergency-shuttle-console-auth-revoked", ("remaining", component.AuthorizationsRequired)));
         component.AuthorizedEntities.Clear();
-        SpamChecker(uid, player);
+        SpamChecker(uid, player); // Goob
         UpdateAllEmergencyConsoles();
     }
 
@@ -339,43 +258,20 @@ public sealed partial class EmergencyShuttleSystem
 
         if (!_idSystem.TryFindIdCard(player, out var idCard) || !_reader.IsAllowed(idCard, uid))
         {
-            _popup.PopupCursor(Loc.GetString("emergency-shuttle-console-denied"), player, PopupType.Medium);
+            Popup.PopupCursor(Loc.GetString("emergency-shuttle-console-denied"), player, PopupType.Medium);
             return;
         }
 
-        // TODO: This is fucking bad
-        if (!component.AuthorizedEntities.Remove(MetaData(idCard).EntityName))
+        if (!component.AuthorizedEntities.Remove(idCard.Owner))
             return;
 
         _logger.Add(LogType.EmergencyShuttle, LogImpact.High, $"Emergency shuttle early launch REPEAL by {args.Actor:user}");
         var remaining = component.AuthorizationsRequired - component.AuthorizedEntities.Count;
         _chatSystem.DispatchGlobalAnnouncement(Loc.GetString("emergency-shuttle-console-auth-revoked", ("remaining", remaining)));
 
-        SpamChecker(uid, player);
+        SpamChecker(uid, player); // Goob
         CheckForLaunch(component);
         UpdateAllEmergencyConsoles();
-    }
-
-    private void SpamChecker(EntityUid uid, EntityUid? repealUser)
-    {
-        if (_timing.RealTime.TotalSeconds - _repealTimestamp <= 5 && repealUser == _lastRepealUser)
-        {
-            _consoleSpams += 1;
-            if (_consoleSpams == 5)
-            {
-                _chatSystem.TrySendInGameICMessage(uid, "Error 452: RepealButtonOveruseException", InGameICChatType.Speak, hideChat: true);
-                _chatSystem.TrySendInGameICMessage(uid, "The maximum threshold for pressing the repeal button has been exceeded.", InGameICChatType.Speak, hideChat: true);
-                _chatSystem.TrySendInGameICMessage(uid, "Please refrain from further attempts at repeal at this time.", InGameICChatType.Speak, hideChat: true);
-            }
-            else if (_consoleSpams >= 7)
-            {
-                _explosion.TriggerExplosive(uid);
-                _consoleSpams = 0;
-            }
-        }
-
-        _lastRepealUser = repealUser;
-        _repealTimestamp = _timing.RealTime.TotalSeconds;
     }
 
     private void OnEmergencyAuthorize(EntityUid uid, EmergencyShuttleConsoleComponent component, EmergencyShuttleAuthorizeMessage args)
@@ -384,13 +280,16 @@ public sealed partial class EmergencyShuttleSystem
 
         if (!_idSystem.TryFindIdCard(player, out var idCard) || !_reader.IsAllowed(idCard, uid))
         {
-            _popup.PopupCursor(Loc.GetString("emergency-shuttle-console-denied"), args.Actor, PopupType.Medium);
+            Popup.PopupCursor(Loc.GetString("emergency-shuttle-console-denied"), args.Actor, PopupType.Medium);
             return;
         }
 
-        // TODO: This is fucking bad
-        if (!component.AuthorizedEntities.Add(MetaData(idCard).EntityName))
+        var idCardUid = idCard.Owner;
+
+        if (component.AuthorizedEntities.ContainsKey(idCardUid))
             return;
+
+        component.AuthorizedEntities[idCardUid] = MetaData(idCard).EntityName;
 
         _logger.Add(LogType.EmergencyShuttle, LogImpact.High, $"Emergency shuttle early launch AUTH by {args.Actor:user}");
         var remaining = component.AuthorizationsRequired - component.AuthorizedEntities.Count;
@@ -434,7 +333,7 @@ public sealed partial class EmergencyShuttleSystem
     {
         var auths = new List<string>();
 
-        foreach (var auth in component.AuthorizedEntities)
+        foreach (var auth in component.AuthorizedEntities.Values)
         {
             auths.Add(auth);
         }

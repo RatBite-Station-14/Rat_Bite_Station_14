@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2024 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Steve <marlumpy@gmail.com>
-// SPDX-FileCopyrightText: 2025 marc-pelletier <113944176+marc-pelletier@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Reactions;
@@ -33,7 +26,7 @@ public sealed partial class BZFormationReaction : IGasReactionEffect
         var nitrousOxideDecomposed =  Math.Max(4f * (initPlasma / (initN2O + initPlasma) - 0.75f), 0);
         var nitrogenAdded = 0f;
         var oxygenAdded = 0f;
-        if (nitrousOxideDecomposed > 0) 
+        if (nitrousOxideDecomposed > 0)
         {
             var amountDecomposed = 0.4f * bzFormed * nitrousOxideDecomposed;
             nitrogenAdded = amountDecomposed;

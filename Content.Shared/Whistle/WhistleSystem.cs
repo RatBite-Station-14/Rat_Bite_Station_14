@@ -1,11 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Fahasor <70820551+Fahasor@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Coordinates;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction.Events;
@@ -54,7 +46,7 @@ public sealed class WhistleSystem : EntitySystem
         StealthComponent? stealth = null;
 
         foreach (var iterator in
-            _entityLookup.GetEntitiesInRange<HumanoidAppearanceComponent>(_transform.GetMapCoordinates(uid), component.Distance))
+            _entityLookup.GetEntitiesInRange<HumanoidProfileComponent>(_transform.GetMapCoordinates(uid), component.Distance))
         {
             //Avoid pinging invisible entities
             if (TryComp(iterator, out stealth) && stealth.Enabled)

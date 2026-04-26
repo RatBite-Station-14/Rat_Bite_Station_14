@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Robust.Shared.Configuration;
 
 namespace Content.Shared.CCVar;
@@ -13,7 +8,7 @@ public sealed partial class CCVars
     ///     Restricts IC character names to alphanumeric chars.
     /// </summary>
     public static readonly CVarDef<bool> RestrictedNames =
-        CVarDef.Create("ic.restricted_names", false, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("ic.restricted_names", true, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     ///     Sets the maximum IC name length.
@@ -31,7 +26,7 @@ public sealed partial class CCVars
     ///     Allows flavor text (character descriptions).
     /// </summary>
     public static readonly CVarDef<bool> FlavorText =
-        CVarDef.Create("ic.flavor_text", true, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("ic.flavor_text", false, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     ///     Sets the maximum length for flavor text (character descriptions).
@@ -49,7 +44,7 @@ public sealed partial class CCVars
     ///     Adds a period at the end of a sentence if the sentence ends in a letter.
     /// </summary>
     public static readonly CVarDef<bool> ChatPunctuation =
-        CVarDef.Create("ic.punctuation", true, CVar.SERVER);
+        CVarDef.Create("ic.punctuation", false, CVar.SERVER);
 
     /// <summary>
     ///     Enables automatically forcing IC name rules. Uppercases the first letter of the first and last words of the name
@@ -69,6 +64,13 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<string> ICRandomSpeciesWeights =
         CVarDef.Create("ic.random_species_weights", "SpeciesWeights", CVar.SERVER);
+
+    /// <summary>
+    ///     The list of species that will NOT be given to new account joins when they are assigned a random character.
+    ///     This only affects the first time a character is made for an account, nothing else.
+    /// </summary>
+    public static readonly CVarDef<string> ICNewAccountSpeciesBlacklist =
+        CVarDef.Create("ic.blacklist_species_new_account", "Diona,Vulpkanin,Vox,SlimePerson", CVar.SERVER);
 
     /// <summary>
     ///     Control displaying SSD indicators near players

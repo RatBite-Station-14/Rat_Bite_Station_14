@@ -1,18 +1,15 @@
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Numerics;
 using Content.Server.Spawners.Components;
 using Content.Server.Spawners.EntitySystems;
+using Content.Shared.Destructible;
+using Content.Shared.Destructible.Thresholds.Behaviors;
 using Content.Shared.Random;
 using Content.Shared.Random.Helpers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Spawners;
+using Robust.Shared.Random;
 
 namespace Content.Server.Destructible.Thresholds.Behaviors;
 
@@ -57,7 +54,7 @@ public sealed partial class WeightedSpawnEntityBehavior : IThresholdBehavior
     [DataField]
     public float SpawnAfter;
 
-    public void Execute(EntityUid uid, DestructibleSystem system, EntityUid? cause = null)
+    public void Execute(EntityUid uid, SharedDestructibleSystem system, EntityUid? cause = null)
     {
         // Get the position at which to start initially spawning entities
         var transform = system.EntityManager.System<TransformSystem>();
@@ -72,7 +69,7 @@ public sealed partial class WeightedSpawnEntityBehavior : IThresholdBehavior
         if (SpawnAfter != 0)
         {
             // if it fails to get the spawner, this won't ever work so just return
-            if (!system.PrototypeManager.TryIndex(TempEntityProtoId, out var tempSpawnerProto))
+            if (!system.PrototypeManager.Resolve(TempEntityProtoId, out var tempSpawnerProto))
                 return;
 
             // spawn the spawner, assign it a lifetime, and assign the entity that it will spawn when despawned

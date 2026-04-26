@@ -1,6 +1,7 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.Disease.Components;
 using Content.Shared.Inventory;
-using Robust.Shared.Prototypes;
 
 namespace Content.Goobstation.Shared.Disease;
 
@@ -23,10 +24,10 @@ public record struct DiseaseEffectEvent(DiseaseEffectComponent Comp, Entity<Dise
 public record struct DiseaseEffectFailedEvent(DiseaseEffectComponent Comp, Entity<DiseaseComponent> Disease, Entity<DiseaseCarrierComponent> Ent);
 
 /// <summary>
-/// This event is raised on entities that got a new disease.
+/// This event is raised on the carrier and disease after being infected with a new disease.
 /// </summary>
 [ByRefEvent]
-public record struct DiseaseGainedEvent(Entity<DiseaseComponent> Disease);
+public record struct DiseaseGainedEvent(Entity<DiseaseComponent> Disease, Entity<DiseaseCarrierComponent> Carrier);
 
 /// <summary>
 /// This event is raised on entities which just lost a disease.
@@ -35,10 +36,10 @@ public record struct DiseaseGainedEvent(Entity<DiseaseComponent> Disease);
 public record struct DiseaseCuredEvent(Entity<DiseaseComponent> Disease);
 
 /// <summary>
-/// Raised on a newly created base disease entity to clone the provided entity onto it.
+/// Raised on the original disease to copy its data to a newly created base disease entity.
 /// </summary>
 [ByRefEvent]
-public record struct DiseaseCloneEvent(Entity<DiseaseComponent> Source);
+public record struct DiseaseCloneEvent(Entity<DiseaseComponent> Cloned);
 
 /// <summary>
 /// This event is raised on an entity just before it's infected. Set <see cref="CanInfect"/> to false to prevent the infection.

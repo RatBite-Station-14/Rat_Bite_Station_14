@@ -1,0 +1,60 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Content.Medical.Shared.Wounds;
+using Content.Shared.Body;
+using Content.Shared.Mobs;
+
+namespace Content.Medical.Shared.Body;
+
+public sealed class BodyStatusSystem : EntitySystem
+{
+    [Dependency] private readonly INetManager _net = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<BodyStatusComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<BodyStatusComponent, MobStateChangedEvent>(OnMobStateChange);
+        SubscribeLocalEvent<BodyStatusComponent, OrganInsertedIntoEvent>(OnOrganInserted);
+        SubscribeLocalEvent<BodyStatusComponent, OrganRemovedFromEvent>(OnOrganRemoved);
+    }
+
+    private void OnMapInit(Entity<BodyStatusComponent> ent, ref MapInitEvent args)
+    {
+        UpdateStatus(ent.AsNullable());
+    }
+
+    private void OnMobStateChange(Entity<BodyStatusComponent> ent, ref MobStateChangedEvent args)
+    {
+        UpdateStatus(ent.AsNullable());
+    }
+
+    private void OnOrganInserted(Entity<BodyStatusComponent> ent, ref OrganInsertedIntoEvent args)
+    {
+        UpdateStatus(ent.AsNullable());
+    }
+
+    private void OnOrganRemoved(Entity<BodyStatusComponent> ent, ref OrganRemovedFromEvent args)
+    {
+        UpdateStatus(ent.AsNullable());
+    }
+
+    public void UpdateStatus(Entity<BodyStatusComponent?> ent)
+    {
+        if (!Resolve(ent, ref ent.Comp, false))
+            return;
+
+        var ev = new TargetIntegrityChangedMessage();
+        if (_net.IsClient)
+            RaiseLocalEvent(ev);
+        else
+            RaiseNetworkEvent(ev, ent);
+    }
+}
+
+/// <summary>
+/// Message sent by the server/predicted when a body's parts get damaged, to update the part status UI.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class TargetIntegrityChangedMessage: EntityEventArgs;

@@ -1,10 +1,7 @@
-// SPDX-FileCopyrightText: 2025 Evaisa <mail@evaisa.dev>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Actions;
 using Content.Shared.Buckle.Components;
-using Robust.Shared.Network;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Timing;

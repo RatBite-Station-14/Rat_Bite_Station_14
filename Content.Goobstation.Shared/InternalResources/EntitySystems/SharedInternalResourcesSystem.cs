@@ -1,9 +1,10 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.Alert.Events;
 using Content.Goobstation.Shared.InternalResources.Components;
 using Content.Goobstation.Shared.InternalResources.Data;
 using Content.Goobstation.Shared.InternalResources.Events;
 using Content.Shared.Alert;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using System.Diagnostics.CodeAnalysis;
 
@@ -50,7 +51,7 @@ public sealed class SharedInternalResourcesSystem : EntitySystem
         if (!_protoMan.TryIndex(protoId, out var proto))
             return;
 
-        _alertsSystem.ShowAlert(entity, proto.AlertPrototype);
+        _alertsSystem.ShowAlert(entity.Owner, proto.AlertPrototype);
     }
 
     /// <summary>

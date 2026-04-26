@@ -1,18 +1,14 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Lumminal <81829924+Lumminal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Roudenn <romabond091@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Shadowling;
 using Content.Goobstation.Shared.Shadowling.Components;
 using Content.Goobstation.Shared.Shadowling.Components.Abilities.PreAscension;
-using Content.Server.Temperature.Components;
 using Content.Shared.Actions;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
+using Content.Shared.Temperature.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
@@ -102,9 +98,6 @@ public sealed class ShadowlingIcyVeinsSystem : EntitySystem
         EnsureComp<IcyVeinsTargetComponent>(target);
         _popup.PopupEntity(Loc.GetString("shadowling-icy-veins-activated"), target, target, PopupType.MediumCaution);
 
-        if (!TryComp<StatusEffectsComponent>(target, out var statusEffectsComponent))
-            return;
-
-        _stun.TryParalyze(target, TimeSpan.FromSeconds(component.ParalyzeTime), false, statusEffectsComponent);
+        _stun.TryAddParalyzeDuration(target, TimeSpan.FromSeconds(component.ParalyzeTime));
     }
 }

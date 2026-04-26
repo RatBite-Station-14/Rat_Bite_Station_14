@@ -1,21 +1,11 @@
-// SPDX-FileCopyrightText: 2023 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 Rane <60792108+Elijahrane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Content.Server.Storage.Components;
+// <Trauma>
+using Content.Trauma.Common.CardboardBox;
+// </Trauma>
 using Content.Server.Storage.EntitySystems;
 using Content.Shared.Access.Components;
 using Content.Shared.CardboardBox;
 using Content.Shared.CardboardBox.Components;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Interaction;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
@@ -90,6 +80,15 @@ public sealed class CardboardBoxSystem : SharedCardboardBoxSystem
         //Play effect & sound
         if (component.Mover != null)
         {
+            // <Trauma>
+            var attemptEv = new BoxAlertAttemptEvent();
+            RaiseLocalEvent(uid, ref attemptEv);
+            if (attemptEv.Cancelled)
+                return;
+
+            var ev = new BoxAlertedEvent();
+            RaiseLocalEvent(uid, ref ev);
+            // </Trauma>
             if (_timing.CurTime > component.EffectCooldown)
             {
                 RaiseNetworkEvent(new PlayBoxEffectMessage(GetNetEntity(uid), GetNetEntity(component.Mover.Value)));
@@ -107,6 +106,12 @@ public sealed class CardboardBoxSystem : SharedCardboardBoxSystem
 
     private void AfterStorageClosed(EntityUid uid, CardboardBoxComponent component, ref StorageAfterCloseEvent args)
     {
+        // <Trauma>
+        var attemptEv = new BoxStealthAttemptEvent();
+        RaiseLocalEvent(uid, ref attemptEv);
+        if (attemptEv.Cancelled)
+            return;
+        // </Trauma>
         // If this box has a stealth/chameleon effect, enable the stealth effect.
         if (TryComp(uid, out StealthComponent? stealth))
         {
@@ -118,10 +123,10 @@ public sealed class CardboardBoxSystem : SharedCardboardBoxSystem
     //Relay damage to the mover
     private void OnDamage(EntityUid uid, CardboardBoxComponent component, DamageChangedEvent args)
     {
-        if (args.DamageDelta != null && args.DamageIncreased)
-        {
-            _damageable.TryChangeDamage(component.Mover, args.DamageDelta, origin: args.Origin);
-        }
+        if (args.DamageDelta == null || !args.DamageIncreased || component.Mover is not { } mover)
+            return;
+
+        _damageable.ChangeDamage(mover, args.DamageDelta, origin: args.Origin);
     }
 
     private void OnEntInserted(EntityUid uid, CardboardBoxComponent component, EntInsertedIntoContainerMessage args)

@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Scruq445 <storchdamien@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Vehicles;
@@ -18,18 +12,22 @@ public sealed class VehicleSystem : SharedVehicleSystem
     [Dependency] private readonly IEyeManager _eye = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
 
+    private EntityQuery<SpriteComponent> _spriteQuery;
+
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<VehicleComponent, AppearanceChangeEvent>(OnAppearanceChange);
         SubscribeLocalEvent<VehicleComponent, MoveEvent>(OnMove);
+
+        _spriteQuery = GetEntityQuery<SpriteComponent>();
     }
 
     private void OnAppearanceChange(Entity<VehicleComponent> ent, ref AppearanceChangeEvent args)
     {
         if (args.Sprite == null
             || !_appearance.TryGetData(ent, VehicleState.Animated, out bool animated)
-            || !TryComp<SpriteComponent>(ent, out var spriteComp))
+            || !_spriteQuery.TryComp(ent, out var spriteComp))
             return;
 
         SpritePos(ent);
@@ -47,7 +45,7 @@ public sealed class VehicleSystem : SharedVehicleSystem
 
     private void SpritePos(Entity<VehicleComponent> ent)
     {
-        if (!TryComp<SpriteComponent>(ent, out var spriteComp)
+        if (!_spriteQuery.TryComp(ent, out var spriteComp)
             || !_appearance.TryGetData(ent, VehicleState.DrawOver, out _))
             return;
 

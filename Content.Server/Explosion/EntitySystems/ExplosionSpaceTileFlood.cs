@@ -1,14 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2022 ElectroJr <leonsfriedrich@gmail.com>
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2022 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Atmos;
 using Robust.Shared.Map;
 
@@ -142,7 +131,7 @@ public sealed class ExplosionSpaceTileFlood : ExplosionTileFlood
             if (EnteredBlockedTiles.Contains(tile))
                 return;
 
-            // Did the explosion already attempt to enter this tile from some other direction? 
+            // Did the explosion already attempt to enter this tile from some other direction?
             if (!UnenteredBlockedTiles.Add(tile))
                 return;
 
@@ -155,7 +144,7 @@ public sealed class ExplosionSpaceTileFlood : ExplosionTileFlood
         if (!EnteredBlockedTiles.Add(tile))
             return;
 
-        // Did the explosion already attempt to enter this tile from some other direction? 
+        // Did the explosion already attempt to enter this tile from some other direction?
         if (UnenteredBlockedTiles.Contains(tile))
         {
             NewFreedTiles.Add(tile);

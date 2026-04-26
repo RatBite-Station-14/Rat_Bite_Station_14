@@ -1,13 +1,9 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Factory;
 using Content.Server.DeviceLinking.Systems;
 using Content.Shared.DeviceLinking;
 using Content.Shared.Singularity.Components;
-using Robust.Shared.Prototypes;
 
 namespace Content.Goobstation.Server.Singularity;
 
@@ -31,7 +27,6 @@ public sealed class RadCollectorSignalSystem : EntitySystem
             if (!_automation.IsAutomated(uid))
                 continue;
 
-            var ent = (uid, comp);
             _appearance.TryGetData<int>(uid, RadiationCollectorVisuals.PressureState, out var rawState);
             var state = rawState switch
             {
@@ -54,6 +49,7 @@ public sealed class RadCollectorSignalSystem : EntitySystem
     {
         RadCollectorState.Empty => EmptyPort,
         RadCollectorState.Low => LowPort,
-        RadCollectorState.Full => FullPort
+        RadCollectorState.Full => FullPort,
+        _ => throw new InvalidOperationException($"Unknown radiation collector state {state}")
     };
 }

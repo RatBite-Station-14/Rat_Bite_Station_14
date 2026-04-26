@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Server.Physics.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Singularity.Components;
@@ -43,9 +36,6 @@ public sealed class SingularityAttractorSystem : EntitySystem
     /// <param name="frameTime">The time elapsed since the last set of updates.</param>
     public override void Update(float frameTime)
     {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
         var query = EntityQueryEnumerator<SingularityAttractorComponent, TransformComponent>();
         var now = _timing.CurTime;
         while (query.MoveNext(out var uid, out var attractor, out var xform))

@@ -1,73 +1,20 @@
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 20kdc <asdd2808@gmail.com>
-// SPDX-FileCopyrightText: 2023 AJCM <AJCM@tutanota.com>
-// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 12rabbits <53499656+12rabbits@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Centronias <me@centronias.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <65184747+Dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <51352440+JIPDawg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <JIPDawg93@gmail.com>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 Moomoobeef <62638182+Moomoobeef@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 PopGamer46 <yt1popgamer@gmail.com>
-// SPDX-FileCopyrightText: 2024 PursuitInAshes <pursuitinashes@gmail.com>
-// SPDX-FileCopyrightText: 2024 QueerNB <176353696+QueerNB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Saphire Lattice <lattice@saphi.re>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 SkaldetSkaeg <impotekh@gmail.com>
-// SPDX-FileCopyrightText: 2024 Spessmann <156740760+Spessmann@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 stellar-novas <stellar_novas@riseup.net>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 CerberusWolfie <wb.johnb.willis@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+// <Trauma>
+using Content.Shared.Power.EntitySystems;
+// </Trauma>
 using System.Linq;
 using Content.Server.Chat.Systems;
 using Content.Server.Interaction;
-using Content.Server._EinsteinEngines.Language;
 using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
-using Content.Server.Radio.Components;
-using Content.Server.Speech;
-using Content.Server.Speech.Components;
+using Content.Shared.Chat;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Power;
 using Content.Shared.Radio;
-using Content.Shared.Chat;
-using Content.Shared.Power.EntitySystems;
 using Content.Shared.Radio.Components;
+using Content.Shared.Radio.EntitySystems;
+using Content.Shared.Speech;
+using Content.Shared.Speech.Components;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Radio.EntitySystems;
@@ -75,16 +22,17 @@ namespace Content.Server.Radio.EntitySystems;
 /// <summary>
 ///     This system handles radio speakers and microphones (which together form a hand-held radio).
 /// </summary>
-public sealed class RadioDeviceSystem : EntitySystem
+public sealed class RadioDeviceSystem : SharedRadioDeviceSystem
 {
+    // <Trauma>
+    [Dependency] private readonly SharedPowerReceiverSystem _power = default!;
+    // </Trauma>
     [Dependency] private readonly IPrototypeManager _protoMan = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly InteractionSystem _interaction = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly LanguageSystem _language = default!;
-    [Dependency] private readonly SharedPowerReceiverSystem _power = default!; // Goob
 
     // Used to prevent a shitter from using a bunch of radios to spam chat.
     private HashSet<(string, EntityUid, RadioChannelPrototype)> _recentlySent = new();
@@ -158,15 +106,6 @@ public sealed class RadioDeviceSystem : EntitySystem
         ToggleRadioSpeaker(uid, args.User, args.Handled, component);
         args.Handled = true;
     }
-
-    public void ToggleRadioMicrophone(EntityUid uid, EntityUid user, bool quiet = false, RadioMicrophoneComponent? component = null)
-    {
-        if (!Resolve(uid, ref component))
-            return;
-
-        SetMicrophoneEnabled(uid, user, !component.Enabled, quiet, component);
-    }
-
     private void OnPowerChanged(EntityUid uid, RadioMicrophoneComponent component, ref PowerChangedEvent args)
     {
         if (args.Powered)
@@ -174,7 +113,8 @@ public sealed class RadioDeviceSystem : EntitySystem
         SetMicrophoneEnabled(uid, null, false, true, component);
     }
 
-    public void SetMicrophoneEnabled(EntityUid uid, EntityUid? user, bool enabled, bool quiet = false, RadioMicrophoneComponent? component = null)
+
+    public override void SetMicrophoneEnabled(EntityUid uid, EntityUid? user, bool enabled, bool quiet = false, RadioMicrophoneComponent? component = null)
     {
         if (!Resolve(uid, ref component, false))
             return;
@@ -198,34 +138,6 @@ public sealed class RadioDeviceSystem : EntitySystem
             RemCompDeferred<ActiveListenerComponent>(uid);
     }
 
-    public void ToggleRadioSpeaker(EntityUid uid, EntityUid user, bool quiet = false, RadioSpeakerComponent? component = null)
-    {
-        if (!Resolve(uid, ref component))
-            return;
-
-        SetSpeakerEnabled(uid, user, !component.Enabled, quiet, component);
-    }
-
-    public void SetSpeakerEnabled(EntityUid uid, EntityUid? user, bool enabled, bool quiet = false, RadioSpeakerComponent? component = null)
-    {
-        if (!Resolve(uid, ref component))
-            return;
-
-        component.Enabled = enabled;
-
-        if (!quiet && user != null)
-        {
-            var state = Loc.GetString(component.Enabled ? "handheld-radio-component-on-state" : "handheld-radio-component-off-state");
-            var message = Loc.GetString("handheld-radio-component-on-use", ("radioState", state));
-            _popup.PopupEntity(message, user.Value, user.Value);
-        }
-
-        _appearance.SetData(uid, RadioDeviceVisuals.Speaker, component.Enabled);
-        if (component.Enabled)
-            EnsureComp<ActiveRadioComponent>(uid).Channels.UnionWith(component.Channels);
-        else
-            RemCompDeferred<ActiveRadioComponent>(uid);
-    }
     #endregion
 
     private void OnExamine(EntityUid uid, RadioMicrophoneComponent component, ExaminedEvent args)
@@ -280,7 +192,7 @@ public sealed class RadioDeviceSystem : EntitySystem
         _chat.TrySendInGameICMessage(uid,
             message,
             component.SpeakNormally ? InGameICChatType.Speak : InGameICChatType.Whisper, // Goobstation - radio host
-            ChatTransmitRange.GhostRangeLimit,
+            component.HideChat ? ChatTransmitRange.HideChat : ChatTransmitRange.GhostRangeLimit, // Trauma - no radio host spam
             nameOverride: name,
             checkRadioPrefix: component.SpeakNormally,
             languageOverride: args.Language); // Einstein Engines - Languages
@@ -343,9 +255,9 @@ public sealed class RadioDeviceSystem : EntitySystem
         }
 
         if (TryComp<RadioMicrophoneComponent>(ent, out var mic))
-            mic.BroadcastChannel = channel;
+            mic.BroadcastChannel = channel.Value;
         if (TryComp<RadioSpeakerComponent>(ent, out var speaker))
-            speaker.Channels = new() { channel };
+            speaker.Channels = new() { channel.Value };
         Dirty(ent);
     }
 }

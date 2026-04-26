@@ -1,5 +1,3 @@
-// SPDX-FileCopyrightText: 2025 RichardBlonski <48651647+RichardBlonski@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Server.Chaplain.Components;
@@ -36,10 +34,6 @@ public sealed class SeeHereticFixturesSystem : EntitySystem
 
     private void OnGetVisMask(EntityUid uid, SeeHereticFixturesComponent component, ref GetVisMaskEvent args)
     {
-        if (component.SeeShifts)
-            args.VisibilityMask |= (int) VisibilityFlags.EldritchInfluence;
-
-        if (component.SeeFractures)
-            args.VisibilityMask |= (int) VisibilityFlags.EldritchInfluenceSpent;
+        args.VisibilityMask |= (int) VisibilityFlags.EldritchInfluence;
     }
 }

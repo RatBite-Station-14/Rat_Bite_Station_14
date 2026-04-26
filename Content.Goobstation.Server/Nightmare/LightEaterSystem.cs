@@ -1,14 +1,9 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Lumminal <81829924+Lumminal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Roudenn <romabond091@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
 using Content.Goobstation.Shared.Nightmare;
 using Content.Goobstation.Shared.Nightmare.Components;
-using Content.Server.Light.Components;
-using Content.Server.PowerCell;
+using Content.Shared.PowerCell;
 using Content.Shared.Actions;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
@@ -18,6 +13,7 @@ using Content.Shared.Weapons.Melee.Events;
 
 namespace Content.Goobstation.Server.Nightmare;
 
+// TODO: move this to shared and predict it
 /// <summary>
 /// This handles the Light Eater system.
 /// Light Eater is an armblade that ashes any light that it attacks.

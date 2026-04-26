@@ -1,17 +1,6 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <shadowjjt@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 #nullable enable
 using System.Linq;
+using Content.IntegrationTests.Fixtures;
 using Content.Server.Ghost.Roles;
 using Content.Server.Ghost.Roles.Components;
 using Content.Shared.Ghost;
@@ -24,7 +13,7 @@ using Robust.Shared.Prototypes;
 namespace Content.IntegrationTests.Tests.Minds;
 
 [TestFixture]
-public sealed class GhostRoleTests
+public sealed class GhostRoleTests : GameTest
 {
     private const string GhostRoleProtoId = "GhostRoleTestEntity";
     private const string TestMobProtoId = "GhostRoleTestMob";
@@ -45,22 +34,25 @@ public sealed class GhostRoleTests
           - type: MobState # MobState is required for correct determination of if the player can return to body or not
         """;
 
+    public override PoolSettings PoolSettings => new()
+    {
+        Dirty = true,
+        DummyTicker = false,
+        Connected = true
+    };
+
     /// <summary>
     /// This is a simple test that just checks if a player can take a ghost role and then regain control of their
     /// original entity without encountering errors.
     /// </summary>
     [TestCase(true)]
     [TestCase(false)]
+    [Explicit] // Trauma - 4 minutes for a single case HOLY SHITCODE
     public async Task TakeRoleAndReturn(bool adminGhost)
     {
         var ghostCommand = adminGhost ? "aghost" : "ghost";
 
-        await using var pair = await PoolManager.GetServerClient(new PoolSettings
-        {
-            Dirty = true,
-            DummyTicker = false,
-            Connected = true
-        });
+        var pair = Pair;
         var server = pair.Server;
         var client = pair.Client;
 
@@ -222,7 +214,6 @@ public sealed class GhostRoleTests
         if (!adminGhost)
         {
             // End of the normal player ghost role test
-            await pair.CleanReturnAsync();
             return;
         }
 
@@ -254,7 +245,5 @@ public sealed class GhostRoleTests
             // Check that there is are no lingereing ghosts
             Assert.That(entMan.Count<GhostComponent>(), Is.Zero);
         });
-
-        await pair.CleanReturnAsync();
     }
 }

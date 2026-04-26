@@ -1,21 +1,15 @@
-// SPDX-FileCopyrightText: 2024 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
 using Content.Goobstation.Common.Silo;
 using Content.Server.Lathe;
 using Content.Server.Station.Components;
-using Content.Shared._Goobstation.Silo;
 using Content.Shared.DeviceLinking;
 using Content.Shared.Lathe;
 using Content.Shared.Materials;
 using Robust.Server.GameStates;
 using Timer = Robust.Shared.Timing.Timer;
+using Content.Goobstation.Shared.Silo;
 
 namespace Content.Goobstation.Server.Silo;
 
@@ -68,8 +62,7 @@ public sealed class SiloSystem : SharedSiloSystem
 
     private void OnMapInit(Entity<BecomesStationComponent> ent, ref MapInitEvent args)
     {
-        var siloQuery =
-            AllEntityQuery<SiloComponent, MaterialStorageComponent, TransformComponent, DeviceLinkSourceComponent>();
+        var siloQuery = AllEntityQuery<SiloComponent, MaterialStorageComponent, TransformComponent, DeviceLinkSourceComponent>();
 
         Entity<DeviceLinkSourceComponent>? silo = null;
 
@@ -85,8 +78,7 @@ public sealed class SiloSystem : SharedSiloSystem
         if (silo == null)
             return;
 
-        var utilizerQuery = AllEntityQuery<SiloUtilizerComponent, MaterialStorageComponent, TransformComponent,
-            DeviceLinkSinkComponent>();
+        var utilizerQuery = AllEntityQuery<SiloUtilizerComponent, MaterialStorageComponent, TransformComponent, DeviceLinkSinkComponent>();
         while (utilizerQuery.MoveNext(out var utilizer, out _, out var storage, out var utilizerXform, out var sink))
         {
             if (!storage.ConnectToSilo)

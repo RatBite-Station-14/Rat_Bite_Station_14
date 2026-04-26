@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
@@ -11,7 +8,6 @@ using Content.Shared.Cargo;
 using Content.Shared.IdentityManagement;
 using Content.Shared.NameIdentifier;
 using JetBrains.Annotations;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Server.Xenobiology.XenobiologyBountyConsole;

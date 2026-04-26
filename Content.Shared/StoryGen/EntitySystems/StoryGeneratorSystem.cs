@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Diagnostics.CodeAnalysis;
 using Robust.Shared.Collections;
 using Robust.Shared.Prototypes;
@@ -29,7 +24,7 @@ public sealed partial class StoryGeneratorSystem : EntitySystem
     public bool TryGenerateStoryFromTemplate(ProtoId<StoryTemplatePrototype> template, [NotNullWhen(true)] out string? story, int? seed = null)
     {
         // Get the story template prototype from the ID
-        if (!_protoMan.TryIndex(template, out var templateProto))
+        if (!_protoMan.Resolve(template, out var templateProto))
         {
             story = null;
             return false;
@@ -44,7 +39,7 @@ public sealed partial class StoryGeneratorSystem : EntitySystem
         foreach (var (name, list) in templateProto.Variables)
         {
             // Get the prototype for the world list dataset
-            if (!_protoMan.TryIndex(list, out var listProto))
+            if (!_protoMan.Resolve(list, out var listProto))
                 continue; // Missed one, but keep going with the rest of the story
 
             // Pick a random word from the dataset and localize it

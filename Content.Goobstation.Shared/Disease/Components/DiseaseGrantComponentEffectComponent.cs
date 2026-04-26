@@ -1,4 +1,5 @@
-using Robust.Shared.Prototypes;
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 
 namespace Content.Goobstation.Shared.Disease.Components;
 
@@ -6,8 +7,5 @@ namespace Content.Goobstation.Shared.Disease.Components;
 public sealed partial class DiseaseGrantComponentEffectComponent : Component
 {
     [DataField(required: true)]
-    public ComponentRegistry Components;
-
-    [DataField]
-    public bool RemoveOnCure = true;
+    public ComponentRegistry Components = default!;
 }

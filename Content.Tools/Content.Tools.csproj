@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-  </PropertyGroup>
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
 
   <Import Project="../MSBuild/Content.props" />
 
-  <ItemGroup>
-    <PackageReference Include="YamlDotNet" />
-  </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="YamlDotNet" />
+    </ItemGroup>
 
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
 

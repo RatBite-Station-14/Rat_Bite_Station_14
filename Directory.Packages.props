@@ -6,12 +6,12 @@
     -->
     <PackageVersion Remove="Npgsql.EntityFrameworkCore.PostgreSQL" />
     <PackageVersion Remove="Microsoft.EntityFrameworkCore.Design" />
-    <!-- <Ratbite> -->
+    <!-- <Trauma> -->
     <PackageVersion Include="Concentus" Version="2.2.2" />
     <PackageVersion Include="AsmResolver" Version="6.0.0-beta.3" />
     <PackageVersion Include="AsmResolver.DotNet" Version="6.0.0-beta.3" />
     <PackageVersion Include="System.Security.Cryptography.Xml" Version="9.0.15" />
-    <!-- </Ratbite> -->
+    <!-- </Trauma> -->
     <PackageVersion Include="CsvHelper" Version="33.1.0" />
     <PackageVersion Include="ImGui.NET" Version="1.87.3" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.0">

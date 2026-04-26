@@ -1,19 +1,21 @@
-﻿using Content.Server.Hands.Systems;
+// <Trauma>
+using Content.Shared.Radio.Components;
+using Content.Shared.Storage;
+using Content.Shared.Storage.EntitySystems;
+// </Trauma>
+using Content.Server.Hands.Systems;
 using Content.Server.Preferences.Managers;
-using Content.Shared._EinsteinEngines.Silicon.IPC;
 using Content.Shared.Access.Components;
 using Content.Shared.Clothing;
 using Content.Shared.Hands.Components;
 using Content.Shared.Humanoid;
+using Content.Shared.Interaction.Components;
 using Content.Shared.Inventory;
 using Content.Shared.PDA;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
-using Content.Shared.Radio.Components;
 using Content.Shared.Roles;
 using Content.Shared.Station;
-using Content.Shared.Storage;
-using Content.Shared.Storage.EntitySystems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
@@ -21,18 +23,19 @@ namespace Content.Server.Clothing.Systems;
 
 public sealed class OutfitSystem : EntitySystem
 {
+    // <Trauma>
+    [Dependency] private readonly SharedStorageSystem _storage = default!;
+    // </Trauma>
     [Dependency] private readonly IServerPreferencesManager _preferenceManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly HandsSystem _handSystem = default!;
     [Dependency] private readonly InventorySystem _invSystem = default!;
     [Dependency] private readonly SharedStationSpawningSystem _spawningSystem = default!;
-    [Dependency] private readonly SharedStorageSystem _storageSystem = default!; // Goobstation
-    [Dependency] private readonly InternalEncryptionKeySpawner _encryptionSystem = default!; // Goobstation
 
-
-    public bool SetOutfit(EntityUid target, string gear, Action<EntityUid, EntityUid>? onEquipped = null, bool doSpecial = false)
+    // Goob - added doSpecial
+    public bool SetOutfit(EntityUid target, string gear, Action<EntityUid, EntityUid>? onEquipped = null, bool unremovable = false, bool doSpecial = false)
     {
-        if (!EntityManager.TryGetComponent(target, out InventoryComponent? inventoryComponent))
+        if (!TryComp(target, out InventoryComponent? inventoryComponent))
             return false;
 
         if (!_prototypeManager.TryIndex<StartingGearPrototype>(gear, out var startingGear))
@@ -41,7 +44,7 @@ public sealed class OutfitSystem : EntitySystem
         HumanoidCharacterProfile? profile = null;
         ICommonSession? session = null;
         // Check if we are setting the outfit of a player to respect the preferences
-        if (EntityManager.TryGetComponent(target, out ActorComponent? actorComponent))
+        if (TryComp(target, out ActorComponent? actorComponent))
         {
             session = actorComponent.PlayerSession;
             var userId = actorComponent.PlayerSession.UserId;
@@ -58,15 +61,17 @@ public sealed class OutfitSystem : EntitySystem
                 if (gearStr == string.Empty)
                     continue;
 
-                var equipmentEntity = EntityManager.SpawnEntity(gearStr, EntityManager.GetComponent<TransformComponent>(target).Coordinates);
+                var equipmentEntity = Spawn(gearStr, Comp<TransformComponent>(target).Coordinates);
                 if (slot.Name == "id" &&
-                    EntityManager.TryGetComponent(equipmentEntity, out PdaComponent? pdaComponent) &&
-                    EntityManager.TryGetComponent<IdCardComponent>(pdaComponent.ContainedId, out var id))
+                    TryComp(equipmentEntity, out PdaComponent? pdaComponent) &&
+                    TryComp<IdCardComponent>(pdaComponent.ContainedId, out var id))
                 {
-                    id.FullName = EntityManager.GetComponent<MetaDataComponent>(target).EntityName;
+                    id.FullName = Comp<MetaDataComponent>(target).EntityName;
                 }
 
                 _invSystem.TryEquip(target, equipmentEntity, slot.Name, silent: true, force: true, inventory: inventoryComponent);
+                if (unremovable)
+                    EnsureComp<UnremoveableComponent>(equipmentEntity);
 
                 onEquipped?.Invoke(target, equipmentEntity);
 
@@ -84,7 +89,7 @@ public sealed class OutfitSystem : EntitySystem
                     foreach (var entProto in entProtos)
                     {
                         var spawnedEntity = Spawn(entProto, Transform(target).Coordinates);
-                        _storageSystem.Insert(equipmentEntity, spawnedEntity, out _, storageComp: storage, playSound: false);
+                        _storage.Insert(equipmentEntity, spawnedEntity, out _, storageComp: storage, playSound: false);
                     }
 
                 }
@@ -92,12 +97,12 @@ public sealed class OutfitSystem : EntitySystem
             }
         }
 
-        if (EntityManager.TryGetComponent(target, out HandsComponent? handsComponent))
+        if (TryComp(target, out HandsComponent? handsComponent))
         {
-            var coords = EntityManager.GetComponent<TransformComponent>(target).Coordinates;
+            var coords = Comp<TransformComponent>(target).Coordinates;
             foreach (var prototype in startingGear.Inhand)
             {
-                var inhandEntity = EntityManager.SpawnEntity(prototype, coords);
+                var inhandEntity = Spawn(prototype, coords);
                 _handSystem.TryPickup(target, inhandEntity, checkActionBlocker: false, handsComp: handsComponent);
             }
         }
@@ -120,8 +125,8 @@ public sealed class OutfitSystem : EntitySystem
                 break;
 
             // Don't require a player, so this works on Urists
-            profile ??= EntityManager.TryGetComponent<HumanoidAppearanceComponent>(target, out var comp)
-                ? HumanoidCharacterProfile.DefaultWithSpecies(comp.Species)
+            profile ??= TryComp<HumanoidProfileComponent>(target, out var comp)
+                ? HumanoidCharacterProfile.DefaultWithSpecies(comp.Species, comp.Sex)
                 : new HumanoidCharacterProfile();
             // Try to get the user's existing loadout for the role
             profile.Loadouts.TryGetValue(jobProtoId, out var roleLoadout);
@@ -137,10 +142,10 @@ public sealed class OutfitSystem : EntitySystem
             _spawningSystem.EquipRoleLoadout(target, roleLoadout, jobProto);
         }
 
-        // Goobstation edit start
-        if (HasComp<EncryptionKeyHolderComponent>(target))
-            _encryptionSystem.TryInsertEncryptionKey(target, startingGear);
-        // Goobstation edit end
+        // <Trauma>
+        var ev = new StartingGearEquippedEvent(target, startingGear);
+        RaiseLocalEvent(target, ref ev);
+        // </Trauma>
 
         return true;
     }

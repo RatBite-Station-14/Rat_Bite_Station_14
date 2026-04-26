@@ -1,22 +1,3 @@
-// SPDX-FileCopyrightText: 2022 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Illiux <newoutlook@gmail.com>
-// SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr.@gmail.com>
-// SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2022 Jezithyr <jmaster9999@gmail.com>
-// SPDX-FileCopyrightText: 2022 Júlio César Ueti <52474532+Mirino97@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2022 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <wrexbe@protonmail.com>
-// SPDX-FileCopyrightText: 2024 Crotalus <Crotalus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using System.Numerics;
 using Content.Shared.Ghost;
@@ -30,7 +11,7 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
     [GenerateTypedNameReferences]
     public sealed partial class GhostTargetWindow : DefaultWindow
     {
-        private List<(string, NetEntity, int)> Warps = new();
+        private List<(string, NetEntity)> _warps = new();
         private string _searchText = string.Empty;
 
         public event Action<NetEntity>? WarpClicked;
@@ -40,107 +21,54 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
         {
             RobustXamlLoader.Load(this);
             SearchBar.OnTextChanged += OnSearchTextChanged;
-            GhostScroll.OnResized += OnWindowResized;
+
             GhostnadoButton.OnPressed += _ => OnGhostnadoClicked?.Invoke();
         }
 
-        public void UpdateWarps(IEnumerable<GhostWarp> _warps)
+        public void UpdateWarps(IEnumerable<GhostWarp> warps)
         {
-            Warps = [];
-            foreach(GhostWarp warp in _warps)
-            {
-                var name = "";
-                var type = 0; // Magic numbers my beloved
-                if (warp.Mob)
+            // Server COULD send these sorted but how about we just use the client to do it instead
+            _warps = warps
+                .OrderBy(w => w.IsWarpPoint)
+                .ThenBy(w => w.DisplayName, Comparer<string>.Create(
+                    (x, y) => string.Compare(x, y, StringComparison.Ordinal)))
+                .Select(w =>
                 {
-                    name = warp.DisplayName + (warp.Followers > 0 ? " f: " + warp.Followers : "");
-                    if(warp.Player_ghost)
-                    {
-                        type = 4;
-                    }
-                    else if (warp.IsDead)
-                    {
-                        type = 3;
-                    }
-                    else if (warp.Antagonist)
-                    {
-                        type = 2;
-                    }
-                    else
-                    {
-                        type = 1;
-                    }
-                }
-                else
-                {
-                    name = Loc.GetString("ghost-target-window-current-button", ("name", warp.DisplayName));
-                }
-                Warps.Add((name, warp.Entity, type));
-            }
+                    var name = w.IsWarpPoint
+                        ? Loc.GetString("ghost-target-window-current-button", ("name", w.DisplayName))
+                        : w.DisplayName;
+
+                    return (name, w.Entity);
+                })
+                .ToList();
         }
 
         public void Populate()
         {
-            AntagonistContainer.DisposeAllChildren();
-            LivingContainer.DisposeAllChildren();
-            DeadContainer.DisposeAllChildren();
-            GhostContainer.DisposeAllChildren();
-            MiscContainer.DisposeAllChildren();
+            ButtonContainer.RemoveAllChildren();
             AddButtons();
         }
 
         private void AddButtons()
         {
-            var total_antagonist_length = 0;
-            var total_living_length = 0;
-            var total_dead_length = 0;
-            var total_ghost_length = 0;
-            var total_misc_length = 0;
-            foreach (var (name, Entity, type) in Warps)
+            foreach (var (name, warpTarget) in _warps)
             {
                 var currentButtonRef = new Button
                 {
                     Text = name,
                     TextAlign = Label.AlignMode.Right,
-                    HorizontalAlignment = HAlignment.Left,
-                    VerticalAlignment = VAlignment.Top,
+                    HorizontalAlignment = HAlignment.Center,
+                    VerticalAlignment = VAlignment.Center,
                     SizeFlagsStretchRatio = 1,
-                    MinSize = new Vector2(20, 20),
+                    MinSize = new Vector2(340, 20),
+                    ClipText = true,
                 };
-                currentButtonRef.OnPressed += _ => WarpClicked?.Invoke(Entity);
+
+                currentButtonRef.OnPressed += _ => WarpClicked?.Invoke(warpTarget);
                 currentButtonRef.Visible = ButtonIsVisible(currentButtonRef);
-                switch (type)
-                {
-                    case 0:
-                        total_misc_length++;
-                        MiscContainer.AddChild(currentButtonRef);
-                        continue;
-                    case 1:
-                        total_living_length++;
-                        LivingContainer.AddChild(currentButtonRef);
-                        continue;
-                    case 2:
-                        total_antagonist_length++;
-                        AntagonistContainer.AddChild(currentButtonRef);
-                        continue;
-                    case 3:
-                        total_dead_length++;
-                        DeadContainer.AddChild(currentButtonRef);
-                        continue;
-                    case 4:
-                        total_ghost_length++;
-                        GhostContainer.AddChild(currentButtonRef);
-                        continue;
-                }
+
+                ButtonContainer.AddChild(currentButtonRef);
             }
-            AntagonistHeading.Title = "Antagonists - (" + total_antagonist_length + ")";
-            LivingHeading.Title = "Alive - (" + total_living_length + ")";
-            DeadHeading.Title = "Dead - (" + total_dead_length + ")";
-            GhostHeading.Title = "Ghosts - (" + total_ghost_length + ")";
-            MiscHeading.Title = "Misc - (" + total_misc_length + ")";
-            // Only check these ones for visibility, since the others will preety much always be visible
-            AntagBox.Visible = total_antagonist_length > 0;
-            DeadBox.Visible = total_dead_length > 0;
         }
 
         private bool ButtonIsVisible(Button button)
@@ -150,35 +78,11 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
 
         private void UpdateVisibleButtons()
         {
-            foreach (var child in AntagonistContainer.Children)
+            foreach (var child in ButtonContainer.Children)
             {
                 if (child is Button button)
                     button.Visible = ButtonIsVisible(button);
             }
-            foreach (var child in LivingContainer.Children)
-            {
-                if (child is Button button)
-                    button.Visible = ButtonIsVisible(button);
-            }
-            foreach (var child in GhostContainer.Children)
-            {
-                if (child is Button button)
-                    button.Visible = ButtonIsVisible(button);
-            }
-            foreach (var child in MiscContainer.Children)
-            {
-                if (child is Button button)
-                    button.Visible = ButtonIsVisible(button);
-            }
-        }
-
-        private void OnWindowResized()
-        {
-            var x = GhostScroll.Size.X - 10;
-            AntagonistContainer.MaxGridWidth = x;
-            LivingContainer.MaxGridWidth = x;
-            GhostContainer.MaxGridWidth = x;
-            MiscContainer.MaxGridWidth = x;
         }
 
         private void OnSearchTextChanged(LineEdit.LineEditEventArgs args)

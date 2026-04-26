@@ -1,30 +1,23 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Clothing.Components;
 using Content.Goobstation.Shared.Clothing.Systems;
-using Content.Server.Power.EntitySystems;
-using Content.Server.PowerCell;
 using Content.Shared.Alert;
 using Content.Shared.Inventory;
 using Content.Shared.Movement.Systems;
 using Content.Shared.PowerCell;
 using Content.Shared.PowerCell.Components;
+using Content.Shared.Power.EntitySystems;
 using Content.Shared.Rounding;
 
 namespace Content.Goobstation.Server.Clothing.Systems;
 
+// TODO: this shitcode can be put in shared
 public sealed partial class PoweredSealableClothingSystem : SharedPoweredSealableClothingSystem
 {
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
-    [Dependency] private readonly PowerCellSystem _powerCellSystem = default!;
+    [Dependency] private readonly PowerCellSystem _powerCell = default!;
+    [Dependency] private readonly SharedBatterySystem _battery = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
 
     public override void Initialize()
@@ -40,7 +33,7 @@ public sealed partial class PoweredSealableClothingSystem : SharedPoweredSealabl
 
     private void OnPowerCellChanged(Entity<SealableClothingRequiresPowerComponent> entity, ref PowerCellChangedEvent args)
     {
-        if (!entity.Comp.IsPowered && _powerCellSystem.HasDrawCharge(entity))
+        if (!entity.Comp.IsPowered && _powerCell.HasDrawCharge(entity.Owner))
         {
             entity.Comp.IsPowered = true;
             Dirty(entity);
@@ -67,7 +60,7 @@ public sealed partial class PoweredSealableClothingSystem : SharedPoweredSealabl
         if (!TryComp(entity, out PowerCellDrawComponent? drawComp))
             return;
 
-        _powerCellSystem.SetDrawEnabled((entity.Owner, drawComp), args.IsSealed);
+        _powerCell.SetDrawEnabled((entity.Owner, drawComp), args.IsSealed);
 
         UpdateClothingPowerAlert(entity);
         ModifySpeed(entity);
@@ -104,13 +97,13 @@ public sealed partial class PoweredSealableClothingSystem : SharedPoweredSealabl
         if (!TryComp<SealableClothingControlComponent>(uid, out var controlComp) || controlComp.WearerEntity == null)
             return;
 
-        if (!_powerCellSystem.TryGetBatteryFromSlot(entity, out var battery) || !controlComp.IsCurrentlySealed)
+        if (!_powerCell.TryGetBatteryFromSlot(entity.Owner, out var battery) || !controlComp.IsCurrentlySealed)
         {
             _alertsSystem.ClearAlert(controlComp.WearerEntity.Value, comp.SuitPowerAlert);
             return;
         }
 
-        var severity = ContentHelpers.RoundToLevels(MathF.Max(0f, battery.CurrentCharge), battery.MaxCharge, 6);
+        var severity = _battery.GetRemainingUses(battery.Value.AsNullable(), battery.Value.Comp.MaxCharge / 5f);
         _alertsSystem.ShowAlert(controlComp.WearerEntity.Value, comp.SuitPowerAlert, (short) severity);
     }
 
@@ -122,7 +115,7 @@ public sealed partial class PoweredSealableClothingSystem : SharedPoweredSealabl
         if (args.Args.FoundBattery != null)
             return;
 
-        if (_powerCellSystem.TryGetBatteryFromSlot(entity, out var battery, out var batteryComp))
-            args.Args.FoundBattery = (battery.Value, batteryComp);
+        if (_powerCell.TryGetBatteryFromSlot(entity.Owner, out var battery))
+            args.Args.FoundBattery = battery;
     }
 }

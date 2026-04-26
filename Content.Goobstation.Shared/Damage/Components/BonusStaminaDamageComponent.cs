@@ -1,5 +1,5 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Robust.Shared.GameStates;
 
 namespace Content.Goobstation.Shared.Damage.Components;
 
@@ -14,6 +14,6 @@ public sealed partial class BonusStaminaDamageComponent : Component
     /// <summary>
     ///     Multiplies the stamina damage by this much during a stamina hit event
     /// </summary>
-    [DataField] 
+    [DataField]
     public float Multiplier = 1f;
 }

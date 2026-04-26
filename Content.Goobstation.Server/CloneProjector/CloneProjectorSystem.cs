@@ -1,25 +1,16 @@
-// SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
-using Content.Shared.FixedPoint;
 using Content.Goobstation.Shared.CloneProjector;
 using Content.Goobstation.Shared.CloneProjector.Clone;
-using Content.Server.Emp;
 using Content.Server.Ghost.Roles.Components;
-using Content.Shared._DV.Carrying;
-using Content.Shared._EinsteinEngines.Silicon.IPC;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
+using Content.Shared.Body;
 using Content.Shared.Containers.ItemSlots;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Examine;
 using Content.Shared.Hands.EntitySystems;
-using Content.Shared.Holopad;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction.Components;
@@ -27,29 +18,25 @@ using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
-using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Radio.Components;
 using Content.Shared.Storage;
-using Content.Shared.Strip.Components;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
 using Content.Shared.Verbs;
 using Content.Shared.Whitelist;
+using Content.Trauma.Common.Carrying;
 using Robust.Shared.Containers;
-using Robust.Shared.Network;
 using Robust.Shared.Physics.Systems;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
 namespace Content.Goobstation.Server.CloneProjector;
 
 public sealed partial class CloneProjectorSystem : SharedCloneProjectorSystem
 {
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
-    [Dependency] private readonly SharedHumanoidAppearanceSystem _humanoidAppearance = default!;
+    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
@@ -62,14 +49,11 @@ public sealed partial class CloneProjectorSystem : SharedCloneProjectorSystem
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
-    [Dependency] private readonly CarryingSystem _carrying = default!;
+    [Dependency] private readonly CommonCarryingSystem _carrying = default!;
     [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
     [Dependency] private readonly MobThresholdSystem _thresholds = default!;
-    [Dependency] private readonly InternalEncryptionKeySpawner _encryptionKeySpawner = default!;
 
-    private ISawmill _sawmill = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -87,8 +71,6 @@ public sealed partial class CloneProjectorSystem : SharedCloneProjectorSystem
         SubscribeLocalEvent<WearingCloneProjectorComponent, MobStateChangedEvent>(OnWearerStateChanged);
 
         InitializeClone();
-
-        _sawmill = Logger.GetSawmill("clone-projector");
     }
 
     private void OnInit(Entity<CloneProjectorComponent> projector, ref MapInitEvent args) =>
@@ -102,11 +84,12 @@ public sealed partial class CloneProjectorSystem : SharedCloneProjectorSystem
         var status = Loc.GetString("clone-projector-examined-status", ("cloneStatus", projector.Comp.CloneUid != null));
         args.PushMarkup(status);
 
-        if (!TryComp<DamageableComponent>(projector.Comp.CloneUid, out var damageable)
-            || !_thresholds.TryGetDeadThreshold(projector.Comp.CloneUid.Value, out var deathThreshold))
+        if (projector.Comp.CloneUid is not {} clone ||
+            !_thresholds.TryGetDeadThreshold(clone, out var deathThreshold))
             return;
 
-        var remainingHealth = deathThreshold - damageable.TotalDamage;
+        var damage = _damageable.GetTotalDamage(clone);
+        var remainingHealth = deathThreshold - damage;
         var health = Loc.GetString("clone-projector-examined-health", ("cloneHealth", remainingHealth / deathThreshold * 100 ));
         args.PushMarkup(health);
     }
@@ -163,7 +146,7 @@ public sealed partial class CloneProjectorSystem : SharedCloneProjectorSystem
         TryGenerateClone(projector, args.User);
 
         if (projector.Comp.DoStun)
-            _stun.TryParalyze(args.User, projector.Comp.StunDuration, true);
+            _stun.TryUpdateParalyzeDuration(args.User, projector.Comp.StunDuration);
 
         EnsureComp<WearingCloneProjectorComponent>(args.User).ConnectedProjector = projector;
     }
@@ -177,7 +160,7 @@ public sealed partial class CloneProjectorSystem : SharedCloneProjectorSystem
         _popup.PopupEntity(popup, args.Equipee, args.Equipee);
 
         if (projector.Comp.DoStun)
-            _stun.TryParalyze(args.Equipee, projector.Comp.StunDuration, true);
+            _stun.TryUpdateParalyzeDuration(args.Equipee, projector.Comp.StunDuration);
 
         RemComp<WearingCloneProjectorComponent>(args.Equipee);
     }
@@ -233,23 +216,17 @@ public sealed partial class CloneProjectorSystem : SharedCloneProjectorSystem
     }
     private bool TryGenerateClone(Entity<CloneProjectorComponent> projector, EntityUid performer, bool force = false, bool removeMind = false)
     {
-        if (!TryComp<HumanoidAppearanceComponent>(performer, out var appearance))
-        {
-            _sawmill.Error($"Could not resolve {nameof(HumanoidAppearanceComponent)} for {ToPrettyString(performer)}");
+        if (!TryComp<HumanoidProfileComponent>(performer, out var humanoid))
             return false;
-        }
 
         if (performer == projector.Comp.CurrentHost
             && !force)
             return false;
 
-        var speciesId = appearance.Species;
+        var speciesId = humanoid.Species;
 
-        if (!_protoManager.TryIndex(speciesId, out var species))
-        {
-            _sawmill.Error($"Failed to index species ID of {speciesId}");
+        if (!_proto.Resolve(speciesId, out var species))
             return false;
-        }
 
         var clone = Spawn(species.Prototype, Transform(performer).Coordinates);
 
@@ -258,15 +235,15 @@ public sealed partial class CloneProjectorSystem : SharedCloneProjectorSystem
             _container.TryRemoveFromContainer(oldClone);
             CleanClone(oldClone, true);
 
-            if (_mind.TryGetMind(oldClone, out var id, out _) && !removeMind)
-                _mind.TransferTo(id, clone);
+            if (!removeMind && _mind.TryGetMind(oldClone, out var mindId, out var mind))
+                _mind.TransferTo(mindId, clone, mind: mind);
 
             Del(oldClone);
         }
 
         _container.Insert(clone, projector.Comp.CloneContainer);
 
-        _humanoidAppearance.CloneAppearance(performer, clone);
+        _visualBody.CopyAppearanceFrom(performer, clone);
 
         if (projector.Comp.AddedComponents != null)
             EntityManager.AddComponents(clone, projector.Comp.AddedComponents);
@@ -288,7 +265,7 @@ public sealed partial class CloneProjectorSystem : SharedCloneProjectorSystem
 
         if (!TryEquipItems(projector))
         {
-            _sawmill.Error($"Failed to equip items for holographic clone of {ToPrettyString(clone)}");
+            Log.Error($"Failed to equip items for holographic clone of {ToPrettyString(performer)} - {ToPrettyString(clone)}");
             return false;
         }
 
@@ -315,8 +292,7 @@ public sealed partial class CloneProjectorSystem : SharedCloneProjectorSystem
         if (TerminatingOrDeleted(projector)
             || !_container.Insert(clone, projector.Comp.CloneContainer))
         {
-            _sawmill.Error($"Failed to insert clone entity: {ToPrettyString(clone)} into {ToPrettyString(projector)}");
-
+            Log.Error($"Failed to insert clone entity: {ToPrettyString(clone)} into {ToPrettyString(projector)}");
             QueueDel(clone);
             return false;
         }
@@ -350,7 +326,7 @@ public sealed partial class CloneProjectorSystem : SharedCloneProjectorSystem
         {
             if (slot.ContainedEntity is not { } item
                 || _whitelist.IsWhitelistFail(projector.ClonedItemWhitelist, item)
-                || _whitelist.IsBlacklistPass(projector.ClonedItemBlacklist, item))
+                || _whitelist.IsWhitelistPass(projector.ClonedItemBlacklist, item))
                 continue;
 
             var proto = Prototype(item);
@@ -453,14 +429,13 @@ public sealed partial class CloneProjectorSystem : SharedCloneProjectorSystem
             || !TryComp<ActionComponent>(actionEntity, out var actionComp))
             return;
 
-        _actions.SetCooldown(projector.Owner, _timing.CurTime + projector.Comp.DestroyedCooldown);
+        _actions.SetCooldown((actionEntity, actionComp), projector.Comp.DestroyedCooldown);
 
         _actions.UpdateAction((actionEntity, actionComp));
-        Dirty(actionEntity, actionComp);
     }
 
     private bool CanUseProjector(Entity<CloneProjectorComponent> projector, EntityUid user)
     {
-        return _whitelist.IsBlacklistFail(projector.Comp.UserBlacklist, user);
+        return _whitelist.IsWhitelistFail(projector.Comp.UserBlacklist, user);
     }
 }

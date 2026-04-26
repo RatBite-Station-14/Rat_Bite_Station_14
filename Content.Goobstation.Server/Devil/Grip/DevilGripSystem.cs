@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 TheBorzoiMustConsume <197824988+TheBorzoiMustConsume@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Tim <timfalken@hotmail.com>
-// SPDX-FileCopyrightText: 2025 Timfa <timfalken@hotmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Devil;
@@ -45,7 +38,7 @@ public sealed class DevilGripSystem : EntitySystem
         if (!args.CanReach
             || args.Target is not { } target
             || args.Target == args.User
-            || _whitelist.IsBlacklistPass(ent.Comp.Blacklist, target)
+            || _whitelist.IsWhitelistPass(ent.Comp.Blacklist, target)
             || !TryComp<DevilComponent>(args.User, out var devilComp))
             return;
 
@@ -59,12 +52,9 @@ public sealed class DevilGripSystem : EntitySystem
             return;
         }
 
-        if (TryComp(target, out StatusEffectsComponent? status))
-        {
-            _stun.KnockdownOrStun(target, ent.Comp.KnockdownTime, true, status);
-            _stamina.TakeStaminaDamage(target, ent.Comp.StaminaDamage);
-            _language.DoRatvarian(target, ent.Comp.SpeechTime, true, status);
-        }
+        _stun.KnockdownOrStun(target, ent.Comp.KnockdownTime);
+        _stamina.TakeStaminaDamage(target, ent.Comp.StaminaDamage);
+        _language.DoRatvarian(target, ent.Comp.SpeechTime, true);
 
         _actions.SetCooldown(devilComp.DevilGrip, ent.Comp.CooldownAfterUse);
         devilComp.DevilGrip = null;

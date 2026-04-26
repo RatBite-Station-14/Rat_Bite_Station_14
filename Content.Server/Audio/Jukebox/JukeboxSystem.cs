@@ -1,46 +1,6 @@
-// SPDX-FileCopyrightText: 2024 12rabbits <53499656+12rabbits@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <65184747+Dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <51352440+JIPDawg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <JIPDawg93@gmail.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 Moomoobeef <62638182+Moomoobeef@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 PopGamer46 <yt1popgamer@gmail.com>
-// SPDX-FileCopyrightText: 2024 PursuitInAshes <pursuitinashes@gmail.com>
-// SPDX-FileCopyrightText: 2024 QueerNB <176353696+QueerNB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Saphire Lattice <lattice@saphi.re>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Spessmann <156740760+Spessmann@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tadeo <td12233a@gmail.com>
-// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 iNVERTED <alextjorgensen@gmail.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 stellar-novas <stellar_novas@riseup.net>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+// <Trauma>
+using Content.Trauma.Common.Audio;
+// </Trauma>
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Audio.Jukebox;
@@ -50,10 +10,8 @@ using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using JukeboxComponent = Content.Shared.Audio.Jukebox.JukeboxComponent;
 
 namespace Content.Server.Audio.Jukebox;
-
 
 public sealed class JukeboxSystem : SharedJukeboxSystem
 {
@@ -74,81 +32,51 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
         SubscribeLocalEvent<JukeboxComponent, PowerChangedEvent>(OnPowerChanged);
     }
 
-    private void OnComponentInit(EntityUid uid, JukeboxComponent component, ComponentInit args)
+    private void OnComponentInit(Entity<JukeboxComponent> ent, ref ComponentInit args)
     {
-        if (HasComp<ApcPowerReceiverComponent>(uid))
+        if (HasComp<ApcPowerReceiverComponent>(ent))
         {
-            TryUpdateVisualState(uid, component);
+            TryUpdateVisualState(ent.AsNullable());
         }
     }
 
-    private void OnJukeboxPlay(EntityUid uid, JukeboxComponent component, ref JukeboxPlayingMessage args)
+    private void OnJukeboxPlay(Entity<JukeboxComponent> ent, ref JukeboxPlayingMessage args)
     {
-        if (Exists(component.AudioStream))
-        {
-            Audio.SetState(component.AudioStream, AudioState.Playing);
-        }
-        else
-        {
-            component.AudioStream = Audio.Stop(component.AudioStream);
-
-            if (string.IsNullOrEmpty(component.SelectedSongId) ||
-                !_protoManager.TryIndex(component.SelectedSongId, out var jukeboxProto))
-            {
-                return;
-            }
-
-            component.AudioStream = Audio.PlayPvs(jukeboxProto.Path, uid, AudioParams.Default.WithMaxDistance(10f).WithVolume(-6f))?.Entity; // Goobstation - the jukebox doesn't break your ears anymore
-            Dirty(uid, component);
-        }
+        TryPlay(ent.AsNullable());
     }
 
     private void OnJukeboxPause(Entity<JukeboxComponent> ent, ref JukeboxPauseMessage args)
     {
-        Audio.SetState(ent.Comp.AudioStream, AudioState.Paused);
+        Pause(ent.AsNullable());
     }
 
-    private void OnJukeboxSetTime(EntityUid uid, JukeboxComponent component, JukeboxSetTimeMessage args)
+    private void OnJukeboxSetTime(Entity<JukeboxComponent> ent, ref JukeboxSetTimeMessage args)
     {
         if (TryComp(args.Actor, out ActorComponent? actorComp))
         {
             var offset = actorComp.PlayerSession.Channel.Ping * 1.5f / 1000f;
-            Audio.SetPlaybackPosition(component.AudioStream, args.SongTime + offset);
+            SetTime(ent.AsNullable(), args.SongTime + offset);
         }
     }
 
     private void OnPowerChanged(Entity<JukeboxComponent> entity, ref PowerChangedEvent args)
     {
-        TryUpdateVisualState(entity);
+        TryUpdateVisualState(entity.AsNullable());
 
         if (!this.IsPowered(entity.Owner, EntityManager))
         {
-            Stop(entity);
+            Stop(entity.AsNullable());
         }
     }
 
     private void OnJukeboxStop(Entity<JukeboxComponent> entity, ref JukeboxStopMessage args)
     {
-        Stop(entity);
-    }
-
-    private void Stop(Entity<JukeboxComponent> entity)
-    {
-        Audio.SetState(entity.Comp.AudioStream, AudioState.Stopped);
-        Dirty(entity);
+        Stop(entity.AsNullable());
     }
 
     private void OnJukeboxSelected(EntityUid uid, JukeboxComponent component, JukeboxSelectedMessage args)
     {
-        if (!Audio.IsPlaying(component.AudioStream))
-        {
-            component.SelectedSongId = args.SongId;
-            DirectSetVisualState(uid, JukeboxVisualState.Select);
-            component.Selecting = true;
-            component.AudioStream = Audio.Stop(component.AudioStream);
-        }
-
-        Dirty(uid, component);
+        SetSelectedTrack((uid, component), args.SongId);
     }
 
     public override void Update(float frameTime)
@@ -166,15 +94,15 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
                     comp.SelectAccumulator = 0f;
                     comp.Selecting = false;
 
-                    TryUpdateVisualState(uid, comp);
+                    TryUpdateVisualState((uid, comp));
                 }
             }
         }
     }
 
-    private void OnComponentShutdown(EntityUid uid, JukeboxComponent component, ComponentShutdown args)
+    private void OnComponentShutdown(Entity<JukeboxComponent> ent, ref ComponentShutdown args)
     {
-        component.AudioStream = Audio.Stop(component.AudioStream);
+        ent.Comp.AudioStream = Audio.Stop(ent.Comp.AudioStream);
     }
 
     private void DirectSetVisualState(EntityUid uid, JukeboxVisualState state)
@@ -182,18 +110,103 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
         _appearanceSystem.SetData(uid, JukeboxVisuals.VisualState, state);
     }
 
-    private void TryUpdateVisualState(EntityUid uid, JukeboxComponent? jukeboxComponent = null)
+    private void TryUpdateVisualState(Entity<JukeboxComponent?> ent)
     {
-        if (!Resolve(uid, ref jukeboxComponent))
+        if (!Resolve(ent, ref ent.Comp))
             return;
 
         var finalState = JukeboxVisualState.On;
 
-        if (!this.IsPowered(uid, EntityManager))
+        if (!this.IsPowered(ent, EntityManager))
         {
             finalState = JukeboxVisualState.Off;
         }
 
-        _appearanceSystem.SetData(uid, JukeboxVisuals.VisualState, finalState);
+        _appearanceSystem.SetData(ent, JukeboxVisuals.VisualState, finalState);
+    }
+
+    /// <summary>
+    /// Set the selected track of the jukebox to the specified prototype.
+    /// </summary>
+    public void SetSelectedTrack(Entity<JukeboxComponent?> ent, ProtoId<JukeboxPrototype> track)
+    {
+        if (!Resolve(ent, ref ent.Comp))
+            return;
+
+        if (!Audio.IsPlaying(ent.Comp.AudioStream))
+        {
+            ent.Comp.SelectedSongId = track;
+            DirectSetVisualState(ent, JukeboxVisualState.Select);
+            ent.Comp.Selecting = true;
+            ent.Comp.AudioStream = Audio.Stop(ent.Comp.AudioStream);
+            Dirty(ent);
+        }
+    }
+
+    /// <summary>
+    /// Attempts to play the jukebox's current selected track.
+    /// </summary>
+    /// <returns>false if no track is selected or the track prototype cannot be found, otherwise true.</returns>
+    public bool TryPlay(Entity<JukeboxComponent?> ent)
+    {
+        if (!Resolve(ent, ref ent.Comp))
+            return false;
+
+        if (Exists(ent.Comp.AudioStream))
+        {
+            Audio.SetState(ent.Comp.AudioStream, AudioState.Playing);
+        }
+        else
+        {
+            if (string.IsNullOrEmpty(ent.Comp.SelectedSongId) ||
+                !_protoManager.Resolve(ent.Comp.SelectedSongId, out var jukeboxProto))
+            {
+                return false;
+            }
+
+            ent.Comp.AudioStream = Audio.PlayPvs(jukeboxProto.Path, ent, AudioParams.Default.WithMaxDistance(10f))?.Entity;
+            Dirty(ent);
+            // <Trauma>
+            if (ent.Comp.AudioStream is {} audio)
+                EnsureComp<CopyrightedAudioComponent>(audio);
+            // </Trauma>
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// Stops any track that may currently be playing.
+    /// </summary>
+    public void Stop(Entity<JukeboxComponent?> entity)
+    {
+        if (!Resolve(entity, ref entity.Comp, logMissing: false))
+            return;
+
+        Audio.SetState(entity.Comp.AudioStream, AudioState.Stopped);
+    }
+
+    /// <summary>
+    /// Pauses any track that may currently be playing.
+    /// </summary>
+    public void Pause(Entity<JukeboxComponent?> entity)
+    {
+        if (!Resolve(entity, ref entity.Comp, logMissing: false))
+            return;
+
+        Audio.SetState(entity.Comp.AudioStream, AudioState.Paused);
+    }
+
+    /// <summary>
+    /// Sets the playback position within the current audio track.
+    /// </summary>
+    /// <remarks>
+    /// If setting based on user input, you may need to compensate for the player's ping.
+    /// </remarks>
+    public void SetTime(Entity<JukeboxComponent?> entity, float songTime)
+    {
+        if (!Resolve(entity, ref entity.Comp))
+            return;
+
+        Audio.SetPlaybackPosition(entity.Comp.AudioStream, songTime);
     }
 }

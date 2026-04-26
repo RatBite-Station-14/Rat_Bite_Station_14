@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2023 Jezithyr <jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Mobs.Components;
 using Robust.Shared.Serialization;
 
@@ -21,8 +15,9 @@ public enum MobState : byte
 {
     Invalid = 0,
     Alive = 1,
-    Critical = 2,
-    Dead = 3
+    SoftCrit = 2, // Trauma
+    Critical = 3, // Trauma - was 3
+    Dead = 4 // Trauma - was 4
 }
 
 /// <summary>

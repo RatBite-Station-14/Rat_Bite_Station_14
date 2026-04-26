@@ -1,6 +1,7 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.DoAfter;
 using Robust.Shared.Map;
-using Robust.Shared.Serialization;
 
 namespace Content.Goobstation.Shared.SlaughterDemon;
 
@@ -10,7 +11,7 @@ namespace Content.Goobstation.Shared.SlaughterDemon;
 [ByRefEvent]
 public record struct SlaughterDevourEvent(
     EntityUid pullingEnt,
-    EntityUid pullerEnt);
+    EntityCoordinates PreviousCoordinates);
 
 /// <summary>
 ///  Raised on the entity that gets devoured

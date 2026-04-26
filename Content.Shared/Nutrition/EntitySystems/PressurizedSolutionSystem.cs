@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Hands.EntitySystems;
@@ -186,8 +179,8 @@ public sealed partial class PressurizedSolutionSystem : EntitySystem
         var solution = _solutionContainer.SplitSolution(soln.Value, interactions.Volume);
 
         // Spray the solution onto the ground and anyone nearby
-        if (TryComp(entity, out TransformComponent? transform))
-            _puddle.TrySplashSpillAt(entity, transform.Coordinates, solution, out _, sound: false);
+        var coordinates = Transform(entity).Coordinates;
+        _puddle.TrySplashSpillAt(entity.Owner, coordinates, out _, out _, sound: false);
 
         var drinkName = Identity.Entity(entity, EntityManager);
 
@@ -274,6 +267,10 @@ public sealed partial class PressurizedSolutionSystem : EntitySystem
 
     private void OnSolutionUpdate(Entity<PressurizedSolutionComponent> entity, ref SolutionContainerChangedEvent args)
     {
+        // The changes are already networked as part of the same game state.
+        if (_timing.ApplyingState)
+            return;
+
         if (args.SolutionId != entity.Comp.Solution)
             return;
 

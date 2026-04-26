@@ -1,27 +1,14 @@
-// SPDX-FileCopyrightText: 2024 username <113782077+whateverusername0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 whateverusername0 <whateveremail>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 JohnOakman <sremy2012@hotmail.fr>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 MoutardOMiel <108993081+Moutardomiel@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Linq;
 using System.Numerics;
 using Content.Client.Animations;
 using Content.Client.DamageState;
 using Content.Goobstation.Shared.Emoting;
-using Content.Shared._Goobstation.Wizard.SupermatterHalberd;
-using Content.Shared.Chat.Prototypes;
+using Content.Trauma.Common.Wizard;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Animations;
-using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Client.Emoting;
@@ -29,8 +16,8 @@ namespace Content.Goobstation.Client.Emoting;
 public sealed partial class AnimatedEmotesSystem : SharedAnimatedEmotesSystem
 {
     [Dependency] private readonly AnimationPlayerSystem _anim = default!;
-    [Dependency] private readonly IPrototypeManager _prot = default!;
-    [Dependency] private readonly RaysSystem _rays = default!;
+    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly CommonRaysSystem _rays = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
 
@@ -41,7 +28,7 @@ public sealed partial class AnimatedEmotesSystem : SharedAnimatedEmotesSystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<AnimatedEmotesComponent, ComponentHandleState>(OnHandleState);
+        SubscribeLocalEvent<AnimatedEmotesComponent, AfterAutoHandleStateEvent>(OnAutoHandleState);
 
         SubscribeLocalEvent<AnimatedEmotesComponent, AnimationFlipEmoteEvent>(OnFlip);
         SubscribeLocalEvent<AnimatedEmotesComponent, AnimationSpinEmoteEvent>(OnSpin);
@@ -82,14 +69,10 @@ public sealed partial class AnimatedEmotesSystem : SharedAnimatedEmotesSystem
         _anim.Play(uid, anim, animationKey);
     }
 
-    private void OnHandleState(EntityUid uid, AnimatedEmotesComponent component, ref ComponentHandleState args)
+    private void OnAutoHandleState(Entity<AnimatedEmotesComponent> ent, ref AfterAutoHandleStateEvent args)
     {
-        if (args.Current is not AnimatedEmotesComponentState state
-        || !_prot.TryIndex<EmotePrototype>(state.Emote, out var emote))
-            return;
-
-        if (emote.Event != null)
-            RaiseLocalEvent(uid, emote.Event);
+        if (_proto.TryIndex(ent.Comp.Emote, out var emote) && emote.Event is { } ev)
+            RaiseLocalEvent(ent, ev);
     }
 
     private void OnFlip(Entity<AnimatedEmotesComponent> ent, ref AnimationFlipEmoteEvent args)
@@ -169,27 +152,8 @@ public sealed partial class AnimatedEmotesSystem : SharedAnimatedEmotesSystem
     }
     private void OnTweak(Entity<AnimatedEmotesComponent> ent, ref AnimationTweakEmoteEvent args)
     {
-        NetEntity netEntity = EntityManager.GetNetEntity(ent.Owner);
-
-        if (!EntityManager.TryGetEntityData(netEntity, out _, out var metaData))
-        {
-            var sawmill = Logger.GetSawmill("tweak-emotes");
-            sawmill.Warning($"EntityPrototype is null for entity {netEntity}");
+        if (ent.Comp.TweakState is not { } tweak)
             return;
-        }
-
-        if (metaData.EntityPrototype == null)
-        {
-            var sawmill = Logger.GetSawmill("tweak-emotes");
-            sawmill.Warning($"EntityPrototype is null for entity {netEntity} (Type: {metaData.EntityName})");
-            return;
-        }
-
-        var stateNumber = string.Concat(metaData.EntityPrototype.ID.Where(Char.IsDigit));
-        if (string.IsNullOrEmpty(stateNumber))
-        {
-            stateNumber = "0";
-        }
 
         var a = new Animation
         {
@@ -201,28 +165,21 @@ public sealed partial class AnimatedEmotesSystem : SharedAnimatedEmotesSystem
                     LayerKey = DamageStateVisualLayers.Base,
                     KeyFrames =
                     {
-                        new AnimationTrackSpriteFlick.KeyFrame(new RSI.StateId($"{metaData.EntityPrototype.SetName}-tweaking-{stateNumber}"), 0f)
+                        new AnimationTrackSpriteFlick.KeyFrame(new RSI.StateId(tweak), 0f)
                     }
                 }
             }
         };
         PlayEmote(ent, a);
     }
+
     private void OnFlex(Entity<AnimatedEmotesComponent> ent, ref AnimationFlexEmoteEvent args)
     {
-        NetEntity netEntity = EntityManager.GetNetEntity(ent.Owner);
-
-        if (!EntityManager.TryGetEntityData(netEntity, out _, out var metaData))
+        if (ent.Comp.FlexState is not { } flex ||
+            ent.Comp.FlexDefaultState is not { } defaultState ||
+            ent.Comp.FlexDamageState is not { } damage ||
+            ent.Comp.FlexDefaultDamageState is not { } defaultDamage)
         {
-            var sawmill = Logger.GetSawmill("flex-emotes");
-            sawmill.Warning($"EntityPrototype is null for entity {netEntity}");
-            return;
-        }
-
-        if (metaData.EntityPrototype == null)
-        {
-            var sawmill = Logger.GetSawmill("flex-emotes");
-            sawmill.Warning($"EntityPrototype is null for entity {netEntity} (Type: {metaData.EntityName})");
             return;
         }
 
@@ -236,8 +193,9 @@ public sealed partial class AnimatedEmotesSystem : SharedAnimatedEmotesSystem
                     LayerKey = DamageStateVisualLayers.Base,
                     KeyFrames =
                     {
-                        new AnimationTrackSpriteFlick.KeyFrame(new RSI.StateId($"{metaData.EntityPrototype.SetName?.ToLower()}_flex"), 0f),
-                        new AnimationTrackSpriteFlick.KeyFrame(new RSI.StateId($"{metaData.EntityPrototype.SetName?.ToLower()}"), FlexAnimationDurationMs / 1000f)
+                        // TODO: replace this shitcode with component fields holy shit
+                        new AnimationTrackSpriteFlick.KeyFrame(new RSI.StateId(flex), 0f),
+                        new AnimationTrackSpriteFlick.KeyFrame(new RSI.StateId(defaultState), FlexAnimationDurationMs / 1000f)
                     }
                 },
                 // don't display the glow while flexing
@@ -246,8 +204,8 @@ public sealed partial class AnimatedEmotesSystem : SharedAnimatedEmotesSystem
                     LayerKey = DamageStateVisualLayers.BaseUnshaded,
                     KeyFrames =
                     {
-                        new AnimationTrackSpriteFlick.KeyFrame(new RSI.StateId($"{metaData.EntityPrototype.SetName?.ToLower()}_flex_damage"), 0f),
-                        new AnimationTrackSpriteFlick.KeyFrame(new RSI.StateId($"nautdamage"), FlexAnimationDurationMs / 1000f)
+                        new AnimationTrackSpriteFlick.KeyFrame(new RSI.StateId(damage), 0f),
+                        new AnimationTrackSpriteFlick.KeyFrame(new RSI.StateId(defaultDamage), FlexAnimationDurationMs / 1000f)
                     }
                 }
             }

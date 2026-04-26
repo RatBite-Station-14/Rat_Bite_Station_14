@@ -1,15 +1,3 @@
-// SPDX-FileCopyrightText: 2022 ElectroJr <leonsfriedrich@gmail.com>
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 T-Stalker <43253663+DogZeroX@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 T-Stalker <le0nel_1van@hotmail.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Numerics;
 using Content.Client.IoC;
 using Content.Client.Items;
@@ -122,7 +110,12 @@ public sealed partial class GunSystem
             _bulletRender.Count = count;
             _bulletRender.Capacity = capacity;
 
-            _bulletRender.Type = capacity > 50 ? BulletRender.BulletType.Tiny : BulletRender.BulletType.Normal;
+            _bulletRender.Type = capacity switch
+            {
+                > 50 => BulletRender.BulletType.Tiny,
+                > 15 => BulletRender.BulletType.Normal,
+                _ => BulletRender.BulletType.Large
+            };
         }
     }
 
@@ -149,7 +142,7 @@ public sealed partial class GunSystem
                     }),
                     (_ammoCount = new Label
                     {
-                        StyleClasses = { StyleNano.StyleClassItemStatus },
+                        StyleClasses = { StyleClass.ItemStatus },
                         HorizontalAlignment = HAlignment.Right,
                         VerticalAlignment = VAlignment.Bottom
                     }),
@@ -201,7 +194,7 @@ public sealed partial class GunSystem
                             (_noMagazineLabel = new Label
                             {
                                 Text = "No Magazine!",
-                                StyleClasses = {StyleNano.StyleClassItemStatus}
+                                StyleClasses = {StyleClass.ItemStatus}
                             })
                         }
                     },
@@ -214,7 +207,7 @@ public sealed partial class GunSystem
                         {
                             (_ammoCount = new Label
                             {
-                                StyleClasses = {StyleNano.StyleClassItemStatus},
+                                StyleClasses = {StyleClass.ItemStatus},
                                 HorizontalAlignment = HAlignment.Right,
                             }),
                             (_chamberedBullet = new TextureRect
@@ -248,7 +241,12 @@ public sealed partial class GunSystem
             _bulletRender.Count = count;
             _bulletRender.Capacity = capacity;
 
-            _bulletRender.Type = capacity > 50 ? BulletRender.BulletType.Tiny : BulletRender.BulletType.Normal;
+            _bulletRender.Type = capacity switch
+            {
+                > 50 => BulletRender.BulletType.Tiny,
+                > 15 => BulletRender.BulletType.Normal,
+                _ => BulletRender.BulletType.Large
+            };
 
             _ammoCount.Text = $"x{count:00}";
         }

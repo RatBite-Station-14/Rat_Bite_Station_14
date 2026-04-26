@@ -1,12 +1,8 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Roudenn <romabond091@gmail.com>
-// SPDX-FileCopyrightText: 2025 Timfa <timfalken@hotmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Silicons.Bots;
+using Content.Shared.NPC.Prototypes;
 using Robust.Shared.Audio;
-using Robust.Shared.GameStates;
 
 namespace Content.Goobstation.Shared.Silicon.Components;
 
@@ -20,14 +16,14 @@ public sealed partial class EmagReplaceFactionsComponent : Component
     /// <summary>
     /// How long should the entity be stunned for the emagger to get out of the way? Defaults to five seconds.
     /// </summary>
-    [DataField(required: false)]
-    public int StunSeconds = 5;
+    [DataField]
+    public TimeSpan StunTime = TimeSpan.FromSeconds(5);
 
     /// <summary>
     /// Factions to replace from the original set.
     /// </summary>
-    [DataField(required: true), ViewVariables(VVAccess.ReadWrite)]
-    public List<string> Factions = [];
+    [DataField(required: true)]
+    public List<ProtoId<NpcFactionPrototype>> Factions = [];
 
     /// <summary>
     /// Sound to play when the entity has been emagged

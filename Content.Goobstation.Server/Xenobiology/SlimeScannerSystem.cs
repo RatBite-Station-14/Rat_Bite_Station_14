@@ -1,10 +1,11 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.Xenobiology.Components;
 using Content.Goobstation.Shared.Xenobiology.Components.Equipment;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using System.Linq;
 using System.Text;

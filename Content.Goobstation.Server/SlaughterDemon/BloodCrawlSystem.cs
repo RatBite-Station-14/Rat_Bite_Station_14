@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Lumminal <81829924+Lumminal@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.SlaughterDemon;
@@ -9,7 +6,6 @@ using Content.Server.Polymorph.Components;
 using Content.Server.Polymorph.Systems;
 using Content.Shared.Polymorph;
 using Robust.Server.Audio;
-using Robust.Shared.Prototypes;
 
 namespace Content.Goobstation.Server.SlaughterDemon;
 
@@ -17,16 +13,7 @@ public sealed class BloodCrawlSystem : SharedBloodCrawlSystem
 {
     [Dependency] private readonly PolymorphSystem _polymorph = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
-
-    private EntityQuery<PolymorphedEntityComponent> _polymorphedQuery;
-
-    /// <inheritdoc/>
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        _polymorphedQuery = GetEntityQuery<PolymorphedEntityComponent>();
-    }
+    [Dependency] private readonly EntityQuery<PolymorphedEntityComponent> _polymorphedQuery = default!;
 
     protected override bool CheckAlreadyCrawling(Entity<BloodCrawlComponent> ent)
     {
@@ -35,19 +22,17 @@ public sealed class BloodCrawlSystem : SharedBloodCrawlSystem
         var component = ent.Comp;
         var uid = ent.Owner;
 
-        if (!component.IsCrawling && _polymorphedQuery.TryComp(uid, out var polymorph))
-        {
-            var reverted = _polymorph.Revert(uid);
+        if (component.IsCrawling || !_polymorphedQuery.TryComp(uid, out var polymorph))
+            return true;
 
-            if (reverted != null)
-                _audio.PlayPvs(component.ExitJauntSound, reverted.Value);
+        if (_polymorph.Revert(uid) is {} reverted)
+            _audio.PlayPvs(component.ExitJauntSound, reverted);
 
-            var evExit = new BloodCrawlExitEvent();
-            RaiseLocalEvent(polymorph.Parent, ref evExit);
+        var evExit = new BloodCrawlExitEvent();
+        if (polymorph.Parent is {} parent)
+            RaiseLocalEvent(parent, ref evExit);
 
-            return false;
-        }
-        return true;
+        return false;
     }
 
     protected override void PolymorphDemon(EntityUid user, ProtoId<PolymorphPrototype> polymorph)
@@ -57,5 +42,3 @@ public sealed class BloodCrawlSystem : SharedBloodCrawlSystem
         _polymorph.PolymorphEntity(user, polymorph);
     }
 }
-
-

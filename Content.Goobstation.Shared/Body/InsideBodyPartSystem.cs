@@ -1,27 +1,28 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Common.Body;
-using Content.Shared._Shitmed.Medical.Surgery.Wounds.Systems;
+using Content.Medical.Shared.Wounds;
 using Content.Shared.Actions;
-using Content.Shared.Body.Components;
-using Content.Shared.Body.Part;
-using Content.Shared.Containers.ItemSlots;
-using Content.Shared.Damage;
+using Content.Shared.Body;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Jittering;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
-using Robust.Shared.Prototypes;
+using Robust.Shared.Containers;
 
 namespace Content.Goobstation.Shared.Body;
 
 public sealed class InsideBodyPartSystem : CommonInsideBodyPartSystem
 {
+    [Dependency] private readonly BodySystem _body = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly ItemSlotsSystem _slots = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedJitteringSystem _jittering = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
@@ -33,14 +34,12 @@ public sealed class InsideBodyPartSystem : CommonInsideBodyPartSystem
     private static readonly ProtoId<DamageGroupPrototype> Brute = "Brute";
 
     private EntityQuery<BodyComponent> _bodyQuery;
-    private EntityQuery<BodyPartComponent> _partQuery;
 
     public override void Initialize()
     {
         base.Initialize();
 
         _bodyQuery = GetEntityQuery<BodyComponent>();
-        _partQuery = GetEntityQuery<BodyPartComponent>();
 
         SubscribeLocalEvent<InsideBodyPartComponent, BodyPartBurstEvent>(OnAction);
         SubscribeLocalEvent<InsideBodyPartComponent, BurstDoAfterEvent>(OnDoAfter);
@@ -66,44 +65,48 @@ public sealed class InsideBodyPartSystem : CommonInsideBodyPartSystem
     private void OnAction(Entity<InsideBodyPartComponent> ent, ref BodyPartBurstEvent args)
     {
         var part = ent.Comp.Part;
-        var body = _partQuery.Comp(part).Body;
-        // it's easier to burst out of a corpse
         var delay = ent.Comp.Delay;
-        if (body != null)
+        var target = part;
+        if (_body.GetBody(part) is {} body)
         {
-            if (_mob.IsAlive(body.Value))
+            target = body;
+            // it's easier to burst out of a corpse
+            if (_mob.IsAlive(body))
                 delay = ent.Comp.AliveDelay;
-            _jittering.DoJitter(body.Value, delay, refresh: true);
+            _jittering.DoJitter(body, delay, refresh: true);
         }
 
         var ev = new BurstDoAfterEvent();
         args.Handled = _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, ent.Owner, delay, ev, eventTarget: ent, target: part));
 
-        var victim = Identity.Name(body ?? part, EntityManager);
+        var victim = Identity.Name(target, EntityManager);
         _popup.PopupPredicted(Loc.GetString("body-part-burst-starting", ("victim", victim), ("part", part)), ent, ent, PopupType.LargeCaution);
     }
 
     private void OnDoAfter(Entity<InsideBodyPartComponent> ent, ref BurstDoAfterEvent args)
     {
         var part = ent.Comp.Part;
-        if (args.Cancelled || !_partQuery.TryComp(part, out var partComp))
+        if (args.Cancelled ||
+            !_container.TryGetContainingContainer(ent.Owner, out var container) ||
+            !_container.Remove(ent.Owner, container))
             return;
 
-        _slots.TryEject(part, partComp.ItemInsertionSlot, ent, out _);
         _damage.TryChangeDamage(part, ent.Comp.BurstDamage, ignoreResistances: true);
         _wound.TryCreateWound(part, Trauma, 20, out _, _proto.Index(Brute));
 
-        var victim = Identity.Name(partComp.Body ?? part, EntityManager);
-        _popup.PopupPredicted(Loc.GetString("body-part-burst-finished", ("victim", victim), ("burst", ent.Owner)), ent, ent, PopupType.LargeCaution);
-
-        if (partComp.Body is {} body)
+        var target = part;
+        if (_body.GetBody(part) is {} body)
         {
-            _stun.TryStun(body, ent.Comp.StunTime, refresh: true);
+            target = body;
+            _stun.TryUpdateParalyzeDuration(body, ent.Comp.StunTime);
             _jittering.DoJitter(body, ent.Comp.StunTime, refresh: true, frequency: 12f);
         }
 
+        var victim = Identity.Name(target, EntityManager);
+        _popup.PopupPredicted(Loc.GetString("body-part-burst-finished", ("victim", victim), ("burst", ent.Owner)), ent, ent, PopupType.LargeCaution);
+
         // this should never happen as container events should indirectly remove it, but just incase
-        RemovedFromPart(ent);
+        RemComp(ent, ent.Comp);
     }
 
     private void OnShutdown(Entity<InsideBodyPartComponent> ent, ref ComponentShutdown args)

@@ -1,19 +1,7 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+// <Trauma>
+using Content.Trauma.Common.Weapons.Misc;
+// </Trauma>
 using System.Diagnostics.CodeAnalysis;
-using Content.Shared._Goobstation.Weapons.Misc;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Hands.Components;
@@ -155,6 +143,14 @@ public abstract partial class SharedTetherGunSystem : EntitySystem
         gunUid = null;
         gun = null;
 
+        // <Trauma> - check user for the case of telekinesis, also lets sentient tether guns maybe work
+        if (TryComp(user, out gun))
+        {
+            gunUid = user;
+            return true;
+        }
+        // </Trauma>
+
         if (!_hands.TryGetActiveItem(user, out var activeItem) ||
             !TryComp(activeItem, out gun) ||
             _container.IsEntityInContainer(user))
@@ -202,8 +198,10 @@ public abstract partial class SharedTetherGunSystem : EntitySystem
         if (!component.CanTetherAlive && _mob.IsAlive(target))
             return false;
 
+        /* Trauma - you can trivially bypass this by just getting on the chair after tethering, no reason to have it
         if (TryComp<StrapComponent>(target, out var strap) && strap.BuckledEntities.Count > 0)
             return false;
+        */
 
         return true;
     }
@@ -260,7 +258,8 @@ public abstract partial class SharedTetherGunSystem : EntitySystem
         Dirty(gunUid, component);
     }
 
-    protected virtual void StopTether(EntityUid gunUid, BaseForceGunComponent component, bool land = true, bool transfer = false)
+    // Trauma - made public
+    public virtual void StopTether(EntityUid gunUid, BaseForceGunComponent component, bool land = true, bool transfer = false)
     {
         if (component.Tethered == null)
             return;

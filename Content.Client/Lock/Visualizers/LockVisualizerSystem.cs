@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2024 MilenVolf <63782763+MilenVolf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Storage;
 using Content.Shared.Lock;
 using Robust.Client.GameObjects;
@@ -11,8 +6,6 @@ namespace Content.Client.Lock.Visualizers;
 
 public sealed class LockVisualizerSystem : VisualizerSystem<LockVisualsComponent>
 {
-    [Dependency] private readonly SpriteSystem _sprite = default!;
-
     protected override void OnAppearanceChange(EntityUid uid, LockVisualsComponent comp, ref AppearanceChangeEvent args)
     {
         if (args.Sprite == null
@@ -27,14 +20,14 @@ public sealed class LockVisualizerSystem : VisualizerSystem<LockVisualsComponent
 
         if (AppearanceSystem.TryGetData<bool>(uid, StorageVisuals.Open, out var open, args.Component))
         {
-            _sprite.LayerSetVisible((uid, args.Sprite), LockVisualLayers.Lock, !open);
+            SpriteSystem.LayerSetVisible((uid, args.Sprite), LockVisualLayers.Lock, !open);
         }
         else if (!(bool)unlockedStateExist!)
-            _sprite.LayerSetVisible((uid, args.Sprite), LockVisualLayers.Lock, locked);
+            SpriteSystem.LayerSetVisible((uid, args.Sprite), LockVisualLayers.Lock, locked);
 
         if (!open && (bool)unlockedStateExist!)
         {
-            _sprite.LayerSetRsiState((uid, args.Sprite), LockVisualLayers.Lock, locked ? comp.StateLocked : comp.StateUnlocked);
+            SpriteSystem.LayerSetRsiState((uid, args.Sprite), LockVisualLayers.Lock, locked ? comp.StateLocked : comp.StateUnlocked);
         }
     }
 }

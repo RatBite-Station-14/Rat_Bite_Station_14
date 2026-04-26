@@ -1,7 +1,8 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Common.Administration.Notifications;
 using Content.Shared.Administration.Managers;
 using Robust.Shared.Audio;
-using Robust.Shared.Network;
 using Robust.Shared.Player;
 
 namespace Content.Goobstation.Shared.Administration.Notifications;

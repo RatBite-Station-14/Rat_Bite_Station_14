@@ -1,58 +1,17 @@
-// SPDX-FileCopyrightText: 2021 20kdc <asdd2808@gmail.com>
-// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2021 Alex Evgrashin <aevgrashin@yandex.ru>
-// SPDX-FileCopyrightText: 2021 ColdAutumnRain <73938872+ColdAutumnRain@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Galactic Chimp <GalacticChimpanzee@gmail.com>
-// SPDX-FileCopyrightText: 2021 Jaskanbe <86671825+Jaskanbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Javier Guardia Fernández <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Kara Dinyes <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2021 Leon Friedrich <60421075+leonsfriedrich@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Leon Friedrich <leonsfriedrich@gmail.com>
-// SPDX-FileCopyrightText: 2021 Michael Will <will_m@outlook.de>
-// SPDX-FileCopyrightText: 2021 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2021 Paul <ritter.paul1+git@googlemail.com>
-// SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2021 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2021 SETh lafuente <cetaciocascarudo@gmail.com>
-// SPDX-FileCopyrightText: 2021 ScalyChimp <72841710+scaly-chimp@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 SethLafuente <84478872+SethLafuente@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Silver <Silvertorch5@gmail.com>
-// SPDX-FileCopyrightText: 2021 Silver <silvertorch5@gmail.com>
-// SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
-// SPDX-FileCopyrightText: 2021 TimrodDX <timrod@gmail.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2021 Ygg01 <y.laughing.man.y@gmail.com>
-// SPDX-FileCopyrightText: 2021 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2021 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2021 mirrorcult <notzombiedude@gmail.com>
-// SPDX-FileCopyrightText: 2021 scrato <Mickaello2003@gmx.de>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2023 Jezithyr <jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using System.Linq;
+using Content.IntegrationTests.Fixtures;
 using Content.Server.Destructible;
-using Content.Server.Destructible.Thresholds;
+using Content.Shared.Destructible.Thresholds; // Trauma - moved to shared
 using Content.Server.Destructible.Thresholds.Behaviors;
-using Content.Server.Destructible.Thresholds.Triggers;
+using Content.Shared.Destructible.Thresholds.Behaviors; // Trauma
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Content.Shared.Destructible;
+using Content.Shared.Destructible.Thresholds.Triggers;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 using static Content.IntegrationTests.Tests.Destructible.DestructibleTestPrototypes;
@@ -62,12 +21,12 @@ namespace Content.IntegrationTests.Tests.Destructible
     [TestFixture]
     [TestOf(typeof(DestructibleComponent))]
     [TestOf(typeof(DamageThreshold))]
-    public sealed class DestructibleThresholdActivationTest
+    public sealed class DestructibleThresholdActivationTest : GameTest
     {
         [Test]
         public async Task Test()
         {
-            await using var pair = await PoolManager.GetServerClient();
+            var pair = Pair;
             var server = pair.Server;
 
             var sEntityManager = server.ResolveDependency<IEntityManager>();
@@ -144,9 +103,9 @@ namespace Content.IntegrationTests.Tests.Destructible
                 // Check that it matches the YAML prototype
                 Assert.That(threshold.Behaviors, Has.Count.EqualTo(3));
 
-                var soundThreshold = (PlaySoundBehavior) threshold.Behaviors[0];
-                var spawnThreshold = (SpawnEntitiesBehavior) threshold.Behaviors[1];
-                var actsThreshold = (DoActsBehavior) threshold.Behaviors[2];
+                var soundThreshold = (PlaySoundBehavior)threshold.Behaviors[0];
+                var spawnThreshold = (SpawnEntitiesBehavior)threshold.Behaviors[1];
+                var actsThreshold = (DoActsBehavior)threshold.Behaviors[2];
 
                 Assert.Multiple(() =>
                 {
@@ -169,7 +128,7 @@ namespace Content.IntegrationTests.Tests.Destructible
                 Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Is.Empty);
 
                 // Set damage to 0
-                sDamageableSystem.SetAllDamage(sDestructibleEntity, sDamageableComponent, 0);
+                sDamageableSystem.ClearAllDamage((sDestructibleEntity, sDamageableComponent));
 
                 // Damage for 100, up to 100
                 sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 10, true);
@@ -209,9 +168,9 @@ namespace Content.IntegrationTests.Tests.Destructible
                 // Check that it matches the YAML prototype
                 Assert.That(threshold.Behaviors, Has.Count.EqualTo(3));
 
-                soundThreshold = (PlaySoundBehavior) threshold.Behaviors[0];
-                spawnThreshold = (SpawnEntitiesBehavior) threshold.Behaviors[1];
-                actsThreshold = (DoActsBehavior) threshold.Behaviors[2];
+                soundThreshold = (PlaySoundBehavior)threshold.Behaviors[0];
+                spawnThreshold = (SpawnEntitiesBehavior)threshold.Behaviors[1];
+                actsThreshold = (DoActsBehavior)threshold.Behaviors[2];
 
                 // Check that it matches the YAML prototype
                 Assert.Multiple(() =>
@@ -230,7 +189,7 @@ namespace Content.IntegrationTests.Tests.Destructible
                 sTestThresholdListenerSystem.ThresholdsReached.Clear();
 
                 // Heal all damage
-                sDamageableSystem.SetAllDamage(sDestructibleEntity, sDamageableComponent, 0);
+                sDamageableSystem.ClearAllDamage((sDestructibleEntity, sDamageableComponent));
 
                 // Damage up to 50
                 sDamageableSystem.TryChangeDamage(sDestructibleEntity, bluntDamage * 5, true);
@@ -238,7 +197,7 @@ namespace Content.IntegrationTests.Tests.Destructible
                 Assert.Multiple(() =>
                 {
                     // Check that the total damage matches
-                    Assert.That(sDamageableComponent.TotalDamage, Is.EqualTo(FixedPoint2.New(50)));
+                    Assert.That(sDamageableSystem.GetTotalDamage(sDestructibleEntity), Is.EqualTo(FixedPoint2.New(50)));
 
                     // Both thresholds should have triggered
                     Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Has.Exactly(2).Items);
@@ -246,11 +205,11 @@ namespace Content.IntegrationTests.Tests.Destructible
 
                 // Verify the first one, should be the lowest one (20)
                 msg = sTestThresholdListenerSystem.ThresholdsReached[0];
-                var trigger = (DamageTrigger) msg.Threshold.Trigger;
+                var trigger = (DamageTrigger)msg.Threshold.Trigger;
                 Assert.Multiple(() =>
                 {
                     Assert.That(trigger, Is.Not.Null);
-                    Assert.That(trigger.Damage, Is.EqualTo(20));
+                    Assert.That(trigger.Damage, Is.EqualTo(FixedPoint2.New(20)));
                 });
 
                 threshold = msg.Threshold;
@@ -260,20 +219,20 @@ namespace Content.IntegrationTests.Tests.Destructible
 
                 // Verify the second one, should be the highest one (50)
                 msg = sTestThresholdListenerSystem.ThresholdsReached[1];
-                trigger = (DamageTrigger) msg.Threshold.Trigger;
+                trigger = (DamageTrigger)msg.Threshold.Trigger;
                 Assert.Multiple(() =>
                 {
                     Assert.That(trigger, Is.Not.Null);
-                    Assert.That(trigger.Damage, Is.EqualTo(50));
+                    Assert.That(trigger.Damage, Is.EqualTo(FixedPoint2.New(50)));
                 });
 
                 threshold = msg.Threshold;
 
                 Assert.That(threshold.Behaviors, Has.Count.EqualTo(3));
 
-                soundThreshold = (PlaySoundBehavior) threshold.Behaviors[0];
-                spawnThreshold = (SpawnEntitiesBehavior) threshold.Behaviors[1];
-                actsThreshold = (DoActsBehavior) threshold.Behaviors[2];
+                soundThreshold = (PlaySoundBehavior)threshold.Behaviors[0];
+                spawnThreshold = (SpawnEntitiesBehavior)threshold.Behaviors[1];
+                actsThreshold = (DoActsBehavior)threshold.Behaviors[2];
 
                 // Check that it matches the YAML prototype
                 Assert.Multiple(() =>
@@ -292,10 +251,10 @@ namespace Content.IntegrationTests.Tests.Destructible
                 sTestThresholdListenerSystem.ThresholdsReached.Clear();
 
                 // Heal the entity completely
-                sDamageableSystem.SetAllDamage(sDestructibleEntity, sDamageableComponent, 0);
+                sDamageableSystem.ClearAllDamage((sDestructibleEntity, sDamageableComponent));
 
                 // Check that the entity has 0 damage
-                Assert.That(sDamageableComponent.TotalDamage, Is.EqualTo(FixedPoint2.Zero));
+                Assert.That(sDamageableSystem.GetTotalDamage(sDestructibleEntity), Is.EqualTo(FixedPoint2.Zero));
 
                 // Set both thresholds to only trigger once
                 foreach (var destructibleThreshold in sDestructibleComponent.Thresholds)
@@ -310,7 +269,7 @@ namespace Content.IntegrationTests.Tests.Destructible
                 Assert.Multiple(() =>
                 {
                     // Check that the total damage matches
-                    Assert.That(sDamageableComponent.TotalDamage, Is.EqualTo(FixedPoint2.New(50)));
+                    Assert.That(sDamageableSystem.GetTotalDamage(sDestructibleEntity), Is.EqualTo(FixedPoint2.New(50)));
 
                     // No thresholds should have triggered as they were already triggered before, and they are set to only trigger once
                     Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Is.Empty);
@@ -326,13 +285,12 @@ namespace Content.IntegrationTests.Tests.Destructible
                 Assert.Multiple(() =>
                 {
                     // Check that the total damage matches
-                    Assert.That(sDamageableComponent.TotalDamage, Is.EqualTo(FixedPoint2.New(50)));
+                    Assert.That(sDamageableSystem.GetTotalDamage(sDestructibleEntity), Is.EqualTo(FixedPoint2.New(50)));
 
                     // They shouldn't have been triggered by changing TriggersOnce
                     Assert.That(sTestThresholdListenerSystem.ThresholdsReached, Is.Empty);
                 });
             });
-            await pair.CleanReturnAsync();
         }
     }
 }

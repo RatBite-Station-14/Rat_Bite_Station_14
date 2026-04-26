@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
@@ -13,7 +8,6 @@ using Robust.Client.GameObjects;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Client.Administration.TimeTransferPanel;
@@ -23,9 +17,9 @@ public sealed partial class TimeTransferPanel : DefaultWindow
 {
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly IPrototypeManager _proto = default!;
 
-    private readonly SpriteSystem _spriteSystem;
+    private readonly SpriteSystem _sprite;
 
     public Action<(string playerId, List<TimeTransferData> transferList, bool overwrite)>? OnTransferMessageSend;
     private TimeSpan? SetButtonResetOn { get; set; }
@@ -34,7 +28,7 @@ public sealed partial class TimeTransferPanel : DefaultWindow
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
-        _spriteSystem = _entityManager.System<SpriteSystem>();
+        _sprite = _entityManager.System<SpriteSystem>();
 
         AddTimeButton.OnButtonUp += OnAddTimeButtonPressed;
         SetTimeButton.OnButtonUp += OnSetTimeButtonPressed;
@@ -49,13 +43,16 @@ public sealed partial class TimeTransferPanel : DefaultWindow
 
     public void PopulateJobs()
     {
-        var jobs = _prototypeManager.EnumeratePrototypes<JobPrototype>()
+        // Overall is always first
+        JobContainer.AddChild(new TimeTransferEntry(null, _sprite, _proto));
+
+        var jobs = _proto.EnumeratePrototypes<JobPrototype>()
             .OrderBy(job => job.LocalizedName)
             .ToList();
 
         foreach(var job in jobs)
         {
-            var jobEntry = new TimeTransferEntry(job, _spriteSystem, _prototypeManager);
+            var jobEntry = new TimeTransferEntry(job, _sprite, _proto);
             JobContainer.AddChild(jobEntry);
         }
     }

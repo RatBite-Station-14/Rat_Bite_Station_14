@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Atmos.Consoles;
 using Content.Shared.Atmos.Monitor;
 using Robust.Shared.GameStates;
@@ -83,7 +77,7 @@ public struct AtmosAlertsFocusDeviceData
     public (float, AtmosAlarmType) PressureData;
 
     /// <summary>
-    /// Moles, percentage, and related alert state, for all detected gases 
+    /// Moles, percentage, and related alert state, for all detected gases
     /// </summary>
     public Dictionary<Gas, (float, float, AtmosAlarmType)> GasData;
 
@@ -206,7 +200,7 @@ public sealed class AtmosAlertsComputerDeviceSilencedMessage : BoundUserInterfac
     public bool SilenceDevice = true;
 
     /// <summary>
-    /// Used to inform the server that the client has silenced alerts from the specified device to this atmos monitoring console 
+    /// Used to inform the server that the client has silenced alerts from the specified device to this atmos monitoring console
     /// </summary>
     public AtmosAlertsComputerDeviceSilencedMessage(NetEntity atmosDevice, bool silenceDevice = true)
     {

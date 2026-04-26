@@ -1,10 +1,11 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.Virology;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Paper;
 using Robust.Server.Audio;
 using Robust.Shared.Containers;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using System.Text;
 using Content.Goobstation.Shared.Disease.Components;

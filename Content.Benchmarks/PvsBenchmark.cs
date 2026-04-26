@@ -5,13 +5,14 @@
 
 #nullable enable
 using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 using Content.IntegrationTests;
 using Content.IntegrationTests.Pair;
 using Content.Server.Mind;
-using Content.Server.Warps;
+using Content.Shared.Warps;
 using Robust.Shared;
 using Robust.Shared.Analyzers;
 using Robust.Shared.EntitySerialization;
@@ -55,7 +56,7 @@ public class PvsBenchmark
 #endif
         PoolManager.Startup();
 
-        _pair = PoolManager.GetServerClient().GetAwaiter().GetResult();
+        _pair = PoolManager.GetServerClient(testContext: new ExternalTestContext("Benchmark", StreamWriter.Null)).GetAwaiter().GetResult();
         _entMan = _pair.Server.ResolveDependency<IEntityManager>();
         _pair.Server.CfgMan.SetCVar(CVars.NetPVS, true);
         _pair.Server.CfgMan.SetCVar(CVars.ThreadParallelCount, 0);

@@ -1,20 +1,7 @@
-// SPDX-FileCopyrightText: 2022 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 forkeyboards <91704530+forkeyboards@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Content.Server._EinsteinEngines.Language;
+// <Trauma>
+using Content.Trauma.Common.Language.Systems;
+using Content.Shared.EntityEffects;
+// </Trauma>
 using Content.Shared.GameTicking;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -27,6 +14,7 @@ namespace Content.Server.Traits;
 
 public sealed class TraitSystem : EntitySystem
 {
+    [Dependency] private readonly SharedEntityEffectsSystem _effects = default!; // Trauma
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedHandsSystem _sharedHandsSystem = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
@@ -43,7 +31,7 @@ public sealed class TraitSystem : EntitySystem
     {
         // Check if player's job allows to apply traits
         if (args.JobId == null ||
-            !_prototypeManager.TryIndex<JobPrototype>(args.JobId ?? string.Empty, out var protoJob) ||
+            !_prototypeManager.Resolve<JobPrototype>(args.JobId, out var protoJob) ||
             !protoJob.ApplyTraits)
         {
             return;
@@ -53,12 +41,12 @@ public sealed class TraitSystem : EntitySystem
         {
             if (!_prototypeManager.TryIndex<TraitPrototype>(traitId, out var traitPrototype))
             {
-                Log.Warning($"No trait found with ID {traitId}!");
+                Log.Error($"No trait found with ID {traitId}!");
                 return;
             }
 
             if (_whitelistSystem.IsWhitelistFail(traitPrototype.Whitelist, args.Mob) ||
-                _whitelistSystem.IsBlacklistPass(traitPrototype.Blacklist, args.Mob))
+                _whitelistSystem.IsWhitelistPass(traitPrototype.Blacklist, args.Mob))
                 continue;
 
             // Begin Goobstation: Species trait support
@@ -68,11 +56,20 @@ public sealed class TraitSystem : EntitySystem
             // End Goobstation: Species trait support
 
             // Add all components required by the prototype
-            EntityManager.AddComponents(args.Mob, traitPrototype.Components, false);
+            if (traitPrototype.Components.Count > 0)
+                EntityManager.AddComponents(args.Mob, traitPrototype.Components, false);
+
+            // Add all JobSpecials required by the prototype
+            foreach (var special in traitPrototype.Specials)
+            {
+                special.AfterEquip(args.Mob);
+            }
+
+            _effects.ApplyEffects(args.Mob, traitPrototype.Effects); // Trauma
 
             // Einstein Engines - Language begin (remove this if trait system refactor)
             // Remove/Add Languages required by the prototype
-            var language = EntityManager.System<LanguageSystem>();
+            var language = EntityManager.System<CommonLanguageSystem>();
 
             if (traitPrototype.RemoveLanguagesSpoken is not null)
                 foreach (var lang in traitPrototype.RemoveLanguagesSpoken)

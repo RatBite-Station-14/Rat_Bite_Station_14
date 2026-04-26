@@ -1,4 +1,4 @@
-﻿using JetBrains.Annotations;
+using JetBrains.Annotations;
 
 namespace Content.Server.NPC.HTN;
 
@@ -11,8 +11,7 @@ public sealed partial class HTNSystem
     [PublicAPI]
     public void SetHTNEnabled(EntityUid uid, bool state, float planCooldown = 0f, HTNComponent? component = null)
     {
-        if (!Resolve(uid, ref component))
-            return;
-        SetHTNEnabled((uid, component), state, planCooldown);
+        if (Resolve(uid, ref component, false))
+            SetHTNEnabled((uid, component), state, planCooldown);
     }
 }

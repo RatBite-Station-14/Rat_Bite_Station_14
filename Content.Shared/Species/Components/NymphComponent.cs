@@ -1,15 +1,10 @@
-// SPDX-FileCopyrightText: 2024 LankLTE <135308300+LankLTE@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Robust.Shared.Prototypes;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Species.Components;
 /// <summary>
 /// This will replace one entity with another entity when it is removed from a body part.
-/// Obviously hyper-specific. If you somehow find another use for this, good on you. 
+/// Obviously hyper-specific. If you somehow find another use for this, good on you.
 /// </summary>
 
 [RegisterComponent, NetworkedComponent]

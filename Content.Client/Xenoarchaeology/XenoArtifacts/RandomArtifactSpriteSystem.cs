@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2022 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using Content.Shared.Xenoarchaeology.XenoArtifacts;
 using Robust.Client.GameObjects;
 
@@ -11,8 +5,6 @@ namespace Content.Client.Xenoarchaeology.XenoArtifacts;
 
 public sealed class RandomArtifactSpriteSystem : VisualizerSystem<RandomArtifactSpriteComponent>
 {
-    [Dependency] private readonly SpriteSystem _sprite = default!;
-
     protected override void OnAppearanceChange(EntityUid uid, RandomArtifactSpriteComponent component, ref AppearanceChangeEvent args)
     {
         if (args.Sprite == null)
@@ -31,24 +23,24 @@ public sealed class RandomArtifactSpriteSystem : VisualizerSystem<RandomArtifact
         var spritePrefix = isUnlocking ? "_on" : "";
 
         // layered artifact sprite
-        if (_sprite.LayerMapTryGet((uid, args.Sprite), ArtifactsVisualLayers.UnlockingEffect, out var layer, false))
+        if (SpriteSystem.LayerMapTryGet((uid, args.Sprite), ArtifactsVisualLayers.UnlockingEffect, out var layer, false))
         {
             var spriteState = "ano" + spriteIndexStr;
-            _sprite.LayerSetRsiState((uid, args.Sprite), ArtifactsVisualLayers.Base, spriteState);
-            _sprite.LayerSetRsiState((uid, args.Sprite), layer, spriteState + "_on");
-            _sprite.LayerSetVisible((uid, args.Sprite), layer, isUnlocking);
+            SpriteSystem.LayerSetRsiState((uid, args.Sprite), ArtifactsVisualLayers.Base, spriteState);
+            SpriteSystem.LayerSetRsiState((uid, args.Sprite), layer, spriteState + "_on");
+            SpriteSystem.LayerSetVisible((uid, args.Sprite), layer, isUnlocking);
 
-            if (_sprite.LayerMapTryGet((uid, args.Sprite), ArtifactsVisualLayers.ActivationEffect, out var activationEffectLayer, false))
+            if (SpriteSystem.LayerMapTryGet((uid, args.Sprite), ArtifactsVisualLayers.ActivationEffect, out var activationEffectLayer, false))
             {
-                _sprite.LayerSetRsiState((uid, args.Sprite), activationEffectLayer, "artifact-activation");
-                _sprite.LayerSetVisible((uid, args.Sprite), activationEffectLayer, isActivated);
+                SpriteSystem.LayerSetRsiState((uid, args.Sprite), activationEffectLayer, "artifact-activation");
+                SpriteSystem.LayerSetVisible((uid, args.Sprite), activationEffectLayer, isActivated);
             }
         }
         // non-layered
         else
         {
             var spriteState = "ano" + spriteIndexStr + spritePrefix;
-            _sprite.LayerSetRsiState((uid, args.Sprite), ArtifactsVisualLayers.Base, spriteState);
+            SpriteSystem.LayerSetRsiState((uid, args.Sprite), ArtifactsVisualLayers.Base, spriteState);
         }
     }
 }

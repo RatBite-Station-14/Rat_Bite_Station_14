@@ -1,14 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Luiz Costa <33888056+luizwritescode@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Marty <martynashagriefer@gmail.com>
-// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 paige404 <59348003+paige404@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Clothing.Components;
 using Content.Shared.Foldable;
 using Content.Shared.Inventory;
@@ -58,7 +47,7 @@ public sealed class FoldableClothingSystem : EntitySystem
         }
 
         // Setting hidden layers while equipped is not currently supported.
-        if (ent.Comp.FoldedHideLayers != null || ent.Comp.UnfoldedHideLayers != null)
+        if (ent.Comp.FoldedHideLayers.Count != 0|| ent.Comp.UnfoldedHideLayers.Count != 0)
             args.Cancelled = true;
     }
 
@@ -86,9 +75,9 @@ public sealed class FoldableClothingSystem : EntitySystem
             // This should instead work via an event or something that gets raised to optionally modify the currently hidden layers.
             // Or at the very least it should stash the old layers and restore them when unfolded.
             // TODO CLOTHING fix this.
-            if (ent.Comp.FoldedHideLayers != null && TryComp<HideLayerClothingComponent>(ent.Owner, out var hideLayerComp))
+            if ((ent.Comp.FoldedHideLayers.Count != 0 || ent.Comp.UnfoldedHideLayers.Count != 0) &&
+                TryComp<HideLayerClothingComponent>(ent.Owner, out var hideLayerComp))
                 hideLayerComp.Slots = ent.Comp.FoldedHideLayers;
-
         }
         else
         {
@@ -102,9 +91,9 @@ public sealed class FoldableClothingSystem : EntitySystem
                 _itemSystem.SetHeldPrefix(ent.Owner, null, false, itemComp);
 
             // TODO CLOTHING fix this.
-            if (ent.Comp.UnfoldedHideLayers != null && TryComp<HideLayerClothingComponent>(ent.Owner, out var hideLayerComp))
+            if ((ent.Comp.FoldedHideLayers.Count != 0 || ent.Comp.UnfoldedHideLayers.Count != 0) &&
+                TryComp<HideLayerClothingComponent>(ent.Owner, out var hideLayerComp))
                 hideLayerComp.Slots = ent.Comp.UnfoldedHideLayers;
-
         }
     }
 }

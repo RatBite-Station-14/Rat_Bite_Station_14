@@ -1,4 +1,5 @@
-﻿using Robust.Shared.Prototypes;
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 
 namespace Content.Goobstation.Shared.Shadowling;
 
@@ -7,7 +8,7 @@ public sealed partial class ShadowlingAbilityUnlockPrototype : IPrototype
 {
     /// <inheritdoc/>
     [IdDataField]
-    public string ID { get; } = default!;
+    public string ID { get; private set; } = default!;
 
     [DataField("count")]
     public int UnlockAtThralls;

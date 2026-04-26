@@ -1,14 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 MarkerWicker <markerWicker@proton.me>
-// SPDX-FileCopyrightText: 2025 Princess Cheeseballs <66055347+Pronana@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-//
-// SPDX-License-Identifier: MIT
-
 using System.Numerics;
 using Content.Shared.Movement.Systems;
 using Robust.Shared.GameStates;
@@ -25,7 +14,6 @@ namespace Content.Shared.Movement.Components
         // While still having perfectly responsive movement client side.
         // We do this by keeping track of the exact sub-tick values that inputs are pressed on the client,
         // and then building a total movement vector based on those sub-tick steps.
-        //
         // We keep track of the last sub-tick a movement input came in,
         // Then when a new input comes in, we calculate the fraction of the tick the LAST input was active for
         //   (new sub-tick - last sub-tick)
@@ -33,7 +21,6 @@ namespace Content.Shared.Movement.Components
         // by multiplying that fraction by the movement direction for the last input.
         // This allows us to incrementally build the movement vector for the current tick,
         // without having to keep track of some kind of list of inputs and calculating it later.
-        //
         // We have to keep track of a separate movement vector for walking and sprinting,
         // since we don't actually know our current movement speed while processing inputs.
         // We change which vector we write into based on whether we were sprinting after the previous input.
@@ -87,11 +74,17 @@ namespace Content.Shared.Movement.Components
         public TimeSpan LerpTarget;
 
         public const float LerpTime = 1.0f;
+        public const float SprintingSoundModifier = 3.5f;
+        public const float WalkingSoundModifier = 1.5f;
 
-        public bool Sprinting => DefaultSprinting
-        ? (HeldMoveButtons & MoveButtons.Walk) != 0x0
-        : (HeldMoveButtons & MoveButtons.Walk) == 0x0;
-        
+        /// <summary>
+        /// Goob - Changed it to check <see cref="DefaultSprinting"/>.
+        /// </summary>
+        public bool Sprinting => ((HeldMoveButtons & MoveButtons.Walk) != 0x0) != DefaultSprinting;
+
+        /// <summary>
+        /// Goob - Default sprinting or walking, based on client settings
+        /// </summary>
         public bool DefaultSprinting = true;
 
         [ViewVariables(VVAccess.ReadWrite)]
@@ -106,6 +99,7 @@ namespace Content.Shared.Movement.Components
         public Angle TargetRelativeRotation;
         public Angle RelativeRotation;
         public TimeSpan LerpTarget;
-        public bool CanMove, DefaultSprinting;
+        public bool CanMove;
+        public bool DefaultSprinting; // Goob
     }
 }

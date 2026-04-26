@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.Factory;
 using Content.Server.Lathe;
 using Content.Shared.DeviceLinking.Events;
@@ -34,7 +36,7 @@ public sealed class LatheAutomationSystem : EntitySystem
         if (ent.Comp.LastRecipe is not {} recipe)
             return;
 
-        _lathe.TryAddToQueue(ent.Owner, recipe);
+        _lathe.TryAddToQueue(ent.Owner, recipe, quantity: 1);
         _lathe.TryStartProducing(ent.Owner); // Won't do anything otherwise
     }
 }

@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2023 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Client.Animations;
@@ -21,7 +14,7 @@ public sealed class ProjectileSystem : SharedProjectileSystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeNetworkEvent<ImpactEffectEvent>(OnProjectileImpact);
+        SubscribeLocalEvent<ImpactEffectEvent>(OnProjectileImpact); // Trauma - it's local now
     }
 
     private void OnProjectileImpact(ImpactEffectEvent ev)
@@ -35,7 +28,7 @@ public sealed class ProjectileSystem : SharedProjectileSystem
 
         if (TryComp<SpriteComponent>(ent, out var sprite))
         {
-            sprite[EffectLayers.Unshaded].AutoAnimated = false;
+            //sprite[EffectLayers.Unshaded].AutoAnimated = false; // Trauma - this makes it look shit
             _sprite.LayerMapTryGet((ent, sprite), EffectLayers.Unshaded, out var layer, false);
             var state = _sprite.LayerGetRsiState((ent, sprite), layer);
             var lifetime = 0.5f;

@@ -1,0 +1,10 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+
+namespace Content.Goobstation.Shared.SuitSensors;
+
+/// <summary>
+/// If on an entity that has SuitSensorComponent, and the entity that wears it gets electrocuted, the sensors will change.
+/// </summary>
+[RegisterComponent, NetworkedComponent]
+public sealed partial class SuitSensorShockableComponent : Component;

@@ -1,70 +1,13 @@
-// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Salex08 <33989683+Salex08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 T-Stalker <43253663+DogZeroX@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 T-Stalker <le0nel_1van@hotmail.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <wrexbe@protonmail.com>
-// SPDX-FileCopyrightText: 2023 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Arendian <137322659+Arendian@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Errant <35878406+errant@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 Kevin Zheng <kevinz5000@gmail.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 Slava0135 <super.novalskiy_0135@inbox.ru>
-// SPDX-FileCopyrightText: 2023 TaralGit <76408146+TaralGit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 and_a <and_a@DESKTOP-RJENGIR>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 Ashley Woodiss-Field <ash@DESKTOP-H64M4AI.localdomain>
-// SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ColesMagnum <98577947+AW-FulCode@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dakamakat <52600490+dakamakat@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ElectroJr <leonsfriedrich@gmail.com>
-// SPDX-FileCopyrightText: 2024 Hmeister <nathan.springfredfoxbon4@gmail.com>
-// SPDX-FileCopyrightText: 2024 I.K <45953835+notquitehadouken@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 MilenVolf <63782763+MilenVolf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 NULL882 <gost6865@yandex.ru>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2024 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2024 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Avalon <jfbentley1@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 J <billsmith116@gmail.com>
-// SPDX-FileCopyrightText: 2025 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 TGRCDev <tgrc@tgrc.dev>
-// SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 sleepyyapril <123355664+sleepyyapril@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+// <Trauma>
+using Content.Goobstation.Common.Weapons.Multishot;
+using Content.Goobstation.Common.Weapons.Ranged;
+using Content.Lavaland.Common.Weapons.Ranged;
+using Content.Shared.Mech.Components;
+using Content.Shared.Weapons.Hitscan.Events;
+using Content.Trauma.Common.Projectiles;
+// </Trauma>
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
-using Content.Shared._Shitmed.Weapons.Ranged.Events; // Shitmed Change
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
@@ -72,11 +15,10 @@ using Content.Shared.Audio;
 using Content.Shared.CombatMode;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Examine;
-using Content.Shared.Gravity;
 using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
-using Content.Shared.Mech.Components; // Goobstation
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Projectiles;
@@ -84,6 +26,7 @@ using Content.Shared.Tag;
 using Content.Shared.Throwing;
 using Content.Shared.Timing;
 using Content.Shared.Verbs;
+using Content.Shared.Weapons.Hitscan.Components;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Components;
@@ -94,7 +37,6 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
-using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
@@ -103,7 +45,6 @@ using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Content.Shared.Item;
-using Content.Goobstation.Common.Weapons.Multishot;
 
 namespace Content.Shared.Weapons.Ranged.Systems;
 
@@ -114,7 +55,7 @@ public abstract partial class SharedGunSystem : EntitySystem
     [Dependency] protected readonly IMapManager MapManager = default!;
     [Dependency] private   readonly INetManager _netManager = default!;
     [Dependency] protected readonly IPrototypeManager ProtoManager = default!;
-    [Dependency] protected readonly IRobustRandom Random = default!;
+    //[Dependency] protected readonly IRobustRandom Random = default!; // Trauma - predicted Random(uid) used instead
     [Dependency] protected readonly ISharedAdminLogManager Logs = default!;
     [Dependency] protected readonly DamageableSystem Damageable = default!;
     [Dependency] protected readonly ExamineSystemShared Examine = default!;
@@ -126,7 +67,6 @@ public abstract partial class SharedGunSystem : EntitySystem
     [Dependency] protected readonly SharedAudioSystem Audio = default!;
     [Dependency] private   readonly SharedCombatModeSystem _combatMode = default!;
     [Dependency] protected readonly SharedContainerSystem Containers = default!;
-    [Dependency] private   readonly SharedGravitySystem _gravity = default!;
     [Dependency] protected readonly SharedPointLightSystem Lights = default!;
     [Dependency] protected readonly SharedPopupSystem PopupSystem = default!;
     [Dependency] protected readonly SharedPhysicsSystem Physics = default!;
@@ -136,6 +76,13 @@ public abstract partial class SharedGunSystem : EntitySystem
     [Dependency] protected readonly ThrowingSystem ThrowingSystem = default!;
     [Dependency] private   readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
+
+    /// <summary>
+    /// Default projectile speed
+    /// </summary>
+    public const float ProjectileSpeed = 40f;
+
+    private static readonly ProtoId<TagPrototype> TrashTag = "Trash";
 
     private const float InteractNextFire = 0.3f;
     private const double SafetyNextFire = 0.5;
@@ -161,8 +108,7 @@ public abstract partial class SharedGunSystem : EntitySystem
         InitializeClothing();
         InitializeContainer();
         InitializeSolution();
-        // Goobstation
-        InitializeBasicHitScan();
+        InitializeGoob(); // Goob
 
         // Interactions
         SubscribeLocalEvent<GunComponent, GetVerbsEvent<AlternativeVerb>>(OnAltVerb);
@@ -170,8 +116,6 @@ public abstract partial class SharedGunSystem : EntitySystem
         SubscribeLocalEvent<GunComponent, CycleModeEvent>(OnCycleMode);
         SubscribeLocalEvent<GunComponent, HandSelectedEvent>(OnGunSelected);
         SubscribeLocalEvent<GunComponent, MapInitEvent>(OnMapInit);
-
-        InitializeHolders(); // DeltaV
     }
 
     private void OnMapInit(Entity<GunComponent> gun, ref MapInitEvent args)
@@ -200,14 +144,9 @@ public abstract partial class SharedGunSystem : EntitySystem
 
     private void OnShootRequest(RequestShootEvent msg, EntitySessionEventArgs args)
     {
-        // Goobstation - Multishot - Ensures that guns shooting at same time.
-        var gunUid = GetEntity(msg.Gun);
-
-        if (HasComp<MultishotComponent>(gunUid))
-            return;
-        // Goobstation - End
         var user = args.SenderSession.AttachedEntity;
 
+        // <Goob> - mech relaying, check gun below, multishot, lock-on targeting
         if (user == null ||
             !_combatMode.IsInCombatMode(user))
             return;
@@ -215,20 +154,20 @@ public abstract partial class SharedGunSystem : EntitySystem
         if (TryComp<MechPilotComponent>(user.Value, out var mechPilot))
             user = mechPilot.Mech;
 
-        if (!TryGetGun(user.Value, out var ent, out var gun) ||
-            HasComp<ItemComponent>(user))
+        if (!TryGetGun(user.Value, out var ent, out var gun))
             return;
 
-        if (ent != GetEntity(msg.Gun))
+        if (HasComp<MultishotComponent>(ent)) // let multishot system handle it
             return;
 
         gun.ShootCoordinates = GetCoordinates(msg.Coordinates);
-        // Goob edit start
         var potentialTarget = GetEntity(msg.Target);
         if (gun.Target == null || !gun.BurstActivated || !gun.LockOnTargetBurst)
             gun.Target = potentialTarget;
-        // Goob edit end
         AttemptShoot(user.Value, ent, gun);
+        // </Goob>
+        if (msg.Continuous)
+            gun.ShotCounter = 0;
     }
 
     private void OnStopShootRequest(RequestStopShootEvent ev, EntitySessionEventArgs args)
@@ -317,12 +256,14 @@ public abstract partial class SharedGunSystem : EntitySystem
     /// <summary>
     /// Attempts to shoot at the target coordinates. Resets the shot counter after every shot.
     /// </summary>
-    public void AttemptShoot(EntityUid user, EntityUid gunUid, GunComponent gun, EntityCoordinates toCoordinates)
+    public bool AttemptShoot(EntityUid user, EntityUid gunUid, GunComponent gun, EntityCoordinates toCoordinates, EntityUid? target = null)
     {
         gun.ShootCoordinates = toCoordinates;
-        AttemptShoot(user, gunUid, gun);
+        gun.Target = target;
+        var result = AttemptShoot(user, gunUid, gun);
         gun.ShotCounter = 0;
         DirtyField(gunUid, gun, nameof(GunComponent.ShotCounter));
+        return result;
     }
 
     // Goobstation - Crawling turret fix
@@ -337,26 +278,27 @@ public abstract partial class SharedGunSystem : EntitySystem
     /// <summary>
     /// Shoots by assuming the gun is the user at default coordinates.
     /// </summary>
-    public void AttemptShoot(EntityUid gunUid, GunComponent gun)
+    public bool AttemptShoot(EntityUid gunUid, GunComponent gun)
     {
         var coordinates = new EntityCoordinates(gunUid, gun.DefaultDirection);
         gun.ShootCoordinates = coordinates;
-        AttemptShoot(gunUid, gunUid, gun);
+        var result = AttemptShoot(gunUid, gunUid, gun);
         gun.ShotCounter = 0;
+        return result;
     }
 
-    private void AttemptShoot(EntityUid user, EntityUid gunUid, GunComponent gun)
+    private bool AttemptShoot(EntityUid user, EntityUid gunUid, GunComponent gun)
     {
         if (gun.FireRateModified <= 0f ||
             !_actionBlockerSystem.CanAttack(user))
         {
-            return;
+            return false;
         }
 
         var toCoordinates = gun.ShootCoordinates;
 
         if (toCoordinates == null)
-            return;
+            return false;
 
         var curTime = Timing.CurTime;
 
@@ -368,16 +310,16 @@ public abstract partial class SharedGunSystem : EntitySystem
         };
         RaiseLocalEvent(gunUid, ref prevention);
         if (prevention.Cancelled)
-            return;
+            return false;
 
         RaiseLocalEvent(user, ref prevention);
         if (prevention.Cancelled)
-            return;
+            return false;
 
         // Need to do this to play the clicking sound for empty automatic weapons
         // but not play anything for burst fire.
         if (gun.NextFire > curTime)
-            return;
+            return false;
 
         var fireRate = TimeSpan.FromSeconds(1f / gun.FireRateModified);
 
@@ -441,7 +383,7 @@ public abstract partial class SharedGunSystem : EntitySystem
             gun.BurstActivated = false;
             gun.BurstShotsCount = 0;
             gun.NextFire = TimeSpan.FromSeconds(Math.Max(lastFire.TotalSeconds + SafetyNextFire, gun.NextFire.TotalSeconds));
-            return;
+            return false;
         }
 
         var fromCoordinates = Transform(user).Coordinates;
@@ -464,15 +406,16 @@ public abstract partial class SharedGunSystem : EntitySystem
         if (ev.Ammo.Count <= 0)
         {
             // triggers effects on the gun if it's empty
-            var emptyGunShotEvent = new OnEmptyGunShotEvent();
+            var emptyGunShotEvent = new OnEmptyGunShotEvent(user);
             RaiseLocalEvent(gunUid, ref emptyGunShotEvent);
 
-            // Goobstation
+            // <Goob>
             if (isRechargingGun)
             {
                 gun.NextFire = lastFire; // for empty PKAs, don't play no-ammo sound and don't trigger the reload
-                return;
+                return false;
             }
+            // </Goob>
 
             if (!gun.LockOnTargetBurst || gun.ShootCoordinates == null) // Goobstation
                 gun.Target = null;
@@ -490,10 +433,10 @@ public abstract partial class SharedGunSystem : EntitySystem
                 // May cause prediction issues? Needs more tweaking
                 gun.NextFire = TimeSpan.FromSeconds(Math.Max(lastFire.TotalSeconds + SafetyNextFire, gun.NextFire.TotalSeconds));
                 Audio.PlayPredicted(gun.SoundEmpty, gunUid, user);
-                return;
+                return false;
             }
 
-            return;
+            return false;
         }
 
         // Handle burstfire
@@ -518,17 +461,17 @@ public abstract partial class SharedGunSystem : EntitySystem
         Shoot(gunUid, gun, ev.Ammo, fromCoordinates, toCoordinates.Value, out var userImpulse, user, throwItems: attemptEv.ThrowItems);
         var shotEv = new GunShotEvent(user, ev.Ammo);
         RaiseLocalEvent(gunUid, ref shotEv);
-        var shotBodyEv = new GunShotBodyEvent(gunUid, gun); // Shitmed Change
-        RaiseLocalEvent(user, shotBodyEv); // Shitmed Change
 
-        if (userImpulse && TryComp<PhysicsComponent>(user, out var userPhysics))
-        {
-            if (_gravity.IsWeightless(user, userPhysics))
-                CauseImpulse(fromCoordinates, toCoordinates.Value, user, userPhysics);
-        }
-
-        //Dirty(gunUid, gun);
         UpdateAmmoCount(gunUid); //GoobStation - Multishot
+        if (!userImpulse || !TryComp<PhysicsComponent>(user, out var userPhysics))
+            return true;
+
+        var shooterEv = new ShooterImpulseEvent();
+        RaiseLocalEvent(user, ref shooterEv);
+
+        if (shooterEv.Push)
+            CauseImpulse(fromCoordinates, toCoordinates.Value, user, userPhysics);
+        return true;
     }
 
     public void Shoot(
@@ -545,7 +488,10 @@ public abstract partial class SharedGunSystem : EntitySystem
         Shoot(gunUid, gun, new List<(EntityUid? Entity, IShootable Shootable)>(1) { (ammo, shootable) }, fromCoordinates, toCoordinates, out userImpulse, user, throwItems);
     }
 
-    public abstract void Shoot(
+    /// <summary>
+    /// Trauma - moved server version here and predicted it
+    /// </summary>
+    public void Shoot(
         EntityUid gunUid,
         GunComponent gun,
         List<(EntityUid? Entity, IShootable Shootable)> ammo,
@@ -553,9 +499,187 @@ public abstract partial class SharedGunSystem : EntitySystem
         EntityCoordinates toCoordinates,
         out bool userImpulse,
         EntityUid? user = null,
-        bool throwItems = false);
+        bool throwItems = false)
+    {
+        userImpulse = false;
 
-    public void ShootProjectile(EntityUid uid, Vector2 direction, Vector2 gunVelocity, EntityUid? gunUid, EntityUid? user = null, float speed = 40f, Vector2? targetCoordinates = null) // Goobstation - Fast Bullets
+        if (user != null)
+        {
+            var selfEvent = new SelfBeforeGunShotEvent(user.Value, (gunUid, gun), ammo);
+            RaiseLocalEvent(user.Value, selfEvent);
+            if (selfEvent.Cancelled)
+                return;
+        }
+
+        var fromMap = TransformSystem.ToMapCoordinates(fromCoordinates);
+        var toMap = TransformSystem.ToMapCoordinates(toCoordinates).Position;
+        var mapDirection = toMap - fromMap.Position;
+        // <Trauma> - prevent shooting with 0,0 direction
+        if (mapDirection == Vector2.Zero)
+            return;
+        var recoilScale = GetRecoilScale(user, gunUid);
+        var mapAngle = mapDirection.ToAngle();
+        var angle = GetRecoilAngle(Timing.CurTime, (gunUid, gun), mapDirection.ToAngle(), user, recoilScale); // Trauma - pass gunUid and user
+        // </Trauma>
+
+        userImpulse = true;
+
+        // If applicable, this ensures the projectile is parented to grid on spawn, instead of the map.
+        var fromEnt = MapManager.TryFindGridAt(fromMap, out var gridUid, out _)
+            ? TransformSystem.WithEntityId(fromCoordinates, gridUid)
+            : new EntityCoordinates(_map.GetMapOrInvalid(fromMap.MapId), fromMap.Position);
+
+        var toMapBeforeRecoil = toMap; // Goobstation
+
+        // Update shot based on the recoil
+        toMap = fromMap.Position + angle.ToVec() * mapDirection.Length();
+        mapDirection = toMap - fromMap.Position;
+        var gunVelocity = Physics.GetMapLinearVelocity(fromEnt);
+
+        // I must be high because this was getting tripped even when true.
+        // DebugTools.Assert(direction != Vector2.Zero);
+        var shotProjectiles = new List<EntityUid>(ammo.Count);
+
+        foreach (var (ent, shootable) in ammo)
+        {
+            // pneumatic cannon doesn't shoot bullets it just throws them, ignore ammo handling
+            if (throwItems && ent != null)
+            {
+                ShootOrThrow(ent.Value, mapDirection, gunVelocity, gun, gunUid, user, targetCoordinates: toMapBeforeRecoil);
+                shotProjectiles.Add(ent.Value); // Goobstation
+                continue;
+            }
+
+            // TODO: Clean this up in a gun refactor at some point - too much copy pasting
+            switch (shootable)
+            {
+                // Cartridge shoots something else
+                case CartridgeAmmoComponent cartridge:
+                    if (!cartridge.Spent)
+                    {
+                        var uid = PredictedSpawnAtPosition(cartridge.Prototype, fromEnt);
+                        // <Trauma>
+                        var cartEv = new CartridgeFiredEvent(uid);
+                        RaiseLocalEvent(ent!.Value, ref cartEv);
+                        // </Trauma>
+                        CreateAndFireProjectiles(uid, cartridge);
+
+                        RaiseLocalEvent(ent!.Value, new AmmoShotEvent()
+                        {
+                            FiredProjectiles = shotProjectiles,
+                        });
+
+                        SetCartridgeSpent(ent.Value, cartridge, true);
+
+                        if (cartridge.DeleteOnSpawn)
+                            PredictedDel(ent.Value);
+                    }
+                    else
+                    {
+                        userImpulse = false;
+                        Audio.PlayPredicted(gun.SoundEmpty, gunUid, user);
+                    }
+
+                    // Something like ballistic might want to leave it in the container still
+                    if (!cartridge.DeleteOnSpawn && !Containers.IsEntityInContainer(ent!.Value))
+                        EjectCartridge(Random(gunUid), user, ent.Value, angle);
+
+                    Dirty(ent!.Value, cartridge);
+                    break;
+                // Ammo shoots itself
+                case AmmoComponent newAmmo:
+                    if (ent == null)
+                        break;
+                    CreateAndFireProjectiles(ent.Value, newAmmo);
+
+                    break;
+                case HitscanAmmoComponent:
+                    if (ent == null)
+                        break;
+
+                    var hitscanEv = new HitscanTraceEvent
+                    {
+                        FromCoordinates = fromCoordinates,
+                        TargetCoordinates = toMapBeforeRecoil, // Goob
+                        ShotDirection = mapDirection.Normalized(),
+                        Gun = gunUid,
+                        Shooter = user,
+                        Target = gun.Target,
+                    };
+                    RaiseLocalEvent(ent.Value, ref hitscanEv);
+                    PredictedDel(ent);
+
+                    Audio.PlayPredicted(gun.SoundGunshotModified, gunUid, user);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            // <Trauma>
+            if (userImpulse)
+                Recoil(user, mapDirection, gun.CameraRecoilScalarModified * recoilScale);
+            // </Trauma>
+        }
+
+        // <Trauma> - TODO: kill this, use AmmoShotUserEvent?
+        if (user is { } userA)
+        {
+            var ev = new AmmoShotUserEvent();
+            RaiseLocalEvent(userA, ref ev);
+        }
+        // </Trauma>
+
+        RaiseLocalEvent(gunUid, new AmmoShotEvent()
+        {
+            FiredProjectiles = shotProjectiles,
+        });
+
+        // <Goob>
+        if (user.HasValue)
+        {
+            var userEv = new AmmoShotUserEvent(gunUid, shotProjectiles);
+            RaiseLocalEvent(user.Value, ref userEv);
+        }
+        // </Goob>
+
+        void CreateAndFireProjectiles(EntityUid ammoEnt, AmmoComponent ammoComp)
+        {
+            if (TryComp<ProjectileSpreadComponent>(ammoEnt, out var ammoSpreadComp))
+            {
+                var spreadEvent = new GunGetAmmoSpreadEvent(ammoSpreadComp.Spread);
+                RaiseLocalEvent(gunUid, ref spreadEvent);
+
+                var angles = LinearSpread(mapAngle - spreadEvent.Spread / 2,
+                    mapAngle + spreadEvent.Spread / 2, ammoSpreadComp.Count);
+
+                ShootOrThrow(ammoEnt, angles[0].ToVec(), gunVelocity, gun, gunUid, user, targetCoordinates: toMapBeforeRecoil); // Goobstation - add target coords
+                shotProjectiles.Add(ammoEnt);
+
+                for (var i = 1; i < ammoSpreadComp.Count; i++)
+                {
+                    var newuid = PredictedSpawnAtPosition(ammoSpreadComp.Proto, fromEnt);
+                    // <Trauma>
+                    var pelletEv = new SpreadPelletFiredEvent(newuid);
+                    RaiseLocalEvent(ammoEnt, ref pelletEv);
+                    SetProjectilePerfectHitEntities(newuid, user, new MapCoordinates(toMap, fromMap.MapId));
+                    // </Trauma>
+                    ShootOrThrow(newuid, angles[i].ToVec(), gunVelocity, gun, gunUid, user, targetCoordinates: toMapBeforeRecoil); // Goobstation - add target coords
+                    shotProjectiles.Add(newuid);
+                }
+            }
+            else
+            {
+                ShootOrThrow(ammoEnt, mapDirection, gunVelocity, gun, gunUid, user, targetCoordinates: toMapBeforeRecoil); // Goobstation
+                shotProjectiles.Add(ammoEnt);
+            }
+
+            MuzzleFlash(gunUid, ammoComp, mapDirection.ToAngle(), user);
+            Audio.PlayPredicted(gun.SoundGunshotModified, gunUid, user);
+        }
+    }
+
+    public void ShootProjectile(EntityUid uid, Vector2 direction, Vector2 gunVelocity, EntityUid? gunUid, EntityUid? user = null, float speed = ProjectileSpeed,
+        Vector2? targetCoordinates = null) // Goob
     {
         var physics = EnsureComp<PhysicsComponent>(uid);
         Physics.SetBodyStatus(uid, physics, BodyStatus.InAir);
@@ -571,9 +695,24 @@ public abstract partial class SharedGunSystem : EntitySystem
         if (shooter != null)
             Projectiles.SetShooter(uid, projectile, shooter.Value);
 
+        Physics.UpdateIsPredicted(uid, physics); // Trauma - predict this shit
+
         TransformSystem.SetWorldRotation(uid, direction.ToWorldAngle() + projectile.Angle);
-        if (targetCoordinates.HasValue) // Goobstation
-            projectile.TargetCoordinates = targetCoordinates.Value; // Goobstation
+        // <Trauma>
+        if (targetCoordinates is {} target)
+            projectile.TargetCoordinates = target;
+
+        if (user is {} userUid)
+        {
+            var ev = new PlayerShotProjectileEvent(uid, userUid);
+            RaiseLocalEvent(ref ev);
+        }
+        if (gunUid is {} gun)
+        {
+            var shotEv = new ProjectileShotEvent(uid);
+            RaiseLocalEvent(gun, ref shotEv);
+        }
+        // </Trauma>
     }
 
     protected abstract void Popup(string message, EntityUid? uid, EntityUid? user);
@@ -590,24 +729,38 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         cartridge.Spent = spent;
         Appearance.SetData(uid, AmmoVisuals.Spent, spent);
+
+        if (!cartridge.MarkSpentAsTrash)
+            return;
+
+        if (spent)
+            TagSystem.AddTag(uid, TrashTag);
+        else
+            TagSystem.RemoveTag(uid, TrashTag);
     }
 
     /// <summary>
     /// Drops a single cartridge / shell
     /// </summary>
-    protected void EjectCartridge(
+    public void EjectCartridge( // Trauma - made public
+        // <Trauma>
+        System.Random rand, // predicted random instance for the gun
+        EntityUid? user,
+        // </Trauma>
         EntityUid entity,
         Angle? angle = null,
         bool playSound = true)
     {
         // TODO: Sound limit version.
-        var offsetPos = Random.NextVector2(EjectOffset);
+        // <Trauma> - use random from params
+        var offsetPos = rand.NextAngle().RotateVec(new Vector2(rand.NextFloat(0, EjectOffset), 0));
         var xform = Transform(entity);
 
         var coordinates = xform.Coordinates;
         coordinates = coordinates.Offset(offsetPos);
 
-        TransformSystem.SetLocalRotation(entity, Random.NextAngle(), xform);
+        TransformSystem.SetLocalRotation(entity, rand.NextAngle(), xform);
+        // </Trauma>
         TransformSystem.SetCoordinates(entity, xform, coordinates);
 
         // decides direction the casing ejects and only when not cycling
@@ -619,7 +772,7 @@ public abstract partial class SharedGunSystem : EntitySystem
         }
         if (playSound && TryComp<CartridgeAmmoComponent>(entity, out var cartridge))
         {
-            Audio.PlayPvs(cartridge.EjectSound, entity, AudioParams.Default.WithVariation(SharedContentAudioSystem.DefaultVariation).WithVolume(-1f));
+            Audio.PlayPredicted(cartridge.EjectSound, entity, user, AudioParams.Default.WithVariation(SharedContentAudioSystem.DefaultVariation).WithVolume(-1f));
         }
     }
 
@@ -627,6 +780,9 @@ public abstract partial class SharedGunSystem : EntitySystem
     {
         if (TryComp<CartridgeAmmoComponent>(uid, out var cartridge))
             return cartridge;
+
+        if (TryComp<HitscanAmmoComponent>(uid, out var hitscanAmmo))
+            return hitscanAmmo;
 
         return EnsureComp<AmmoComponent>(uid);
     }
@@ -637,7 +793,7 @@ public abstract partial class SharedGunSystem : EntitySystem
         RemCompDeferred<AmmoComponent>(uid);
     }
 
-    protected void MuzzleFlash(EntityUid gun, AmmoComponent component, Angle worldAngle, EntityUid? user = null)
+    public void MuzzleFlash(EntityUid gun, AmmoComponent component, Angle worldAngle, EntityUid? user = null) // Trauma - made public
     {
         var attemptEv = new GunMuzzleFlashAttemptEvent();
         RaiseLocalEvent(gun, ref attemptEv);
@@ -685,14 +841,6 @@ public abstract partial class SharedGunSystem : EntitySystem
             comp.BurstCooldown, // Goobstation
             User // GoobStation change - User for NoWieldNeeded
         );
-
-        // Begin DeltaV additions
-        // Raise an event at the user of the gun so they have a chance to modify the gun's details.
-        if (gun.Comp.Holder != null)
-        {
-            RaiseLocalEvent(gun.Comp.Holder.Value, ref ev);
-        }
-        // End DeltaV additions
 
         RaiseLocalEvent(gun, ref ev);
 
@@ -770,7 +918,7 @@ public abstract partial class SharedGunSystem : EntitySystem
         bool dirty = true)
     {
         targeted = EnsureComp<TargetedProjectileComponent>(projectile);
-        targeted.Target = TerminatingOrDeleted(target) ? null : target; // Goobstation - set to null if deleted
+        targeted.Target = TerminatingOrDeleted(target) ? null : GetNetEntity(target); // Trauma - set to null if deleted, use NetEntity otherwise
         if (dirty)
             Dirty(projectile, targeted);
     }
@@ -798,12 +946,72 @@ public abstract partial class SharedGunSystem : EntitySystem
     protected abstract void CreateEffect(EntityUid gunUid, MuzzleFlashEvent message, EntityUid? user = null);
 
     /// <summary>
+    /// Trauma - made concrete, only played by client.
+    /// All callers are predicted so anyone in PVS range would already play it locally anyway.
+    /// </summary>
+    public void PlayImpactSound(EntityUid otherEntity, DamageSpecifier? modifiedDamage, SoundSpecifier? weaponSound, bool forceWeaponSound)
+    {
+        if (_netManager.IsServer)
+            return;
+
+        DebugTools.Assert(!Deleted(otherEntity), "Impact sound entity was deleted");
+
+        // Like projectiles and melee,
+        // 1. Entity specific sound
+        // 2. Ammo's sound
+        // 3. Nothing
+        if (!forceWeaponSound && modifiedDamage != null && modifiedDamage.GetTotal() > 0 && TryComp<RangedDamageSoundComponent>(otherEntity, out var rangedSound))
+        {
+            var type = SharedMeleeWeaponSystem.GetHighestDamageSound(modifiedDamage, ProtoManager);
+
+            if (type != null && rangedSound.SoundTypes?.TryGetValue(type, out var damageSoundType) == true)
+            {
+                Audio.PlayLocal(damageSoundType, otherEntity, null, AudioParams.Default.WithVariation(MeleeSoundSystem.DamagePitchVariation));
+                return;
+            }
+            if (type != null && rangedSound.SoundGroups?.TryGetValue(type, out var damageSoundGroup) == true)
+            {
+                Audio.PlayLocal(damageSoundGroup, otherEntity, null, AudioParams.Default.WithVariation(MeleeSoundSystem.DamagePitchVariation));
+                return;
+            }
+        }
+
+        Audio.PlayLocal(weaponSound, otherEntity, null);
+    }
+
+    /// <summary>
     /// Used for animated effects on the client.
     /// </summary>
     [Serializable, NetSerializable]
     public sealed class HitscanEvent : EntityEventArgs
     {
         public List<(NetCoordinates coordinates, Angle angle, SpriteSpecifier Sprite, float Distance)> Sprites = new();
+    }
+
+    /// <summary>
+    /// Get the ammo count for a given EntityUid. Can be a firearm or magazine.
+    /// </summary>
+    public int GetAmmoCount(EntityUid uid)
+    {
+        var ammoEv = new GetAmmoCountEvent();
+        RaiseLocalEvent(uid, ref ammoEv);
+        return ammoEv.Count;
+    }
+
+    /// <summary>
+    /// Get the ammo capacity for a given EntityUid. Can be a firearm or magazine.
+    /// </summary>
+    public int GetAmmoCapacity(EntityUid uid)
+    {
+        var ammoEv = new GetAmmoCountEvent();
+        RaiseLocalEvent(uid, ref ammoEv);
+        return ammoEv.Capacity;
+    }
+
+    public override void Update(float frameTime)
+    {
+        UpdateBattery(frameTime);
+        UpdateBallistic(frameTime);
     }
 }
 
@@ -825,6 +1033,16 @@ public record struct AttemptShootEvent(EntityUid User, string? Message, bool Can
 /// <param name="User">The user that fired this gun.</param>
 [ByRefEvent]
 public record struct GunShotEvent(EntityUid User, List<(EntityUid? Uid, IShootable Shootable)> Ammo);
+
+/// <summary>
+/// Raised on an entity after firing a gun to see if any components or systems would allow this entity to be pushed
+/// by the gun they're firing. If true, GunSystem will create an impulse on our entity.
+/// </summary>
+[ByRefEvent]
+public record struct ShooterImpulseEvent()
+{
+    public bool Push;
+};
 
 public enum EffectLayers : byte
 {

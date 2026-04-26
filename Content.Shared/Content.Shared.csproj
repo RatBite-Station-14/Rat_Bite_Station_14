@@ -13,11 +13,13 @@
   <Import Project="..\RobustToolbox\Imports\Shared.props" />
 
   <ItemGroup>
-    <!-- <Ratbite> -->
-    <ProjectReference Include="../Content.Ratbite.Common/Content.Ratbite.Common.csproj" />
+    <!-- <Trauma> -->
+    <ProjectReference Include="../Content.Trauma.Common/Content.Trauma.Common.csproj" />
     <ProjectReference Include="../Content.Goobstation.Common/Content.Goobstation.Common.csproj" />
+    <ProjectReference Include="../Content.Lavaland.Common/Content.Lavaland.Common.csproj" />
+    <ProjectReference Include="../Content.Medical.Common/Content.Medical.Common.csproj" />
     <ProjectReference Include="../Content.Common/Content.Common.csproj" />
-    <!-- </Ratbite> -->
+    <!-- </Trauma> -->
     <ProjectReference Include="..\Content.Shared.Database\Content.Shared.Database.csproj" />
   </ItemGroup>
 

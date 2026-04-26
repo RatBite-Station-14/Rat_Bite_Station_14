@@ -1,8 +1,10 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Linq;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs;
-using Robust.Shared.Prototypes;
 
 namespace Content.Goobstation.Shared.Wraith.Revenant;
 

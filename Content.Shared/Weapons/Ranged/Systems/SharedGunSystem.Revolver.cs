@@ -1,21 +1,3 @@
-// SPDX-FileCopyrightText: 2022 ElectroJr <leonsfriedrich@gmail.com>
-// SPDX-FileCopyrightText: 2022 KIBORG04 <bossmira4@gmail.com>
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 PixelTK <85175107+PixelTheKermit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 T-Stalker <43253663+DogZeroX@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 T-Stalker <le0nel_1van@hotmail.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2023 Scribbles0 <91828755+Scribbles0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2024 Kaga-404 <103199482+Kaga-404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Shared.Interaction;
 using Content.Shared.Verbs;
 using Content.Shared.Weapons.Ranged.Components;
@@ -57,7 +39,7 @@ public partial class SharedGunSystem
         args.Handled = true;
 
         Cycle(component);
-        UpdateAmmoCount(uid, prediction: false);
+        UpdateAmmoCount(uid); // Trauma - do predict it
         Dirty(uid, component);
     }
 
@@ -105,7 +87,7 @@ public partial class SharedGunSystem
         // Handle spins
         if (oldIndex != state.CurrentIndex)
         {
-            UpdateAmmoCount(uid, prediction: false);
+            UpdateAmmoCount(uid); // Trauma - do predict it
         }
     }
 
@@ -301,6 +283,7 @@ public partial class SharedGunSystem
         var mapCoordinates = TransformSystem.GetMapCoordinates(revolverUid);
         var anyEmpty = false;
 
+        var rand = Random(revolverUid); // Trauma
         for (var i = 0; i < component.Capacity; i++)
         {
             var chamber = component.Chambers[i];
@@ -311,16 +294,14 @@ public partial class SharedGunSystem
                 if (chamber == null)
                     continue;
 
-                // Too lazy to make a new method don't sue me.
-                if (!_netManager.IsClient)
-                {
-                    var uid = Spawn(component.FillPrototype, mapCoordinates);
+                // <Trauma> - predicted this shit
+                var uid = EntityManager.PredictedSpawn(component.FillPrototype, mapCoordinates);
 
-                    if (TryComp<CartridgeAmmoComponent>(uid, out var cartridge))
-                        SetCartridgeSpent(uid, cartridge, !(bool) chamber);
+                if (TryComp<CartridgeAmmoComponent>(uid, out var cartridge))
+                    SetCartridgeSpent(uid, cartridge, !(bool) chamber);
 
-                    EjectCartridge(uid);
-                }
+                EjectCartridge(rand, user, uid);
+                // </Trauma>
 
                 component.Chambers[i] = null;
                 anyEmpty = true;
@@ -331,8 +312,7 @@ public partial class SharedGunSystem
                 Containers.Remove(slot.Value, component.AmmoContainer);
                 component.Chambers[i] = null;
 
-                if (!_netManager.IsClient)
-                    EjectCartridge(slot.Value);
+                EjectCartridge(rand, user, slot.Value); // Trauma - predicted this shit
 
                 anyEmpty = true;
             }
@@ -341,7 +321,7 @@ public partial class SharedGunSystem
         if (anyEmpty)
         {
             Audio.PlayPredicted(component.SoundEject, revolverUid, user);
-            UpdateAmmoCount(revolverUid, prediction: false);
+            UpdateAmmoCount(revolverUid); // Trauma - do predict it
             UpdateRevolverAppearance(revolverUid, component);
             Dirty(revolverUid, component);
         }
@@ -358,10 +338,21 @@ public partial class SharedGunSystem
         Appearance.SetData(uid, AmmoVisuals.AmmoMax, component.Capacity, appearance);
     }
 
-    protected virtual void SpinRevolver(EntityUid revolverUid, RevolverAmmoProviderComponent component, EntityUid? user = null)
+    /// <summary>
+    /// Made concrete, predicted the actual spinning logic
+    /// </summary>
+    protected void SpinRevolver(EntityUid revolverUid, RevolverAmmoProviderComponent component, EntityUid? user = null)
     {
         Audio.PlayPredicted(component.SoundSpin, revolverUid, user);
         Popup(Loc.GetString("gun-revolver-spun"), revolverUid, user);
+
+        var index = Random(revolverUid).Next(component.Capacity);
+
+        if (component.CurrentIndex == index)
+            return;
+
+        component.CurrentIndex = index;
+        Dirty(revolverUid, component);
     }
 
     private void OnRevolverTakeAmmo(EntityUid uid, RevolverAmmoProviderComponent component, TakeAmmoEvent args)
@@ -388,13 +379,11 @@ public partial class SharedGunSystem
                 if (chamber == true)
                 {
                     // Pretend it's always been there.
-                    ent = Spawn(component.FillPrototype, args.Coordinates);
-
-                    if (!_netManager.IsClient)
-                    {
-                        component.AmmoSlots[index] = ent;
-                        Containers.Insert(ent.Value, component.AmmoContainer);
-                    }
+                    // <Trauma> - predicted this shit
+                    ent = PredictedSpawnAtPosition(component.FillPrototype, args.Coordinates);
+                    component.AmmoSlots[index] = ent;
+                    Containers.Insert(ent.Value, component.AmmoContainer);
+                    // </Trauma>
 
                     component.Chambers[index] = false;
                 }
@@ -411,7 +400,7 @@ public partial class SharedGunSystem
 
                 // Mark cartridge as spent and if it's caseless delete from the chamber slot.
                 SetCartridgeSpent(ent.Value, cartridge, true);
-                var spawned = Spawn(cartridge.Prototype, args.Coordinates);
+                var spawned = PredictedSpawnAtPosition(cartridge.Prototype, args.Coordinates); // Trauma - predicted this shit
                 args.Ammo.Add((spawned, EnsureComp<AmmoComponent>(spawned)));
 
                 if (cartridge.DeleteOnSpawn)
@@ -428,13 +417,15 @@ public partial class SharedGunSystem
             }
 
             // Delete the cartridge entity on client
+            /* Trauma - no
             if (_netManager.IsClient)
             {
                 QueueDel(ent);
             }
+            */
         }
 
-        UpdateAmmoCount(uid, prediction: false);
+        UpdateAmmoCount(uid); // Trauma - do predict it
         UpdateRevolverAppearance(uid, component);
         Dirty(uid, component);
     }
@@ -472,6 +463,7 @@ public partial class SharedGunSystem
         }
 
         DebugTools.Assert(component.AmmoSlots.Count == component.Capacity);
+        UpdateAmmoCount(uid); // Trauma - lets client predict the first shot, shitcode
     }
 
     [Serializable, NetSerializable]

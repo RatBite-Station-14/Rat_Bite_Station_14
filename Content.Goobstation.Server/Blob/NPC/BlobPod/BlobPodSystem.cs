@@ -1,17 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Fishbait <Fishbait@git.ml>
-// SPDX-FileCopyrightText: 2024 fishbait <gnesse@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Ilya246 <ilyukarno@gmail.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Rinary <72972221+Rinary1@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Blob.Components;
@@ -23,7 +9,7 @@ using Content.Server.NPC.Systems;
 using Content.Server.Popups;
 using Content.Shared.ActionBlocker;
 using Content.Shared.CombatMode;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
@@ -32,7 +18,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Rejuvenate;
-using Content.Shared._Starlight.CollectiveMind;
+using Content.Trauma.Common.CollectiveMind;
 using Robust.Server.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
@@ -78,7 +64,7 @@ public sealed class BlobPodSystem : SharedBlobPodSystem
         if(args.Container.ID != "head")
             return;
 
-        if (!HasComp<HumanoidAppearanceComponent>(args.Container.Owner) || !HasComp<ZombieBlobComponent>(args.Container.Owner))
+        if (!HasComp<HumanoidProfileComponent>(args.Container.Owner) || !HasComp<ZombieBlobComponent>(args.Container.Owner))
             return;
 
         if (!TryComp<ZombieBlobComponent>(args.Container.Owner, out var zombieBlob))
@@ -169,7 +155,7 @@ public sealed class BlobPodSystem : SharedBlobPodSystem
     {
         if (!Resolve(uid, ref component))
             return false;
-        if (!HasComp<HumanoidAppearanceComponent>(target))
+        if (!HasComp<HumanoidProfileComponent>(target))
             return false;
         if (_mobs.IsAlive(target))
             return false;

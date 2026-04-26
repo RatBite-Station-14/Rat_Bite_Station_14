@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.Overlays;
 using Content.Goobstation.Shared.Shadowling.Components;
 using Content.Goobstation.Shared.Shadowling.Components.Abilities.PreAscension;
@@ -5,22 +7,21 @@ using Content.Goobstation.Shared.Shadowling.Components.Abilities.Thrall;
 using Content.Server.AlertLevel;
 using Content.Server.Audio;
 using Content.Server.Chat.Systems;
-using Content.Server.Light.Components;
-using Content.Server.Light.EntitySystems;
 using Content.Server.Pinpointer;
 using Content.Server.Polymorph.Systems;
 using Content.Server.Station.Systems;
 using Content.Server.Storage.EntitySystems;
 using Content.Shared.Actions;
 using Content.Shared.Audio;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Destructible;
 using Content.Shared.Examine;
+using Content.Shared.Light.Components;
+using Content.Shared.Light.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
@@ -39,7 +40,7 @@ public sealed class ShadowlingAscensionEggSystem : EntitySystem
     [Dependency] private readonly PolymorphSystem _polymorph = default!;
     [Dependency] private readonly ShadowlingSystem _shadowling = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly PoweredLightSystem _poweredLight = default!;
+    [Dependency] private readonly SharedPoweredLightSystem _poweredLight = default!;
     [Dependency] private readonly NavMapSystem _navMap = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly StationSystem _station = default!;
@@ -47,6 +48,8 @@ public sealed class ShadowlingAscensionEggSystem : EntitySystem
     [Dependency] private readonly ChatSystem _chatSystem = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly ServerGlobalSoundSystem _globalSound = default!;
+
+    public static readonly EntProtoId NightmareAbilities = "NightmareAbilities";
 
     public override void Initialize()
     {
@@ -104,12 +107,12 @@ public sealed class ShadowlingAscensionEggSystem : EntitySystem
         if (component.ShadowlingInsideEntity != null)
             QueueDel(component.ShadowlingInsideEntity);
 
-        if (component.Creator == null
+        if (component.Creator is not {} creator
             || !component.StartTimer) // This indicates that the shadowling was inside the egg
             return;
 
-        var shadowlingComp = EntityManager.GetComponent<ShadowlingComponent>(component.Creator.Value);
-        _shadowling.OnPhaseChanged(component.Creator.Value, shadowlingComp, ShadowlingPhases.FailedAscension);
+        var shadowlingComp = Comp<ShadowlingComponent>(creator);
+        _shadowling.OnPhaseChanged(creator, shadowlingComp, ShadowlingPhases.FailedAscension);
         component.StartTimer = false;
     }
 
@@ -232,7 +235,7 @@ public sealed class ShadowlingAscensionEggSystem : EntitySystem
             _actions.RemoveAction(ascendant.ActionHatchEntity);
         }
 
-        var nightmareComps = _protoMan.Index("NightmareAbilities");
+        var nightmareComps = _protoMan.Index(NightmareAbilities);
         foreach (var thrall in thralls)
         {
             if (HasComp<LesserShadowlingComponent>(thrall))

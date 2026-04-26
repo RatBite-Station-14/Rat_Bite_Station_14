@@ -1,11 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Fishbait <Fishbait@git.ml>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 fishbait <gnesse@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.Blob;
@@ -16,7 +8,6 @@ using Content.Shared.StatusIcon;
 using Content.Shared.StatusIcon.Components;
 using Robust.Client.Graphics;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 //using Content.Shared.Flesh;
 
 namespace Content.Goobstation.Client.Blob;
@@ -41,8 +32,7 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
         SubscribeNetworkEvent<RoundRestartCleanupEvent>(RoundRestartCleanup);
     }
 
-    [ValidatePrototypeId<FactionIconPrototype>]
-    private const string BlobFaction = "BlobFaction";
+    private static readonly ProtoId<FactionIconPrototype> BlobFaction = "BlobFaction";
 
     private void OnShowBlobIcon<T>(Entity<T> ent, ref GetStatusIconsEvent args) where T : Component
     {

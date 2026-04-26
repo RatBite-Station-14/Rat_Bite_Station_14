@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Roudenn <romabond091@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Client.Overlays;
@@ -8,7 +5,6 @@ using Content.Goobstation.Shared.SpecialAnimation;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 
 namespace Content.Goobstation.Client.SpecialAnimation;
 

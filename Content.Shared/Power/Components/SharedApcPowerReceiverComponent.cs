@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Power.Components;
@@ -25,4 +19,7 @@ public abstract partial class SharedApcPowerReceiverComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     public virtual bool PowerDisabled { get; set; }
+
+    // Doesn't actually do anything on the client just here for shared code.
+    public abstract float Load { get; set; }
 }

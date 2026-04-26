@@ -1,40 +1,32 @@
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Scruq445 <storchdamien@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Fishbait <Fishbait@git.ml>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 fishbait <gnesse@gmail.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
-using Content.Shared._vg.TileMovement;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Actions;
 using Content.Shared.Audio;
 using Content.Shared.Buckle;
 using Content.Shared.Buckle.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Hands;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.Prototypes;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Destructible;
 using Content.Shared.FixedPoint;
-using Content.Shared.Damage;
 using Content.Shared.Actions.Components;
+using Content.Shared.Interaction;
+using Content.Shared.Interaction.Components;
+using Content.Trauma.Common.TileMovement;
 
 namespace Content.Goobstation.Shared.Vehicles;
 
 public abstract partial class SharedVehicleSystem : EntitySystem
 {
+    [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
@@ -192,9 +184,10 @@ public abstract partial class SharedVehicleSystem : EntitySystem
 
     private void SetupOverlay(Entity<VehicleComponent> ent)
     {
-        if (ent.Comp.OverlayPrototype == null)
+        if (ent.Comp.OverlayPrototype is not {} proto)
             return;
-        var overlay = EntityManager.SpawnEntity(ent.Comp.OverlayPrototype, Transform(ent).Coordinates);
+
+        var overlay = PredictedSpawnAtPosition(proto, Transform(ent).Coordinates);
         _transform.SetParent(overlay, ent);
         _transform.SetLocalPosition(overlay, Vector2.Zero);
         _transform.SetLocalRotation(overlay, Angle.Zero);
@@ -237,6 +230,9 @@ public abstract partial class SharedVehicleSystem : EntitySystem
 
         if (HasComp<TileMovementComponent>(driver))
             EnsureComp<TileMovementComponent>(vehicle);
+
+        var ev = new VehicleMountedEvent(driver);
+        RaiseLocalEvent(vehicle, ref ev);
     }
 
     private void Dismount(EntityUid driver, EntityUid vehicle)
@@ -246,9 +242,9 @@ public abstract partial class SharedVehicleSystem : EntitySystem
 
         vehicleComp.Driver = null;
 
-        if (vehicleComp.ActiveOverlay.HasValue)
+        if (vehicleComp.ActiveOverlay is {} overlay)
         {
-            EntityManager.QueueDeleteEntity(vehicleComp.ActiveOverlay.Value);
+            PredictedQueueDel(overlay);
             vehicleComp.ActiveOverlay = null;
         }
         RemComp<RelayInputMoverComponent>(driver);
@@ -260,8 +256,10 @@ public abstract partial class SharedVehicleSystem : EntitySystem
 
         _virtualItem.DeleteInHandsMatching(driver, vehicle);
 
-        if (HasComp<TileMovementComponent>(vehicle))
-            RemComp<TileMovementComponent>(vehicle);
+        RemComp<TileMovementComponent>(vehicle);
+
+        var ev = new VehicleDismountedEvent(driver);
+        RaiseLocalEvent(vehicle, ref ev);
     }
 
     private void OnItemSlotEject(EntityUid uid, VehicleComponent comp, ref ItemSlotEjectAttemptEvent args)
@@ -288,8 +286,11 @@ public abstract partial class SharedVehicleSystem : EntitySystem
 
     private void OnRepair(EntityUid uid, VehicleComponent component, DamageChangedEvent args)
     {
-        if (component.IsBroken && args.Damageable.TotalDamage == FixedPoint2.Zero)
-            component.IsBroken = false;
+        if (!component.IsBroken)
+            return;
+
+        var total = _damageable.GetTotalDamage((uid, args.Damageable));
+        component.IsBroken = total > FixedPoint2.Zero;
     }
 
     private void OnGetAdditionalAccess(EntityUid uid, VehicleComponent component, ref GetAdditionalAccessEvent args)
@@ -301,3 +302,15 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         args.Entities.Add(driver.Value);
     }
 }
+
+/// <summary>
+/// Event raised on the vehicle after it can be driven (keys in and buckled)
+/// </summary>
+[ByRefEvent]
+public record struct VehicleMountedEvent(EntityUid Driver);
+
+/// <summary>
+/// Event raised on the vehicle after it can no longer be driven (unbuckled, keys removed, etc)
+/// </summary>
+[ByRefEvent]
+public record struct VehicleDismountedEvent(EntityUid Driver);

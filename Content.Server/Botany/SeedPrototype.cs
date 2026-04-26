@@ -1,32 +1,10 @@
-// SPDX-FileCopyrightText: 2022 Kevin Zheng <kevinz5000@gmail.com>
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Morb <14136326+Morb0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2022 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 Doru991 <75124791+Doru991@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Duke <112821543+DukeVanity@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Ygg01 <y.laughing.man.y@gmail.com>
-// SPDX-FileCopyrightText: 2023 drteaspoon420 <87363733+drteaspoon420@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PraxisMapper <praxismapper@gmail.com>
-// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Token <esil.bektay@yandex.com>
-// SPDX-FileCopyrightText: 2024 drakewill-CRL <46307022+drakewill-CRL@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Content.Server.Botany.Components;
-using Content.Server.Botany.Systems;
-using Content.Server.EntityEffects;
+// <Trauma>
+using Content.Shared.Chemistry.Reagent;
+using Content.Trauma.Common.Botany;
+// </Trauma>
 using Content.Shared.Atmos;
 using Content.Shared.Database;
-using Content.Shared.EntityEffects;
+using Content.Shared.FixedPoint;
 using Content.Shared.Random;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
@@ -41,12 +19,7 @@ public sealed partial class SeedPrototype : SeedData, IPrototype
     [IdDataField] public string ID { get; private set; } = default!;
 }
 
-public enum HarvestType : byte
-{
-    NoRepeat,
-    Repeat,
-    SelfHarvest
-}
+// Trauma - moved HarvestType to Content.Trauma.Common.Botany.
 
 /*
     public enum PlantSpread : byte
@@ -78,34 +51,15 @@ public enum HarvestType : byte
     }
 */
 
-[DataDefinition]
-public partial struct SeedChemQuantity
-{
-    /// <summary>
-    /// Minimum amount of chemical that is added to produce, regardless of the potency
-    /// </summary>
-    [DataField("Min")] public int Min;
+// Trauma - moved SeedChemQuantity to Content.Trauma.Common.Botany.
 
-    /// <summary>
-    /// Maximum amount of chemical that can be produced after taking plant potency into account.
-    /// </summary>
-    [DataField("Max")] public int Max;
-
-    /// <summary>
-    /// When chemicals are added to produce, the potency of the seed is divided with this value. Final chemical amount is the result plus the `Min` value.
-    /// Example: PotencyDivisor of 20 with seed potency of 55 results in 2.75, 55/20 = 2.75. If minimum is 1 then final result will be 3.75 of that chemical, 55/20+1 = 3.75.
-    /// </summary>
-    [DataField("PotencyDivisor")] public int PotencyDivisor;
-
-    /// <summary>
-    /// Inherent chemical is one that is NOT result of mutation or crossbreeding. These chemicals are removed if species mutation is executed.
-    /// </summary>
-    [DataField("Inherent")] public bool Inherent = true;
-}
-
-// TODO reduce the number of friends to a reasonable level. Requires ECS-ing things like plant holder component.
+// TODO Make Botany ECS and give it a proper API. I removed the limited access of this class because it's egregious how many systems needed access to it due to a lack of an actual API.
+/// <remarks>
+/// SeedData is no longer restricted because the number of friends is absolutely unreasonable.
+/// This entire data definition is unreasonable. I felt genuine fear looking at this, this is horrific. Send help.
+/// </remarks>
+// TODO: Hit Botany with hammers
 [Virtual, DataDefinition]
-[Access(typeof(BotanySystem), typeof(PlantHolderSystem), typeof(SeedExtractorSystem), typeof(PlantHolderComponent), typeof(EntityEffect), typeof(MutationSystem))]
 public partial class SeedData
 {
     #region Tracking
@@ -157,7 +111,7 @@ public partial class SeedData
     [DataField]
     public List<EntProtoId> ProductPrototypes = new();
 
-    [DataField] public Dictionary<string, SeedChemQuantity> Chemicals = new();
+    [DataField] public Dictionary<ProtoId<ReagentPrototype>, SeedChemQuantity> Chemicals = new(); // Trauma - use protoid holy shit
 
     [DataField] public Dictionary<Gas, float> ConsumeGasses = new();
 
@@ -293,7 +247,7 @@ public partial class SeedData
             PacketPrototype = PacketPrototype,
             ProductPrototypes = new List<EntProtoId>(ProductPrototypes),
             MutationPrototypes = new List<ProtoId<SeedPrototype>>(MutationPrototypes),
-            Chemicals = new Dictionary<string, SeedChemQuantity>(Chemicals),
+            Chemicals = new Dictionary<ProtoId<ReagentPrototype>, SeedChemQuantity>(Chemicals), // Trauma - protoid
             ConsumeGasses = new Dictionary<Gas, float>(ConsumeGasses),
             ExudeGasses = new Dictionary<Gas, float>(ExudeGasses),
 
@@ -354,7 +308,7 @@ public partial class SeedData
             ProductPrototypes = new List<EntProtoId>(other.ProductPrototypes),
             MutationPrototypes = new List<ProtoId<SeedPrototype>>(other.MutationPrototypes),
 
-            Chemicals = new Dictionary<string, SeedChemQuantity>(Chemicals),
+            Chemicals = new Dictionary<ProtoId<ReagentPrototype>, SeedChemQuantity>(Chemicals), // Trauma - protoid
             ConsumeGasses = new Dictionary<Gas, float>(ConsumeGasses),
             ExudeGasses = new Dictionary<Gas, float>(ExudeGasses),
 

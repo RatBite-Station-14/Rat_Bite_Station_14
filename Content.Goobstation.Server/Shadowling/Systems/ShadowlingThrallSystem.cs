@@ -1,14 +1,16 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.Devil;
 using Content.Goobstation.Shared.Overlays;
 using Content.Goobstation.Shared.Shadowling.Components;
 using Content.Goobstation.Shared.Shadowling.Components.Abilities.Thrall;
+using Content.Goobstation.Shared.Roles;
 using Content.Server.Antag;
 using Content.Server.Mind;
 using Content.Server.Roles;
-using Content.Shared._Starlight.CollectiveMind;
 using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
-using Robust.Shared.Prototypes;
+using Content.Trauma.Common.CollectiveMind;
 
 namespace Content.Goobstation.Server.Shadowling.Systems;
 

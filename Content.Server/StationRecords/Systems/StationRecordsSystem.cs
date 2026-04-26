@@ -1,36 +1,5 @@
-// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 Theomund <34360334+Theomund@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 faint <46868845+ficcialfaint@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2023 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Fishbait <Fishbait@git.ml>
-// SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Zachary Higgs <compgeek223@gmail.com>
-// SPDX-FileCopyrightText: 2025 fishbait <gnesse@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Diagnostics.CodeAnalysis;
-using Content.Server._BRatbite.PermaBrig;
 using Content.Server.Access.Systems;
-using Content.Server.Administration;
-using Content.Server.CriminalRecords.Systems;
-using Content.Server.Database;
 using Content.Shared.Access.Components;
 using Content.Shared.Forensics.Components;
 using Content.Shared.GameTicking;
@@ -38,10 +7,8 @@ using Content.Shared.Inventory;
 using Content.Shared.PDA;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
-using Content.Shared.Security;
 using Content.Shared.StationRecords;
 using Robust.Shared.Enums;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -70,13 +37,9 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
 {
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly StationRecordKeyStorageSystem _keyStorage = default!;
-    [Dependency] private readonly CriminalRecordsSystem _criminalRecords = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IdCardSystem _idCard = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IServerDbManager _dbManager = default!;
-    [Dependency] private readonly IPlayerLocator _locator = default!;
-    [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
 
     public override void Initialize()
     {
@@ -91,61 +54,8 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
         if (!TryComp<StationRecordsComponent>(args.Station, out var stationRecords))
             return;
 
-        CreateGeneralRecord(args.Station, args.Mob, args.Profile, args.JobId, stationRecords, args.Player);
+        CreateGeneralRecord(args.Station, args.Mob, args.Profile, args.JobId, stationRecords);
     }
-
-    private async void FillPlayerDefaultCriminalRecord(EntityUid station,
-        String name,
-        StationRecordsComponent records,
-        ICommonSession session)
-    {
-        var recordByName = GetRecordByName(station, name, records);
-        if (recordByName is not { } uid)
-        {
-            return;
-        }
-
-        var stationRecordKey = new StationRecordKey(uid, station);
-
-        var data = await _locator.LookupIdByNameOrIdAsync(session.Name);
-
-        if (data == null)
-        {
-            return;
-        }
-
-        var bans = await _dbManager.GetServerRoleBansAsync(data.LastAddress,
-            data.UserId,
-            data.LastLegacyHWId,
-            data.LastModernHWIds,
-            false);
-
-        var roleBans = new List<string>();
-        foreach (var serverRoleBanDef in bans)
-        {
-            roleBans.Add(serverRoleBanDef.Role.Substring(4));
-        }
-
-        if (roleBans.Count > 0)
-        {
-            _criminalRecords.TryAddHistory(stationRecordKey, "Banned from job "+string.Join(", ",roleBans));
-        }
-        else
-        {
-            _criminalRecords.TryAddHistory(stationRecordKey, "Is not banned from any roles.");
-        }
-
-        var brigTime = _permaBrigManager.GetBrigTime(session.UserId);
-        if (brigTime > 0)
-        {
-            var reason = "Sentenced to perma for "+_permaBrigManager.GetTimeLabel(brigTime);
-            _criminalRecords.TryChangeStatus(stationRecordKey,
-                SecurityStatus.Perma,
-                reason);
-        }
-    }
-
-
 
     private void OnRename(ref EntityRenamedEvent ev)
     {
@@ -159,7 +69,7 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
         if (_idCard.TryFindIdCard(ev.Uid, out var idCard))
         {
             if (TryComp(idCard, out StationRecordKeyStorageComponent? keyStorage)
-                && keyStorage.Key is { } key)
+                && keyStorage.Key is {} key)
             {
                 if (TryGetRecord<GeneralStationRecord>(key, out var generalRecord))
                 {
@@ -171,12 +81,8 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
         }
     }
 
-    private void CreateGeneralRecord(EntityUid station,
-        EntityUid player,
-        HumanoidCharacterProfile profile,
-        string? jobId,
-        StationRecordsComponent records,
-        ICommonSession session)
+    private void CreateGeneralRecord(EntityUid station, EntityUid player, HumanoidCharacterProfile profile,
+        string? jobId, StationRecordsComponent records)
     {
         // TODO make PlayerSpawnCompleteEvent.JobId a ProtoId
         if (string.IsNullOrEmpty(jobId)
@@ -189,22 +95,7 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
         TryComp<FingerprintComponent>(player, out var fingerprintComponent);
         TryComp<DnaComponent>(player, out var dnaComponent);
 
-        CreateGeneralRecord(station,
-            idUid.Value,
-            profile.Name,
-            profile.Age,
-            profile.Species,
-            profile.Gender,
-            jobId,
-            fingerprintComponent?.Fingerprint,
-            dnaComponent?.DNA,
-            profile,
-            records);
-
-        FillPlayerDefaultCriminalRecord(station,
-            profile.Name,
-            records,
-            session);
+        CreateGeneralRecord(station, idUid.Value, profile.Name, profile.Age, profile.Species, profile.Gender, jobId, fingerprintComponent?.Fingerprint, dnaComponent?.DNA, profile, records);
     }
 
 
@@ -253,7 +144,7 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
 
         // when adding a record that already exists use the old one
         // this happens when respawning as the same character
-        if (GetRecordByName(station, name, records) is { } id)
+        if (GetRecordByName(station, name, records) is {} id)
         {
             SetIdKey(idUid, new StationRecordKey(id, station));
             return;
@@ -290,11 +181,11 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
     /// </summary>
     public void SetIdKey(EntityUid? uid, StationRecordKey key)
     {
-        if (uid is not { } idUid)
+        if (uid is not {} idUid)
             return;
 
         var keyStorageEntity = idUid;
-        if (TryComp<PdaComponent>(idUid, out var pda) && pda.ContainedId is { } id)
+        if (TryComp<PdaComponent>(idUid, out var pda) && pda.ContainedId is {} id)
         {
             keyStorageEntity = id;
         }
@@ -323,28 +214,6 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
     }
 
     /// <summary>
-    ///     Try to get a record from this station's record entries,
-    ///     from the provided station record key. Will always return
-    ///     null if the key does not match the station.
-    /// </summary>
-    /// <param name="key">Station and key to try and index from the record set.</param>
-    /// <param name="entry">The resulting entry.</param>
-    /// <param name="records">Station record component.</param>
-    /// <typeparam name="T">Type to get from the record set.</typeparam>
-    /// <returns>True if the record was obtained, false otherwise.</returns>
-    public bool TryGetRecord<T>(StationRecordKey key,
-        [NotNullWhen(true)] out T? entry,
-        StationRecordsComponent? records = null)
-    {
-        entry = default;
-
-        if (!Resolve(key.OriginStation, ref records))
-            return false;
-
-        return records.Records.TryGetRecordEntry(key.Id, out entry);
-    }
-
-    /// <summary>
     /// Gets a random record from the station's record entries.
     /// </summary>
     /// <param name="ent">The EntityId of the station from which you want to get the record.</param>
@@ -367,49 +236,14 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
     }
 
     /// <summary>
-    /// Returns an id if a record with the same name exists.
-    /// </summary>
-    /// <remarks>
-    /// Linear search so O(n) time complexity.
-    /// </remarks>
-    public uint? GetRecordByName(EntityUid station, string name, StationRecordsComponent? records = null)
-    {
-        if (!Resolve(station, ref records, false))
-            return null;
-
-        foreach (var (id, record) in GetRecordsOfType<GeneralStationRecord>(station, records))
-        {
-            if (record.Name == name)
-                return id;
-        }
-
-        return null;
-    }
-
-    /// <summary>
     /// Get the name for a record, or an empty string if it has no record.
     /// </summary>
     public string RecordName(StationRecordKey key)
     {
         if (!TryGetRecord<GeneralStationRecord>(key, out var record))
-            return string.Empty;
+           return string.Empty;
 
         return record.Name;
-    }
-
-    /// <summary>
-    ///     Gets all records of a specific type from a station.
-    /// </summary>
-    /// <param name="station">The station to get the records from.</param>
-    /// <param name="records">Station records component.</param>
-    /// <typeparam name="T">Type of record to fetch</typeparam>
-    /// <returns>Enumerable of pairs with a station record key, and the entry in question of type T.</returns>
-    public IEnumerable<(uint, T)> GetRecordsOfType<T>(EntityUid station, StationRecordsComponent? records = null)
-    {
-        if (!Resolve(station, ref records))
-            return Array.Empty<(uint, T)>();
-
-        return records.Records.GetRecordsOfType<T>();
     }
 
     /// <summary>
@@ -438,8 +272,7 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
     /// <param name="record">The record to add.</param>
     /// <param name="records">Station records component.</param>
     /// <typeparam name="T">The type of record to add.</typeparam>
-    public void AddRecordEntry<T>(StationRecordKey key,
-        T record,
+    public void AddRecordEntry<T>(StationRecordKey key, T record,
         StationRecordsComponent? records = null)
     {
         if (!Resolve(key.OriginStation, ref records))
@@ -513,10 +346,9 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
             StationRecordFilterType.Species =>
                 !someRecord.Species.ToLower().Contains(filterLowerCaseValue),
             StationRecordFilterType.Prints => someRecord.Fingerprint != null
-                                              && IsFilterWithSomeCodeValue(someRecord.Fingerprint,
-                                                  filterLowerCaseValue),
+                && IsFilterWithSomeCodeValue(someRecord.Fingerprint, filterLowerCaseValue),
             StationRecordFilterType.DNA => someRecord.DNA != null
-                                           && IsFilterWithSomeCodeValue(someRecord.DNA, filterLowerCaseValue),
+                && IsFilterWithSomeCodeValue(someRecord.DNA, filterLowerCaseValue),
             _ => throw new IndexOutOfRangeException(nameof(filter.Type)),
         };
     }
@@ -574,7 +406,6 @@ public abstract class StationRecordEvent : EntityEventArgs
 public sealed class AfterGeneralRecordCreatedEvent : StationRecordEvent
 {
     public readonly GeneralStationRecord Record;
-
     /// <summary>
     /// Profile for the related player. This is so that other systems can get further information
     ///     about the player character.
@@ -582,8 +413,7 @@ public sealed class AfterGeneralRecordCreatedEvent : StationRecordEvent
     /// </summary>
     public readonly HumanoidCharacterProfile Profile;
 
-    public AfterGeneralRecordCreatedEvent(StationRecordKey key,
-        GeneralStationRecord record,
+    public AfterGeneralRecordCreatedEvent(StationRecordKey key, GeneralStationRecord record,
         HumanoidCharacterProfile profile) : base(key)
     {
         Record = record;

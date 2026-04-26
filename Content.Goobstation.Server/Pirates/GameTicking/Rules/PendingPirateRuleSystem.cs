@@ -1,11 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 amogus <113782077+whateverusername0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 whateverusername0 <whateveremail>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Cargo.Components;
@@ -20,7 +12,6 @@ using Content.Shared.Cargo.Components;
 using Content.Shared.Dataset;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Station.Components;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Goobstation.Server.Pirates.GameTicking.Rules;
@@ -104,11 +95,13 @@ public sealed partial class PendingPirateRuleSystem : GameRuleSystem<PendingPira
             var reason = Loc.GetString($"pirates-ransom-{announcer}-desc", ("num", price));
             var requester = Loc.GetString($"pirates-announcer-{announcer}");
 
-            var ransom = new CargoOrderData(orderId, component.RansomPrototype, name, price, 1, requester, reason, bank.PrimaryAccount, 30);
+            /* TODO: update this dogshit
+            var ransom = new CargoOrderData(orderId, component.RansomPrototype, 1, requester, reason, bank.PrimaryAccount);
 
             component.Order = ransom;
 
             _cargo.TryAddOrder(station.Value, bank.PrimaryAccount, ransom, cargoDb);
+            */
         }
 
         SendAnnouncement((uid, component), AnnouncementType.Threat);

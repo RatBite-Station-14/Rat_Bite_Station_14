@@ -1,9 +1,10 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Client.Overlays;
 using Content.Goobstation.Shared.Disease;
 using Content.Goobstation.Shared.Disease.Components;
 using Content.Shared.Inventory.Events;
 using Content.Shared.StatusIcon.Components;
-using Robust.Shared.Prototypes;
 
 namespace Content.Goobstation.Client.Disease;
 

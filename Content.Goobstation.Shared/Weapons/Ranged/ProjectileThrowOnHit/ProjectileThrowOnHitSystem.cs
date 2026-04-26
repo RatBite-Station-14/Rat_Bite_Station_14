@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
@@ -53,8 +48,8 @@ public sealed class ProjectileThrowOnHitSystem : EntitySystem
         var startEvent = new ProjectileThrowOnHitStartEvent(ent.Owner, user);
         RaiseLocalEvent(target, ref startEvent);
 
-        if (ent.Comp.StunTime != null)
-            _stun.TryParalyze(target, ent.Comp.StunTime.Value, false);
+        if (ent.Comp.StunTime is {} time)
+            _stun.TryAddParalyzeDuration(target, time);
 
         if (direction == Vector2.Zero)
             return;

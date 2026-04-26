@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.StationRadio.Components;
 using Content.Goobstation.Shared.StationRadio.Events;
 using Content.Server.GameTicking;
@@ -12,11 +14,10 @@ using Content.Shared.Random.Helpers;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using System.Linq;
-using Content.Server.Radio.Components;
+using Content.Shared.Radio.Components;
 using Content.Server.Chat.Systems;
 
 namespace Content.Goobstation.Server.StationRadio;

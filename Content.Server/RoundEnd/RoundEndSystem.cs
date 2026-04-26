@@ -1,53 +1,3 @@
-// SPDX-FileCopyrightText: 2020 ComicIronic <comicironic@gmail.com>
-// SPDX-FileCopyrightText: 2020 V�ctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2020 V�ctor Aguilera Puerto <zddm@outlook.es>
-// SPDX-FileCopyrightText: 2020 chairbender <kwhipke1@gmail.com>
-// SPDX-FileCopyrightText: 2020 zumorica <zddm@outlook.es>
-// SPDX-FileCopyrightText: 2021 20kdc <asdd2808@gmail.com>
-// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Galactic Chimp <63882831+GalacticChimp@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Galactic Chimp <GalacticChimpanzee@gmail.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <zddm@outlook.es>
-// SPDX-FileCopyrightText: 2021 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Chris V <HoofedEar@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Kevin Zheng <kevinz5000@gmail.com>
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Moony <moony@hellomouse.net>
-// SPDX-FileCopyrightText: 2022 Morber <14136326+Morb0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 T-Stalker <43253663+DogZeroX@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Veritius <veritiusgaming@gmail.com>
-// SPDX-FileCopyrightText: 2022 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 theashtronaut <112137107+theashtronaut@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Arimah Greene <30327355+arimah@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 EmoGarbage404 <retron404@gmail.com>
-// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 coolmankid12345 <55817627+coolmankid12345@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 coolmankid12345 <coolmankid12345@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 csqrb <56765288+CaptainSqrBeard@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 ElectroJr <leonsfriedrich@gmail.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 avery <51971268+graevy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 chavonadelal <156101927+chavonadelal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Threading;
 using Content.Server.Administration.Logs;
 using Content.Server.AlertLevel;
@@ -60,7 +10,6 @@ using Content.Server.GameTicking;
 using Content.Server.Screens.Components;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
-using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared.Database;
 using Content.Shared.DeviceNetwork;
@@ -71,6 +20,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.Station.Components;
 using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Server.RoundEnd
@@ -107,6 +57,11 @@ namespace Content.Server.RoundEnd
         public TimeSpan? ExpectedShuttleLength => ExpectedCountdownEnd - LastCountdownStart;
         public TimeSpan? ShuttleTimeLeft => ExpectedCountdownEnd - _gameTiming.CurTime;
 
+        /// <summary>
+        /// If the shuttle can't be recalled. if set to true, the station wont be able to recall
+        /// </summary>
+        public bool CantRecall = false;
+
         public TimeSpan AutoCallStartTime;
         private bool _autoCalledBefore = false;
 
@@ -136,6 +91,8 @@ namespace Content.Server.RoundEnd
                 _cooldownTokenSource = null;
             }
 
+            CantRecall = false;
+
             LastCountdownStart = null;
             ExpectedCountdownEnd = null;
             SetAutoCallTime();
@@ -148,10 +105,10 @@ namespace Content.Server.RoundEnd
         /// </summary>
         public EntityUid? GetStation()
         {
-            AllEntityQuery<StationEmergencyShuttleComponent, StationDataComponent>().MoveNext(out _, out _, out var data);
+            AllEntityQuery<StationEmergencyShuttleComponent, StationDataComponent>().MoveNext(out var uid, out _, out var data);
             if (data == null)
                 return null;
-            var targetGrid = _stationSystem.GetLargestGrid(data);
+            var targetGrid = _stationSystem.GetLargestGrid((uid, data));
             return targetGrid == null ? null : Transform(targetGrid.Value).MapUid;
         }
 
@@ -167,7 +124,7 @@ namespace Content.Server.RoundEnd
 
         public bool CanCallOrRecall()
         {
-            return _cooldownTokenSource == null;
+            return _cooldownTokenSource == null && !CantRecall;
         }
 
         public bool IsRoundEndRequested()
@@ -175,7 +132,16 @@ namespace Content.Server.RoundEnd
             return _countdownTokenSource != null;
         }
 
-        public void RequestRoundEnd(EntityUid? requester = null, bool checkCooldown = true, string text = "round-end-system-shuttle-called-announcement", string name = "round-end-system-shuttle-sender-announcement")
+        /// <summary>
+        /// Starts the process of ending the round by calling evac
+        /// </summary>
+        /// <param name="requester">who called evac</param>
+        /// <param name="machine">machine used to call evac</param>
+        /// <param name="checkCooldown"></param>
+        /// <param name="text">text in the announcement of shuttle calling</param>
+        /// <param name="name">name in the announcement of shuttle calling</param>
+        /// <param name="cantRecall">if the station shouldn't be able to recall the shuttle</param>
+        public void RequestRoundEnd(EntityUid? requester = null, EntityUid? machine = null, bool checkCooldown = true, string text = "round-end-system-shuttle-called-announcement", string name = "round-end-system-shuttle-sender-announcement", bool cantRecall = false)
         {
             var duration = DefaultCountdownDuration;
 
@@ -190,10 +156,20 @@ namespace Content.Server.RoundEnd
                 }
             }
 
-            RequestRoundEnd(duration, requester, checkCooldown, text, name);
+            RequestRoundEnd(duration, requester, machine, checkCooldown, text, name, cantRecall);
         }
 
-        public void RequestRoundEnd(TimeSpan countdownTime, EntityUid? requester = null, bool checkCooldown = true, string text = "round-end-system-shuttle-called-announcement", string name = "round-end-system-shuttle-sender-announcement")
+        /// <summary>
+        /// Starts the process of ending the round by calling evac
+        /// </summary>
+        /// <param name="countdownTime">time for evac to arrive</param>
+        /// <param name="requester">who called evac</param>
+        /// <param name="machine">machine used to call evac</param>
+        /// <param name="checkCooldown"></param>
+        /// <param name="text">text in the announcement of shuttle calling</param>
+        /// <param name="name">name in the announcement of shuttle calling</param>
+        /// <param name="cantRecall">if the station shouldn't be able to recall the shuttle</param>
+        public void RequestRoundEnd(TimeSpan countdownTime, EntityUid? requester = null, EntityUid? machine = null, bool checkCooldown = true, string text = "round-end-system-shuttle-called-announcement", string name = "round-end-system-shuttle-sender-announcement", bool cantRecall = false)
         {
             if (_gameTicker.RunLevel != GameRunLevel.InRound)
                 return;
@@ -205,15 +181,13 @@ namespace Content.Server.RoundEnd
                 return;
 
             _countdownTokenSource = new();
+            CantRecall = cantRecall;
 
+            var what = machine != null ? $" with {ToPrettyString(machine.Value):entity} " : "";
             if (requester != null)
-            {
-                _adminLogger.Add(LogType.ShuttleCalled, LogImpact.High, $"Shuttle called by {ToPrettyString(requester.Value):user}");
-            }
+                _adminLogger.Add(LogType.ShuttleCalled, LogImpact.High, $"Shuttle called by {ToPrettyString(requester.Value):player}{what}");
             else
-            {
-                _adminLogger.Add(LogType.ShuttleCalled, LogImpact.High, $"Shuttle called");
-            }
+                _adminLogger.Add(LogType.ShuttleCalled, LogImpact.High, $"Shuttle called{what}");
 
             // I originally had these set up here but somehow time gets passed as 0 to Loc so IDEK.
             int time;
@@ -265,23 +239,25 @@ namespace Content.Server.RoundEnd
             }
         }
 
-        public void CancelRoundEndCountdown(EntityUid? requester = null, bool checkCooldown = true)
+        public void CancelRoundEndCountdown(EntityUid? requester = null, EntityUid? machine = null, bool forceRecall = false)
         {
-            if (_gameTicker.RunLevel != GameRunLevel.InRound) return;
-            if (checkCooldown && _cooldownTokenSource != null) return;
+            if (_gameTicker.RunLevel != GameRunLevel.InRound)
+                return;
 
-            if (_countdownTokenSource == null) return;
+            if (!forceRecall && (CantRecall || _cooldownTokenSource != null))
+                return;
+
+            if (_countdownTokenSource == null)
+                return;
+
             _countdownTokenSource.Cancel();
             _countdownTokenSource = null;
 
+            var what = machine != null ? $" with {ToPrettyString(machine.Value):entity} " : "";
             if (requester != null)
-            {
-                _adminLogger.Add(LogType.ShuttleRecalled, LogImpact.High, $"Shuttle recalled by {ToPrettyString(requester.Value):user}");
-            }
+                _adminLogger.Add(LogType.ShuttleRecalled, LogImpact.High, $"Shuttle recalled by {ToPrettyString(requester.Value):player}{what}");
             else
-            {
-                _adminLogger.Add(LogType.ShuttleRecalled, LogImpact.High, $"Shuttle recalled");
-            }
+                _adminLogger.Add(LogType.ShuttleRecalled, LogImpact.High, $"Shuttle recalled{what}");
 
             _chatSystem.DispatchGlobalAnnouncement(Loc.GetString("round-end-system-shuttle-recalled-announcement"),
                 Loc.GetString("round-end-system-shuttle-sender-announcement"), false, colorOverride: Color.Gold);
@@ -338,7 +314,7 @@ namespace Content.Server.RoundEnd
                 Loc.GetString(
                     "round-end-system-round-restart-eta-announcement",
                     ("time", time),
-                    ("units", Loc.GetString(unitsLocString))));
+                    ("units", Loc.GetString(unitsLocString, ("amount", time)))));
             Timer.Spawn(countdownTime.Value, AfterEndRoundRestart, _countdownTokenSource.Token);
         }
 
@@ -371,8 +347,8 @@ namespace Content.Server.RoundEnd
                     }
                     else
                     {
-                        RequestRoundEnd(time, null, false, textCall,
-                            Loc.GetString(sender));
+                        RequestRoundEnd(time, checkCooldown: false, text: textCall,
+                            name: Loc.GetString(sender));
                     }
                     break;
             }
@@ -408,7 +384,7 @@ namespace Content.Server.RoundEnd
             {
                 if (!_shuttle.EmergencyShuttleArrived && ExpectedCountdownEnd is null)
                 {
-                    RequestRoundEnd(null, false, "round-end-system-shuttle-auto-called-announcement");
+                    RequestRoundEnd(checkCooldown: false, text: "round-end-system-shuttle-auto-called-announcement");
                     _autoCalledBefore = true;
                 }
 

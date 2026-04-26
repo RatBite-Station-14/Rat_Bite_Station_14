@@ -1,16 +1,10 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Goobstation.Weapons.SmartGun;
+using Content.Goobstation.Shared.Weapons.SmartGun;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
-using Robust.Shared.Prototypes;
 using DrawDepth = Content.Shared.DrawDepth.DrawDepth;
 
 namespace Content.Goobstation.Client.Weapons.LaserPointer;
@@ -24,6 +18,8 @@ public sealed class LaserPointerOverlay : Overlay
 
     private readonly ShaderInstance _unshadedShader;
 
+    public static readonly ProtoId<ShaderPrototype> Unshaded = "unshaded";
+
     public LaserPointerOverlay(IEntityManager entManager, IPrototypeManager prototype)
     {
         ZIndex = (int) DrawDepth.Effects;
@@ -32,7 +28,7 @@ public sealed class LaserPointerOverlay : Overlay
 
         _transform = entManager.System<TransformSystem>();
 
-        _unshadedShader = prototype.Index<ShaderPrototype>("unshaded").Instance();
+        _unshadedShader = prototype.Index(Unshaded).Instance();
     }
 
     protected override void Draw(in OverlayDrawArgs args)

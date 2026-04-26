@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Linq;
 using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
@@ -51,12 +45,17 @@ public sealed class MultiHandedItemSystem : EntitySystem
 
     private void OnAttemptPickup(Entity<MultiHandedItemComponent> ent, ref GettingPickedUpAttemptEvent args)
     {
-        if (_hands.CountFreeHands(args.User) >= ent.Comp.HandsNeeded)
+        if (args.Cancelled || _hands.CountFreeHands(args.User) >= ent.Comp.HandsNeeded)
             return;
 
         args.Cancel();
-        _popup.PopupPredictedCursor(Loc.GetString("multi-handed-item-pick-up-fail",
-            ("number", ent.Comp.HandsNeeded - 1), ("item", ent.Owner)), args.User);
+
+        if (args.ShowPopup)
+            _popup.PopupPredictedCursor(
+                Loc.GetString("multi-handed-item-pick-up-fail",
+                    ("number", ent.Comp.HandsNeeded - 1),
+                    ("item", ent.Owner)),
+                args.User);
     }
 
     private void OnVirtualItemDeleted(Entity<MultiHandedItemComponent> ent, ref VirtualItemDeletedEvent args)

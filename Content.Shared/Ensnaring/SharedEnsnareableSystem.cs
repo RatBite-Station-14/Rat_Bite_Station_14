@@ -1,25 +1,8 @@
-// SPDX-FileCopyrightText: 2022 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <wrexbe@protonmail.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 keronshb <keronshb@live.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 pubbi <63283968+impubbi@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+// <Trauma>
 using Content.Goobstation.Common.DoAfter;
-using Content.Shared._Goobstation.Wizard.Mutate;
+using Content.Shared.Projectiles;
+using Content.Trauma.Common.Cuffs;
+// </Trauma>
 using Content.Shared.Alert;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Damage.Components;
@@ -30,13 +13,11 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
-using Content.Shared.Projectiles;
 using Content.Shared.StepTrigger.Systems;
 using Content.Shared.Strip.Components;
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.Network;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Ensnaring;
@@ -48,8 +29,6 @@ public sealed partial class EnsnareableDoAfterEvent : SimpleDoAfterEvent
 
 public abstract class SharedEnsnareableSystem : EntitySystem
 {
-    [Dependency] private   readonly INetManager _net = default!; // Goobstation
-    [Dependency] private   readonly SharedHulkSystem _hulk = default!; // Goobstation
     [Dependency] private   readonly AlertsSystem _alerts = default!;
     [Dependency] private   readonly MovementSpeedModifierSystem _speedModifier = default!;
     [Dependency] protected readonly SharedAppearanceSystem Appearance = default!;
@@ -114,16 +93,14 @@ public abstract class SharedEnsnareableSystem : EntitySystem
         ensnaring.Ensnared = null;
 
         // Goobstation start
+        var bola = args.Args.Used.Value;
         if (ensnaring.DestroyOnRemove)
-        {
-            if (_net.IsServer)
-                QueueDel(args.Args.Used.Value);
-        }
+            PredictedQueueDel(bola);
         else
-            _hands.PickupOrDrop(args.Args.User, args.Args.Used.Value);
+            _hands.PickupOrDrop(args.User, bola);
 
-        if (args.User == args.Target && TryComp(args.User, out HulkComponent? hulk))
-            _hulk.Roar((args.User, hulk));
+        var snareBrokenEv = new EnsnareBrokenEvent(args.Target);
+        RaiseLocalEvent(args.User, ref snareBrokenEv);
         // Goobstation end
 
         if (args.User == args.Target)
@@ -195,8 +172,11 @@ public abstract class SharedEnsnareableSystem : EntitySystem
         var freeTime = user == target ? component.BreakoutTime : component.FreeTime;
         var breakOnMove = !component.CanMoveBreakout;
 
-        if (user == target && HasComp<HulkComponent>(user)) // Goobstation
-            freeTime = 0f;
+        // <Trauma>
+        var ev = new EnsnareModifyFreeDurationEvent(target, freeTime);
+        RaiseLocalEvent(user, ref ev);
+        freeTime = ev.FreeTime;
+        // </Trauma>
 
         var doAfterEventArgs = new DoAfterArgs(EntityManager, user, freeTime, new EnsnareableDoAfterEvent(), target, target: target, used: ensnare)
         {
@@ -274,11 +254,12 @@ public abstract class SharedEnsnareableSystem : EntitySystem
 
         if (TryEnsnare(args.Target, uid, component))
         {
-            _audio.PlayPvs(component.EnsnareSound, uid);
+            _audio.PlayLocal(component.EnsnareSound, uid, null); // Trauma - play local, throwing is predicted
         }
     }
 
     // Goobstation
+    // TODO: move this into module ffs
     private void OnProjectileHit(EntityUid uid, EnsnaringComponent component, ProjectileHitEvent args)
     {
         if (!component.CanThrowTrigger)
@@ -286,7 +267,7 @@ public abstract class SharedEnsnareableSystem : EntitySystem
 
         if (TryEnsnare(args.Target, uid, component))
         {
-            _audio.PlayPvs(component.EnsnareSound, uid);
+            _audio.PlayPredicted(component.EnsnareSound, uid, args.Shooter);
         }
     }
 

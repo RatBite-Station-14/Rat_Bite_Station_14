@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Contraband;
@@ -12,7 +8,6 @@ using Content.Shared.Storage;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Power.EntitySystems;
 using System.Linq;
-using Robust.Shared.Prototypes;
 using Content.Shared.Roles;
 using Content.Shared.Access.Systems;
 
@@ -22,7 +17,6 @@ public abstract class SharedContrabandDetectorSystem : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
-    [Dependency] private readonly ContrabandSystem _contrabandSystem = default!;
     [Dependency] private readonly SharedIdCardSystem _idCardSystem = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] private readonly SharedPowerReceiverSystem _powerReceiverSystem = default!;
@@ -75,7 +69,7 @@ public abstract class SharedContrabandDetectorSystem : EntitySystem
         return false;
     }
 
-    public List<EntityUid> FindContraband(EntityUid uid, bool recursive = true, SlotFlags check = SlotFlags.All)
+    public List<EntityUid> FindContraband(EntityUid uid)
     {
         List<EntityUid> listOfContraband = new();
         List<EntityUid> itemsToCheck = new();
@@ -83,33 +77,27 @@ public abstract class SharedContrabandDetectorSystem : EntitySystem
         itemsToCheck.Add(uid);
 
         // Check items in inner storage
-        if (recursive)
-            itemsToCheck.AddRange(RecursiveFindInStorage(uid));
+        itemsToCheck.AddRange(RecursiveFindInStorage(uid));
 
         // Check items in inventory slots and storages
-        if (check != SlotFlags.NONE)
+        var enumerator = _inventorySystem.GetSlotEnumerator(uid);
+        while (enumerator.MoveNext(out var slot))
         {
-            var enumerator = _inventorySystem.GetSlotEnumerator(uid, check);
-            while (enumerator.MoveNext(out var slot))
-            {
-                var item = slot.ContainedEntity;
+            var item = slot.ContainedEntity;
 
-                if (item == null)
-                    continue;
+            if (item == null)
+                continue;
 
-                itemsToCheck.Add(item.Value);
-                if (recursive)
-                    itemsToCheck.AddRange(RecursiveFindInStorage(item.Value));
-            }
+            itemsToCheck.Add(item.Value);
+            itemsToCheck.AddRange(RecursiveFindInStorage(item.Value));
         }
-        
+
         // Check items in hands
         var handEnumerator = _handsSystem.EnumerateHeld(uid);
         foreach (var handItem in handEnumerator)
         {
             itemsToCheck.Add(handItem);
-            if (recursive)
-                itemsToCheck.AddRange(RecursiveFindInStorage(handItem));
+            itemsToCheck.AddRange(RecursiveFindInStorage(handItem));
         }
 
         foreach (var item in itemsToCheck)
@@ -189,14 +177,14 @@ public abstract class SharedContrabandDetectorSystem : EntitySystem
     }
 
     /// <summary>
-    /// Checks permission for user to have contraband. 
+    /// Checks permission for user to have contraband.
     /// </summary>
     /// <param name="contraband"></param>
     /// <param name="user"></param>
     /// <returns></returns>
     public bool CheckContrabandPermission(EntityUid contraband, EntityUid user, ContrabandComponent? component = null)
     {
-        // No contraband = have permission 
+        // No contraband = have permission
         if (!Resolve(contraband, ref component))
             return true;
 

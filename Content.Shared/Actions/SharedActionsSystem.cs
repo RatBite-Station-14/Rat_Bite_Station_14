@@ -1,125 +1,19 @@
-// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 ForestNoises <33579038+ForestNoises@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 Menshin <Menshin@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 faint <46868845+ficcialfaint@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 12rabbits <53499656+12rabbits@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 AJCM <AJCM@tutanota.com>
-// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 CaasGit <87243814+CaasGit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <65184747+Dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Dimastra <dimastra@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 EmoGarbage404 <retron404@gmail.com>
-// SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Hrosts <35345601+Hrosts@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ian <ignaz.k@live.de>
-// SPDX-FileCopyrightText: 2024 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <51352440+JIPDawg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JIPDawg <JIPDawg93@gmail.com>
-// SPDX-FileCopyrightText: 2024 Joel Zimmerman <JoelZimmerman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JustCone <141039037+JustCone14@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Killerqu00 <47712032+Killerqu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kira Bridgeton <161087999+Verbalase@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ko4ergaPunk <62609550+Ko4ergaPunk@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kukutis96513 <146854220+Kukutis96513@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Lye <128915833+Lyroth001@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 MerrytheManokit <167581110+MerrytheManokit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 Moomoobeef <62638182+Moomoobeef@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Morb <14136326+Morb0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 MureixloI <132683811+MureixloI@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 NakataRin <45946146+NakataRin@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 OrangeMoronage9622 <whyteterry0092@gmail.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PopGamer46 <yt1popgamer@gmail.com>
-// SPDX-FileCopyrightText: 2024 Preston Smith <92108534+thetolbean@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Psychpsyo <60073468+Psychpsyo@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 PursuitInAshes <pursuitinashes@gmail.com>
-// SPDX-FileCopyrightText: 2024 QueerNB <176353696+QueerNB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Repo <47093363+Titian3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 RiceMar1244 <138547931+RiceMar1244@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Saphire Lattice <lattice@saphi.re>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Spessmann <156740760+Spessmann@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Stalen <33173619+stalengd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 TakoDragon <69509841+BackeTako@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Unkn0wn_Gh0st <shadowstalkermll@gmail.com>
-// SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
-// SPDX-FileCopyrightText: 2024 Vigers Ray <60344369+VigersRay@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deathride58 <deathride58@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 dffdff2423 <dffdff2423@gmail.com>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 foboscheshir <156405958+foboscheshir@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2024 saintmuntzer <47153094+saintmuntzer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 shamp <140359015+shampunj@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 stellar-novas <stellar_novas@riseup.net>
-// SPDX-FileCopyrightText: 2024 strO0pwafel <153459934+strO0pwafel@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 stroopwafel <j.o.luijkx@student.tudelft.nl>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 to4no_fix <156101927+chavonadelal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 voidnull000 <18663194+voidnull000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ActiveMammmoth <140334666+ActiveMammmoth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ActiveMammmoth <kmcsmooth@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Spatison <137375981+Spatison@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 keronshb <54602815+keronshb@users.noreply.github.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
+// <Trauma>
+using Content.Trauma.Common.Actions;
+using Content.Shared.Ghost;
+using Content.Shared.Popups;
+using Content.Trauma.Common.Heretic;
+using Robust.Shared.Network;
+// </Trauma>
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.Shared._Goobstation.Wizard;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions.Components;
 using Content.Shared.Actions.Events;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
-using Content.Shared.Ghost;
+using Content.Shared.DoAfter;
 using Content.Shared.Hands;
-using Content.Shared.Heretic;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Mind;
@@ -128,30 +22,27 @@ using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
-using Robust.Shared.Network;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+
 namespace Content.Shared.Actions;
 
-// Shitmed Change
-using Content.Shared._Shitmed.Antags.Abductor;
-using Content.Shared.Silicons.StationAi;
-using Content.Shared.Popups;
-
-public abstract class SharedActionsSystem : EntitySystem
+public abstract partial class SharedActionsSystem : EntitySystem
 {
+    // <Trauma>
+    [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    // </Trauma>
     [Dependency] protected readonly IGameTiming GameTiming = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
-    [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly RotateToFaceSystem _rotateToFace = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly INetManager _net = default!; // Goobstation
-    [Dependency] private readonly SharedPopupSystem _popup = default!; // Shitmed Change
-    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private   readonly ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private   readonly ActionBlockerSystem _actionBlocker = default!;
+    [Dependency] private   readonly ActionContainerSystem _actionContainer = default!;
+    [Dependency] private   readonly EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private   readonly RotateToFaceSystem _rotateToFace = default!;
+    [Dependency] private   readonly SharedAudioSystem _audio = default!;
+    [Dependency] private   readonly SharedInteractionSystem _interaction = default!;
+    [Dependency] private   readonly SharedTransformSystem _transform = default!;
+    [Dependency] private   readonly SharedDoAfterSystem _doAfter = default!;
 
     private EntityQuery<ActionComponent> _actionQuery;
     private EntityQuery<ActionsComponent> _actionsQuery;
@@ -160,6 +51,7 @@ public abstract class SharedActionsSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        InitializeActionDoAfter();
 
         _actionQuery = GetEntityQuery<ActionComponent>();
         _actionsQuery = GetEntityQuery<ActionsComponent>();
@@ -381,14 +273,79 @@ public abstract class SharedActionsSystem : EntitySystem
     #region Execution
     /// <summary>
     ///     When receiving a request to perform an action, this validates whether the action is allowed. If it is, it
-    ///     will raise the relevant <see cref="InstantActionEvent"/>
+    ///     will raise the relevant action event
     /// </summary>
     private void OnActionRequest(RequestPerformActionEvent ev, EntitySessionEventArgs args)
     {
         if (args.SenderSession.AttachedEntity is not { } user)
             return;
 
-        TryPerformAction(user, ev); // Goobstation - port contents of this event to API
+        TryPerformAction(ev, user);
+    }
+
+    /// <summary>
+    /// <see cref="OnActionRequest"/>
+    /// </summary>
+    /// <param name="ev">The Request Perform Action Event</param>
+    /// <param name="user">The user/performer of the action</param>
+    /// <param name="skipDoActionRequest">Should this skip the initial doaction request?</param>
+    private bool TryPerformAction(RequestPerformActionEvent ev, EntityUid user, bool skipDoActionRequest = false)
+    {
+        if (!_actionsQuery.TryComp(user, out var component))
+            return false;
+
+        var actionEnt = GetEntity(ev.Action);
+
+        if (!TryComp(actionEnt, out MetaDataComponent? metaData))
+            return false;
+
+        var name = Name(actionEnt, metaData);
+
+        // Does the user actually have the requested action?
+        if (!component.Actions.Contains(actionEnt))
+        {
+            _adminLogger.Add(LogType.Action,
+                $"{ToPrettyString(user):user} attempted to perform an action that they do not have: {name}.");
+            return false;
+        }
+
+        if (GetAction(actionEnt) is not {} action)
+            return false;
+
+        DebugTools.Assert(action.Comp.AttachedEntity == user);
+        if (!action.Comp.Enabled)
+            return false;
+
+        var curTime = GameTiming.CurTime;
+        if (IsCooldownActive(action, curTime))
+            return false;
+
+        // check for action use prevention
+        var attemptEv = new ActionAttemptEvent(user);
+        RaiseLocalEvent(action, ref attemptEv);
+        if (attemptEv.Cancelled)
+            return false;
+
+        // Validate request by checking action blockers and the like
+        var provider = action.Comp.Container ?? user;
+        var validateEv = new ActionValidateEvent()
+        {
+            Input = ev,
+            User = user,
+            Provider = provider
+        };
+        RaiseLocalEvent(action, ref validateEv);
+        if (validateEv.Invalid)
+            return false;
+
+        if (TryComp<DoAfterArgsComponent>(action, out var actionDoAfterComp) && TryComp<DoAfterComponent>(user, out var performerDoAfterComp) && !skipDoActionRequest)
+        {
+            return TryStartActionDoAfter((action, actionDoAfterComp), (user, performerDoAfterComp), action.Comp.UseDelay, ev);
+        }
+
+        // All checks passed. Perform the action!
+        PerformAction((user, component), action);
+        return true;
     }
 
     private void OnValidate(Entity<ActionComponent> ent, ref ActionValidateEvent args)
@@ -439,12 +396,16 @@ public abstract class SharedActionsSystem : EntitySystem
 
     private void OnWorldValidate(Entity<WorldTargetActionComponent> ent, ref ActionValidateEvent args)
     {
-        var user = args.User;
-        var provider = args.Provider;
+        var provider = args.Provider; // Goob - used by Fallback below
+        var user = args.User; // Goob - moved from below so Fallback can use it
 
         if (args.Input.EntityCoordinatesTarget is not { } netTarget)
         {
-            args.Invalid |= !Fallback(); // Goob edit
+            // <Trauma> - check fallback instead of setting it to false immediately
+            var evCheck = new CheckWorldInstantActionEvent(user, provider);
+            RaiseLocalEvent(ent, ref evCheck);
+            args.Invalid |= !evCheck.Fallback;
+            // </Trauma>
             return;
         }
 
@@ -455,7 +416,10 @@ public abstract class SharedActionsSystem : EntitySystem
 
         if (!ValidateWorldTarget(user, target, ent))
         {
-            Fallback(); // Goobstation
+            // <Trauma>
+            var evCheck = new CheckWorldInstantActionEvent(user, provider);
+            RaiseLocalEvent(ent, ref evCheck);
+            // </Trauma>
             return;
         }
 
@@ -465,7 +429,9 @@ public abstract class SharedActionsSystem : EntitySystem
             !TryComp<EntityTargetActionComponent>(ent, out var entTarget) ||
             !ValidateEntityTarget(user, targetEntity.Value, (ent, entTarget))))
         {
-            args.Invalid |= !Fallback(); // Goob edit
+            var evCheck = new CheckWorldInstantActionEvent(user, provider);
+            RaiseLocalEvent(ent, ref evCheck);
+            args.Invalid |= !evCheck.Fallback; // Goob edit
             return;
         }
 
@@ -478,23 +444,7 @@ public abstract class SharedActionsSystem : EntitySystem
             ev.Entity = targetEntity;
         }
 
-        // Goobtation start
         return;
-
-        bool Fallback()
-        {
-            if (ent.Comp.Event is not InstantWorldTargetActionEvent instantWorldEv)
-                return false;
-
-            instantWorldEv.Target = EntityCoordinates.Invalid;
-            instantWorldEv.Entity = null;
-
-            _adminLogger.Add(LogType.Action,
-                $"{ToPrettyString(user):user} is performing the {Name(ent):action} action provided by {ToPrettyString(provider):provider}.");
-
-            return true;
-        }
-        // Goobstation end
     }
 
     public bool ValidateEntityTarget(EntityUid user, EntityUid target, Entity<EntityTargetActionComponent> ent)
@@ -506,7 +456,7 @@ public abstract class SharedActionsSystem : EntitySystem
         if (_whitelist.IsWhitelistFail(comp.Whitelist, target))
             return false;
 
-        if (_whitelist.IsBlacklistPass(comp.Blacklist, target))
+        if (_whitelist.IsWhitelistPass(comp.Blacklist, target))
             return false;
 
         if (_actionQuery.Comp(uid).CheckCanInteract && !_actionBlocker.CanInteract(user, target))
@@ -516,15 +466,18 @@ public abstract class SharedActionsSystem : EntitySystem
             return comp.CanTargetSelf;
 
         var targetAction = Comp<TargetActionComponent>(uid);
+
         // not using the ValidateBaseTarget logic since its raycast fails if the target is e.g. a wall
         if (targetAction.CheckCanAccess)
-            return _interaction.InRangeAndAccessible(user, target, range: targetAction.Range);
+            return _interaction.InRangeAndAccessible(user, target, targetAction.Range, targetAction.AccessMask);
 
-        // if not just checking pure range, let stored entities be targeted by actions
-        // if it's out of range it probably isn't stored anyway...
-        // return _interaction.CanAccessViaStorage(user, target);
-        // This shit is broken - Goob edit
-        return true;
+        // Just check normal in range, allowing <= 0 range to mean infinite range.
+        if (targetAction.Range > 0
+            && !_transform.InRange(user, target, targetAction.Range))
+            return false;
+
+        // If checkCanAccess isn't set, we allow targeting things in containers
+        return _interaction.IsAccessible(user, target);
     }
 
     public bool ValidateWorldTarget(EntityUid user, EntityCoordinates target, Entity<WorldTargetActionComponent> ent)
@@ -550,8 +503,7 @@ public abstract class SharedActionsSystem : EntitySystem
         if (comp.Range <= 0)
             return true;
 
-        var hasNoSpecificComponents = !HasComp<StationAiOverlayComponent>(user) && !HasComp<AbductorScientistComponent>(user); // Shitmed Change
-        if (comp.CheckCanAccess && !_actionBlocker.CanInteract(user, null) && hasNoSpecificComponents) // Shitmed Change
+        if (comp.CheckCanAccess && !_actionBlocker.CanInteract(user, null))
             return false;
 
         return _transform.InRange(coords, xform.Coordinates, comp.Range);
@@ -636,8 +588,6 @@ public abstract class SharedActionsSystem : EntitySystem
 
         var handled = false;
 
-        var toggledBefore = action.Comp.Toggled;
-
         // Note that attached entity and attached container are allowed to be null here.
         if (action.Comp.AttachedEntity != null && action.Comp.AttachedEntity != performer)
         {
@@ -658,8 +608,13 @@ public abstract class SharedActionsSystem : EntitySystem
         ev.Performer = performer;
         ev.Action = action;
 
+        // TODO: This is where we'd add support for event lists
         if (!action.Comp.RaiseOnUser && action.Comp.Container is {} container && !_mindQuery.HasComp(container))
             target = container;
+        // <Trauma>
+        if (action.Comp.RaiseOnAction)
+            target = action.Owner;
+        // </Trauma>
 
         RaiseLocalEvent(target, (object) ev, broadcast: true);
         handled = ev.Handled;
@@ -667,13 +622,12 @@ public abstract class SharedActionsSystem : EntitySystem
         if (!handled)
             return; // no interaction occurred.
 
-        // play sound, reduce charges, start cooldown
-        if (ev?.Toggle == true)
+        // play sound, start cooldown
+        if (ev.Toggle)
             SetToggled((action, action), !action.Comp.Toggled);
 
         _audio.PlayPredicted(action.Comp.Sound, performer, predicted ? performer : null);
 
-        // TODO: move to ActionCooldown ActionPerformedEvent?
         RemoveCooldown((action, action));
         StartUseDelay((action, action));
 
@@ -1000,7 +954,7 @@ public abstract class SharedActionsSystem : EntitySystem
 
         if (!_actionsQuery.Resolve(performer, ref performer.Comp, false))
         {
-            DebugTools.Assert(performer == null || TerminatingOrDeleted(performer));
+            DebugTools.Assert(TerminatingOrDeleted(performer));
             ent.Comp.AttachedEntity = null;
             // TODO: should this delete the action since it's now orphaned?
             return;
@@ -1013,7 +967,7 @@ public abstract class SharedActionsSystem : EntitySystem
         ActionRemoved((performer, performer.Comp), ent);
 
         if (ent.Comp.Temporary)
-            QueueDel(ent);
+            PredictedQueueDel(ent); // Trauma - predicted del
     }
 
     /// <summary>
@@ -1025,11 +979,11 @@ public abstract class SharedActionsSystem : EntitySystem
     }
 
     // Goobstation start
-    protected virtual void SaveActions(EntityUid performer)
+    public virtual void SaveActions(EntityUid performer)
     {
     }
 
-    protected virtual void LoadActions(EntityUid performer)
+    public virtual void LoadActions(EntityUid performer)
     {
     }
     // Goobstation end
@@ -1132,7 +1086,7 @@ public abstract class SharedActionsSystem : EntitySystem
         // Goobstation start
         if (!TerminatingOrDeleted(args.Equipment))
         {
-            var ev = new GetItemActionsEvent(_actionContainer, args.Equipee, args.Equipment);
+            var ev = new GetItemActionsEvent(_actionContainer, args.Equipee, args.Equipment, isEquipping: false); // Lavaland Change - added false for isEquipping
             RaiseLocalEvent(args.Equipment, ev);
 
             if (ev.Actions.Count > 0)
@@ -1151,7 +1105,7 @@ public abstract class SharedActionsSystem : EntitySystem
         // Goobstation start
         if (!TerminatingOrDeleted(args.Unequipped))
         {
-            var ev = new GetItemActionsEvent(_actionContainer, args.User, args.Unequipped);
+            var ev = new GetItemActionsEvent(_actionContainer, args.User, args.Unequipped, isEquipping: false); // Lavaland Change - added false for isEquipping
             RaiseLocalEvent(args.Unequipped, ev);
 
             if (ev.Actions.Count > 0)
@@ -1235,6 +1189,7 @@ public abstract class SharedActionsSystem : EntitySystem
     public bool IsCooldownActive(ActionComponent action, TimeSpan? curTime = null)
     {
         // TODO: Check for charge recovery timer
+        curTime ??= GameTiming.CurTime;
         return action.Cooldown.HasValue && action.Cooldown.Value.End > curTime;
     }
 
@@ -1250,53 +1205,4 @@ public abstract class SharedActionsSystem : EntitySystem
         ent.Comp.Temporary = temporary;
         Dirty(ent);
     }
-
-    // Shitmed Change Start - Starlight Abductors
-    public EntityUid[] HideActions(EntityUid performer, ActionsComponent? comp = null)
-    {
-        if (!Resolve(performer, ref comp, false))
-            return [];
-
-        var actions = comp.Actions.ToArray();
-        comp.Actions.Clear();
-        Dirty(performer, comp);
-        return actions;
-    }
-
-    public void UnHideActions(EntityUid performer, EntityUid[] actions, ActionsComponent? comp = null)
-    {
-        if (!Resolve(performer, ref comp, false))
-            return;
-
-        foreach (var action in actions)
-            comp.Actions.Add(action);
-        Dirty(performer, comp);
-    }
-    // Shitmed Change End
-
-    // Goobstation edit start
-    public bool TryGetActionById(
-        EntityUid actionContainer,
-        EntProtoId actionId,
-        [NotNullWhen(true)] out Entity<ActionComponent>? action)
-    {
-        action = null;
-        var actions = GetActions(actionContainer).ToList();
-        foreach (var (uid, comp) in actions)
-        {
-            if (TerminatingOrDeleted(uid))
-                continue;
-
-            var entityPrototypeId = MetaData(uid).EntityPrototype?.ID;
-            if (entityPrototypeId == null
-                || entityPrototypeId != actionId)
-                continue;
-
-            action = (uid, comp);
-            return true;
-        }
-
-        return false;
-    }
-    // Goobstation edit end
 }

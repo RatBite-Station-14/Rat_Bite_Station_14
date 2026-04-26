@@ -1,12 +1,6 @@
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Robust.Shared.GameStates;
+using Content.Shared.Throwing;
 
 namespace Content.Goobstation.Shared.Weapons.Ranged.ProjectileThrowOnHit;
 
@@ -29,10 +23,10 @@ public sealed partial class ProjectileThrowOnHitComponent : Component
     public float Distance = 20f;
 
     /// <summary>
-    /// Whether or not anchorable entities should be unanchored when hit.
+    /// Unanchor strength for anchorable entities that get hit.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public bool UnanchorOnHit;
+    public ThrowingUnanchorStrength UnanchorOnHit = ThrowingUnanchorStrength.None;
 
     /// <summary>
     /// How long should this stun the target, if applicable?

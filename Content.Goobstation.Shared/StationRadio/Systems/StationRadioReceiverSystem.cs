@@ -1,5 +1,8 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.StationRadio.Components;
 using Content.Goobstation.Shared.StationRadio.Events;
+using Content.Trauma.Common.Audio;
 using Content.Shared.Interaction;
 using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
@@ -9,8 +12,10 @@ namespace Content.Goobstation.Shared.StationRadio.Systems;
 
 public sealed class StationRadioReceiverSystem : EntitySystem
 {
+    [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPowerReceiverSystem _power = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -22,36 +27,41 @@ public sealed class StationRadioReceiverSystem : EntitySystem
 
     private void OnPowerChanged(EntityUid uid, StationRadioReceiverComponent comp, PowerChangedEvent args)
     {
-        if(comp.SoundEntity != null && args.Powered)
-            _audio.SetGain(comp.SoundEntity, comp.Active ? comp.DefaultParams.Volume : 0f);
-        else if(comp.SoundEntity != null)
-            _audio.SetGain(comp.SoundEntity, 0);
+        SetAudible(comp, comp.Active && args.Powered);
     }
 
     private void OnRadioToggle(EntityUid uid, StationRadioReceiverComponent comp, ActivateInWorldEvent args)
     {
         comp.Active = !comp.Active;
-        if (comp.SoundEntity != null && _power.IsPowered(uid))
-            _audio.SetGain(comp.SoundEntity, comp.Active ? comp.DefaultParams.Volume : 0f);
+        Dirty(uid, comp);
+        UpdateAudible((uid, comp));
     }
 
-    private void OnMediaPlayed(EntityUid uid, StationRadioReceiverComponent comp, StationRadioMediaPlayedEvent args)
+    private void OnMediaPlayed(EntityUid uid, StationRadioReceiverComponent comp, ref StationRadioMediaPlayedEvent args)
     {
-        var audio = _audio.PlayPredicted(args.MediaPlayed, uid, uid, comp.DefaultParams);
-        if (audio != null && _power.IsPowered(uid) && comp.Active)
-            comp.SoundEntity = audio.Value.Entity;
-        else if (audio != null && !_power.IsPowered(uid) || !comp.Active && audio != null)
-        {
-            comp.SoundEntity = audio.Value.Entity;
-            _audio.SetGain(comp.SoundEntity, 0);
-        }
-    }
-
-    private void OnMediaStopped(EntityUid uid, StationRadioReceiverComponent comp, StationRadioMediaStoppedEvent args)
-    {
-        if (comp.SoundEntity == null)
+        // client cant predict storing a long term sound
+        if (_net.IsClient || _audio.PlayPredicted(args.MediaPlayed, uid, uid, comp.DefaultParams) is not {} audio)
             return;
 
+        comp.SoundEntity = audio.Entity;
+        EnsureComp<CopyrightedAudioComponent>(audio.Entity);
+
+        UpdateAudible((uid, comp));
+    }
+
+    private void OnMediaStopped(EntityUid uid, StationRadioReceiverComponent comp, ref StationRadioMediaStoppedEvent args)
+    {
         comp.SoundEntity = _audio.Stop(comp.SoundEntity);
+    }
+
+    private void UpdateAudible(Entity<StationRadioReceiverComponent> ent)
+    {
+        SetAudible(ent.Comp, ent.Comp.Active && _power.IsPowered(ent.Owner));
+    }
+
+    private void SetAudible(StationRadioReceiverComponent comp, bool audible)
+    {
+        if (comp.SoundEntity is {} sound && !TerminatingOrDeleted(sound))
+            _audio.SetVolume(sound, audible ? comp.DefaultParams.Volume : float.NegativeInfinity);
     }
 }
