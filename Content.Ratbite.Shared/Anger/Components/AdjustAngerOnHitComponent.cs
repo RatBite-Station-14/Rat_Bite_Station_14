@@ -1,6 +1,6 @@
 ﻿using Robust.Shared.GameStates;
 
-namespace Content.Shared._Lavaland.Anger.Components;
+namespace Content.Ratbite.Shared.Anger.Components;
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class AdjustAngerOnHitComponent : Component

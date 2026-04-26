@@ -22,7 +22,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Atmos.EntitySystems;
-using Content.Shared._Lavaland.Weapons.Ranged.Events;
+using Content.Ratbite.Shared.Weapons.Ranged.Events;
 using Content.Shared.Armor;
 using Content.Shared.Body.Systems;
 using Content.Shared.Damage;

@@ -13,7 +13,7 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._DV.Abilities;
+namespace Content.Ratbite.Shared.Abilities;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class CrawlUnderObjectsComponent : Component

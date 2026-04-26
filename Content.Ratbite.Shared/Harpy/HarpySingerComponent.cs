@@ -12,7 +12,7 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
-namespace Content.Shared._DV.Harpy
+namespace Content.Ratbite.Shared.Harpy
 {
     [RegisterComponent, NetworkedComponent]
     public sealed partial class HarpySingerComponent : Component

@@ -19,7 +19,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Lavaland.Weapons.Ranged.Upgrades;
+using Content.Ratbite.Shared.Weapons.Ranged.Upgrades;
 
 namespace Content.Client._Lavaland.Weapons.Ranged.Upgrades;
 

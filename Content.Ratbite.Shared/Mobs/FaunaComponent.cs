@@ -21,7 +21,7 @@
 
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Lavaland.Mobs;
+namespace Content.Ratbite.Shared.Mobs;
 
 /// <summary>
 ///     Marker for whether a mob is fauna.

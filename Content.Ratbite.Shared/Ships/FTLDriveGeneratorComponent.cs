@@ -1,4 +1,4 @@
-using Content.Shared._NF.Shuttles;
+using Content.Ratbite.Shared.Shuttles;
 
 namespace Content.Shared._Mono.Ships;
 

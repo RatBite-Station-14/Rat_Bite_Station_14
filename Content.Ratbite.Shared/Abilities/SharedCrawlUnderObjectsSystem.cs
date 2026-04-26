@@ -10,7 +10,7 @@
 
 using Content.Shared.Popups;
 
-namespace Content.Shared._DV.Abilities;
+namespace Content.Ratbite.Shared.Abilities;
 public abstract class SharedCrawlUnderObjectsSystem : EntitySystem
 {
     [Dependency] private readonly SharedPopupSystem _popup = default!;

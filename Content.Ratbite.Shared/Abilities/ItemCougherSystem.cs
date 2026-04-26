@@ -3,22 +3,20 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._DV.Actions.Events;
+using Content.Ratbite.Shared.Actions.Events;
 using Content.Shared.Actions;
 using Content.Shared.Clothing.Components;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
 using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Network;
 using Robust.Shared.Timing;
 
-namespace Content.Shared._DV.Abilities;
+namespace Content.Ratbite.Shared.Abilities;
 
 public sealed class ItemCougherSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
@@ -95,7 +93,7 @@ public sealed class ItemCougherSystem : EntitySystem
     public void SetActionEnabled(Entity<ItemCougherComponent?> ent, bool enabled)
     {
         if (!_query.Resolve(ent, ref ent.Comp)
-        || ent.Comp.ActionEntity is not {} action)
+        || ent.Comp.ActionEntity is not { } action)
             return;
 
         _actions.SetEnabled(action, enabled);

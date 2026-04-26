@@ -8,12 +8,12 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._DV.Storage.EntitySystems;
+using Content.Ratbite.Shared.Storage.EntitySystems;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-namespace Content.Shared._DV.Storage.Components;
+namespace Content.Ratbite.Shared.Storage.Components;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 [Access(typeof(SharedMouthStorageSystem))]

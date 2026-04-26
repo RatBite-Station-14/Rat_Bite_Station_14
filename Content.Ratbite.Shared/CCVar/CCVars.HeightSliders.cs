@@ -1,13 +1,10 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 MarkerWicker <markerWicker@proton.me>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Robust.Shared.Configuration;
 
-namespace Content.Shared.CCVar;
+namespace Content.Ratbite.Shared.CCVar;
 
-public sealed partial class CCVars
+public sealed partial class RatbiteCVars
 {
     /// <summary>
     ///     Whether height & width sliders adjust a character's Fixture Component

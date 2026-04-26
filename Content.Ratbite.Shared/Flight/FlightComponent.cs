@@ -10,11 +10,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.FixedPoint;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Prototypes;
+using Content.Shared.FixedPoint;
 using Robust.Shared.Audio;
-using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared._EinsteinEngines.Flight;
@@ -176,7 +175,7 @@ public sealed partial class FlightComponent : Component
     [DataField, AutoNetworkedField]
     public DamageSpecifier FailDamageSpecifier = new()
     {
-        DamageDict = new Dictionary<string, FixedPoint2>
+        DamageDict = new Dictionary<ProtoId<DamageTypePrototype>, FixedPoint2>
         {
             { "Blunt", 3.5 },
         }

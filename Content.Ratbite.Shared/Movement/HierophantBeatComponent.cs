@@ -7,7 +7,7 @@ using Content.Shared.Alert;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Lavaland.Movement;
+namespace Content.Ratbite.Shared.Movement;
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class HierophantBeatComponent : Component

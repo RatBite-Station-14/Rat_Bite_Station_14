@@ -9,7 +9,7 @@
 
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._DV.Harpy;
+namespace Content.Ratbite.Shared.Harpy;
 
 [Serializable, NetSerializable]
 public enum HardsuitWings : byte

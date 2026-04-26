@@ -19,14 +19,14 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Lavaland.Shuttles.Systems;
+using Content.Ratbite.Shared.Shuttles.Systems;
 using Content.Shared.Tag;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._Lavaland.Shuttles.Components;
+namespace Content.Ratbite.Shared.Shuttles.Components;
 
 /// <summary>
 /// Component that stores destinations a docking-only shuttle can use.

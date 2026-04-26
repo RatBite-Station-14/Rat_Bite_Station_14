@@ -22,9 +22,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server._Lavaland.Pressure;
-using Content.Shared._Lavaland.Weapons.Ranged.Events;
-using Content.Shared._Lavaland.Weapons.Ranged.Upgrades;
-using Content.Shared._Lavaland.Weapons.Ranged.Upgrades.Components;
+using Content.Ratbite.Shared.Weapons.Ranged.Events;
+using Content.Ratbite.Shared.Weapons.Ranged.Upgrades;
+using Content.Ratbite.Shared.Weapons.Ranged.Upgrades.Components;
 using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Containers;

@@ -1,6 +1,4 @@
-using Robust.Shared.GameStates;
-
-namespace Content.Shared._BRatbite.FiringPin;
+namespace Content.Ratbite.Shared.FiringPin;
 
 /// <summary>
 /// This is used for telling FiringPinSystem to acknowledge this as a mindshield restricted weapon

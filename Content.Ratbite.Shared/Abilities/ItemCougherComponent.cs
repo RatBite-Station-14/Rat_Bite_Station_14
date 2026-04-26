@@ -7,7 +7,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._DV.Abilities;
+namespace Content.Ratbite.Shared.Abilities;
 
 /// <summary>
 /// Adds an action to cough up an item.

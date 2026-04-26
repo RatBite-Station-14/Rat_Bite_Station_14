@@ -19,6 +19,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-namespace Content.Shared._Lavaland.Shuttles.Systems;
+namespace Content.Ratbite.Shared.Shuttles.Systems;
 
 public abstract class SharedDockingConsoleSystem : EntitySystem;

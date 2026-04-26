@@ -2,7 +2,7 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._NF.Shuttles;
+namespace Content.Ratbite.Shared.Shuttles;
 
 /// <summary>
 /// Assigned to shuttles that are able to FTL.

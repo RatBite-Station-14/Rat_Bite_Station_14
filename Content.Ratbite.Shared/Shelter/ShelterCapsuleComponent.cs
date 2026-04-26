@@ -23,7 +23,7 @@ using System.Numerics;
 using Content.Shared.GridPreloader.Prototypes;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Lavaland.Shelter;
+namespace Content.Ratbite.Shared.Shelter;
 
 [RegisterComponent]
 public sealed partial class ShelterCapsuleComponent : Component

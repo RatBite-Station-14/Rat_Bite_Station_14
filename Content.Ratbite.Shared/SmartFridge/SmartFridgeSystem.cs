@@ -1,9 +1,5 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Will-Oliver-Br <164823659+Will-Oliver-Br@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
@@ -12,10 +8,9 @@ using Content.Shared.Popups;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.GameObjects;
 using Robust.Shared.Timing;
 
-namespace Content.Shared._DV.SmartFridge;
+namespace Content.Ratbite.Shared.SmartFridge;
 
 public sealed class SmartFridgeSystem : EntitySystem
 {
@@ -46,7 +41,7 @@ public sealed class SmartFridgeSystem : EntitySystem
         if (!_container.TryGetContainer(ent, ent.Comp.Container, out var container))
             return;
 
-        if (_whitelist.IsWhitelistFail(ent.Comp.Whitelist, args.Used) || _whitelist.IsBlacklistPass(ent.Comp.Blacklist, args.Used))
+        if (_whitelist.IsWhitelistFail(ent.Comp.Whitelist, args.Used) || !_whitelist.IsWhitelistPass(ent.Comp.Blacklist, args.Used))
             return;
 
         if (!Allowed(ent, args.User))
@@ -142,7 +137,7 @@ public sealed class SmartFridgeSystem : EntitySystem
         if (!_container.TryGetContainer(ent, ent.Comp.Container, out var container))
             return false;
 
-        if (_whitelist.IsWhitelistFail(ent.Comp.Whitelist, item) || _whitelist.IsBlacklistPass(ent.Comp.Blacklist, item))
+        if (_whitelist.IsWhitelistFail(ent.Comp.Whitelist, item) || !_whitelist.IsWhitelistPass(ent.Comp.Blacklist, item))
             return false;
 
         if (user is { Valid: true } userUid && !Allowed(ent, userUid))

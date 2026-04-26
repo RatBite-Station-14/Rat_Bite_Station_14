@@ -1,18 +1,9 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Ilya246 <ilyukarno@gmail.com>
-// SPDX-FileCopyrightText: 2025 Will-Oliver-Br <164823659+Will-Oliver-Br@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Whitelist;
-using Robust.Shared.Analyzers;
 using Robust.Shared.Audio;
-using Robust.Shared.GameObjects;
-using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
 
-namespace Content.Shared._DV.SmartFridge;
+namespace Content.Ratbite.Shared.SmartFridge;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class SmartFridgeComponent : Component
@@ -63,9 +54,10 @@ public sealed partial class SmartFridgeComponent : Component
     // End Frontier
 }
 
-[Serializable, NetSerializable, DataRecord]
-public record struct SmartFridgeEntry
+[DataDefinition]
+public partial struct SmartFridgeEntry
 {
+    [DataField]
     public string Name;
 
     public SmartFridgeEntry(string name)
@@ -75,13 +67,13 @@ public record struct SmartFridgeEntry
 }
 
 [Serializable, NetSerializable]
-public enum SmartFridgeUiKey
+public enum SmartFridgeUiKey : byte
 {
     Key,
 }
 
 [Serializable, NetSerializable]
-public sealed class SmartFridgeDispenseItemMessage(SmartFridgeEntry entry) : BoundUserInterfaceMessage
+public sealed partial class SmartFridgeDispenseItemMessage(SmartFridgeEntry entry) : BoundUserInterfaceMessage
 {
     public SmartFridgeEntry Entry = entry;
 }

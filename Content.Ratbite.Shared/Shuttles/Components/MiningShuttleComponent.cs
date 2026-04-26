@@ -21,7 +21,7 @@
 
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Lavaland.Shuttles.Components;
+namespace Content.Ratbite.Shared.Shuttles.Components;
 
 /// <summary>
 /// Marker component for the mining shuttle grid.

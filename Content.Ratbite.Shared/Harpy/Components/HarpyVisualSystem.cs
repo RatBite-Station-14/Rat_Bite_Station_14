@@ -9,7 +9,7 @@
 
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._DV.Harpy.Components
+namespace Content.Ratbite.Shared.Harpy.Components
 {
     [Serializable, NetSerializable]
     public enum HarpyVisualLayers

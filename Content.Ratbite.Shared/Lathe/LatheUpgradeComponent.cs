@@ -5,7 +5,7 @@
 
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._DV.Lathe;
+namespace Content.Ratbite.Shared.Lathe;
 
 /// <summary>
 /// Any non-null fields get copied onto LatheComponent at MapInit.

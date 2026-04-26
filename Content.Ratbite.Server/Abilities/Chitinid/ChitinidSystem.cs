@@ -6,7 +6,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._DV.Abilities;
+using Content.Ratbite.Shared.Abilities;
 using Content.Shared.Damage;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Prototypes;

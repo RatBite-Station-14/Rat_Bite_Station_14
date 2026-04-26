@@ -5,7 +5,7 @@
 
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._DV.Prying.Components;
+namespace Content.Ratbite.Shared.Prying.Components;
 
 /// <summary>
 /// Alters the interaction speed of attached entity's tools.

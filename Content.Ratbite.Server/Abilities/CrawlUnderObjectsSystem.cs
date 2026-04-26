@@ -11,7 +11,7 @@
 using Content.Shared.Actions;
 using Content.Shared.Climbing.Components;
 using Content.Shared.Climbing.Events;
-using Content.Shared._DV.Abilities;
+using Content.Ratbite.Shared.Abilities;
 using Content.Shared.Maps;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Physics;

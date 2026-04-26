@@ -1,35 +1,10 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aineias1 <dmitri.s.kiselev@gmail.com>
-// SPDX-FileCopyrightText: 2025 FaDeOkno <143940725+FaDeOkno@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 McBosserson <148172569+McBosserson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Milon <plmilonpl@gmail.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Rouden <149893554+Roudenn@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 TheBorzoiMustConsume <197824988+TheBorzoiMustConsume@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Unlumination <144041835+Unlumy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-// SPDX-FileCopyrightText: 2025 username <113782077+whateverusername0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 whateverusername0 <whateveremail>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Lavaland.Weapons.Ranged.Upgrades.Components;
-using Content.Shared._Lavaland.Weapons.Ranged.Events;
-using Content.Shared.CCVar;
+using System.Linq;
+using Content.Lavaland.Common.Weapons.Ranged;
+using Content.Ratbite.Shared.Weapons.Ranged.Upgrades.Components;
 using Content.Shared.Containers.ItemSlots;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
@@ -37,11 +12,8 @@ using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Ranged.Systems;
 using Content.Shared.Whitelist;
-using Robust.Shared.Configuration;
-using System.Linq;
-using Content.Shared._Goobstation.Weapons.Ranged;
 
-namespace Content.Shared._Lavaland.Weapons.Ranged.Upgrades;
+namespace Content.Ratbite.Shared.Weapons.Ranged.Upgrades;
 
 public abstract class SharedGunUpgradeSystem : EntitySystem
 {
@@ -49,7 +21,6 @@ public abstract class SharedGunUpgradeSystem : EntitySystem
     [Dependency] private readonly EntityWhitelistSystem _entityWhitelist = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
-    [Dependency] private readonly IConfigurationManager _config = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -161,7 +132,7 @@ public abstract class SharedGunUpgradeSystem : EntitySystem
             return;
         }
 
-        var allowDupes = _config.GetCVar(CCVars.AllowDuplicatePkaModules) && !upgradeComp.Unique;
+        var allowDupes = !upgradeComp.Unique;
         var itemProto = MetaData(args.Item).EntityPrototype?.ID;
         foreach (var itemSlot in itemSlots.Slots.Values)
         {
@@ -220,9 +191,10 @@ public abstract class SharedGunUpgradeSystem : EntitySystem
 
     private void OnVampirismProjectileHit(Entity<ProjectileVampirismComponent> ent, ref ProjectileHitEvent args)
     {
-        if (!HasComp<MobStateComponent>(args.Target))
+        if (!HasComp<MobStateComponent>(args.Target) || args.Shooter is not { } shooter)
             return;
-        _damage.TryChangeDamage(args.Shooter, ent.Comp.DamageOnHit);
+
+        _damage.TryChangeDamage(shooter, ent.Comp.DamageOnHit);
     }
 
     public HashSet<Entity<GunUpgradeComponent>> GetCurrentUpgrades(Entity<UpgradeableGunComponent> ent, ItemSlotsComponent? itemSlots = null)

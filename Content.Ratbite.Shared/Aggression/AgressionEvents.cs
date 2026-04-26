@@ -19,7 +19,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-namespace Content.Shared._Lavaland.Aggression;
+namespace Content.Ratbite.Shared.Aggression;
 
 /// <summary>
 /// Raised on the entity with AggressiveComponent when it added new aggressor.

@@ -19,7 +19,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Lavaland.Shuttles.Systems;
+using Content.Ratbite.Shared.Shuttles.Systems;
 
 namespace Content.Client._Lavaland.Shuttles.Systems;
 

@@ -19,7 +19,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Lavaland.Weapons;
+using Content.Ratbite.Shared.Weapons;
 using Robust.Client.GameObjects;
 
 namespace Content.Client._Lavaland.Weapons;

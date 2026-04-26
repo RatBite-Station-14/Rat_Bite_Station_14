@@ -23,7 +23,7 @@
 
 using Content.Server._Lavaland.Procedural.Systems;
 using Content.Server.Administration;
-using Content.Shared._Lavaland.Procedural.Prototypes;
+using Content.Ratbite.Shared.Procedural.Prototypes;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;

@@ -12,6 +12,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Anger\Systems\" />
+	  <Folder Include="Antags\" />
+	  <Folder Include="DoAfter\" />
+	  <Folder Include="Roles\" />
 	  <Folder Include="_Shitcode\Speech\Components\" />
 	</ItemGroup>
 

@@ -1,6 +1,6 @@
 using Content.Server.Power.Components;
 using Content.Shared._Mono.Ships;
-using Content.Shared._NF.Shuttles;
+using Content.Ratbite.Shared.Shuttles;
 using Content.Shared.Power;
 
 namespace Content.Server._Mono.Ships;

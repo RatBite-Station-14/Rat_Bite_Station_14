@@ -25,7 +25,7 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
 using Robust.Shared.Map.Components;
 
-namespace Content.Shared._Lavaland.Shelter;
+namespace Content.Ratbite.Shared.Shelter;
 
 public abstract class SharedShelterCapsuleSystem : EntitySystem
 {

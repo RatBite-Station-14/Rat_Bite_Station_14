@@ -6,12 +6,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._NF.Interaction.Systems;
+using Content.Ratbite.Shared.Interaction.Systems;
 using Content.Shared.Whitelist;
-using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
 
-namespace Content.Shared._NF.Interaction.Components;
+namespace Content.Ratbite.Shared.Interaction.Components;
 
 /// <summary>
 /// Lets this placeholder entity "pick up" items by clicking on them.

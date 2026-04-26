@@ -1,6 +1,6 @@
 ﻿using Robust.Shared.GameStates;
 
-namespace Content.Shared._Lavaland.Anger.Components;
+namespace Content.Ratbite.Shared.Anger.Components;
 
 /// <summary>
 /// Makes action's delay depend on current anger level of the parent entity.

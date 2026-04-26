@@ -23,9 +23,9 @@
 using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
 using System.Numerics;
-using Content.Shared._Lavaland.Anger.Systems;
-using Content.Shared._Lavaland.Megafauna.Events;
-using Content.Shared._Lavaland.TileChaser;
+using Content.Ratbite.Shared.Anger.Systems;
+using Content.Ratbite.Shared.Megafauna.Events;
+using Content.Ratbite.Shared.TileChaser;
 
 namespace Content.Server._Lavaland.TileChaser;
 

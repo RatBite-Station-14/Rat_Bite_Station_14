@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<OutputPath>../bin/Content.Server/</OutputPath>
@@ -20,6 +20,11 @@
 		<ProjectReference Include="../Content.Lavaland.Server/Content.Lavaland.Server.csproj" />
 		<ProjectReference Include="../Content.Medical.Server/Content.Medical.Server.csproj" />
 		<ProjectReference Include="../Content.Server/Content.Server.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Antags\" />
+	  <Folder Include="Store\Conditions\" />
 	</ItemGroup>
 
 	<Import Project="../RobustToolbox/Imports/Server.props" />

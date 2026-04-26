@@ -24,8 +24,8 @@
 using Content.Server.Shuttles.Events;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
-using Content.Shared._Lavaland.Shuttles.Components;
-using Content.Shared._Lavaland.Shuttles.Systems;
+using Content.Ratbite.Shared.Shuttles.Components;
+using Content.Ratbite.Shared.Shuttles.Systems;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Map.Components;

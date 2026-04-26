@@ -17,7 +17,7 @@
 
 using Robust.Shared.Configuration;
 
-namespace Content.Shared._DV.CCVars;
+namespace Content.Ratbite.Shared.CCVars;
 
 /// <summary>
 /// DeltaV specific cvars.

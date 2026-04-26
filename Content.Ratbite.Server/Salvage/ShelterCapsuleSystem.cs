@@ -23,7 +23,7 @@
 
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.GridPreloader;
-using Content.Shared._Lavaland.Shelter;
+using Content.Ratbite.Shared.Shelter;
 using Content.Shared.Chemistry.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.EntitySerialization.Systems;

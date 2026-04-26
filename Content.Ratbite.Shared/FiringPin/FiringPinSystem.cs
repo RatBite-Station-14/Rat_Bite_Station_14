@@ -1,17 +1,17 @@
 using Content.Shared.Lock;
 using Content.Shared.Mindshield.Components;
 using Content.Shared.Popups;
-using Content.Shared.Verbs;
 using Content.Shared.Weapons.Ranged.Events;
 
-namespace Content.Shared._BRatbite.FiringPin;
+namespace Content.Ratbite.Shared.FiringPin;
 
 /// <summary>
 /// This handles whether a weapon with a FiringPinComponent should be allowed to fire
 /// </summary>
 public sealed class FiringPinSystem : EntitySystem
 {
-    [Dependency] protected readonly SharedPopupSystem Popup = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+
     /// <inheritdoc/>
     public override void Initialize()
     {
@@ -29,7 +29,7 @@ public sealed class FiringPinSystem : EntitySystem
         if (HasComp<MindShieldComponent>(args.User))
             return;
 
-        Popup.PopupClient(Loc.GetString("firing-pin-cant-fire"), ent, args.User);
+        _popup.PopupClient(Loc.GetString("firing-pin-cant-fire"), ent, args.User);
         args.Cancel();
     }
 }

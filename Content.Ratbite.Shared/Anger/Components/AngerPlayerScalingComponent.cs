@@ -1,6 +1,6 @@
 ﻿using Robust.Shared.GameStates;
 
-namespace Content.Shared._Lavaland.Anger.Components;
+namespace Content.Ratbite.Shared.Anger.Components;
 
 /// <summary>
 /// Scales HP or Anger amount depending on the amount of aggressors this entity has.

@@ -5,7 +5,7 @@
 
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._DV.Chemistry.Components;
+namespace Content.Ratbite.Shared.Chemistry.Components;
 
 /// <summary>
 /// Prevents syringes being used on this entity.

@@ -22,7 +22,7 @@
 using Content.Shared.Damage;
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Lavaland.Weapons.Marker;
+namespace Content.Ratbite.Shared.Weapons.Marker;
 
 /// <summary>
 /// Applies leech upon hitting a damage marker target.

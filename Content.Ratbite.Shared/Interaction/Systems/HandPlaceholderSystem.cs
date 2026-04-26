@@ -3,19 +3,16 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._NF.Interaction.Components;
+using Content.Ratbite.Shared.Interaction.Components;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
-using Content.Shared.Interaction.Events;
 using Content.Shared.Item;
 using Content.Shared.Whitelist;
 using Robust.Shared.Containers;
-using Robust.Shared.Map;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
-namespace Content.Shared._NF.Interaction.Systems;
+namespace Content.Ratbite.Shared.Interaction.Systems;
 
 /// <summary>
 /// Handles interactions with items that swap with HandPlaceholder items.
@@ -25,7 +22,6 @@ public sealed partial class HandPlaceholderSystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly MetaDataSystem _metadata = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;

@@ -22,7 +22,7 @@
 
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Lavaland.Aggression;
+namespace Content.Ratbite.Shared.Aggression;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class AggressorComponent : Component

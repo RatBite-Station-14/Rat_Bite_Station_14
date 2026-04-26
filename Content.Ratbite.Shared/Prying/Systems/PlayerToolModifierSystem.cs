@@ -3,10 +3,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._DV.Prying.Components;
+using Content.Ratbite.Shared.Prying.Components;
 using Content.Shared.Prying.Components;
 
-namespace Content.Shared._DV.Prying.Systems;
+namespace Content.Ratbite.Shared.Prying.Systems;
 
 public sealed partial class PlayerToolModifierSystem : EntitySystem
 {

@@ -1,7 +1,7 @@
 ﻿using System.Numerics;
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Lavaland.TileChaser;
+namespace Content.Ratbite.Shared.TileChaser;
 
 /// <summary>
 /// Makes a tile chaser depend on anger levels from the spawned owner.

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputPath>../bin/Content.Client/</OutputPath>
@@ -20,4 +20,16 @@
   <Import Project="../RobustToolbox/Imports/Shared.props" />
   <Import Project="../RobustToolbox/MSBuild/Robust.Properties.targets" />
   <Import Project="../RobustToolbox/MSBuild/XamlIL.targets" />
+  <ItemGroup>
+    <EmbeddedResource Remove="Hands\UI\HandPlaceholderStatus.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Antags\" />
+    <Folder Include="Overlays\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Update="Hands\UI\HandPlaceholderStatus.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </AdditionalFiles>
+  </ItemGroup>
 </Project>

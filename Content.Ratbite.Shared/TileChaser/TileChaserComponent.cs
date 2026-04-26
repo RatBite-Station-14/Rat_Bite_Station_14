@@ -22,7 +22,7 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Lavaland.TileChaser;
+namespace Content.Ratbite.Shared.TileChaser;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class TileChaserComponent : Component

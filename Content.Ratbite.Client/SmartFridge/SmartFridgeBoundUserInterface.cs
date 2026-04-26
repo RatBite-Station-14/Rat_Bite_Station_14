@@ -6,7 +6,7 @@
 using Robust.Client.UserInterface;
 using Robust.Shared.Input;
 using Content.Client.UserInterface.Controls;
-using Content.Shared._DV.SmartFridge;
+using Content.Ratbite.Shared.SmartFridge;
 
 namespace Content.Client._DV.SmartFridge;
 

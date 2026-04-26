@@ -6,7 +6,7 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
-namespace Content.Shared._DV.Abilities;
+namespace Content.Ratbite.Shared.Abilities;
 
 /// <summary>
 /// Spawns the item from <see cref="ItemCougherComponent"/> after the coughing sound is finished.

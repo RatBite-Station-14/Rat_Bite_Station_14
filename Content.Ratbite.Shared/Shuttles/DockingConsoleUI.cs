@@ -19,12 +19,12 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Lavaland.Shuttles.Components;
+using Content.Ratbite.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
 using Content.Shared.Timing;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._Lavaland.Shuttles;
+namespace Content.Ratbite.Shared.Shuttles;
 
 [Serializable, NetSerializable]
 public enum DockingConsoleUiKey : byte

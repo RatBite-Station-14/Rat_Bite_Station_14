@@ -29,7 +29,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Random;
 
-namespace Content.Shared._Lavaland.Chasm;
+namespace Content.Ratbite.Shared.Chasm;
 
 public sealed class PreventChasmFallingSystem : EntitySystem
 {

@@ -19,7 +19,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-namespace Content.Shared._Lavaland.Chasm;
+namespace Content.Ratbite.Shared.Chasm;
 
 [RegisterComponent]
 public sealed partial class PreventChasmFallingComponent : Component

@@ -21,7 +21,7 @@
 
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Lavaland.UnclaimedOre;
+namespace Content.Ratbite.Shared.UnclaimedOre;
 
 /// <summary>
 ///     Component that holds information about ore that hasn't been processed yet.

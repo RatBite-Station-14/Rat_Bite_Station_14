@@ -4,7 +4,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Silicons.Laws;
-using Content.Shared._DV.Silicons.Laws;
+using Content.Ratbite.Shared.Silicons.Laws;
 using Content.Shared.Silicons.Laws;
 using Content.Shared.Silicons.Laws.Components;
 using Robust.Shared.Prototypes;

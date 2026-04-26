@@ -6,10 +6,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._NF.Interaction.Systems;
+using Content.Ratbite.Shared.Interaction.Systems;
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._NF.Interaction.Components;
+namespace Content.Ratbite.Shared.Interaction.Components;
 
 /// <summary>
 /// When an entity with this is removed from a hand, it is replaced with an existing placeholder entity.

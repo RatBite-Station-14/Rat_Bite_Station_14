@@ -20,7 +20,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Kitchen.Components;
-using Content.Shared._Lavaland.Weapons;
+using Content.Ratbite.Shared.Weapons;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Toggleable;
 using Content.Shared.Light;

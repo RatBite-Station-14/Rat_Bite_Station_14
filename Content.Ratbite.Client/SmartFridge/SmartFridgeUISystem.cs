@@ -3,7 +3,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._DV.SmartFridge;
+using Content.Ratbite.Shared.SmartFridge;
 using Robust.Shared.Analyzers;
 
 namespace Content.Client._DV.SmartFridge;

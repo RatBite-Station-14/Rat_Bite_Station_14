@@ -22,7 +22,7 @@
 
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Lavaland.Aggression;
+namespace Content.Ratbite.Shared.Aggression;
 
 /// <summary>
 ///     Keeps track of whoever attacked our mob, so that it could prioritize or randomize targets.

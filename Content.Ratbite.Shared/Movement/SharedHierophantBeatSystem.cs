@@ -3,7 +3,7 @@ using Content.Shared.Alert;
 using Content.Shared.Movement.Systems;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Lavaland.Movement;
+namespace Content.Ratbite.Shared.Movement;
 
 public sealed class HierophantBeatSystem : EntitySystem
 {
