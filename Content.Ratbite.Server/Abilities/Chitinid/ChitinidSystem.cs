@@ -1,23 +1,16 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Ark <189933909+ark1368@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Ratbite.Shared.Abilities;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs.Systems;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
-namespace Content.Server._DV.Abilities.Chitinid;
+namespace Content.Ratbite.Server.Abilities.Chitinid;
 
 public sealed partial class ChitinidSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly ItemCougherSystem _cougher = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
@@ -43,7 +36,7 @@ public sealed partial class ChitinidSystem : EntitySystem
                 || _mobState.IsDead(uid))
                 continue;
 
-            if (_damageable.TryChangeDamage(uid, comp.Healing, damageable: damageable) is not {} delta)
+            if (_damageable.TryChangeDamage(uid, comp.Healing, out var delta))
                 continue;
 
             // damage healed is subtracted, so the delta is negative.

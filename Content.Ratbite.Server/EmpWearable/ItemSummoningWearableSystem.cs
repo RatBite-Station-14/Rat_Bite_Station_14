@@ -1,11 +1,8 @@
-using Content.Server.Emp;
 using Content.Shared._BRatbite.EmpGlove;
 using Content.Shared.Actions;
 using Content.Shared.Hands.EntitySystems;
-using Robust.Server.Containers;
-using Robust.Shared.Containers;
 
-namespace Content.Server._BRatbite.EmpWearable;
+namespace Content.Ratbite.Server.EmpWearable;
 
 /// <summary>
 /// This handles spawning in items for wearables.
@@ -15,7 +12,6 @@ public sealed class ItemSummoningWearableSystem : EntitySystem
 {
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
-    [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
     /// <inheritdoc/>
     public override void Initialize()
     {
@@ -48,7 +44,7 @@ public sealed class ItemSummoningWearableSystem : EntitySystem
         {
             QueueDel(ent.Comp.SummonedEntity);
             ent.Comp.SummonedEntity = null;
-      ///      _actionsSystem.SetToggled(args.Action,false); THROWING BUILD ERROR IDK
+            // _actionsSystem.SetToggled(args.Action,false); THROWING BUILD ERROR IDK
             return;
         }
 
@@ -64,7 +60,7 @@ public sealed class ItemSummoningWearableSystem : EntitySystem
         }
 
         ent.Comp.SummonedEntity = summonedItem;
- //       _actionsSystem.SetToggled(args.Action, true); THROWING BUILD ERROR IDK
+        // _actionsSystem.SetToggled(args.Action, true); THROWING BUILD ERROR IDK
 
         if (!TryComp<SummonedItemDespawnComponent>(summonedItem, out var summonedItemComp))
             return;

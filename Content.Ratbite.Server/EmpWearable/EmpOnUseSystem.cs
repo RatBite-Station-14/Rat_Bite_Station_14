@@ -1,11 +1,11 @@
+using Content.Ratbite.Shared.EmpGlove;
 using Content.Server.Emp;
-using Content.Shared._BRatbite.EmpGlove;
 using Content.Shared.Interaction;
 using Robust.Server.Containers;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 
-namespace Content.Server._BRatbite.EmpWearable;
+namespace Content.Ratbite.Server.EmpWearable;
 
 /// <summary>
 /// This handles items that apply an EMP effect when used on a target.

@@ -15,21 +15,13 @@
     <ProjectReference Include="../Content.Medical.Client/Content.Medical.Client.csproj" />
     <ProjectReference Include="../Content.Ratbite.Shared/Content.Ratbite.Shared.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserInterface\Systems\" />
+    <Folder Include="Weapons\Ranged\" />
+  </ItemGroup>
 
   <Import Project="../RobustToolbox/Imports/Client.props" />
   <Import Project="../RobustToolbox/Imports/Shared.props" />
   <Import Project="../RobustToolbox/MSBuild/Robust.Properties.targets" />
   <Import Project="../RobustToolbox/MSBuild/XamlIL.targets" />
-  <ItemGroup>
-    <EmbeddedResource Remove="Hands\UI\HandPlaceholderStatus.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Antags\" />
-    <Folder Include="Overlays\" />
-  </ItemGroup>
-  <ItemGroup>
-    <AdditionalFiles Update="Hands\UI\HandPlaceholderStatus.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </AdditionalFiles>
-  </ItemGroup>
 </Project>

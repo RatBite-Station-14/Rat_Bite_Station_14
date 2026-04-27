@@ -5,7 +5,6 @@ using Content.Server.GameTicking.Rules;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Systems;
-using Content.Shared.Access;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Chat;
@@ -21,11 +20,10 @@ using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
-namespace Content.Server._BRatbite.PermaBrig;
+namespace Content.Ratbite.Server.PermaBrig;
 
 /// <summary>
 /// This handles...

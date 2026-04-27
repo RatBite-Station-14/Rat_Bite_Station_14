@@ -1,15 +1,10 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Ark <189933909+ark1368@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.FixedPoint;
 using Content.Shared.Damage;
+using Content.Shared.FixedPoint;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
-namespace Content.Server._DV.Abilities.Chitinid;
+namespace Content.Ratbite.Server.Abilities.Chitinid;
 
 /// <summary>
 /// Passively heals radiation up to a limit, which then uses <c>ItemCougherComponent</c> to cough up Chitzite.

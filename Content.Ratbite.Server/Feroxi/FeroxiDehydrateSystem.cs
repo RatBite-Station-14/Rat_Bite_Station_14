@@ -1,14 +1,11 @@
-// SPDX-FileCopyrightText: 2025 Aidenkrz <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 AstroDogeDX <48888500+AstroDogeDX@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Body.Components;
-using Content.Server.Body.Systems;
+using Content.Shared.Body;
+using Content.Shared.Body.Components;
+using Content.Shared.Metabolism;
 using Content.Shared.Nutrition.Components;
 
-namespace Content.Server._DV.Feroxi;
+namespace Content.Ratbite.Server.Feroxi;
 
 public sealed class FeroxiDehydrateSystem : EntitySystem
 {
@@ -42,7 +39,7 @@ public sealed class FeroxiDehydrateSystem : EntitySystem
 
         ent.Comp.Dehydrated = shouldBeDehydrated;
 
-        foreach (var entity in _body.GetBodyOrganEntityComps<LungComponent>(ent.Owner))
+        foreach (var entity in _body.GetOrgans<LungComponent>(ent.Owner))
         {
             if (!TryComp<MetabolizerComponent>(entity, out var metabolizer) || metabolizer.MetabolizerTypes == null)
                 continue;

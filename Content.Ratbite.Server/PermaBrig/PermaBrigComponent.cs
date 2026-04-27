@@ -1,10 +1,7 @@
-namespace Content.Server._BRatbite.PermaBrig;
+namespace Content.Ratbite.Server.PermaBrig;
 
 /// <summary>
 /// This handles...
 /// </summary>
 [RegisterComponent]
-public sealed partial class PermaBrigComponent : Component
-{
-
-}
+public sealed partial class PermaBrigComponent : Component;

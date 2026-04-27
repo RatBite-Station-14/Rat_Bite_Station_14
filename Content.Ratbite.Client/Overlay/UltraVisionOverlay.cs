@@ -1,20 +1,12 @@
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Numerics;
+using Content.Ratbite.Shared.Abilities;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
-using Robust.Shared.Prototypes;
-using Content.Shared.Abilities;
-using System.Numerics;
 
-namespace Content.Client._DV.Overlays;
+namespace Content.Ratbite.Client.Overlays;
 
 public sealed partial class UltraVisionOverlay : Overlay
 {
@@ -22,6 +14,7 @@ public sealed partial class UltraVisionOverlay : Overlay
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] IEntityManager _entityManager = default!;
 
+    private readonly static ProtoId<ShaderPrototype> UltraVision = "UltraVision";
 
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
@@ -30,7 +23,7 @@ public sealed partial class UltraVisionOverlay : Overlay
     public UltraVisionOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _ultraVisionShader = _prototypeManager.Index<ShaderPrototype>("UltraVision").Instance().Duplicate();
+        _ultraVisionShader = _prototypeManager.Index(UltraVision).Instance().Duplicate();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
