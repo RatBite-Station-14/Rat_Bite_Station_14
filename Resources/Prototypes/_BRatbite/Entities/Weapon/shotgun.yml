@@ -2,7 +2,7 @@
   name: EX-03 Anihilator
   parent: [BaseWeaponShotgun, BaseGunWieldable, BaseCentcommContraband]
   id: WeaponShotgunRSOAnihilator
-  description: A devastating shotgun that hold 2 8 gauge shells. equip with laser sights to help with aiming.
+  description: A devastating shotgun that holds two 8-gauge shells. Equipped with a laser sight to help with aiming.
   components:
   - type: Sprite
     sprite: _BRatBites/Objects/Weapon/Shotgun/rsodestroyer.rsi
