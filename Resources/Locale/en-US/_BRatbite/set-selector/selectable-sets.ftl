@@ -26,7 +26,7 @@ selectable-set-rso-weaponkit-anihilator-desc =
 
 selectable-set-rso-weaponkit-order-name = EX-04 Order Set
 selectable-set-rso-weaponkit-order-desc =
-    Exercise order with the Order energy pistol. Only can be use by the worthy.
+    Enforce order with the Order energy pistol. ID locked for use by the worthy.
     Include : EX-04 Order.
 
 selectable-set-rso-weaponkit-martialart-name = CapoeiraManual Set
