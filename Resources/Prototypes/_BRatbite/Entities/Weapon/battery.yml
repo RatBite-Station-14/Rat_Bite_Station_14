@@ -141,7 +141,7 @@
   name: EX-04 Order
   parent: [BaseWeaponBatterySmall, BaseCentcommContraband] # god this is a slop
   id: WeaponEnergyGunRSOOrder
-  description: A multi-purpose energy pistol that capable of firing all kind of energy bolt. Personally locked to the Redsight Overseer access.
+  description: A multi-purpose energy pistol capable of firing seven kinds of energy bolts. ID locked to Redsight Overseer access.
   components:
   - type: Sprite
     sprite: _BRatBites/Objects/Weapon/Battery/rsoorder.rsi
