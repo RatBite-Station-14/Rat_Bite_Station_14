@@ -31,6 +31,6 @@ selectable-set-rso-weaponkit-order-desc =
 
 selectable-set-rso-weaponkit-martialart-name = CapoeiraManual Set
 selectable-set-rso-weaponkit-martialart-desc =
-    A book that will teach you the move of a Capoeira dance.
+    A manual that will teach you the moves of a Capoeira dancer.
     Dont question where we got you this.
     Include : choreography manual.
