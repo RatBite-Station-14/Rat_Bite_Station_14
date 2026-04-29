@@ -255,6 +255,7 @@
   color: "#ffaa00"
   metabolisms:
     Medicine:
+      metabolismRate: 0.25 # Ratbite - made niche/underused chems more balanced
       effects:
       - !type:SuppressPain
         amount: 1.2
@@ -1713,6 +1714,7 @@
   color: "#baa15d"
   metabolisms:
     Medicine:
+      metabolismRate: 0.1 # Ratbite - made niche/underused chems more balanced
       effects:
       - !type:HealthChange #Goobstation
         damage:

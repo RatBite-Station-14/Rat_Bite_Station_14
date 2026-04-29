@@ -19,7 +19,7 @@ public sealed partial class VentCrawlerComponent : Component
     [ViewVariables, AutoNetworkedField]
     public bool InTube = false;
     [DataField]
-    public float EnterDelay = 2.5f;
+    public float EnterDelay = 20f; // Ratbite ventcrawl MaldPR until we can fix scurret perma.
 
     //used for if the user can have inventory on backpack, suit and suit slot.
     [DataField]

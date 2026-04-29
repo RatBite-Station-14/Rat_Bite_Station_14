@@ -25,6 +25,7 @@ namespace Content.Server._BRatbite.PermaBrig
         [Dependency] private readonly ITaskManager _task = default!;
         [Dependency] private readonly IEntityManager _entManager = default!;
         [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+        [Dependency] private readonly EntityManager _entityManager = default!;
 
         private readonly List<Task> _pendingSaveTasks = new();
 

@@ -96,11 +96,11 @@
     - type: StaticPrice
       price: 350
     - type: Battery
-      maxCharge: 600
-      startingCharge: 600
+      maxCharge: 1200 #Ratbite
+      startingCharge: 900 #Ratbite
     - type: RechargeableBlocking
-      dischargedRechargeRate: 0
-      chargedRechargeRate: 0
+      dischargedRechargeRate: 0.5 #Ratbite
+      chargedRechargeRate: 1 #Ratbite
     - type: ItemSlots
       slots:
         item:

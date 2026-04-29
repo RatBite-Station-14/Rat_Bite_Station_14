@@ -164,6 +164,7 @@
   color: "#cc9c14"
   metabolisms:
     Medicine:
+      metabolismRate: 0.25 # Ratbite - made niche/underused chems more balanced
       effects:
       - !type:HealthChange
         damage:
@@ -175,6 +176,7 @@
       - !type:ModifyBloodLevel
         amount: 3
     Food:
+      metabolismRate: 0.25 # Ratbite - made miche/underused chems more balanced
       effects:
       - !type:SatiateHunger
         factor: 1.5 # 50% less
@@ -547,6 +549,7 @@
       amount: -10
   metabolisms:
     Medicine:
+      metabolismRate: 0.35 # Ratbite - made niche/underused chems more balanced
       effects:
       - !type:HealthChange
         conditions:

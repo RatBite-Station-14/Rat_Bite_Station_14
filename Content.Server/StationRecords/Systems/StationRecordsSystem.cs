@@ -86,7 +86,7 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
         SubscribeLocalEvent<EntityRenamedEvent>(OnRename);
     }
 
-    private void OnPlayerSpawn(PlayerSpawnCompleteEvent args)
+    public void OnPlayerSpawn(PlayerSpawnCompleteEvent args)
     {
         if (!TryComp<StationRecordsComponent>(args.Station, out var stationRecords))
             return;
@@ -180,7 +180,7 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
     {
         // TODO make PlayerSpawnCompleteEvent.JobId a ProtoId
         if (string.IsNullOrEmpty(jobId)
-            || !_prototypeManager.HasIndex<JobPrototype>(jobId))
+            || (!_prototypeManager.HasIndex<JobPrototype>(jobId) && jobId != "prisoner"))
             return;
 
         if (!_inventory.TryGetSlotEntity(player, "id", out var idUid))
