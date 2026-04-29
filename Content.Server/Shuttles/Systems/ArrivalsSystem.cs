@@ -70,6 +70,7 @@
 
 using System.Linq;
 using System.Numerics;
+using Content.Server._BRatbite.PermaBrig;
 using Content.Server.Administration;
 using Content.Server.Chat.Managers;
 using Content.Server.DeviceNetwork.Systems;
@@ -132,6 +133,7 @@ public sealed class ArrivalsSystem : EntitySystem
     [Dependency] private readonly ShuttleSystem _shuttles = default!;
     [Dependency] private readonly StationSpawningSystem _stationSpawning = default!;
     [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
 
     private EntityQuery<PendingClockInComponent> _pendingQuery;
     private EntityQuery<ArrivalsBlacklistComponent> _blacklistQuery;
@@ -452,7 +454,7 @@ public sealed class ArrivalsSystem : EntitySystem
 
     private void SendDirections(PlayerSpawnCompleteEvent ev)
     {
-        if (!Enabled || !ev.LateJoin || ev.Silent || !_pendingQuery.HasComp(ev.Mob))
+        if (!Enabled || !ev.LateJoin || ev.Silent || !_pendingQuery.HasComp(ev.Mob) || _permaBrigManager.ShouldPlayerBeBrigged(ev.Player))
             return;
 
         var arrival = NextShuttleArrival();
