@@ -21,7 +21,7 @@ selectable-set-rso-weaponkit-smartgun-desc =
 
 selectable-set-rso-weaponkit-anihilator-name = EX-03 Anihilator Set
 selectable-set-rso-weaponkit-anihilator-desc =
-    Swift execution, just the way of the nanotransen security.
+    Deliver unto them a swift execution, the way of NanoTrasen security.
     Include : EX-03 Anihilator and 8 gauge carpshot box and 8 gauge beanbag box.
 
 selectable-set-rso-weaponkit-order-name = EX-04 Order Set
