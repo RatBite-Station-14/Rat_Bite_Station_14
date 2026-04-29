@@ -49,7 +49,7 @@
   parent: [ClothingOuterHardsuitBase, BaseCentcommContraband]
   id: ClothingOuterVoidsuitRSOmagistrate
   name: "'magistrate' light combat voidsuit"
-  description: A lightweight combat voidsuit focused on speed and agility over protection. Its reduced armor allows rapid movement, The legs has integrated hydralic systems that allow you to jump further.
+  description: A lightweight combat voidsuit focused on speed and agility over protection. The reduced armor allows unencumbered movement, and the legs feature integrated hydraulic systems that permit a short jump.
   components:
   - type: Sprite
     sprite: _BRatBites/Clothing/OuterClothing/Hardsuit/rsovoidsuit.rsi
