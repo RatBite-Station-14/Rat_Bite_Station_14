@@ -508,4 +508,9 @@ public enum LogType
     /// Trauma - Genetics related logs.
     /// </summary>
     Genetics = 20001,
+
+    /// <summary>
+    /// Ratbite - Perma events, mostly used when players join
+    /// </summary>
+    Perma = 30001,
 }

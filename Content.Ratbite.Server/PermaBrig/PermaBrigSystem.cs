@@ -13,10 +13,8 @@ using Content.Shared.Inventory;
 using Content.Shared.Mind;
 using Content.Shared.Players;
 using Content.Shared.Roles;
-using Content.Shared.Roles.Jobs;
 using Content.Shared.Security.Components;
 using Robust.Server.Audio;
-using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
@@ -26,12 +24,12 @@ using Robust.Shared.Utility;
 namespace Content.Ratbite.Server.PermaBrig;
 
 /// <summary>
-/// This handles...
+/// Handles perma brig and shit.
 /// </summary>
 public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
+    //[Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IChatManager _chat = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly GameTicker _ticker = default!;
@@ -39,18 +37,17 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
     [Dependency] private readonly PlayTimeTrackingSystem _playTimeTrackings = default!;
     [Dependency] private readonly StationSpawningSystem _stationSpawning = default!;
     [Dependency] private readonly AdminSystem _admin = default!;
-    [Dependency] private readonly SharedJobSystem _jobs = default!;
     [Dependency] private readonly SharedRoleSystem _roles = default!;
     [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly SharedIdCardSystem _idCard = default!;
-    [Dependency] private readonly EntityManager _ent = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
 
     public HashSet<ICommonSession> PermaIndividuals = new();
     public Dictionary<ICommonSession, (TimeSpan, TimeSpan)> PermaIndividualJoinedTime = new();
     private ISawmill _sawmill = default!;
 
+    private static readonly ProtoId<JobPrototype> Prisoner = "Prisoner";
     private SoundSpecifier? _lockUpSound = new SoundPathSpecifier("/Audio/_BRatbite/PermaBrig/locked_up.ogg");
 
     /// <inheritdoc/>
@@ -149,7 +146,7 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
         var newMind = _mind.CreateMind(data!.UserId, character.Name);
         _mind.SetUserId(newMind, data.UserId);
 
-        var jobPrototype = _prototypeManager.Index<JobPrototype>("Prisoner");
+        var jobPrototype = _prototypeManager.Index<JobPrototype>(Prisoner);
 
         _playTimeTrackings.PlayerRolesChanged(player);
 
@@ -170,7 +167,7 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
         }
         else
         {
-            mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(station, "Prisoner", character);
+            mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(station, Prisoner, character);
         }
 
         DebugTools.AssertNotNull(mobMaybe);
@@ -186,10 +183,10 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
                 card.SentenceDuration = TimeSpan.FromMinutes(brigTime);
                 if (TryComp<ExpireIdCardComponent>(cardId, out var expire))
                 {
-                    expire.ExpireChannel = "Security";
+                    //expire.ExpireChannel = "Security";
                     expire.ExpireMessage = "perma-prisoner-release";
                 }
-                Dirty(cardId,card);
+                Dirty(cardId, card);
             }
             _idCard.SetExpireTime(cardId, TimeSpan.FromMinutes(brigTime) + Timing.CurTime);
         }
@@ -197,7 +194,7 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
         _mind.TransferTo(newMind, mob);
         _admin.UpdatePlayerList(player);
 
-        _roles.MindAddJobRole(newMind, silent: false, jobPrototype: "Prisoner");
+        _roles.MindAddJobRole(newMind, silent: false, jobPrototype: Prisoner);
 
         var briefing = Loc.GetString("perma-prisoner-briefing",
             ("minutes", brigTime));

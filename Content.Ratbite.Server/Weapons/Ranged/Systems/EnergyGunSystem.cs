@@ -1,25 +1,14 @@
-// SPDX-FileCopyrightText: 2024 Icepick <122653407+Icepicked@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Popups;
+using System.Linq;
+using Content.Ratbite.Shared.Weapons.Ranged;
 using Content.Server._DV.Weapons.Ranged.Components;
+using Content.Server.Popups;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
-using Content.Shared.Verbs;
 using Content.Shared.Item;
-using Content.Ratbite.Shared.Weapons.Ranged;
-using Content.Shared.Weapons.Ranged.Components;
-using Robust.Shared.Prototypes;
-using System.Linq;
+using Content.Shared.Verbs;
 
 namespace Content.Server._DV.Weapons.Ranged.Systems;
 
@@ -128,44 +117,44 @@ public sealed class EnergyGunSystem : EntitySystem
 
         component.CurrentFireMode = fireMode;
 
-        if (TryComp(uid, out ProjectileBatteryAmmoProviderComponent? projectileBatteryAmmoProvider))
+        if (!_prototypeManager.TryIndex<EntityPrototype>(fireMode.Prototype, out var prototype))
+            return;
+
+        /*
+        if (!TryComp<ProjectileBatteryAmmoProviderComponent>(uid, out var projectileBatteryAmmoProvider))
+            return;
+
+        projectileBatteryAmmoProvider.Prototype = fireMode.Prototype;
+        projectileBatteryAmmoProvider.FireCost = fireMode.FireCost;
+        */
+
+        if (user is { })
+            _popupSystem.PopupEntity(Loc.GetString("gun-set-fire-mode", ("mode", component.CurrentFireMode.Name != string.Empty ? component.CurrentFireMode.Name : prototype.Name)), uid, user.Value);
+
+        if (component.CurrentFireMode.State == string.Empty)
+            return;
+
+        if (!TryComp<AppearanceComponent>(uid, out var _) || !TryComp<ItemComponent>(uid, out var item))
+            return;
+
+        _item.SetHeldPrefix(uid, component.CurrentFireMode.State, component: item);
+        switch (component.CurrentFireMode.State) // Holy shit this is shitcoded.
         {
-            if (!_prototypeManager.TryIndex<EntityPrototype>(fireMode.Prototype, out var prototype))
-                return;
-
-            projectileBatteryAmmoProvider.Prototype = fireMode.Prototype;
-            projectileBatteryAmmoProvider.FireCost = fireMode.FireCost;
-
-            if (user != null)
-            {
-                _popupSystem.PopupEntity(Loc.GetString("gun-set-fire-mode", ("mode", component.CurrentFireMode.Name != string.Empty ? component.CurrentFireMode.Name : prototype.Name)), uid, user.Value);
-            }
-
-            if (component.CurrentFireMode.State == string.Empty)
-                return;
-
-            if (TryComp<AppearanceComponent>(uid, out var _) && TryComp<ItemComponent>(uid, out var item))
-            {
-                _item.SetHeldPrefix(uid, component.CurrentFireMode.State, component: item);
-                switch (component.CurrentFireMode.State) // Holy shit this is shitcoded.
-                {
-                    case "disabler":
-                        UpdateAppearance(uid, EnergyGunFireModeState.Disabler);
-                        break;
-                    case "lethal":
-                        UpdateAppearance(uid, EnergyGunFireModeState.Lethal);
-                        break;
-                    case "special":
-                        UpdateAppearance(uid, EnergyGunFireModeState.Special);
-                        break;
-                    case "heating":
-                        UpdateAppearance(uid, EnergyGunFireModeState.Heating);
-                        break;
-                    case "cooling":
-                        UpdateAppearance(uid, EnergyGunFireModeState.Cooling);
-                        break;
-                }
-            }
+            case "disabler":
+                UpdateAppearance(uid, EnergyGunFireModeState.Disabler);
+                break;
+            case "lethal":
+                UpdateAppearance(uid, EnergyGunFireModeState.Lethal);
+                break;
+            case "special":
+                UpdateAppearance(uid, EnergyGunFireModeState.Special);
+                break;
+            case "heating":
+                UpdateAppearance(uid, EnergyGunFireModeState.Heating);
+                break;
+            case "cooling":
+                UpdateAppearance(uid, EnergyGunFireModeState.Cooling);
+                break;
         }
     }
 

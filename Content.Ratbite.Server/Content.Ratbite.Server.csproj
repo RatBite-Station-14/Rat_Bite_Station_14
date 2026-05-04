@@ -22,16 +22,6 @@
 		<ProjectReference Include="../Content.Server/Content.Server.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Antags\" />
-	  <Folder Include="EntityEffects\EffectConditions\" />
-	  <Folder Include="EntityEffects\Effects\" />
-	  <Folder Include="GameTicking\Rules\Components\" />
-	  <Folder Include="Jobs\" />
-	  <Folder Include="Objectives\Systems\" />
-	  <Folder Include="Store\Conditions\" />
-	</ItemGroup>
-
 	<Import Project="../RobustToolbox/Imports/Server.props" />
 	<Import Project="../RobustToolbox/Imports/Shared.props" />
 	<Import Project="../RobustToolbox/MSBuild/Robust.Properties.targets" />

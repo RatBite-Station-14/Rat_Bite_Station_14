@@ -17,7 +17,7 @@ public sealed class PermaBrigManager
 {
     [Dependency] private readonly IServerDbManager _db = default!;
     [Dependency] private readonly ITaskManager _task = default!;
-    [Dependency] private readonly IEntityManager _entManager = default!;
+    //[Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
 
     private readonly List<Task> _pendingSaveTasks = new();
@@ -178,7 +178,7 @@ public sealed class PermaBrigManager
     public async void UpdateTimeLastSeen(ICommonSession session)
     {
         var record = await _db.GetPlayerRecordByUserId(session.UserId, CancellationToken.None);
-        if (record is not null)
+        if (record is { } && record.LastSeenAddress is { })
         {
             await _db.UpdatePlayerRecordAsync(record.UserId,
                 record.LastSeenUserName,
@@ -194,7 +194,6 @@ public sealed class PermaBrigManager
     /// <param name="rounds">The number of rounds to spend in perma</param>
     /// <returns>An integer containing the old sentence attributed to the player.</returns>
     /// <remarks>Use the return value instead of calling <see cref="GetBrigSentence(NetUserId)"/> prior to this.</remarks>
-    [Obsolete]
     public int SetBrigSentence(NetUserId userId, int rounds)
     {
         var oldSentence = Task.Run(() => SetBrigSentenceAsync(userId, rounds)).GetAwaiter().GetResult();
@@ -207,7 +206,6 @@ public sealed class PermaBrigManager
     /// </summary>
     /// <param name="userId">The player's NetUserId</param>
     /// <returns>The players current sentence.</returns>
-    [Obsolete]
     public int GetBrigSentence(NetUserId userId)
     {
         return Task.Run(() => GetBrigSentenceAsync(userId)).GetAwaiter().GetResult();
@@ -341,7 +339,6 @@ public sealed class PermaBrigManager
     /// <param name="amount">The number of rounds in perma to set.</param>
     /// <param name="oldAmount">The number of rounds originally set.</param>
     /// <remarks>This and its classes will block server shutdown until execution finishes.</remarks>
-    [Obsolete]
     private async Task SetBrigSentenceAsyncInternal(NetUserId userId, int amount, int oldAmount)
     {
         var task = Task.Run(() => _db.SetPermaRoundsLeft(userId, amount));
@@ -356,7 +353,6 @@ public sealed class PermaBrigManager
     /// <param name="amount">he number of rounds in perma to set.</param>
     /// <returns>The number of rounds originally set.</returns>
     /// <remarks>Use the return value instead of calling <see cref="GetBrigSentence(NetUserId)"/> prior to this.</remarks>
-    [Obsolete]
     private async Task<int> SetBrigSentenceAsync(NetUserId userId, int amount)
     {
         // We need to block it first to ensure we don't read our own amount, hence sync function
@@ -370,7 +366,6 @@ public sealed class PermaBrigManager
     /// </summary>
     /// <param name="userId">The player's NetUserId</param>
     /// <returns>An integer containing the rounds left to serve.</returns>
-    [Obsolete]
     private async Task<int> GetBrigSentenceAsync(NetUserId userId) => await _db.GetPermaRoundsLeft(userId);
 
     /// <summary>
@@ -380,7 +375,6 @@ public sealed class PermaBrigManager
     /// <param name="amountDelta">The rounds in perma that will to add.</param>
     /// <returns>An integer containing the additional rounds in perma.</returns>
     /// <remarks>This and its classes will block server shutdown until execution finishes.</remarks>
-    [Obsolete]
     private async Task<int> ModifyBrigSentenceAsync(NetUserId userId, int amountDelta)
     {
         var task = Task.Run(() => _db.ModifyPermaRoundsLeft(userId, amountDelta));

@@ -9,8 +9,7 @@ namespace Content.Shared.Access.Components;
 /// This is used for an ID that expires and replaces its access after a certain period has passed.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
-[Access(typeof(SharedIdCardSystem))]
-public sealed partial class ExpireIdCardComponent : Component
+public sealed partial class ExpireIdCardComponent : Component // Ratbite - removed access
 {
     /// <summary>
     /// Whether this ID has expired yet and had its accesses replaced.

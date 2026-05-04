@@ -613,6 +613,13 @@ namespace Content.Server.Database
     [Table("player")]
     public class Player
     {
+        // <Ratbite>
+        public int BrigSentence { get; set; }
+        public int BrigTime { get; set; }
+        public int PPpoints { get; set; }
+        public int Shitcoins { get; set; }
+        // </Ratbite>
+
         public int Id { get; set; }
 
         // Permanent data
