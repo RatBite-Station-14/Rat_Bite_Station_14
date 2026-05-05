@@ -23,7 +23,7 @@
 - type: entity
   parent: MobPermaAscended
   id: MobPermaAscendedRandom
-  name: Urist McPerma
+  name: Urist McGorilla
   suffix: Random Appearance
   components:
   - type: RandomHumanoidAppearance
@@ -35,6 +35,6 @@
 
 - type: entity
   save: false
-  name: Urist McPerma
+  name: Urist McGorilla
   parent: BaseMobPermaAscended
   id: MobPermaAscended

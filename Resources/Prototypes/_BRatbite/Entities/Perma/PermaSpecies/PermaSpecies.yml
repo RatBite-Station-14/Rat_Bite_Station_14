@@ -4,7 +4,7 @@
 - type: entity
   parent: [BaseMobSpeciesOrganic]
   id: BaseMobPermaAscended
-  name: Urist McPerma
+  name: Urist McGorilla
   abstract: true
   components:
   - type: Icon # It will not have an icon in the adminspawn menu without this. Body parts seem fine for whatever reason.

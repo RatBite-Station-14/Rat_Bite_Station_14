@@ -21,7 +21,7 @@
 
 - type: entity
   id: ChestPermaAscended
-  name: "ascended perma chest"
+  name: "mutated gorilla chest"
   parent: [PartPermaAscended, BaseChest]
   components:
   - type: Sprite
@@ -37,7 +37,7 @@
 
 - type: entity
   id: GroinPermaAscended
-  name: "ascended perma groin"
+  name: "mutated gorilla groin"
   parent: [PartPermaAscended, BaseGroin]
   components:
   - type: Sprite
@@ -53,7 +53,7 @@
 
 - type: entity
   id: HeadPermaAscended
-  name: "ascended perma head"
+  name: "mutated gorilla head"
   parent: [PartPermaAscended, BaseHead]
   components:
   - type: Sprite
@@ -69,7 +69,7 @@
 
 - type: entity
   id: LeftArmPermaAscended
-  name: "left ascended perma arm"
+  name: "left mutated gorilla arm"
   parent: [PartPermaAscended, BaseLeftArm]
   components:
   - type: Sprite
@@ -78,7 +78,7 @@
 
 - type: entity
   id: RightArmPermaAscended
-  name: "right ascended perma arm"
+  name: "right mutated gorilla arm"
   parent: [PartPermaAscended, BaseRightArm]
   components:
   - type: Sprite
@@ -87,7 +87,7 @@
 
 - type: entity
   id: LeftHandPermaAscended
-  name: "left ascended perma hand"
+  name: "left mutated gorilla hand"
   parent: [PartPermaAscended, BaseLeftHand]
   components:
   - type: Sprite
@@ -98,7 +98,7 @@
 
 - type: entity
   id: RightHandPermaAscended
-  name: "right ascended perma hand"
+  name: "right mutated gorilla hand"
   parent: [PartPermaAscended, BaseRightHand]
   components:
   - type: Sprite
@@ -109,7 +109,7 @@
 
 - type: entity
   id: LeftLegPermaAscended
-  name: "left ascended perma leg"
+  name: "left mutated gorilla leg"
   parent: [PartPermaAscended, BaseLeftLeg]
   components:
   - type: Sprite
@@ -118,7 +118,7 @@
 
 - type: entity
   id: RightLegPermaAscended
-  name: "right ascended perma leg"
+  name: "right mutated gorilla leg"
   parent: [PartPermaAscended, BaseRightLeg]
   components:
   - type: Sprite
@@ -127,7 +127,7 @@
 
 - type: entity
   id: LeftFootPermaAscended
-  name: "left ascended perma foot"
+  name: "left mutated gorilla foot"
   parent: [PartPermaAscended, BaseLeftFoot]
   components:
   - type: Sprite
@@ -136,7 +136,7 @@
 
 - type: entity
   id: RightFootPermaAscended
-  name: "right ascended perma foot"
+  name: "right mutated gorilla foot"
   parent: [PartPermaAscended, BaseRightFoot]
   components:
   - type: Sprite
