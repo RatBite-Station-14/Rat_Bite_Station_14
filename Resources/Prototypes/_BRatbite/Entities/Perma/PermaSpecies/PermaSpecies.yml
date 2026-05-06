@@ -7,7 +7,7 @@
   name: Urist McGorilla
   abstract: true
   components:
-  - type: Icon # It will not have an icon in the adminspawn menu without this. Body parts seem fine for whatever reason.
+  - type: Icon # ignore previous comments, i added the full state and it works fine lmaoo
     sprite: _BRatBites/Entities/Mobs/PermaSpecies/parts.rsi
     state: full
   - type: Body
@@ -40,7 +40,7 @@
       collection: Punch
     damage:
       types:
-        Blunt: 15 # Goob edit
+        Blunt: 15
     animation: WeaponArcFist
   - type: MobThresholds
     thresholds:
@@ -67,7 +67,7 @@
     pryTimeMultiplier: 0.3
   - type: Carriable
     freeHandsRequired: 4 # easiest way to make them uncarriable without removing carriable from base mob
-  - type: DashAction # Goobstation - dark souls gorilla
+  - type: DashAction # ratbite - dark souls gorilla
     actionProto: ActionDashMoth
   - type: Fixtures #Make gorillas THICC
     fixtures: # TODO: This needs a second fixture just for mob collisions.
