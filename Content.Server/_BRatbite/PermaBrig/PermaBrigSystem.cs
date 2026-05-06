@@ -5,6 +5,7 @@ using Content.Server.GameTicking.Rules;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Systems;
+using Content.Server.StationRecords.Systems;
 using Content.Shared.Access;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
@@ -40,6 +41,7 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly PlayTimeTrackingSystem _playTimeTrackings = default!;
     [Dependency] private readonly StationSpawningSystem _stationSpawning = default!;
+    [Dependency] private readonly StationRecordsSystem _stationRecords = default!;
     [Dependency] private readonly AdminSystem _admin = default!;
     [Dependency] private readonly SharedJobSystem _jobs = default!;
     [Dependency] private readonly SharedRoleSystem _roles = default!;
@@ -215,6 +217,17 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
             Color.Red);
 
         _admin.UpdatePlayerList(player);
+
+        var aev = new PlayerSpawnCompleteEvent(mob,
+            player,
+            "Prisoner",
+            false,
+            true,
+            0,
+            station,
+            character);
+
+        _stationRecords.OnPlayerSpawn(aev);
     }
 
     // private void OnRoundEnd(RoundEndMessageEvent ev) Auto decrease of perma sentence not yet implemented

@@ -28,7 +28,7 @@
   #  - TauCetiBasic, FUCKKK NO!!!! YOU'RE GORILLA... ANOTHER EVIL BALANCE...
     - Monkey
     understands:
-    - TauCetiBasic
+    - TauCetiBasic # they can UNDERSTAND people though
     - Monkey
   - type: HumanoidAppearance
     species: PermaAscended
@@ -40,7 +40,7 @@
       collection: Punch
     damage:
       types:
-        Blunt: 15
+        Blunt: 15 # Goob edit
     animation: WeaponArcFist
   - type: MobThresholds
     thresholds:
@@ -65,22 +65,9 @@
     prototype: MonkeyDeathgasp
   - type: PlayerToolModifier
     pryTimeMultiplier: 0.3
-  - type: BonusStaminaDamage
-    multiplier: 1.25
-  - type: BonusMeleeDamage
-    damageModifierSet:
-      coefficients:
-        Blunt: 3
-        Slash: 3
-        Piercing: 3
-        Asphyxiation: 3
-        Structural: 3
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 1.2
-    baseSprintSpeed: 1.2
   - type: Carriable
     freeHandsRequired: 4 # easiest way to make them uncarriable without removing carriable from base mob
-  - type: DashAction # ratbite - dark souls gorilla
+  - type: DashAction # Goobstation - dark souls gorilla
     actionProto: ActionDashMoth
   - type: Fixtures #Make gorillas THICC
     fixtures: # TODO: This needs a second fixture just for mob collisions.
@@ -88,7 +75,7 @@
         shape:
           !type:PhysShapeCircle
           radius: 0.35
-        density: 400
+        density: 200
         restitution: 0.0
         mask:
         - MobMask
