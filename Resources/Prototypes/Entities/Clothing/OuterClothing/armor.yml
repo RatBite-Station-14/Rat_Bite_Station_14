@@ -190,7 +190,6 @@
   - type: Tag
     tags:
     - ScurretWearable #Ratbite
-    - PermaAscended #Ratbite
 
 #Standard armor vest, allowed for security and bartenders
 - type: entity

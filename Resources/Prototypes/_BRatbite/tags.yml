@@ -1,7 +1,7 @@
-# SPDX-License-Identifier: CC_BY-SA-4.0
+# SPDX-License-Identifier: CC0
 
 - type: Tag
   id: EnergyPistolMagAmmo
 
 - type: Tag
-  id: PermaAscended
+  id: PermaAscendedAllowed

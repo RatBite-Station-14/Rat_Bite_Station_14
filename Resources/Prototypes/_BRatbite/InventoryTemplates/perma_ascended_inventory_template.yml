@@ -1,5 +1,4 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
+# SPDX-License-Identifier: CC0
 - type: inventoryTemplate
   id: PermaAscended
   slots:
@@ -19,7 +18,7 @@
     displayName: Jumpsuit
     whitelist:
       tags:
-      - PermaAscended
+      - PermaAscendedAllowed
   - name: outerClothing
     slotTexture: suit
     slotFlags: OUTERCLOTHING
@@ -29,7 +28,7 @@
     displayName: Suit
     whitelist:
       tags:
-      - PermaAscended
+      - PermaAscendedAllowed
   - name: gloves
     slotTexture: gloves
     slotFlags: GLOVES
@@ -38,7 +37,7 @@
     displayName: Gloves
     whitelist:
       tags:
-      - PermaAscended
+      - PermaAscendedAllowed # dont willy nilly give them gloves, they have big hands, evil balance nerf
   - name: neck
     slotTexture: neck
     slotFlags: NECK
@@ -51,6 +50,9 @@
     uiWindowPos: 1,2
     strippingWindowPos: 1,1
     displayName: Mask
+    whitelist:
+      tags:
+      - PermaAscendedAllowed
   - name: eyes
     slotTexture: glasses
     slotFlags: EYES
@@ -58,6 +60,9 @@
     uiWindowPos: 0,3
     strippingWindowPos: 0,0
     displayName: Eyes
+    whitelist:
+      tags:
+      - PermaAscendedAllowed
   - name: ears
     slotTexture: ears
     slotFlags: EARS
@@ -65,6 +70,9 @@
     uiWindowPos: 2,2
     strippingWindowPos: 2,0
     displayName: Ears
+    whitelist:
+      tags:
+      - PermaAscendedAllowed
   - name: head
     slotTexture: head
     slotFlags: HEAD
@@ -73,7 +81,7 @@
     displayName: Head
     whitelist:
       tags:
-      - PermaAscended
+      - PermaAscendedAllowed
   - name: pocket1
     slotTexture: pocket
     fullTextureName: template_small
@@ -110,7 +118,7 @@
     fullTextureName: template_small
     slotFlags: IDCARD
     slotGroup: SecondHotbar
-    stripTime: 6
+    stripTime: 3 #you're a big gorilla, #evil ass nerf to balance
     uiWindowPos: 2,1
     strippingWindowPos: 2,4
     dependsOn: jumpsuit
@@ -124,6 +132,9 @@
     uiWindowPos: 3,1
     strippingWindowPos: 1,5
     displayName: Belt
+    whitelist:
+      tags:
+      - PermaAscendedAllowed
   - name: back
     slotTexture: back
     fullTextureName: template_small

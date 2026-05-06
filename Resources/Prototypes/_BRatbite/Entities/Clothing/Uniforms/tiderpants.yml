@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: CC0
+
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitTiderPants
