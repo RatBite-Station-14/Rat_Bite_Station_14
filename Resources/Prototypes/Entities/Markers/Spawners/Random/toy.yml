@@ -80,8 +80,7 @@
         - PlushieFern # Goobstation
         - PlushieAbductor # Goobstation
         # WD EDIT START
-        - FaceHuggerToys
-        # WD EDIT END
+#removed more of that facehugger bullshit
       chance: 0.5
       offset: 0.2
 
