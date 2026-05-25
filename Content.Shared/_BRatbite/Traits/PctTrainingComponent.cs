@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Alert;
-using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._BRatbite.Traits;
@@ -21,16 +20,16 @@ public sealed partial class PctTrainingComponent : Component
     public int MaxCombo = 3;
 
     [DataField]
-    public TimeSpan FumbleCooldown = TimeSpan.FromSeconds(2);
+    public TimeSpan FumbleCooldown = TimeSpan.FromSeconds(10);
 
     [DataField]
     public ProtoId<AlertPrototype> FumbleAlert = "PctFumble";
 
     [DataField]
-    public TimeSpan ParryWindow = TimeSpan.FromSeconds(0.35);
+    public TimeSpan FumbleStarsDuration = TimeSpan.FromSeconds(2);
 
     [DataField]
-    public SoundSpecifier ParrySound = new SoundPathSpecifier("/Audio/_Goobstation/Heretic/parry.ogg");
+    public LocId FumbleSpeech = "pct-training-fumble-speech";
 
     [DataField]
     public float KnockoutThrowDistance = 3f;

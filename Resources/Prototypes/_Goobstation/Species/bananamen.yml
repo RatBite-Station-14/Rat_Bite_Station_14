@@ -7,7 +7,7 @@
 - type: species
   id: BananaMen
   name: species-name-bananamen
-  roundStart: true
+  roundStart: false
   prototype: MobBananaMen
   sprites: MobBananaMenSprites
   markingLimits: MobHumanMarkingLimits

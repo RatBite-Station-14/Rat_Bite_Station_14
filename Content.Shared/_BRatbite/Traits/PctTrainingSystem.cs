@@ -9,9 +9,9 @@ using Content.Shared.Damage;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Stunnable;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Timing;
 
@@ -20,15 +20,15 @@ namespace Content.Shared._BRatbite.Traits;
 public sealed class PctTrainingSystem : EntitySystem
 {
     [Dependency] private readonly AlertsSystem _alerts = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly UnarmedCombatSkillSystem _unarmedCombat = default!;
 
-    private readonly Dictionary<EntityUid, RecentPctHit> _recentHits = new();
     private readonly List<PendingPctKnockout> _pendingKnockouts = new();
-    private readonly List<EntityUid> _recentHitsToRemove = new();
+    private readonly List<PendingPctStars> _pendingStars = new();
 
     public override void Initialize()
     {
@@ -44,21 +44,21 @@ public sealed class PctTrainingSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        var cutoff = _timing.CurTime - TimeSpan.FromSeconds(2);
-        _recentHitsToRemove.Clear();
-        foreach (var (uid, recent) in _recentHits)
-        {
-            if (recent.Time < cutoff || Deleted(uid))
-                _recentHitsToRemove.Add(uid);
-        }
-
-        foreach (var uid in _recentHitsToRemove)
-        {
-            _recentHits.Remove(uid);
-        }
-
         if (!_net.IsServer)
             return;
+
+        for (var i = _pendingStars.Count - 1; i >= 0; i--)
+        {
+            var pending = _pendingStars[i];
+
+            if (Deleted(pending.User) || pending.EndTime <= _timing.CurTime)
+            {
+                _pendingStars.RemoveAt(i);
+
+                if (!Deleted(pending.User))
+                    _appearance.SetData(pending.User, SharedStunSystem.StunVisuals.SeeingStars, false);
+            }
+        }
 
         for (var i = _pendingKnockouts.Count - 1; i >= 0; i--)
         {
@@ -143,15 +143,8 @@ public sealed class PctTrainingSystem : EntitySystem
         if (IsCleanMobHit(args))
         {
             QueueKnockoutChecks(ent, args);
-            var parried = TryTriggerParry(ent, args);
 
             ent.Comp.Combo = Math.Min(ent.Comp.MaxCombo, ent.Comp.Combo + 1);
-            Dirty(ent);
-
-            if (parried)
-                return;
-
-            RecordRecentHit(ent.Owner, args);
             return;
         }
 
@@ -167,42 +160,19 @@ public sealed class PctTrainingSystem : EntitySystem
             ent.Comp.FumbleAlert,
             cooldown: (_timing.CurTime, ent.Comp.BlockedUntil),
             autoRemove: true);
-        Dirty(ent);
-    }
 
-    private bool TryTriggerParry(Entity<PctTrainingComponent> ent, MeleeHitEvent args)
-    {
-        var parried = false;
-
-        foreach (var target in args.HitEntities)
-        {
-            if (!TryComp<PctTrainingComponent>(target, out var targetPct) ||
-                _unarmedCombat.IsUnarmedCombatSkillBlocked(target))
-                continue;
-
-            if (!_recentHits.TryGetValue(target, out var recent) ||
-                recent.Target != ent.Owner ||
-                _timing.CurTime - recent.Time > ent.Comp.ParryWindow)
-                continue;
-
-            targetPct.Combo = Math.Min(targetPct.MaxCombo, targetPct.Combo + 1);
-            Dirty(target, targetPct);
-            parried = true;
-        }
-
-        if (!parried)
-            return false;
-
-        _audio.PlayPredicted(ent.Comp.ParrySound, ent.Owner, ent.Owner);
-        return true;
-    }
-
-    private void RecordRecentHit(EntityUid user, MeleeHitEvent args)
-    {
-        if (args.HitEntities.Count != 1)
+        if (!_net.IsServer)
             return;
 
-        _recentHits[user] = new RecentPctHit(args.HitEntities[0], _timing.CurTime);
+        _stun.TrySeeingStars(ent.Owner);
+        for (var i = _pendingStars.Count - 1; i >= 0; i--)
+        {
+            if (_pendingStars[i].User == ent.Owner)
+                _pendingStars.RemoveAt(i);
+        }
+
+        _pendingStars.Add(new PendingPctStars(ent.Owner, _timing.CurTime + ent.Comp.FumbleStarsDuration));
+        RaiseLocalEvent(ent.Owner, new PctTrainingFumbleEvent(ent.Comp.FumbleSpeech));
     }
 
     private void QueueKnockoutChecks(Entity<PctTrainingComponent> ent, MeleeHitEvent args)
@@ -240,8 +210,6 @@ public sealed class PctTrainingSystem : EntitySystem
             weapon.NextAttack = _timing.CurTime;
             DirtyField(ent.Owner, weapon, nameof(MeleeWeaponComponent.NextAttack));
         }
-
-        Dirty(ent);
     }
 
     private Vector2 GetThrowDirection(EntityUid user, EntityUid target)
@@ -267,8 +235,6 @@ public sealed class PctTrainingSystem : EntitySystem
         return true;
     }
 
-    private readonly record struct RecentPctHit(EntityUid Target, TimeSpan Time);
-
     private readonly record struct PendingPctKnockout(
         EntityUid User,
         EntityUid Target,
@@ -276,6 +242,8 @@ public sealed class PctTrainingSystem : EntitySystem
         Vector2 Direction,
         float ThrowDistance,
         float ThrowSpeed);
+
+    private readonly record struct PendingPctStars(EntityUid User, TimeSpan EndTime);
 }
 
 public sealed class PctTrainingKnockoutEvent(
@@ -290,4 +258,9 @@ public sealed class PctTrainingKnockoutEvent(
     public readonly Vector2 Direction = direction;
     public readonly float ThrowDistance = throwDistance;
     public readonly float ThrowSpeed = throwSpeed;
+}
+
+public sealed class PctTrainingFumbleEvent(LocId speech) : EntityEventArgs
+{
+    public readonly LocId Speech = speech;
 }

@@ -16,12 +16,6 @@ public sealed partial class LordPerstronziosRageComponent : Component
 
     [DataField]
     public EntityUid? ActionEntity;
-
-    [DataField]
-    public EntProtoId Mask = "ClothingMaskPerstronzio";
-
-    [DataField]
-    public string MaskSlot = "mask";
 }
 
 public sealed partial class MaldActionEvent : InstantActionEvent;

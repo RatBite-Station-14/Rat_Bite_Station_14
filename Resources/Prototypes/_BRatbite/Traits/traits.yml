@@ -7,7 +7,7 @@
   name: trait-loyalty-training-name
   description: trait-loyalty-training-desc
   category: Mental
-  cost: 0
+  cost: -6
   components:
   - type: LoyaltyTraining
 
@@ -103,10 +103,25 @@
     cloneable: false
 
 - type: trait
+  id: HairballCougher
+  name: trait-hairball-cougher-name
+  description: trait-hairball-cougher-desc
+  category: Physical
+  cost: 2
+  speciesBlacklist:
+  - IPC
+  blacklist:
+    components:
+    - BorgChassis
+  components:
+  - type: Felinid
+    enableEatAction: false
+
+- type: trait
   id: LordPerstronziosRage
   name: trait-lord-perstronzios-rage-name
   description: trait-lord-perstronzios-rage-desc
   category: Mental
-  cost: 0
+  cost: 10
   components:
   - type: LordPerstronziosRage

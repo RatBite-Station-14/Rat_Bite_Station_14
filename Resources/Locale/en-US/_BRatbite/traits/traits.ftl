@@ -9,8 +9,10 @@ trait-loyalty-training-desc =
 trait-pct-training-name = PCT Training
 trait-pct-training-desc =
     Precise Combat Techniques training gives your unarmed strikes 5 extra Blunt damage.
-    Consecutive clean hits against mobs make your punches faster, but missing or hitting objects leaves you unable to punch for 2 seconds.
+    Consecutive clean hits against mobs make your punches faster, but missing or hitting objects leaves you unable to punch for 10 seconds.
     This training is incompatible with martial arts knowledge.
+
+pct-training-fumble-speech = Oh-oh-...-arggh!
 
 trait-paci-fist-name = Paci-fist
 trait-paci-fist-desc =
@@ -30,6 +32,11 @@ trait-juggernaut-desc =
 trait-neurogenesis-imperfecta-name = Neurogenesis Imperfecta
 trait-neurogenesis-imperfecta-desc =
     Your brain is incompatible with neural connectors, MMIs, cloning, and foreign bodies.
+
+trait-hairball-cougher-name = Hairball Cougher
+trait-hairball-cougher-desc =
+    You can cough up hairballs.
+    Your co-workers are gonna hate you for that one...
 
 trait-lord-perstronzios-rage-name = Lord Perstronzio's Rage
 trait-lord-perstronzios-rage-desc =

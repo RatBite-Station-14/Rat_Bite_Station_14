@@ -20,7 +20,19 @@ public sealed class PctTrainingSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<PctTrainingComponent, PctTrainingFumbleEvent>(OnFumble);
         SubscribeLocalEvent<PctTrainingComponent, PctTrainingKnockoutEvent>(OnKnockout);
+    }
+
+    private void OnFumble(Entity<PctTrainingComponent> ent, ref PctTrainingFumbleEvent args)
+    {
+        _identityChat.TrySendInGameICMessageAsIdentity(
+            ent.Owner,
+            Loc.GetString(args.Speech),
+            InGameICChatType.Speak,
+            hideChat: false,
+            checkRadioPrefix: false,
+            ignoreActionBlocker: true);
     }
 
     private void OnKnockout(Entity<PctTrainingComponent> ent, ref PctTrainingKnockoutEvent args)
