@@ -11,6 +11,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Shared._Mono.Traits.Physical;
 using Robust.Shared.Map;
+using Content.Shared.Prying.Components;
 
 namespace Content.Server._Mono.Traits.Physical;
 
@@ -42,6 +43,7 @@ public sealed class PrybarProstheticsSystem : EntitySystem
     private void OnStartup(Entity<PrybarProstheticsComponent> ent, ref ComponentStartup args)
     {
         ReplaceArms(ent);
+        ApplyPryingOverrides(ent);
     }
 
     private void ReplaceArms(Entity<PrybarProstheticsComponent> ent)
@@ -57,6 +59,16 @@ public sealed class PrybarProstheticsSystem : EntitySystem
 
         ReplacePartIfPresent(torso, torsoPart, LeftArmSlot, JawsOfLifeLeftArm, LeftHandSlot, LeftHandCybernetic);
         ReplacePartIfPresent(torso, torsoPart, RightArmSlot, JawsOfLifeRightArm, RightHandSlot, RightHandCybernetic);
+    }
+
+    private void ApplyPryingOverrides(Entity<PrybarProstheticsComponent> ent)
+    {
+        if (!TryComp<PryingComponent>(ent, out var prying))
+            return;
+
+        prying.SpeedModifier = ent.Comp.PrySpeedModifier;
+        prying.PryPowered = ent.Comp.PryPowered;
+        Dirty(ent.Owner, prying);
     }
 
     private void ReplacePartIfPresent(

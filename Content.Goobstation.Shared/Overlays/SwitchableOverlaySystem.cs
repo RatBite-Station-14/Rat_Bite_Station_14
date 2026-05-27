@@ -109,6 +109,7 @@ public abstract class SwitchableOverlaySystem<TComp, TEvent> : EntitySystem // t
             DeactivateSound = component.DeactivateSound,
             ToggleAction = component.ToggleAction,
             LightRadius = component is ThermalVisionComponent thermal ? thermal.LightRadius : 0f,
+            VisionRadius = component is ThermalVisionComponent thermalVision ? thermalVision.VisionRadius : 0f,
             DrawOverlay = component.DrawOverlay,
             OverlayOpacity = component.OverlayOpacity,
         };
@@ -136,7 +137,10 @@ public abstract class SwitchableOverlaySystem<TComp, TEvent> : EntitySystem // t
         }
 
         if (component is ThermalVisionComponent thermal)
+        {
             thermal.LightRadius = state.LightRadius;
+            thermal.VisionRadius = state.VisionRadius;
+        }
 
         if (component.IsActive == state.IsActive)
             return;

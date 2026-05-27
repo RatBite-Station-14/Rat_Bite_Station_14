@@ -383,7 +383,7 @@ public abstract class SharedStrippableSystem : EntitySystem
 
         if (!stealth)
         {
-            var stripPopupType = subtle ? PopupType.Small : PopupType.Large;
+            var stripPopupType = subtle && IsThievingUiEnabled(user) ? PopupType.MediumWhite : PopupType.Large;
             if (IsStripHidden(slotDef, user))
                 _popupSystem.PopupEntity(Loc.GetString("strippable-component-alert-owner-hidden", ("slot", slot)), target, target, stripPopupType);
             else
@@ -626,7 +626,7 @@ public abstract class SharedStrippableSystem : EntitySystem
                                                         ("item", item)),
                                                         target,
                                                         target,
-                                                        subtle ? PopupType.Small : PopupType.Large);
+                                                        subtle && IsThievingUiEnabled(user.Owner) ? PopupType.MediumWhite : PopupType.Large);
         }
 
         var prefix = stealth ? "stealthily " : "";
@@ -646,6 +646,13 @@ public abstract class SharedStrippableSystem : EntitySystem
         };
 
         _doAfterSystem.TryStartDoAfter(doAfterArgs);
+    }
+
+    private bool IsThievingUiEnabled(EntityUid user)
+    {
+        return TryComp<ThievingComponent>(user, out var thieving)
+            && thieving.TraitGranted
+            && (thieving.ToggleSubtle ? thieving.Subtle : thieving.Stealthy);
     }
 
     public bool TryStartStripRemoveHand(

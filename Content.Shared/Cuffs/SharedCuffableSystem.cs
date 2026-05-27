@@ -116,6 +116,7 @@ using Content.Shared.Buckle.Components;
 using Content.Shared.CombatMode;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.Database;
+using Content.Shared._BRatbite.Cuffs;
 using Content.Shared._EinsteinEngines.Flight;
 using Content.Shared._Goobstation.Wizard.Mutate; // Goobstation
 using Content.Shared.DoAfter;
@@ -278,12 +279,16 @@ namespace Content.Shared.Cuffs
 
             _virtualItem.DeleteInHandsMatching(uid, args.Entity);
             UpdateCuffState(uid, component);
+            RaiseLocalEvent(args.Entity, new TemporaryCuffsRemovedEvent(uid));
         }
 
         private void OnCuffsInsertedIntoContainer(EntityUid uid, CuffableComponent component, ContainerModifiedMessage args)
         {
-            if (args.Container == component.Container)
-                UpdateCuffState(uid, component);
+            if (args.Container != component.Container)
+                return;
+
+            UpdateCuffState(uid, component);
+            RaiseLocalEvent(args.Entity, new TemporaryCuffsAppliedEvent(uid));
         }
 
         public void UpdateCuffState(EntityUid uid, CuffableComponent component)
@@ -413,6 +418,14 @@ namespace Content.Shared.Cuffs
             }
             else
             {
+                if (user == target &&
+                    args.DoAfter.CancelledTime is { } cancelledTime &&
+                    TryComp<TemporaryCuffsComponent>(used, out var temporaryCuffs) &&
+                    cancelledTime - args.DoAfter.StartTime >= temporaryCuffs.MinimumInterruptedStruggleTime)
+                {
+                    RaiseLocalEvent(used, new TemporaryCuffsStruggleInterruptedEvent(target));
+                }
+
                 _popup.PopupClient(Loc.GetString("cuffable-component-remove-cuffs-fail-message"), user, user);
             }
         }

@@ -8,13 +8,13 @@ namespace Content.Shared._BRatbite.Traits;
 public sealed partial class MarathonerComponent : Component
 {
     [DataField]
-    public float StaminaBonus = 50f;
+    public float StaminaBonus = 25f;
 
     [DataField]
-    public float WalkSpeedMultiplier = 1.05f;
+    public float WalkSpeedMultiplier = 1f;
 
     [DataField]
-    public float SprintSpeedMultiplier = 1.12f;
+    public float SprintSpeedMultiplier = 1.05f;
 
     [DataField]
     public float StandUpTimeMultiplier = 0.85f;

@@ -239,6 +239,10 @@ namespace Content.Shared.Popups
         Small,
         SmallCaution,
         /// <summary>
+        ///     Medium-size neutral popup drawn in white, without a chat-log copy.
+        /// </summary>
+        MediumWhite,
+        /// <summary>
         ///     Medium popups should be used for actions which are not spammable but may not be particularly important.
         /// </summary>
         Medium,

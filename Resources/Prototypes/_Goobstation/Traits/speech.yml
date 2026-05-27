@@ -52,6 +52,17 @@
   - type: MedievalAccent
 
 - type: trait
+  id: OwOAccent
+  name: trait-owo-accent-name
+  description: trait-owo-accent-desc
+  category: SpeechTraits
+  cost: 1
+  includedSpecies:
+  - Tajaran
+  components:
+  - type: OwOAccent
+
+- type: trait
   id: NewYorkAccent
   name: trait-newyork-name
   description: trait-newyork-desc

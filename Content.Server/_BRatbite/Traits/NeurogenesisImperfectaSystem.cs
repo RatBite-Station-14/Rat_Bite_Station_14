@@ -5,9 +5,11 @@
 using Content.Server.Body.Components;
 using Content.Shared._BRatbite.Traits;
 using Content.Shared._Shitmed.Body.Organ;
+using Content.Shared.Body.Events;
 using Content.Shared.Body.Organ;
 using Content.Shared.Body.Systems;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Popups;
 using Content.Shared.Silicons.Borgs.Components;
 
 namespace Content.Server._BRatbite.Traits;
@@ -15,6 +17,7 @@ namespace Content.Server._BRatbite.Traits;
 public sealed class NeurogenesisImperfectaSystem : EntitySystem
 {
     [Dependency] private readonly SharedBodySystem _body = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {
@@ -22,6 +25,7 @@ public sealed class NeurogenesisImperfectaSystem : EntitySystem
 
         SubscribeLocalEvent<NeurogenesisImperfectaComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<BrainComponent, OrganComponentsModifyEvent>(OnBrainOrganModify);
+        SubscribeLocalEvent<NeurogenesisImperfectaBrainComponent, BeforeOrganInsertedEvent>(OnBeforeBrainInserted);
         SubscribeLocalEvent<NeurogenesisImperfectaBrainComponent, ItemSlotInsertAttemptEvent>(OnBrainInsertAttempt);
     }
 
@@ -32,7 +36,9 @@ public sealed class NeurogenesisImperfectaSystem : EntitySystem
 
         foreach (var brain in brains)
         {
-            EnsureComp<NeurogenesisImperfectaBrainComponent>(brain.Owner);
+            var brainComp = EnsureComp<NeurogenesisImperfectaBrainComponent>(brain.Owner);
+            brainComp.OriginalBody ??= ent.Owner;
+            Dirty(brain.Owner, brainComp);
         }
     }
 
@@ -43,6 +49,17 @@ public sealed class NeurogenesisImperfectaSystem : EntitySystem
 
         if (args.Add && !HasComp<NeurogenesisImperfectaComponent>(args.Body))
             EnsureComp<DebrainedComponent>(args.Body);
+    }
+
+    private void OnBeforeBrainInserted(Entity<NeurogenesisImperfectaBrainComponent> ent, ref BeforeOrganInsertedEvent args)
+    {
+        if (args.Body == ent.Comp.OriginalBody)
+            return;
+
+        args.Cancelled = true;
+
+        if (args.User is { } user)
+            _popup.PopupEntity(Loc.GetString("neurogenesis-imperfecta-brain-incompatible"), user, user, PopupType.MediumCaution);
     }
 
     private void OnBrainInsertAttempt(Entity<NeurogenesisImperfectaBrainComponent> ent, ref ItemSlotInsertAttemptEvent args)

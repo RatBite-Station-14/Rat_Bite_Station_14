@@ -8,4 +8,11 @@ namespace Content.Shared._Mono.Traits.Physical;
 /// Marks that this entity should have bionic arms on spawn.
 /// </summary>
 [RegisterComponent]
-public sealed partial class PrybarProstheticsComponent : Component;
+public sealed partial class PrybarProstheticsComponent : Component
+{
+    [DataField]
+    public float PrySpeedModifier = 1f;
+
+    [DataField]
+    public bool PryPowered;
+}

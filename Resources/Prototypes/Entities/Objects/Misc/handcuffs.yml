@@ -220,10 +220,8 @@
   parent: Cablecuffs
   categories: [ HideSpawnMenu ]
   components:
-  - type: TimedDespawn
+  - type: TemporaryCuffs
     lifetime: 30
-  - type: SpawnOnDespawn
-    prototype: CablecuffsBroken
 
 - type: entity
   id: BaseHandcuffsBroken

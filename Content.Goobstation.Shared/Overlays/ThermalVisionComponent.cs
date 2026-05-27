@@ -23,6 +23,12 @@ public sealed partial class ThermalVisionComponent : SwitchableVisionOverlayComp
     [DataField]
     public float LightRadius = 2f;
 
+    /// <summary>
+    /// Maximum distance at which thermals can reveal entities. A value of 0 means unlimited range.
+    /// </summary>
+    [DataField]
+    public float VisionRadius;
+
     [DataField]
     public string? ThermalShader = "ThermalVision";
 }

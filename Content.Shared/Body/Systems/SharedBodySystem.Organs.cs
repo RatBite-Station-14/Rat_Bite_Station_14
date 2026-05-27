@@ -232,7 +232,8 @@ public partial class SharedBodySystem
         EntityUid organId,
         string slotId,
         BodyPartComponent? part = null,
-        OrganComponent? organ = null)
+        OrganComponent? organ = null,
+        EntityUid? user = null)
     {
         if (!Resolve(organId, ref organ, logMissing: false)
             || !Resolve(partId, ref part, logMissing: false)
@@ -240,6 +241,11 @@ public partial class SharedBodySystem
         {
             return false;
         }
+
+        var ev = new BeforeOrganInsertedEvent(partId, part.Body, slotId, user);
+        RaiseLocalEvent(organId, ref ev);
+        if (ev.Cancelled)
+            return false;
 
         var containerId = GetOrganContainerId(slotId);
 

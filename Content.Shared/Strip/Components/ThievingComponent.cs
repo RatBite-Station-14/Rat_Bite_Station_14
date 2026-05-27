@@ -57,6 +57,12 @@ public sealed partial class ThievingComponent : Component
     public bool IdentifyHidden;
 
     /// <summary>
+    /// Marks thieving granted by the character trait, as opposed to thief role or equipment sources.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool TraitGranted;
+
+    /// <summary>
     /// Variable pointing at the Alert modal
     /// </summary>
     [DataField]

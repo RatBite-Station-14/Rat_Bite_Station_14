@@ -68,6 +68,9 @@ public sealed class PopupUIController : UIController, IOnStateEntered<GameplaySt
             case PopupType.SmallCaution:
                 color = Color.Red;
                 break;
+            case PopupType.MediumWhite:
+                font = _mediumFont;
+                break;
             case PopupType.Medium:
                 font = _mediumFont;
                 color = Color.LightGray;

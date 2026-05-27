@@ -87,7 +87,7 @@
   name: trait-name-SurgeryTraining
   description: trait-description-SurgeryTraining
   category: Mental
-  cost: 3
+  cost: 5
   components:
   - type: SurgerySpeedModifier
     speedModifier: 1.6

@@ -5,4 +5,8 @@
 namespace Content.Shared._BRatbite.Traits;
 
 [RegisterComponent]
-public sealed partial class NeurogenesisImperfectaBrainComponent : Component;
+public sealed partial class NeurogenesisImperfectaBrainComponent : Component
+{
+    [DataField]
+    public EntityUid? OriginalBody;
+}

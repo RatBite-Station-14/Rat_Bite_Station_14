@@ -139,6 +139,7 @@
     activateSound: null
     deactivateSound: null
     lightRadius: 25
+    visionRadius: 1
 
 - type: entity
   save: false

@@ -7,9 +7,11 @@
   name: trait-prybar-prosthetics-name
   description: trait-prybar-prosthetics-desc
   category: Physical
-  cost: 2
+  cost: 7
   components:
   - type: PrybarProsthetics
+    prySpeedModifier: 1
+    pryPowered: false
 
 - type: trait
   id: Vigor
@@ -114,17 +116,20 @@
   - type: Thieving
     stealthy: false
     toggleSubtle: true
-    timeMultiplier: 0.5
+    timeMultiplier: 0.6
     identifyHidden: true
+    traitGranted: true
 
-- type: trait
-  id: BionicLegs
-  name: trait-bionic-legs-name
-  description: trait-bionic-legs-desc
-  category: Physical
-  cost: 8
-  components:
-  - type: BionicLegs
+#- type: trait # Ratbite, removed this because its dumb strong.
+#  id: BionicLegs
+#  name: trait-bionic-legs-name
+#  description: trait-bionic-legs-desc
+#  category: Physical
+#  cost: 14
+#  components:
+#  - type: BionicLegs
+#      walkSpeed: 2.1875 # add your slower values
+#    sprintSpeed: 3.6225 # add your slower values
 
 - type: trait
   id: OsteogenesisImperfecta
@@ -252,7 +257,7 @@
   name: trait-redshirt-name
   description: trait-redshirt-desc
   category: Mental
-  cost: -8
+  cost: -3 # Ratbite nerf, encourages antisocial gameplay at -8, crazy.
   mutuallyExclusiveTraits:
   - WillToLive
   speciesBlacklist:
@@ -305,6 +310,8 @@
   description: trait-dermal-armor-desc
   category: Physical
   cost: 6
+  speciesBlacklist:
+  - Gingerbread
   components:
   - type: DamageProtectionBuff
     modifiers:
@@ -316,7 +323,7 @@
           Blunt: 3.5
           Slash: 3.5
           Piercing: 3.5
-          
+
 - type: trait
   id: HardenedLymphocytes
   name: trait-hardened-lymphocytes-name
@@ -342,6 +349,8 @@
   description: trait-temperature-tolerance-desc
   category: Physical
   cost: 1
+  speciesBlacklist:
+  - Resomi
   components:
   - type: TemperatureProtection
     coolingCoefficient: 0.6
@@ -370,7 +379,7 @@
   name: trait-platelet-factories-name
   description: trait-platelet-factories-desc
   category: Physical
-  cost: 10
+  cost: 14
   mutuallyExclusiveTraits:
   - Hemophilia
   speciesBlacklist:
@@ -380,12 +389,12 @@
     - BorgChassis
   components:
   - type: PlateletFactories
-    intervalSeconds: 1
+    intervalSeconds: 2
     damagePerInterval:
       groups:
-        Brute: -1.5
-        Burn: -2
-    critMultiplier: .25
+        Brute: -0.5
+        Burn: -0.5
+    critMultiplier: .10
 
 - type: trait
   id: NaniteRepairDrones
@@ -410,6 +419,8 @@
   - SlimePerson
   - Felinid
   - Tajaran
+  - Scurret
+  - Gingerbread
   blacklist:
     components:
     - BorgChassis

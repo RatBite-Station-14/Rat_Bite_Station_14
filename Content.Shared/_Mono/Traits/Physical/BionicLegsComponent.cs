@@ -5,4 +5,11 @@
 namespace Content.Shared._Mono.Traits.Physical;
 
 [RegisterComponent]
-public sealed partial class BionicLegsComponent : Component;
+public sealed partial class BionicLegsComponent : Component
+{
+    [DataField]
+    public float? WalkSpeed;
+
+    [DataField]
+    public float? SprintSpeed;
+}

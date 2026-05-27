@@ -16,7 +16,7 @@
   name: trait-pct-training-name
   description: trait-pct-training-desc
   category: Physical
-  cost: 5
+  cost: 6
   mutuallyExclusiveTraits:
   - PaciFist
   - StrikingCalluses
@@ -33,7 +33,7 @@
   name: trait-paci-fist-name
   description: trait-paci-fist-desc
   category: Physical
-  cost: 5
+  cost: 16
   requiredTraits:
   - Pacifist
   mutuallyExclusiveTraits:
@@ -51,11 +51,29 @@
   - type: InstantChokeholdOnStaminaCrit
 
 - type: trait
+  id: MartialArtist
+  name: trait-martial-artist-name
+  description: trait-martial-artist-desc
+  category: Physical
+  cost: 5
+  mutuallyExclusiveTraits:
+  - PctTraining
+  - PaciFist
+  - StrikingCalluses
+  blacklist:
+    components:
+    - MartialArtsKnowledge
+    - KravMaga
+    - BorgChassis
+  components:
+  - type: MartialArtist
+
+- type: trait
   id: Marathoner
   name: trait-marathoner-name
   description: trait-marathoner-desc
   category: Physical
-  cost: 10
+  cost: 14
   mutuallyExclusiveTraits:
   - Vigor
   - Lethargy
@@ -90,7 +108,7 @@
   name: trait-neurogenesis-imperfecta-name
   description: trait-neurogenesis-imperfecta-desc
   category: Physical
-  cost: -10
+  cost: -3
   speciesBlacklist:
   - IPC
   blacklist:
@@ -99,8 +117,6 @@
   components:
   - type: NeurogenesisImperfecta
   - type: Uncloneable
-  - type: Unrevivable
-    cloneable: false
 
 - type: trait
   id: HairballCougher

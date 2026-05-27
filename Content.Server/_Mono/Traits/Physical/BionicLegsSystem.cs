@@ -10,6 +10,7 @@ using Robust.Shared.Prototypes;
 using System.Linq;
 using System.Numerics;
 using Content.Shared._Mono.Traits.Physical;
+using Content.Shared.Movement.Components;
 using Robust.Shared.Map;
 using Content.Shared.Standing;
 
@@ -58,10 +59,12 @@ public sealed class BionicLegsSystem : EntitySystem
             return;
 
         if (TryFindPartWithSlot(torso, torsoPart, LeftLegSlot, out var leftLegParent, out var leftLegParentPart))
-            ReplacePartIfPresent(leftLegParent, leftLegParentPart, LeftLegSlot, SpeedLeftLeg, LeftFootSlot, LeftFootCybernetic);
+            ReplacePartIfPresent(ent.Comp, leftLegParent, leftLegParentPart, LeftLegSlot, SpeedLeftLeg, LeftFootSlot, LeftFootCybernetic);
 
         if (TryFindPartWithSlot(torso, torsoPart, RightLegSlot, out var rightLegParent, out var rightLegParentPart))
-            ReplacePartIfPresent(rightLegParent, rightLegParentPart, RightLegSlot, SpeedRightLeg, RightFootSlot, RightFootCybernetic);
+            ReplacePartIfPresent(ent.Comp, rightLegParent, rightLegParentPart, RightLegSlot, SpeedRightLeg, RightFootSlot, RightFootCybernetic);
+
+        _bodySystem.UpdateMovementSpeed(ent.Owner, body);
     }
 
     private bool TryFindPartWithSlot(
@@ -101,6 +104,7 @@ public sealed class BionicLegsSystem : EntitySystem
     }
 
     private void ReplacePartIfPresent(
+        BionicLegsComponent component,
         EntityUid parentEntity,
         BodyPartComponent parentPart,
         string slotId,
@@ -146,7 +150,22 @@ public sealed class BionicLegsSystem : EntitySystem
             return;
         }
 
+        ApplySpeedOverrides(newPart, component);
         AttachChildPart(newPart, newPartComp, childSlotId, childProtoId);
+    }
+
+    private void ApplySpeedOverrides(EntityUid leg, BionicLegsComponent component)
+    {
+        if (!TryComp<MovementBodyPartComponent>(leg, out var movement))
+            return;
+
+        if (component.WalkSpeed is { } walkSpeed)
+            movement.WalkSpeed = walkSpeed;
+
+        if (component.SprintSpeed is { } sprintSpeed)
+            movement.SprintSpeed = sprintSpeed;
+
+        Dirty(leg, movement);
     }
 
     private void AttachChildPart(EntityUid parentEntity, BodyPartComponent parentPart, string slotId, EntProtoId partProtoId)
