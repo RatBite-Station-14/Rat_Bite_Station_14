@@ -370,7 +370,6 @@
   color: "#215263"
   metabolisms:
     Medicine:
-      metabolismRate: 0.15 # Ratbite
       effects:
       - !type:SuppressPain
         amount: 2
@@ -699,6 +698,7 @@
   color: "#bf3d19"
   metabolisms:
     Medicine:
+      metabolismRate: 0.15 # Ratbite
       effects:
       - !type:HealthChange
         damage:
