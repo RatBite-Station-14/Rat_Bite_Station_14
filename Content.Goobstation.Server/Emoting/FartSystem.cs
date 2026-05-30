@@ -27,6 +27,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Timer = Robust.Shared.Timing.Timer;
+using Content.Shared._BRatbite.Traits;
 
 namespace Content.Goobstation.Server.Emoting;
 
@@ -222,7 +223,10 @@ public sealed partial class FartSystem : SharedFartSystem
     /// </summary>
     private void OnBibleFart(Entity<FartComponent> ent, ref PostFartEvent args)
     {
-        foreach (var near in _lookup.GetEntitiesInRange(ent, 0.4f, LookupFlags.Sundries | LookupFlags.Dynamic)){
+        // Ratbite: Atheist don't believe in the bible
+        if (HasComp<AtheistComponent>(ent)) return;
+        foreach (var near in _lookup.GetEntitiesInRange(ent, 0.4f, LookupFlags.Sundries | LookupFlags.Dynamic))
+        {
 
             if (!HasComp<BibleComponent>(near))
                 continue;
