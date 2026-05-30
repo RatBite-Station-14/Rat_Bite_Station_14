@@ -89,6 +89,7 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Utility;
 using Content.Shared.Paper;
+using Content.Shared._BRatbite.Paper;
 using static Content.Shared.Paper.PaperComponent;
 
 namespace Content.Client.Paper.UI;
@@ -113,6 +114,7 @@ public sealed class PaperBoundUserInterface : BoundUserInterface
         if (EntMan.TryGetComponent<PaperComponent>(Owner, out var paper))
         {
             _window.MaxInputLength = paper.ContentSize;
+            _window.MaxDrawingPoints = paper.MaxDrawingPoints;
         }
         if (EntMan.TryGetComponent<PaperVisualsComponent>(Owner, out var visuals))
         {
@@ -126,9 +128,9 @@ public sealed class PaperBoundUserInterface : BoundUserInterface
         _window?.Populate((PaperBoundUserInterfaceState) state);
     }
 
-    private void InputOnTextEntered(string text)
+    private void InputOnTextEntered(string text, List<PaperStroke> strokes)
     {
-        SendMessage(new PaperInputTextMessage(text));
+        SendMessage(new PaperInputTextMessage(text, strokes));
 
         if (_window != null)
         {

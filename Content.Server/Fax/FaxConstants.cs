@@ -50,6 +50,9 @@ public static class FaxConstants
     public const string FaxSyndicateData = "fax_data_i_am_syndicate";
     public const string FaxPaperLockedData = "fax_data_locked";
 
+    // Ratbite
+    public const string FaxPaperStrokesData = "fax_data_strokes";
+
     // Goobstation
     public const string FaxEntitySentData = "fax_data_entity_sent";
     public const string FaxWorkCrossGridData = "fax_data_work_crossgrid"; // used for sending entities
