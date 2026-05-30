@@ -108,7 +108,7 @@ namespace Content.Server.Nuke
         {
             base.Initialize();
             SubscribeLocalEvent<NukeCodePaperComponent, MapInitEvent>(OnMapInit,
-                after: new []{ typeof(NukeLabelSystem) });
+                after: new[] { typeof(NukeLabelSystem) });
         }
 
         private void OnMapInit(EntityUid uid, NukeCodePaperComponent component, MapInitEvent args)
@@ -150,6 +150,7 @@ namespace Content.Server.Nuke
 
                 var printout = new FaxPrintout(
                     paperContent,
+            new(),
                     Loc.GetString("nuke-codes-fax-paper-name"),
                     null,
                     null,
@@ -215,7 +216,7 @@ namespace Content.Server.Nuke
             }
 
             if (!codesMessage.IsEmpty)
-                nukeCode = Loc.GetString("nuke-codes-message")+codesMessage;
+                nukeCode = Loc.GetString("nuke-codes-message") + codesMessage;
             return !codesMessage.IsEmpty;
         }
     }

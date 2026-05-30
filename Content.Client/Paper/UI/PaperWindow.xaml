@@ -23,7 +23,11 @@ SPDX-License-Identifier: AGPL-3.0-or-later
             <TextureButton Name="CloseButton" StyleClasses="windowCloseButton"/>
         </PanelContainer>
         <PanelContainer Name="PaperBackground" StyleClasses="PaperDefaultBorder" VerticalExpand="True" HorizontalExpand="True">
-            <ScrollContainer Name="ScrollingContents" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="False">
+
+          <ScrollContainer Name="ScrollingContents" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="False">
+	    	      <Control VerticalExpand="True" HorizontalExpand="True">
+
+
                 <PanelContainer Name="PaperContent" VerticalExpand="True" HorizontalExpand="True" MaxWidth="600">
                     <BoxContainer Orientation="Vertical" VerticalAlignment="Stretch">
                         <TextureButton Name="HeaderImage" HorizontalAlignment="Center" VerticalAlignment="Top" MouseFilter="Ignore"/>
@@ -42,11 +46,21 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                     <paper:StampCollection Name="StampDisplay" VerticalAlignment="Bottom" Margin="6"/>
 
                 </PanelContainer>
+		<paper:DrawWindow Name="DrawWindow" VerticalExpand="True" HorizontalExpand="True" MaxWidth="600"/>
+		</Control>
             </ScrollContainer>
         </PanelContainer>
+
         <!-- Bottom buttons for editing -->
-        <BoxContainer Name="EditButtons" Orientation="Horizontal" HorizontalAlignment="Right" Margin="6">
+	<BoxContainer Name="EditButtons" Orientation="Vertical">
+          <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" Margin="3">
+	    <Button Name="DrawButton" ToggleMode="True" />
             <Button Name="SaveButton" />
-        </BoxContainer>
+          </BoxContainer>
+	  <BoxContainer Name="DrawingButtons" Orientation="Horizontal" HorizontalAlignment="Right" Margin="6">
+	    <Button Name="ClearDrawing" />
+	    <Button Name="UndoDrawing" />
+          </BoxContainer>
+	</BoxContainer>
     </BoxContainer>
 </paper:PaperWindow>

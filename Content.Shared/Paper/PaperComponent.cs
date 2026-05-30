@@ -87,6 +87,7 @@
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
+using Content.Shared._BRatbite.Paper;
 
 namespace Content.Shared.Paper;
 
@@ -124,12 +125,14 @@ public sealed partial class PaperComponent : Component
         public readonly string Text;
         public readonly List<StampDisplayInfo> StampedBy;
         public readonly PaperAction Mode;
+        public readonly List<PaperStroke> Strokes; // Ratbite: paper drawing
 
-        public PaperBoundUserInterfaceState(string text, List<StampDisplayInfo> stampedBy, PaperAction mode = PaperAction.Read)
+        public PaperBoundUserInterfaceState(string text, List<StampDisplayInfo> stampedBy, List<PaperStroke> strokes, PaperAction mode = PaperAction.Read)
         {
             Text = text;
             StampedBy = stampedBy;
             Mode = mode;
+            Strokes = strokes;
         }
     }
 
@@ -137,10 +140,12 @@ public sealed partial class PaperComponent : Component
     public sealed class PaperInputTextMessage : BoundUserInterfaceMessage
     {
         public readonly string Text;
+        public readonly List<PaperStroke> Strokes; // Ratbite: paper drawing
 
-        public PaperInputTextMessage(string text)
+        public PaperInputTextMessage(string text, List<PaperStroke> strokes)
         {
             Text = text;
+            Strokes = strokes;
         }
     }
 
@@ -170,4 +175,13 @@ public sealed partial class PaperComponent : Component
         Blank,
         Written
     }
+
+    // Ratbite change: Drawings
+    [DataField("strokes"), AutoNetworkedField]
+    public List<PaperStroke> Strokes { get; set; } = new();
+
+    // Worst case scenario this is about 20KB of data, should be manageable
+    // (500 strokes with 2 points each, real drawings will have less)
+    [DataField]
+    public int MaxDrawingPoints { get; set; } = 2000;
 }
