@@ -33,7 +33,7 @@
 - type: gameMap
   id: OasisHighPop
   mapName: 'Oasis'
-  mapPath: /Maps/_Goobstation/oasis.yml
+  mapPath: /Maps/_BRatbite/Ratbite_Supported/oasis.yml
   minPlayers: 50
   stations:
     Oasis:

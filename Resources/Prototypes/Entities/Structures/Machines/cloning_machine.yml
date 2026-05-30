@@ -91,6 +91,7 @@
   - type: Machine
     board: CloningPodMachineCircuitboard
   - type: MaterialStorage
+    addEjectVerb: true # Ratbite: allow ejection of biomass
     materialWhiteList:
     - Biomass
   - type: WiresPanel

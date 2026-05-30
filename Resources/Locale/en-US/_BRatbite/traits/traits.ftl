@@ -49,3 +49,6 @@ trait-hairball-cougher-desc =
 trait-lord-perstronzios-rage-name = Lord Perstronzio's Rage
 trait-lord-perstronzios-rage-desc =
     You've achieved the highest levels of Mald-estending. Nothing can stop you.
+
+trait-atheist-name = Atheist
+trait-atheist-desc = You do not believe in Gods

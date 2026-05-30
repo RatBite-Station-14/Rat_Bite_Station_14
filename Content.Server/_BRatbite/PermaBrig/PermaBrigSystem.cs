@@ -17,6 +17,7 @@ using Content.Shared.Players;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.Security.Components;
+using Content.Shared._BRatbite.PermaBrig;
 using Content.Server.Traits;
 using Robust.Server.Audio;
 using Robust.Server.Player;
@@ -183,6 +184,7 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
         var mob = mobMaybe!.Value;
 
         var brigTime = _permaBrigManager.GetBrigTime(player.UserId);
+        var expireTime = TimeSpan.FromMinutes(brigTime) + Timing.CurTime;
         if (_inventory.TryGetSlotEntity(mob, "id", out var idUid))
         {
             var cardId = idUid.Value;
@@ -195,10 +197,11 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
                     expire.ExpireChannel = "Security";
                     expire.ExpireMessage = "perma-prisoner-release";
                 }
-                Dirty(cardId,card);
+                Dirty(cardId, card);
             }
-            _idCard.SetExpireTime(cardId, TimeSpan.FromMinutes(brigTime) + Timing.CurTime);
+            _idCard.SetExpireTime(cardId, expireTime);
         }
+        AddComp(mob, new PrisonerComponent { PermaBrigSentenceExpireTime = expireTime });
 
         _mind.TransferTo(newMind, mob);
         _admin.UpdatePlayerList(player);
@@ -230,7 +233,7 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
             character);
 
         _stationRecords.OnPlayerSpawn(aev);
-	_trait.OnPlayerSpawnComplete(aev);
+        _trait.OnPlayerSpawnComplete(aev);
     }
 
     // private void OnRoundEnd(RoundEndMessageEvent ev) Auto decrease of perma sentence not yet implemented

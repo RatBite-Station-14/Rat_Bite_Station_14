@@ -141,3 +141,12 @@
   cost: 10
   components:
   - type: LordPerstronziosRage
+
+- type: trait
+  id: Atheist
+  name: trait-atheist-name
+  description: trait-atheist-desc
+  category: Mental
+  cost: 0
+  components:
+  - type: Atheist
