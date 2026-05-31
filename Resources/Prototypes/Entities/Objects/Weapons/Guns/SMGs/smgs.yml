@@ -94,6 +94,8 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/smg.ogg
     defaultDirection: 1, 0
+  - type: LoudGun
+    staminaDamage: 15
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/Weapons/Guns/Cock/smg_cock.ogg

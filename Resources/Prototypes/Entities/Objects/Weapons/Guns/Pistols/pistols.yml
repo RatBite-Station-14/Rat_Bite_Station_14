@@ -135,6 +135,8 @@
       - FullAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+  - type: LoudGun
+    staminaDamage: 10
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/Weapons/Guns/Cock/pistol_cock.ogg
@@ -233,6 +235,8 @@
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
+  - type: LoudGun
+    staminaDamage: 0
   - type: StaticPrice
     price: 1000
 

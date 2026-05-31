@@ -155,6 +155,9 @@
       ballistic-ammo: !type:Container
         ents: []
   - type: GunExecutionBlacklist # Goobstation
+  - type: LoudGun
+    staminaDamage: 100
+
 
 - type: entity
   name: china lake

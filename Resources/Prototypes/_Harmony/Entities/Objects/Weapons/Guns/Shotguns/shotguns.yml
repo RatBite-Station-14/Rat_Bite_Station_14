@@ -20,5 +20,7 @@
         volume: -3
     fireRate: 1.5
     selectedMode: SemiAuto
+  - type: LoudGun
+    staminaDamage: 50
   - type: GunSpreadModifier
     spread: 1.4

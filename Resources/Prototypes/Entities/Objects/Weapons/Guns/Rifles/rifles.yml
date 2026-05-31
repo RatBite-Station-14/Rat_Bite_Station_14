@@ -109,6 +109,8 @@
       - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/batrifle.ogg
+  - type: LoudGun
+    staminaDamage: 20
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/Weapons/Guns/Cock/sf_rifle_cock.ogg

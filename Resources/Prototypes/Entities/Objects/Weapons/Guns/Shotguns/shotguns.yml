@@ -99,6 +99,8 @@
       path: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/empty.ogg
+  - type: LoudGun
+    staminaDamage: 50
   - type: BallisticAmmoProvider
     whitelist:
       tags:
@@ -175,6 +177,8 @@
       path: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/empty.ogg
+  - type: LoudGun
+    staminaDamage: 50
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -223,6 +227,8 @@
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     fireRate: 3
+  - type: LoudGun
+    staminaDamage: 50
   - type: GunSpreadModifier
     spread: 0.6
   - type: BallisticAmmoProvider
