@@ -1,0 +1,22 @@
+
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformGorillaPrisonerJumpsuit
+  name: Gorilla Prisoner Jumpsuit
+  description: A garbled mess of durathread, a result of attempted gorilla pacification
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Uniforms/gorillaprisonerjumpsuit.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Uniforms/gorillaprisonerjumpsuit.rsi
+  - type: Tag
+    tags:
+    - PermaAscendedAllowed #Ratbite
+    - PrisonUniform
+  - type: SuitSensor
+    controlsLocked: true
+    randomMode: false
+    mode: SensorCords
+  - type: Unremoveable # doing it for now Cause im LAZY + Gorillas are designed to be prisoner only or sum
+
+
