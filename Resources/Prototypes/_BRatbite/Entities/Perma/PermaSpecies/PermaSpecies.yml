@@ -66,9 +66,7 @@
   - type: PlayerToolModifier
     pryTimeMultiplier: 0.3
   - type: Carriable
-    freeHandsRequired: 4 # easiest way to make them uncarriable without removing carriable from base mob
-  - type: DashAction # ratbite - dark souls gorilla
-    actionProto: ActionDashMoth
+    freeHandsRequired: 4 # easiest way to make them uncarriable without removing carriable from base mob - Abu|this lets HARMPACK people do it btw, which is funny and WILL be kept - eirinnn
   - type: Fixtures #Make gorillas THICC
     fixtures: # TODO: This needs a second fixture just for mob collisions.
       fix1:
