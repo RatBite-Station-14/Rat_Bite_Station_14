@@ -15,11 +15,17 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Heretic;
+using Content.Shared._Shitcode.Heretic.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Physics;
+using Content.Shared.Polymorph;
 using Content.Server.Atmos.Components;
+using Content.Server.Polymorph.Components;
 using Robust.Shared.Map.Components;
 using Robust.Server.GameObjects;
+using Robust.Shared.Physics;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,12 +42,17 @@ public sealed partial class HereticAbilitySystem
     [Dependency] private readonly MapSystem _map = default!;
     [Dependency] private readonly TransformSystem _xform = default!;
 
+    private EntityQuery<PhysicsComponent> _physicsQuery;
+
     protected override void SubscribeAsh()
     {
         base.SubscribeAsh();
 
+        _physicsQuery = GetEntityQuery<PhysicsComponent>();
+
         SubscribeLocalEvent<HereticComponent, EventHereticAshenShift>(OnJaunt);
         SubscribeLocalEvent<GhoulComponent, EventHereticAshenShift>(OnJauntGhoul);
+        SubscribeLocalEvent<AshJauntComponent, PolymorphedEvent>(OnAshJauntPolymorphed);
 
         SubscribeLocalEvent<HereticComponent, EventHereticNightwatcherRebirth>(OnNWRebirth);
         SubscribeLocalEvent<HereticComponent, EventHereticFlames>(OnFlames);
@@ -68,6 +79,62 @@ public sealed partial class HereticAbilitySystem
         var urist = _poly.PolymorphEntity(ent, proto);
         if (urist == null)
             return false;
+
+        return true;
+    }
+
+    private void OnAshJauntPolymorphed(Entity<AshJauntComponent> ent, ref PolymorphedEvent args)
+    {
+        if (!args.IsRevert)
+            return;
+
+        Spawn("PolymorphAshJauntEndAnimation", Transform(args.NewEntity).Coordinates);
+        MoveJauntReturnOutOfSolid(args.NewEntity);
+    }
+
+    private void MoveJauntReturnOutOfSolid(EntityUid uid)
+    {
+        var mapCoords = _xform.GetMapCoordinates(uid);
+        if (!_mapMan.TryFindGridAt(mapCoords, out var gridUid, out var grid))
+            return;
+
+        var origin = _map.TileIndicesFor(gridUid, grid, mapCoords);
+        if (IsSafeJauntReturnTile(gridUid, grid, origin))
+            return;
+
+        const int maxRange = 3;
+        for (var range = 1; range <= maxRange; range++)
+        {
+            for (var x = -range; x <= range; x++)
+            {
+                for (var y = -range; y <= range; y++)
+                {
+                    if (Math.Abs(x) != range && Math.Abs(y) != range)
+                        continue;
+
+                    var tile = origin + new Vector2i(x, y);
+                    if (!IsSafeJauntReturnTile(gridUid, grid, tile))
+                        continue;
+
+                    _xform.SetMapCoordinates(uid, _map.GridTileToWorld(gridUid, grid, tile));
+                    return;
+                }
+            }
+        }
+    }
+
+    private bool IsSafeJauntReturnTile(EntityUid gridUid, MapGridComponent grid, Vector2i tile)
+    {
+        foreach (var entity in _map.GetAnchoredEntities(gridUid, grid, tile))
+        {
+            if (!_physicsQuery.TryGetComponent(entity, out var body))
+                continue;
+
+            if (body.BodyType == BodyType.Static &&
+                body.Hard &&
+                (body.CollisionLayer & (int) CollisionGroup.Impassable) != 0)
+                return false;
+        }
 
         return true;
     }

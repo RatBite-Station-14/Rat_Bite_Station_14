@@ -94,6 +94,10 @@
       Unsexed: MaleFelinid
   #- type: OwOAccent this is just like that book by jorjorwell... 1984
   - type: Felinid
+  - type: NightVision
+    color: "#ABCDEF"
+    activateSound: null
+    deactivateSound: null
   - type: NoShoesSilentFootsteps
   - type: Tag
     tags:

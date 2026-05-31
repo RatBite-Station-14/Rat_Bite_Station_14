@@ -1,0 +1,13 @@
+- type: listing
+  id: UplinkTCminer
+  name: uplink-tcminer-name
+  description: uplink-tcminer-desc
+  icon: { sprite: _Goobstation/Structures/Machines/tc_printer.rsi, state: display }
+  productEntity: TCminerFlatpack
+  cost:
+    Telecrystal: 100
+  categories:
+  - UplinkDisruption
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

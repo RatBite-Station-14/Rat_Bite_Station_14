@@ -1,0 +1,17 @@
+- type: entity
+  id: LockerMindshielded
+  parent: LockerBaseSecure
+  abstract: true
+  components:
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 900
+          behaviors:
+            - !type:DoActsBehavior
+              acts: ["Destruction"]
+            - !type:RadioBehavior
+              radioMessage: "locker-mindshield-destroy"
+              radioChannel: "Security"
+  

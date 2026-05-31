@@ -6,6 +6,7 @@
 # SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
+# SPDX-FileCopyrightText: 2026 Sprinkle <40203084+lnn0q@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -131,10 +132,14 @@
     - AnomalyHost
   - type: Sprinter
     staminaDrainRate: 12 # Ratbite
-  - type: NightVision
+  - type: ThermalVision
+    thermalShader: null
     color: "#ABCDEF"
+    drawOverlay: false
     activateSound: null
     deactivateSound: null
+    lightRadius: 25
+    visionRadius: 1
 
 - type: entity
   save: false

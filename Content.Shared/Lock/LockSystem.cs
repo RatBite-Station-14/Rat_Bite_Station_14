@@ -100,6 +100,7 @@ using Content.Shared.UserInterface;
 using Content.Shared.Verbs;
 using Content.Shared.Wires;
 using Content.Shared.Item.ItemToggle.Components;
+using Content.Shared.Mindshield.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Utility;
@@ -362,6 +363,13 @@ public sealed class LockSystem : EntitySystem
         // Not having an AccessComponent means you get free access. woo!
         if (!Resolve(uid, ref reader, false))
             return true;
+		
+	if (reader.NeedsMindshield && !HasComp<MindShieldComponent>(user)) {
+	    if (!quiet) {
+		_sharedPopupSystem.PopupClient(Loc.GetString("lock-comp-no-mindshield", ("entityName", Identity.Name(uid, EntityManager))), uid, user);
+	    }
+	    return false;
+	}
 
         if (_accessReader.IsAllowed(user, uid, reader))
             return true;

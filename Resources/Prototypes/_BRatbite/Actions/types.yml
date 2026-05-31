@@ -14,3 +14,20 @@
       state: freedom
   - type: InstantAction
     event: !type:UseFreedomImplantEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionMald
+  name: action-name-mald
+  description: action-description-mald
+  components:
+  - type: Action
+    checkCanInteract: false
+    itemIconStyle: BigAction
+    icon:
+      sprite: Clothing/Mask/clown.rsi
+      state: icon
+  - type: ConfirmableAction
+    popup: mald-action-popup
+  - type: InstantAction
+    event: !type:MaldActionEvent

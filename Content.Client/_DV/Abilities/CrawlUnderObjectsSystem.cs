@@ -33,6 +33,8 @@ public sealed partial class HideUnderTableAbilitySystem : SharedCrawlUnderObject
             return;
 
         _appearance.TryGetData(uid, SneakMode.Enabled, out bool enabled);
+        component.Enabled = enabled;
+
         if (enabled)
         {
             if (component.OriginalDrawDepth != null)

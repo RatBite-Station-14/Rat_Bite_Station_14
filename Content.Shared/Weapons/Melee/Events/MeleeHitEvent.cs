@@ -9,6 +9,7 @@
 // SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2024 Scribbles0 <91828755+Scribbles0@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 Sprinkle <40203084+lnn0q@users.noreply.github.com>
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -80,6 +81,17 @@ public sealed class MeleeHitEvent : HandledEntityEventArgs
     /// Examining melee weapons calls this event, but with <see cref="IsHit"/> set to false.
     /// </remarks>
     public bool IsHit = true;
+
+    /// <summary>
+    ///     Plays the miss swing sound and lunge when a handled hit wants to suppress
+    ///     normal hit feedback.
+    /// </summary>
+    public bool PlayMissFeedback;
+
+    /// <summary>
+    ///     Plays normal hit feedback for a handled hit that intentionally suppresses damage.
+    /// </summary>
+    public bool PlayHitFeedback;
 
     /// <summary>
     /// Goobstation

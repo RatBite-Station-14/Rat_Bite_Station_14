@@ -1829,7 +1829,7 @@ entities:
       parent: 65
     - type: Physics
       canCollide: False
-- proto: SyndicateComputerComms
+- proto: LoneOpsComputerComms
   entities:
   - uid: 65
     components:

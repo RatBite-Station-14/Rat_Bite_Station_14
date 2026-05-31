@@ -1,5 +1,6 @@
 # SPDX-FileCopyrightText: 2024 Killerqu00 <47712032+Killerqu00@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Monolith Station contributors
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -9,7 +10,8 @@
   id: Pacifist
   name: trait-pacifist-name
   description: trait-pacifist-desc
-  category: Quirks
+  category: Mental
+  cost: -6
   components:
   - type: Pacified
 
@@ -17,7 +19,8 @@
   id: LightweightDrunk
   name: trait-lightweight-name
   description: trait-lightweight-desc
-  category: Quirks
+  category: Physical
+  cost: -1
   components:
   - type: LightweightDrunk
     boozeStrengthMultiplier: 2
@@ -26,6 +29,31 @@
   id: Snoring
   name: trait-snoring-name
   description: trait-snoring-desc
-  category: Quirks
+  category: Physical
+  cost: -1
   components:
   - type: Snoring
+
+- type: trait
+  id: TrackingByScent
+  name: trait-tracking-by-scent-name
+  description: trait-tracking-by-scent-desc
+  category: Physical
+  cost: 3
+  speciesBlacklist:
+  - Vulpkanin
+  - IPC
+  blacklist:
+    components:
+    - BorgChassis
+  components:
+  - type: ScentTracker
+
+- type: trait
+  id: AllEars
+  name: trait-all-ears-name
+  description: trait-all-ears-desc
+  category: Physical
+  cost: 4
+  components:
+  - type: EnhancedHearing

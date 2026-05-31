@@ -13,7 +13,7 @@
   name: DT-2 'Justice'
   parent: [BaseItem, BaseGrandTheftContraband]
   id: Justice
-  description: An expensive & self-recharging energy sword, designed specifically for the Head of Security. If it were not for injustice, man would not know justice.
+  description: An expensive & self-recharging energy sword, designed specifically for the Head of Security. If it were not for injustice, man would not know justice. It deals more damage to unruly prisoners.
   components:
   - type: Item
     sprite: _Goobstation/Objects/Weapons/Melee/justice.rsi
@@ -71,6 +71,10 @@
       - Alive
   - type: StealTarget
     stealGroup: WeaponSecHeadSword
+    # Ratbite: give weapon buff to prisoners
+  - type: HosSaber
+    # This is a 3% multiplicative buff per every hour of sentence.
+    damageMultiplierPerMinute: 0.0005
   - type: ItemSwitch
     needsPower: true
     defaultState: off

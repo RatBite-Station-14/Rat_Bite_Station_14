@@ -1,0 +1,1 @@
+comms-console-announcement-title-loneops = Lone Nuclear Operative

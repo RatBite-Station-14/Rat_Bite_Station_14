@@ -1,15 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
 SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
 SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
 SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+SPDX-FileCopyrightText: 2025 Monolith Station contributors
 
 SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
 <Control xmlns="https://spacestation14.io"
          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-        <BoxContainer Name="Container"
-                      Orientation="Horizontal">
-            <CheckBox Name="Checkbox" Access="Public"/>
-        </BoxContainer>
+    <BoxContainer Name="Container" Orientation="Vertical" HorizontalExpand="True">
+        <Button Name="TraitButton" Access="Public" StyleClasses="OpenBottom" HorizontalExpand="True" MinHeight="28" TextAlign="Left">
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                <Label Name="SelectedLabel" MinWidth="18" />
+                <Label Name="CostLabel" MinWidth="34" />
+                <Label Name="NameLabel" Margin="8,0,0,0" HorizontalExpand="True" />
+            </BoxContainer>
+        </Button>
+    </BoxContainer>
 </Control>

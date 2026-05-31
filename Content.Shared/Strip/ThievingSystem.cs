@@ -4,6 +4,7 @@
 // SPDX-FileCopyrightText: 2024 Krunklehorn <42424291+Krunklehorn@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Monolith Station contributors
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -33,15 +34,18 @@ public sealed partial class ThievingSystem : EntitySystem
     private void OnBeforeStrip(EntityUid uid, ThievingComponent component, BeforeStripEvent args)
     {
         args.Stealth |= component.Stealthy;
+        args.Subtle |= component.Subtle;
         if (args.Stealth)
         {
             args.Additive -= component.StripTimeReduction;
         }
+
+        args.Multiplier *= component.TimeMultiplier;
     }
 
     private void OnCompInit(Entity<ThievingComponent> entity, ref ComponentInit args)
     {
-        _alertsSystem.ShowAlert(entity, entity.Comp.StealthyAlertProtoId, 1);
+        _alertsSystem.ShowAlert(entity, entity.Comp.StealthyAlertProtoId, GetAlertState(entity.Comp));
     }
 
     private void OnCompRemoved(Entity<ThievingComponent> entity, ref ComponentRemove args)
@@ -54,10 +58,25 @@ public sealed partial class ThievingSystem : EntitySystem
         if (args.Handled)
             return;
 
-        ent.Comp.Stealthy = !ent.Comp.Stealthy;
-        _alertsSystem.ShowAlert(ent.Owner, ent.Comp.StealthyAlertProtoId, (short)(ent.Comp.Stealthy ? 1 : 0));
-        DirtyField(ent.AsNullable(), nameof(ent.Comp.Stealthy), null);
+        if (ent.Comp.ToggleSubtle)
+        {
+            ent.Comp.Subtle = !ent.Comp.Subtle;
+            DirtyField(ent.AsNullable(), nameof(ent.Comp.Subtle), null);
+        }
+        else
+        {
+            ent.Comp.Stealthy = !ent.Comp.Stealthy;
+            DirtyField(ent.AsNullable(), nameof(ent.Comp.Stealthy), null);
+        }
+
+        _alertsSystem.ShowAlert(ent.Owner, ent.Comp.StealthyAlertProtoId, GetAlertState(ent.Comp));
 
         args.Handled = true;
+    }
+
+    private static short GetAlertState(ThievingComponent component)
+    {
+        var enabled = component.ToggleSubtle ? component.Subtle : component.Stealthy;
+        return (short)(enabled ? 1 : 0);
     }
 }

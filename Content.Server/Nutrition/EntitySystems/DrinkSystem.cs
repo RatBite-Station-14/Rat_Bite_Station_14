@@ -58,6 +58,7 @@
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2025 Monolith Station contributors
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -70,6 +71,7 @@ using Content.Server.Inventory;
 using Content.Server.Popups;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Body.Components;
+using Content.Shared._Mono.Traits.Physical;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
@@ -267,9 +269,13 @@ public sealed class DrinkSystem : SharedDrinkSystem
 
         var flavors = _flavorProfile.GetLocalizedFlavorsMessage(user, drinkSolution);
 
+        var delay = forceDrink ? drink.ForceFeedDelay : drink.Delay;
+        if (!forceDrink && TryComp<VoraciousComponent>(target, out var voracious))
+            delay /= Math.Max(0.01f, voracious.ConsumptionSpeedMultiplier);
+
         var doAfterEventArgs = new DoAfterArgs(EntityManager,
             user,
-            forceDrink ? drink.ForceFeedDelay : drink.Delay,
+            delay,
             new ConsumeDoAfterEvent(drink.Solution, flavors),
             eventTarget: item,
             target: target,

@@ -74,6 +74,7 @@
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
 // SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Monolith Station contributors
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -283,7 +284,7 @@ public abstract class SharedStrippableSystem : EntitySystem
             return;
         }
 
-        var (time, stealth) = GetStripTimeModifiers(user, target, held, slotDef.StripTime);
+        var (time, stealth, _) = GetStripTimeModifiers(user, target, held, slotDef.StripTime);
 
         if (!stealth)
         {
@@ -378,12 +379,13 @@ public abstract class SharedStrippableSystem : EntitySystem
             return;
         }
 
-        var (time, stealth) = GetStripTimeModifiers(user, target, item, slotDef.StripTime);
+        var (time, stealth, subtle) = GetStripTimeModifiers(user, target, item, slotDef.StripTime);
 
         if (!stealth)
         {
+            var stripPopupType = subtle && IsThievingUiEnabled(user) ? PopupType.MediumWhite : PopupType.Large;
             if (IsStripHidden(slotDef, user))
-                _popupSystem.PopupEntity(Loc.GetString("strippable-component-alert-owner-hidden", ("slot", slot)), target, target, PopupType.Large);
+                _popupSystem.PopupEntity(Loc.GetString("strippable-component-alert-owner-hidden", ("slot", slot)), target, target, stripPopupType);
             else
             {
                 _popupSystem.PopupEntity(Loc.GetString("strippable-component-alert-owner",
@@ -391,7 +393,7 @@ public abstract class SharedStrippableSystem : EntitySystem
                                                             ("item", item)),
                                                             target,
                                                             target,
-                                                            PopupType.Large);
+                                                            stripPopupType);
 
             }
         }
@@ -413,6 +415,22 @@ public abstract class SharedStrippableSystem : EntitySystem
         };
 
         _doAfterSystem.TryStartDoAfter(doAfterArgs);
+    }
+
+    public bool TryStartStripRemoveInventory(
+        EntityUid user,
+        EntityUid target,
+        EntityUid item,
+        string slot)
+    {
+        if (!_interactionSystem.InRangeAndAccessible(user, target))
+            return false;
+
+        if (!CanStripRemoveInventory(user, target, item, slot))
+            return false;
+
+        StartStripRemoveInventory(user, target, item, slot);
+        return true;
     }
 
     /// <summary>
@@ -489,7 +507,7 @@ public abstract class SharedStrippableSystem : EntitySystem
         if (!CanStripInsertHand(user, target, held, handName))
             return;
 
-        var (time, stealth) = GetStripTimeModifiers(user, target, null, targetStrippable.HandStripDelay);
+        var (time, stealth, _) = GetStripTimeModifiers(user, target, null, targetStrippable.HandStripDelay);
 
         if (!stealth)
         {
@@ -599,7 +617,7 @@ public abstract class SharedStrippableSystem : EntitySystem
         if (!CanStripRemoveHand(user, target, item, handName))
             return;
 
-        var (time, stealth) = GetStripTimeModifiers(user, target, null, targetStrippable.HandStripDelay);
+        var (time, stealth, subtle) = GetStripTimeModifiers(user, target, null, targetStrippable.HandStripDelay);
 
         if (!stealth)
         {
@@ -607,7 +625,8 @@ public abstract class SharedStrippableSystem : EntitySystem
                                                         ("user", Identity.Entity(user, EntityManager)),
                                                         ("item", item)),
                                                         target,
-                                                        target);
+                                                        target,
+                                                        subtle && IsThievingUiEnabled(user.Owner) ? PopupType.MediumWhite : PopupType.Large);
         }
 
         var prefix = stealth ? "stealthily " : "";
@@ -627,6 +646,30 @@ public abstract class SharedStrippableSystem : EntitySystem
         };
 
         _doAfterSystem.TryStartDoAfter(doAfterArgs);
+    }
+
+    private bool IsThievingUiEnabled(EntityUid user)
+    {
+        return TryComp<ThievingComponent>(user, out var thieving)
+            && thieving.TraitGranted
+            && (thieving.ToggleSubtle ? thieving.Subtle : thieving.Stealthy);
+    }
+
+    public bool TryStartStripRemoveHand(
+        Entity<HandsComponent?> user,
+        Entity<HandsComponent?> target,
+        EntityUid item,
+        string handName,
+        StrippableComponent? targetStrippable = null)
+    {
+        if (!_interactionSystem.InRangeAndAccessible(user.Owner, target.Owner))
+            return false;
+
+        if (!CanStripRemoveHand(user.Owner, target, item, handName))
+            return false;
+
+        StartStripRemoveHand(user, target, item, handName, targetStrippable);
+        return true;
     }
 
     /// <summary>
@@ -718,16 +761,18 @@ public abstract class SharedStrippableSystem : EntitySystem
     /// <summary>
     /// Modify the strip time via events. Raised directed at the item being stripped, the player stripping someone and the player being stripped.
     /// </summary>
-    public (TimeSpan Time, bool Stealth) GetStripTimeModifiers(EntityUid user, EntityUid targetPlayer, EntityUid? targetItem, TimeSpan initialTime)
+    public (TimeSpan Time, bool Stealth, bool Subtle) GetStripTimeModifiers(EntityUid user, EntityUid targetPlayer, EntityUid? targetItem, TimeSpan initialTime)
     {
         var itemEv = new BeforeItemStrippedEvent(initialTime, false);
         if (targetItem != null)
             RaiseLocalEvent(targetItem.Value, ref itemEv);
         var userEv = new BeforeStripEvent(itemEv.Time, itemEv.Stealth);
+        userEv.Subtle = itemEv.Subtle;
         RaiseLocalEvent(user, ref userEv);
         var targetEv = new BeforeGettingStrippedEvent(userEv.Time, userEv.Stealth);
+        targetEv.Subtle = userEv.Subtle;
         RaiseLocalEvent(targetPlayer, ref targetEv);
-        return (targetEv.Time, targetEv.Stealth);
+        return (targetEv.Time, targetEv.Stealth, targetEv.Subtle);
     }
 
     private void OnDragDrop(EntityUid uid, StrippableComponent component, ref DragDropDraggedEvent args)
@@ -780,6 +825,12 @@ public abstract class SharedStrippableSystem : EntitySystem
         if (viewer == null)
             return true;
 
-        return !HasComp<BypassInteractionChecksComponent>(viewer);
+        if (HasComp<BypassInteractionChecksComponent>(viewer))
+            return false;
+
+        if (TryComp<ThievingComponent>(viewer.Value, out var thief) && thief.IdentifyHidden)
+            return false;
+
+        return true;
     }
 }

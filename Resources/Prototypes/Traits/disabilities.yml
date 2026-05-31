@@ -24,6 +24,7 @@
 # SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
 # SPDX-FileCopyrightText: 2025 Coolsurf6 <coolsurf24@yahoo.com.au>
 # SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
+# SPDX-FileCopyrightText: 2025 Monolith Station contributors
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -34,7 +35,8 @@
   name: trait-blindness-name
   description: trait-blindness-desc
   traitGear: WhiteCane
-  category: Disabilities
+  category: Physical
+  cost: -6
   whitelist:
     components:
       - Blindable
@@ -46,7 +48,8 @@
   name: trait-poor-vision-name
   description: trait-poor-vision-desc
   traitGear: ClothingEyesPrescriptionGlasses # Goobstation
-  category: Disabilities
+  category: Physical
+  cost: -1
   whitelist:
     components:
       - Blindable
@@ -58,7 +61,8 @@
   id: Narcolepsy
   name: trait-narcolepsy-name
   description: trait-narcolepsy-desc
-  category: Disabilities
+  category: Mental
+  cost: -4
   components:
     - type: Narcolepsy
       timeBetweenIncidents: 300, 600
@@ -68,7 +72,8 @@
   id: Unrevivable
   name: trait-unrevivable-name
   description: trait-unrevivable-desc
-  category: Disabilities
+  category: Physical
+  cost: -1
   components:
     - type: Unrevivable
       cloneable: true
@@ -77,7 +82,8 @@
   id: Monochromacy
   name: trait-monochromacy-name
   description: trait-monochromacy-desc
-  category: Disabilities
+  category: Physical
+  cost: -1
   components:
   - type: BlackAndWhiteOverlay
 
@@ -85,7 +91,8 @@
   id: Muted
   name: trait-muted-name
   description: trait-muted-desc
-  category: Disabilities
+  category: Mental
+  cost: -3
   blacklist:
     components:
       - BorgChassis
@@ -96,7 +103,8 @@
   id: Paracusia
   name: trait-paracusia-name
   description: trait-paracusia-desc
-  category: Disabilities
+  category: Mental
+  cost: -1
   components:
     - type: Paracusia
       minTimeBetweenIncidents: 0.1
@@ -109,6 +117,50 @@
   id: PainNumbness
   name: trait-painnumbness-name
   description: trait-painnumbness-desc
-  category: Disabilities
+  category: Physical
+  cost: -1
   components:
   - type: PainNumbness
+
+- type: trait
+  id: Clumsiness
+  name: trait-clumsiness-name
+  description: trait-clumsiness-desc
+  category: Physical
+  cost: -5
+  components:
+  - type: Clumsy
+    gunShootFailDamage:
+      types:
+        Blunt: 5
+        Piercing: 4
+      groups:
+        Burn: 3
+    catchingFailDamage:
+      types:
+        Blunt: 1
+
+- type: trait
+  id: Kleptomania
+  name: trait-kleptomania-name
+  description: trait-kleptomania-desc
+  category: Mental
+  cost: -2 #ratbite
+  mutuallyExclusiveTraits:
+  - ChronicKleptomania
+  components:
+  - type: Kleptomania
+    timeBetweenIncidents: 12, 20
+
+- type: trait
+  id: ChronicKleptomania
+  name: trait-chronic-kleptomania-name
+  description: trait-chronic-kleptomania-desc
+  category: Mental
+  cost: -4 #ratbite
+  mutuallyExclusiveTraits:
+  - Kleptomania
+  components:
+  - type: Kleptomania
+    timeBetweenIncidents: 3, 3
+    riskyTargets: true

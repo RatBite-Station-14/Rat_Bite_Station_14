@@ -41,6 +41,7 @@ public sealed class ThermalVisionOverlay : Overlay
     private EntityUid? _lightEntity;
 
     public float LightRadius;
+    public float VisionRadius;
 
     public ThermalVisionComponent? Comp;
 
@@ -72,6 +73,7 @@ public sealed class ThermalVisionOverlay : Overlay
         if (!_entity.TryGetComponent(player, out TransformComponent? playerXform))
             return;
 
+        var playerPosition = _transform.GetWorldPosition(playerXform);
         var accumulator = Math.Clamp(Comp.PulseAccumulator, 0f, Comp.PulseTime);
         var alpha = Comp.PulseTime <= 0f ? 1f : float.Lerp(1f, 0f, accumulator / Comp.PulseTime);
 
@@ -110,6 +112,13 @@ public sealed class ThermalVisionOverlay : Overlay
                     sprite = ownerSprite;
                     xform = ownerXform;
                 }
+            }
+
+            if (VisionRadius > 0f)
+            {
+                var targetPosition = _transform.GetWorldPosition(xform);
+                if (Vector2.DistanceSquared(playerPosition, targetPosition) > VisionRadius * VisionRadius)
+                    continue;
             }
 
             if (_entries.Any(e => e.Ent.Owner == entity))

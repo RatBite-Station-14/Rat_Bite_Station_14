@@ -192,17 +192,23 @@
     - id: Devil
     - id: LoneAbductorSpawn
     - id: LoneOpsSpawn
+    - id: RevenantSpawn
 
 - type: entityTable
   id: SusAntagTable #Used for the antag mode where it could be anyone
   table: !type:AllSelector
     children:
     - id: Traitor
+    - id: Devil
+    - id: Thief
+    - id: InitialInfected
     - id: Heretic
     - id: Changeling
     - id: SleeperAgents
     - id: ChangelingMidround
-    - id: HereticMidround
+    - id: DerelictCyborgSpawn
+    - id: Zombie
+ #   - id: HereticMidround - Broken
 
 # Ratbite Over
 

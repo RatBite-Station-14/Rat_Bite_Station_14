@@ -1,4 +1,5 @@
 // SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
+// SPDX-FileCopyrightText: 2026 Sprinkle <40203084+lnn0q@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2024 Alice "Arimah" Heurlin <30327355+arimah@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
@@ -102,6 +103,7 @@
 using System.Numerics;
 using Content.Goobstation.Common.Grab;
 using Content.Goobstation.Common.MartialArts;
+using Content.Shared._BRatbite.Traits;
 using Content.Shared._EinsteinEngines.Contests;
 using Content.Shared._White.Grab; // Goobstation
 using Content.Shared.ActionBlocker;
@@ -162,6 +164,7 @@ namespace Content.Shared.Movement.Pulling.Systems;
 public sealed class PullingSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly UnarmedCombatSkillSystem _unarmedCombat = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
@@ -1087,6 +1090,14 @@ public sealed class PullingSystem : EntitySystem
             newStage = grabStageOverride.Value;
         }
 
+        if (HasComp<InstantChokeholdOnStaminaCritComponent>(puller) &&
+            !_unarmedCombat.IsUnarmedCombatSkillBlocked(puller) &&
+            TryComp<StaminaComponent>(pullable, out var stamina) &&
+            stamina.Critical)
+        {
+            newStage = GrabStage.Suffocate;
+        }
+
         var raiseEv = new RaiseGrabModifierEventEvent(puller.Owner, (int) newStage);
         RaiseLocalEvent(ref raiseEv);
         if (raiseEv.NewStage != null)
@@ -1102,7 +1113,9 @@ public sealed class PullingSystem : EntitySystem
     // Goobstation
     public bool CanGrab(EntityUid puller, EntityUid pullable)
     {
-        return !HasComp<PacifiedComponent>(puller) && HasComp<MobStateComponent>(pullable);
+        return (!HasComp<PacifiedComponent>(puller) ||
+                HasComp<PacifismAllowedGrabComponent>(puller) && !_unarmedCombat.IsUnarmedCombatSkillBlocked(puller)) &&
+               HasComp<MobStateComponent>(pullable);
     }
 
     public bool TrySetGrabStages(Entity<PullerComponent> puller, Entity<PullableComponent> pullable, GrabStage stage, float escapeAttemptModifier = 1f)

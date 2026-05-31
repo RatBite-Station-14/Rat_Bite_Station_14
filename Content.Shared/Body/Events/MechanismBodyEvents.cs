@@ -20,6 +20,12 @@ namespace Content.Shared.Body.Events;
 public readonly record struct OrganAddedEvent(EntityUid Part, EntityUid Body); // Shitmed - added body
 
 /// <summary>
+/// Raised on an organ before it is inserted into a body part.
+/// </summary>
+[ByRefEvent]
+public record struct BeforeOrganInsertedEvent(EntityUid Part, EntityUid? Body, string SlotId, EntityUid? User = null, bool Cancelled = false);
+
+/// <summary>
 /// Raised on a mechanism when it is added to a body part within a body.
 /// </summary>
 [ByRefEvent]

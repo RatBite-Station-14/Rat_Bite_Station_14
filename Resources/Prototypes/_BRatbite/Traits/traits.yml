@@ -1,0 +1,152 @@
+# SPDX-FileCopyrightText: 2026 Sprinkle <40203084+lnn0q@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: trait
+  id: LoyaltyTraining
+  name: trait-loyalty-training-name
+  description: trait-loyalty-training-desc
+  category: Mental
+  cost: -6
+  components:
+  - type: LoyaltyTraining
+
+- type: trait
+  id: PctTraining
+  name: trait-pct-training-name
+  description: trait-pct-training-desc
+  category: Physical
+  cost: 6
+  mutuallyExclusiveTraits:
+  - PaciFist
+  - StrikingCalluses
+  blacklist:
+    components:
+    - MartialArtsKnowledge
+    - KravMaga
+    - BorgChassis
+  components:
+  - type: PctTraining
+
+- type: trait
+  id: PaciFist
+  name: trait-paci-fist-name
+  description: trait-paci-fist-desc
+  category: Physical
+  cost: 16
+  requiredTraits:
+  - Pacifist
+  mutuallyExclusiveTraits:
+  - PctTraining
+  - StrikingCalluses
+  blacklist:
+    components:
+    - MartialArtsKnowledge
+    - KravMaga
+    - BorgChassis
+  components:
+  - type: PaciFist
+  - type: PacifismAllowedUnarmedCombat
+  - type: PacifismAllowedGrab
+  - type: InstantChokeholdOnStaminaCrit
+
+- type: trait
+  id: MartialArtist
+  name: trait-martial-artist-name
+  description: trait-martial-artist-desc
+  category: Physical
+  cost: 5
+  mutuallyExclusiveTraits:
+  - PctTraining
+  - PaciFist
+  - StrikingCalluses
+  blacklist:
+    components:
+    - MartialArtsKnowledge
+    - KravMaga
+    - BorgChassis
+  components:
+  - type: MartialArtist
+
+- type: trait
+  id: Marathoner
+  name: trait-marathoner-name
+  description: trait-marathoner-desc
+  category: Physical
+  cost: 14
+  mutuallyExclusiveTraits:
+  - Vigor
+  - Lethargy
+  speciesBlacklist:
+  - IPC
+  blacklist:
+    components:
+    - BorgChassis
+  components:
+  - type: Marathoner
+
+- type: trait
+  id: Juggernaut
+  name: trait-juggernaut-name
+  description: trait-juggernaut-desc
+  category: Physical
+  cost: 8
+  mutuallyExclusiveTraits:
+  - GlassJaw
+  - Tenacity
+  - OsteogenesisImperfecta
+  speciesBlacklist:
+  - IPC
+  blacklist:
+    components:
+    - BorgChassis
+  components:
+  - type: Juggernaut
+
+- type: trait
+  id: NeurogenesisImperfecta
+  name: trait-neurogenesis-imperfecta-name
+  description: trait-neurogenesis-imperfecta-desc
+  category: Physical
+  cost: -3
+  speciesBlacklist:
+  - IPC
+  blacklist:
+    components:
+    - BorgChassis
+  components:
+  - type: NeurogenesisImperfecta
+  - type: Uncloneable
+
+- type: trait
+  id: HairballCougher
+  name: trait-hairball-cougher-name
+  description: trait-hairball-cougher-desc
+  category: Physical
+  cost: 2
+  speciesBlacklist:
+  - IPC
+  blacklist:
+    components:
+    - BorgChassis
+  components:
+  - type: Felinid
+    enableEatAction: false
+
+- type: trait
+  id: LordPerstronziosRage
+  name: trait-lord-perstronzios-rage-name
+  description: trait-lord-perstronzios-rage-desc
+  category: Mental
+  cost: 10
+  components:
+  - type: LordPerstronziosRage
+
+- type: trait
+  id: Atheist
+  name: trait-atheist-name
+  description: trait-atheist-desc
+  category: Mental
+  cost: 0
+  components:
+  - type: Atheist

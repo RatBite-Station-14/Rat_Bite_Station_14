@@ -47,6 +47,7 @@ public sealed class SpeedModifierContactsSystem : EntitySystem
         SubscribeLocalEvent<SpeedModifierContactsComponent, EndCollideEvent>(OnEntityExit);
         SubscribeLocalEvent<SpeedModifiedByContactComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovementSpeedModifiers);
         SubscribeLocalEvent<SpeedModifierContactsComponent, ComponentShutdown>(OnShutdown);
+        SubscribeLocalEvent<SpeedModifiedByContactModifierComponent, GetSpeedModifierContactCapEvent>(OnGetSpeedModifierContactCap);
 
         UpdatesAfter.Add(typeof(SharedPhysicsSystem));
     }
@@ -156,7 +157,7 @@ public sealed class SpeedModifierContactsSystem : EntitySystem
             walkSpeed /= entries;
             sprintSpeed /= entries;
 
-            var evMax = new GetSpeedModifierContactCapEvent();
+            var evMax = new GetSpeedModifierContactCapEvent(walkSpeed, sprintSpeed);
             RaiseLocalEvent(uid, ref evMax);
 
             walkSpeed = MathF.Max(walkSpeed, evMax.MaxWalkSlowdown);
@@ -168,6 +169,14 @@ public sealed class SpeedModifierContactsSystem : EntitySystem
         // no longer colliding with anything
         if (remove)
             _toRemove.Add(uid);
+    }
+
+    private void OnGetSpeedModifierContactCap(EntityUid uid, SpeedModifiedByContactModifierComponent component, ref GetSpeedModifierContactCapEvent args)
+    {
+        var walkSpeedModifier = 1 - (1 - args.CurrentWalkSlowdown) * component.WalkModifierEffectiveness;
+        var sprintSpeedModifier = 1 - (1 - args.CurrentSprintSlowdown) * component.SprintModifierEffectiveness;
+
+        args.SetIfMax(sprintSpeedModifier, walkSpeedModifier);
     }
 
     private void OnEntityExit(EntityUid uid, SpeedModifierContactsComponent component, ref EndCollideEvent args)

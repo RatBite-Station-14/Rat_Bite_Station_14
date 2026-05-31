@@ -1,12 +1,9 @@
 # SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 Killerqu00 <47712032+Killerqu00@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Monolith Station contributors
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
-
-- type: traitCategory
-  id: Disabilities
-  name: trait-category-disabilities
 
 - type: traitCategory
   id: SpeechTraits
@@ -16,3 +13,13 @@
 - type: traitCategory
   id: Quirks
   name: trait-category-quirks
+
+- type: traitCategory
+  id: Mental
+  name: trait-category-mental
+  maxTraitPoints: 6
+
+- type: traitCategory
+  id: Physical
+  name: trait-category-physical
+  maxTraitPoints: 6

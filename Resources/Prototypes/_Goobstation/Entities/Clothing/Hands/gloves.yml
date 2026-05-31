@@ -100,6 +100,7 @@
 # SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
+# SPDX-FileCopyrightText: 2026 Sprinkle <40203084+lnn0q@users.noreply.github.com>
 
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
@@ -182,6 +183,7 @@
     soundHit:
       path: /Audio/_Goobstation/Weapons/Effects/metalcrush.ogg
     canWideSwing: false
+  - type: UnarmedCombatSkillBlocker
   - type: StaminaDamageOnHit
     damage: 45
     overtime: 80
@@ -309,6 +311,7 @@
         Blunt: 80
         Structural: 120
     mustBeEquippedToUse: true
+  - type: UnarmedCombatSkillBlocker
   - type: StaminaDamageOnHit
     damage: 45
     overtime: 80
@@ -365,6 +368,7 @@
     animation: WeaponArcFist
     mustBeEquippedToUse: true
     canWideSwing: false
+  - type: UnarmedCombatSkillBlocker
   - type: Tag
     tags:
     - WhitelistChameleon

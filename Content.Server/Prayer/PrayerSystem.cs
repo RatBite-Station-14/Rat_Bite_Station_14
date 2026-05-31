@@ -36,6 +36,7 @@ using Content.Shared.Verbs;
 using Robust.Shared.Player;
 using Content.Server.Administration.Managers; // Goobstation - Admin Notifications
 using Robust.Server.Audio; // Goobstation - Admin Notifications
+using Content.Shared._BRatbite.Traits;
 
 namespace Content.Server.Prayer;
 /// <summary>
@@ -130,10 +131,12 @@ public sealed class PrayerSystem : EntitySystem
         if (sender.AttachedEntity == null)
             return;
 
+        var isAtheist = HasComp<AtheistComponent>(sender.AttachedEntity.Value);
+
         _popupSystem.PopupEntity(Loc.GetString(comp.SentMessage), sender.AttachedEntity.Value, sender, PopupType.Medium);
 
-        _chatManager.SendAdminAnnouncement($"{Loc.GetString(comp.NotificationPrefix)} <{sender.Name}>: {message}");
-        _adminLogger.Add(LogType.AdminMessage, LogImpact.Low, $"{ToPrettyString(sender.AttachedEntity.Value):player} sent prayer ({Loc.GetString(comp.NotificationPrefix)}): {message}");
+        _chatManager.SendAdminAnnouncement($"{Loc.GetString(comp.NotificationPrefix)} <{sender.Name}> {(isAtheist ? "(Atheist)" : "")}: {message}");
+        _adminLogger.Add(LogType.AdminMessage, LogImpact.Low, $"{ToPrettyString(sender.AttachedEntity.Value):player} {(isAtheist ? "(Atheist)" : "")} sent prayer ({Loc.GetString(comp.NotificationPrefix)}): {message}");
 
         // Goobstation - Admin Notifications
         if (comp.NotificationSound != null) // estas goida

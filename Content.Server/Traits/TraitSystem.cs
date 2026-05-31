@@ -11,6 +11,7 @@
 // SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Monolith Station contributors
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -18,6 +19,7 @@ using Content.Server._EinsteinEngines.Language;
 using Content.Shared.GameTicking;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Roles;
 using Content.Shared.Traits;
 using Content.Shared.Whitelist;
@@ -39,7 +41,7 @@ public sealed class TraitSystem : EntitySystem
     }
 
     // When the player is spawned in, add all trait components selected during character creation
-    private void OnPlayerSpawnComplete(PlayerSpawnCompleteEvent args)
+    public void OnPlayerSpawnComplete(PlayerSpawnCompleteEvent args)
     {
         // Check if player's job allows to apply traits
         if (args.JobId == null ||
@@ -62,8 +64,7 @@ public sealed class TraitSystem : EntitySystem
                 continue;
 
             // Begin Goobstation: Species trait support
-            if (traitPrototype.IncludedSpecies.Count > 0 && !traitPrototype.IncludedSpecies.Contains(args.Profile.Species) ||
-                traitPrototype.ExcludedSpecies.Contains(args.Profile.Species))
+            if (IsTraitExcludedForSpecies(traitPrototype, args.Profile.Species))
                 continue;
             // End Goobstation: Species trait support
 
@@ -105,5 +106,12 @@ public sealed class TraitSystem : EntitySystem
                 checkActionBlocker: false,
                 handsComp: handsComponent);
         }
+    }
+
+    private static bool IsTraitExcludedForSpecies(TraitPrototype trait, ProtoId<SpeciesPrototype> species)
+    {
+        return trait.SpeciesBlacklist.Contains(species) ||
+               trait.ExcludedSpecies.Contains(species) ||
+               trait.IncludedSpecies.Count > 0 && !trait.IncludedSpecies.Contains(species);
     }
 }

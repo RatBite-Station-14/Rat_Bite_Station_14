@@ -1,0 +1,8 @@
+- type: entity
+  parent: SyndicateComputerComms
+  id: LoneOpsComputerComms
+  name: Lone Operative Computer
+  description: A computer capable of remotely hacking into the station's communications systems. Using this to make an announcement will alert the station to your presence.
+  components:
+  - type: CommunicationsConsole
+    title: comms-console-announcement-title-loneops

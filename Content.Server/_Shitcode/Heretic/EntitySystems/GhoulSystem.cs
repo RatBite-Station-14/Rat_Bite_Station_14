@@ -109,7 +109,9 @@ public sealed class GhoulSystem : EntitySystem
     }
 
     private void OnPolymorphed(Entity<GhoulComponent> ent, ref PolymorphedEvent args)
-        => _polymorph.CopyPolymorphComponent<GhoulComponent>(ent, args.NewEntity);
+    {
+        _polymorph.CopyPolymorphComponent<GhoulComponent>(ent, args.NewEntity, !args.IsRevert);
+    }
 
     private void OnGetBriefing(Entity<GhoulRoleComponent> ent, ref GetBriefingEvent args)
     {

@@ -91,6 +91,9 @@ public sealed partial class FelinidSystem : EntitySystem
 
     private void OnEquipped(EntityUid uid, FelinidComponent component, DidEquipHandEvent args)
     {
+        if (!component.EnableEatAction)
+            return;
+
         if (!HasComp<FelinidFoodComponent>(args.Equipped))
             return;
 

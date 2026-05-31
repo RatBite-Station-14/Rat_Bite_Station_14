@@ -41,6 +41,7 @@
   - type: DragInsertContainer
     containerId: storage
     entryDelay: 2
+    useVerbs: false # Ratbite: use custom empty verb to prevent emptying when ssd
   - type: ExitContainerOnMove
     containerId: storage
   - type: PointLight

@@ -481,12 +481,12 @@
   parent: BaseGameRule
   components:
   - type: GameRule
-    minPlayers: 20
+    minPlayers: 25 # ratbite
     delay:
-      min: 600
-      max: 900
+      min: 900
+      max: 1200
     # Goobstation
-    chaosScore: 1200
+    chaosScore: 2400 #ratbite
   # Goobstation
   - type: Tag
     tags:
@@ -495,7 +495,7 @@
   - type: AntagSelection
     definitions:
     - prefRoles: [ InitialInfected ]
-      max: 4
+      max: 1 # No more than one zombie outbreak
       playerRatio: 15
       jobBlacklist: [ Chaplain ] # Goobstation
       blacklist:

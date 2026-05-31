@@ -1,0 +1,103 @@
+# SPDX-FileCopyrightText: 2024 Angelo Fallaria <ba.fallaria@gmail.com>
+# SPDX-FileCopyrightText: 2024 VMSolidus <evilexecutive@gmail.com>
+# SPDX-FileCopyrightText: 2025 Skubman <ba.fallaria@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# If you add a new trait, make sure to add the corresponding component to the whitelist in \Resources\Prototypes\Entities\Mobs\Player\clone.yml so it gets copied to clones correctly!
+
+- type: trait
+  id: CPRTraining
+  name: trait-name-CPRTraining
+  description: trait-description-CPRTraining
+  category: Mental
+  cost: 3
+  components:
+  - type: CPRTraining
+
+- type: trait
+  id: ParkourTraining
+  name: trait-name-ParkourTraining
+  description: trait-description-ParkourTraining
+  category: Physical
+  cost: 5
+  components:
+  - type: ClimbDelayModifier
+    climbDelayMultiplier: 0.5
+  - type: SlippableModifier
+    paralyzeTimeMultiplier: 0.7
+  - type: SpeedModifiedByContactModifier
+    walkModifierEffectiveness: 0.5
+    sprintModifierEffectiveness: 0.5
+
+- type: trait
+  id: LightStep
+  name: trait-name-LightStep
+  description: trait-description-LightStep
+  category: Physical
+  cost: 2
+  speciesBlacklist:
+  - Felinid
+  - Tajaran
+  components:
+  - type: FootstepVolumeModifier
+    sprintVolumeModifier: -10
+    walkVolumeModifier: -10
+
+- type: trait
+  id: Singer
+  name: trait-name-Singer
+  description: trait-description-Singer
+  category: Physical
+  cost: 1
+  speciesBlacklist:
+  - Harpy
+  mutuallyExclusiveTraits:
+  - Muted
+  components:
+  - type: HarpySinger
+  - type: Instrument
+    program: 52
+    allowPercussion: false
+    allowProgramChange: false
+
+- type: trait
+  id: LyreBird
+  name: trait-name-LyreBird
+  description: trait-description-LyreBird
+  category: Physical
+  cost: 3
+  includedSpecies:
+  - Harpy
+  - IPC
+  mutuallyExclusiveTraits:
+  - Muted
+  components:
+  - type: HarpySinger
+  - type: Instrument
+    program: 52
+    allowPercussion: true
+    allowProgramChange: true
+  - type: SwappableInstrument
+    instrumentList:
+      "Lyresong": {52: 0}
+
+- type: trait
+  id: SurgeryTraining
+  name: trait-name-SurgeryTraining
+  description: trait-description-SurgeryTraining
+  category: Mental
+  cost: 5
+  components:
+  - type: SurgerySpeedModifier
+    speedModifier: 1.6
+
+- type: trait
+  id: ExperiencedSurgeon
+  name: trait-name-ExperiencedSurgeon
+  description: trait-description-ExperiencedSurgeon
+  category: Mental
+  cost: 3
+  components:
+  - type: SurgerySpeedModifier
+    speedModifier: 2.3

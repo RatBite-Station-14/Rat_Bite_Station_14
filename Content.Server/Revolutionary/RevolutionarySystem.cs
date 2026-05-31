@@ -28,10 +28,10 @@ public sealed class RevolutionarySystem : SharedRevolutionarySystem  // Goob Sta
     }
 
     private void OnPolymorphed(Entity<RevolutionaryComponent> ent, ref PolymorphedEvent args)
-        => _polymorph.CopyPolymorphComponent<RevolutionaryComponent>(ent, args.NewEntity);
+        => _polymorph.CopyPolymorphComponent<RevolutionaryComponent>(ent, args.NewEntity, !args.IsRevert);
 
     private void OnHeadPolymorphed(Entity<HeadRevolutionaryComponent> ent, ref PolymorphedEvent args)
-        => _polymorph.CopyPolymorphComponent<HeadRevolutionaryComponent>(ent, args.NewEntity);
+        => _polymorph.CopyPolymorphComponent<HeadRevolutionaryComponent>(ent, args.NewEntity, !args.IsRevert);
 
     public override void OnRevolutionaryComponentStartup<T>(EntityUid someUid, T someComp, ComponentStartup ev)
     {

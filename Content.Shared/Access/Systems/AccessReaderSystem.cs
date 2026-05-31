@@ -108,6 +108,7 @@ using Robust.Shared.Collections;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Content.Shared.Mindshield.Components;
 
 namespace Content.Shared.Access.Systems;
 
@@ -210,6 +211,10 @@ public sealed class AccessReaderSystem : EntitySystem
         var accessSources = FindPotentialAccessItems(user);
         var access = FindAccessTags(user, accessSources);
         FindStationRecordKeys(user, out var stationKeys, accessSources);
+
+	if (reader.NeedsMindshield && !HasComp<MindShieldComponent>(user)) {
+	    return false;
+	}
 
         if (!IsAllowed(access, stationKeys, target, reader))
             return false;

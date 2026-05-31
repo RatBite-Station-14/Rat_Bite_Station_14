@@ -73,12 +73,14 @@
 // SPDX-FileCopyrightText: 2024 voidnull000 <18663194+voidnull000@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2025 Monolith Station contributors
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Preferences.Loadouts.Effects;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.Preferences.Loadouts;
 
@@ -115,6 +117,36 @@ public sealed partial class LoadoutPrototype : IPrototype, IEquipmentLoadout
     /// </summary>
     [DataField]
     public List<LoadoutEffect> Effects = new();
+
+    /// <summary>
+    /// Point cost deducted from the role loadout's point budget.
+    /// </summary>
+    [DataField]
+    public int Price;
+
+    /// <summary>
+    /// Optional display name override for the loadout menu.
+    /// </summary>
+    [DataField]
+    public string Name = string.Empty;
+
+    /// <summary>
+    /// Optional display description override for the loadout menu.
+    /// </summary>
+    [DataField]
+    public string Description = string.Empty;
+
+    /// <summary>
+    /// Optional entity to use as the loadout menu preview sprite.
+    /// </summary>
+    [DataField]
+    public EntProtoId? PreviewEntity;
+
+    /// <summary>
+    /// Effects that hide this option from the menu when they fail validation.
+    /// </summary>
+    [DataField]
+    public List<LoadoutEffect> HideEffects = new();
 
     /// <inheritdoc />
     [DataField]
