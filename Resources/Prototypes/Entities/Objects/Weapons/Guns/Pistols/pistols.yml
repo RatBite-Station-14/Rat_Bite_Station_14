@@ -235,8 +235,6 @@
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
-  - type: LoudGun
-    staminaDamage: 0
   - type: StaticPrice
     price: 1000
 
@@ -301,6 +299,8 @@
     projectileSpeed: 35 # Goobstation
     availableModes:
     - SemiAuto
+  - type: LoudGun # Ratbite: loud guns PR
+    staminaDamage: 0
   - type: ItemSlots
     slots:
       gun_magazine:

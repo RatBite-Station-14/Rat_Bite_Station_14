@@ -214,3 +214,5 @@
       autoRecharge: true
       autoRechargeRate: 25
     - type: AmmoCounter
+    - type: LoudGun # Ratbite: loud guns
+      staminaDamage: 15
