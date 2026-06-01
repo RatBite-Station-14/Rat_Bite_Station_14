@@ -1,0 +1,48 @@
+- type: entity
+  parent: ClothingOuterWinterCoat
+  id: ClothingOuterNParka
+  name: N Parka
+  suffix: Nep
+  description: A white parka with a purple N. It smells of pudding
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/OuterClothing/Coats/NParka.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/OuterClothing/Coats/NParka.rsi
+  - type: Item
+    size: Normal
+  - type: Armor
+    coverage:
+    - Chest
+    - Groin
+    - Tail
+    - Arm
+    modifiers:
+      coefficients:
+        Slash: 0.9
+        Heat: 0.8
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+  - type: ZombificationResistance
+    zombificationResistanceCoefficient: 0.55
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+    - WinterCoat # Goobstation
+    - WhitelistChameleon
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+      storagebase: !type:Container
+        ents: []
+  - type: PhysicalComposition 
+    materialComposition:
+      Cloth: 150

@@ -63,8 +63,11 @@
     ClothingUniformJumpsuitJesterAlt: 1
     ClothingShoesJester: 2
     ClothingOuterWinterClown: 1
+    ClothingUnderSocksStripedClown: 2
     ClothingOuterWinterMime: 1
+    ClothingUnderSocksStripedWhiteandBlack: 2
     ClothingOuterWinterMusician: 1
+    ClothingUnderSocksStripedMusican: 2
     ClothingMaskJoy: 2
     ClothingHeadHatCardborg: 2
     ClothingOuterCardborg: 2
@@ -120,13 +123,13 @@
     ClothingOuterSuitHotDog: 1 # Goob
     ClothingOuterSuitPickle: 1
     ClothingHeadHatTinfoilHat: 2 # Goobstation
+    ClothingMaskSexyClown: 1
+    ClothingMaskSexyMime: 1
   contrabandInventory:
     ClothingHeadHatRichard: 1
     ClothingShoesBling: 1
     ClothingShoesBootsCowboyFancy: 1
     ClothingOuterDogi: 1
-    ClothingMaskSexyClown: 1
-    ClothingMaskSexyMime: 1
     ClothingHeadHatCowboyBountyHunter: 1
     ToyFigurineBoxer: 1
     ToyFigurineMusician: 1

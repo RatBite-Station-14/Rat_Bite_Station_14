@@ -32,8 +32,10 @@
     ClothingHeadsetService: 2
     ClothingOuterWinterJani: 2
     ClothingNeckScarfStripedPurple: 3
+    ClothingUnderSocksStripedJanitor: 3
   contrabandInventory:
     ToyFigurineJanitor: 1
+    ClothingShoesGaloshes: 2
   emaggedInventory:
     ClothingUniformJumpskirtJanimaid: 2
     ClothingUniformJumpskirtJanimaidmini: 1

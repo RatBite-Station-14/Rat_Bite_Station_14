@@ -51,8 +51,22 @@
     ClothingMultipleHeadphones: 2
     ClothingHeadHatFlowerWreath: 2
     ClothingUniformColorRainbow: 2
-    ClothingUnderSocksCoder: 2
+    ClothingUnderSocksCoding: 2
     ClothingUnderSocksBee: 2
+    ClothingUnderSocksStripedWhiteandLightBlue: 2 # - Neptune's striped socks
+    ClothingUnderSocksStripedWhiteandGreen: 2 
+# Wip    ClothingUnderSocksStripedWhiteandLightBlueBunnySlipper: 2 
+    ClothingUnderSocksStripedWhiteandOrange: 2
+    ClothingUnderSocksStripedWhiteandPurple: 2 
+    ClothingUnderSocksStripedWhiteandRed: 2
+    ClothingUnderSocksStripedWhiteandYellow: 2 
+    ClothingUnderSocksStripedYellowandPurple: 2
+    ClothingUnderSocksStripedWhiteandBlack: 2
+    ClothingUnderSocksStripedChef: 2
+    ClothingUnderSocksStripedBartender: 2
+    ClothingUnderSocksStripedSherbert: 2 
+    ClothingUnderSocksStripedBlackandHotPink: 2
+    ClothingUnderSocksStripedWhiteandHotPink: 2
   contrabandInventory:
     ClothingNeckScarfStripedLesbianLong: 2
     ClothingUniformJumpskirtColorRainbow: 2

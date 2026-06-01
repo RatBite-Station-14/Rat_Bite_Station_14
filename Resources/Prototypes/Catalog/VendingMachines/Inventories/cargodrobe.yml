@@ -51,6 +51,7 @@
     #ClothingOuterWinterMiner: 2 # Lavaland Change
     ClothingNeckScarfStripedBrown: 3
     ClothingShoesBootsWinterCargo: 2
+    ClothingUnderSocksStripedCargo: 3
   contrabandInventory:
     ToyFigurineCargoTech: 1
     ToyFigurineSalvage: 1

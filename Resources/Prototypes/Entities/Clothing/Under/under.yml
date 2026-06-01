@@ -12,23 +12,839 @@
 # I would cry if we didn't have them. -swept
 
 - type: entity
-  parent: ClothingShoesBase
+  parent: ClothingShoesBaseButcherable
   id: ClothingUnderSocksBee
   name: bee socks
+  suffix: Bee Yellow
   description: Make them loins buzz!
   components:
   - type: Sprite
     sprite: Clothing/Under/Socks/bee.rsi
   - type: Clothing
     sprite: Clothing/Under/Socks/bee.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
 
 - type: entity
-  parent: ClothingShoesBase
-  id: ClothingUnderSocksCoder
-  name: coder socks
+  parent: ClothingShoesBaseButcherable
+  id: ClothingUnderSocksCoding
+  name: coder's socks
+  suffix: Pink
   description: It's time to code sisters!!11!
   components:
   - type: Sprite
-    sprite: Clothing/Under/Socks/coder.rsi
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedCoderSocksRemake.rsi
   - type: Clothing
-    sprite: Clothing/Under/Socks/coder.rsi
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedCoderSocksRemake.rsi
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedWhiteandLightBlue
+  name: Blue striped socks
+  suffix: Blue Nep
+  description: Wearing these white and light blue socks makes you feel just a little bit lazier.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedWhiteandLightBlue.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedWhiteandLightBlue.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedCaptainBlueandGold
+  name: Captain's striped socks
+  suffix: Captain
+  description: Striped socks in blue and gold that make you feel special enough to boss the heads.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedCaptainBlueandGold.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedCaptainBlueandGold.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedCaptainBlueandWhite
+  name: Head of personel's striped socks
+  suffix: Hop
+  description: Striped socks in blue and white that make you feel special enough to boss the heads.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedCaptainBlueandWhite.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedCaptainBlueandWhite.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedCaptainGoldandBlue
+  name: Captain's striped socks
+  suffix: Captain
+  description: Striped socks in gold and blue that make you feel special enough to boss the heads.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedCaptainGoldandBlue.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedCaptainGoldandBlue.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedCargo
+  name: Cargo Tech's striped socks
+  suffix: Cargo
+  description: These striped socks make you feel a little bit stronger.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedCargo.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedCargo.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedCargoQm
+  name: Quartermaster's striped socks
+  suffix: QM
+  description: Striped Socks that make you feel like becoming an independant Station State
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedCargoQm.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedCargoQm.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedEngineeringAtmos
+  name: Atmos Tech's striped socks
+  suffix: Atmos
+  description: Striped socks to make you stand out in an emergency
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedEngineeringAtmos.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedEngineeringAtmos.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedEngineering
+  name: Engineer's striped socks
+  suffix: Engineer
+  description: Striped socks to make you stand out in an emergency
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedEngineering.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedEngineering.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedScience
+  name: Scientist's striped socks
+  suffix: Science
+  description: These Striped socks make you want to do some Science
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedScience.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedScience.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: [ClothingShoesMilitaryBase, BaseSecurityContraband]
+  id: ClothingUnderSocksStripedSecurity
+  name: Security officer's striped socks
+  suffix: Security
+  description: These striped socks make you feel like beating up a clown.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedSecurity.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedSecurity.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedWhiteandGreen
+  name: Green striped socks
+  suffix: Green
+  description: Minty! Now in Green.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedWhiteandGreen.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedWhiteandGreen.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedWhiteandOrange
+  name: Orange striped socks
+  suffix: Orange
+  description: Striped socks that match the traffic style.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedWhiteandOrange.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedWhiteandOrange.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedWhiteandPurple
+  name: Purple striped socks
+  suffix: Purple
+  description: Striped socks that smell like grape soda.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedWhiteandPurple.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedWhiteandPurple.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedWhiteandRed
+  name: Red striped socks
+  suffix: Red
+  description: Minty! Now in red.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedWhiteandRed.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedWhiteandRed.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedWhiteandYellow
+  name: Yellow striped socks
+  suffix: Yellow
+  description: Please don't order pilk at the bar.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedWhiteandYellow.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedWhiteandYellow.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedYellowandPurple
+  name: Banana and Grape striped socks
+  suffix: Yellow Purple
+  description: Striped socks styled after banana and grape jelly sandwiches.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedYellowandPurple.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedYellowandPurple.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedBartender
+  name: Black and grey striped socks
+  suffix: Bar
+  description: Striped socks to serve drinks in.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedBartender.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedBartender.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedChef
+  name: White and grey striped socks
+  suffix: Chef
+  description: Striped socks perfect for getting blood on.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedChef.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedChef.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedClown
+  name: Clowny striped socks
+  suffix: Clown
+  description: Striped socks that faintly honk.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedClown.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedClown.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedWhiteandBlack
+  name: Black and white striped socks
+  suffix: Mime
+  description: Black and White Stripped Socks fit for a mime.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedWhiteandBlack.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedWhiteandBlack.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedMusican
+  name: Musician's striped socks
+  suffix: Musician
+  description: Striped socks styled for the musically inclined.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedMusican.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedMusican.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedScienceRD
+  name: Research Director's striped socks
+  suffix: RD
+  description: Striped socks in gaud purples for a research director.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedScienceRD.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedScienceRD.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedEngineeringCE
+  name: Chief Engineer's striped socks
+  suffix: CE
+  description: A sturdy pair of durathread socks for working on the sm and slipping in.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedEngineeringCE.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedEngineeringCE.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedMedicalCMO
+  name: Chief Medical Officer's striped socks
+  suffix: CMO
+  description: a pair of blue striped socks to match the coat. shame it doesnt match.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedMedicalCMO.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedMedicalCMO.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedBotany
+  name: Botanist's striped socks
+  suffix: Botany
+  description: striped socks designed to absorb as little water off the floor as possible, great for botanists.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedBotany.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedBotany.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedSecurityDetective
+  name: Detective's striped socks
+  suffix: Detective
+  description: Brown socks that kinda look like you- anyway off to dna scan them.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedSecurityDetective.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedSecurityDetective.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedBlackandGreen
+  name: NT branded striped socks
+  suffix: NTR
+  description: Black and green triped socks that dont really match anything perfect for NT Interns!
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedBlackandGreen.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedBlackandGreen.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedBlackandHotPink
+  name: Black and hot pink striped socks
+  suffix: Pink Black
+  description: Striped socks designed for goob member Johnalex, shame hes canadian.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedBlackandHotPink.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedBlackandHotPink.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedWhiteandHotPink
+  name: Hot Pink striped socks
+  suffix: Pink
+  description: Striped socks designed for goob member Johnalex, shame hes canadian.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedWhiteandHotPink.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedWhiteandHotPink.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedSherbert
+  name: Sherbert striped socks
+  suffix: Pink Blue
+  description: A pair of Sherbert Striped socks, now what does that even taste like?
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedSherbert.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedSherbert.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingUnderSocksBee
+  id: ClothingUnderSocksStripedJanitor
+  name: Janitor's striped socks
+  suffix: Janitor
+  description: Striped socks that don't help with cleaning at all!.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedJanitor.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedYJanitor.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+
+- type: entity
+  parent: [ClothingShoesMilitaryBase, BaseSecurityContraband]
+  id: ClothingUnderSocksStripedSecurityHOS
+  name: Head of Security's striped socks
+  suffix: HOS
+  description: Striped socks for a head of securing things.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedSecurityHOS.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Under/Socks/ClothingUnderSocksStripedSecurityHOS.rsi
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 30
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
+

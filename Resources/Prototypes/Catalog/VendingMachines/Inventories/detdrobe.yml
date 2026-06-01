@@ -60,6 +60,7 @@
     ClothingHandsGlovesLatex: 2
     ClothingHeadsetAltSecurityRegular: 2 # Goobstation
     ClothingHeadsetSecurity: 2
+    ClothingUnderSocksStripedSecurityDetective: 2
   contrabandInventory:
     ToyFigurineDetective: 1
   emaggedInventory: # Goobstation

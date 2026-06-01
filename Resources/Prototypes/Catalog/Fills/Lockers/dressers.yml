@@ -94,6 +94,13 @@
       - id: ClothingHandsGlovesCaptain
       - id: ClothingOuterWinterCapArmored # Goobstation
       - id: ClothingNeckCloakCap
+      - id: ClothingUnderSocksStripedCaptainBlueandGold #  - Neptune's striped socks
+        orGroup: StripedSocks
+        prob: 0.50
+      - id: ClothingUnderSocksStripedCaptainGoldandBlue #  - Neptune's striped socks
+        orGroup: StripedSocks
+        prob: 0.50
+
 
 - type: entity
   id: DresserChiefEngineerFilled
@@ -107,6 +114,7 @@
       - id: ClothingHeadHatBeretEngineering
       - id: ClothingOuterWinterCE
       - id: ClothingNeckCloakCe
+      - id: ClothingUnderSocksStripedEngineeringCE
 
 - type: entity
   id: DresserChiefMedicalOfficerFilled
@@ -123,6 +131,7 @@
       - id: ClothingEyesGlasses
       - id: ClothingOuterWinterCMO
       - id: ClothingCloakCmo
+      - id: ClothingUnderSocksStripedMedicalCMO
 
 - type: entity
   id: DresserHeadOfPersonnelFilled
@@ -135,6 +144,7 @@
       - id: ClothingOuterWinterHoP
       - id: ClothingEyesGlasses
       - id: ClothingNeckCloakHop
+      - id: ClothingUnderSocksStripedCaptainBlueandWhite
 
 - type: entity
   id: DresserHeadOfSecurityFilled
@@ -151,6 +161,7 @@
       - id: ClothingUniformJumpsuitHosFormal
       - id: ClothingOuterWinterHoS
       - id: ClothingNeckCloakHos
+      - id: ClothingUnderSocksStripedSecurityHOS
 
 - type: entity
   id: DresserQuarterMasterFilled
@@ -166,6 +177,7 @@
       - id: ClothingHandsGlovesColorBrown
       - id: ClothingOuterWinterQM
       - id: ClothingNeckCloakQm
+      - id: ClothingUnderSocksStripedCargoQm
 
 - type: entity
   id: DresserResearchDirectorFilled
@@ -180,6 +192,7 @@
       - id: ClothingOuterWinterRD
       - id: ClothingOuterCoatRD
       - id: ClothingNeckCloakRd
+      - id: ClothingUnderSocksStripedScienceRD
 
 - type: entity
   id: DresserWardenFilled
@@ -192,3 +205,4 @@
       - id: ClothingHeadHatBeretWarden
       - id: ClothingUniformJumpskirtWarden
       - id: ClothingUniformJumpsuitWarden
+      - id: ClothingUnderSocksStripedSecurityHOS
