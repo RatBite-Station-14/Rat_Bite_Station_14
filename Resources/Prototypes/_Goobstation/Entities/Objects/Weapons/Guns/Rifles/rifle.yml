@@ -210,6 +210,8 @@
         whitelist:
           tags:
           - CartridgeCaselessRifle
+  - type: LoudGun # Ratbite: silenced gun
+    staminaDamage: 0
   - type: MagazineVisuals
     magState: mag
     steps: 1

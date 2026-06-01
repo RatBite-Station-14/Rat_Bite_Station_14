@@ -105,6 +105,8 @@
     proto: BulletCaselessRifle
     capacity: 7
     count: 7
+  - type: LoudGun # Ratbite: this is loud
+    staminaDamage: 20
   - type: RechargeBasicEntityAmmo
     rechargeCooldown: 4
     rechargeSound:

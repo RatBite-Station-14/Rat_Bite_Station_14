@@ -36,6 +36,8 @@
       path: /Audio/_Goobstation/Weapons/Guns/Gunshots/bwuh.ogg
       params:
         volume: -10
+  - type: LoudGun # Ratbite: Silenced gun
+    staminaDamage: 0
   - type: ItemSlots
     slots:
       gun_magazine:
