@@ -94,13 +94,12 @@
       - id: ClothingHandsGlovesCaptain
       - id: ClothingOuterWinterCapArmored # Goobstation
       - id: ClothingNeckCloakCap
-      - id: ClothingUnderSocksStripedCaptainBlueandGold #  - Neptune's striped socks
+      - id: ClothingUnderSocksStripedCaptainBlueandGold # Ratbite Start
         orGroup: StripedSocks
         prob: 0.50
-      - id: ClothingUnderSocksStripedCaptainGoldandBlue #  - Neptune's striped socks
+      - id: ClothingUnderSocksStripedCaptainGoldandBlue
         orGroup: StripedSocks
-        prob: 0.50
-
+        prob: 0.50 # Ratbite End
 
 - type: entity
   id: DresserChiefEngineerFilled
