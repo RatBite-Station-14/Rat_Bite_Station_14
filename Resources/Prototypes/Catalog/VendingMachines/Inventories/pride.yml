@@ -53,7 +53,7 @@
     ClothingUniformColorRainbow: 2
     ClothingUnderSocksCoding: 2
     ClothingUnderSocksBee: 2
-    ClothingUnderSocksStripedWhiteandLightBlue: 2 # - Neptune's striped socks
+    ClothingUnderSocksStripedWhiteandLightBlue: 2 # Ratbite Start - Neptune's striped socks
     ClothingUnderSocksStripedWhiteandGreen: 2 
 # Wip    ClothingUnderSocksStripedWhiteandLightBlueBunnySlipper: 2 
     ClothingUnderSocksStripedWhiteandOrange: 2
@@ -66,7 +66,7 @@
     ClothingUnderSocksStripedBartender: 2
     ClothingUnderSocksStripedSherbert: 2 
     ClothingUnderSocksStripedBlackandHotPink: 2
-    ClothingUnderSocksStripedWhiteandHotPink: 2
+    ClothingUnderSocksStripedWhiteandHotPink: 2 # Ratbite End
   contrabandInventory:
     ClothingNeckScarfStripedLesbianLong: 2
     ClothingUniformJumpskirtColorRainbow: 2
