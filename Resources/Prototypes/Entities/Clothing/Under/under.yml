@@ -12,7 +12,7 @@
 # I would cry if we didn't have them. -swept
 
 - type: entity
-  parent: ClothingShoesBaseButcherable
+  parent: ClothingShoesBaseButcherable # Ratbite - made butcherable
   id: ClothingUnderSocksBee
   name: bee socks
   suffix: Bee Yellow
