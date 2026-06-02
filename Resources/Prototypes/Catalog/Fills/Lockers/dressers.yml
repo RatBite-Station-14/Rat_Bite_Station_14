@@ -130,7 +130,7 @@
       - id: ClothingEyesGlasses
       - id: ClothingOuterWinterCMO
       - id: ClothingCloakCmo
-      - id: ClothingUnderSocksStripedMedicalCMO
+      - id: ClothingUnderSocksStripedMedicalCMO # Ratbite
 
 - type: entity
   id: DresserHeadOfPersonnelFilled
