@@ -143,7 +143,7 @@
       - id: ClothingOuterWinterHoP
       - id: ClothingEyesGlasses
       - id: ClothingNeckCloakHop
-      - id: ClothingUnderSocksStripedCaptainBlueandWhite
+      - id: ClothingUnderSocksStripedCaptainBlueandWhite # Ratbite
 
 - type: entity
   id: DresserHeadOfSecurityFilled
