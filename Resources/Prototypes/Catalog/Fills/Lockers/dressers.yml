@@ -160,7 +160,7 @@
       - id: ClothingUniformJumpsuitHosFormal
       - id: ClothingOuterWinterHoS
       - id: ClothingNeckCloakHos
-      - id: ClothingUnderSocksStripedSecurityHOS
+      - id: ClothingUnderSocksStripedSecurityHOS # Ratbite
 
 - type: entity
   id: DresserQuarterMasterFilled
