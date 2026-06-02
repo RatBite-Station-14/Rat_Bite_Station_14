@@ -71,7 +71,7 @@
     ClothingHeadHelmetJustice: 1
     ClothingHeadHelmetBasic: 2
     ClothingHeadHelmetBasicAlt: 2
-    ClothingUnderSocksStripedSecurity: 5
+    ClothingUnderSocksStripedSecurity: 5 # Ratbite
   contrabandInventory:
     ClothingMaskClownSecurity: 1
     ClothingMaskMimeSecurity: 1
