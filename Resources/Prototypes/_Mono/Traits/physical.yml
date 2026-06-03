@@ -109,10 +109,11 @@
   name: trait-thieving-name
   description: trait-thieving-desc
   category: Physical
-  cost: 3
+  cost: 6
   speciesBlacklist:
   - Felinid
   components:
+  - type: ThievingTrait
   - type: Thieving
     stealthy: false
     toggleSubtle: true
@@ -120,16 +121,16 @@
     identifyHidden: true
     traitGranted: true
 
-#- type: trait # Ratbite, removed this because its dumb strong.
+#- type: trait
 #  id: BionicLegs
 #  name: trait-bionic-legs-name
 #  description: trait-bionic-legs-desc
 #  category: Physical
-#  cost: 14
+#  cost: 10
 #  components:
 #  - type: BionicLegs
-#      walkSpeed: 2.1875 # add your slower values
-#    sprintSpeed: 3.6225 # add your slower values
+#    walkSpeed: 2.8125
+#    sprintSpeed: 4.8375
 
 - type: trait
   id: OsteogenesisImperfecta
@@ -257,7 +258,7 @@
   name: trait-redshirt-name
   description: trait-redshirt-desc
   category: Mental
-  cost: -3 # Ratbite nerf, encourages antisocial gameplay at -8, crazy.
+  cost: -4 # Ratbite nerf, encourages antisocial gameplay at -8, crazy.
   mutuallyExclusiveTraits:
   - WillToLive
   speciesBlacklist:

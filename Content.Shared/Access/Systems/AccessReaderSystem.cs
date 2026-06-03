@@ -125,6 +125,7 @@ public sealed class AccessReaderSystem : EntitySystem
     [Dependency] private readonly SharedStationRecordsSystem _recordsSystem = default!;
 
     private static readonly ProtoId<TagPrototype> PreventAccessLoggingTag = "PreventAccessLogging";
+    private static readonly ProtoId<TagPrototype> BypassMindshieldAccessRequirementTag = "BypassMindshieldAccessRequirement";
 
     public override void Initialize()
     {
@@ -212,9 +213,8 @@ public sealed class AccessReaderSystem : EntitySystem
         var access = FindAccessTags(user, accessSources);
         FindStationRecordKeys(user, out var stationKeys, accessSources);
 
-	if (reader.NeedsMindshield && !HasComp<MindShieldComponent>(user)) {
-	    return false;
-	}
+        if (reader.NeedsMindshield && !HasMindshieldAccess(user))
+            return false;
 
         if (!IsAllowed(access, stationKeys, target, reader))
             return false;
@@ -223,6 +223,11 @@ public sealed class AccessReaderSystem : EntitySystem
             LogAccess((target, reader), user);
 
         return true;
+    }
+
+    public bool HasMindshieldAccess(EntityUid user)
+    {
+        return HasComp<MindShieldComponent>(user) || _tag.HasTag(user, BypassMindshieldAccessRequirementTag);
     }
 
     /// <summary>

@@ -133,6 +133,7 @@
   - !type:AddComponentSpecial # goobstation
     components:
       - type: SecurityStaff
+      - type: CombatTrained
 
 - type: startingGear
   id: SecurityCadetGear

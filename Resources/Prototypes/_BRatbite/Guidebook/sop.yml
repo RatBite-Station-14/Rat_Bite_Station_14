@@ -32,6 +32,7 @@
   id: Central Command SOP
   name: guide-entry-sop-central-command-general
   text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/CentralCommandSOP.xml"
+  priority: 1
   children:
   - HighCommand SOP
   - NanotrasenRep SOP

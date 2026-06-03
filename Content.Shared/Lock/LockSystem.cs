@@ -364,12 +364,13 @@ public sealed class LockSystem : EntitySystem
         if (!Resolve(uid, ref reader, false))
             return true;
 		
-	if (reader.NeedsMindshield && !HasComp<MindShieldComponent>(user)) {
-	    if (!quiet) {
-		_sharedPopupSystem.PopupClient(Loc.GetString("lock-comp-no-mindshield", ("entityName", Identity.Name(uid, EntityManager))), uid, user);
-	    }
-	    return false;
-	}
+        if (reader.NeedsMindshield && !_accessReader.HasMindshieldAccess(user))
+        {
+            if (!quiet)
+                _sharedPopupSystem.PopupClient(Loc.GetString("lock-comp-no-mindshield", ("entityName", Identity.Name(uid, EntityManager))), uid, user);
+
+            return false;
+        }
 
         if (_accessReader.IsAllowed(user, uid, reader))
             return true;

@@ -592,6 +592,12 @@
     - Bacterial
     - Parasite
   # </Goobstation>
+  # Ratbite: All species are combat untrained by default, unless they are given the trained component
+  - type: CombatUntrained
+    recoilDebuff: 2
+    flatRecoilDebuff: 5.0
+    missShotChance: 0.05
+    dropGunChance: 0.01
 
 - type: entity
   save: false

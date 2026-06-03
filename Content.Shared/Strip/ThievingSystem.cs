@@ -41,6 +41,9 @@ public sealed partial class ThievingSystem : EntitySystem
         }
 
         args.Multiplier *= component.TimeMultiplier;
+
+        if (!component.TraitGranted && HasComp<ThievingTraitComponent>(uid))
+            args.Multiplier *= ThievingTraitComponent.StripTimeMultiplier;
     }
 
     private void OnCompInit(Entity<ThievingComponent> entity, ref ComponentInit args)

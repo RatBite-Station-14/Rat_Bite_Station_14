@@ -800,7 +800,7 @@ namespace Content.Shared.Cuffs
                 BreakOnMove = true,
                 BreakOnWeightlessMove = false,
                 BreakOnDamage = true,
-                NeedHand = true,
+                NeedHand = !isOwner,
                 RequireCanInteract = false, // Trust in UncuffAttemptEvent
                 DistanceThreshold = 1f // shorter than default but still feels good
             };

@@ -5,16 +5,14 @@
 using Content.Server.Cuffs;
 using Content.Shared._BRatbite.Cuffs;
 using Content.Shared.Cuffs.Components;
-using Robust.Shared.Timing;
+using Content.Shared.DoAfter;
 
 namespace Content.Server._BRatbite.Cuffs;
 
 public sealed class TemporaryCuffsSystem : EntitySystem
 {
     [Dependency] private readonly CuffableSystem _cuffable = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-
-    private readonly List<PendingTemporaryCuffs> _pending = new();
+    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
 
     public override void Initialize()
     {
@@ -22,50 +20,66 @@ public sealed class TemporaryCuffsSystem : EntitySystem
 
         SubscribeLocalEvent<TemporaryCuffsComponent, TemporaryCuffsRemovedEvent>(OnCuffsRemoved);
         SubscribeLocalEvent<TemporaryCuffsComponent, TemporaryCuffsStruggleInterruptedEvent>(OnCuffsStruggleInterrupted);
-    }
-
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-
-        for (var i = _pending.Count - 1; i >= 0; i--)
-        {
-            var pending = _pending[i];
-
-            if (pending.BreakTime > _timing.CurTime)
-                continue;
-
-            _pending.RemoveAt(i);
-
-            if (!TryComp<CuffableComponent>(pending.Target, out var cuffable) ||
-                !TryComp<HandcuffComponent>(pending.Cuffs, out var cuffs) ||
-                !IsContained(cuffable, pending.Cuffs))
-            {
-                continue;
-            }
-
-            _cuffable.Uncuff(pending.Target, null, pending.Cuffs, cuffable, cuffs);
-        }
+        SubscribeLocalEvent<TemporaryCuffsComponent, TemporaryCuffsBreakoutDoAfterEvent>(OnBreakoutDoAfter);
     }
 
     private void OnCuffsRemoved(Entity<TemporaryCuffsComponent> ent, ref TemporaryCuffsRemovedEvent args)
     {
-        RemovePending(ent.Owner);
+        CancelBreakout(ent.Comp);
     }
 
     private void OnCuffsStruggleInterrupted(Entity<TemporaryCuffsComponent> ent, ref TemporaryCuffsStruggleInterruptedEvent args)
     {
-        RemovePending(ent.Owner);
-        _pending.Add(new PendingTemporaryCuffs(ent.Owner, args.Target, _timing.CurTime + ent.Comp.Lifetime));
+        StartBreakout(ent, args.Target);
     }
 
-    private void RemovePending(EntityUid cuffs)
+    private void StartBreakout(Entity<TemporaryCuffsComponent> ent, EntityUid target)
     {
-        for (var i = _pending.Count - 1; i >= 0; i--)
+        CancelBreakout(ent.Comp);
+
+        var doAfter = new DoAfterArgs(EntityManager,
+            target,
+            ent.Comp.Lifetime,
+            new TemporaryCuffsBreakoutDoAfterEvent(),
+            ent.Owner,
+            target: target,
+            used: ent.Owner)
         {
-            if (_pending[i].Cuffs == cuffs)
-                _pending.RemoveAt(i);
+            BreakOnMove = false,
+            BreakOnWeightlessMove = false,
+            BreakOnDamage = false,
+            NeedHand = false,
+            RequireCanInteract = false,
+            Hidden = false,
+            BlockDuplicate = false,
+            CancelDuplicate = false,
+            DuplicateCondition = DuplicateConditions.SameEvent,
+        };
+
+        _doAfter.TryStartDoAfter(doAfter, out ent.Comp.BreakoutDoAfter);
+        Log.Debug($"Started temporary cuffs breakout for {ToPrettyString(target)} using {ToPrettyString(ent.Owner)}.");
+    }
+
+    private void OnBreakoutDoAfter(Entity<TemporaryCuffsComponent> ent, ref TemporaryCuffsBreakoutDoAfterEvent args)
+    {
+        ent.Comp.BreakoutDoAfter = null;
+
+        if (args.Cancelled ||
+            args.Args.Target is not { } target ||
+            !TryComp<CuffableComponent>(target, out var cuffable) ||
+            !TryComp<HandcuffComponent>(ent.Owner, out var cuffs) ||
+            !IsContained(cuffable, ent.Owner))
+        {
+            return;
         }
+
+        _cuffable.Uncuff(target, null, ent.Owner, cuffable, cuffs);
+    }
+
+    private void CancelBreakout(TemporaryCuffsComponent component)
+    {
+        _doAfter.Cancel(component.BreakoutDoAfter);
+        component.BreakoutDoAfter = null;
     }
 
     private static bool IsContained(CuffableComponent cuffable, EntityUid cuffs)
@@ -78,6 +92,4 @@ public sealed class TemporaryCuffsSystem : EntitySystem
 
         return false;
     }
-
-    private readonly record struct PendingTemporaryCuffs(EntityUid Cuffs, EntityUid Target, TimeSpan BreakTime);
 }

@@ -39,6 +39,9 @@ public sealed class ReagentEntry
     [JsonPropertyName("physicalDesc")]
     public string PhysicalDescription { get; }
 
+    [JsonPropertyName("worksOnTheDead")]
+    public bool WorksOnTheDead { get; }
+
     [JsonPropertyName("color")]
     public string SubstanceColor { get; }
 
@@ -57,6 +60,7 @@ public sealed class ReagentEntry
         PhysicalDescription = proto.LocalizedPhysicalDescription;
         SubstanceColor = proto.SubstanceColor.ToHex();
         Metabolisms = proto.Metabolisms?.ToDictionary(x => x.Key.Id, x => x.Value);
+        WorksOnTheDead = proto.WorksOnTheDead;
     }
 }
 

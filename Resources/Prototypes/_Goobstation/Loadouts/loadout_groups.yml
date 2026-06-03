@@ -1021,6 +1021,7 @@
   minLimit: 0
   loadouts:
   - BlueshieldOfficerMaskLollypop
+  - BlushieldOfficerMaskGasSwat
 
 - type: loadoutGroup
   id: BlueshieldOfficerShoes

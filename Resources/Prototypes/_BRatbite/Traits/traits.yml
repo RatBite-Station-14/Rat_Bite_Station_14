@@ -16,7 +16,7 @@
   name: trait-pct-training-name
   description: trait-pct-training-desc
   category: Physical
-  cost: 6
+  cost: 5
   mutuallyExclusiveTraits:
   - PaciFist
   - StrikingCalluses
@@ -33,7 +33,7 @@
   name: trait-paci-fist-name
   description: trait-paci-fist-desc
   category: Physical
-  cost: 16
+  cost: 5
   requiredTraits:
   - Pacifist
   mutuallyExclusiveTraits:
@@ -73,7 +73,7 @@
   name: trait-marathoner-name
   description: trait-marathoner-desc
   category: Physical
-  cost: 14
+  cost: 10
   mutuallyExclusiveTraits:
   - Vigor
   - Lethargy
@@ -108,7 +108,7 @@
   name: trait-neurogenesis-imperfecta-name
   description: trait-neurogenesis-imperfecta-desc
   category: Physical
-  cost: -3
+  cost: -10
   speciesBlacklist:
   - IPC
   blacklist:
@@ -147,6 +147,41 @@
   name: trait-atheist-name
   description: trait-atheist-desc
   category: Mental
-  cost: 0
+  cost: -2
+  mutuallyExclusiveTraits:
+  - Believer
   components:
   - type: Atheist
+
+- type: trait
+  id: Believer
+  name: trait-believer-name
+  description: trait-believer-desc
+  category: Mental
+  cost: 8
+  mutuallyExclusiveTraits:
+  - Atheist
+  components:
+  - type: Believer
+
+  id: CombatTrained
+  name: trait-combat-trained-name
+  description: trait-combat-trained-desc
+  category: Mental
+  cost: 2
+  speciesBlacklist:
+  - Oni
+  components:
+  - type: CombatTrained
+
+- type: trait
+  id: ScaredOfGuns
+  name: trait-scared-of-guns-name
+  description: trait-scared-of-guns-desc
+  category: Mental
+  cost: -3
+  speciesBlacklist:
+  - Oni
+  components:
+    - type: ScaredOfGuns
+

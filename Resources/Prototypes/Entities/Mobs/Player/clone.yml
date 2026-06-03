@@ -18,7 +18,9 @@
   # traits
   # - LegsParalyzed (you get healed)
   - AlcoholTolerance
+  - Atheist
   - BlackAndWhiteOverlay
+  - Believer
   - BionicLegs
   - ClimbDelayModifier
   - CPRTraining
@@ -84,6 +86,7 @@
   - MimePowers
   - SpaceNinja
   - Thieving
+  - ThievingTrait
   # accents
   - Accentless
   - BackwardsAccent
@@ -126,6 +129,15 @@
   - LanguageKnowledge
   - ForeignerTrait
   # Einstein Engines - Language end
+
+  # Ratbite
+  - CaptainSaberWeaknessComponent
+  - Prisoner
+  - Atheist
+  - CombatTrained
+  - CombatUntrained
+  # End ratbite
+
   blacklist:
     components:
     - AttachedClothing # helmets, which are part of the suit

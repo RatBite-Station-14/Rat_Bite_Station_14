@@ -127,7 +127,7 @@
   name: trait-clumsiness-name
   description: trait-clumsiness-desc
   category: Physical
-  cost: -5
+  cost: -4 #Ratbite
   components:
   - type: Clumsy
     gunShootFailDamage:
@@ -157,7 +157,7 @@
   name: trait-chronic-kleptomania-name
   description: trait-chronic-kleptomania-desc
   category: Mental
-  cost: -4 #ratbite
+  cost: -5 #ratbite
   mutuallyExclusiveTraits:
   - Kleptomania
   components:

@@ -1,11 +1,5 @@
-
-
-
-#Ratbite start
-
-
 - type: entity
-  id: LowImpactAntagStationScheduler #used for SqueakRat modes
+  id: LowImpactAntagStationScheduler #used for Squeakrat and Susrat
   parent: BaseGameRule
   components:
   - type: BasicStationEventScheduler
@@ -16,7 +10,7 @@
       max: 1000
 
 - type: entity
-  id: HeavierAntagStationScheduler #used for SqueakRat modes
+  id: HeavierAntagStationScheduler #used for SqueakRat
   parent: BaseGameRule
   components:
   - type: BasicStationEventScheduler
@@ -28,7 +22,7 @@
 
 
 - type: entity
-  id: RatbiteBasicEventsScheduler #used for SqueakRat modes, controls basic events
+  id: RatbiteBasicEventsScheduler #used for all modes, controls basic events
   parent: BaseGameRule
   components:
   - type: BasicStationEventScheduler
@@ -39,7 +33,7 @@
       max: 700
 
 - type: entity
-  id: SusStationEventScheduler #used for SusRat, controls station events.
+  id: SusStationEventScheduler #used for SusRat, controls midrounds.
   parent: BaseGameRule
   components:
   - type: BasicStationEventScheduler

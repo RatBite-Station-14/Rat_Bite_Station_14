@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2026 Sprinkle <40203084+lnn0q@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  id: CratePermaBotanyStarter
+  parent: CratePlastic
+  name: perma botany starter crate
+  description: A plastic crate with basic tools and seeds for a small prison garden.
+  components:
+  - type: StorageFill
+    contents:
+    - id: HydroponicsToolMiniHoe
+    - id: HydroponicsToolSpade
+    - id: HydroponicsToolClippers
+    - id: HydroponicsToolHatchet
+    - id: PlantBGoneSpray
+    - id: WeedSpray
+    - id: PestSpray
+    - id: ChemistryBottleEZNutrient
+      amount: 2
+    - id: WheatSeeds
+    - id: TomatoSeeds
+    - id: CarrotSeeds
+    - id: PotatoSeeds
+    - id: CornSeeds
+    - id: CabbageSeeds

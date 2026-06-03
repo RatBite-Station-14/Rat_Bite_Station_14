@@ -83,6 +83,7 @@
       - type: CommandStaff
       - type: Condemned
         soulOwnedNotDevil: true
+      - type: CombatTrained # ratbite
 
 - type: startingGear
   id: BlueshieldOfficerGear
@@ -96,7 +97,7 @@
   storage:
     back:
     - Flash
-    - ClothingMaskGasSecurity
+    - ClothingBSOMaskGasSwat
     - CombatKnife
     - BlueshieldUndeterminedHardsuit
     - BlueshieldUndeterminedWeapon

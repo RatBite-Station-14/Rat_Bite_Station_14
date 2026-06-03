@@ -9,14 +9,10 @@ using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
-using Content.Shared.Item;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Strip;
 using Content.Shared.Strip.Components;
-using Robust.Shared.Containers;
-using Robust.Shared.Physics;
-using Robust.Shared.Physics.Components;
 using Robust.Shared.Random;
 
 namespace Content.Server.Traits.Assorted;
@@ -31,7 +27,6 @@ public sealed class KleptomaniaSystem : EntitySystem
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly SharedStrippableSystem _strippable = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedContainerSystem _containers = default!;
 
     private static readonly SlotFlags NormalSlots =
         SlotFlags.HEAD | SlotFlags.EYES | SlotFlags.MASK | SlotFlags.NECK | SlotFlags.GLOVES;
@@ -70,12 +65,6 @@ public sealed class KleptomaniaSystem : EntitySystem
                 !_hands.TryGetEmptyHand((uid, hands), out _))
                 continue;
 
-            if (TryPickupLooseItem((uid, klepto, hands)))
-            {
-                klepto.NextIncidentTime = MathF.Max(klepto.NextIncidentTime, klepto.FloorItemCooldown);
-                continue;
-            }
-
             TryStartStripAttempt((uid, klepto, hands));
         }
     }
@@ -85,36 +74,6 @@ public sealed class KleptomaniaSystem : EntitySystem
         var min = MathF.Min(component.TimeBetweenIncidents.X, component.TimeBetweenIncidents.Y);
         var max = MathF.Max(component.TimeBetweenIncidents.X, component.TimeBetweenIncidents.Y);
         return min.Equals(max) ? max : _random.NextFloat(min, max);
-    }
-
-    private bool TryPickupLooseItem(Entity<KleptomaniaComponent, HandsComponent> ent)
-    {
-        var nearby = _lookup.GetEntitiesInRange(Transform(ent).Coordinates,
-            ent.Comp1.Range,
-            LookupFlags.Dynamic | LookupFlags.Sundries).ToList();
-        _random.Shuffle(nearby);
-
-        foreach (var item in nearby)
-        {
-            if (item == ent.Owner ||
-                !HasComp<ItemComponent>(item) ||
-                _containers.IsEntityInContainer(item))
-                continue;
-
-            if (TryComp<TransformComponent>(item, out var xform) && xform.Anchored)
-                continue;
-
-            if (TryComp<PhysicsComponent>(item, out var physics) && physics.BodyType == BodyType.Static)
-                continue;
-
-            if (!_interaction.InRangeAndAccessible(ent.Owner, item, ent.Comp1.Range))
-                continue;
-
-            if (_hands.TryPickupAnyHand(ent.Owner, item, handsComp: ent.Comp2))
-                return true;
-        }
-
-        return false;
     }
 
     private bool TryStartStripAttempt(Entity<KleptomaniaComponent, HandsComponent> ent)

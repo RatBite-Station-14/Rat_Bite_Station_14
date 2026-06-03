@@ -1,0 +1,25 @@
+- type: reagent
+  id: Teriparatide
+  name: reagent-name-teriparatide
+  group: Medicine
+  desc: reagent-desc-teriparatide
+  physicalDesc: reagent-physical-desc-translucent
+  flavor: medicine
+  color: "#2d8c74"
+  worksOnTheDead: true # Cryo chems should work on the dead
+  metabolisms:
+    Medicine:
+      effects:
+        - !type:AdjustBoneDamage
+          amount: -10
+          conditions:
+          - !type:Temperature
+            max: 213.0
+        - !type:HealthChange
+          conditions:
+          - !type:OrganType
+            type: Yowie
+            shouldHave: false
+          damage:
+            types:
+              Poison: 0.5

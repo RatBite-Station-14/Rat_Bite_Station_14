@@ -1,0 +1,2 @@
+reagent-name-teriparatide = teriparatide
+reagent-desc-teriparatide = A chemical compound that binds to bone tissue and crystallizes at low temperatures, repairing fractures in the process. Prolonged exposure is mildly toxic.

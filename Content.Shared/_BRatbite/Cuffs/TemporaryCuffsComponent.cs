@@ -2,6 +2,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared.DoAfter;
+
 namespace Content.Shared._BRatbite.Cuffs;
 
 [RegisterComponent]
@@ -12,4 +14,6 @@ public sealed partial class TemporaryCuffsComponent : Component
 
     [DataField]
     public TimeSpan MinimumInterruptedStruggleTime = TimeSpan.FromSeconds(2);
+
+    public DoAfterId? BreakoutDoAfter;
 }

@@ -16,9 +16,6 @@ public sealed partial class KleptomaniaComponent : Component
     public float Range = 1.5f;
 
     [DataField]
-    public float FloorItemCooldown = 10f;
-
-    [DataField]
     public bool RiskyTargets;
 
     public float NextIncidentTime;

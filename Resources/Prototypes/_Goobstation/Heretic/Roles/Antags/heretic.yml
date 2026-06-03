@@ -29,7 +29,7 @@
   guides: [ Heretics ]
 
 - type: startingGear
-  id: Heretictmidround
+  id: HereticMidround
   storage:
     back:
     - Inkofimaginination

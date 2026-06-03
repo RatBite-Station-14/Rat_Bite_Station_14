@@ -96,6 +96,18 @@
   offset: 0, 0.125
 
 - type: typingIndicator
+  id: allulalo
+  typingState: default0
+  idleState: default3
+  offset: 0, 0.125
+
+- type: typingIndicator
+  id: ungu
+  typingState: default0
+  idleState: default3
+  offset: 0, 0.125
+
+- type: typingIndicator
   id: regal
   typingState: regal0
   idleState: regal3

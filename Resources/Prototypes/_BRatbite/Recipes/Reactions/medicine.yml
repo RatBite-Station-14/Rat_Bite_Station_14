@@ -1,0 +1,14 @@
+- type: reaction
+  id: Teriparatide
+  reactants:
+    Tramadol:
+      amount: 1
+    Bicaridine:
+      amount: 1
+    Protein:
+      amount: 0.25
+    Plasma:
+      amount: 1
+      catalyst: true
+  products:
+    Teriparatide: 4

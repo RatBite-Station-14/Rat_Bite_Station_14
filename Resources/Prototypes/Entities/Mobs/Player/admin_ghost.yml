@@ -160,6 +160,7 @@
     - NoConsoleSound
     - SilentStorageUser
     - PreventAccessLogging
+    - BypassMindshieldAccessRequirement
     - AllowBiomeLoading
   - type: Input
     context: "aghost"

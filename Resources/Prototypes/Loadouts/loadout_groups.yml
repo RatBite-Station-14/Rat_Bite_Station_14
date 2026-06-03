@@ -343,16 +343,6 @@
   - CaptainMessenger # Frontier
 
 - type: loadoutGroup
-  id: CaptainBelt #Ratbite - Captain Powergaming
-  name: Captain Belt
-  loadouts:
-  - UtilityBelt
-  - SecurityBelt
-  - SecurityWebbing
-  - SecurityJudoBelt
-  - MedicalBelt
-
-- type: loadoutGroup
   id: CaptainOuterClothing
   name: loadout-group-captain-outerclothing
   loadouts:

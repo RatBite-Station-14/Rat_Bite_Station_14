@@ -52,7 +52,7 @@
   name: trait-social-anxiety-name
   description: trait-social-anxiety-disc
   category: Mental
-  cost: -3
+  cost: -3 #Ratbite
   components:
     - type: SocialAnxiety
 

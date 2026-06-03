@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 01/21/2026 00:01:31
-  entityCount: 30034
+  time: 05/29/2026 15:43:16
+  entityCount: 30035
 maps:
 - 1
 grids:
@@ -13287,7 +13287,7 @@ entities:
       pos: 0.5,48.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -39141.887
+      secondsUntilStateChange: -39340.047
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -14004,7 +14004,7 @@ entities:
       pos: -3.5,-35.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -640786.8
+      secondsUntilStateChange: -640985
       state: Opening
   - uid: 431
     components:
@@ -75679,23 +75679,6 @@ entities:
     - type: Transform
       pos: 39.479088,15.666133
       parent: 2
-- proto: ChemDispenser
-  entities:
-  - uid: 8103
-    components:
-    - type: Transform
-      pos: -12.5,-38.5
-      parent: 2
-  - uid: 8104
-    components:
-    - type: Transform
-      pos: -12.5,-42.5
-      parent: 2
-  - uid: 8105
-    components:
-    - type: Transform
-      pos: -16.5,-38.5
-      parent: 2
 - proto: ChemDispenserEmpty
   entities:
   - uid: 8106
@@ -78854,6 +78837,13 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 25.5,4.5
+      parent: 2
+- proto: ComputerSupermatter
+  entities:
+  - uid: 17000
+    components:
+    - type: Transform
+      pos: -21.5,45.5
       parent: 2
 - proto: ComputerSurveillanceCameraMonitor
   entities:
@@ -91059,6 +91049,23 @@ entities:
       parent: 10467
     - type: Physics
       canCollide: False
+- proto: EnergyChemDispenser
+  entities:
+  - uid: 8103
+    components:
+    - type: Transform
+      pos: -12.5,-38.5
+      parent: 2
+  - uid: 8104
+    components:
+    - type: Transform
+      pos: -12.5,-42.5
+      parent: 2
+  - uid: 8105
+    components:
+    - type: Transform
+      pos: -16.5,-38.5
+      parent: 2
 - proto: EngineeringTechFab
   entities:
   - uid: 10469
@@ -93618,7 +93625,7 @@ entities:
       pos: -1.5,-16.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -7566.334
+      secondsUntilStateChange: -7764.495
       state: Closing
     - type: DeviceNetwork
       deviceLists:
@@ -143428,11 +143435,6 @@ entities:
     - type: Transform
       pos: -16.5,49.5
       parent: 2
-  - uid: 17000
-    components:
-    - type: Transform
-      pos: -21.5,45.5
-      parent: 2
   - uid: 17001
     components:
     - type: Transform
@@ -143942,6 +143944,12 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 43.5,48.5
       parent: 23880
+  - uid: 30035
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -24.5,45.5
+      parent: 2
 - proto: PoweredSmallLightEmpty
   entities:
   - uid: 17072
@@ -151669,6 +151677,7 @@ entities:
       - Arsenal
       - Experimental
       - CivilianServices
+      - LEGAL
 - proto: SciFlash
   entities:
   - uid: 18306
@@ -151813,6 +151822,7 @@ entities:
       - Arsenal
       - Experimental
       - CivilianServices
+      - LEGAL
 - proto: SeedExtractor
   entities:
   - uid: 18330
@@ -165447,6 +165457,7 @@ entities:
       - Arsenal
       - Experimental
       - CivilianServices
+      - LEGAL
 - proto: UniqueLockerBlueshieldOfficerFilled
   entities:
   - uid: 20138
@@ -187586,7 +187597,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -64490.902
+      secondsUntilStateChange: -64689.062
       state: Opening
     - type: Airlock
       autoClose: False
@@ -188916,7 +188927,7 @@ entities:
       pos: -46.5,28.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -72874.664
+      secondsUntilStateChange: -73072.83
       state: Opening
   - uid: 30008
     components:
@@ -188944,7 +188955,7 @@ entities:
       pos: 24.5,2.5
       parent: 23880
     - type: Door
-      secondsUntilStateChange: -418918.3
+      secondsUntilStateChange: -419116.47
       state: Opening
 - proto: WoodenBench
   entities:

@@ -136,3 +136,13 @@
       amount: 1
     - id: Bola # replace with 4 e-bolas when added
       amount: 4
+- type: entity
+  parent: CrateSecgear
+  id: CrateCombatTrainingBook
+  name: "How to robust 101"
+  description: "A guide made by NT aimed to train cadets in the intricate art of combat"
+  components:
+  - type: StorageFill
+    contents:
+    - id: BookCombatTraining
+      amount: 1

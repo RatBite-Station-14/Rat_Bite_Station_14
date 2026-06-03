@@ -72,11 +72,11 @@
   text: "/ServerInfo/_Goobstation/Guidebook/SoP/Legal/LegalSOP.xml"
   priority: 2
   children:
-  - SpaceLaw
   - Execution SOP
   - PermaBrig SOP
   - Punishments SOP
   - Searches SOP
+  - Multi Round Perma SOP
 
 # Jobs Main Directory and Subdirectories
 - type: guideEntry
@@ -85,8 +85,9 @@
   text: "/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/JobsSOP.xml"
   priority: 2
   children:
-  - Cargo SOP
+  - Central Command SOP
   - Command SOP # Probably causing testfail
+  - Cargo SOP
   - Engineering SOP
   - Medical SOP
   - Science SOP
@@ -107,15 +108,15 @@
   name: guide-entry-sop-command
   text: "/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/Command/CommandSOP.xml"
   children:
-  - NanotrasenRep SOP
-  - BlueshieldOfficer SOP
-  - Captain SOP
-  - HeadOfPersonnel SOP
-  - HeadOfSecurity SOP
-  - ResearchDirector SOP
-  - ChiefMedicalOfficer SOP
-  - ChiefEngineer SOP
-  - Quartermaster SOP
+  - Captain SOP # nowhere else to put it, commandassistant just a week away :smile:
+#  #- NanotrasenRep SOP # moved to _BRatbite
+#  #- BlueshieldOfficer SOP # moved to _BRatbite
+#  - HeadOfPersonnel SOP
+#  - HeadOfSecurity SOP
+#  - ResearchDirector SOP
+#  - ChiefMedicalOfficer SOP
+#  - ChiefEngineer SOP
+#  - Quartermaster SOP
 
 - type: guideEntry
   id: Engineering SOP
@@ -149,7 +150,7 @@
   name: guide-entry-sop-security
   text: "/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/Security/SecuritySOP.xml"
   children:
-  - SpaceLaw
+  #- SpaceLaw # Ratbite - Deduplicate guidebook entries
   - Brigmedic SOP
   - Warden SOP
   - OfficerCadet SOP

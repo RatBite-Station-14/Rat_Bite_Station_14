@@ -184,6 +184,9 @@
       - id: ClothingBeltCorporateJudoFilled
         weight: 0.5
     # Goobstation - Martial Arts - end
+    # Ratbite: robust 101
+    - id: BookCombatTraining
+      prob: 0.25
 
 - type: entity
   id: LockerBrigmedicFilled

@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Impstation contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Names
 chat-emote-name-bubble = Bubble
 chat-emote-name-pop = Pop

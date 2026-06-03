@@ -1,3 +1,5 @@
+
+#region Medical Orderly
 - type: job
   id: MedOrderly
   name: Medical Orderly
@@ -32,6 +34,7 @@
     components:
       - type: Condemned
         soulOwnedNotDevil: true # Bootlicker for NT
+      - type: CombatTrained # ratbite
 
 - type: startingGear
   id: MedicalOrderlyGear
@@ -43,6 +46,20 @@
     back:
     - Flash
 
+- type: chameleonOutfit
+  id: MedOrderlyChameleonOutfit
+  job: MedOrderly
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetBasic
+    mask: ClothingMaskGasSecurity
+    neck: SurveillanceWirelessCameraBodySecurity
+    jumpsuit: ClothingUniformJumpsuitMedGuard
+    gloves: ClothingHandsGlovesNitrile
+
+#endregion
+
+#region Cargo Insurance
 - type: job
   id: CargoInsurance
   name: Cargo Insurance
@@ -78,6 +95,7 @@
     components:
       - type: Condemned
         soulOwnedNotDevil: true
+      - type: CombatTrained # ratbite
 
 - type: startingGear
   id: CargoInsuranceGear
@@ -89,6 +107,20 @@
     back:
     - Flash
 
+
+- type: chameleonOutfit
+  id: CargoInsuranceChameleonOutfit
+  job: CargoInsurance
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetBasic
+    mask: ClothingMaskGasSecurity
+    neck: SurveillanceWirelessCameraBodySecurity
+    jumpsuit: ClothingUniformJumpsuitCargoGuard
+    gloves: ClothingHandsGlovesFingerless
+#endregion
+
+#region SciGuard
 - type: job
   id: ScicurityGuard
   name: Sci-Curity Guard
@@ -122,6 +154,7 @@
     components:
       - type: Condemned
         soulOwnedNotDevil: true
+      - type: CombatTrained # ratbite
 
 - type: startingGear
   id: ScicurityguardGear
@@ -133,6 +166,20 @@
     back:
     - Flash
 
+
+- type: chameleonOutfit
+  id: SciGuardChameleonOutfit
+  job: ScicurityGuard
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetBasic
+    mask: ClothingMaskGasSecurity
+    neck: SurveillanceWirelessCameraBodySecurity
+    jumpsuit: ClothingUniformJumpsuitSciGuard
+    gloves: ClothingHandsGlovesColorPurple
+#endregion
+
+#region Engi Sentry
 - type: job
   id: EngiSentry
   name: Engi Sentry
@@ -170,6 +217,7 @@
     components:
       - type: Condemned
         soulOwnedNotDevil: true
+      - type: CombatTrained # ratbite
   - !type:AddComponentSpecial
     components:
     - type: EngineeringStaff
@@ -184,3 +232,14 @@
     back:
     - Flash
 
+- type: chameleonOutfit
+  id: EngiSentryChameleonOutfit
+  job: EngiSentry
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetBasic
+    mask: ClothingMaskGasSecurity
+    neck: SurveillanceWirelessCameraBodySecurity
+    jumpsuit: ClothingUniformJumpsuitEngiGuard
+    gloves: ClothingHandsGlovesFingerless
+#endregion

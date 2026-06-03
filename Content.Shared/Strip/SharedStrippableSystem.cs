@@ -828,7 +828,8 @@ public abstract class SharedStrippableSystem : EntitySystem
         if (HasComp<BypassInteractionChecksComponent>(viewer))
             return false;
 
-        if (TryComp<ThievingComponent>(viewer.Value, out var thief) && thief.IdentifyHidden)
+        if (HasComp<ThievingTraitComponent>(viewer.Value) ||
+            TryComp<ThievingComponent>(viewer.Value, out var thief) && thief.IdentifyHidden)
             return false;
 
         return true;

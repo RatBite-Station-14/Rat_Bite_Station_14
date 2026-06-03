@@ -9,8 +9,6 @@ namespace Content.Shared._BRatbite.Traits;
 
 public sealed class MartialArtistSystem : EntitySystem
 {
-    [Dependency] private readonly UnarmedCombatSkillSystem _unarmedCombat = default!;
-
     public override void Initialize()
     {
         base.Initialize();
@@ -22,7 +20,7 @@ public sealed class MartialArtistSystem : EntitySystem
 
     private void OnGetUserMeleeDamage(Entity<MartialArtistComponent> ent, ref GetUserMeleeDamageEvent args)
     {
-        if (args.Weapon != ent.Owner || _unarmedCombat.IsUnarmedCombatSkillBlocked(ent.Owner))
+        if (args.Weapon != ent.Owner)
             return;
 
         args.Damage *= ent.Comp.DamageMultiplier;
@@ -30,7 +28,7 @@ public sealed class MartialArtistSystem : EntitySystem
 
     private void OnGetMeleeAttackRate(Entity<MartialArtistComponent> ent, ref GetMeleeAttackRateEvent args)
     {
-        if (args.Weapon != ent.Owner || _unarmedCombat.IsUnarmedCombatSkillBlocked(ent.Owner))
+        if (args.Weapon != ent.Owner)
             return;
 
         args.Multipliers *= ent.Comp.AttackRateMultiplier;
@@ -38,7 +36,7 @@ public sealed class MartialArtistSystem : EntitySystem
 
     private void OnGetLightAttackRange(Entity<MartialArtistComponent> ent, ref GetLightAttackRangeEvent args)
     {
-        if (args.User != ent.Owner || _unarmedCombat.IsUnarmedCombatSkillBlocked(ent.Owner))
+        if (args.User != ent.Owner)
             return;
 
         args.Range *= ent.Comp.RangeMultiplier;

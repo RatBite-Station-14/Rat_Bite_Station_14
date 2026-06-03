@@ -24,6 +24,7 @@
 
 using Content.Goobstation.Common.Administration.Notifications; // Goobstation - Admin Notifications
 using Content.Goobstation.Common.Religion;
+using System.Linq;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
@@ -37,6 +38,7 @@ using Robust.Shared.Player;
 using Content.Server.Administration.Managers; // Goobstation - Admin Notifications
 using Robust.Server.Audio; // Goobstation - Admin Notifications
 using Content.Shared._BRatbite.Traits;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Prayer;
 /// <summary>
@@ -132,10 +134,48 @@ public sealed class PrayerSystem : EntitySystem
             return;
 
         var isAtheist = HasComp<AtheistComponent>(sender.AttachedEntity.Value);
+        var isBeliever = HasComp<BelieverComponent>(sender.AttachedEntity.Value);
 
         _popupSystem.PopupEntity(Loc.GetString(comp.SentMessage), sender.AttachedEntity.Value, sender, PopupType.Medium);
 
-        _chatManager.SendAdminAnnouncement($"{Loc.GetString(comp.NotificationPrefix)} <{sender.Name}> {(isAtheist ? "(Atheist)" : "")}: {message}");
+        var plainMessage = $"{Loc.GetString(comp.NotificationPrefix)} <{sender.Name}> {(isAtheist ? "(Atheist)" : "")}{(isBeliever ? "(Believer)" : "")}: {message}";
+        if (isAtheist)
+        {
+            var wrappedMessage = Loc.GetString("chat-manager-send-admin-announcement-wrap-message",
+                ("adminChannelName", Loc.GetString("chat-manager-admin-channel-name")),
+                ("message", $"[font size=18][bold][color=red][ATHEIST PRAYER][/color][/bold] {FormattedMessage.EscapeText(plainMessage)}[/font]"));
+
+            _chatManager.ChatMessageToMany(
+                ChatChannel.Admin,
+                plainMessage,
+                wrappedMessage,
+                default,
+                false,
+                true,
+                _admin.ActiveAdmins.Select(admin => admin.Channel),
+                Color.Red);
+        }
+        else if (isBeliever)
+        {
+            var wrappedMessage = Loc.GetString("chat-manager-send-admin-announcement-wrap-message",
+                ("adminChannelName", Loc.GetString("chat-manager-admin-channel-name")),
+                ("message", $"[font size=18][bold][color=gold][BELIEVER PRAYER][/color][/bold] {FormattedMessage.EscapeText(plainMessage)}[/font]"));
+
+            _chatManager.ChatMessageToMany(
+                ChatChannel.Admin,
+                plainMessage,
+                wrappedMessage,
+                default,
+                false,
+                true,
+                _admin.ActiveAdmins.Select(admin => admin.Channel),
+                Color.Gold);
+        }
+        else
+        {
+            _chatManager.SendAdminAnnouncement(plainMessage);
+        }
+
         _adminLogger.Add(LogType.AdminMessage, LogImpact.Low, $"{ToPrettyString(sender.AttachedEntity.Value):player} {(isAtheist ? "(Atheist)" : "")} sent prayer ({Loc.GetString(comp.NotificationPrefix)}): {message}");
 
         // Goobstation - Admin Notifications
