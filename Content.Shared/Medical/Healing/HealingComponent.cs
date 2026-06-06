@@ -15,8 +15,9 @@ public sealed partial class HealingComponent : Component
     /// <remarks>
     /// The amount of damage to heal per use.
     /// </remarks>
-    [DataField(required: true), AutoNetworkedField]
-    public DamageSpecifier Damage = default!;
+    // Ratbite: Make it non required
+    [DataField, AutoNetworkedField]
+    public DamageSpecifier Damage = new();
 
     /// <remarks>
     /// This should generally be negative,

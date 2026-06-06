@@ -240,7 +240,8 @@ public sealed class HealingSystem : EntitySystem
         if (TryComp<BloodstreamComponent>(target, out var bloodstream))
         {
             // Is ent missing blood that we can restore?
-            if (healing.Comp.ModifyBloodLevel > 0
+            // Ratbite: Change > to <
+            if (healing.Comp.ModifyBloodLevel < 0
                 && _solutionContainerSystem.ResolveSolution(target.Owner, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var bloodSolution)
                 && bloodSolution.Volume < bloodSolution.MaxVolume)
             {
@@ -544,14 +545,11 @@ public sealed class HealingSystem : EntitySystem
     {
         if (!TryComp<DamageableComponent>(target, out var targetDamage))
             return false;
-
+        // Ratbite: Removed the stupid blood copy pasted check. It's already handled in
+        // HasDamage
         return HasDamage(healing, (target, targetDamage)) ||
             TryComp<BodyComponent>(target, out var bodyComp) && // I'm paranoid, sorry.
-            IsBodyDamaged((target, bodyComp), user, healing.Comp) ||
-            healing.Comp.ModifyBloodLevel > 0 // Special case if healing item can restore lost blood...
-                && TryComp<BloodstreamComponent>(target, out var bloodstream)
-                && _solutionContainerSystem.ResolveSolution(target, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var bloodSolution)
-                && bloodSolution.Volume < bloodSolution.MaxVolume;
+            IsBodyDamaged((target, bodyComp), user, healing.Comp);
     }
     // Goobstation end
 
@@ -574,14 +572,12 @@ public sealed class HealingSystem : EntitySystem
             return false;
 
         // Shitmed Change Start
+        // Ratbite: Removed the stupid blood copy pasted check. It's already handled in
+        // HasDamage
         var anythingToDo =
             HasDamage(healing, (target.Owner, target.Comp)) ||
             TryComp<BodyComponent>(target, out var bodyComp) && // I'm paranoid, sorry.
-            IsBodyDamaged((target, bodyComp), user, healing.Comp) ||
-            healing.Comp.ModifyBloodLevel < 0 // Special case if healing item can restore lost blood... Goobstation edit
-                && TryComp<BloodstreamComponent>(target, out var bloodstream)
-                && _solutionContainerSystem.ResolveSolution(target.Owner, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var bloodSolution)
-                && bloodSolution.Volume < bloodSolution.MaxVolume; // ...and there is lost blood to restore.
+            IsBodyDamaged((target, bodyComp), user, healing.Comp);
 
         if (!anythingToDo)
         {
