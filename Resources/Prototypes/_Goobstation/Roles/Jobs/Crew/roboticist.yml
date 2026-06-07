@@ -6,12 +6,11 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Science
-      time: 3600 #1 hrs
+      time: 14400 #4 hrs
   startingGear: RoboticistGear
   icon: "JobIconRoboticist"
   supervisors: job-supervisors-rd
   guides: [ Robotics ]
-  goobcoins: 20
   access:
   - Research
   - Maintenance

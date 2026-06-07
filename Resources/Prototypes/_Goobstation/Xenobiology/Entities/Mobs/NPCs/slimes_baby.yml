@@ -7,6 +7,16 @@
     breed: GreyMutation
 
 - type: entity
+  id: MobSlimeXenobioBabyGreySpawner
+  name: grey slime spawner
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 3
+  - type: SpawnOnDespawn
+    prototype: MobSlimeXenobioBabyGrey
+
+- type: entity
   parent: MobSlimeXenobioBabyPending
   id: MobSlimeXenobioBabyOrange
   name: orange slime

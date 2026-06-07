@@ -1,17 +1,13 @@
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 OnsenCapy <101037138+OnsenCapy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   parent: BaseStructure
   id: BaseWeaponTurret
   name: turret
   abstract: true
   components:
+  # <Trauma>
+  - type: ViewconeOccludable
+    occludeIfAnchored: true
+  # </Trauma>
   - type: Clickable
   - type: InteractionOutline
   - type: Actions
@@ -41,6 +37,7 @@
   - type: CombatMode
     toggleMouseRotator: false
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   - type: Destructible
     thresholds:
@@ -73,7 +70,7 @@
       task: TurretCompound
     blackboard:
       RotateSpeed: !type:Single
-        3.141
+        9 # Trauma, from pi
       SoundTargetInLOS: !type:SoundPathSpecifier
         path: /Audio/Effects/double_beep.ogg
   - type: MouseRotator
@@ -128,12 +125,17 @@
     fireRate: 1.5
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/taser2.ogg
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: BulletEnergyTurretLaser
     fireCost: 100
   - type: Battery
+    # Very important:
+    # Disable networking to prevent the battery getting continuously dirtied every tick as it interacts with the power network.
+    # This can not be done by changing the charge rate as the power supply ramps up over time.
+    # This disables prediction for this battery.
+    netsync: false
     maxCharge: 2000
-    startingCharge: 0
+    startingCharge: 2000
   - type: ApcPowerReceiverBattery
     idleLoad: 5
     batteryRechargeRate: 200
@@ -144,3 +146,5 @@
   - type: HTN
     rootTask:
       task: EnergyTurretCompound
+  - type: StaticPrice
+    price: 200

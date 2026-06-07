@@ -14,23 +14,23 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
+  parent: BaseBulletKinetic # Trauma
   id: BulletHeavyRifle
-  name: bullet (.20 rifle)
-  parent: BaseBullet
   categories: [ HideSpawnMenu ]
+  name: bullet (.10 rifle)
   components:
   - type: Projectile
     damage:
       types:
-        Piercing: 25 #Ratbite balance
+        Piercing: 19
 
 - type: entity
-  id: BulletMinigun
-  name: minigun bullet (.10 rifle)
   parent: BulletHeavyRifle
+  id: BulletMinigun
   categories: [ HideSpawnMenu ]
+  name: minigun bullet (.10 rifle)
   components:
   - type: Projectile
     damage:
       types:
-        Piercing: 10 #Ratbite balance
+        Piercing: 5

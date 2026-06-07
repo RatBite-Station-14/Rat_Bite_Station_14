@@ -1,0 +1,49 @@
+- type: entity
+  parent: BaseGameRule
+  id: Thief
+  components:
+  - type: ThiefRule
+  - type: AntagObjectives
+    objectives:
+    - EscapeThiefShuttleObjective
+  # <Trauma> - thief is freeeeee
+  #- type: AntagRandomObjectives
+  #  sets:
+  #  - groups: ThiefBigObjectiveGroups
+  #    prob: 0.7
+  #    maxPicks: 1
+  #  - groups: ThiefObjectiveGroups
+  #    maxPicks: 10
+  #  maxDifficulty: 2.5
+  # </Trauma>
+  - type: AntagSelection
+    agentName: thief-round-end-agent-name
+    selectionTime: PrePlayerSpawn
+    lateJoinAdditional: true
+    antags:
+    - !type:LinearAntagCount
+      proto: Thief
+      playerRatio: 15 # Trauma - was 20
+      range:
+        min: 1
+        max: 3
+  - type: DynamicRuleCost
+    cost: 75
+  - type: GameRule
+    cancelPresetOnTooFewPlayers: false
+
+# Needs testing
+#- type: entity # Trauma - no chud wizard
+#  parent: BaseWizardRule
+#  id: SubWizard
+#  components:
+#  - type: GameRule
+#    cancelPresetOnTooFewPlayers: false
+
+- type: entity
+  parent: BaseXenoborgsRule
+  id: SubXenoborgs
+  components:
+  - type: GameRule
+    minPlayers: 30
+    cancelPresetOnTooFewPlayers: false

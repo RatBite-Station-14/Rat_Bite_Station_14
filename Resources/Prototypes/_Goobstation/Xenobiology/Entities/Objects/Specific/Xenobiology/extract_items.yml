@@ -1,14 +1,16 @@
 - type: entity
+  parent: [ OrganBaseHeart, BasePowerCell ]
   id: XenobioVolatileOrgan
-  parent: [ BaseHumanOrgan, BasePowerCell ]
   name: volatile organ
-  description: A pulsating mass of slime, it seems to react to nearby devices.
   suffix: Full
+  description: A pulsating mass of slime, it seems to react to nearby devices.
   components:
   - type: Sprite
     layers:
-      - sprite: _Goobstation/Xenobiology/Specific/Xenobiology/volatile_organ.rsi
-        state: icon
+    - sprite: _Goobstation/Xenobiology/Specific/Xenobiology/volatile_organ.rsi
+      state: icon
+  - type: GenericVisualizer
+    visuals: {} # disable battery visuals
   - type: Item
     size: Normal
   - type: Battery
@@ -16,23 +18,18 @@
     maxCharge: 5200
     startingCharge: 5200
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 40
   - type: EmpImmune
-  - type: SolutionContainerManager
+  - type: SolutionManager
     solutions:
-      battery:
-        maxVol: 15
-  - type: InjectableSolution
-    solution: battery
-  - type: DrawableSolution
-    solution: battery
+    - SolutionRiggable
+    - SolutionFoodSlime
   - type: Extractable
     juiceSolution:
       reagents:
       - ReagentId: Slime
         Quantity: 15
-  - type: Organ
+  - type: OrganComponents
     onAdd:
     - type: LightningArcShooter
       arcDepth: 1
@@ -41,23 +38,15 @@
       shootMaxInterval: 300
       shootRange: 5
       lightningPrototype: Lightning
+  - type: InternalOrgan
     intCap: 32
     integrity: 32
     integrityThresholds:
       Normal: 32
       Damaged: 9
       Destroyed: 0
-    slotId: heart
   - type: Metabolizer
-    maxPoisonsProcessable: 2
     metabolizerTypes: [ Cybernetic ]
-    groups:
-    - id: Medicine
-      rateModifier: 2.50
-    - id: Poison
-      rateModifier: 0.25
-    - id: Narcotic
-      rateModifier: 1.75
   - type: Tag
     tags:
     - PowerCell
@@ -77,6 +66,7 @@
   - type: Item
     size: Normal
   - type: Damageable
+  - type: Injurable
     damageContainer: Biological
   - type: DamageOnHighSpeedImpact
     minimumSpeed: 0.1
@@ -141,6 +131,14 @@
     stackType: FloorTileItemBluespace
 
 - type: entity
+  parent: FloorTileItemBluespace
+  id: FloorTileItemBluespace30
+  suffix: 30
+  components:
+  - type: Stack
+    count: 30
+
+- type: entity
   parent: FloorTileItemBase
   name: fitted sepia carpet square
   id: FloorTileItemSepia
@@ -148,10 +146,6 @@
   - type: Sprite
     sprite: _Goobstation/Xenobiology/Specific/Xenobiology/floors.rsi
     state: icon-sepia
-  - type: UserInterface
-    interfaces:
-      enum.StackCustomSplitUiKey.Key:
-        type: StackCustomSplitBoundUserInterface
   - type: SpawnAfterInteract
     prototype: FloorSepiaEntity
     removeOnInteract: true
@@ -160,6 +154,14 @@
     - Plating
   - type: Stack
     stackType: FloorTileItemSepia
+
+- type: entity
+  parent: FloorTileItemSepia
+  id: FloorTileItemSepia30
+  suffix: 30
+  components:
+  - type: Stack
+    count: 30
 
 - type: entity
   parent: BaseItem
@@ -189,9 +191,18 @@
     state: icon
   - type: StaticPrice
     price: 10000 # goida
-  - type: Enchanter # Ratbite
-    maxLevel: 2
-    enchants:
-    - EnchantFortune # more slop for fun!
 
 # todo mind transfer potion
+
+- type: entity
+  parent: Solution
+  id: SolutionFoodSlime
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 15
+      reagents:
+      - ReagentId: Slime
+        Quantity: 15

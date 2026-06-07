@@ -11,6 +11,7 @@
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
+      sprite: _Goobstation/Structures/Machines/computers.rsi
       state: viro
     - map: ["computerLayerKeys"]
       state: med_key

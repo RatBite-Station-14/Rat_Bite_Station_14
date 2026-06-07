@@ -31,8 +31,7 @@
     damageCoefficient: 0.2
   - type: Armor
     coverage:
-    - Chest
-    - Groin
+    - Torso
     - Arm
     - Hand
     - Leg
@@ -53,4 +52,4 @@
   - type: ModifyDelayedKnockdown # Goobstation
     cancel: true
   - type: StaminaResistance # Goobstation
-    damageCoefficient: 0.7 #Ratbite
+    damageCoefficient: 0.4

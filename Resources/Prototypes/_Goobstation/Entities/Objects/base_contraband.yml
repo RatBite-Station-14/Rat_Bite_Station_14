@@ -11,7 +11,6 @@
   abstract: true
   components:
   - type: Contraband
-    allowedJobs: [ BlueshieldOfficer ] # Basically both security and medic.
     allowedDepartments: [ Security, Medical ]
 
 - type: entity
@@ -30,15 +29,6 @@
   - type: Contraband
     allowedDepartments: [ Security, Engineering, Cargo ]
 
-- type: entity
-  id: BaseSecurityZookeeperContraband # Tranq shells
-  parent: BaseRestrictedContraband
-  abstract: true
-  components:
-  - type: Contraband
-    allowedDepartments: [ Security ]
-    allowedJobs: [ Zookeeper ]
-
 # non-stealth syndicate stuff that can't be scanned by the NTR
 - type: entity
   id: BaseSyndicateAnchoredContraband
@@ -46,4 +36,3 @@
   components:
   - type: Contraband
     severity: Syndicate
-

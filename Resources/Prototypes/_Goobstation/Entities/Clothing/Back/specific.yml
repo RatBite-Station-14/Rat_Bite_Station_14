@@ -1,14 +1,3 @@
-# SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-# SPDX-FileCopyrightText: 2024 starch <starchpersonal@gmail.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-# SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
@@ -54,35 +43,39 @@
   id: ClothingBackpackStasisBatteryUnremoveableFilled
   suffix: Filled, Unremoveable
   components:
-  - type: StorageFill
-    contents:
-      - id: StasisCage
-        amount: 4
-      - id: MedkitCombatStasiziumFilled
-      - id: StasisBaton
-      - id: FreedomImplanter
-      - id: ScramImplanter
-      - id: MindShieldImplanter
-      - id: RCDChrono
-      - id: ChronoTeleporter
-      - id: HandheldGPSBasic # Mass Scanner Removed by Lavaland
-      - id: Flash
-      - id: TimelineDisruptorFlatpack
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: StasisCage
+          amount: 4
+        - id: MedkitCombatStasiziumFilled
+        - id: StasisBaton
+        - id: FreedomImplanter
+        - id: ScramImplanter
+        - id: MindShieldImplanter
+        - id: RCDChrono
+        - id: ChronoTeleporter
+        - id: HandheldGPSBasic
+        - id: Flash
+        - id: TimelineDisruptorFlatpack
 
 - type: entity
   parent: ClothingBackpackMerc
   id: ClothingBackpackMercFilledHECU
   suffix: Filled, HECU
   components:
-  - type: StorageFill
-    contents:
-      - id: BoxMagazinePistolSubMachineGun
-      - id: MindShieldImplanter
-      - id: Zipties
-      - id: Zipties
-      - id: MedkitAdvancedFilled
-      - id: WeaponPistolEchis
-      - id: Flash
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: BoxMagazinePistolSubMachineGun
+        - id: MindShieldImplanter
+        - id: Zipties
+          amount: 2
+        - id: MedkitAdvancedFilled
+        - id: WeaponPistolEchis
+        - id: Flash
 
 - type: entity
   parent: ClothingBackpackDuffel
@@ -104,8 +97,8 @@
 - type: entity
   parent: [Clothing, ClothingSlotBase]
   id: ClothingBackpackLMGBattery
-  name: EL-20 storage
-  description: Accepts specialized car batteries to power the EL-20 HAMRR LMG.
+  name: energy LMG powerbank
+  description: Accepts specialized car batteries to power the energy LMG.
   components:
   - type: Sprite
     sprite: _Goobstation/Clothing/Back/Backpacks/lmg_backpack.rsi
@@ -131,6 +124,7 @@
       - state: mag-equipped-BACKPACK
   - type: MagazineAmmoProvider
   - type: ItemSlots
+    smartEquip: true
     slots:
       gun_magazine:
         name: Magazine
@@ -161,3 +155,51 @@
     walkModifier: 0.8
     sprintModifier: 0.8
   - type: HeldSpeedModifier
+
+- type: entity
+  parent: Clothing
+  id: ClothingBackpackFirefighterTank
+  name: firefighter water tank backpack
+  description: A refrigerated water tank backpack that can switch modes to launch ATMOS resin or work as a high pressure extinguisher.
+  components:
+  - type: Tag
+    tags:
+    - AtmosBackTank
+    - WhitelistChameleon
+  - type: Sprite
+    sprite: Clothing/Back/Backpacks/atmosbackpacktank.rsi
+    state: icon
+  - type: Item
+    size: Ginormous
+  - type: Clothing
+    slots: BACK
+    sprite: Clothing/Back/Backpacks/atmosbackpacktank.rsi
+  - type: SolutionAmmoProvider
+    solutionId: tank
+    proto: AtmosResin
+    fireCost: 25
+  - type: Solution
+    id: tank
+    solution:
+      maxVol: 1200
+      reagents:
+      - ReagentId: Water
+        Quantity: 1200
+  - type: DrawableSolution
+    solution: tank
+  - type: DrainableSolution
+    solution: tank
+  - type: ExaminableSolution
+    solution: tank
+  - type: ItemSlots
+    slots:
+      nozzle_slot:
+        name: FirefighterNozzle
+        startingItem: FirefighterNozzle
+        whitelist:
+          tags:
+          - Nozzle
+  - type: FirefighterTankRefillable
+  - type: ContainerContainer
+    containers:
+      nozzle_slot: !type:ContainerSlot

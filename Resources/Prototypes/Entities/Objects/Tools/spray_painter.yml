@@ -23,6 +23,13 @@
     state: spray_painter
   - type: Item
     sprite: Objects/Tools/spray_painter.rsi
+  # <Trauma>
+    size: Small
+    shape:
+    - 0,0,1,0
+    - 0,1,0,1
+    storedOffset: 0,-4
+  # </Trauma>
   - type: ActivatableUI
     key: enum.SprayPainterUiKey.Key
   - type: UserInterface
@@ -67,6 +74,16 @@
 
 - type: entity
   parent: SprayPainter
+  name: experimental spray painter
+  description: An experimental recharging spray painter that can infinitely replicate compressed paint.
+  id: SprayPainterBorg
+  suffix: Borg
+  components:
+  - type: AutoRecharge
+    rechargeDuration: 5
+
+- type: entity
+  parent: SprayPainter
   id: SprayPainterEmpty
   suffix: Empty
   components:
@@ -80,6 +97,10 @@
   description: A cartridge of highly compressed paint, commonly used in spray painters.
   components:
   - type: SprayPainterAmmo
+    whitelist: # Trauma - let it refill spray cans too
+      components:
+      - SprayPainter
+      - PaintCan
   - type: Sprite
     sprite: Objects/Tools/spray_painter.rsi
     state: ammo

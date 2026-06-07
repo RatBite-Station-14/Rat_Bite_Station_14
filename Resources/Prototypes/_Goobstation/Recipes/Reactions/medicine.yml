@@ -1,12 +1,3 @@
-# SPDX-FileCopyrightText: 2024 CBozo <165491409+CBozo@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 tiderwithagun <notrightnow@gmail.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 PunishedJoe <PunishedJoeseph@proton.me>
-# SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: reaction
@@ -94,37 +85,6 @@
       amount: 1
   products:
     Tirimol: 4
-
-- type: reaction
-  id: Syriniver
-  maxTemp: 200
-  reactants:
-    Silver: # check 1
-      amount: 2
-    Diphenhydramine: # check 2
-      amount: 2
-    Fluorine:
-      amount: 1
-    Aluite:
-      amount: 5
-  products:
-    Syriniver: 5
-
-- type: reaction
-  id: Ebifin
-  impact: Medium # more dangerous OD than its contemporaries
-  minTemp: 500 # actually hotbeakerable
-  reactants:
-    Gold: # check 1
-      amount: 2
-    Sigynate: # check 2
-      amount: 2
-    Silicon:
-      amount: 1
-    Aluite:
-      amount: 5
-  products:
-    Ebifin: 5
 
 - type: reaction
   id: ProcenylLazideSludge
@@ -225,52 +185,6 @@
     Ibuprofen: 3
 
 - type: reaction
-  id: SilverSulfadiazine
-  minTemp: 500
-  reactants:
-    Silver: # actually using silver cuz it's just strong
-      amount: 1
-    Chlorine:
-      amount: 1
-    Ammonia:
-      amount: 1
-    Oxygen:
-      amount: 1
-    Sulfur:
-      amount: 1
-  products:
-    SilverSulfadiazine: 5 # might need to be lowered
-
-- type: reaction
-  id: StypticCrystalCatalyst
-  reactants:
-    Aluminium:
-      amount: 1
-    Hydroxide:
-      amount: 1
-    SulfuricAcid:
-      amount: 1
-    Silicon:
-      amount: 1
-  products:
-    StypticCrystalCatalyst: 2
-
-- type: reaction
-  id: StypticCrystalCreation
-  quantized: true
-  conserveEnergy: false
-  reactants:
-    StypticCrystalCatalyst:
-      amount: 5
-    Blood:
-      amount: 10
-    Sodium:
-      amount: 10
-  effects:
-    - !type:CreateEntityReactionEffect
-      entity: ShardCrystalStyptic
-
-- type: reaction
   id: MeatSynth
   quantized: true
   reactants:
@@ -285,7 +199,7 @@
   products:
     Hydroxide: 5 # frankly it's there so that this recipe appears in the guidebook at all
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: FoodMeatSynth
 
 - type: reaction
@@ -424,17 +338,19 @@
 
 # Wraith
 - type: reaction
-  minTemp: 424
   id: Formaldehyde
+  minTemp: 357
   reactants:
-    Ethanol:
+    Methanol:
       amount: 1
-    Iron:
+    Oxygen:
       amount: 1
     Silver:
       amount: 1
+      catalyst: true
   products:
-    Formaldehyde: 2
+    Formaldehyde: 1
+    Water: 1
 
 # Viro
 - type: reaction

@@ -1,0 +1,30 @@
+- type: entity
+  parent: [ ClothingNeckBase, BaseRevMajorContraband ]
+  id: ClothingRevolutionaryIFF
+  name: Revolutionary IFF Card
+  description: Shows constructed turrets that you are a friend.
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _Trauma/Clothing/Neck/revIFF.rsi
+  - type: Clothing
+    sprite: _Trauma/Clothing/Neck/revIFF.rsi
+  - type: FactionClothing
+    faction: Revolutionary
+
+- type: entity
+  parent: ClothingNeckUnbutcherableBase
+  id: ClothingNeckBombCollarBroken
+  name: disabled bomb collar
+  description: A disabled bomb collar, it will no longer explode, but it will give away your criminal history.
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _Trauma/Clothing/Neck/bombcollar.rsi
+  - type: Clothing
+    sprite: _Trauma/Clothing/Neck/bombcollar.rsi
+  - type: Unremoveable
+  - type: FactionClothing
+    faction: Insurgent

@@ -1,0 +1,28 @@
+- type: latheRecipePack
+  id: PrintingPressSimple
+  recipes:
+  - BookJanitor
+  - BookFabrication
+  - BookSurvival
+
+- type: latheRecipePack
+  id: PrintingPressAdvanced
+  recipes:
+  - BookFabricationPrinted
+  - BookSurvivalPrinted
+
+- type: latheRecipePack
+  id: PrintingPressBlueprints
+  recipes:
+  - BookMaterials
+  - BookDoors
+  - BookAirlocks
+  - BookToys
+  - BookBananium
+  - BookBots
+  - BookFurniture
+  - BookInfrastructure
+  - BookElectronics
+  - BookWalls
+  - BookWindows
+  - BookSmokeables

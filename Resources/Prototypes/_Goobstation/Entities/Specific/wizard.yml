@@ -13,7 +13,7 @@
     size: Small
   - type: StaticPrice
     price: 50000
-  - type: GrantHellRip
+  # - type: GrantHellRip
   - type: GuideHelp
     guides:
     - HellRip

@@ -20,14 +20,16 @@
         Structural: 80
   - type: RevenantPush
     damageWhenThrown:
-      groups:
-        Brute: 30
+      types:
+        Blunt: 10
+        Slash: 10
+        Piercing: 10
   - type: WraithCommand
     blacklist:
       components:
       - MobState
       - Body
-      - Food
+      - Edible
       - EntityStorage
       - Solution
     searchRange: 14 # why not

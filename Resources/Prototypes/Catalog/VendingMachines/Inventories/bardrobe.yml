@@ -32,13 +32,19 @@
     ClothingHeadsetService: 2
     ClothingOuterApronBar: 2
     ClothingOuterWinterBar: 2
+    ClothingUniformJumpsuitJacketMonkey: 2
     ClothingUniformJumpsuitBartender: 2
     ClothingUniformJumpskirtBartender: 2
     ClothingUniformJumpsuitBartenderPurple: 2
     ClothingShoesColorBlack: 2
-#    ClothingOuterArmorBasicSlim: 2
+    # ClothingOuterArmorBasicSlim: 2 # Trauma
     ClothingOuterVest: 2
-#    ClothingBeltBandolier: 2
-#    ClothingEyesGlassesSunglasses: 2
+    ClothingBeltBandolier: 2
+    ClothingEyesGlassesSunglasses: 2
   contrabandInventory:
     ToyFigurineBartender: 1
+  # <Trauma>
+  emaggedInventory:
+    BoxShellTranquilizer: 1
+    BoxBeanbag: 1
+  # </Trauma>

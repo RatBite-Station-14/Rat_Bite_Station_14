@@ -96,7 +96,7 @@
   - type: HomingProjectile
     homingSpeed: 1080
   - type: KnockdownOnCollide
-    behavior: DropIfStanding
+    dropItems: true
   - type: Ammo
     muzzleFlash: null
 
@@ -118,7 +118,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 5
+        Heat: 10
   - type: Trail
     color: "#FF0033DD"
     scale: 0.08
@@ -149,7 +149,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: SpellCard
-    rotateTime: 0.2
+    updateTime: 0.2
     flippedTrailColor: "#AA00FFDD"
   - type: HomingProjectile
     homingTime: 0.2
@@ -236,7 +236,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 20
+        Heat: 8
   - type: Trail
     color: "#FF0BC255"
     scale: 0.08
@@ -290,7 +290,7 @@
   id: ProjectileWabbajack
   name: bolt of change
   description: Wabbajack, Wabbajack!
-  parent: BaseBullet
+  parent: BaseBulletTrigger
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -303,12 +303,12 @@
       types:
         Heat: 0
   - type: PolymorphOnTrigger
+    targetUser: true
     polymorph: WizardWabbajack
-  - type: TriggerWhitelist
-    whitelist:
+  - type: WhitelistTriggerCondition
+    userWhitelist:
       components:
       - Body
-  - type: TriggerOnProjectileHit
   - type: Reflective
     reflective: Magic
   - type: Ammo
@@ -558,7 +558,7 @@
   id: ProjectileEmpBolt
   name: electromagnetic bolt
   description: Energy low!!!
-  parent: BaseBullet
+  parent: BaseBulletTrigger
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -574,11 +574,11 @@
     reflective: Magic
   - type: Ammo
     muzzleFlash: null
-  - type: TriggerOnProjectileHit
   - type: EmpOnTrigger
     range: 3
     energyConsumption: 50000
     disableDuration: 15
+  - type: DeleteOnTrigger
 
 - type: entity
   id: ProjectileSmokeBolt
@@ -754,7 +754,7 @@
   - type: Slippery
     slipData:
       slipOnStep: false
-      paralyzeTime: 10
+      knockdownTime: 10
       launchForwardsMultiplier: 1
   - type: ProjectileHitShooterAfterDelay
     delay: 0.5

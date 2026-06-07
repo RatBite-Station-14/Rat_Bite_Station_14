@@ -1,0 +1,14 @@
+- type: entity
+  parent: BaseRoundstartAntagRule
+  id: WraithRoundstart
+  components:
+  - type: GameRule
+    minPlayers: 35
+  - type: AntagSpawner
+    prototype: MobWraithMidround
+  - type: AntagRandomSpawn
+  - type: AntagSelection
+    agentName: wraith-round-end-agent-name
+    antags:
+    - !type:FixedAntagCount
+      proto: Wraith

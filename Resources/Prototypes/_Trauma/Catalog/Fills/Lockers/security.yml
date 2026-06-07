@@ -1,0 +1,254 @@
+- type: entity
+  abstract: true
+  parent: [GunSafeBaseSecure, BaseSecurityContraband, AlertLevelLock]
+  id: BaseTraumaGunSafe
+  name: gun safe
+  suffix: Alert Level Lock
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunSafeLaserCarbine
+  - type: Damageable
+    damageModifierSet: Gunsafes
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: StationAlertLevelLock
+    lockedAlertLevels:
+    - green
+    - blue
+    - yellow
+
+- type: entity
+  parent: [GunSafeBaseSecure, BaseSecurityContraband, AlertLevelLock]
+  id: GunSafeEmptyBlue
+  name: gun safe
+  suffix: Blue
+  components:
+  - type: StationAlertLevelLock
+    lockedAlertLevels:
+    - green
+    - yellow
+
+- type: entity
+  parent: [GunSafeBaseSecure, BaseSecurityContraband, AlertLevelLock]
+  id: GunSafeEmptyRed
+  name: gun safe
+  suffix: Red
+  components:
+  - type: StationAlertLevelLock
+    lockedAlertLevels:
+    - green
+    - blue
+    - yellow
+
+- type: entityTable
+  id: FillLockerWardenTrauma
+  table: !type:AllSelector
+    children:
+    - id: ClothingHandsGlovesKravMaga
+    - id: BoxLethalInjection
+    - id: ClothingHeadsetAltWarden
+    - id: Multitool
+    - id: Wrench
+    - id: ContrabandDetectorFlatpack
+    - id: SecurityMegaphone
+    - id: WeaponEnergyShotgun
+    - id: GunpowderBottlePartFull
+    - id: ReinforcementCallerHos
+
+- type: entityTable
+  id: FillLockerSecurityTrauma
+  table: !type:AllSelector
+    children:
+    - id: ClothingHeadsetAltSecurityRegular
+    - id: PepperSpray
+    - id: WeaponLaserSidearm
+    - id: ClothingHandsGlovesSecurity
+
+- type: entity
+  parent: BaseTraumaGunSafe
+  id: GunSafeLaserCarbine
+  name: laser safe
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunSafeLaserT1
+  - type: StationAlertLevelLock
+    lockedAlertLevels:
+    - green
+    - yellow
+
+- type: entity
+  parent: BaseTraumaGunSafe
+  id: GunSafeShotguns
+  name: ballistics safe
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunSafeShotgunsT1
+  - type: StationAlertLevelLock
+    lockedAlertLevels:
+    - green
+    - yellow
+
+- type: entity
+  parent: BaseTraumaGunSafe
+  id: GunSafeLaserSpec
+  name: specialist laser safe
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunSafeLaserT2
+  - type: StationAlertLevelLock
+    lockedAlertLevels:
+    - green
+    - yellow
+
+- type: entity
+  parent: BaseTraumaGunSafe
+  id: GunSafeMelee
+  name: melee weapon safe
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunSafeMeleeT1
+  - type: StationAlertLevelLock
+    lockedAlertLevels:
+    - green
+    - yellow
+
+- type: entity
+  parent: BaseTraumaGunSafe
+  id: GunSafeJudo
+  name: judo safe
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunSafeJudoT1
+  - type: StationAlertLevelLock
+    lockedAlertLevels:
+    - green
+    - yellow
+
+- type: entity
+  parent: BaseTraumaGunSafe
+  id: GunSafeRiotLauncher
+  name: riot launcher safe
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunSafeRiot
+
+- type: entity
+  parent: BaseTraumaGunSafe
+  id: GunSafePhaser
+  name: phaser safe
+  components:
+  - type: StationAlertLevelLock
+    lockedAlertLevels: []
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunSafePhaser
+
+- type: entity
+  parent: BaseTraumaGunSafe
+  id: GunSafeHunter
+  name: gun safe
+  suffix: Hunter, Locked
+  components:
+  - type: StationAlertLevelLock
+    lockedAlertLevels: [ ]
+  - type: AccessReader
+    access: [ ["SyndicateAgent"] ]
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunHunter
+
+- type: entityTable
+  id: FillGunSafeRiot
+  table: !type:AllSelector
+    children:
+    - id: WeaponLauncherNonLethal
+    - id: BoxGrenadesBaton
+    - id: BoxGrenadesFlash
+    - id: BoxGrenadesTeargas
+
+- type: entityTable
+  id: FillGunSafeLaserT1
+  table: !type:AllSelector
+    children:
+    - id: WeaponLaserCarbine
+      amount: 3
+    - id: WeaponLaserGunCarbine
+      amount: 2
+    - id: WeaponLaserGunAssault
+      amount: 1
+
+- type: entityTable
+  id: FillGunSafeShotgunsT1
+  table: !type:AllSelector
+    children:
+    - id: WeaponShotgunKammererEmpty
+      amount: 3
+    - id: BoxBeanbag
+      amount: 3
+    - id: WeaponGaussgun
+      amount: 2
+    - id: BaseMagazineGaussgun
+      amount: 2
+    - id: MagazineBoxGaussgunBullet
+      amount: 2
+
+- type: entityTable
+  id: FillGunSafeLaserT2
+  table: !type:AllSelector
+    children:
+    - id: WeaponTemperatureGun
+    - id: WeaponEnergyIonRifle
+
+- type: entityTable
+  id: FillGunSafeMeleeT1
+  table: !type:AllSelector
+    children:
+    - id: Truncheon
+      amount: 5
+    - id: ClothingBeltSheathKatanaFilled
+      amount: 2
+    - id: SecBreachingHammer
+      amount: 2
+
+- type: entityTable
+  id: FillGunSafeJudoT1
+  table: !type:AllSelector
+    children:
+    - id: ClothingBeltCorporateJudo
+      amount: 2
+
+- type: entityTable
+  id: FillGunSafePhaser
+  table: !type:AllSelector
+    children:
+    - id: WeaponLaserSidearm
+      amount: 5
+
+- type: entityTable
+  id: FillGunHunter
+  table: !type:AllSelector
+    children:
+    - id: WeaponShotgunEnforcerRubber
+      amount: 2
+    - id: BoxBeanbag
+      amount: 2
+    - id: MagazineBoxPistol
+      amount: 2
+    - id: RiotLaserShield
+    - id: SecBreachingHammer

@@ -20,8 +20,7 @@
           bounds: "-0.3,-0.3,0.3,0.3"
         density: 1
         hard: true
-        mask:
-        - MobMask
+        mask: [] # it's just salt, dont collide with anything
         layer:
         - MobLayer
   - type: Sprite
@@ -34,6 +33,7 @@
   - type: SaltLineVisualizer
     state: salt_
   - type: Damageable
+  - type: Injurable
     damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
@@ -46,23 +46,22 @@
       - !type:PlaySoundBehavior
         sound:
           path: /Audio/Effects/cig_snuff.ogg
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: TableSalt
-          Quantity: 1
-  - type: DamageOnCollide # takes damage when entities collide with it
-    whitelist:
-      tags:
-      - WeakToSalt
-    ignoreWhitelist:
-      components:
-      - Ghost
-      - Spectral
-    damage:
-      types:
-        Structural: 4
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: TableSalt
+        Quantity: 1
+  #- type: DamageOnCollide # takes damage when entities collide with it
+  #  whitelist:
+  #    tags:
+  #    - WeakToSalt
+  #  ignoreWhitelist:
+  #    components:
+  #    - Ghost
+  #    - Spectral
+  #  damage:
+  #    types:
+  #      Structural: 4
   - type: StatusEffectOnCollideGhost
     whitelist:
       tags:

@@ -1,0 +1,35 @@
+# for delayed entity effects
+- type: entity
+  abstract: true
+  parent: StatusEffectBase
+  id: StatusEffectDelayBase
+  components:
+  - type: StatusEffectEffectsApply
+
+- type: entity
+  parent: StatusEffectDelayBase
+  id: XenobioExplodeStatusEffect
+  name: delayed explosion
+  components:
+  - type: StatusEffectEffectsApply
+    effectsOnRemoval:
+    - !type:Explosion
+      explosionType: FireBomb # bomboclat
+      maxIntensity: 1050
+      intensitySlope: 4
+      intensityPerUnit: 70
+
+- type: entity
+  parent: StatusEffectDelayBase
+  id: XenobioMetalFoamStatusEffect
+  name: delayed metal foam
+  components:
+  - type: StatusEffectEffectsApply
+    effectsOnRemoval:
+    - !type:DoSmokeEffect
+      duration: 10
+      spreadAmount: 6
+      smokePrototype: AluminiumMetalFoam
+    - !type:PlaySoundEffect
+      sound:
+        path: /Audio/Effects/extinguish.ogg

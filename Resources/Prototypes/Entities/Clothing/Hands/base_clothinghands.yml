@@ -88,7 +88,7 @@
 
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [SolutionFood, SolutionToolSmall, Clothing]
   id: ClothingHandsBase
   components:
   - type: Sprite
@@ -101,18 +101,16 @@
       params:
         volume: -4
   # Goobstation edit end
-  - type: Food
+  - type: Edible
     requiresSpecialDigestion: true
   - type: Item
     size: Small
     storedRotation: -90
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 10
-        reagents:
-        - ReagentId: Fiber
-          Quantity: 10
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 15
   - type: Tag
     tags:
     - ClothMade

@@ -16,23 +16,14 @@
   cost: 7500
   recipeUnlocks:
   - BasicGalaticCommonTranslatorImplanter
-  - CanilunztTranslator
   - BubblishTranslator
-  - NekomimeticTranslator
   - DraconicTranslator
   - SolCommonTranslator
   - RootSpeakTranslator
   - MofficTranslator
-  - ValyrianStandardTranslator
-  - ChittinTranslator
-  - SiikMaasTranslator
-  - MarishTranslator
   - ChevalTranslatorImplanter
   - NewKinPidginTranslator
-  - SchechiTranslator
-  - GruntishTranslator
-  - YowKriolTranslator # goob edit - yowie language
-  position: -4, 4
+  position: -3, 4
   technologyPrerequisites:
   - AdvancedEntertainment
 
@@ -48,23 +39,14 @@
   cost: 10000
   recipeUnlocks:
   - AdvancedGalaticCommonTranslatorImplanter
-  - CanilunztTranslatorImplanter
   - BubblishTranslatorImplanter
-  - NekomimeticTranslatorImplanter
   - DraconicTranslatorImplanter
   - SolCommonTranslatorImplanter
   - RootSpeakTranslatorImplanter
   - MofficTranslatorImplanter
-  - ValyrianStandardTranslatorImplanter
-  - ChittinTranslatorImplanter
-  - SiikMaasTranslatorImplanter
-  - MarishTranslatorImplanter
-  - SchechiTranslatorImplanter
   - NewKinPidginTranslatorImplanter
   - AnimalTranslator
   - XenoTranslator
-  - GruntishTranslatorImplanter
-  - YowKriolTranslatorImplanter # goob edit - yowie language
-  position: -4, 5
+  position: -3, 5
   technologyPrerequisites:
   - BasicTranslation

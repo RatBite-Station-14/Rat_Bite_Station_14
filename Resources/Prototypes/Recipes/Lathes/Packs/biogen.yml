@@ -1,10 +1,8 @@
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
 ## Static
 
 - type: latheRecipePack
+  parent:
+  - BioGenIngredientsStaticTrauma # Trauma
   id: BioGenIngredientsStatic
   recipes:
   - BioGenMilk
@@ -24,11 +22,8 @@
   - BioGenLeft4Zed
   - BioGenEZNutrient
   - BioGenRobustHarvest
-  - BioGenDylo #Goobstation Change
-  - BioGenPhalanx #Goobstation Change
-  - BioGenDiethyl #Goobstation Change
-  - BioGenMuta #Goobstation Change
-  - BioGenEgg #Goobstation Change
+  - BioGenDiseaseSwab
+  - BioGenCompostAmmonia
 
 - type: latheRecipePack
   id: BioGenMaterialsStatic
@@ -37,3 +32,9 @@
   - BioGenMaterialCardboard1
   - BioGenPaper
   - BioGenPaperRolling1
+
+- type: latheRecipePack
+  abstract: true # Trauma - mutagen moved to non emag recipes
+  id: BioGenEmagStatic
+  recipes:
+  - BioGenUnstableMutagen

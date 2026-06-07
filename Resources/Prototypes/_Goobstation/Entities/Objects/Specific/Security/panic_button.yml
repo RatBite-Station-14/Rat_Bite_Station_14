@@ -1,5 +1,5 @@
 - type: entity
-  id: PanicButton
+  id: PanicButtonSignaller
   name: distress signaller
   description: A small device with a small red button on the top. Press it to send a distress signal over the security channel.
   parent: [BaseItem, BaseSecurityContraband]

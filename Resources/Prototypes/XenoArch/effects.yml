@@ -65,6 +65,8 @@
       weight: 4.0
     - id: XenoArtifactFaunaSpawn
       weight: 10.0
+    - id: XenoArtifactHostileFaunaSpawn
+      weight: 10.0
     - id: XenoArtifactCashSpawn
       weight: 10.0
     - id: XenoArtifactShatterWindows
@@ -249,10 +251,10 @@
   components:
   - type: XAEApplyComponents
     components:
-    - type: SolutionContainerManager
-      solutions:
-        beaker:
-          maxVol: 150
+    - type: Solution
+      id: beaker
+      solution:
+        maxVol: 120
     - type: FitsInDispenser
       solution: beaker
     - type: RefillableSolution
@@ -267,8 +269,11 @@
       solution: beaker
     - type: SolutionTransfer
       canChangeTransferAmount: true
-    - type: Drink
+    - type: Edible
+      edible: Drink
       solution: beaker
+      destroyOnEmpty: false
+      utensil: None
 
 - type: entity
   id: XenoArtifactSpeedUp
@@ -480,6 +485,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:GroupSelector
         rolls: !type:RangeNumberSelector
@@ -488,10 +494,9 @@
         - !type:NestedSelector
           tableId: GenericTrashItems
           weight: 35
-        - !type:AllSelector
+        - !type:NestedSelector
+          tableId: AllPlushiesTable
           weight: 1
-          children:
-          - id: ToySpawner
 
 - type: entity
   id: XenoArtifactEffectLightFlicker
@@ -510,6 +515,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:AllSelector
         children:
@@ -537,6 +543,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:AllSelector
         children:
@@ -636,6 +643,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:AllSelector
         children:
@@ -656,6 +664,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:GroupSelector
         children:
@@ -746,6 +755,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:AllSelector
         children:
@@ -781,6 +791,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:AllSelector
         children:
@@ -804,6 +815,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:AllSelector
         children:
@@ -827,6 +839,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:AllSelector
         children:
@@ -850,6 +863,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:AllSelector
         children:
@@ -873,6 +887,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:GroupSelector
         children:
@@ -896,18 +911,11 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:GroupSelector
         children:
-        - id: MobAdultSlimesYellowAngry
-        - id: MobAngryBee
-        - id: MobBearSpace
-        - id: CMMobXenoRavager
-        - id: MobTick
-        - id: MobSpiderSpace
-        - id: MobPurpleSnake
         - id: MobMouse
-        - id: MobKangarooSpace
         - id: MobPig
         - id: MobParrot
         - id: MobKangaroo
@@ -915,7 +923,7 @@
         - id: MobPenguin
           amount: !type:RangeNumberSelector
             range: 1, 2
-        - id: MobMothroach
+        - id: MobMothmaggot # Trauma - was MobMothroach
           amount: !type:RangeNumberSelector
             range: 1, 2
         - id: MobCorgiPuppy
@@ -937,6 +945,34 @@
           prob: 0.03
 
 - type: entity
+  id: XenoArtifactHostileFaunaSpawn
+  parent: BaseXenoArtifactEffect
+  description: Create hostile fauna
+  components:
+  - type: XenoArtifactNode
+    maxDurability: 4
+    maxDurabilityCanDecreaseBy:
+      min: 0
+      max: 3
+  - type: XAEApplyComponents
+    applyIfAlreadyHave: true
+    refreshOnReactivate: true
+    components:
+    - type: EntityTableSpawner
+      absolute: true # Trauma
+      deleteSpawnerAfterSpawn: false
+      table: !type:GroupSelector
+        children:
+        - id: MobAdultSlimesYellowAngry
+        - id: MobAngryBee
+        - id: MobBearSpace
+        - id: CMMobXenoRavager # Trauma - was MobXenoRavager
+        - id: MobTick
+        - id: MobSpiderSpace
+        - id: MobPurpleSnake
+        - id: MobKangarooSpace
+
+- type: entity
   id: XenoArtifactCashSpawn
   parent: BaseXenoArtifactEffect
   description: Create money
@@ -951,6 +987,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:GroupSelector
         rolls: !type:RangeNumberSelector
@@ -1067,6 +1104,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:AllSelector
         children:
@@ -1148,6 +1186,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:GroupSelector
         children:
@@ -1163,6 +1202,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:GroupSelector
         children:
@@ -1178,6 +1218,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:GroupSelector
         children:
@@ -1205,6 +1246,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:AllSelector
         children:
@@ -1233,9 +1275,13 @@
       components:
       - MobState
     damage:
-      groups:
-        Brute: -300
-        Burn: -300
+      types:
+        Blunt: -100
+        Piercing: -100
+        Slash: -100
+        Heat: -100
+        Cold: -100
+        Shock: -100
 
 - type: entity
   id: XenoArtifactTesla
@@ -1247,6 +1293,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:AllSelector
         children:
@@ -1262,6 +1309,7 @@
     refreshOnReactivate: true
     components:
     - type: EntityTableSpawner
+      absolute: true # Trauma
       deleteSpawnerAfterSpawn: false
       table: !type:AllSelector
         children:

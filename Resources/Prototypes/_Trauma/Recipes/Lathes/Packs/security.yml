@@ -1,0 +1,24 @@
+- type: latheRecipePack
+  id: TraumaSecurityWeapons
+  recipes:
+  - PolymerBaton
+  - SpearTelescopic
+  - WeaponBillyClub
+  - WeaponLaserSidearm
+
+- type: latheRecipePack
+  id: TraumaMechParts
+  recipes:
+  - EDHead
+  - EDLegL
+  - EDLegR
+  - EDShell
+  - ED209Endoskeleton
+  - EDAiCoreElectronics
+  - EDIFFElectronics
+  - EDWeaponControlsElectronics
+
+- type: latheRecipePack
+  id: TraumaSecurityEquipmentStatic
+  recipes:
+  - ClothingOuterStraightjacket

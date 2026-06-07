@@ -76,8 +76,8 @@
     - Industrial
     - Arsenal
     - Experimental
+    - Robotics # Trauma
     - CivilianServices
-    - LEGAL # Ratbite
   - type: ApcPowerReceiver
     powerLoad: 200
   - type: ExtensionCableReceiver

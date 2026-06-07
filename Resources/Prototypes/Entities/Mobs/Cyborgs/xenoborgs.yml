@@ -3,7 +3,7 @@
   id: XenoborgEngi
   name: engi xenoborg
   suffix: with brain
-  description: A man-machine hybrid that aims to replicate itself. They love extracting brains to insert into fresh xenoborg chassis to grow their army. This one seems to be an engineering type, as it has more tools for supporting the other xenoborgs.
+  description: A man-machine hybrid that aims to replicate itself. They love extracting brains to insert into fresh Xenoborg chassis to grow their army. This one seems to be an engineering type, as it has more tools for supporting the other Xenoborgs.
   components:
   - type: BorgTransponder
     name: engi xenoborg
@@ -22,7 +22,7 @@
       map: ["light"]
       visible: false
   - type: BorgChassis
-    maxModules: 7
+    maxModules: 8 # Trauma - was 7
     hasMindState: xenoborg_engi_e
     noMindState: xenoborg_engi_e_r
     moduleWhitelist:
@@ -30,6 +30,8 @@
       - XenoborgModuleGeneric
       - XenoborgModuleEngi
       - BorgModuleEngineering
+      - BorgModuleGeneric
+      - BorgModuleJanitor # Trauma
   - type: ContainerFill
     containers:
       borg_brain:
@@ -42,6 +44,8 @@
       - BorgModuleCable
       - XenoborgModuleAccessBreaker
       - XenoborgModuleFireExtinguisher
+      - BorgModuleAdvancedCleaning # Trauma
+  - type: ShowElectrocutionHUD
   - type: ShowHealthBars
     damageContainers:
     - Inorganic
@@ -51,13 +55,30 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
+  # <Trauma>
+  - type: ModifyKnowledgeGrant
+    skills:
+      FabricationKnowledge: 60
+      MaterialsKnowledge: 60
+      DoorsKnowledge: 60
+      AirlocksKnowledge: 60
+      FurnitureKnowledge: 60
+      InfrastructureKnowledge: 60
+      ElectronicsKnowledge: 60
+      WallsKnowledge: 60
+      WindowsKnowledge: 60
+      MetalworkingKnowledge: 60
+      GunsmithingKnowledge: 60
+      MechanicsKnowledge: 60
+      BotsKnowledge: 60
+  # </Trauma>
 
 - type: entity
   parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]
   id: XenoborgHeavy
   name: heavy xenoborg
   suffix: with brain
-  description: A man-machine hybrid that aims to replicate itself. They love extracting brains to insert into fresh xenoborg chassis to grow their army. This type is has heavy lasers and is covered in thick armor plates. It may be tougher, but its speed matches its brawn.
+  description: A man-machine hybrid that aims to replicate itself. They love extracting brains to insert into fresh Xenoborg chassis to grow their army. This type is has heavy lasers and is covered in thick armor plates. It may be tougher, but its speed matches its brawn.
   components:
   - type: BorgTransponder
     name: heavy xenoborg
@@ -86,12 +107,14 @@
   - type: MovementSpeedModifier # slower
     baseWalkSpeed : 1.2
     baseSprintSpeed : 2.2
+  - type: MovementAlwaysTouching # it flies in space by pure will power
   - type: FlashImmunity
+    showInExamine: false
   - type: MobThresholds # tankier
     thresholds:
       0: Alive
-      250: Critical
-      500: Dead
+      300: Critical # Trauma - was 250
+      600: Dead # Trauma - was 500
     stateAlertDict:
       Alive: BorgHealth
       Critical: BorgCrit
@@ -106,7 +129,7 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Machines/warning_buzzer.ogg
+          path: /Audio/Machines/warning_buzzer_xenoborg.ogg
           params:
             volume: 5
     - trigger:
@@ -116,14 +139,18 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          PinpointerMothershipPiece: # drop a piece of core pinpointer upon being destructed (4 pieces to make a core pinpointer)
+            min: 1
+            max: 1
       - !type:EmptyContainersBehaviour
         containers:
         - borg_brain
+        - borg_module
         - cell_slot
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: Repairable
-    doAfterDelay: 25 # more HP, more time to heal
   - type: ContainerFill
     containers:
       borg_brain:
@@ -138,13 +165,30 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
+  # <Trauma>
+  - type: ModifyKnowledgeGrant
+    skills:
+      FabricationKnowledge: 20
+      MaterialsKnowledge: 20
+      DoorsKnowledge: 20
+      AirlocksKnowledge: 20
+      FurnitureKnowledge: 20
+      InfrastructureKnowledge: 20
+      ElectronicsKnowledge: 20
+      WallsKnowledge: 20
+      WindowsKnowledge: 20
+      ShootingKnowledge: 51
+      ToughnessKnowledge: 51
+      AthleticsKnowledge: 51
+      WeaponsKnowledge: 51
+  # </Trauma>
 
 - type: entity
   parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]
   id: XenoborgScout
   name: scout xenoborg
   suffix: with brain
-  description: A man-machine hybrid that aims to replicate itself. They love extracting brains to insert into fresh xenoborg chassis to grow their army. This is a scout type, its nimble thrusters allow it to move quickly through space.
+  description: A man-machine hybrid that aims to replicate itself. They love extracting brains to insert into fresh Xenoborg chassis to grow their army. This is a scout type, its nimble thrusters allow it to move quickly through space.
   components:
   - type: BorgTransponder
     name: scout xenoborg
@@ -165,7 +209,9 @@
   - type: FootstepModifier # it flies instead of walking
     footstepSoundCollection:
       collection: FootstepHoverXenoborg
+  - type: MovementAlwaysTouching # it flies in space with tiny thrusters
   - type: FlashImmunity
+    showInExamine: false
   - type: BorgChassis
     maxModules: 4
     hasMindState: xenoborg_scout_e
@@ -191,13 +237,31 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
+  # <Trauma>
+  - type: ModifyKnowledgeGrant
+    skills:
+      FabricationKnowledge: 20
+      MaterialsKnowledge: 20
+      DoorsKnowledge: 20
+      AirlocksKnowledge: 20
+      FurnitureKnowledge: 20
+      InfrastructureKnowledge: 20
+      ElectronicsKnowledge: 20
+      WallsKnowledge: 20
+      WindowsKnowledge: 20
+      MeleeKnowledge: 51
+      StrengthKnowledge: 51
+      ToughnessKnowledge: 51
+      AthleticsKnowledge: 51
+      WeaponsKnowledge: 51
+  # </Trauma>
 
 - type: entity
   parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]
   id: XenoborgStealth
   name: stealth xenoborg
   suffix: with brain
-  description: A man-machine hybrid that aims to replicate itself. They love extracting brains to insert into fresh xenoborg chassis to grow their army. This one is a stealth type. Its armor shimmers in the light like no other material you've seen.
+  description: A man-machine hybrid that aims to replicate itself. They love extracting brains to insert into fresh Xenoborg chassis to grow their army. This one is a stealth type. Its armor shimmers in the light like no other material you've seen.
   components:
   - type: BorgTransponder
     name: stealth xenoborg
@@ -245,7 +309,23 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
-
+  # <Trauma>
+  - type: ModifyKnowledgeGrant
+    skills:
+      FabricationKnowledge: 20
+      MaterialsKnowledge: 20
+      DoorsKnowledge: 20
+      AirlocksKnowledge: 20
+      FurnitureKnowledge: 20
+      InfrastructureKnowledge: 20
+      ElectronicsKnowledge: 20
+      WallsKnowledge: 20
+      WindowsKnowledge: 20
+      ShootingKnowledge: 51
+      ToughnessKnowledge: 51
+      AthleticsKnowledge: 51
+      WeaponsKnowledge: 51
+  # </Trauma>
 
 # xenoborgs empty
 - type: entity
@@ -265,6 +345,7 @@
       - BorgModuleCable
       - XenoborgModuleAccessBreaker
       - XenoborgModuleFireExtinguisher
+      - BorgModuleAdvancedCleaning # Trauma
   - type: ItemSlots
     slots:
       cell_slot:

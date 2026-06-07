@@ -1,0 +1,33 @@
+## Static
+
+- type: latheRecipePack
+  parent:
+  - TraumaCyberneticsStatic
+  id: TraumaMedicalStatic
+  recipes:
+  - MedicalHyposprayEmpty
+  - MedicalCigCarton
+
+- type: latheRecipePack
+  id: TraumaCyberneticsStatic
+  recipes:
+  - Hypoport
+
+## Dynamic
+
+- type: latheRecipePack
+  id: TraumaCybernetics
+  recipes:
+  - HypoportSecure
+
+- type: latheRecipePack
+  id: TraumaChemistry
+  recipes:
+  - MedkitCombat
+  - VialBluespace
+
+- type: latheRecipePack
+  id: TraumaMedicalBoards
+  recipes:
+  - StasisOperatingTableCircuitboard
+  - MedicalBiofabMachineBoard

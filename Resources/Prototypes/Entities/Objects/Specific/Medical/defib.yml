@@ -62,7 +62,7 @@
     - type: Defibrillator
       zapHeal:
         types:
-          Asphyxiation: -200
+          Asphyxiation: -40
     - type: DoAfter
     - type: UseDelay
     - type: StaticPrice
@@ -71,7 +71,6 @@
       guides:
       - MedicalDoctor
     - type: LanguageSpeaker # Einstein Engines - Language
-    - type: LanguageKnowledge # Einstein Engines - Language
       speaks:
       - TauCetiBasic
       understands:
@@ -84,7 +83,7 @@
   - type: MultiHandedItem
   - type: ToggleCellDraw
   - type: PowerCellDraw
-    useRate: 100
+    useCharge: 100
 
 - type: entity
   id: DefibrillatorEmpty
@@ -122,7 +121,7 @@
     size: Normal
   - type: ToggleCellDraw
   - type: PowerCellDraw
-    useRate: 100
+    useCharge: 100
   - type: Defibrillator
     zapHeal:
       types:

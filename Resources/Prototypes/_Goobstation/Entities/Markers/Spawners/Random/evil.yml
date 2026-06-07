@@ -35,11 +35,10 @@
         - ClothingHandsGlovesNorthStar
         - WeaponSubMachineGunC20r
         - WeaponRifleM90
-        - MiniatureEnergyCrossbow
+        - WeaponEnergyCrossbow
         - WeaponShotgunBulldog
         - FireAxeFlaming
         - BriefcaseSyndieSniperBundleFilled
-        - WeaponRifleWSPR
         - SleepingCarpScroll
         - BowHardlight
         - WeaponRifleBurner
@@ -137,7 +136,6 @@
         - ClothingNeckScarfStripedSyndieGreen
         - ClothingNeckScarfStripedSyndieRed
         - ReinforcementRadioSyndicateSyndiCat
-        - CardBoxSyndicate
         - ReinforcementRadioSyndicateAncestor
         - SmokeImplanter
         - RadioImplanter

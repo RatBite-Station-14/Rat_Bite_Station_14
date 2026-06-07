@@ -695,11 +695,14 @@
   id: SpellbookPaperRobe
   name: spellbook-paper-robe-name
   description: spellbook-paper-robe-desc
-  productEntity: ClothingOuterWizardPaperReal
+  productEntity: ClothingBackpackPaper
   cost:
     WizCoin: 1
   categories:
   - SpellbookEquipment
+  icon:
+    sprite: _Goobstation/Wizard/Clothing/OuterClothing/paperwizard.rsi
+    state: icon
 
 - type: listing
   id: SpellbookHighFrequencyBlade
@@ -707,7 +710,7 @@
   description: spellbook-high-freq-desc
   productEntity: HighFrequencyBlade
   cost:
-    WizCoin: 3
+    WizCoin: 2
   categories:
   - SpellbookEquipment
 
@@ -799,47 +802,6 @@
     WizCoin: 2
   categories:
   - SpellbookEquipment
-
-- type: listing
-  id: SpellbookNinjutsuScroll
-  name: spellbook-ninjutsu-name
-  description: spellbook-ninjutsu-desc
-  productEntity: NinjutsuScroll
-  cost:
-    WizCoin: 2
-  categories:
-  - SpellbookEquipment
-  disableRefund: true
-
-- type: listing
-  id: SpellbookHellRipScroll
-  name: spellbook-hell-rip-name
-  description: spellbook-hell-rip-desc
-  productEntity: HellRipScroll
-  cost:
-    WizCoin: 2
-  categories:
-  - SpellbookEquipment
-  disableRefund: true
-
-- type: listing
-  id: SpellOrganMagicSlaughterHeart
-  name: spellbook-demon-heart-name
-  description: spellbook-demon-heart-desc
-  productEntity: OrganMagicSlaughterHeart
-  cost:
-    WizCoin: 6
-  categories:
-  - SpellbookEquipment
-  conditions:
-  - !type:BuyBeforeCondition
-    whitelist:
-    - SpellbookHellRipScroll
-    - SpellbookBottleOfBlood
-  disableRefund: true
-  blockRefundListings:
-  - SpellbookHellRipScroll
-  - SpellbookBottleOfBlood
 
 # Summons
 - type: listing

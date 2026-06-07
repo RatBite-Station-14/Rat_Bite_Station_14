@@ -7,6 +7,9 @@
   description: trait-language-foreigner-light-desc
   category: LanguageTraits
   cost: -1
+  blacklist:
+    components:
+      - BorgChassis
   components:
   - type: ForeignerTrait
     cantUnderstand: false
@@ -18,22 +21,12 @@
   description: trait-language-foreigner-desc
   category: LanguageTraits
   cost: -2
+  blacklist:
+    components:
+      - BorgChassis
   components:
   - type: ForeignerTrait
     baseTranslator: TranslatorForeigner
-
-- type: trait
-  id: SignLanguage
-  name: trait-language-signlanguage-name
-  description: trait-language-signlanguage-desc
-  category: LanguageTraits
-  cost: 1
-  components:
-  - type: LanguageSpeaker
-  languagesSpoken:
-    - Sign
-  languagesUnderstood:
-    - Sign
 
 # Not commented since this is another general-ish language.
 - type: trait
@@ -42,6 +35,9 @@
   description: trait-language-solcommon-desc
   category: LanguageTraits
   cost: 1
+  blacklist:
+    components:
+      - BorgChassis
   components:
   - type: LanguageSpeaker
   languagesSpoken:
@@ -55,6 +51,9 @@
   description: trait-language-tradeband-desc
   category: LanguageTraits
   cost: 1
+  blacklist:
+    components:
+      - BorgChassis
   components:
   - type: LanguageSpeaker
   languagesSpoken:
@@ -68,6 +67,9 @@
   description: trait-language-freespeak-desc
   category: LanguageTraits
   cost: 1
+  blacklist:
+    components:
+      - BorgChassis
   components:
   - type: LanguageSpeaker
   languagesSpoken:
@@ -81,6 +83,9 @@
   description: trait-language-elyran-desc
   category: LanguageTraits
   cost: 1
+  blacklist:
+    components:
+      - BorgChassis
   components:
   - type: LanguageSpeaker
   languagesSpoken:
@@ -88,26 +93,15 @@
   languagesUnderstood:
     - Elyran
 
-# Commented out since it's species-specific.
-# - type: trait
-#   id: ValyrianStandard
-#   name: trait-language-valyrianstandard-name
-#   description: trait-language-valyrianstandard-desc
-#   category: LanguageTraits
-#   cost: 1
-#   functions:
-#     - !type:TraitModifyLanguages
-#       languagesSpoken:
-#         - ValyrianStandard
-#       languagesUnderstood:
-#         - ValyrianStandard
-
 - type: trait
   id: NovuNederic
   name: trait-language-novunederic-name
   description: trait-language-novunederic-desc
   category: LanguageTraits
   cost: 1
+  blacklist:
+    components:
+      - BorgChassis
   components:
   - type: LanguageSpeaker
   languagesSpoken:

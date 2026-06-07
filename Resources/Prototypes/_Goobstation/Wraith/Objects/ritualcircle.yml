@@ -26,13 +26,14 @@
         - WallLayer
         hard: false
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: ManifestedSpirit
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 25
+          damage: 10
         behaviors:
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
@@ -98,7 +99,7 @@
     thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 30
+          damage: 10
         behaviors:
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
@@ -123,7 +124,7 @@
     thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 40
+          damage: 15
         behaviors:
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
@@ -148,7 +149,7 @@
     thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 50
+          damage: 20
         behaviors:
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
@@ -173,7 +174,7 @@
     thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 75
+          damage: 30
         behaviors:
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
@@ -198,7 +199,7 @@
     thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 100
+          damage: 40
         behaviors:
           - !type:DoActsBehavior
             acts: [ "Destruction" ]

@@ -54,3 +54,13 @@
   id: HoSSummerShirt
   equipment:
     jumpsuit: ClothingUniformJumpsuitHoSSummer
+
+# Gloves
+- type: loadout
+  id: CombatEnvirogloves
+  equipment:
+    gloves: ClothingHandsGlovesEnviroglovesCombat
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Plasmaman

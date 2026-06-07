@@ -16,9 +16,9 @@
     canTargetSelf: false
     whitelist:
       tags:
+      - RodMetal
       - Ingot
       - Metal
       - Steel
       - Ore
       - Telecrystal
-

@@ -1,0 +1,7 @@
+## Autocall CBURN Shuttle
+- type: entity
+  parent: BaseGameRule
+  id: SpawnCBURNNoAnnounce
+  components:
+  - type: LoadMapRule
+    gridPath: /Maps/_Goobstation/Shuttles/retort_cburn.yml

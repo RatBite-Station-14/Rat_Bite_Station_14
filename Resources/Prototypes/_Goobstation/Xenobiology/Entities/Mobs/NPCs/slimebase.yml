@@ -1,11 +1,12 @@
 - type: entity
   abstract: true
-  parent: [ SimpleMobBase, MobCombat ]
+  parent: [ BaseMobSlimes, SimpleMobBase, MobCombat ]
   id: BaseMobSlimeXenobio
   name: basic slime
   description: It looks so much like jelly. I wonder what it tastes like?
   components:
   - type: Appearance
+  - type: ZombieImmune # xenobio II way too op
   - type: Hunger
     startingHunger: 40
     thresholds:
@@ -69,10 +70,15 @@
         Asphyxiation: -1.0
     maxSaturation: 15
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Slime
+  - type: Injurable
+    damageContainer: Biological
   - type: Bloodstream
-    bloodReagent: Slime
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Slime
+        Quantity: 150
+    smokeImmune: true  #No more 50000 slime extracts midshift
     bloodlossDamage:
       types:
         Bloodloss:
@@ -93,12 +99,11 @@
     - reagents: [ Water, SpaceCleaner ]
       methods: [ Touch ]
       effects:
-      - !type:WashCreamPieReaction
+      - !type:WashCreamPie
     - reagents: [ Water ]
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        scaleByQuantity: true
         damage:
           types:
             Caustic: 5
@@ -106,9 +111,12 @@
         type: Local
         messages: [ "slime-hurt-by-water-popup" ]
         probability: 0.25
-  - type: Body
-    prototype: Slimes
-    requiredLegs: 1
+  - type: MeleeWeapon
+    damage:
+      types:
+        Heat: 5
+    animation: WeaponArcPunch
+    soundHit: /Audio/Weapons/punch3.ogg
   - type: InteractionPopup
     successChance: 0.5
     interactSuccessString: petting-success-slimes
@@ -119,7 +127,7 @@
     speechSounds: Slime
   - type: TypingIndicator
     proto: slime
-  - type: LanguageKnowledge # Einstein Engines - Language
+  - type: LanguageSpeaker # Einstein Engines - Language
     speaks:
     - Bubblish
     understands:
@@ -140,6 +148,7 @@
   - type: GuideHelp
     guides:
     - Xenobiology
+  - type: MobSpam # you can easily make hundreds of them...
 
 # Begin Slimes
 

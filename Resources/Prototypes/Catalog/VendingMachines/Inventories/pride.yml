@@ -31,7 +31,7 @@
     ClothingNeckGenderfluidPin: 3
     ClothingNeckTransPin: 3
     ClothingNeckAutismPin: 3
-    ClothingNeckGoldAutismPin: 3 # somehow we don't have this one in goob so I'm commenting this out
+    ClothingNeckGoldAutismPin: 3
     PlushieSharkBlue: 2
     PlushieSharkPink: 2
     PlushieSharkGrey: 2
@@ -56,3 +56,9 @@
   contrabandInventory:
     ClothingNeckScarfStripedLesbianLong: 2
     ClothingUniformJumpskirtColorRainbow: 2
+  # <Trauma>
+  emaggedInventory:
+    BluntRainbow: 3
+    PlushieRainbowCarp: 1
+    FoodSnackLollypopWrappedRainbow: 1
+  # </Trauma>

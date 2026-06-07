@@ -6,18 +6,11 @@
 - type: entity
   name: fermid
   id: MobFermidBase
-  parent: [ SimpleSpaceMobBase, MobCombat ]
+  parent: [ SimpleSpaceMobBase, MobCombat, AppearanceSpaceAnimal ]
   abstract: true
   description: Extremely hostile asteroid-dwelling bugs. Best to avoid them wherever possible.
   components:
-  - type: VentCrawler # goobstation - Ventcrawl
-  - type: Body # Shitmed Change
-    prototype: SpaceSpider
-  - type: SurgeryTarget # Shitmed
-  - type: UserInterface # Shitmed
-    interfaces:
-      enum.SurgeryUIKey.Key:
-        type: SurgeryBui
+  - type: VentCrawler
   - type: Sprite
     drawdepth: Mobs
     sprite: /Textures/_Goobstation/Mobs/Animals/Fermids/fermid.rsi
@@ -45,8 +38,10 @@
     - id: FoodMeatSpider
       amount: 2
   - type: Bloodstream
-    bloodMaxVolume: 50
-    bloodReagent: InsectBlood
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: InsectBlood
+        Quantity: 50
   - type: Fixtures
     fixtures:
       fix1:
@@ -70,12 +65,12 @@
       types:
         Piercing: 3
         Poison: 3
-  - type: SolutionContainerManager
-    solutions:
-      melee:
-        reagents:
-        - ReagentId: SulfuricAcid
-          Quantity: 80
+  - type: Solution
+    id: melee
+    solution:
+      reagents:
+      - ReagentId: SulfuricAcid
+        Quantity: 80
   - type: MeleeChemicalInjector
     solution: melee
     transferAmount: 2
@@ -90,9 +85,7 @@
     color: "#808080"
     activateSound: null
     deactivateSound: null
-  - type: Fauna # Lavaland Change
-  - type: CombatPower # Goobstation
-    factor: 0.5 # times more dangerous than a crew-member
+  - type: Fauna
 
 - type: entity
   name: fermid
@@ -129,8 +122,6 @@
       types:
         Piercing: 6
         Poison: 4
-  - type: CombatPower # Goobstation
-    factor: 1 # times more dangerous than a crew-member
 
 - type: entity
   name: warrior fermid
@@ -165,8 +156,6 @@
       types:
         Piercing: 10
         Poison: 5
-  - type: CombatPower # Goobstation
-    factor: 1.5 # times more dangerous than a crew-member
 
 - type: entity
   name: fermid queen
@@ -201,8 +190,6 @@
     damage:
       types:
         Poison: 12
-  - type: CombatPower # Goobstation
-    factor: 1.2 # times more dangerous than a crew-member
 
 # Waiting on mob growth component from xenobio. Also needs sprites for moving north and south.
 #- type: entity
@@ -246,8 +233,6 @@
 #      types:
 #        Piercing: 1
 #        Poison: 1
-#  - type: CombatPower
-#    factor: 0.1
 #  - type: Hunger
 #    startingHunger: 300
 #    thresholds:
@@ -257,7 +242,7 @@
 #      Starving: 25
 #     Dead: 0
 #    baseDecayRate: 0.04
-#  - type: Food
+#  - type: Edible
 #  - type: HTN
 #    rootTask:
 #      task: MouseCompound

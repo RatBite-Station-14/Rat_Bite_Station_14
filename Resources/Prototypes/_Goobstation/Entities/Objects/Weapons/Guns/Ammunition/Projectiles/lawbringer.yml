@@ -1,10 +1,3 @@
-# SPDX-FileCopyrightText: 2025 Armok <155400926+ARMOKS@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-# SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
@@ -154,8 +147,8 @@
     impactEffect: BulletImpactEffectOrangeDisabler
     damage:
       types:
-        Heat: 20 # Ratbite balance
-        Radiation: 10 # Ratbite balance
+        Heat: 17
+        Radiation: 2
 
 - type: entity
   id: BulletHotshot
@@ -189,8 +182,8 @@
     impactEffect: BulletImpactEffectOrangeDisabler
     damage:
       types:
-        Blunt: 5 # Ratbite balance
-        Heat: 5 # Ratbite balance
+        Blunt: 2
+        Heat: 2
   - type: IgniteOnCollide
     fireStacks: 2
 
@@ -236,12 +229,12 @@
     solution: ammo
   - type: InjectableSolution
     solution: ammo
-  - type: SolutionContainerManager
-    solutions:
-      ammo:
-        reagents:
-        - ReagentId: Haloperidol
-          Quantity: 1.5
+  - type: Solution
+    id: ammo
+    solution:
+      reagents:
+      - ReagentId: Haloperidol
+        Quantity: 1.5
   - type: BlurOnCollide
 
 - type: entity

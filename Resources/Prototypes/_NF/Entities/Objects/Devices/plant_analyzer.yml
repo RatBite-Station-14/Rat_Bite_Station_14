@@ -1,0 +1,49 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later AND MIT
+
+- type: entity
+  parent: BaseItem
+  id: PlantAnalyzer
+  name: plant analyzer
+  description: A handheld device that allows you to scan and splice genes in plants.
+  components:
+  - type: Sprite
+    sprite: _NF/Objects/Devices/plant_analyzer.rsi
+    layers:
+    - state: plantanalyzer
+    - state: unlit
+      map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+      shader: unshaded
+  - type: Item
+    storedRotation: -90
+  - type: ActivatableUI
+    key: enum.PlantAnalyzerUiKey.Key
+    inHandsOnly: true
+  - type: UserInterface
+    interfaces:
+      enum.PlantAnalyzerUiKey.Key:
+        type: PlantAnalyzerBoundUserInterface
+  - type: PlantAnalyzer
+    settings:
+      scanDelay: 3
+      modeDelay: 1
+    scanningEndSound:
+      path: "/Audio/Items/Medical/healthscanner.ogg"
+    deleteMutationEndSound:
+      path: "/Audio/_Shitmed/Medical/Surgery/cautery2.ogg"
+    extractEndSound:
+      path: "/Audio/_Shitmed/ReBELL/Organs/OrganDestroyed2.ogg"
+    injectEndSound:
+      path: "/Audio/_Shitmed/Medical/Surgery/organ2.ogg"
+  - type: Tag
+    tags:
+    - PlantAnalyzer
+
+- type: entity
+  parent: PlantAnalyzer
+  id: PlantAnalyzerDebug
+  suffix: Debug
+  components:
+  - type: PlantAnalyzer
+    settings:
+      scanDelay: 0.1
+      modeDelay: 0.1

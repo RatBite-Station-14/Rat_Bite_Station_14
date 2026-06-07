@@ -22,17 +22,15 @@
   - type: EldritchInfluence
     possibleExamineEffects:
     # Ash
-    - - !type:FlammableReaction
+    - - !type:Flammable
         multiplier: 5
         multiplierOnExisting: 5
       - !type:Ignite
     # Rust
-    - - !type:ChemVomit
+    - - !type:Vomit
         thirstAmount: -50
         hungerAmount: -50
-      - !type:GenericStatusEffect
-        key: KnockedDown
-        component: KnockedDown
+      - !type:ModifyKnockdown
         time: 20
         type: Add
       - !type:HealthChange
@@ -62,9 +60,8 @@
     - - !type:SpillBlood
         amount: 100
     # Lock
-    - - !type:GenericStatusEffect
-        key: TemporaryBlindness
-        component: TemporaryBlindness
+    - - !type:ModifyStatusEffect
+        effectProto: StatusEffectBlindness
         time: 20
         type: Add
       - !type:RemoveAccess
@@ -73,7 +70,36 @@
     state: icon
   - type: Clickable
   - type: Visibility
-    layer: 32 # keep in sync with VisibilityFlags.EldritchInfluence for upstream merges
+    layer: 64 # keep in sync with VisibilityFlags.EldritchInfluence for upstream merges
+  - type: StepTrigger
+    requiredTriggeredSpeed: 0
+    intersectRatio: 0.1
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 5
+        layer:
+          - WallLayer
+        mask:
+          - HighImpassable
+          - MidImpassable
+          - LowImpassable
+        hard: false
+  - type: TileEntityEffect
+    effects:
+    - !type:ModifyStatusEffect
+      effectProto: StatusEffectInfluenceXray
+      time: 10
+      conditions:
+      - !type:WhitelistCondition
+        checkMind: true
+        whitelist:
+          components:
+          - Heretic
 
 - type: entity
   id: EldritchInfluenceIntermediate
@@ -96,6 +122,8 @@
     sprite: _Goobstation/Heretic/reality_fracture.rsi
     state: icon_harvested
   - type: Visibility
-    layer: 64
+    layer: 1
   - type: EldritchInfluence
     spent: true
+  - type: TileEntityEffect
+    effects: []

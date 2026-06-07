@@ -1,11 +1,13 @@
 - type: entity
+  abstract: true
   id: XenomorphBloodstream
   parent: MobBloodstream
   components:
   - type: Bloodstream
-    bloodReagent: Blood
-    bloodMaxVolume: 300
-    chemicalMaxVolume: 250
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        quantity: 300
     bleedReductionAmount: 5
     maxBleedAmount: 0
     bloodlossDamage:

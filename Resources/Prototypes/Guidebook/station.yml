@@ -34,8 +34,12 @@
   - Survival
   - Antagonists
   - Glossary
-  - MartialArts # Goobstation - idk where to put it
-  - SOP # Goobstation - Make it look good.
+  # <Trauma>
+  - CounterAttack
+  - Tackle
+  - MartialArts
+  - Forging
+  # </Trauma>
 
 - type: guideEntry
   id: Glossary

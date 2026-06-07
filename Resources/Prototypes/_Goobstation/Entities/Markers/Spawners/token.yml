@@ -80,7 +80,7 @@
 
 - type: entity
   categories: [ HideSpawnMenu, Spawner ]
-  parent: SpawnPointWizard
+  parent: SpawnPointMarkerWizard
   id: SpawnPointWizardToken
   components:
   - type: GhostRole
@@ -110,18 +110,6 @@
 
 - type: entity
   categories: [ HideSpawnMenu, Spawner ]
-  parent: SpawnPointGhostAncientRogueKing
-  id: AncientRogueKingToken
-  components:
-  - type: GhostRole
-    name: ghost-role-information-ancient-rogue-king-name-token
-    description: ghost-role-information-description-token-generic
-    rules: ghost-role-information-ancient-rogue-king-rules
-    raffle:
-      settings: short
-
-- type: entity
-  categories: [ HideSpawnMenu, Spawner ]
   parent: SpawnPointGhostWraith
   id: WraithToken
   components:
@@ -143,3 +131,13 @@
     rules: ghost-role-information-hastur-rules
     raffle:
       settings: short
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: ContractorSpawner
+  id: ContractorTokenSpawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-contractor-token
+    description: ghost-role-information-description-token-generic
+    rules: ghost-role-information-antagonist-rules

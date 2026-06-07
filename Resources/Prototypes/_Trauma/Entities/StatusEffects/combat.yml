@@ -1,0 +1,36 @@
+- type: entity
+  parent: StatusEffectBase
+  id: StatusEffectFlip
+  name: flip
+  components:
+  - type: FlippingStatusEffect
+
+- type: entity
+  parent: [StatusEffectSpeed, StatusEffectFlip]
+  id: StatusEffectFlipDesword
+  name: flip and dodge
+  components:
+  - type: GrantComponentsStatusEffect
+    components:
+    - type: ProjectileImmunity
+  - type: MovementModStatusEffect
+    sprintSpeedModifier: 1.2
+    walkSpeedModifier: 1.2
+
+- type: entity
+  parent: StatusEffectBase
+  id: CounterAttackingStatusEffect
+  name: counter attacking
+  components:
+  - type: CounterAttackingStatusEffect
+  - type: StatusEffectAlert
+    alert: CounterAttacking
+
+- type: entity
+  parent: StatusEffectBase
+  id: BlockCounterAttackStatusEffect
+  name: counter attacking blocked
+  components:
+  - type: BlockCounterAttackStatusEffect
+  - type: StatusEffectAlert
+    alert: CounterAttackingBlocked

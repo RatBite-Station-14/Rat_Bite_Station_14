@@ -19,20 +19,37 @@
   - quantity: 5
     weight: 0.5
     reagents:
-    - Omnizine
-    - Nocturine
-    - Lexorin
-    - Honk
-    - BuzzochloricBees
+    # <Trauma>
     - Stimulants
-    # Goobstation
+    - Nocturine
     - Tranquility
     - BingleJuice
     - JuiceThatMakesYouHew
     - Carpolin
+    - Aluite
+    - AmmoniatedMercury
+    - Rororium
+    - NanoMachines
+    - BlackPowder
+    # </Trauma>
+    - Omnizine
+    - Impedrezene
+    - Fresium
+    - HeartbreakerToxin
+    - Honk
+    - BuzzochloricBees
   - quantity: 5
     weight: 1
     reagents:
+    # <Trauma>
+    - Genecide
+    - Fentanyl
+    - Anacea
+    - Hemorrhinol
+    - Tirizene
+    - Hercuri
+    - GreyMatter
+    # </Trauma>
     - Cognizine
     - Toxin
     - Leporazine
@@ -51,12 +68,18 @@
     - ChangelingSting
     - CogChamp
     - JuiceThatMakesYouWeh
-    # Goobstation
-    - Genecide
-    - Fentanyl
+    - TearGas
+    - Lipolicide
+    - Benzene
   - quantity: 5
     weight: 2
     reagents:
+    # <Trauma>
+    - Ibuprofen
+    - Tilenol
+    - Morphine
+    - Multiver
+    # </Trauma>
     - Desoxyephedrine
     - ChloralHydrate
     - Ipecac
@@ -80,12 +103,17 @@
     - Cola
     - Diphenhydramine
     - Iron
-    # Goobstation
-    - Ibuprofen
-    - Tilenol
+    - Bleach
+    - Mannitol
   - quantity: 10
     weight: 3
     reagents:
+    # <Trauma>
+    - Tirimol
+    - Probital
+    - Mold
+    - Cement
+    # </Trauma>
     - Bicaridine
     - Dermaline
     - Ephedrine
@@ -104,7 +132,7 @@
     - Ash
     - SodiumCarbonate
     - SpaceDrugs
-    - MuteToxin
+    - SpaceGlue
     - JuiceBerryPoison
     - Pilk
     - Posca
@@ -117,9 +145,9 @@
     - Potassium
     - Fluorine
     - Aluminium
-    # Goobstation
-    - Tirimol
-    - Probital
+    - Wine
+    - Coffee
+    - Beer
   - quantity: 10
     weight: 3.5
     reagents:
@@ -135,10 +163,29 @@
     - SodaWater
     - Ice
     - JuiceCarrot
-    - JuicePotato
     - Protein
     - Flour
     - Soysauce
     - TableSalt
     - Chlorine
     - Mercury
+
+- type: weightedRandomFillSolution
+  id: EvilRandomFillSolution
+  fills:
+  - quantity: 0.05 # Common but very low quantity
+    weight: 40
+    reagents:
+    - Nocturine
+    - MuteToxin
+    - Lead
+  - quantity: 0.1
+    weight: 5 # 99.9% chance of appearing at least once with 60u of vestine with an average of 6.5 occurances.
+    reagents:
+    - Vestine
+  - quantity: 1.0 # High quantity but on average only 1 per chemical kit
+    weight: 1
+    reagents:
+    - Tazinide
+    - Stimulants
+    - Lexorin

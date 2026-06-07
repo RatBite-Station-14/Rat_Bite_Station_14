@@ -111,8 +111,9 @@
         - Opaque
   - type: Climbable
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
       - trigger:
@@ -146,8 +147,9 @@
         layer:
         - WallLayer
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Wood
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: MeleeSound
     soundGroups:
       Brute:
@@ -179,6 +181,8 @@
           Log:
             min: 2
             max: 8
+  - type: TypingIndicator # Add diona typing indicator here so that diona players keep the same typing bubble when polymorphed into a tree.
+    proto: diona
 
 - type: entity
   parent: BaseTree
@@ -419,7 +423,13 @@
     receivedPopup: christmas-tree-got-gift
     deniedPopup: christmas-tree-no-gift
     requiredHoliday: FestiveSeason
-  - type: Destructible # Goobstation
+  # <Goob>
+  - type: EntityEffectOnTrigger
+    targetUser: true
+    effects:
+    - !type:NestedEffect
+      proto: KillSign
+  - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
@@ -437,7 +447,7 @@
           params:
             volume: 5
             variation: 0.05
-      - !type:KillSignCauseBehavior
+      - !type:TriggerBehavior
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
       - !type:SpawnEntitiesBehavior
@@ -445,6 +455,7 @@
           Log:
             min: 2
             max: 8
+  # </Goob>
 
 - type: entity
   parent: FloraTreeChristmas02

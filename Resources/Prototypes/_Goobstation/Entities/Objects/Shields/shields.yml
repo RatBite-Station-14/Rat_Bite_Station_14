@@ -92,15 +92,16 @@
           Piercing: 3
     - type: Appearance
     - type: Damageable
+    - type: Injurable
       damageContainer: Shield
     - type: StaticPrice
       price: 350
     - type: Battery
-      maxCharge: 1200 #Ratbite
-      startingCharge: 900 #Ratbite
+      maxCharge: 600
+      startingCharge: 600
     - type: RechargeableBlocking
-      dischargedRechargeRate: 0.5 #Ratbite
-      chargedRechargeRate: 1 #Ratbite
+      dischargedRechargeRate: 0
+      chargedRechargeRate: 0
     - type: ItemSlots
       slots:
         item:
@@ -110,7 +111,7 @@
           insertSound: /Audio/Items/sheath.ogg
           ejectSound: /Audio/Items/unsheath.ogg
           whitelist:
-            tags:
+            components:
             - Stunbaton
     - type: Tag
       tags:
@@ -129,8 +130,7 @@
     dischargedRechargeRate: 100
     chargedRechargeRate: 150
   - type: BatterySelfRecharger
-    autoRechargeRate: 150
-    autoRecharge: true
+    autoRechargeRate: 100
   - type: Item
     size: Normal
   - type: Tag

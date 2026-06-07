@@ -16,7 +16,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 40 # Ratbite balance
+        Piercing: 30
         Structural: 1000
     ignoreResistances: true
     penetrationThreshold: 1337

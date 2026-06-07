@@ -8,6 +8,7 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 ## Static
+
 - type: latheRecipePack
   id: MiningToolsStatic
   recipes:
@@ -25,6 +26,9 @@
   id: MiningWeapons
   recipes:
   - WeaponProtoKineticAccelerator
+  - WeaponProtoKineticShotgun
+  - WeaponProtoKineticRepeater
+  - WeaponProtoKineticPistol
   - WeaponPlasmaCutter
   # - WeaponPlasmaRifle
 
@@ -39,3 +43,4 @@
   - PKAUpgradeDamage
   - PKAUpgradeRange
   - PKAUpgradeFireRate
+  - PKAUpgradeSpace

@@ -1,10 +1,3 @@
-# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Milon <milonpl.git@proton.me>
-# SPDX-FileCopyrightText: 2025 āda <ss.adasts@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: latheRecipe
   id: BioGenMonkeyCube
   result: MonkeyCube
@@ -29,7 +22,7 @@
   categories:
   - Materials
   icon:
-    sprite: Objects/Materials/materials.rsi
+    sprite: _Trauma/Objects/Materials/materials.rsi # Trauma
     state: cloth
   completetime: 1
   materials:
@@ -41,7 +34,7 @@
   categories:
   - Materials
   icon:
-    sprite: Objects/Materials/materials.rsi
+    sprite: _Trauma/Objects/Materials/materials.rsi # Trauma
     state: cardboard
   completetime: 1
   materials:
@@ -256,47 +249,17 @@
   materials:
     Biomass: 18
 
-- type: latheRecipe #Goobstation Change
-  id: BioGenDylo
-  resultReagents:
-    Dylovene: 10
+- type: latheRecipe
+  id: BioGenDiseaseSwab
+  result: DiseaseSwab
   categories:
-  - Chemicals
-  icon:
-    sprite: Objects/Specific/Chemistry/bottle.rsi
-    state: bottle-1
-  completetime: 1
+  - Materials
+  completetime: 3
   materials:
-    Biomass: 15
+    Biomass: 2
 
-- type: latheRecipe #Goobstation Change
-  id: BioGenPhalanx
-  resultReagents:
-    Phalanximine: 10
-  categories:
-  - Chemicals
-  icon:
-    sprite: Objects/Specific/Chemistry/bottle.rsi
-    state: bottle-1
-  completetime: 1
-  materials:
-    Biomass: 20
-
-- type: latheRecipe #Goobstation Change
-  id: BioGenDiethyl
-  resultReagents:
-    Diethylamine: 10
-  categories:
-  - Chemicals
-  icon:
-    sprite: Objects/Specific/Chemistry/bottle.rsi
-    state: bottle-1
-  completetime: 1
-  materials:
-    Biomass: 25
-
-- type: latheRecipe #Goobstation Change
-  id: BioGenMuta
+- type: latheRecipe
+  id: BioGenUnstableMutagen
   resultReagents:
     UnstableMutagen: 10
   categories:
@@ -304,15 +267,19 @@
   icon:
     sprite: Objects/Specific/Chemistry/bottle.rsi
     state: bottle-1
+  completetime: 1 # Trauma - was 5
+  materials:
+    Biomass: 12 # Trauma - was 20
+
+- type: latheRecipe
+  id: BioGenCompostAmmonia
+  resultReagents:
+    Ammonia: 10 # 15 biomass give 10 eznutrient which contain 3 ammonia, but also 2 other components. between 10 and 30 units, going for 15 ammonia sounds the most reasonable. (total nutrient for plants is 15 vs 20 ignoring the slight health boost)
+  categories:
+  - Chemicals
+  icon:
+    sprite: Objects/Specific/Chemistry/bottle.rsi #Structures/Storage/canister.rsi
+    state: bottle-1 #greenys
   completetime: 1
   materials:
-    Biomass: 12
-
-- type: latheRecipe #Goobstation Change
-  id: BioGenEgg
-  result: FoodEgg
-  categories:
-  - Materials
-  completetime: 3
-  materials:
-    Biomass: 6
+    Biomass: 10

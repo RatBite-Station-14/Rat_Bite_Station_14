@@ -16,12 +16,11 @@
   components:
   - type: DiseaseEffect
     complexity: 30
-  - type: DiseaseReagentEffect
+  - type: DiseaseEntityEffect
     timeScale: false
     effects:
-    - !type:MovespeedModifier
-      walkSpeedModifier: 0.65
-      sprintSpeedModifier: 0.65
+    - !type:ModifyStatusEffect
+      effectProto: SluggishStatusEffect
 
 - type: entity
   id: DiseaseBehaviorTemperature
@@ -31,11 +30,11 @@
   components:
   - type: DiseaseEffect
     complexity: 20
-  - type: DiseaseReagentEffect
+  - type: DiseaseEntityEffect
     effects:
     - !type:AdjustTemperature
       conditions:
-      - !type:Temperature
+      - !type:TemperatureCondition
         max: 393.15 # stops at 100c
       amount: 8000
 
@@ -47,7 +46,7 @@
   components:
   - type: DiseaseEffect
     complexity: 20
-  - type: DiseaseReagentEffect
+  - type: DiseaseEntityEffect
     effects:
     - !type:AdjustTemperature
       amount: -8000
@@ -60,7 +59,7 @@
   components:
   - type: DiseaseEffect
     complexity: 10
-  - type: DiseaseReagentEffect
+  - type: DiseaseEntityEffect
     # always mutates full speed
     timeScale: false
     severityScale: false

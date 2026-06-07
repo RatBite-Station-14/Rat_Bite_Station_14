@@ -32,8 +32,10 @@
     allowedStates:
     - Critical
     damage:
-      groups:
-        Brute: -15
+      types:
+        Blunt: -5
+        Slash: -5
+        Piercing: -5
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
@@ -45,8 +47,10 @@
     - id: SheetPlasteel1
       amount: 2
   - type: Bloodstream
-    bloodMaxVolume: 10
-    bloodReagent: Oil
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Oil
+        Quantity: 10
   - type: Fixtures
     fixtures:
       fix1:
@@ -73,8 +77,6 @@
     price: 1000
   - type: NoSlip
   - type: Fauna # Lavaland Change
-  - type: CombatPower # Goobstation
-    factor: 0.5 # times more dangerous than a crew-member
 
 - type: entity
   name: gunbot
@@ -112,8 +114,9 @@
                 min: 1
                 max: 1
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: HTN
     rootTask:
       task: SimpleRangedHostileCompound
@@ -131,11 +134,10 @@
         - MobMask
         layer:
         - MobLayer
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: BulletPistol
     fireCost: 50
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 50
   - type: Battery
     maxCharge: 1000
@@ -153,8 +155,6 @@
   - type: CombatMode
   - type: NoSlip
   - type: Fauna # Lavaland Change
-  - type: CombatPower # Goobstation
-    factor: 1 # times more dangerous than a crew-member
 
 - type: entity
   id: GunBot
@@ -179,7 +179,7 @@
     noMovementLayers:
       movement:
         state: nukebot
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: BaseBulletIncendiary
     fireCost: 50
   - type: Gun
@@ -192,8 +192,6 @@
     soundGunshot: /Audio/Weapons/Guns/Gunshots/mateba.ogg
   - type: StaticPrice
     price: 3000
-  - type: CombatPower # Goobstation
-    factor: 2 # times more dangerous than a crew-member
   - type: Destructible
     thresholds:
       - trigger:

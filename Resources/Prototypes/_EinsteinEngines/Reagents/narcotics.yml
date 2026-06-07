@@ -11,52 +11,24 @@
   flavor: bitter
   color: "#ffde7448"
   physicalDesc: reagent-physical-desc-translucent
+  contrabandSeverity: Major # Does nothing, may as well make it fun (illegal) to have
   metabolisms:
-    Narcotic:
+    Bloodstream:
       metabolismRate: 0.1
       effects:
-      - !type:HealthChange
-        conditions:
-        - !type:OrganType
-          type: Yowie
-        damage:
-          groups:
-            Brute: -1
-          types:
-            Heat: -0.5
-            Shock: -0.5
-            Cold: -0.5
-            Radiation: -0.5
       - !type:Emote
         emote: Yawn
         showInChat: true
         probability: 0.03
-      - !type:GenericStatusEffect
-        key: Drowsiness
-        component: Drowsiness
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectDrowsiness
         time: 2.5
         type: Add
-        refresh: false
-      - !type:SuppressPain
-        amount: 50
-        time: 30
       - !type:HealthChange
         conditions:
-        - !type:OrganType
-          type: Yowie
-          shouldHave: false
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Morphine
           min: 16
         damage:
           types:
             Asphyxiation: 2
-      - !type:AdjustConsciousness
-        conditions:
-        - !type:ReagentThreshold
-          min: 16
-        allowNewModifiers: true
-        modifierType: Pain
-        identifier: Suffocation
-        amount: -2
-        time: 12

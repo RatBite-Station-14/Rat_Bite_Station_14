@@ -376,9 +376,9 @@
 - type: reaction
   id: CubaLibre
   reactants:
-    Cola:
+    RumAndCoke: # Trauma - was coke
       amount: 2
-    Rum:
+    JuiceLime: # Trauma - was rum
       amount: 1
   products:
     CubaLibre: 3
@@ -768,7 +768,7 @@
     Kalimotxo: 2
 
 - type: reaction
-  id: KiraSpecial
+  id: OrangeLimeSoda
   requiredMixerCategories:
   - Stir
   reactants:
@@ -779,7 +779,7 @@
     SodaWater:
       amount: 1
   products:
-    KiraSpecial: 3
+    OrangeLimeSoda: 3
 
 - type: reaction
   id: Lemonade
@@ -1034,6 +1034,8 @@
 
 - type: reaction
   id: RedMead
+  requiredMixerCategories:
+  - Stir
   reactants:
     Mead:
       amount: 1

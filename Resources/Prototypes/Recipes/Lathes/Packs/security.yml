@@ -1,19 +1,8 @@
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
-# SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-# SPDX-FileCopyrightText: 2025 Speebro <100388782+Speebr0@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Speebro <speebro@notreal.com>
-# SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-# SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
 ## Static recipes
 
 - type: latheRecipePack
   id: SecurityEquipmentStatic
+  parent: TraumaSecurityEquipmentStatic # Trauma
   recipes:
   - ClothingEyesHudSecurity
   - ForensicPad
@@ -39,7 +28,7 @@
   - MagazinePistolPractice
   - SpeedLoaderMagnumPractice
   - MagazinePistolSubMachineGunPractice
-  - WeaponFlareGunSecurity
+  # - WeaponFlareGunSecurity # Trauma
 
 # Shared between secfab and emagged autolathe
 - type: latheRecipePack
@@ -47,6 +36,7 @@
   recipes:
   - BoxLethalshot
   - BoxShotgunSlug
+  - BoxShotgunBreaching # Trauma
   # - MagazineBoxLightRifle # Goobstation - remove light rifle
   - MagazineBoxMagnum
   - MagazineBoxPistol
@@ -61,12 +51,14 @@
   - MagazinePistolSubMachineGunTopMountedEmpty
   - MagazineRifle
   - MagazineRifleEmpty
-  - MagazineShotgun
-  - MagazineShotgunEmpty
-  - MagazineShotgunSlug
   - SpeedLoaderMagnum
   - SpeedLoaderMagnumEmpty
-  - ShrapnelPayload
+  # <Trauma>
+  - MagazineBoxGaussgunBullet
+  - MagazineBoxGaussgunDisc
+  - MagazineBoxGaussgunShard
+  - MagazineGaussgun
+  # </Trauma>
 
 - type: latheRecipePack
   id: SecurityWeaponsStatic
@@ -83,8 +75,8 @@
   recipes:
   - ClothingBackpackElectropack
   - HoloprojectorSecurity
-  - HoloprojectorSecurityAdvanced
-  - AntiMindControlDevice
+  - HoloprojectorSecurityAdvanced # Goob
+  - AntiMindControlDevice # Goob
   - PortableRecharger
   - PowerCageHigh
   - PowerCageMedium
@@ -103,6 +95,9 @@
 - type: latheRecipePack
   id: SecurityExplosives
   recipes:
+  - CableDetStack1
+  - EmptyDetonator
+  - ShrapnelPayload # Trauma - was ExplosivePayload
   - GrenadeBlast
   - GrenadeEMP
   - GrenadeFlash
@@ -138,15 +133,15 @@
   - SpeedLoaderMagnumUranium
 
 - type: latheRecipePack
+  parent:
+  - TraumaSecurityWeapons # Trauma
   id: SecurityWeapons
   recipes:
   - Truncheon
-  - WeaponAdvancedLaser
+  # - WeaponAdvancedLaser # Trauma, No longer has a niche
   - WeaponLaserCannon
   - WeaponLaserCarbine
   - WeaponXrayCannon
-  - WeaponTemperatureGun # Goobstation
-  - Terminus # Goobstation
 
 - type: latheRecipePack
   id: SecurityDisablers

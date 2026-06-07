@@ -6,23 +6,20 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  id: BaseBlob
   abstract: true
+  id: BaseBlob
   name: base blob
   placement:
     mode: SnapgridCenter
-    snap:
-      - Wall
+    snap: [ Wall ]
   components:
     - type: ZombieImmune
     - type: StatusEffects
       allowed:
       - Stun
-      - KnockedDown
       - SlowedDown
       - Electrocution
       - PressureImmunity
-      - StaminaModifier
       - SeeAll
       - Flashed
     - type: Reactive
@@ -35,13 +32,15 @@
       sprite: Effects/fire.rsi
       normalState: 1
     - type: Damageable
-      damageContainer: Blob
       damageModifierSet: BaseBlob
+    - type: Injurable
+      damageContainer: Blob
     - type: Appearance
     - type: Physics
     - type: Clickable
     - type: Transform
       anchored: true
+    - type: BlockTeleport
     - type: Fixtures
       fixtures:
         fix1:

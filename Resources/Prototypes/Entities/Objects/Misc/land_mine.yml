@@ -56,6 +56,7 @@
           True: {visible: true}
           False: {visible: false}
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   - type: Destructible
     thresholds:
@@ -84,7 +85,8 @@
   name: kick mine
   parent: BaseLandMine
   components:
-  - type: GhostKickUserOnTrigger
+  - type: GhostKickOnTrigger
+    targetUser: true
   - type: DeleteOnTrigger
 
 - type: entity

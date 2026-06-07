@@ -152,8 +152,8 @@
       - !type:GibBehavior
         recursive: false
   - type: Stamina
-    critThreshold: 15
-    animationThreshold: 7.5 # Goob edit
+    baseCritThreshold: 15
+    animationThreshold: 5
   - type: MovementAlwaysTouching
   - type: DamageStateVisuals
     states:
@@ -166,7 +166,10 @@
     - id: FoodMeatXeno
       amount: 1
   - type: Bloodstream
-    bloodMaxVolume: 50
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 50
   - type: CombatMode
   - type: MeleeWeapon
     soundHit:
@@ -174,14 +177,11 @@
     angle: 0
     animation: WeaponArcBite
     damage:
-      groups:
-        Brute: 2
-  - type: SolutionContainerManager
+      types:
+        Piercing: 2
+  - type: SolutionManager
     solutions:
-      melee:
-        reagents:
-        - ReagentId: Toxin
-          Quantity: 5
+    - SolutionVenomTick
   - type: MeleeChemicalInjector
     solution: melee
   - type: ReplacementAccent
@@ -189,6 +189,18 @@
   - type: Speech
     speechVerb: SmallMob
   - type: NonSpreaderZombie
+
+- type: entity
+  parent: Solution
+  id: SolutionVenomTick
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    id: melee
+    solution:
+      reagents:
+      - ReagentId: Toxin
+        Quantity: 5
 
 - type: entity
   id: MobTickSalvage

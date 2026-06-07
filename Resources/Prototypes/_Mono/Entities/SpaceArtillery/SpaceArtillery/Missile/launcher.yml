@@ -17,6 +17,8 @@
   - type: Battery
     maxCharge: 40000
     startingCharge: 40000
+  - type: ApcPowerReceiver
+    powerLoad: 950
   - type: ExaminableBattery
   - type: WirelessNetworkConnection
     range: 500
@@ -28,14 +30,13 @@
     soundEmpty:
       path: /Audio/Weapons/Guns/EmptyAlarm/smg_empty_alarm.ogg
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 200
   - type: SpaceArtillery
     powerChargeRate: 200
     powerUsePassive: 750
     powerUseActive: 0
   - type: Actions
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: ShipMissileASM417
     fireCost: 867
   - type: RadarBlip
@@ -65,6 +66,8 @@
   - type: Battery
     maxCharge: 40000
     startingCharge: 40000
+  - type: ApcPowerReceiver
+    powerLoad: 450
   - type: ExaminableBattery
   - type: WirelessNetworkConnection
     range: 500
@@ -79,10 +82,9 @@
     powerChargeRate: 250
     powerUsePassive: 200
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 60
   - type: Actions
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: ShipMissileASM501
     fireCost: 350
   - type: RadarBlip
@@ -112,6 +114,8 @@
   - type: Battery
     maxCharge: 40000
     startingCharge: 40000
+  - type: ApcPowerReceiver
+    powerLoad: 950
   - type: ExaminableBattery
   - type: WirelessNetworkConnection
     range: 500
@@ -123,10 +127,9 @@
     soundEmpty:
       path: /Audio/Weapons/Guns/EmptyAlarm/smg_empty_alarm.ogg
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 60
   - type: Actions
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: ShipMissileASM302
     fireCost: 300
   - type: SpaceArtillery
@@ -177,6 +180,8 @@
   - type: Battery
     maxCharge: 40000
     startingCharge: 40000
+  - type: ApcPowerReceiver
+    powerLoad: 3000
   - type: ExaminableBattery
   - type: WirelessNetworkConnection
     range: 500
@@ -188,14 +193,13 @@
     soundEmpty:
       path: /Audio/Weapons/Guns/EmptyAlarm/smg_empty_alarm.ogg
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 500
   - type: SpaceArtillery
     powerChargeRate: 500
     powerUsePassive: 2500
     powerUseActive: 0
   - type: Actions
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: ShipMissileASM557
     fireCost: 12500
   - type: RadarBlip

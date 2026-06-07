@@ -47,7 +47,6 @@
     sounds:
       Unsexed: Duende
   - type: LanguageSpeaker
-  - type: LanguageKnowledge
     speaks:
     - FloorGoblin
     understands:
@@ -58,8 +57,10 @@
       0: Alive
       60: Dead
   - type: Bloodstream
-    bloodReagent: InsectBlood
-    bloodMaxVolume: 40
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: InsectBlood
+        Quantity: 40
   - type: Tag
     tags:
     - Trash
@@ -84,11 +85,9 @@
     actionProto: ActionStealShoes
   - type: MobPrice
     price: 100
-  - type: DodgeWideswing
-    staminaRatio: 2
   - type: Stamina
-    critThreshold: 20
-    animationThreshold: 10 # Goob edit
+    baseCritThreshold: 20
+    animationThreshold: 10
   - type: Respirator
     damage:
       types:

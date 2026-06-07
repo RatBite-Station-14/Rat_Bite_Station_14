@@ -9,14 +9,19 @@
   description: A VERY spooky ghostie.
   components:
   - type: MindContainer
-    showExamineInfo: true #show that its dead
+  - type: MindExaminable # show that it's dead
   - type: PassiveDamage #passive Healing
     allowedStates:
     - Alive
     damage:
-      groups:
-        Brute: -0.2
-        Burn: -0.2
+      types:
+        Blunt: -0.07
+        Slash: -0.07
+        Piercing: -0.07
+        Heat: -0.05
+        Cold: -0.05
+        Shock: -0.05
+        Caustic: -0.05
   - type: Emag
     emagType: All
     successText: wraith-decay-object1
@@ -52,8 +57,9 @@
     - Stun
     - Corporeal
   - type: Damageable
-    damageContainer: ManifestedSpirit
     damageModifierSet: ManifestedSpirit
+  - type: Injurable
+    damageContainer: ManifestedSpirit
   - type: NoSlip
   - type: PointLight
     enabled: true
@@ -87,15 +93,10 @@
         component: Corporeal
         time: 15
         type: Add
-        probability: 1
-      - !type:GenericStatusEffect
-        key: Stunned
-        component: Stunned
+      - !type:ModifyParalysis
         time: 3
         type: Add
-        probability: 1
-  - type: WeakToHoly
-    alwaysTakeHoly: true
+  - type: AlwaysTakeHoly
   - type: Access # Only realistically used while corporeal.
     groups:
     - AllAccess
@@ -126,18 +127,16 @@
       enum.InstrumentUiKey.Key:
         type: InstrumentBoundUserInterface
         requireInputValidation: false
-      enum.SurgeryUIKey.Key:
-        type: SurgeryBui
       enum.RadialSelectorUiKey.Key: # WWDP
-        type: TrackedRadialSelectorMenuBUI
+        type: RadialSelectorMenuBUI
       enum.ListViewSelectorUiKey.Key: # WWDP
         type: ListViewSelectorBUI
-  - type: TriggerOnMobstateChange
-    mobState:
-      - Dead
-  - type: SmokeOnTrigger
-    duration: 3
-    spreadAmount: 3
+  #- type: TriggerOnMobstateChange  | disabled because it was only used for 2nd life
+  #  mobState:
+  #    - Dead
+  #- type: SmokeOnTrigger
+  #  duration: 3
+  #  spreadAmount: 3
   - type: Puller
     needsHands: false
   - type: GhostRole
@@ -146,9 +145,6 @@
     rules: ghost-role-information-wraith-rules
     mindRoles:
     - MindRoleGhostRoleSoloAntagonist
-    requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 54000 # 15 hours
     raffle:
       settings: default
   - type: GhostTakeoverAvailable
@@ -223,4 +219,3 @@
     volume: -15
     sound:
       path: /Audio/_Goobstation/Wraith/Ambience/Void_Hisses.ogg
-

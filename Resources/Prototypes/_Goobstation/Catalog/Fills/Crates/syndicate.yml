@@ -1,17 +1,3 @@
-# SPDX-FileCopyrightText: 2024 NULL882 <gost6865@yandex.ru>
-# SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 IrisTheAmped <iristheamped@gmail.com>
-# SPDX-FileCopyrightText: 2025 LuciferMkshelter <154002422+LuciferEOS@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Weide <64257676+Lyacs@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 loltart <lo1tartyt@gmail.com>
-# SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   id: CrateCybersunDarkGygaxBundle
   suffix: Filled
@@ -19,13 +5,15 @@
   name: Cybersun gygax bundle
   description: Contains a set of Cybersan light armored mechs.
   components:
-  - type: StorageFill
-    contents:
-      - id: MechGygaxSyndieFilled
-      - id: DoubleEmergencyOxygenTankFilled
-      - id: DoubleEmergencyNitrogenTankFilled
-      - id: ToolboxSyndicateFilled
-      - id: PlushieNuke
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: MechGygaxSyndieFilled
+        - id: DoubleEmergencyOxygenTankFilled
+        - id: DoubleEmergencyNitrogenTankFilled
+        - id: ToolboxSyndicateFilled
+        - id: PlushieNuke
 
 - type: entity
   id: CrateCybersunMaulerBundle
@@ -34,13 +22,15 @@
   name: Cybersun mauler bundle
   description: Contains a set of Cybersan heavy armored mechs.
   components:
-  - type: StorageFill
-    contents:
-      - id: MechMaulerSyndieFilled
-      - id: DoubleEmergencyOxygenTankFilled
-      - id: DoubleEmergencyNitrogenTankFilled
-      - id: ToolboxSyndicateFilled
-      - id: PlushieNuke
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: MechMaulerSyndieFilled
+        - id: DoubleEmergencyOxygenTankFilled
+        - id: DoubleEmergencyNitrogenTankFilled
+        - id: ToolboxSyndicateFilled
+        - id: PlushieNuke
 
 - type: entity
   id: CrateSyndicateBulkMosin
@@ -49,8 +39,10 @@
   name: Syndicate bulk rifle crate
   description: Just use more rifles, comrade.
   components:
-    - type: StorageFill
-      contents:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
         - id: WeaponSniperMosin
           amount: 10
         - id: ClothingHeadHatUshanka
@@ -64,13 +56,15 @@
   name: cybersun dreadnought bundle
   description: "An advanced cybersun dreadnought bundle."
   components:
-  - type: StorageFill
-    contents:
-      - id: ClothingOuterHardsuitCybersunDreadnought
-      - id: ClothingMaskGasSyndicate
-      - id: ClothingHandsGlovesCombat
-      - id: DoubleEmergencyOxygenTankFilled
-      - id: DoubleEmergencyNitrogenTankFilled
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: ClothingOuterHardsuitCybersunDreadnought
+        - id: ClothingMaskGasSyndicate
+        - id: ClothingHandsGlovesCombat
+        - id: DoubleEmergencyOxygenTankFilled
+        - id: DoubleEmergencyNitrogenTankFilled
 
 - type: entity
   id: CratePizzaParty
@@ -79,83 +73,19 @@
   description: In the ultimate event that all else has failed, Find comfort in that more pizza solves everything. Includes 16 pizzas.
   suffix: "bombs"
   components:
-  - type: StorageFill
-    contents:     #to avoid them from being easily identifiable (8 pizza bomb + 8 regular pizzas)
-    - id: FoodBoxPizzaFilled
-      amount: 1
-    - id: FoodBoxPizzaBomb
-      amount: 2
-    - id: FoodBoxPizzaFilled
-      amount: 2
-    - id: FoodBoxPizzaBomb
-      amount : 1
-    - id: FoodBoxPizzaCotton
-      amount : 1
-    - id: FoodBoxPizzaBomb
-      amount : 2
-    - id: FoodBoxPizzaFilled
-      amount: 2
-    - id: FoodBoxPizzaBomb
-      amount : 2
-    - id: FoodBoxPizzaFilled
-      amount: 1
-    - id: FoodBoxPizzaBomb
-      amount: 1
-    - id: FoodBoxPizzaFilled
-      amount: 1
-    - id: LidSalami
-      prob: 0.01
-
-- type: entity
-  parent: [ BaseStructureDynamic, BaseSetSelector, BaseSyndicateContraband ]
-  id: CrateSyndicateUndetermined # Not actually a crate, just looks like one
-  name: undetermined Syndicate bundle crate
-  description: Contains a Syndicate bundle. Which one is yet to be determined.
-  components:
-  - type: Icon
-    sprite: Structures/Storage/Crates/syndicate.rsi
-    state: icon
-  - type: Sprite
-    noRot: true
-    sprite: Structures/Storage/Crates/syndicate.rsi
-    layers:
-    - state: icon
-  - type: SetSelector
-    possibleSets:
-    - SyndicateWesternSet
-    - SyndicateSpySet
-    - SyndicateHitmanSet
-    - SyndicateImplantsSet
-    - SyndicateHackerSet
-    - SyndicateDeswordSet
-    - SyndicateGrenadierSet
-    - SyndicateFluclearSet
-    - SyndicateFriendshipSet
-    - SyndicateCarpSet
-    - SyndicateSusSet
-#    - SyndicateBuilderSet - Requires Rework pending Miner Removal
-    setsToSelect: 3
-    spawnedStoragePrototype: CrateSyndicate
-    spawnedStorageContainer: entity_storage
-    openSpawnedStorage: true
-    approveSound:
-      path: /Audio/Effects/closetopen.ogg
-  - type: InteractionOutline
-  - type: Transform
-    noRot: true
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.4,-0.4,0.4,0.29"
-        density: 50
-        mask:
-        - CrateMask
-        layer:
-        - MachineLayer
-  - type: StaticPrice
-    price: 5000
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - !type:GroupSelector
+          children:
+          - id: FoodBoxPizzaFilled
+          - id: FoodBoxPizzaBomb
+          rolls: 14 # maybe you get good pizza maybe i blow your arm off
+        - id: FoodBoxPizzaBomb # to counter the guaranteed cotton pizza
+        - id: FoodBoxPizzaCotton
+        - id: LidSalami
+          prob: 0.01
 
 - type: entity
   parent: CrateSyndicate
@@ -164,19 +94,21 @@
   name: basic operative bundle
   description: "Contains everything an operative needs to wreak havoc."
   components:
-  - type: StorageFill
-    contents:
-      - id: WeaponSubMachineGunC20r
-      - id: MagazinePistolSubMachineGun
-        amount: 5
-      - id: SyndicateJawsOfLife
-      - id: C4
-        amount: 2
-      - id: MedkitCombatFilled
-      - id: EmpImplanter
-      - id: ClothingShoesChameleonNoSlips
-      - id: ClothingOuterHardsuitSyndie
-      - id: ScramImplanter
-      - id: EnergySword
-      - id: DoubleEmergencyOxygenTankFilled
-      - id: DoubleEmergencyNitrogenTankFilled
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: WeaponSubMachineGunC20r
+        - id: MagazinePistolSubMachineGun
+          amount: 5
+        - id: SyndicateJawsOfLife
+        - id: C4
+          amount: 2
+        - id: MedkitCombatFilled
+        - id: EmpImplanter
+        - id: ClothingShoesChameleonNoSlips
+        - id: ClothingOuterHardsuitSyndie
+        - id: ScramImplanter
+        - id: EnergySword
+        - id: DoubleEmergencyOxygenTankFilled
+        - id: DoubleEmergencyNitrogenTankFilled

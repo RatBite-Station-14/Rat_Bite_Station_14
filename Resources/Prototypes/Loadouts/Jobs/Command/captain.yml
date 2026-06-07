@@ -87,7 +87,7 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobCaptain
-      time: 72000 #20 hrs
+      time: 20h
 
 # Jumpsuit
 - type: loadout
@@ -199,20 +199,3 @@
   id: CaptainOuterClothing
   equipment:
     outerClothing: ClothingOuterArmorCaptainCarapace
-
-- type: loadout
-  id: CaptainWintercoat
-  equipment:
-    outerClothing: ClothingOuterWinterCapArmored # Goob edit
-
-# RATBITE belt loadouts
-
-- type: loadout
-  id: UtilityBelt
-  equipment:
-    belt: ClothingBeltUtilityEngineering
-
-- type: loadout
-  id: MedicalBelt
-  equipment:
-    belt: ClothingBeltMedicalFilled

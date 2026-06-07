@@ -25,32 +25,35 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: cargoProduct
+  parent: BaseRedAlert # Trauma
   id: ArmorySmg
   icon:
     sprite: Objects/Weapons/Guns/SMGs/wt550.rsi
     state: icon
   product: CrateArmorySMG
-  cost: 3000 # Goobstation # Nerfed guns == Nerfed price
+  cost: 15000 # Trauma, was 9000
   category: cargoproduct-category-name-armory
   group: market
 
 - type: cargoProduct
+  parent: BaseRedAlert # Trauma
   id: ArmoryShotgun
   icon:
     sprite: Objects/Weapons/Guns/Shotguns/enforcer.rsi
     state: icon
   product: CrateArmoryShotgun
-  cost: 6000 # Goobstation # 3k per gun + 1.5 shell boxes
+  cost: 15000 # Trauma, was 9000
   category: cargoproduct-category-name-armory
   group: market
 
 - type: cargoProduct
+  parent: BaseRedAlert # Trauma
   id: SecurityRiot
   icon:
     sprite: Clothing/OuterClothing/Armor/riot.rsi
     state: icon
   product: CrateSecurityRiot
-  cost: 7500
+  cost: 12000 # Trauma, was 7500
   category: cargoproduct-category-name-armory
   group: market
 
@@ -75,9 +78,10 @@
   group: market
 
 - type: cargoProduct
+  parent: BaseRedAlert # Trauma
   id: ArmoryLaser
   icon:
-    sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
+    sprite: _Trauma/Objects/Weapons/Guns/Battery/laser.rsi # Trauma
     state: icon
   product: CrateArmoryLaser
   cost: 4800
@@ -85,21 +89,23 @@
   group: market
 
 - type: cargoProduct
+  parent: BaseRedAlert # Trauma
   id: ArmoryPistol
   icon:
     sprite: Objects/Weapons/Guns/Pistols/mk58.rsi
     state: icon
   product: CrateArmoryPistols
-  cost: 3200 # Goobstation # they're kinda bad compared to the other guns so should be cheap
+  cost: 10000 # Trauma, was 7000
   category: cargoproduct-category-name-armory
   group: market
 
 - type: cargoProduct
+  parent: BaseRedAlert # Trauma
   id: ArmoryRifle
   icon:
     sprite: Objects/Weapons/Guns/Rifles/lecter.rsi
     state: icon
   product: CrateArmoryRifle
-  cost: 8000
+  cost: 15000 # Trauma, was 8000
   category: cargoproduct-category-name-armory
   group: market

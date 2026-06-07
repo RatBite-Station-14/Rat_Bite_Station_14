@@ -60,7 +60,7 @@
     SpectralLocator: 1
     ClothingHeadHelmetTemplar: 1 #goob
     ClothingHeadHatImam: 1 #goob
-    HeadSkeleton: 1 #goob
+    OrganSkeletonPersonHead: 1 #goob
   contrabandInventory:
     FoodBakedBunHotX: 2
     DrinkWineBottleFull: 1
@@ -73,3 +73,7 @@
     ClothingHeadHatHoodCulthood: 3
     ClothingShoesCult: 4
     BedsheetCult: 4
+  # <Trauma>
+    RitualDagger: 1
+    BibleNecronomicon: 1
+  # </Trauma>

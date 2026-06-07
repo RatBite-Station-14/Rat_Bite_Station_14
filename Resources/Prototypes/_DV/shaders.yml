@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: shader
   id: SaturationShuffle
   kind: source
@@ -15,3 +17,8 @@
   id: MonumentPulse
   kind: source
   path: "/Textures/_DV/Shaders/monument_pulse.swsl"
+
+- type: shader
+  id: UltraVision
+  kind: source
+  path: "/Textures/_DV/Shaders/ultravision.swsl"

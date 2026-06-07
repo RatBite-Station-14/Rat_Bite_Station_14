@@ -38,11 +38,9 @@
   components:
   - type: PriorityDock
     tag: DockMining
- # - type: GridFill
- #   path: /Maps/_Lavaland/mining.yml
- #   addComponents:
- #   - type: IFF
- #     flags:
- #     - HideLabel
-
- # Ratbite, testing to see if making salv work up to lavaland via teleporter helps self antag slop.
+  - type: GridFill
+    path: /Maps/_Lavaland/mining.yml
+    addComponents:
+    - type: IFF
+      flags:
+      - HideLabel

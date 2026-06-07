@@ -6,6 +6,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: emoteSounds
+  parent: BaseEmotes
   id: EmoteC4
   params:
     variation: 0
@@ -16,6 +17,7 @@
       path: /Audio/Machines/Nuke/general_beep.ogg
 
 - type: emoteSounds
+  parent: BaseMobEmotes
   id: ShadowCloak
   params:
     variation: 0.125
@@ -44,6 +46,7 @@
       path: /Audio/_Goobstation/Heretic/hiss/lowHiss1.ogg
 
 - type: emoteSounds
+  parent: BaseMobEmotes
   id: Duende
   params:
     variation: 0.125
@@ -56,6 +59,7 @@
       path: /Audio/_Goobstation/FloorGoblin/laugh.ogg
 
 - type: emoteSounds
+  parent: BaseMobEmotes
   id: ClownGoblin
   params:
     variation: 0.125
@@ -63,3 +67,65 @@
     Scream:
       collection: ClownGoblinScream
 
+- type: emoteSounds
+  parent: MaleHuman
+  id: MonkeyMode
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: MonkeyScreeches
+    Laugh:
+      collection: MonkeyScreeches
+    MonkeyScreeches:
+      collection: MonkeyScreeches
+    Yawn:
+      collection: MonkeyScreeches
+    Snore:
+      collection: MonkeyScreeches
+    Crying:
+      collection: MonkeyScreeches
+
+- type: emoteSounds
+  parent: UnisexMoth
+  id: MaleMoth
+  sounds:
+    Gasp:
+      collection: MaleGasp
+    DefaultDeathgasp:
+      collection: MothDeathGasp
+    Yawn:
+      collection: MaleYawn
+    Sigh:
+      collection: MaleSigh
+    Crying:
+      collection: MaleCry
+    Sneeze:
+      collection: MaleSneezes
+    Cough:
+      collection: MaleCoughs
+
+- type: emoteSounds
+  parent: UnisexMoth
+  id: FemaleMoth
+  sounds:
+    Gasp:
+      collection: FemaleGasp
+    Yawn:
+      collection: FemaleYawn
+    Sigh:
+      collection: FemaleSigh
+    Crying:
+      collection: FemaleCry
+    Sneeze:
+      collection: FemaleSneezes
+    Cough:
+      collection: FemaleCoughs
+
+- type: emoteSounds
+  parent: BaseMobEmotes
+  id: Brullbar
+  sound:
+    path: /Audio/_Goobstation/Animals/Meatzone_Howl.ogg
+    params:
+      variation: 0.125

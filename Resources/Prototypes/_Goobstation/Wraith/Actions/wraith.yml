@@ -13,7 +13,9 @@
     icon:
       sprite: _Goobstation/Wraith/actions.rsi
       state: hide_chat
-    iconOn: _Goobstation/Wraith/actions.rsi/show_chat.png
+    iconOn:
+      sprite: _Goobstation/Wraith/actions.rsi
+      state: show_chat
 
 - type: entity
   id: ActionHaunt
@@ -78,7 +80,7 @@
       requireAll: true
       components:
       - MobState
-      - HumanoidAppearance
+      - HumanoidProfile
     blacklist:
       components:
       - PartialAbsorbable
@@ -86,7 +88,12 @@
   - type: ActionWraithPoints
     wpConsume: 20
   - type: ActionUseDelayOnUse
-    useDelayAccumulator: 45
+    useDelayAccumulator: 35
+  - type: ActionUserWhitelist
+    whitelist:
+      components:
+      - Corporeal
+    popup: wraith-must-be-corporeal
 
 - type: entity
   id: ActionSpook
@@ -132,6 +139,11 @@
     event: !type:DecayEvent
   - type: ActionWraithPoints
     wpConsume: 30
+  - type: ActionUserWhitelist
+    whitelist:
+      components:
+      - Corporeal
+    popup: wraith-must-be-corporeal
 
 - type: entity
   id: ActionCommand
@@ -153,7 +165,12 @@
       - BibleUser
     event: !type:WraithCommandEvent
   - type: ActionWraithPoints
-    wpConsume: 50
+    wpConsume: 70
+  - type: ActionUserWhitelist
+    whitelist:
+      components:
+      - Corporeal
+    popup: wraith-must-be-corporeal
 
 - type: entity
   id: ActionAnimateObject
@@ -177,7 +194,7 @@
   description: Possess and control an everyday object. Freakout level high.
   components:
   - type: ActionWraithPoints
-    wpConsume: 300
+    wpConsume: 666
   - type: Action
     itemIconStyle: BigAction
     useDelay: 150
@@ -230,13 +247,14 @@
       - type: MovementAlwaysTouching
       - type: CanMoveInAir
       - type: Damageable
-        damageContainer: ManifestedSpirit
         damageModifierSet: ManifestedSpirit
+      - type: Injurable
+        damageContainer: ManifestedSpirit
       - type: Destructible
         thresholds:
         - trigger:
             !type:DamageTrigger
-            damage: 300 #Easily killable with holy damage so it has to be somewhat high for it to be worth the wraith risking it
+            damage: 30
           behaviors:
           - !type:DoActsBehavior
             acts: ["Destruction"]
@@ -251,10 +269,10 @@
       - type: Speech
         speechVerb: Ghost
       toRemove:
-      - RequireProjectileTarget
-      - BlockMovement
-      - Item
-      - MeleeRequiresWield
+      - type: RequireProjectileTarget
+      - type: BlockMovement
+      - type: Item
+      - type: MeleeRequiresWield
 
 - type: entity
   id: ActionEvolve
@@ -293,10 +311,15 @@
     whitelist:
       components:
       - EntityStorage
-      - HumanoidAppearance
+      - HumanoidProfile
     event: !type:RaiseSkeletonEvent
   - type: ActionWraithPoints
-    wpConsume: 100
+    wpConsume: 120
+  - type: ActionUserWhitelist
+    whitelist:
+      components:
+      - Corporeal
+    popup: wraith-must-be-corporeal
 
 - type: entity
   id: ActionSummonVoidPortal
@@ -371,6 +394,9 @@
       components:
       - StatusEffects
       - Body
+    blacklist:
+      components:
+      - WeakToHoly
     canTargetSelf: false
     event: !type:ApplyCurseActionEvent
   - type: CurseAction # refreshes all curses when a curse is used
@@ -475,7 +501,7 @@
       popup: curse-popup-death
       requireAllCurses: true
   - type: ActionWraithPoints
-    wpConsume: 80
+    wpConsume: 160
 
 - type: entity
   id: ActionDefile

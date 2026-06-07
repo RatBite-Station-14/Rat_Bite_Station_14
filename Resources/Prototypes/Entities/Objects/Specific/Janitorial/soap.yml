@@ -1,60 +1,16 @@
-# SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
-# SPDX-FileCopyrightText: 2022 Jacob Tong <10494922+ShadowCommander@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-# SPDX-FileCopyrightText: 2022 hubismal <47284081+hubismal@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-# SPDX-FileCopyrightText: 2023 Arendian <137322659+Arendian@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Dawid Bla <46636558+DawBla@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Flareguy <78941145+Flareguy@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Psychpsyo <60073468+Psychpsyo@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 crazybrain23 <44417085+crazybrain23@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-# SPDX-FileCopyrightText: 2023 deltanedas <deltanedas@laptop>
-# SPDX-FileCopyrightText: 2023 deltanedas <user@zenith>
-# SPDX-FileCopyrightText: 2023 keronshb <54602815+keronshb@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 leo <136020119+leonardo-dabepis@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 lzk <124214523+lzk228@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 themias <89101928+themias@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Adeinitas <147965189+adeinitas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2024 Danger Revolution! <142105406+DangerRevolution@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Doggo5852 <bombasticsideeye614@gmail.com>
-# SPDX-FileCopyrightText: 2024 EmoGarbage404 <retron404@gmail.com>
-# SPDX-FileCopyrightText: 2024 K-Dynamic <20566341+K-Dynamic@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Timemaster99 <57200767+Timemaster99@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 VMSolidus <evilexecutive@gmail.com>
-# SPDX-FileCopyrightText: 2024 brainfood1183 <113240905+brainfood1183@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-# SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
-# SPDX-FileCopyrightText: 2025 Ghagliiarghii <68826635+Ghagliiarghii@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 Princess Cheeseballs <66055347+Pronana@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-# SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
+# When adding new soaps, also add them to id: AllSoapsTable
 
 - type: entity
+  abstract: true
+  parent: [ SolutionSoapBase, BaseItem, BasePaintRemover ] # Trauma - add paint remove parent
+  id: BaseSoap
   name: soap
-  id: Soap
-  parent: BaseItem
-  description: A cheap bar of soap. Doesn't smell.
   components:
   - type: Tag
     tags:
     - Soap
   - type: Sprite
     sprite: Objects/Specific/Janitorial/soap.rsi
-    layers:
-    - state: soap-4
-      map: ["enum.SolutionContainerLayers.Fill"]
   - type: SolutionContainerVisuals
     maxFillLevels: 4
     fillBaseName: soap-
@@ -89,13 +45,6 @@
         density: 10
         mask:
         - ItemMask
-  - type: SolutionContainerManager
-    solutions:
-      soap:
-        maxVol: 50
-        reagents:
-        - ReagentId: SoapReagent
-          Quantity: 50
   - type: SolutionTransfer
     transferAmount: 10
     minTransferAmount: 1
@@ -108,21 +57,43 @@
     solution: soap
   - type: FlavorProfile
     flavors:
-      - clean
-  - type: Food
+    - clean
+  - type: Edible
     solution: soap
   - type: BadFood
   - type: CleansForensics
   - type: FloorCleaner # Goobstation
-    cleanDelay: 12
   - type: Residue
     residueAdjective: residue-slippery
-    residueColor: residue-green
 
 - type: entity
-  name: soap
-  id: SoapNT
+  abstract: true
+  parent: [SolutionFood, SolutionSmall]
+  id: SolutionSoapBase
+  components:
+  - type: Solution
+    id: soap
+
+- type: entity
+  parent: BaseSoap
+  id: Soap
+  description: A cheap bar of soap. Doesn't smell.
+  components:
+  - type: Sprite
+    layers:
+    - state: soap-4
+      map: ["enum.SolutionContainerLayers.Fill"]
+  - type: Residue
+    residueColor: residue-green
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: SoapReagent
+        Quantity: 60
+
+- type: entity
   parent: Soap
+  id: SoapNT
   description: A Nanotrasen brand bar of soap. Smells of plasma.
   components:
   - type: Sprite
@@ -133,21 +104,19 @@
     fillBaseName: nt-
   - type: Item
     heldPrefix: nt
-  - type: SolutionContainerManager
-    solutions:
-      soap:
-        maxVol: 100
-        reagents:
-        - ReagentId: SoapReagent
-          Quantity: 100
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: SoapReagent
+        Quantity: 55
+      - ReagentId: Plasma
+        Quantity: 5
   - type: Residue
-    residueAdjective: residue-slippery
     residueColor: residue-grey
 
 - type: entity
-  name: soap
-  id: SoapDeluxe
   parent: Soap
+  id: SoapDeluxe
   description: A deluxe Waffle Co. brand bar of soap. Smells of strawberries.
   components:
   - type: Sprite
@@ -159,13 +128,11 @@
   - type: Item
     heldPrefix: deluxe
   - type: Residue
-    residueAdjective: residue-slippery
     residueColor: residue-brown
 
 - type: entity
-  name: soap
-  id: SoapSyndie
   parent: [Soap, BaseSyndicateContraband]
+  id: SoapSyndie
   description: An untrustworthy bar of soap. Smells of fear.
   components:
   - type: Sprite
@@ -175,8 +142,9 @@
   - type: SolutionContainerVisuals
     fillBaseName: syndie-
   - type: Slippery
+    staminaDamage: 50
     slipData:
-      paralyzeTime: 3
+      knockdownTime: 3
       launchForwardsMultiplier: 3
   - type: Item
     heldPrefix: syndie
@@ -187,30 +155,36 @@
   - type: CleansForensics
     cleanDelay: 8.0
   - type: Residue
-    residueAdjective: residue-slippery
     residueColor: residue-red
   - type: StaticPrice
     price: 500
 
 - type: entity
-  name: soaplet
+  parent: BaseSoap
   id: SoapletSyndie
-  categories: [ HideSpawnMenu ]
-  parent: Soap
+  name: soaplet
   description: A tiny piece of syndicate soap.
+  categories: [ HideSpawnMenu ]
   components:
+  - type: Solution
+    id: soap
+    solution:
+      maxVol: 2 # 60 / 30 = 2
+      reagents:
+      - ReagentId: SoapReagent
+        Quantity: 2
+  - type: SolutionContainerVisuals
+    maxFillLevels: 0
   - type: Sprite
     layers:
     - state: syndie-soaplet
   - type: Slippery
-    slipData:
-      paralyzeTime: 1.5 # these things are tiny
-      launchForwardsMultiplier: 1.5
   - type: StepTrigger
     intersectRatio: 0.04
     triggerGroups: # Goobstation
       types:
       - SlipEntity
+  - type: TriggerOnStepTrigger
   - type: Item
     heldPrefix: syndie
   - type: Fixtures
@@ -231,15 +205,19 @@
         - ItemMask
   - type: DeleteOnTrigger
   - type: EmitSoundOnTrigger
+    predicted: true
+    positional: true
     sound:
       path: "/Audio/Effects/Fluids/splat.ogg"
       params:
-        volume: -20
+        volume: -8
+  - type: Residue
+    residueAdjective: residue-slippery
+    residueColor: residue-red
 
 - type: entity
-  name: soap
-  id: SoapHomemade
   parent: Soap
+  id: SoapHomemade
   description: A homemade bar of soap. Smells of... well....
   components:
   - type: Sprite
@@ -248,11 +226,6 @@
       map: ["enum.SolutionContainerLayers.Fill"]
   - type: SolutionContainerVisuals
     fillBaseName: gibs-
-  - type: Slippery
-  - type: StepTrigger
-    triggerGroups: # Goobstation
-      types:
-      - SlipEntity
   - type: Item
     heldPrefix: gibs
   - type: FlavorProfile
@@ -260,13 +233,12 @@
       - clean
       - meaty
   - type: Residue
-    residueAdjective: residue-slippery
     residueColor: residue-red
 
 - type: entity
-  name: omega soap
+  parent: [SolutionLarge, BaseSoap]
   id: SoapOmega
-  parent: Soap
+  name: omega soap
   description: The most advanced soap known to mankind. Smells of bluespace.
   components:
   - type: Sprite
@@ -276,41 +248,17 @@
   - type: SolutionContainerVisuals
     fillBaseName: omega-
   - type: Slippery
+    staminaDamage: 50
     slipData:
-      paralyzeTime: 5.0
+      knockdownTime: 5.0
       launchForwardsMultiplier: 3.0
   - type: Item
     heldPrefix: omega
-  - type: SolutionContainerManager
-    solutions:
-      soap:
-        maxVol: 240 #In the Greek alphabet, Omega is the 24th letter
-        reagents:
-        - ReagentId: SoapReagent
-          Quantity: 240
+  - type: Solution
+    id: soap
+    solution:
+      reagents:
+      - ReagentId: SoapReagent
+        Quantity: 240 #In the Greek alphabet, Omega is the 24th letter
   - type: Residue
-    residueAdjective: residue-slippery
     residueColor: residue-blue
-
-- type: entity
-  name: soap
-  id: SoapBorg # Intended for borg internals, not slippery or food, not a container for soap reagent
-  parent: BaseItem
-  description: A Nanotrasen brand bar of soap. Smells of plasma and machines.
-  components:
-  - type: Sprite
-    sprite: Objects/Specific/Janitorial/soap.rsi
-    layers:
-    - state: nt-4
-  - type: Appearance
-  - type: Item
-    sprite: Objects/Specific/Janitorial/soap.rsi
-    storedRotation: -90
-  - type: CleansForensics
-  - type: FloorCleaner # Goobstation
-  - type: Residue
-    residueAdjective: residue-slippery
-    residueColor: residue-grey
-  - type: Tag
-    tags:
-    - Soap

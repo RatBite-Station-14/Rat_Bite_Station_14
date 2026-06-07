@@ -49,39 +49,6 @@
     Slash: 5
     Piercing: 5
 
-- type: damageModifierSet
-  id: Yowie
-  coefficients:
-    Blunt: 0.75
-    Slash: 0.75
-    Piercing: 0.75
-    Cold: 0.9
-    Bloodloss: 0.9
-    Poison: 0.0 # Yea, heroin is heaps good for ya
-    Radiation: 0.7 # Engie yowies need some help against anti-rads
-  ignoreArmorPierceFlags: All
-
-- type: damageModifierSet
-  id: Tajaran
-  coefficients: # Literally the same as felinids, but heat and cold cuz fur
-    Blunt: 1.15
-    Slash: 1.15
-    Piercing: 1.15
-    Heat: 1.20
-    Cold: 0.80
-  ignoreArmorPierceFlags: All
-
-- type: damageModifierSet
-  id: FireShark
-  coefficients:
-    Heat: 0.25
-    Cold: 0.25
-    Poison: 0.0
-    Radiation: 0.0
-    Asphyxiation: 0.0
-    Cellular: 0.0
-  ignoreArmorPierceFlags: All
-
 # Mech armor
 - type: damageModifierSet
   id: ThinArmor
@@ -184,9 +151,9 @@
 - type: damageModifierSet
   id: ExplosiveLatticeBlob # Explosive Lattice
   coefficients:
-    Blunt: 0.25
-    Slash: 0.25
-    Piercing: 0.25
+    Blunt: 0.75
+    Slash: 0.75
+    Piercing: 0.75
     Heat: 3.00
     Shock: 1.50
   ignoreArmorPierceFlags: All
@@ -212,10 +179,10 @@
 - type: damageModifierSet
   id: BlobReflective # If it reflects lasers, then it must be fragile?
   coefficients:
-    Blunt: 0.9
-    Slash: 0.9
-    Piercing: 0.9
-    Heat: 1.5
+    Blunt: 7
+    Slash: 7
+    Piercing: 7
+    Heat: 7
   ignoreArmorPierceFlags: All
 
 - type: damageModifierSet
@@ -358,3 +325,18 @@
     Piercing: 5
     Heat: 3
     Structural: 3
+
+- type: damageModifierSet
+  id: AdvancedSpirit
+  coefficients:
+    Blunt: 0.0
+    Slash: 0.0
+    Piercing: 0.0
+    Shock: 0.0
+    Cold: 0.0
+    Poison: 0.0
+    Radiation: 0.0
+    Cellular: 0.0
+    Heat: 0.0
+    Caustic: 0.0
+    Holy: 2.0

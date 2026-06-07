@@ -25,7 +25,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 22 # Ratbite balance
+        Piercing: 15
+        Structural: 25
 
 - type: entity
   id: HighCaliberPelletShotgunSpread
@@ -51,8 +52,8 @@
     - type: Projectile
       damage:
         types:
-          Blunt: 12 # Ratbite balance
-          Heat: 12 # Ratbite balance
+          Blunt: 6
+          Heat: 6
     - type: IgnitionSource
       ignited: true
 
@@ -106,8 +107,8 @@
     - type: Projectile
       damage:
         types:
-          Radiation: 10 # Ratbite balance
-          Piercing: 15 # Ratbite balance
+          Radiation: 8
+          Piercing: 8
 
 - type: entity
   id: HighCaliberPelletShotgunUraniumSpread
@@ -133,7 +134,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 80 # Ratbite balance
+        Piercing: 65
 
 - type: entity
   id: BulletSlugEnsnaring
@@ -149,7 +150,7 @@
     deleteOnCollide: false
     damage:
       types:
-        Piercing: 25 # Ratbite balance
+        Piercing: 16 #Low damage, but ensnaring
   - type: Ensnaring
     canThrowTrigger: true
     destroyOnRemove: true
@@ -174,6 +175,7 @@
     range: 0.2
     energyConsumption: 80
     disableDuration: 1
+  - type: DeleteOnTrigger
   - type: Ammo
     muzzleFlash: null
   - type: PointLight
@@ -243,13 +245,15 @@
       - ReagentId: Sarin
         Quantity: 20
     spreadAmount: 1
-  - type: ActiveTimerTrigger
-    timeRemaining: 1
+  - type: AutoStartTimer
+  - type: TimerTrigger
+    examinable: false
+    delay: 1
   - type: DeleteOnTrigger
   - type: Projectile
     damage:
       types:
-        Piercing: 20 # Ratbite balance
+        Piercing: 15
 
 # Heavy shotgun
 
@@ -357,4 +361,3 @@
     proto: HighCaliberPelletGrenade
     count: 20
     spread: 15
-

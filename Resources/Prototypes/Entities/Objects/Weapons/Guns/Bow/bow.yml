@@ -70,7 +70,14 @@
 - type: entity
   id: BowImprovised
   parent: BaseBow
+  name: improvised shortbow
   components:
+  # <Trauma>
+  - type: Tag
+    tags:
+    - BowImprovised
+    - Trash
+  # </Trauma>
   - type: Sprite
     layers:
     - state: unwielded
@@ -114,3 +121,9 @@
   - type: Construction
     graph: ImprovisedBow
     node: ImprovisedBow
+  # <Truama>
+  - type: PhysicalComposition
+    materialComposition:
+      Wood: 500
+      Cloth: 250
+  #</Trauma>

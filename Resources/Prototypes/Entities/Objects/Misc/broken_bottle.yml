@@ -26,7 +26,7 @@
 
 - type: entity
   name: broken bottle
-  parent: BaseItem
+  parent: [BaseItem, GlassDurability] # Trauma - Durability
   id: BrokenBottle
   description: In Space Glasgow this is called a conversation starter.
   components:
@@ -41,7 +41,7 @@
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
   - type: Sprite
-    sprite: Objects/Consumable/TrashDrinks/broken_bottle.rsi
+    sprite: Objects/Misc/broken_bottle.rsi
     state: icon
   - type: DamageOtherOnHit
     damage:

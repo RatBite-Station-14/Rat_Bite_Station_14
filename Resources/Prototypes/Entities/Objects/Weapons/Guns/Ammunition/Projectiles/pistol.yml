@@ -28,21 +28,21 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
+  parent: BaseBulletKinetic # Trauma
   id: BulletPistol
-  name: bullet (.35 auto)
-  parent: BaseBullet
   categories: [ HideSpawnMenu ]
+  name: bullet (.35 auto)
   components:
   - type: Projectile
     damage:
       types:
-        Piercing: 20 #Ratbite balance
+        Piercing: 11 # Trauma, was 16
 
 - type: entity
-  id: BulletPistolPractice
-  name: bullet (.35 auto practice)
   parent: BaseBulletPractice
+  id: BulletPistolPractice
   categories: [ HideSpawnMenu ]
+  name: bullet (.35 auto practice)
   components:
   - type: Projectile
     damage:
@@ -50,25 +50,26 @@
         Blunt: 2
 
 - type: entity
+  parent: [BaseBulletIncendiary, BaseBulletKinetic] # Trauma
   id: BulletPistolIncendiary
-  parent: BaseBulletIncendiary
-  name: bullet (.35 auto incendiary)
   categories: [ HideSpawnMenu ]
+  name: bullet (.35 auto incendiary)
   components:
   - type: Projectile
     damage:
       types:
-        Blunt: 5 #Ratbite balance
-        Heat: 5 #Ratbite balance
+        Piercing: 9 # Trauma, was 12
+        # Heat: 4 # Trauma
 
 - type: entity
+  parent: [BaseBulletUranium, BaseBulletKinetic] # Trauma
   id: BulletPistolUranium
-  parent: BaseBulletUranium
-  name: bullet (.35 auto uranium)
   categories: [ HideSpawnMenu ]
+  name: bullet (.35 auto uranium)
   components:
   - type: Projectile
     damage:
       types:
-        Radiation: 10 #Ratbite balance
-        Piercing: 15 #Ratbite balance
+        # Radiation: 6
+        Piercing: 9 # Trauma, was 10
+      armorPenetration: 0.5 # Trauma

@@ -1,26 +1,10 @@
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: construction
   id: ToyGrenade
   graph: ToyGrenade
   targetNode: toygrenade
   category: construction-category-misc
   objectType: Item
-
-- type: construction
-  id: ToyMansusGrasp
-  graph: ToyMansusGrasp
-  targetNode: toymansusgrasp
-  category: construction-category-misc
-  objectType: Item
-
-- type: construction
-  id: ToyCodexCicatrix
-  graph: ToyCodexCicatrix
-  targetNode: toycodexcicatrix
-  category: construction-category-misc
-  objectType: Item
-
+  theory:
+    FabricationKnowledge: 0
+  practical:
+    MetalworkingKnowledge: 2

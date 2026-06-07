@@ -8,11 +8,15 @@
     sprite: _EinsteinEngines/Objects/Tanks/emergency.rsi
   - type: Item
     sprite: _EinsteinEngines/Objects/Tanks/emergency.rsi
+    storedRotation: -45
+    storedOffset: 10,0
+    storedSprite:
+      state: icon
+      sprite: _EinsteinEngines/Objects/Tanks/emergency.rsi
   - type: Clothing
     sprite: _EinsteinEngines/Objects/Tanks/emergency.rsi
   - type: Tag
     tags:
-    - GasTank
     - EmergencyOxygenTank
 
 - type: entity
@@ -21,15 +25,12 @@
   suffix: Filled
   components:
   - type: GasTank
-    outputPressure: 5.325
+    releasePressure: 5.325
     air:
       # 16 minutes with Plasmaman lungs
       volume: 0.66
       moles:
-        - 0           # oxygen
-        - 0           # nitrogen
-        - 0           # CO2
-        - 0.270782035 # nitrogen
+        Plasma: 0.270782035
       temperature: 293.15
 
 - type: entity
@@ -42,11 +43,15 @@
     sprite: _EinsteinEngines/Objects/Tanks/regular.rsi
   - type: Item
     sprite: _EinsteinEngines/Objects/Tanks/regular.rsi
+    storedRotation: -45
+    storedOffset: 10,0
+    storedSprite:
+      state: icon
+      sprite: _EinsteinEngines/Objects/Tanks/regular.rsi
   - type: Clothing
     sprite: _EinsteinEngines/Objects/Tanks/regular.rsi
   - type: Tag
     tags:
-    - GasTank
     - EmergencyOxygenTank
 
 - type: entity
@@ -55,15 +60,12 @@
   suffix: Filled
   components:
   - type: GasTank
-    outputPressure: 5.325
+    releasePressure: 5.325
     air:
       # 36 minutes with Plasmaman lungs
       volume: 1.5
       moles:
-        - 0           # oxygen
-        - 0           # nitrogen
-        - 0           # CO2
-        - 0.615413715 # plasma
+        Plasma: 0.615413715
       temperature: 293.15
 
 - type: entity
@@ -76,11 +78,15 @@
     sprite: _EinsteinEngines/Objects/Tanks/double-emergency.rsi
   - type: Item
     sprite: _EinsteinEngines/Objects/Tanks/double-emergency.rsi
+    storedRotation: -45
+    storedOffset: 10,0
+    storedSprite:
+      state: icon
+      sprite: _EinsteinEngines/Objects/Tanks/double-emergency.rsi
   - type: Clothing
     sprite: _EinsteinEngines/Objects/Tanks/double-emergency.rsi
   - type: Tag
     tags:
-    - GasTank
     - EmergencyOxygenTank
 
 - type: entity
@@ -89,15 +95,12 @@
   suffix: Filled
   components:
   - type: GasTank
-    outputPressure: 5.325
+    releasePressure: 5.325
     air:
       # 60 minutes with Plasmaman lungs
-      volume: 1.5
+      volume: 3
       moles:
-        - 0           # oxygen
-        - 0           # nitrogen
-        - 0           # CO2
-        - 1.025689525 # plasma
+        Plasma: 1.025689525
       temperature: 293.15
 
 - type: entity
@@ -108,13 +111,10 @@
   components:
   - type: GasTank
     # 120 minutes with Plasmaman lungs
-    outputPressure: 5.325
+    releasePressure: 5.325
     air:
       # 125.2 minutes with plasmaman lungs
       volume: 5
       moles:
-        - 0           # oxygen
-        - 0           # nitrogen
-        - 0           # CO2
-        - 2.051379050 # plasma
+        Plasma: 2.051379050
       temperature: 293.15

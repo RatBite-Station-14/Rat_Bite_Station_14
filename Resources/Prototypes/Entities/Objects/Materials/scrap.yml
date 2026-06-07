@@ -91,8 +91,9 @@
     sprite: Objects/Materials/Scrap/generic.rsi
     size: Normal
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: FlimsyMetallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -116,8 +117,9 @@
   components:
   - type: InteractionOutline
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: FlimsyMetallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -570,7 +572,7 @@
   parent: BaseScrapLarge
   id: ScrapGeneratorUraniumLeaking
   name: leaking S.U.P.E.R.P.A.C.M.A.N. generator
-  description: A S.U.P.E.R.P.A.C.M.A.N. generator that appears to have had some kind of catastrophic failure. Its leaking uranium.
+  description: A S.U.P.E.R.P.A.C.M.A.N. generator that appears to have had some kind of catastrophic failure. It's leaking uranium.
   components:
   - type: Sprite
     sprite: Objects/Materials/Scrap/generator.rsi

@@ -1,26 +1,3 @@
-# SPDX-FileCopyrightText: 2021 metalgearsloth <metalgearsloth@gmail.com>
-# SPDX-FileCopyrightText: 2021 shaeone <60476183+shaeone@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Myctai <108953437+Myctai@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Radrark <76271993+Radrark@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2022 Rinkashikachi <15rinkashikachi15@gmail.com>
-# SPDX-FileCopyrightText: 2023 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-# SPDX-FileCopyrightText: 2023 Whisper <121047731+QuietlyWhisper@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: entity
   id: BaseThruster
   parent: BaseStructureDynamic
@@ -58,13 +35,13 @@
     - type: InteractionOutline
     - type: Sprite
     - type: Appearance
-    - type: ThrusterVisuals
     - type: ApcPowerReceiver
       powerLoad: 1500
     - type: ExtensionCableReceiver
     - type: Damageable
-      damageContainer: StructuralInorganic
       damageModifierSet: Electronic
+    - type: Injurable
+      damageContainer: StructuralInorganic
     - type: Destructible
       thresholds:
       - trigger:
@@ -124,6 +101,76 @@
       shader: unshaded
       visible: false
       offset: 0, 1
+
+- type: entity
+  parent: Thruster
+  id: ThrusterXenoborg
+  components:
+  - type: Sprite
+    sprite: Structures/Shuttles/xenoborg_thruster.rsi
+
+- type: entity
+  id: ThrusterLarge
+  name: large thruster
+  parent: [ BaseThruster]
+  placement:
+    mode: AlignTileAny
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1800
+      behaviors:
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 900
+      behaviors:
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-1.45,1.45,0.45"
+        density: 1750
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: ApcPowerReceiver
+    powerLoad: 10000
+  - type: Thruster
+    thrust: 1600
+    burnShape: ["-0.3,0.5","0.2,1.6","0.8,1.6","1.3,0.5"]
+    damage:
+      types:
+        Heat: 120
+  - type: Sprite
+    sprite: Structures/Shuttles/thruster_large.rsi
+    offset: 0.5,-0.5
+    layers:
+    - state: base
+      map: ["enum.ThrusterVisualLayers.Base"]
+    - state: thrust
+      map: ["enum.ThrusterVisualLayers.ThrustOn"]
+      shader: unshaded
+      visible: false
+    - state: thrust_burn_unshaded
+      map: ["enum.ThrusterVisualLayers.ThrustingUnshaded"]
+      shader: unshaded
+      visible: false
+      offset: 0, 2
+  - type: Anchorable
+    flags: None
+  - type: StaticPrice
+    price: 1500
 
 - type: entity
   id: ThrusterUnanchored
@@ -219,8 +266,9 @@
         - !type:ChangeConstructionNodeBehavior
           node: machineFrame
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Electronic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: StaticPrice
     price: 2000
 
@@ -261,7 +309,6 @@
       shader: unshaded
       visible: false
 
-# Goobstation
 - type: entity
   id: ThrusterShuttleEvac # Can't be unanchored and hard to destroy
   parent: BaseStructure
@@ -297,13 +344,13 @@
           Heat: 40
     - type: InteractionOutline
     - type: Appearance
-    - type: ThrusterVisuals
     - type: ApcPowerReceiver
       powerLoad: 1500
     - type: ExtensionCableReceiver
     - type: Damageable
-      damageContainer: StructuralInorganic
       damageModifierSet: Electronic
+    - type: Injurable
+      damageContainer: StructuralInorganic # Trauma - was Inorganic
     - type: Destructible
       thresholds:
       - trigger:

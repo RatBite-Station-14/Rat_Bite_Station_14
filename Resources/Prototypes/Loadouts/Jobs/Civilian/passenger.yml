@@ -90,7 +90,7 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobPassenger
-      time: 36000 #100 hrs, silly reward for people who play passenger a lot
+      time: 10h # silly reward for people who play passenger a lot
 
 # Head of Greytide (for grey mantle)
 - type: loadoutEffectGroup
@@ -100,7 +100,7 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobPassenger
-      time: 360000 #100 hrs, fun mantle for the most experienced greytiders
+      time: 20h # fun mantle for the most experienced greytiders
 
 # Face
 - type: loadout
@@ -123,7 +123,6 @@
   id: GreyJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorGrey
-
 
 
 # Rainbow
@@ -153,40 +152,6 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitAncient
 
-# Ratbite ghettoass shirtless tider thing
-- type: loadout
-  id: FreakPants
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: MasterGrey
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitTiderPants
-
-# Ratbite additions, veteran larp
-- type: loadout
-  id: MercJumpsuit
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: GreyTider
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMercenary
-
-- type: loadout
-  id: MercBlueJumpsuit
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: GreyTider
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckBlueMercenary
-
-- type: loadout
-  id: MercGreenJumpsuit
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: GreyTider
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckMercenary
-
 # Neck
 - type: loadout
   id: Mantle
@@ -200,22 +165,6 @@
   id: Mantle
   equipment:
     neck: ClothingNeckMantle
-
-- type: loadout
-  id: MercBeret
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: GreyTider
-  equipment:
-    head: ClothingHeadHatBeretMerc
-
-- type: loadout
-  id: MercBandana
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: GreyTider
-  equipment:
-    mask: ClothingMaskBandMerc
 
 # Back
 - type: loadout
@@ -241,14 +190,6 @@
     proto: GreyTider
   equipment:
     gloves: ClothingHandsGlovesFingerlessInsulated
-
-- type: loadout
-  id: FingerlessMercGloves
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: GreyTider
-  equipment:
-    gloves: ClothingHandsGlovesMercFingerless
 
 # Outerclothing
 - type: loadout
@@ -366,4 +307,3 @@
   id: ServiceMJ
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryService
-

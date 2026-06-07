@@ -24,7 +24,7 @@
 
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [SolutionFood, SolutionToolNormal, Clothing]
   id: UnsensoredClothingUniformBase
   components:
   # Goobstation edit start
@@ -58,15 +58,13 @@
   - type: PhysicalComposition # 50% of the amount of cloth you'd obtain upon butchering
     materialComposition:
       Cloth: 150
-  - type: Food
+  - type: Edible
     requiresSpecialDigestion: true
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 30
-        reagents:
-        - ReagentId: Fiber
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 30
   - type: Tag
     tags:
     - ClothMade
@@ -100,6 +98,7 @@
   - type: PhysicalComposition #Goobstation - Recycle update
     materialComposition:
       Cloth: 75
+  - type: SuitSensorShockable # Goobstation
 
 - type: entity
   abstract: true
@@ -109,8 +108,19 @@
   - type: Clothing
     slots: [innerclothing]
     femaleMask: UniformTop
-  - type: Tag
+  - type: Tag # Goob - add Skirt tag
     tags:
     - Skirt
     - ClothMade
     - WhitelistChameleon
+
+- type: entity
+  abstract: true
+  id: ClothingUniformFoldableBase
+  components:
+  - type: Foldable
+    canFoldInsideContainer: true
+    unfoldVerbText: unfold-verb-clothing-jacket
+    foldVerbText: fold-verb-clothing-jacket
+  - type: FoldableClothing
+    foldedEquippedPrefix: folded

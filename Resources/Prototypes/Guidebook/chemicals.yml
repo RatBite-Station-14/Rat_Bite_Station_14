@@ -23,6 +23,7 @@
   - Biological
   - Special
   - Others
+  - Solids # Trauma
   filterEnabled: True
 
 - type: guideEntry

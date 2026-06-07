@@ -6,7 +6,7 @@
   components:
   - type: DiseaseEffect
     complexity: 40
-  - type: DiseaseReagentEffect
+  - type: DiseaseEntityEffect
     effects:
     - !type:HealthChange
       useTargeting: false
@@ -22,7 +22,7 @@
   components:
   - type: DiseaseEffect
     complexity: 20
-  - type: DiseaseReagentEffect
+  - type: DiseaseEntityEffect
     effects:
     - !type:HealthChange
       useTargeting: false
@@ -38,7 +38,7 @@
   components:
   - type: DiseaseEffect
     complexity: 15
-  - type: DiseaseReagentEffect
+  - type: DiseaseEntityEffect
     effects:
     - !type:HealthChange
       useTargeting: false

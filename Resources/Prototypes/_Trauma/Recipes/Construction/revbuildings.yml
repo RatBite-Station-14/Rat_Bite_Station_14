@@ -1,0 +1,88 @@
+- type: construction
+  abstract: true
+  id: BaseRevMachine
+  graph: RevMachine
+  placementMode: SnapgridCenter
+  category: construction-category-antagonist
+  objectType: Structure
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+  theory:
+    RevolutionaryKnowledge: 2
+  useQuality: false
+
+- type: construction
+  parent: BaseRevMachine
+  id: RevForge
+  targetNode: industrial forge
+  theory:
+    RevolutionaryKnowledge: 0
+
+- type: construction
+  parent: BaseRevMachine
+  id: RevPrintingPress
+  targetNode: printing press
+
+- type: construction
+  parent: BaseRevMachine
+  id: RevTelecommsWorkbench
+  targetNode: telecomms workshop
+
+- type: construction
+  parent: BaseRevMachine
+  id: RevTelesphere
+  targetNode: telesphere
+
+- type: construction
+  parent: BaseRevMachine
+  id: Rev3DPrinter
+  targetNode: 3D printer
+
+- type: construction
+  parent: BaseRevMachine
+  id: RevBulletPress
+  targetNode: bullet press
+
+- type: construction
+  parent: BaseRevMachine
+  id: RevMicroelectronicsAssembler
+  targetNode: microelectronics assembler
+
+- type: construction
+  parent: BaseRevMachine
+  id: RevUniformPrinter
+  targetNode: uniform printer
+
+- type: construction
+  parent: BaseRevMachine
+  id: RevTechAnalyzer
+  targetNode: tech analyzer
+
+- type: construction
+  parent: BaseRevMachine
+  id: RevPlasmaFoundry
+  targetNode: plasma foundry
+
+# Turrets
+
+- type: construction
+  abstract: true
+  parent: BaseRevMachine
+  id: BaseRevTurret
+  graph: RevTurret
+  theory:
+    RevolutionaryKnowledge: 2
+    WeaponsKnowledge: 1
+  practical:
+    MechanicsKnowledge: 2
+
+- type: construction
+  parent: BaseRevTurret
+  id: RevTurretPistol
+  targetNode: pistol turret
+
+- type: construction
+  parent: BaseRevTurret
+  id: RevTurretSMG
+  targetNode: SMG turret

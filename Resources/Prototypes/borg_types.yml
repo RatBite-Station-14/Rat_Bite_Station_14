@@ -1,25 +1,3 @@
-# SPDX-FileCopyrightText: 2024 AstroDogeDX <48888500+AstroDogeDX@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 Nox <nebulousnox38@gmail.com>
-# SPDX-FileCopyrightText: 2025 RatherUncreative <RatherUncreativeName@proton.me>
-# SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-# SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-# SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Whatstone <whatston3@gmail.com>
-# SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-# SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-# SPDX-FileCopyrightText: 2025 mubururu_ <139181059+muburu@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
 # Generic borg
 - type: borgType
   id: generic
@@ -35,11 +13,25 @@
     - BorgModuleScience #until sciborgs are added
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
+  - BorgModuleInflatable
   - BorgModuleArtifact
   - BorgModuleAnomaly
   radioChannels:
   - Science
+
+  # <Trauma>
+  addComponents:
+  - type: ModifyKnowledgeGrant
+    skills:
+      ScienceKnowledge: 50 # not good at much else
+      MaterialsKnowledge: 10
+      BotsKnowledge: 50
+      InfrastructureKnowledge: 20
+      WallsKnowledge: 20 # containing anoms or whatever
+      WindowsKnowledge: 20
+  # </Trauma>
 
   # Visual
   inventoryTemplateId: borgShort
@@ -68,6 +60,7 @@
     - BorgModuleEngineering
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
   - BorgModuleConstruction
   - BorgModuleRCD
@@ -78,6 +71,28 @@
   radioChannels:
   - Engineering
   - Science
+
+  # <Trauma>
+  addComponents:
+  - type: ModifyKnowledgeGrant
+    skills:
+      # crafting
+      FabricationKnowledge: 60
+      MetalworkingKnowledge: 40
+      CarvingKnowledge: 40
+      MechanicsKnowledge: 40
+      # recipes
+      MaterialsKnowledge: 50
+      DoorsKnowledge: 50
+      AirlocksKnowledge: 50
+      BotsKnowledge: 30
+      InfrastructureKnowledge: 50
+      FurnitureKnowledge: 50
+      ElectronicsKnowledge: 50
+      WallsKnowledge: 50
+      ScienceKnowledge: 10 # sciborg is better
+      WindowsKnowledge: 50
+  # </Trauma>
 
   # Visual
   inventoryTemplateId: borgShort
@@ -106,6 +121,7 @@
     - BorgModuleCargo
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
   - BorgModuleMining
   - BorgModuleTraversal
@@ -116,10 +132,16 @@
   - Supply
   - Science
 
-  addComponents: # Goobstation
+  # <Trauma>
+  addComponents:
   - type: NoWieldNeeded
-  - type: SlavedBorg # Goobstation: Special AI labeling for salv borgs.
+  - type: SlavedBorg # Special AI labeling for salv borgs.
     law: ObeyAI
+  - type: ModifyKnowledgeGrant
+    skills:
+      MeleeKnowledge: 30 # TODO: mining skill
+      ShootingKnowledge: 20 # for pka module??
+  # </Trauma>
 
   lawset: Salvage # DeltaV: Custom lawset
 
@@ -151,13 +173,24 @@
     - BorgModuleJanitor
 
   defaultModules:
-  - BorgModuleTool
+  - BorgModuleTool # Trauma - fuck you borgs get tools
+  - BorgModulePrying
   - BorgModuleCleaning
   - BorgModuleCustodial
 
   radioChannels:
   - Science
   - Service
+
+  # <Trauma>
+  addComponents:
+  - type: ModifyKnowledgeGrant
+    skills:
+      JanitorKnowledge: 100 # mankind is dead. trash is fuel. disposals is full.
+      MaterialsKnowledge: 10
+      InfrastructureKnowledge: 10
+      WallsKnowledge: 10
+  # </Trauma>
 
   lawset: Janitor # DeltaV: Custom lawset
 
@@ -189,7 +222,8 @@
     - BorgModuleMedical
 
   defaultModules:
-  - BorgModuleTool
+  - BorgModuleTool # Trauma - fuck you borgs get tools
+  - BorgModulePrying
   - BorgModuleChemical
   - BorgModuleTopicals
   - BorgModuleRescue
@@ -202,6 +236,7 @@
   - Science
   - Medical
 
+
   addComponents:
   - type: SolutionScanner
   - type: ShowHealthBars
@@ -210,11 +245,16 @@
   - type: ShowHealthIcons
     damageContainers:
     - Biological
+  # <Trauma>
+  - type: ModifyKnowledgeGrant
+    skills:
+      FirstAidKnowledge: 50
+      SurgeryKnowledge: 80 # robots are unsurprisingly good at making cuts
   - type: Sanitized # Shitmed
-  - type: SurgeryTarget # Shitmed
   - type: SurgeryIgnoreClothing
   - type: SurgerySpeedModifier
     speedModifier: 1.5
+  # </Trauma>
 
   # Visual
   inventoryTemplateId: borgDutch
@@ -248,19 +288,27 @@
     - BorgModuleService
 
   defaultModules:
-  - BorgModuleTool
+  - BorgModuleTool # Trauma - serviceborgs on suicide watch
+  - BorgModulePrying
   - BorgModuleMusique
   - BorgModuleService
   - BorgModuleClowning
   - BorgModuleGardening
   - BorgModuleHarvesting
-  - BorgModuleLollypop # Goobstation
 
   lawset: Clown # DeltaV: Custom lawset
 
   radioChannels:
   - Science
   - Service
+
+  # <Trauma>
+  addComponents:
+  - type: ModifyKnowledgeGrant
+    skills:
+      ToysKnowledge: 80 # the clown's bitch
+      BotsKnowledge: 50 # honk
+  # </Trauma>
 
   # Visual
   inventoryTemplateId: borgTall

@@ -14,6 +14,7 @@
   - type: Sprite
     layers:
     - state: pinpointer-science
+      sprite: _Goobstation/Objects/Devices/pinpointer.rsi
       map: ["enum.PinpointerLayers.Base"]
     - state: pinonnull
       map: ["enum.PinpointerLayers.Screen"]
@@ -21,10 +22,11 @@
       visible: false
   - type: Icon
     state: pinpointer-science
+    sprite: _Goobstation/Objects/Devices/pinpointer.rsi
   - type: Pinpointer
     updateTargetName: true
     canRetarget: true
-    retargetingWhitelist: # Goob edit: pinpointer whitelist
+    retargetingWhitelist:
       components:
       - Anomaly
 
@@ -37,6 +39,7 @@
   - type: Sprite
     layers:
     - state: pinpointer-science
+      sprite: _Goobstation/Objects/Devices/pinpointer.rsi
       map: ["enum.PinpointerLayers.Base"]
     - state: pinonnull
       map: ["enum.PinpointerLayers.Screen"]
@@ -44,11 +47,12 @@
       visible: false
   - type: Icon
     state: pinpointer-science
+    sprite: _Goobstation/Objects/Devices/pinpointer.rsi
   - type: Pinpointer
     targetName: artifacts
     whitelist: # Goob edit: pinpointer whitelist
       components:
-      - Artifact
+      - XenoArtifact
 
 - type: entity
   name: borg pinpointer
@@ -83,6 +87,7 @@
   - type: Sprite
     layers:
     - state: pinpointer-universal
+      sprite: _Goobstation/Objects/Devices/pinpointer.rsi
       map: ["enum.PinpointerLayers.Base"]
     - state: pinonnull
       map: ["enum.PinpointerLayers.Screen"]
@@ -90,6 +95,7 @@
       visible: false
   - type: Icon
     state: pinpointer-universal
+    sprite: _Goobstation/Objects/Devices/pinpointer.rsi
   - type: Pinpointer
     updateTargetName: true
     canRetarget: true
@@ -119,29 +125,6 @@
       components:
       - BecomesStation
       - LavalandStation # Lavaland change
-
-- type: entity
-  name: thieving pinpointer
-  description: A handheld tracking device that can target anything worthwhile, including high risk items and stealable structures while off. Keep upright to retain accuracy.
-  id: PinpointerThief
-  parent: [ PinpointerBase, BaseMinorContraband ]
-  components:
-  - type: Sprite
-    layers:
-    - state: pinpointer_thief
-      map: ["enum.PinpointerLayers.Base"]
-    - state: pinonnull
-      map: ["enum.PinpointerLayers.Screen"]
-      shader: unshaded
-      visible: false
-  - type: Icon
-    state: pinpointer_thief
-  - type: Pinpointer
-    updateTargetName: true
-    canRetarget: true
-    retargetingWhitelist: # Goob edit: pinpointer whitelist
-      components:
-      - StealTarget # You can marker your objective with it!
 
 - type: entity
   name: syndicate nuke pinpointer

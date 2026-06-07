@@ -7,6 +7,17 @@
     lifetime: 15
 
 - type: entity
+  parent: MarkerBase
+  id: XenoExtractChronofieldSpawner
+  name: sepia chronofield spawner
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 5
+  - type: SpawnOnDespawn
+    prototype: XenoExtractChronofield
+
+- type: entity
   id: XenoGooWall
   name: gelatinous growth
   description: This could very well be the blob from space LIDL.
@@ -25,8 +36,9 @@
     drawdepth: WallMountedItems
   - type: Clickable
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Slime
+  - type: Injurable
+    damageContainer: Biological
   - type: Destructible
     thresholds:
     - trigger:
@@ -71,6 +83,16 @@
   id: RHostileMobSpawner
   parent: MarkerBase
   components:
+  - type: TimedDespawn
+    lifetime: 3
+  - type: SpawnOnDespawn
+    prototype: RandomHostileMobSpawner
+
+- type: entity
+  parent: MarkerBase
+  id: RandomHostileMobSpawner
+  name: random hostile mob spawner
+  components:
   - type: RandomSpawner
     prototypes:
     - MobAngryBee
@@ -82,10 +104,6 @@
     - MobCarpMagic
     - MobCarpHolo
     - MobCarpRainbow
-    - MobGhoulStalker
-    - MobGhoulProphet
-    - MobGhoulFireShark
-    - MobGhoulRustWalker
     - ReagentSlimeSpawner
     - MobAbomination
     - MobHivebot
@@ -101,17 +119,26 @@
     - MobTomatoKiller
     - MobRatKing
     - MobTick
-    - MobXenomorphHunter
-    - MobXenomorphFaceHugger # trollage
     - MobPurpleSnake
     - MobSmallPurpleSnake
     - MobBingle
+    - MobCoconutCrab # be afraid
     offset: 0.0
 
 - type: entity
   name: random neutral mob spawner
   id: RNeutralMobSpawner
   parent: MarkerBase
+  components:
+  - type: TimedDespawn
+    lifetime: 3
+  - type: SpawnOnDespawn
+    prototype: RandomNeutralMobSpawner
+
+- type: entity
+  parent: MarkerBase
+  id: RandomNeutralMobSpawner
+  name: random neutral mob spawner
   components:
   - type: RandomSpawner
     prototypes:
@@ -128,18 +155,26 @@
     - MobReindeerBuck
     - MobReindeerDoe
     - MobCockroach
-    - MobSquackroach
     - MobSlimeXenobioBabyGrey
     - MobSnail
     - MobSnailSpeed
     - MobSnailMoth
-    - MobXenomorphMaid
     offset: 0.0
 
 - type: entity
   name: random passive mob spawner
   id: RPassiveMobSpawner
   parent: MarkerBase
+  components:
+  - type: TimedDespawn
+    lifetime: 3
+  - type: SpawnOnDespawn
+    prototype: RandomPassiveMobSpawner
+
+- type: entity
+  parent: MarkerBase
+  id: RandomPassiveMobSpawner
+  name: random passive mob spawner
   components:
   - type: RandomSpawner
     prototypes:

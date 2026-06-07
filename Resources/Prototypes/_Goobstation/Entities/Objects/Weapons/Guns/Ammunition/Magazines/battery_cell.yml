@@ -4,49 +4,9 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
+  abstract: true
+  parent: BasePowerCell
   id: BaseMilitaryPowerCell
-  abstract: true
-  parent: BaseItem
-  components:
-  - type: Item
-  - type: Battery
-    pricePerJoule: 0.15
-  - type: BatteryDrinkerSource
-  - type: PowerCell
-    powerCellVisualsLevels: 4
-  - type: Explosive
-    explosionType: Default
-    maxIntensity: 200
-    intensitySlope: 1.5
-  - type: Sprite
-    sprite: Objects/Power/power_cells.rsi
-  - type: SolutionContainerManager
-    solutions:
-      battery:
-        maxVol: 5
-  - type: InjectableSolution
-    solution: battery
-  - type: DrawableSolution
-    solution: battery
-  - type: Appearance
-  - type: PowerCellVisuals
-  - type: Riggable
-  - type: HitscanBatteryAmmoProvider
-    proto: SmallRedLaser
-    fireCost: 50
-  - type: PhysicalComposition
-    materialComposition:
-      Steel: 80
-      Gold: 40
-      Glass: 40
-      Plasma: 40
-    chemicalComposition:
-      Zinc: 7.5
-
-- type: entity
-  id: BaseMilitaryPowerCellSMG
-  abstract: true
-  parent: BaseMilitaryPowerCell
   components:
   - type: Sprite
     layers:
@@ -55,6 +15,34 @@
     - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
       state: o4
       shader: unshaded
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded: # use o4 and o2 instead of o2 and o1 i cbf to change all the sprites
+          Full: {visible: true, state: o4}
+          Neither: {visible: true, state: o2}
+          Empty: {visible: false}
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 80
+      Gold: 40
+      Glass: 40
+      Plasma: 40
+    chemicalComposition:
+      Zinc: 7.5
+  - type: Item
+    storedRotation: 0 # override -90
+  - type: Tag
+    tags:
+    - MilitaryPowerCell
+
+# SMG
+
+- type: entity
+  id: BaseMilitaryPowerCellSMG
+  abstract: true
+  parent: BaseMilitaryPowerCell
+  components:
   - type: Battery
     maxCharge: 1000
     startingCharge: 1000
@@ -74,9 +62,9 @@
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Ammunition/Magazine/energy_cell_pistol_lethal.rsi
-  - type: HitscanBatteryAmmoProvider
-    proto: SmallRedLaser
-    fireCost: 50
+  - type: BatteryAmmoProvider
+    proto: SMGLaser
+    fireCost: 25
 
 - type: entity
   name: x-ray SMG power cell
@@ -87,9 +75,9 @@
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Ammunition/Magazine/energy_cell_pistol_xray.rsi
-  - type: HitscanBatteryAmmoProvider
-    proto: SmallXrayLaser
-    fireCost: 50
+  - type: BatteryAmmoProvider
+    proto: SMGLaserXray
+    fireCost: 25
 
 - type: entity
   name: overclocked SMG power cell
@@ -100,9 +88,9 @@
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Ammunition/Magazine/energy_cell_pistol_overcharge.rsi
-  - type: HitscanBatteryAmmoProvider
-    proto: SmallOverchargedLaser
-    fireCost: 100
+  - type: BatteryAmmoProvider
+    proto: SMGLaserOvercharge
+    fireCost: 25
 
 - type: entity
   name: pulse SMG power cell
@@ -113,7 +101,7 @@
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Ammunition/Magazine/energy_cell_pistol_pulse.rsi
-  - type: HitscanBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: SmallPulseLaser
     fireCost: 50
 
@@ -126,23 +114,17 @@
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Ammunition/Magazine/energy_cell_pistol_ion.rsi
-  - type: HitscanBatteryAmmoProvider
-    proto: SmallIonLaser
-    fireCost: 50
+  - type: BatteryAmmoProvider
+    proto: SMGLaserIon
+    fireCost: 25
 
+# Sniper
 
 - type: entity
   id: BaseMilitaryPowerCellSniper
   abstract: true
   parent: BaseMilitaryPowerCell
   components:
-  - type: Sprite
-    layers:
-    - map: [ "enum.PowerCellVisualLayers.Base" ]
-      state: icon
-    - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
-      state: o4
-      shader: unshaded
   - type: Battery
     maxCharge: 1200
     startingCharge: 1200
@@ -170,9 +152,9 @@
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Ammunition/Magazine/energy_cell_rifle_lethal.rsi
-  - type: HitscanBatteryAmmoProvider
-    proto: MediumRedLaser
-    fireCost: 100
+  - type: BatteryAmmoProvider
+    proto: SniperLaser
+    fireCost: 300
 
 - type: entity
   name: x-ray sniper power cell
@@ -183,9 +165,9 @@
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Ammunition/Magazine/energy_cell_rifle_xray.rsi
-  - type: HitscanBatteryAmmoProvider
-    proto: MediumXrayLaser
-    fireCost: 100
+  - type: BatteryAmmoProvider
+    proto: SniperLaserXray
+    fireCost: 300
 
 - type: entity
   name: overclocked sniper power cell
@@ -196,9 +178,9 @@
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Ammunition/Magazine/energy_cell_rifle_overcharge.rsi
-  - type: HitscanBatteryAmmoProvider
-    proto: MediumOverchargedLaser
-    fireCost: 200
+  - type: BatteryAmmoProvider
+    proto: SniperLaserOvercharge
+    fireCost: 300
 
 - type: entity
   name: pulse sniper power cell
@@ -209,7 +191,7 @@
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Ammunition/Magazine/energy_cell_rifle_pulse.rsi
-  - type: HitscanBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: MediumPulseLaser
     fireCost: 100
 
@@ -222,10 +204,11 @@
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Ammunition/Magazine/energy_cell_rifle_ion.rsi
-  - type: HitscanBatteryAmmoProvider
-    proto: MediumIonLaser
-    fireCost: 100
+  - type: BatteryAmmoProvider
+    proto: SniperLaserIon
+    fireCost: 300
 
+# Revolver
 
 - type: entity
   id: BaseMilitaryPowerCellRevolver
@@ -237,8 +220,8 @@
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Ammunition/Magazine/energy_cell_revolver.rsi
   - type: Battery
-    maxCharge: 500
-    startingCharge: 500
+    maxCharge: 480
+    startingCharge: 480
   - type: BatteryDrinkerSource
     maxAmount: 100
   - type: Tag
@@ -256,81 +239,72 @@
 
 - type: entity
   name: revolver power cell
-  description: A militarized power cell compatible with laser revolvers.
+  description: A power cell compatible with laser revolvers.
   id: PowerCellIRRevolver
   suffix: Full
   parent: BaseMilitaryPowerCellRevolver
   components:
   - type: Sprite
     layers:
-    - map: [ "base" ]
+    - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
       state: lethal_charge
       shader: unshaded
   - type: GenericVisualizer
     visuals:
-      enum.AmmoVisuals.HasAmmo:
-        base:
-          True:
-            state: lethal_charge
-            shader: unshaded
-          False:
-            state: lethal
-            shader: null
-  - type: HitscanBatteryAmmoProvider
-    proto: MediumRedLaser
-    fireCost: 62.5
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { state: lethal_charge, shader: unshaded }
+          Neither: { state: lethal_charge, shader: unshaded }
+          Empty: { state: lethal, shader: null }
+  - type: BatteryAmmoProvider
+    proto: RevolverLaser
+    fireCost: 40
 
 - type: entity
   name: x-ray revolver power cell
-  description: A militarized power cell compatible with laser revolvers that fires x-rays.
+  description: A power cell compatible with laser revolvers, this one fires Xrays.
   id: PowerCellXrayRevolver
   suffix: Full
   parent: BaseMilitaryPowerCellRevolver
   components:
   - type: Sprite
     layers:
-    - map: [ "base" ]
+    - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
       state: xray_charge
       shader: unshaded
   - type: GenericVisualizer
     visuals:
-      enum.AmmoVisuals.HasAmmo:
-        base:
-          True:
-            state: xray_charge
-            shader: unshaded
-          False:
-            state: xray
-            shader: null
-  - type: HitscanBatteryAmmoProvider
-    proto: MediumXrayLaser
-    fireCost: 62.5
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { state: xray_charge, shader: unshaded }
+          Neither: { state: xray_charge, shader: unshaded }
+          Empty: { state: xray, shader: null }
+  - type: BatteryAmmoProvider
+    proto: RevolverLaserXray
+    fireCost: 40
 
 - type: entity
   name: overclocked revolver power cell
-  description: A militarized power cell compatible with laser revolvers that has been overclocked.
+  description: A power cell compatible with laser revolvers, this one burns hot enough to ignite targets.
   id: PowerCellOverchargedRevolver
   suffix: Full
   parent: BaseMilitaryPowerCellRevolver
   components:
   - type: Sprite
     layers:
-    - map: [ "base" ]
+    - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
       state: overcharge_charge
       shader: unshaded
   - type: GenericVisualizer
     visuals:
-      enum.AmmoVisuals.HasAmmo:
-        base:
-          True:
-            state: overcharge_charge
-            shader: unshaded
-          False:
-            state: overcharge
-            shader: null
-  - type: HitscanBatteryAmmoProvider
-    proto: MediumOverchargedLaser
-    fireCost: 125
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { state: overcharge_charge, shader: unshaded }
+          Neither: { state: overcharge_charge, shader: unshaded }
+          Empty: { state: overcharge, shader: null }
+  - type: BatteryAmmoProvider
+    proto: RevolverLaserOverclocked
+    fireCost: 40
 
 - type: entity
   name: pulse revolver power cell
@@ -341,49 +315,44 @@
   components:
   - type: Sprite
     layers:
-    - map: [ "base" ]
+    - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
       state: pulse_charge
       shader: unshaded
   - type: GenericVisualizer
     visuals:
-      enum.AmmoVisuals.HasAmmo:
-        base:
-          True:
-            state: pulse_charge
-            shader: unshaded
-          False:
-            state: pulse
-            shader: null
-  - type: HitscanBatteryAmmoProvider
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { state: pulse_charge, shader: unshaded }
+          Neither: { state: pulse_charge, shader: unshaded }
+          Empty: { state: pulse, shader: null }
+  - type: BatteryAmmoProvider
     proto: MediumPulseLaser
-    fireCost: 62.5
+    fireCost: 40
 
 - type: entity
   name: ion revolver power cell
-  description: A militarized power cell compatible with laser revolvers that fires ion beams.
+  description: A power cell compatible with laser revolvers, this one fires ion beams.
   id: PowerCellIonRevolver
   suffix: Full
   parent: BaseMilitaryPowerCellRevolver
   components:
   - type: Sprite
     layers:
-    - map: [ "base" ]
+    - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
       state: ion_charge
       shader: unshaded
   - type: GenericVisualizer
     visuals:
-      enum.AmmoVisuals.HasAmmo:
-        base:
-          True:
-            state: ion_charge
-            shader: unshaded
-          False:
-            state: ion
-            shader: null
-  - type: HitscanBatteryAmmoProvider
-    proto: MediumIonLaser
-    fireCost: 62.5
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { state: ion_charge, shader: unshaded }
+          Neither: { state: ion_charge, shader: unshaded }
+          Empty: { state: ion, shader: null }
+  - type: BatteryAmmoProvider
+    proto: RevolverLaserIon
+    fireCost: 40
 
+# LMG
 
 - type: entity
   id: MilitaryPowerCellLMG
@@ -393,12 +362,6 @@
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Ammunition/Magazine/energy_cell_lmg.rsi
-    layers:
-    - map: [ "enum.PowerCellVisualLayers.Base" ]
-      state: icon
-    - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
-      state: o4
-      shader: unshaded
   - type: Item
     size: Large
     shape:
@@ -408,9 +371,9 @@
     startingCharge: 3000
   - type: BatteryDrinkerSource
     maxAmount: 500
-  - type: HitscanBatteryAmmoProvider
-    proto: SmallRedLaser
-    fireCost: 15
+  - type: BatteryAmmoProvider
+    proto: LMGLaser
+    fireCost: 5
   - type: Tag
     tags:
     - MilitaryPowerCellLMG

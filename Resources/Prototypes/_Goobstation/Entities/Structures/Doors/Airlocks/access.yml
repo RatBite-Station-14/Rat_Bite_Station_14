@@ -47,26 +47,6 @@
     containers:
       board: [ DoorElectronicsCentralCommandCaptain ]
 
-# BSO locked
-
-- type: entity
-  parent: AirlockCentralCommand
-  id: AirlockBlueshieldOfficerCommandLocked
-  suffix: Blueshield, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsBSO ]
-
-- type: entity
-  parent: AirlockCentralCommandGlass
-  id: AirlockBlueshieldOfficerCommandGlassLocked
-  suffix: Blueshield, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsBSO ]
-
 # NTR locked
 
 - type: entity
@@ -108,17 +88,6 @@
       board: [ DoorElectronicsAllService ]
   - type: Wires
     layoutId: AirlockService
-
-#Robo
-
-- type: entity
-  parent: AirlockRobotics
-  id: AirlockRoboticsLocked
-  suffix: Robotics, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsRobotics ]
 
 # Journalism
 

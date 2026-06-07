@@ -1,0 +1,11 @@
+- type: trait
+  id: NoHypoport
+  name: trait-no-hypoport-name
+  description: trait-no-hypoport-desc
+  category: Quirks
+  blacklist:
+    components:
+    - BorgChassis
+    - Silicon
+  components:
+  - type: NoHypoport

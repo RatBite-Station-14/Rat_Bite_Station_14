@@ -439,8 +439,6 @@
         color: "#ff8300"
       - state: prisoner-inhand-right
   - type: Clothing
-    stripDelay: 10
-    equipDelay: 2 # to avoid accidentally falling into the trap associated with SelfUnremovableClothing
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     clothingVisuals:
       jumpsuit:
@@ -856,13 +854,6 @@
       - cobwebs
     ignoreReagents:
       - Fiber
-  - type: SolutionContainerManager
-    solutions: # 24 (3 (fiber count of web) * 8 (to craft)) + 6 (magical crafting bonus)
-      food:
-        maxVol: 30
-        reagents:
-        - ReagentId: Fiber
-          Quantity: 30
   - type: Construction
     graph: WebObjects
     node: jumpskirt

@@ -9,42 +9,28 @@
   name: fishing goodies crate
   description: A couple of fishing rods, a bear, and a hat. Everything you need to catch all fish on the station!
   components:
-  - type: StorageFill
-    contents:
-      - id: FishingRod
-      - id: FishingRodGoon
-      - id: ClothingHeadFishCap
-      - id: DrinkBeerBottleFull
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: FishingRod
+        - id: FishingRodGoon
+        - id: ClothingHeadFishCap
+        - id: DrinkBeerBottleFull
 
 - type: entity
-  id: CrateSlotMachine
-  parent: CrateGenericSteel
-  name: slot machine crate
-  description: A crate with a slot machine inside, Everything you need to start your own gambling addiction!
+  id: CrateHolySupplies
+  parent: CratePlastic
+  name: holy supplies crate
+  description: Contains a Bible and 2 Jugs of holy water for religious needs
   components:
-  - type: StorageFill
-    contents:
-      - id: SlotMachineFlatpack
-
-- type: entity
-  id: CrateCoinFlipper
-  parent: CrateGenericSteel
-  name: coin flipper crate
-  description: A crate with a coin flipper inside, 50/50 odds are good!
-  components:
-  - type: StorageFill
-    contents:
-    - id: CoinFlipperFlatPack
-
-- type: entity
-  id: CrateClawMachine
-  parent: CrateGenericSteel
-  name: claw machine crate
-  description: A crate with a claw machine inside, plushies included with every purchase!
-  components:
-  - type: StorageFill
-    contents:
-    - id: ClawMachineFlatPack
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: JugHolyWater
+          amount: 2
+        - id: Bible
 
 - type: entity
   id: CrateCargoForklift
@@ -52,8 +38,10 @@
   name: Forklift crate
   description: A perfect utility vehicle for cargo.
   components:
-    - type: StorageFill
-      contents:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
         - id: VehicleForklift
         - id: VehicleKeyForklift
 
@@ -109,14 +97,6 @@
       weight: 1
     - id: CdDiskSecurityPsa
       weight: 1
-    - id: JVNECdDiskCapstien
-      weight: 0.3
-    - id: JVNECdDiskNinja
-      weight: 0.3
-    - id: JVNECdDiskNextUp
-      weight: 0.5
-    - id: JVNECdDiskJNE
-      weight: 0.3
     - id: CdDiskCommanderAnnouncement
       weight: 0.2
     - id: CdDiskCommanderFigurines

@@ -27,8 +27,10 @@
         map: ["enum.GunVisualLayers.Base"]
       - state: mag-0
         map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Goobstation/Objects/Weapons/Guns/Rifles/burner.rsi
   - type: Gun
-    fireRate: 3
+    fireRate: 2
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/sniper.ogg
   - type: ChamberMagazineAmmoProvider
@@ -163,53 +165,6 @@
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
-  - type: MagazineVisuals
-    magState: mag
-    steps: 1
-    zeroVisible: true
-  - type: Appearance
-
-- type: entity
-  name: WSPR
-  parent: [BaseSyndicateContraband, BaseWeaponRifle]
-  id: WeaponRifleWSPR
-  description: A cutting-edge rifle from Cybersun, versatile, reliable, and Syndicate-approved. Uses 9.5mm caseless magnum ammo.
-  components:
-  - type: Sprite
-    sprite: _Goobstation/Objects/Weapons/Guns/Rifles/wspr.rsi
-    layers:
-    - state: base
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-0
-      map: ["enum.GunVisualLayers.Mag"]
-  - type: Clothing
-    sprite: _Goobstation/Objects/Weapons/Guns/Rifles/wspr.rsi
-  - type: Gun
-    fireRate: 5.5
-    projectileSpeed: 35
-    soundGunshot:
-      path: /Audio/_Goobstation/Weapons/Guns/Gunshots/suppressed_smg.ogg
-      params:
-        volume: -12
-  - type: ItemSlots
-    slots:
-      gun_magazine:
-        name: Magazine
-        startingItem: MagazineCaselessRifle
-        insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
-        ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
-        priority: 2
-        whitelist:
-          tags:
-          - MagazineCaselessRifle
-        whitelistFailPopup: gun-magazine-whitelist-fail
-      gun_chamber:
-        name: Chamber
-        startingItem: CartridgeCaselessRifle
-        priority: 1
-        whitelist:
-          tags:
-          - CartridgeCaselessRifle
   - type: MagazineVisuals
     magState: mag
     steps: 1

@@ -15,6 +15,8 @@
   - type: Battery
     maxCharge: 20000
     startingCharge: 20000
+  - type: ApcPowerReceiver
+    powerLoad: 200
   - type: ExaminableBattery
   - type: Appearance
   - type: AutoShootGun
@@ -32,7 +34,6 @@
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 550
   - type: SpaceArtillery
     powerChargeRate: 100
@@ -41,7 +42,7 @@
   - type: CombatMode
     isInCombatMode: true
   - type: Airtight
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: 20mmBulletArmorPiercing
     fireCost: 15
   - type: RadiationBlocker
@@ -73,6 +74,8 @@
   - type: Battery
     maxCharge: 30000
     startingCharge: 30000
+  - type: ApcPowerReceiver
+    powerLoad: 970
   - type: ExaminableBattery
   - type: WirelessNetworkConnection
     range: 500
@@ -84,14 +87,13 @@
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 220
   - type: SpaceArtillery
     powerChargeRate: 220
     powerUsePassive: 750
     powerUseActive: 0
   - type: Actions
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: ShipDravonProjectile
     fireCost: 250
   - type: RadarBlip
@@ -121,6 +123,8 @@
   - type: Battery
     maxCharge: 40000
     startingCharge: 40000
+  - type: ApcPowerReceiver
+    powerLoad: 725
   - type: ExaminableBattery
   - type: WirelessNetworkConnection
     range: 500
@@ -137,14 +141,13 @@
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 125
   - type: SpaceArtillery
     powerChargeRate: 125
     powerUsePassive: 600
     powerUseActive: 0
   - type: Actions
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: 90mmBulletArmorPiercing
     fireCost: 50
   - type: RadarBlip
@@ -174,6 +177,8 @@
   - type: Battery
     maxCharge: 40000
     startingCharge: 40000
+  - type: ApcPowerReceiver
+    powerLoad: 3714
   - type: ExaminableBattery
   - type: WirelessNetworkConnection
     range: 500
@@ -185,14 +190,13 @@
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 214
   - type: SpaceArtillery
     powerChargeRate: 214
     powerUsePassive: 3500
     powerUseActive: 0
   - type: Actions
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: ShipTarnyxProjectile
     fireCost: 17500 # low shot weapon moved back to the original spot
   - type: RadarBlip
@@ -223,6 +227,8 @@
   - type: Battery
     maxCharge: 12000
     startingCharge: 12000
+  - type: ApcPowerReceiver
+    powerLoad: 13500
   - type: ExaminableBattery
   - type: WirelessNetworkConnection
     range: 500
@@ -250,14 +256,13 @@
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 12000
   - type: SpaceArtillery
     powerChargeRate: 12000
     powerUsePassive: 1500
     powerUseActive: 0
   - type: Actions
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: ShipCyrexaProjectile
     fireCost: 6000
   - type: RadarBlip
@@ -288,6 +293,8 @@
   - type: Battery
     maxCharge: 12000
     startingCharge: 12000
+  - type: ApcPowerReceiver
+    powerLoad: 13500
   - type: ExaminableBattery
   - type: WirelessNetworkConnection
     range: 500
@@ -315,14 +322,13 @@
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 12000
   - type: SpaceArtillery
     powerChargeRate: 12000
     powerUsePassive: 1500
     powerUseActive: 0
   - type: Actions
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: ShipHadesProjectile
     fireCost: 6000
   - type: RadarBlip
@@ -352,6 +358,8 @@
   - type: Battery
     maxCharge: 40000
     startingCharge: 40000
+  - type: ApcPowerReceiver
+    powerLoad: 1350
   - type: ExaminableBattery
   - type: WirelessNetworkConnection
     range: 500
@@ -363,14 +371,13 @@
     soundEmpty:
       path: /Audio/Weapons/Guns/EmptyAlarm/smg_empty_alarm.ogg
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 350
   - type: SpaceArtillery
     powerChargeRate: 350
     powerUsePassive: 1000
     powerUseActive: 7500
   - type: Actions
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: ShipRailgunProjectile
     fireCost: 1500
   - type: Fixtures
@@ -429,6 +436,8 @@
   - type: Battery
     maxCharge: 40000
     startingCharge: 40000
+  - type: ApcPowerReceiver
+    powerLoad: 2300
   - type: ExaminableBattery
   - type: WirelessNetworkConnection
     range: 500
@@ -451,15 +460,13 @@
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 12000
-    autoRechargePause: true
   - type: SpaceArtillery
     powerChargeRate: 800
     powerUsePassive: 1500
     powerUseActive: 0
   - type: Actions
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: ShipBoforsProjectile
     fireCost: 6000
   - type: RadarBlip
@@ -490,6 +497,8 @@
   - type: Battery
     maxCharge: 40000
     startingCharge: 40000
+  - type: ApcPowerReceiver
+    powerLoad: 2200
   - type: ExaminableBattery
   - type: WirelessNetworkConnection
     range: 500
@@ -512,15 +521,13 @@
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 12000
-    autoRechargePause: true
   - type: SpaceArtillery
     powerChargeRate: 700
     powerUsePassive: 1500
     powerUseActive: 0
   - type: Actions
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: ShipKargilProjectile
     fireCost: 6000
   - type: RadarBlip

@@ -103,12 +103,10 @@
     - MindRoleGhostRoleFamiliar
     raffle:
       settings: default
-    requirements: # Goobstation - ghost roles requirements
-    - !type:OverallPlaytimeRequirement
-      time: 18000 #5 hours
   - type: GhostRoleMobSpawner
     prototype: MobHumanSyndicateAgentSpy
-    selectablePrototypes: ["SyndicateAgentMedic", "SyndicateAgentSpy", "SyndicateAgentThief"]
+    selectablePrototypes: ["SyndicateAgentMedic", "SyndicateAgentSpy", "SyndicateAgentThief",
+                           "SyndicateAgentGrenadier", "SyndicateAgentHitman"] # Trauma
 
 # Goobstation - Nukeop reinforcement
 - type: entity
@@ -126,9 +124,6 @@
     - MindRoleGhostRoleTeamAntagonist
     raffle:
       settings: default
-    requirements: # Goobstation - ghost roles requirements
-    - !type:OverallPlaytimeRequirement
-      time: 18000 #5 hours
   - type: GhostRoleMobSpawner
     prototype: MobHumanSyndicateAgentNukeops
 
@@ -146,9 +141,6 @@
     - MindRoleGhostRoleFamiliar
     raffle:
       settings: default
-    requirements: # Goobstation - ghost roles requirements
-    - !type:OverallPlaytimeRequirement
-      time: 18000 #5 hours
   - type: GhostRoleMobSpawner
     prototype: MobMonkeySyndicateAgent
     selectablePrototypes: ["SyndicateMonkey", "SyndicateKobold"]
@@ -178,9 +170,6 @@
     - MindRoleGhostRoleFamiliar
     raffle:
       settings: default
-    requirements: # Goobstation - ghost roles requirements
-    - !type:OverallPlaytimeRequirement
-      time: 18000 #5 hours
   - type: GhostRoleMobSpawner
     prototype: MobCatSyndy
   - type: EmitSoundOnUse
@@ -201,8 +190,6 @@
       - MindRoleGhostRoleSilicon
       raffle:
         settings: default
-      requirements: # Goobstation - ghost roles requirements
-      - !type:OverallPlaytimeRequirement
-        time: 18000 #5 hours
+      job: Borg
     - type: GhostRoleMobSpawner
       prototype: PlayerBorgSyndicateAssaultBattery

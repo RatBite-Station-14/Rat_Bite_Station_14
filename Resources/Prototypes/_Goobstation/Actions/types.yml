@@ -141,6 +141,7 @@
     useDelay: 3
     icon: { sprite: _Goobstation/Objects/Misc/sandevistan.rsi, state: icon }
     itemIconStyle: NoItem
+    raiseOnUser: true
   - type: InstantAction
     event: !type:ToggleSandevistanEvent
 
@@ -153,7 +154,7 @@
   - type: Action
     # TODO: Make a sprite for the station map interface.
     icon: { sprite: Interface/Actions/actions_ai.rsi, state: mass_scanner }
-    iconOn: Interface/Actions/actions_ai.rsi/mass_scanner.png
+    iconOn: { sprite: Interface/Actions/actions_ai.rsi, state: mass_scanner }
     keywords: [ "AI", "console", "interface" ]
     priority: -8
   - type: InstantAction
@@ -172,7 +173,7 @@
       sprite: Structures/Piping/Atmospherics/vent.rsi
       state: vent_off
   - type: InstantAction
-    event: !type:ToggleCrawlingStateEvent
+    event: !type:ToggleFloorCrawlingEvent
 
 - type: entity
   parent: BaseAction
@@ -239,6 +240,7 @@
   components:
   - type: Action
     checkCanInteract: false
+    raiseOnUser: true # its container is a heart
     useDelay: 40
     icon: { sprite: _Goobstation/Objects/Misc/berserker_heart.rsi, state: icon }
     itemIconStyle: NoItem

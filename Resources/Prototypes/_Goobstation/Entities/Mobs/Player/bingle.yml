@@ -1,21 +1,3 @@
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 Armok <155400926+ARMOKS@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-# SPDX-FileCopyrightText: 2025 Errant <35878406+Errant-4@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Fishbait <Fishbait@git.ml>
-# SPDX-FileCopyrightText: 2025 GMWQ <garethquaile@gmail.com>
-# SPDX-FileCopyrightText: 2025 Gareth Quaile <garethquaile@gmail.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 IrisTheAmped <iristheamped@gmail.com>
-# SPDX-FileCopyrightText: 2025 Rouge2t7 <81053047+Sarahon@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Theodore Lukin <66275205+pheenty@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 fishbait <gnesse@gmail.com>
-# SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 unknown <Administrator@DESKTOP-PMRIVVA.kommune.indresogn.no>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 # This is for random skins
@@ -31,10 +13,13 @@
   - type: EntityTableSpawner
     table: !type:GroupSelector
       children:
-      - id: MobBingle
-        weight: 49    # 49/50
-      - id: MobTurkle
-        weight: 1     # 01/50
+      - id: MobBingleHunk
+        weight: 1
+      - id: MobBingleSlavering
+        weight: 1
+      - id: MobBingleBoney
+        weight: 1
+
 
 # Base bingle
 - type: entity
@@ -69,7 +54,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      70: Dead # Ratbite, more common bingles.
+      100: Dead # by request
   - type: MobState
     allowedStates:
       - Alive
@@ -81,8 +66,10 @@
       Dead:
         Base: dead
   - type: Bloodstream
-    bloodMaxVolume: 100
-    bloodReagent: Nitrogen # by request
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Nitrogen
+        Quantity: 100
   - type: MeleeWeapon
     soundHit:
         path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
@@ -94,15 +81,20 @@
         Blunt: 7
         Structural: 14 # breaks down the walls and airlocks in 10 hits
         Ion: 5
-    bluntStaminaDamageFactor: 1.5 # Ratbite, more common bingles.
+    bluntStaminaDamageFactor: 2.0
   - type: MovementSpeedModifier
     baseWalkSpeed : 2 # same as slime
     baseSprintSpeed : 4
   - type: Stamina
-    critThreshold: 120
+    baseCritThreshold: 120
+  - type: StaminaDamageOnHit # from stunbaton
+    damage: 15
+    overtime: 40
+    sound: /Audio/Weapons/egloves.ogg
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Bingle
+  - type: Injurable
+    damageContainer: Biological
   - type: FootstepModifier
     footstepSoundCollection:
       path: /Audio/Effects/Footsteps/slime1.ogg
@@ -113,10 +105,11 @@
   - type: Speech
     speechVerb: Bingle
     speechSounds: Slime
-  - type: LanguageKnowledge
+  - type: LanguageSpeaker
     speaks:
     - Bingle
-    understands: []
+    understands:
+    - TauCetiBasic
   - type: CollectiveMind
     defaultChannel: Binglemind
     respectAccents: true
@@ -127,10 +120,14 @@
     - Alive
     damage:
       types:
+        Blunt: -0.16
+        Slash: -0.16
+        Piercing: -0.16
+        Heat: -0.13
+        Cold: -0.13
+        Shock: -0.13
+        Caustic: -0.13
         Poison: -0.5
-      groups:
-        Brute: -0.5
-        Burn: -0.5
   - type: NightVision
     color: "#008080"
     activateSound: null
@@ -142,6 +139,10 @@
     spawned:
     - id: FoodMeatBingle
       amount: 3
+  - type: PointLight
+    radius: 1.2
+    energy: 2
+    color: "#df2b2b"
 
 - type: entity
   id: MobBinglePrime
@@ -186,8 +187,9 @@
         Structural: 28
         Ion: 7
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: BingleUpgraded
+  - type: Injurable
+    damageContainer: Biological
 
 # Skin - turkle
 - type: entity
@@ -235,4 +237,3 @@
     - map: [ "enum.BingleVisual.Combat" ]
       state: combat
       visible: false
-

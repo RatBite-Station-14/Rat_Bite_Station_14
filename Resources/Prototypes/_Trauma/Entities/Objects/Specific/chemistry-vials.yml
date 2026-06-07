@@ -1,0 +1,239 @@
+# shitter didnt just add this, thanks
+- type: entity
+  abstract: true
+  parent: ChemistryEmptyVial
+  id: BaseChemistryVialFilled
+  components:
+  - type: Tag
+    tags: # Remove trash tag when we have a filled solution
+    - CentrifugeCompatible
+
+## Fear & Hunger vials
+
+- type: entity
+  parent: BaseChemistryVialFilled
+  id: VialBlack
+  name: black vial
+  suffix: Oil
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Oil # not exactly black
+        Quantity: 30
+
+- type: entity
+  parent: BaseChemistryVialFilled
+  id: VialBlood
+  name: blood vial
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 30
+
+- type: entity
+  parent: BaseChemistryVialFilled
+  id: VialBlue
+  name: blue vial
+  suffix: Dexalin
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Dexalin
+        Quantity: 30
+
+- type: entity
+  parent: BaseChemistryVialFilled
+  id: VialBrown
+  name: brown vial
+  suffix: Coffee
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Coffee
+        Quantity: 30
+
+- type: entity
+  parent: BaseChemistryVialFilled
+  id: VialElixirBody
+  name: elixir of body
+  suffix: Omnizine
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Omnizine
+        Quantity: 20
+      - ReagentId: Vitamin
+        Quantity: 10
+
+- type: entity
+  parent: BaseChemistryVialFilled
+  id: VialElixirMind
+  name: elixir of mind
+  suffix: Haloperidol
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Wine
+        Quantity: 10
+      - ReagentId: Haloperidol
+        Quantity: 20
+
+- type: entity
+  parent: BaseChemistryVialFilled
+  id: VialExplosive
+  name: explosive vial
+  suffix: CLF3
+  components:
+  - type: Solution
+    solution:
+      canReact: false # don't react until you throw it, drink it, etc
+      reagents:
+      - ReagentId: Chlorine
+        Quantity: 7.5
+      - ReagentId: Fluorine
+        Quantity: 22.5
+
+- type: entity
+  parent: BaseChemistryVialFilled
+  id: VialGreen
+  name: green vial
+  suffix: Meth
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Desoxyephedrine
+        Quantity: 10
+      - ReagentId: Absinthe
+        Quantity: 20
+
+- type: entity
+  parent: BaseChemistryVialFilled
+  id: VialLightBlue
+  name: light blue vial
+  suffix: Tricordrazine
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Tricordrazine
+        Quantity: 30
+
+- type: entity
+  parent: BaseChemistryVialFilled
+  id: VialMurky
+  name: murky vial
+  suffix: Phlogiston
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Phlogiston
+        Quantity: 20
+      - ReagentId: Napalm
+        Quantity: 10
+
+- type: entity
+  parent: BaseChemistryVialFilled
+  id: VialOrange
+  name: orange vial
+  suffix: OJ # (if) I Did It
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: JuiceOrange
+        Quantity: 30
+
+- type: entity
+  parent: BaseChemistryVialFilled
+  id: VialPurple
+  name: purple vial
+  suffix: Lead
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Lead
+        Quantity: 30
+
+- type: entity
+  parent: BaseChemistryVialFilled
+  id: VialRed
+  name: red vial
+  suffix: Thermite
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Thermite
+        Quantity: 30
+
+- type: entity
+  parent: BaseChemistryVialFilled
+  id: VialWater
+  name: water vial
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Water
+        Quantity: 30
+
+- type: entity
+  parent: BaseChemistryVialFilled
+  id: VialWhite
+  name: white vial
+  suffix: Omnizine
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Omnizine
+        Quantity: 30
+
+- type: entity
+  parent: BaseChemistryVialFilled
+  id: VialWormJuice
+  name: worm juice
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Water # TODO: if someone makes antiparasitic medicine put it here
+        Quantity: 10
+      - ReagentId: Protein
+        Quantity: 20
+
+- type: entity
+  parent: BaseChemistryVialFilled
+  id: VialYellow
+  name: yellow vial
+  suffix: Gnome milk
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Cornoil
+        Quantity: 10
+      - ReagentId: Milk
+        Quantity: 20
+
+- type: entity
+  parent: BaseChemistryVialFilled
+  id: VialCocaine
+  name: cocaine vial
+  suffix: cocaine
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Cocaine
+        Quantity: 30

@@ -1,8 +1,3 @@
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
@@ -27,46 +22,6 @@
     roleType: Familiar
   - type: ApprenticeRole
 
-- type: antag
-  id: Wizard
-  name: roles-antag-wizard-name
-  antagonist: true
-  setPreference: true
-  objective: roles-antag-wizard-description
-  requirements:
-  - !type:OverallPlaytimeRequirement
-    time: 126000 # 35h
-  - !type:SpeciesRequirement
-    inverted: true
-    species:
-    - Plasmaman
-  guides: [ Wizard ]
-
-- type: antag
-  id: Apprentice
-  name: roles-antag-apprentice-name
-  antagonist: true
-  setPreference: false
-  objective: roles-antag-apprentice-description
-
-- type: entity
-  categories: [ HideSpawnMenu, Spawner ]
-  parent: BaseAntagSpawner
-  id: SpawnPointWizard
-  components:
-  - type: GhostRole
-    name: roles-wizard-name
-    description: roles-wizard-objective
-    rules: ghost-role-information-antagonist-rules
-    mindRoles:
-    - MindRoleGhostRoleFreeAgent
-  - type: Sprite
-    sprite: Markers/jobs.rsi
-    layers:
-      - state: green
-      - sprite: Clothing/Head/Hats/wizardhat.rsi
-        state: icon
-
 - type: entity
   id: SpawnPointMarkerWizard
   parent: MarkerBase
@@ -78,21 +33,6 @@
     - state: green
     - sprite: Objects/Fun/figurines.rsi
       state: wizard
-
-- type: npcFaction
-  id: Wizard # Not hostile to angry mobs
-  hostile:
-    - NanoTrasen
-    - Syndicate
-    - Zombie
-    - Revolutionary
-    - Changeling
-    - Heretic
-    - Blob
-  friendly:
-    - Dragon
-    - SimpleHostile
-    - Xeno
 
 - type: factionIcon
   id: WizardFaction

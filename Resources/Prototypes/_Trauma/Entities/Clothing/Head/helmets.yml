@@ -1,0 +1,89 @@
+- type: entity
+  parent: [ ClothingHeadHelmetArmoredBase, BaseRevMajorContraband ]
+  id: ClothingHeadHelmetRev
+  name: helmet
+  description: This combat helmet is commonly used by revolutionaries and is both strong and light.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Helmets/merc_helmet.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Helmets/merc_helmet.rsi
+  - type: Construction
+    graph: RevHelmet
+    deconstructionTarget: null
+    node: finished
+  - type: Armor # same values as (rip) BSO chud gear, it should much stronger than a 1 cloth cap hat you can make roundstart as any role
+    coverage:
+    - Head
+    traumaDeductions:
+      Dismemberment: 0.3
+      OrganDamage: 0.3
+      BoneDamage: 0.3
+      VeinsDamage: 0
+    modifiers:
+      coefficients:
+        Blunt: 0.3
+        Slash: 0.3
+        Piercing: 0.3
+        Heat: 0.3
+  - type: ExplosionResistance
+    damageCoefficient: 0.75
+
+- type: entity
+  parent: [ ClothingHeadHelmetArmoredBase, BaseRevMajorContraband ]
+  id: ClothingHelmetRevFlame
+  name: flame trooper helmet
+  components:
+  - type: Item
+    size: Ginormous
+  - type: Sprite
+    sprite: _Trauma/Clothing/Head/Helmets/revflamearmor.rsi
+  - type: Clothing
+    sprite: _Trauma/Clothing/Head/Helmets/revflamearmor.rsi
+  - type: Armor
+    traumaDeductions:
+      Dismemberment: 0.2
+      OrganDamage: 0.2
+      BoneDamage: 0.2
+      VeinsDamage: 0
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.4
+  - type: FireProtection
+    reduction: 0.2
+  - type: FaceHuggerBlocker
+
+- type: entity
+  parent: ClothingHeadHatHelmetTemplar
+  id: ClothingHeadHatHelmetVenerator
+  name: venerator headpiece
+  description: The light of christ, strangely non-light emitting.
+  components:
+  - type: Sprite
+    sprite: _Trauma/Clothing/Head/Misc/venerator.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Trauma/Clothing/Head/Misc/venerator.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: HideLayerClothing
+    layers: {}
+
+- type: entity
+  parent: ClothingHeadHatHelmetTemplar
+  id: ClothingHeadHatHelmetMamluk
+  name: mamluk helmet
+  description: The coif that blocked thousands of arrows.
+  components:
+  - type: Sprite
+    sprite: _Trauma/Clothing/Head/Misc/mamluk.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Trauma/Clothing/Head/Misc/mamluk.rsi
+  - type: FaceHuggerBlocker

@@ -138,14 +138,11 @@
     - HeadSide
 
 - type: entity
-  parent: ClothingOuterBaseToggleable
+  parent: [ ClothingOuterBaseToggleable, BaseMinorContraband ]
   id: ClothingOuterArmorHereticCostume
   name: occult robes
   description: A ragged, dusty set of robes. Strange smudgy eyes line the inside.
   components:
-  - type: Construction
-    graph: HereticCostume
-    node: start
   - type: Sprite
     sprite: _Goobstation/Heretic/Clothing/OuterClothing/eldritch_armor.rsi
     state: icon

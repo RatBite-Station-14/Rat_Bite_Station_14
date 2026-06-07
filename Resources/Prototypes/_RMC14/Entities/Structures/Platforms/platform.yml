@@ -1,23 +1,8 @@
 - type: entity
   abstract: true
-  id: CMPlatformBase
-  name: platform
-  description: A square metal surface resting on four legs.
-  components:
-  - type: Transform
-    anchored: true
-  - type: Sprite
-    sprite: _RMC14/Structures/platforms.rsi
-  - type: InteractionOutline
-  - type: Clickable
-  - type: Climbable
-    delay: 0.25
-
-- type: entity
-  abstract: true
   id: CMPlatformBaseBroken
   name: destroyed platform
-  description: A square metal surface resting on four legs. It has been destroyed.
+  description: A raised surface. It has been destroyed!
   components:
   - type: Transform
     anchored: true
@@ -25,6 +10,19 @@
     sprite: _RMC14/Structures/platforms.rsi
   - type: InteractionOutline
   - type: Clickable
+
+- type: entity
+  parent: CMPlatformBaseBroken
+  id: CMPlatformBroken
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Physics
+    canCollide: false
+  - type: Sprite
+    state: platform_broken
 
 - type: entity
   abstract: true
@@ -49,79 +47,6 @@
             node: platformBroken
           - !type:DoActsBehavior
             acts: ["Breakage"]
-
-- type: entity
-  parent: CMPlatformBaseBroken
-  id: CMPlatformBroken
-  placement:
-    mode: SnapgridCenter
-    snap:
-    - Wall
-  components:
-  - type: Physics
-    canCollide: false
-  - type: Sprite
-    state: platform_broken
-
-- type: entity
-  parent: CMPlatformBaseDestructible
-  id: CMPlatform
-  name: platform
-  description: A square metal surface resting on four legs.
-  placement:
-    mode: SnapgridCenter
-    snap:
-    - Wall
-  components:
-  - type: Physics
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.49,-0.49,0.49,-0.36"
-        density: 1500
-        mask:
-        - TableMask
-        layer:
-        - TableLayer
-  - type: Sprite
-    state: platform
-
-- type: entity
-  parent: CMPlatformBaseDestructible
-  id: CMPlatformCorner
-  name: platform
-  description: A square metal surface resting on four legs.
-  placement:
-    mode: SnapgridCenter
-    snap:
-    - Wall
-  components:
-  - type: Physics
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.49,-0.49,0.49,-0.36"
-        density: 1500
-        mask:
-        - TableMask
-        layer:
-        - TableLayer
-      fix2:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "0.49,0.49,0.36,-0.49"
-        density: 1500
-        mask:
-        - TableMask
-        layer:
-        - TableLayer
-  - type: Sprite
-    state: platform_corner
-  - type: Climbable
 
 - type: entity
   parent: CMPlatformBaseDestructible
@@ -195,20 +120,6 @@
 
 - type: entity
   parent: CMPlatform
-  id: RMCPlatformStairRight
-  components:
-  - type: Sprite
-    state: platform_stair
-
-- type: entity
-  parent: CMPlatform
-  id: RMCPlatformStairLeft
-  components:
-  - type: Sprite
-    state: platform_stair_alt
-
-- type: entity
-  parent: CMPlatform
   id: RMCPlatformKutjevo
   name: raised metal edge
   description: A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it.
@@ -222,15 +133,6 @@
   components:
   - type: Sprite
     state: kutjevo_platform_broken
-
-- type: entity
-  parent: RMCPlatformCornerSmall
-  id: RMCPlatformKutjevoCornerSmall
-  name: raised metal corner
-  description: The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle.
-  components:
-  - type: Sprite
-    state: kutjevo_platform_deco
 
 - type: entity
   parent: CMPlatform

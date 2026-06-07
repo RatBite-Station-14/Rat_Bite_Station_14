@@ -1,12 +1,9 @@
 - type: entity
   name: machete
-  parent: [ BaseSword, BaseMajorContraband ]
+  parent: [KnifeDurabilitySharpenOnly, BaseSword, BaseMajorContraband]
   id: SlasherMachete
   description: A large, vicious looking blade.
   components:
-  - type: Tag
-    tags:
-    - Machete
   - type: Sprite
     sprite: _Goobstation/Objects/Specific/Slasher/machete.rsi
   - type: MeleeWeapon
@@ -35,7 +32,7 @@
     angle: 225
 
 - type: entity
-  parent: WeldingMaskBase
+  parent: WeldingMaskBaseNoBlind
   id: ClothingHeadHatSlasherMask
   name: slasher mask
   description: A head-mounted face cover designed to protect the wearer completely from space-arc eye.
@@ -95,8 +92,7 @@
     - WhitelistChameleon
   - type: Armor
     coverage:
-    - Chest
-    - Groin
+    - Torso
     - Arm
     - Leg
     modifiers:
@@ -107,7 +103,7 @@
         Heat: 0.90
         Caustic: 0.90
   - type: StaminaResistance
-    damageCoefficient: 0.1
+    damageCoefficient: 0.5
   - type: ModifyDelayedKnockdown
     cancel: true
 
@@ -159,8 +155,9 @@
     - state: spike
       map: ["base"]
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

@@ -8,20 +8,23 @@
   - type: Sprite
     layers:
     - state: purple
+    - state: paper
+      visible: false
+      map: [ "enum.PaperLabelVisuals.Layer" ]
+    - state: integrity-unshaded-0
+      map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+      shader: unshaded
+      visible: false
+    - state: mask-purple
+      map: [ "enum.MaxPressureVisualLayers.Base" ]
+      visible: false
+  - type: MaxPressureVisuals
+    integrityMask: mask-purple
   - type: GasCanister
-    gasMixture:
-      volume: 1000
+    air:
+      volume: 1500
       moles:
-      - 0 # oxygen
-      - 0 # nitrogen
-      - 0 # CO2
-      - 0 # Plasma
-      - 0 # Tritium
-      - 0 # Water vapor
-      - 0 # Miasma
-      - 0 # N2O
-      - 0 # Frezon
-      - 1871.71051 # BZ
+        BZ: 2769.36
       temperature: 293.15
   - type: Destructible
     thresholds:
@@ -57,21 +60,23 @@
   - type: Sprite
     layers:
     - state: healium
+    - state: paper
+      visible: false
+      map: [ "enum.PaperLabelVisuals.Layer" ]
+    - state: integrity-unshaded-0
+      map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+      shader: unshaded
+      visible: false
+    - state: mask-healium
+      map: [ "enum.MaxPressureVisualLayers.Base" ]
+      visible: false
+  - type: MaxPressureVisuals
+    integrityMask: mask-healium
   - type: GasCanister
-    gasMixture:
-      volume: 1000
+    air:
+      volume: 1500
       moles:
-      - 0 # oxygen
-      - 0 # nitrogen
-      - 0 # CO2
-      - 0 # Plasma
-      - 0 # Tritium
-      - 0 # Water vapor
-      - 0 # Miasma
-      - 0 # N2O
-      - 0 # Frezon
-      - 0 # BZ
-      - 1871.71051 # Healium
+        Healium: 2769.36
       temperature: 293.15
   - type: Destructible
     thresholds:
@@ -107,22 +112,23 @@
   - type: Sprite
     layers:
     - state: brown
+    - state: paper
+      visible: false
+      map: [ "enum.PaperLabelVisuals.Layer" ]
+    - state: integrity-unshaded-0
+      map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+      shader: unshaded
+      visible: false
+    - state: mask-brown
+      map: [ "enum.MaxPressureVisualLayers.Base" ]
+      visible: false
+  - type: MaxPressureVisuals
+    integrityMask: mask-brown
   - type: GasCanister
-    gasMixture:
-      volume: 1000
+    air:
+      volume: 1500
       moles:
-      - 0 # oxygen
-      - 0 # nitrogen
-      - 0 # CO2
-      - 0 # Plasma
-      - 0 # Tritium
-      - 0 # Water vapor
-      - 0 # Miasma
-      - 0 # N2O
-      - 0 # Frezon
-      - 0 # BZ
-      - 0 # Healium
-      - 1871.71051 # Nitrium
+        Nitrium: 2769.36
       temperature: 293.15
   - type: Destructible
     thresholds:
@@ -158,23 +164,23 @@
   - type: Sprite
     layers:
     - state: darkblue
+    - state: paper
+      visible: false
+      map: [ "enum.PaperLabelVisuals.Layer" ]
+    - state: integrity-unshaded-0
+      map: [ "enum.MaxPressureVisualLayers.BaseUnshaded" ]
+      shader: unshaded
+      visible: false
+    - state: mask-darkblue
+      map: [ "enum.MaxPressureVisualLayers.Base" ]
+      visible: false
+  - type: MaxPressureVisuals
+    integrityMask: mask-darkblue
   - type: GasCanister
-    gasMixture:
-      volume: 1000
+    air:
+      volume: 1500
       moles:
-      - 0 # oxygen
-      - 0 # nitrogen
-      - 0 # CO2
-      - 0 # Plasma
-      - 0 # Tritium
-      - 0 # Water vapor
-      - 0 # Miasma
-      - 0 # N2O
-      - 0 # Frezon
-      - 0 # BZ
-      - 0 # Healium
-      - 0 # Nitrium
-      - 1871.71051 # Pluoxium
+        Pluoxium: 2769.36
       temperature: 293.15
   - type: Destructible
     thresholds:

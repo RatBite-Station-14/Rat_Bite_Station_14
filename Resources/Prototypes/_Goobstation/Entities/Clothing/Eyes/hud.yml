@@ -6,7 +6,7 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-- type: entity 
+- type: entity
   id: ShowHealthRelatedIcons
   abstract: true
   categories: [ HideSpawnMenu ]
@@ -40,7 +40,7 @@
   components:
   - type: Unremoveable
 
-- type: entity 
+- type: entity
   parent: [ClothingEyesBase, ShowHealthRelatedIcons]
   id: ClothingEyesHudDiagnosticMedical
   name: meddiag hud

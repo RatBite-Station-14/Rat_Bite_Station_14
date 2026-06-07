@@ -16,12 +16,39 @@
   setPreference: true
   objective: roles-antag-initial-infected-objective
   requirements:
-  - !type:SpeciesRequirement
+  - !type:OverallPlaytimeRequirement
+    time: 1h
+  - !type:SpeciesRequirement # Goob
     inverted: true
     species:
     - IPC
     - Plasmaman
   guides: [ Zombies ]
+  dontShowInCredits: true # Trauma
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: InitialInfected
+  prefRoles: [ InitialInfected ]
+  blacklist:
+    components:
+    - ZombieImmune
+    - AntagImmune
+  briefing:
+    text: zombie-patientzero-role-greeting
+    color: Plum
+    sound: "/Audio/Ambience/Antag/zombie_start.ogg"
+  components:
+  - type: PendingZombie #less time to prepare than normal
+    minInitialInfectedGrace: 300
+    maxInitialInfectedGrace: 450
+  - type: ZombifyOnDeath
+  - type: IncurableZombie
+  - type: InitialInfected
+  mindRoles:
+  - MindRoleInitialInfected
+
+# TODO: Make it so creating new zombies uses antag prototypes! This saves a *lot* of boilerplate for conversion antags.
 
 - type: antag
   id: Zombie
@@ -30,9 +57,10 @@
   setPreference: false
   objective: roles-antag-zombie-objective
   requirements:
-  - !type:SpeciesRequirement
+  - !type:SpeciesRequirement # Goob
     inverted: true
     species:
     - IPC
     - Plasmaman
   guides: [ Zombies ]
+  creditImage: /Textures/_Trauma/EndCredits/Antags/zombies.png # Trauma

@@ -30,7 +30,8 @@
     - type: Transform
       anchored: true
     - type: Tag
-      tags: [ Ice ]
+      tags:
+      - Ice
     - type: Physics
     - type: Fixtures
       fixtures:
@@ -44,6 +45,7 @@
           - MidImpassable
     - type: Damageable
       damageModifierSet: Wood
+    - type: Injurable
     - type: Destructible
       thresholds:
       - trigger:
@@ -53,6 +55,7 @@
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
     - type: Temperature
+    - type: TemperatureDamage
       heatDamage:
         types:
           Heat: 5

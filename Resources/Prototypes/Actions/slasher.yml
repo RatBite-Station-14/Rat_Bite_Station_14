@@ -143,4 +143,3 @@
   - type: EntityTargetAction
     canTargetSelf: false
     event: !type:SlasherSoulStealEvent
-

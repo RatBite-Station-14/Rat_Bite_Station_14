@@ -63,8 +63,6 @@
     #Bola: 6 # Goob edit - already have energy bolas
     CombatKnife: 1 # Goob edit
     # Goobstation
-    PolymerBaton: 1
-    SpearTelescopic: 1
     BolaEnergy: 5
     PepperSpray: 3
     SecHypo: 2
@@ -78,6 +76,8 @@
     FoodDonutHomer: 12
     FoodBoxDonut: 2
     #box evidence
-  emaggedInventory: # Goobstation
-    SarinGasGrenade: 1
-    WeaponFlareGunSecurity: 2
+  # <Trauma>
+  emaggedInventory:
+    SarinGasGrenade: 2
+    EmpGrenade: 2
+  # </Trauma>

@@ -1,0 +1,46 @@
+# Installs a hypoport to the target mob's head
+- type: entityEffect
+  id: InstallHypoport
+  effects:
+  - !type:RelayOrgan
+    category: Head
+    guidebookText: entity-effect-guidebook-install-hypoport
+    effects:
+    - !type:AddOrganSlot
+      category: Hypoport
+    - !type:InsertNewOrgan
+      organ: Hypoport
+
+# Nukie-locked version
+- type: entityEffect
+  id: InstallHypoportNukie
+  effects:
+  - !type:RelayOrgan
+    category: Head
+    guidebookText: entity-effect-guidebook-install-hypoport
+    effects:
+    - !type:AddOrganSlot
+      category: Hypoport
+    - !type:InsertNewOrgan
+      organ: HypoportSecureNukie
+
+# Give all crew a hypoport unless they opt out.
+- type: playerEffects
+  id: InstallHypoports
+  conditions:
+  - !type:WhitelistCondition
+    whitelist:
+      components:
+      - HumanoidProfile # no corgis or whatever the fuck
+    blacklist:
+      components:
+      - NoHypoport # to let people opt out for schizo characters via trait
+      - Silicon
+      - BorgChassis
+    guidebookText: entity-condition-guidebook-hypoport-target
+  effects:
+  - !type:NestedEffect
+    proto: InstallHypoport
+  - !type:RemoveComponents
+    components:
+    - type: NoHypoport # leave no trace

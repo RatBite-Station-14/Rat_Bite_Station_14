@@ -12,7 +12,11 @@
     OxygenTankFilled: 10
     NitrogenTankFilled: 10
     PlasmaTankFilled: 10 # EE Plasmeme Change
-    WaterVaporTankFilled: 10 # Goob, Feroxi
+  # <Trauma>
+  emaggedInventory:
+    DoubleEmergencyOxygenTankFilled: 2
+    NitrousOxideTank: 2
+  # </Trauma>
 
 - type: vendingMachineInventory
   id: TankDispenserEngineeringInventory
@@ -20,4 +24,8 @@
     PlasmaTankFilled: 10
     NitrogenTankFilled: 10
     OxygenTankFilled: 10
-    WaterVaporTankFilled: 10 # Goob, Feroxi
+  # <Trauma>
+  emaggedInventory:
+    DoubleEmergencyOxygenTankFilled: 2
+    NitrousOxideTank: 2
+  # </Trauma>

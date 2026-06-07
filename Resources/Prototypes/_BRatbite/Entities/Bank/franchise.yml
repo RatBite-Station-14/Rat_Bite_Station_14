@@ -1,0 +1,50 @@
+# Electra Utilities (ELU)
+- type: franchise
+  id: ElectraUtilities
+  companyColor: "#E5A93C"
+  basicObjectives:
+  - ObjectiveFranchiseMaterialHardenedGlass
+  - ObjectiveFranchiseInflatableWallStack
+  specialObjectives:
+  - ObjectiveFranchiseAirlockElectronics
+  - ObjectiveFranchiseSubstationBoard
+
+# Hawkmoon Logistics (HM)
+- type: franchise
+  id: HawkmoonLogistics
+  companyColor: "#4A90E2"
+  basicObjectives:
+  - ObjectiveFranchiseCargoTelepadCircuitboard
+  - ObjectiveFranchiseSheetSteelStack
+  specialObjectives:
+  - ObjectiveFranchiseJetpackOxygenFilled
+
+# Interdyne Clinic (IN)
+- type: franchise
+  id: InterdyneClinic
+  companyColor: "#2AAE6F"
+  basicObjectives:
+  - ObjectiveFranchiseSyringeRefillOmnizine
+  - ObjectiveFranchiseMedkitAdvanced
+  specialObjectives:
+  - ObjectiveFranchiseChemicalDispenserBoard
+
+# Karrack Security Constabulary (KSC)
+- type: franchise
+  id: KarrackSecurity
+  companyColor: "#7A1C1C"
+  basicObjectives:
+  - ObjectiveFranchiseRestraintsHandcuffs
+  - ObjectiveFranchiseWeaponTaser
+  specialObjectives:
+  - ObjectiveFranchiseExosuitRipleyBoard
+
+# Gorlex Mercenaries (GLX)
+- type: franchise
+  id: GorlexMercenaries
+  companyColor: "#1A1A1A"
+  basicObjectives:
+  - ObjectiveFranchiseCombatKnife
+  - ObjectiveFranchiseAmmoMagazinePistol
+  specialObjectives:
+  - ObjectiveFranchiseWeaponSyndicateCarbine

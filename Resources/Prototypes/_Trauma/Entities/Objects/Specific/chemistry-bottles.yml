@@ -1,0 +1,23 @@
+- type: entity
+  parent: BaseChemistryBottleFilled
+  id: ChemistryBottleBananadine
+  suffix: bananadine
+  components:
+  - type: Label
+    currentLabel: reagent-name-bananadine
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Bananadine
+        Quantity: 30
+
+# Entity tables
+
+# keep weight in CoreMedicineReagentBottleTable synced with number of items here
+- type: entityTable
+  id: CoreMedicineReagentBottleTrauma
+  table: !type:GroupSelector
+    children:
+    - id: ChemistryBottleTramadol
+    - id: ChemistryBottleOxycodone
+    - id: ChemistryBottleIbuprofen

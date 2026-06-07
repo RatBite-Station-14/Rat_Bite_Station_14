@@ -30,7 +30,8 @@
     - state: wires
   - type: Item
     sprite: Objects/Weapons/Bombs/ied.rsi
-  - type: OnUseTimerTrigger
+  - type: TriggerOnUse
+  - type: TimerTrigger
     delay: 5
     examinable: false
     initialBeepDelay: 0
@@ -39,8 +40,8 @@
       params:
         volume: 1
   - type: RandomTimerTrigger
-    min: 0
-    max: 15
+    min: 1 # Trauma 0 > 1
+    max: 5 # Trauma 15 > 5
   - type: Explosive # Weak explosion in a very small radius. Ignites surrounding entities.
     explosionType: FireBomb
     totalIntensity: 25
@@ -48,11 +49,14 @@
     maxIntensity: 3
     canCreateVacuum: false
   - type: ExplodeOnTrigger
+    keysIn:
+    - timer
   - type: Appearance
   - type: AnimationPlayer
   - type: TimerTriggerVisuals
     unprimedSprite: base
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   - type: Destructible
     thresholds:
@@ -107,13 +111,11 @@
     - state: base
       map: ["enum.OpenableVisuals.Layer"]
     - state: fuel
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: WeldingFuel
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: WeldingFuel
+        Quantity: 40
   - type: Construction
     node: fuel
     defaultTarget: firebomb

@@ -6,12 +6,11 @@
   components:
   - type: DiseaseEffect
     complexity: -30
-  - type: DiseaseReagentEffect
+  - type: DiseaseEntityEffect
     timeScale: false
     effects:
-    - !type:MovespeedModifier
-      walkSpeedModifier: 1.35
-      sprintSpeedModifier: 1.35
+    - !type:ModifyStatusEffect
+      effectProto: HyperStatusEffect
     - !type:GenericStatusEffect
       key: Stutter
       component: StutteringAccent
@@ -25,18 +24,16 @@
   components:
   - type: DiseaseEffect
     complexity: -20
-  - type: DiseaseReagentEffect
+  - type: DiseaseEntityEffect
     effects:
     # weaker trico
     - !type:HealthChange
       useTargeting: false
-      conditions:
-      - !type:TotalDamage
-        max: 50
       damage:
-        groups:
-          Brute: -0.4
         types:
+          Blunt: -0.13
+          Slash: -0.13
+          Piercing: -0.13
           Poison: -0.2
           Heat: -0.2
           Shock: -0.2

@@ -1,0 +1,56 @@
+- type: gamePreset
+  id: Insurgency
+  alias:
+  - insurgency
+  - insurgents
+  - greytide
+  name: insurgency-title
+  description: insurgency-description
+  showInVote: false
+  rules:
+  - BasicRoundstartVariation
+  - BasicStationEventScheduler
+  - BasicAntagEventScheduler
+  - ModerateAntagEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - SubGamemodesRule
+  - Insurgency
+
+- type: gamePreset
+  id: Heretics
+  alias:
+  - heretic
+  - heretics
+  name: heretics-title
+  description: heretics-description
+  showInVote: false
+  rules:
+  - BasicRoundstartVariation
+  - BasicStationEventScheduler
+  - BasicAntagEventScheduler
+  - ModerateAntagEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - SubGamemodesRuleNoHeretic
+  - HereticRoundstart
+  - CalmTraitor
+
+- type: gamePreset
+  id: Shadowlings
+  alias:
+  - shadowling
+  - shadowlings
+  name: shadowling-title
+  description: shadowling-description
+  showInVote: false
+  rules:
+  - BasicRoundstartVariation
+  - BasicStationEventScheduler
+  - BasicAntagEventScheduler
+  - ModerateAntagEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - SubGamemodesRule
+  - ShadowlingGamemode
+  - CalmTraitor

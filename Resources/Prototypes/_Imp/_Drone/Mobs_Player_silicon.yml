@@ -1,12 +1,5 @@
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Errant <35878406+Errant-4@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Fishbait <Fishbait@git.ml>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 acatrw <wispycat07@gmail.com>
-# SPDX-FileCopyrightText: 2025 fishbait <gnesse@gmail.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Drones and OneStar mech
 - type: entity
   save: false
@@ -26,17 +19,19 @@
       collection: MetalThud
   - type: Clickable
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   - type: Bloodstream
-    bloodReagent: Oil
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Oil
+        Quantity: 300
     bloodlossDamage:
       types:
-        Bloodloss:
-          1
+        Bloodloss: 1
     bloodlossHealDamage:
       types:
-        Bloodloss:
-          -1
+        Bloodloss: -1
   - type: InteractionOutline
   - type: Fixtures
     fixtures:
@@ -70,10 +65,28 @@
   - type: Physics
     bodyType: KinematicController
   - type: Hands
+    hands:
+      # Unremovable tools
+      hand1:
+        location: Right
+      hand2: {}
+      hand3: {}
+      hand4:
+        location: Left
+      # Materials etc
+      hand5:
+        location: Right
+      hand6:
+        location: Left
+    sortedHands:
+    - hand1
+    - hand2
+    - hand3
+    - hand4
+    - hand5
+    - hand6
     showInHands: false
   - type: ComplexInteraction
-  - type: Body
-    prototype: Drone
   - type: IntrinsicRadioReceiver
   #- type: IntrinsicRadioTransmitter
   #  channels:
@@ -157,13 +170,6 @@
         toggleAction: ActionDronePlayMidi
   - type: StationMap #imp
   - type: GhostRole
-    requirements:
-    - !type:DepartmentTimeRequirement
-      department: Engineering
-      time: 36000 # ten hours
-    - !type:DepartmentTimeRequirement
-      department: Silicon
-      time: 18000 # five hours
     makeSentient: true
     name: ghost-role-information-drone-name
     description: ghost-role-information-drone-description
@@ -190,7 +196,6 @@
   - type: StatusEffects
     allowed:
     - Stun
-    - KnockedDown
     - SlowedDown
     - Flashed # Goobstation - counter to shitter drones
   - type: SlowOnDamage
@@ -198,12 +203,13 @@
       30: 0.7
       50: 0.5
   - type: Temperature
-    heatDamageThreshold: 5000
     currentTemperature: 310.15
     specificHeat: 42
+  - type: TemperatureDamage
+    heatDamageThreshold: 5000
     heatDamage:
       types:
-        Heat : 1 #per second, scales with temperature & other constants
+        Heat: 1 #per second, scales with temperature & other constants
   - type: Sprite
     drawdepth: SmallMobs
     layers:
@@ -235,7 +241,6 @@
           Off: { state: shell }
           On: { state: drone }
   - type: LanguageSpeaker # Einstein Engines - Language
-  - type: LanguageKnowledge # Einstein Engines - Language
     speaks:
     - DroneTalk
     understands:

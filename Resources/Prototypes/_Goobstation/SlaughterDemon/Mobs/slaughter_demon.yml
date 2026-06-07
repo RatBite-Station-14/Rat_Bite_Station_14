@@ -1,12 +1,10 @@
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 Lumminal <81829924+Lumminal@users.noreply.github.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
   parent:
-    - SimpleSpaceMobBase
-    - MobPolymorphable
+  - AppearanceSlaughterDemon
+  - SimpleSpaceMobBase
+  - MobPolymorphable
   id: BaseMobSlaughterDemon
   name: slaughter demon
   suffix: ""
@@ -16,24 +14,23 @@
     sprite: _Goobstation/SlaughterDemon/demon.rsi
     state: daemon
   - type: Stamina
-    critThreshold: 150
+    baseCritThreshold: 150
   - type: NightVision
     color: "#AA4A44"
     activateSound: null
     deactivateSound: null
   - type: Insulated
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: SlaughterDemon
+  - type: Injurable
+    damageContainer: Biological
   - type: StatusEffects # Overwriting basesimplemob to remove flash
     allowed:
     - SlowedDown
     - Stutter
     - Electrocution
     - ForcedSleep
-    - TemporaryBlindness
     - Pacified
-    - RadiationProtection
     - Drowsiness
     - Adrenaline
   - type: MobMover
@@ -54,9 +51,6 @@
     - MindRoleGhostRoleSoloAntagonist
     raffle:
       settings: default
-    requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 18000
   - type: GhostTakeoverAvailable
   - type: Physics
     bodyType: KinematicController
@@ -75,6 +69,7 @@
       types:
         Slash: 25
         Structural: 50
+  - type: Evil
   - type: SlaughterDemon # main component
     speedModWalk: 2.5
     speedModRun: 2.5
@@ -83,30 +78,21 @@
       params:
         volume: 2
   - type: SlaughterDevour # allows the demon to devour
-    toHeal: # Healing done when eating someone
-      groups:
-        Brute: -100
-        Burn: -100
-        Airloss: -100
-        Toxin: -100
-        Genetic: -100
-        Metaphysical: -100
-    toHealNonCrew: # Healing done when eating a robot
-      groups:
-        Brute: -50
-        Burn: -50
-        Airloss: -50
-        Toxin: -50
-        Genetic: -50
-        Metaphysical: -50
-    toHealAnythingElse:  # Healing when previous conditions weren't met
-      groups:
-        Brute: -25
-        Burn: -25
-        Airloss: -25
-        Toxin: -25
-        Genetic: -25
-        Metaphysical: -25
+    healDamage:
+      types:
+        Blunt: -1
+        Slash: -1
+        Piercing: -1
+        Heat: -1
+        Cold: -1
+        Shock: -1
+        Caustic: -1
+        Poison: -1
+        Radiation: -1
+        Asphyxiation: -1
+        Bloodloss: -1
+        Cellular: -1
+        Holy: -1
     doAfterDelay: 2
   - type: DemonicWhisper # allows the demon to demonic whisper
   - type: DemonicAccent # the accent
@@ -121,13 +107,10 @@
     speechSounds: SlaughterDemon
   - type: TypingIndicator
     proto: guardian
-  - type: Gibbable
-  - type: LayingDown
+  - type: Crawler
   - type: RotationVisuals
     defaultRotation: 90
     horizontalRotation: 90
-  - type: Body
-    prototype: SlaughterDemon
   - type: StandingState
   - type: Fixtures
     fixtures:
@@ -151,9 +134,8 @@
       - DemonicWhisperAction
   - type: ReplacementAccent
     accent: slaughterDemon
-  - type: GrantHellRip
-  - type: WeakToHoly
-    alwaysTakeHoly: true
+  - type: KnowledgeHolder
+  - type: AlwaysTakeHoly
   - type: Hands
   - type: PressureImmunity
   - type: TriggerOnMobstateChange
@@ -172,10 +154,12 @@
     speedModifierThresholds:
       200: 1
   - type: Bloodstream
-    bloodMaxVolume: 300
-    bloodReagent: Sulfur
-    bleedReductionAmount: 5
-  - type: Temperature
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Sulfur
+        Quantity: 300
+    bleedReductionAmount: 30
+  - type: TemperatureDamage
     coldDamage:
       types:
         Cold: 0
@@ -184,6 +168,13 @@
         Heat: 0
     heatDamageThreshold: 666
     coldDamageThreshold: 66
+  - type: LanguageSpeaker
+    speaks:
+    - TauCetiBasic
+    - Eldritch
+    understands:
+    - TauCetiBasic
+    - Eldritch
 
 # laughter demon
 - type: entity
@@ -224,9 +215,6 @@
     - MindRoleGhostRoleSoloAntagonist
     raffle:
       settings: default
-    requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 18000
   - type: EmitSoundOnTrigger
     sound:
       path: /Audio/Effects/sadtrombone.ogg

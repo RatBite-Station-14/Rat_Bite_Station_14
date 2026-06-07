@@ -38,6 +38,12 @@
   whitelist:
     components:
       - Blindable
+  # <Trauma>
+  blacklist:
+    components:
+    - CommandStaff
+    - SecurityStaff
+  # </Trauma>
   components:
     - type: PermanentBlindness
 
@@ -59,10 +65,18 @@
   name: trait-narcolepsy-name
   description: trait-narcolepsy-desc
   category: Disabilities
+  # <Trauma>
+  blacklist:
+    components:
+    - CommandStaff
+    - SecurityStaff
+  # </Trauma>
   components:
     - type: Narcolepsy
-      timeBetweenIncidents: 300, 600
-      durationOfIncident: 10, 30
+      maxTimeBetweenIncidents: 600
+      minTimeBetweenIncidents: 300
+      maxDurationOfIncident: 30
+      minDurationOfIncident: 10
 
 - type: trait
   id: Unrevivable
@@ -88,6 +102,10 @@
   category: Disabilities
   blacklist:
     components:
+      # <Trauma>
+      - CommandStaff
+      - SecurityStaff
+      # </Trauma>
       - BorgChassis
   components:
     - type: Muted
@@ -110,5 +128,32 @@
   name: trait-painnumbness-name
   description: trait-painnumbness-desc
   category: Disabilities
+  specials:
+  - !type:ApplyStatusEffectSpecial
+    statusEffects:
+    - TraitStatusEffectPainNumbness
+
+- type: trait
+  id: Hemophilia
+  name: trait-hemophilia-name
+  description: trait-hemophilia-desc
+  category: Disabilities
+  specials:
+  - !type:ApplyStatusEffectSpecial
+    statusEffects:
+    - TraitStatusEffectHemophilia
+
+- type: trait
+  id: ImpairedMobility
+  name: trait-impaired-mobility-name
+  description: trait-impaired-mobility-desc
+  traitGear: OffsetCane
+  category: Disabilities
+  # <Trauma>
+  blacklist:
+    components:
+    - CommandStaff
+    - SecurityStaff
+  # </Trauma>
   components:
-  - type: PainNumbness
+  - type: ImpairedMobility

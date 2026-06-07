@@ -10,12 +10,18 @@
   abstract: true
   components:
   - type: Xenomorph
-    weedHeal: # Goobstation - nerfed healing
-      groups:
-        Burn: -3
-        Toxin: -5
-        Airloss: -10
-        Brute: -4
+    weedHeal:
+      types:
+        Blunt: -1.33
+        Slash: -1.33
+        Piercing: -1.33
+        Heat: -1
+        Cold: -1
+        Shock: -1
+        Poison: -2.5
+        Radiation: -2.5
+        Asphyxiation: -5
+        Bloodloss: -5
   - type: Pinpointer
     whitelist:
       components:
@@ -65,28 +71,30 @@
       Dead: XenomorphDead
   - type: SlowOnDamage
     speedModifierThresholds:
-      105: 0.9
-      125: 0.7
-      150: 0.6
+      125: 0.9
+      150: 0.8
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Xenomorph
+  - type: Injurable
+    damageContainer: Biological
   - type: Stamina
-    critThreshold: 500
+    baseCritThreshold: 500
   - type: Fixtures
     fixtures:
       fix1:
         shape:
           !type:PhysShapeCircle
           radius: 0.25
-        density: 1000
+        density: 200
         mask:
         - MobMask
         layer:
         - MobLayer
   - type: Bloodstream
-    bloodReagent: FluorosulfuricAcid
-    bloodMaxVolume: 250
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: FluorosulfuricAcid
+        Quantity: 250
     bloodlossDamage:
       types:
         Bloodloss: 0.05
@@ -99,29 +107,31 @@
     angle: 0
     soundHit:
       collection: AlienClaw
-    animation: WeaponArcBite
+    animation: WeaponArcClaw
     damage:
-      groups:
-        Brute: 25
+      types:
+        Blunt: 5
+        Slash: 10
+        Piercing: 10
   - type: TypingIndicator
     proto: alien
   - type: AtmosExposed
   - type: Temperature
-    heatDamageThreshold: 600
-    coldDamageThreshold: -150
     currentTemperature: 310.15
+    specificHeat: 42
+  - type: TemperatureDamage
+    heatDamageThreshold: 600
+    coldDamageThreshold: 100 # Trauma, was -150
     coldDamage: #per second, scales with temperature & other constants
       types:
-        Cold : 0.1
-    specificHeat: 42
+        Cold: 0.25 # Trauma, was 0.1
     heatDamage: #per second, scales with temperature & other constants
       types:
-        Heat : 1.5
+        Heat: 1.5
   - type: ZombieImmune
   - type: StatusEffects
     allowed:
     - Stun
-    - KnockedDown
   - type: NoSlip
   - type: Perishable
     molsPerSecondPerUnitMass: 0.0005
@@ -134,7 +144,7 @@
       Male: Xenomorph
       Female: Xenomorph
       Unsexed: Xenomorph
-  - type: LanguageKnowledge
+  - type: LanguageSpeaker
     speaks:
     - Xeno
 #    - XenoHivemind # Goobstation - collective mind
@@ -155,6 +165,11 @@
     enabled: true
     groups:
     - XenomorphAccess
+  - type: BloodSplatterer # Trauma
+  - type: KnowledgeGrant
+    skills:
+      ThrowingKnowledge: 50
+      StrengthKnowledge: 50
 
 
 - type: entity
@@ -174,7 +189,6 @@
   - type: Inventory
     templateId: xenomorph
   - type: Stripping
-  - type: SurgeryTarget
   - type: UserInterface
     interfaces:
       enum.StrippingUiKey.Key:
@@ -182,8 +196,6 @@
       enum.InstrumentUiKey.Key:
         type: InstrumentBoundUserInterface
         requireInputValidation: false
-      enum.SurgeryUIKey.Key:
-        type: SurgeryBui
   - type: RotationVisuals
     defaultRotation: 90
     horizontalRotation: 90
@@ -193,6 +205,7 @@
     - DoorBumpOpener
     - FootstepSound
   - type: XenomorphShoveTracker
+  - type: MovementAlwaysTouching # Trauma
 
 - type: entity
   id: BaseMobXenomorphDungeon
@@ -219,3 +232,14 @@
         false
       Inventory: !type:Bool
         false
+
+- type: entity
+  abstract: true
+  id: BaseXenoTailed
+  components:
+  - type: TailedEntity
+    amount: 17
+    spacing: 0.170
+    prototype: MobXenomorphTailSegmentBase
+    tailOffset: 0, -0.13
+    headFollowSegmentRotation: false

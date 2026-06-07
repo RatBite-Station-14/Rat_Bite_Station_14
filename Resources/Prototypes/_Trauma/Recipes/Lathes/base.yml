@@ -1,0 +1,20 @@
+- type: latheRecipe
+  abstract: true
+  id: BaseRedAlert
+  requiredAlerts:
+  - red
+  - gamma
+  - delta
+  - omicron
+  - octarine
+
+- type: latheRecipe
+  abstract: true
+  id: BaseBlueAlert
+  requiredAlerts:
+  - blue
+  - red
+  - gamma
+  - delta
+  - omicron
+  - octarine

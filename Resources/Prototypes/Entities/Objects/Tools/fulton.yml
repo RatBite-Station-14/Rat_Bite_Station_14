@@ -39,6 +39,11 @@
             - Impassable
     - type: Item
       size: Normal
+      inhandVisuals:
+        left:
+        - state: inhand-left-beacon
+        right:
+        - state: inhand-right-beacon
     - type: Foldable
       folded: true
     - type: Clickable
@@ -71,8 +76,18 @@
   description: Used to extract containers, items, or forcibly recruit people into your base of operations.
   components:
   - type: Fulton
+    whitelist: # Trauma - allow mobs to be directly fultoned without needing to build a chair
+      components:
+      - Item
+      - Anchorable
+      - Body
   - type: Item
     size: Normal
+    inhandVisuals:
+      left:
+      - state: inhand-left-fulton
+      right:
+      - state: inhand-right-fulton
   - type: Stack
     stackType: Fulton
     count: 10
@@ -81,6 +96,7 @@
     sprite: Objects/Tools/fulton.rsi
     state: extraction_pack
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   - type: Destructible
     thresholds:

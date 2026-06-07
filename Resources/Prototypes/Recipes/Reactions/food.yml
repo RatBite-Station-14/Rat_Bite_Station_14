@@ -71,7 +71,7 @@
       amount: 5
       catalyst: true
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: FoodCheese
 
 - type: reaction
@@ -86,7 +86,7 @@
       amount: 5
       catalyst: true
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: FoodChevre
 
 - type: reaction
@@ -96,11 +96,11 @@
   conserveEnergy: false
   reactants:
     Flour:
-      amount: 15
+      amount: 45
     Water:
-      amount: 10
+      amount: 15
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: FoodDough
 
 - type: reaction
@@ -116,7 +116,7 @@
     Egg:
       amount: 6
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: FoodDoughCornmeal
 
 - type: reaction
@@ -130,7 +130,7 @@
     Water:
       amount: 10
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: FoodDoughTortilla
 
 - type: reaction
@@ -140,13 +140,13 @@
   conserveEnergy: false
   reactants:
     Fiber:
-      amount: 10
+      amount: 40
     Flour:
       amount: 5
     Water:
-      amount: 10
+      amount: 15
   effects:
-  - !type:CreateEntityReactionEffect
+  - !type:SpawnEntity
     entity: FoodDoughCotton
 
 - type: reaction
@@ -156,15 +156,17 @@
   conserveEnergy: false
   reactants:
     Flour:
-      amount: 15
+      amount: 20
+    Butter:
+      amount: 10
     Egg:
-      amount: 12
+      amount: 6
     Sugar:
-      amount: 5
+      amount: 10
     Milk:
-      amount: 5
+      amount: 10
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: FoodCakeBatter
 
 - type: reaction
@@ -174,12 +176,12 @@
   conserveEnergy: false
   reactants:
     Milk:
-      amount: 15
+      amount: 30
     TableSalt:
       amount: 5
       catalyst: true
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: FoodButter
 
 - type: reaction
@@ -189,13 +191,15 @@
   conserveEnergy: false
   reactants:
     Flour:
-      amount: 15
-    Egg:
-      amount: 12
-    TableSalt:
+      amount: 40
+    Butter:
+      amount: 10
+    Water:
+      amount: 5
+    Sugar:
       amount: 5
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: FoodDoughPie
 
 # TG has a cake recipe that uses soy milk instead of eggs.
@@ -214,7 +218,7 @@
     Sugar:
       amount: 5
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: FoodCakeBatter
 
 - type: reaction
@@ -224,12 +228,12 @@
   conserveEnergy: false
   reactants:
     MilkSoy:
-      amount: 30
+      amount: 55
     Enzyme:
       amount: 5
       catalyst: true
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: FoodTofu
 
 - type: reaction
@@ -245,7 +249,7 @@
     Egg:
       amount: 6
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: FoodMeatMeatball
 
 - type: reaction
@@ -261,8 +265,8 @@
     Sugar:
       amount: 2
   effects:
-    - !type:CreateEntityReactionEffect
-      entity: FoodSnackChocolateBar
+    - !type:SpawnEntity
+      entity: FoodSnackChocolateBarOrganic # Trauma - homemade chocolate isnt slop
 
 # Condiments
 

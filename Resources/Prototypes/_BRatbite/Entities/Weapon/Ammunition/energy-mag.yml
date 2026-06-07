@@ -36,9 +36,9 @@
       map: [ "enum.GunVisualLayers.Base" ]
     - state: o2
       map: ["enum.GunVisualLayers.Mag"]
-  - type: ProjectileBatteryAmmoProvider
-    proto: PistolBulletEnergyGunLethal
-    fireCost: 100
+  # - type: BatteryAmmoProvider
+  #   proto: PistolBulletEnergyGunLethal
+  #   fireCost: 100
 # Enabling this would enable dual wielded disablers, so no.
 #- type: entity
 #  id: EnergyMagPistolDisabler
@@ -52,7 +52,7 @@
 #      map: [ "enum.GunVisualLayers.Base" ]
 #    - state: o2
 #      map: ["enum.GunVisualLayers.Mag"]
-#  - type: ProjectileBatteryAmmoProvider
+#  - type: BatteryAmmoProvider
 #    proto: PistolBulletEnergyGunDisabler
 #    fireCost: 100
 
@@ -68,9 +68,9 @@
       map: [ "enum.GunVisualLayers.Base" ]
     - state: o2
       map: ["enum.GunVisualLayers.Mag"]
-  - type: ProjectileBatteryAmmoProvider
-    proto: PistolBulletEnergyGunIon
-    fireCost: 100
+  # - type: BatteryAmmoProvider
+  #   proto: PistolBulletEnergyGunIon
+  #   fireCost: 100
 
 - type: entity
   id: EnergyMagPistolOverchargeLethal
@@ -84,6 +84,6 @@
       map: [ "enum.GunVisualLayers.Base" ]
     - state: o2
       map: ["enum.GunVisualLayers.Mag"]
-  - type: ProjectileBatteryAmmoProvider
-    proto: PistolBulletEnergyGunOvercharge
-    fireCost: 100
+  # - type: BatteryAmmoProvider
+  #   proto: PistolBulletEnergyGunOvercharge
+  #   fireCost: 100

@@ -33,6 +33,8 @@
       - TegCirculator
       - XenoArtifact
       - MaterialReclaimer
+      - StationAlertLevelLock # Trauma
+
     event: !type:ChangeComponentsSpellEvent
       toAdd:
       - type: Animate
@@ -61,8 +63,9 @@
       - type: MovementAlwaysTouching
       - type: CanMoveInAir
       - type: Damageable
-        damageContainer: ManifestedSpirit
         damageModifierSet: ManifestedSpirit
+      - type: Injurable
+        damageContainer: ManifestedSpirit
       - type: Destructible
         thresholds:
         - trigger:

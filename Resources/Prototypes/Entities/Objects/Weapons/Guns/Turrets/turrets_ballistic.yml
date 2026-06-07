@@ -54,7 +54,7 @@
   - type: Repairable
     qualityNeeded: "Anchoring"
     doAfterDelay: 3
-  - type: TriggerWhenEmpty
+  - type: TriggerOnEmptyGunshot
  # Goobstation - no
  #- type: ExplodeOnTrigger
  #- type: Explosive
@@ -120,6 +120,7 @@
       SoundTargetInLOS: !type:SoundPathSpecifier
         path: /Audio/Animals/snake_hiss.ogg
   - type: Damageable
+  - type: Injurable
     damageContainer: Biological
   - type: Destructible
     thresholds:

@@ -11,7 +11,7 @@
   - type: SlasherSummonMachete
   - type: SlasherStaggerArea
   - type: SlasherRegenerate
- # - type: SlasherPossession - Ratbite This is fucking STUPID and will just lead to instant suicides.
+  - type: SlasherPossession
   - type: SlasherBloodTrail
   - type: SlasherIncorporeal
   - type: SlasherSoulSteal

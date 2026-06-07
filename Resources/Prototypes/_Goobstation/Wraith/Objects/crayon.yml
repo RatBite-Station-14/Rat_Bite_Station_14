@@ -14,7 +14,11 @@
     heldPrefix: bloody
   - type: Crayon
     color: '#a70000'
-    infinite: true
+    selectedState: like
+  - type: UserInterface
+    interfaces:
+      enum.CrayonUiKey.Key:
+        type: CrayonBoundUserInterface
   - type: BloodCrayon
     wpConsume: -5
   - type: Tag
@@ -25,7 +29,3 @@
     - Recyclable
     - Trash
   - type: SpaceGarbage
-  - type: UserInterface
-    interfaces:
-      enum.CrayonUiKey.Key:
-        type: CrayonBoundUserInterface

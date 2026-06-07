@@ -15,19 +15,11 @@
   id: BingleSpawn
   parent: BaseStationEventShortDelay
   components:
+  - type: GhostroleAlert
   - type: StationEvent
     earliestStart: 50
-    weight: 3
+    weight: 2
     duration: 50
     minimumPlayers: 50
-    chaos: # Goobstation
-      Hostile: 200
-      Friend: 20
-      Combat: 200
-      Death: 200
-      Medical: 200
-    eventType: HostilesSpawn
-  - type: GameRule
-    chaosScore: 600
   - type: RandomSpawnRule
     prototype: SpawnPointGhostBinglePrime

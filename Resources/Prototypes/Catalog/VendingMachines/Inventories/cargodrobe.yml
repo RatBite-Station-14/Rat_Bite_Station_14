@@ -51,7 +51,13 @@
     #ClothingOuterWinterMiner: 2 # Lavaland Change
     ClothingNeckScarfStripedBrown: 3
     ClothingShoesBootsWinterCargo: 2
+    MailBag: 2
   contrabandInventory:
     ToyFigurineCargoTech: 1
     ToyFigurineSalvage: 1
     ToyFigurineQuartermaster: 1
+  # <Trauma>
+    RubberStampTrader: 1
+  emaggedInventory:
+    ClothingOuterCoatJensenFilled: 1
+  # </Trauma>

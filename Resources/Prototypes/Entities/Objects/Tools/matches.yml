@@ -68,6 +68,12 @@
     duration: 10
     igniteSound:
       path: /Audio/Items/match_strike.ogg
+      params:
+        volume: -0.125
+        variation: 0.125
+  - type: IgnitionSource
+    ignited: false
+    temperature: 400.0
   - type: PointLight
     enabled: false
     radius: 1.1
@@ -145,9 +151,13 @@
   - type: Storage
     grid:
     - 0,0,2,1
-  - type: StorageFill
-    contents:
-      - id: Matchstick
+    whitelist: # Trauma - Whitelisting storage
+      tags:
+        - Matchstick
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: Matchstick
         amount: 6
   - type: ItemCounter
     count:
@@ -176,9 +186,10 @@
   - type: Storage
     grid:
     - 0,0,11,1
-  - type: StorageFill
-    contents:
-      - id: GorlexMatchstick
+  - type: EntityTableContainerFill
+    containers:
+      storagebase:
+        id: GorlexMatchstick
         amount: 24
   - type: Matchbox
 

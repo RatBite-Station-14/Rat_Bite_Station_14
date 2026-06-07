@@ -6,4 +6,4 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 16 # Ratbite balance
+        Piercing: 11
