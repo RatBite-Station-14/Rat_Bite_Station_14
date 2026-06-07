@@ -57,8 +57,6 @@ trait-atheist-desc = You don't believe in the existence of higher powers. They, 
 trait-believer-name = Believer
 trait-believer-desc = Either by having a strong faith, or generous donations to the Church, you're favored and loved by Gods.
 
-trait-atheist-desc = You do not believe in Gods
-
 trait-combat-trained-name = Combat Trained
 trait-combat-trained-desc = You are trained in combat and able to shoot guns accurately. Security Personnel are combat trained by default.
 trait-scared-of-guns-name = Scared of guns

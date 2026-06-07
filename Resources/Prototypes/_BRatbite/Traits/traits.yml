@@ -108,7 +108,7 @@
   name: trait-neurogenesis-imperfecta-name
   description: trait-neurogenesis-imperfecta-desc
   category: Physical
-  cost: -10
+  cost: -4
   speciesBlacklist:
   - IPC
   blacklist:
@@ -164,6 +164,7 @@
   components:
   - type: Believer
 
+- type: trait
   id: CombatTrained
   name: trait-combat-trained-name
   description: trait-combat-trained-desc
