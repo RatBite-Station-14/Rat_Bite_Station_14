@@ -6,12 +6,12 @@ using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Item;
 
-namespace Content.Goobstation.Client.Clothing.EntitySystems;
+namespace Content.Goobstation.Client.Clothing.Systems;
 
-public sealed class HideClothingLayerClothingSystem : EntitySystem
+public sealed partial class HideClothingLayerClothingSystem : EntitySystem
 {
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly SharedItemSystem _item = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private SharedItemSystem _item = default!;
 
     public override void Initialize()
     {
@@ -25,12 +25,12 @@ public sealed class HideClothingLayerClothingSystem : EntitySystem
 
     private void OnUnequip(Entity<HideClothingLayerClothingComponent> ent, ref GotUnequippedEvent args)
     {
-        ResetInventory(args.Equipee, ent.Comp);
+        ResetInventory(args.EquipTarget, ent.Comp);
     }
 
     private void OnEquip(Entity<HideClothingLayerClothingComponent> ent, ref GotEquippedEvent args)
     {
-        ResetInventory(args.Equipee, ent.Comp);
+        ResetInventory(args.EquipTarget, ent.Comp);
     }
 
     private void ResetInventory(EntityUid equipee, HideClothingLayerClothingComponent component)

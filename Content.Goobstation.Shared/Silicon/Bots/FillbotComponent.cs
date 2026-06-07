@@ -7,5 +7,5 @@ namespace Content.Goobstation.Shared.Silicon.Bots;
 public sealed partial class FillbotComponent : Component
 {
     [ViewVariables]
-    public EntityUid? LinkedSinkEntity { get; set; }
+    public EntityUid? LinkedSinkEntity;
 }

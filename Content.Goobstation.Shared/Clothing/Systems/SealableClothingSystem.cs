@@ -14,32 +14,32 @@ using Content.Shared.Inventory.Events;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.Popups;
 using Content.Shared.PowerCell;
+using Content.Shared.Silicons.StationAi;
 using Content.Shared.Verbs;
+using Content.Trauma.Common.Clothing;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Utility;
 using Robust.Shared.Timing;
 using Vector2 = System.Numerics.Vector2;
-using Content.Shared.Silicons.StationAi;
 
 namespace Content.Goobstation.Shared.Clothing.Systems;
 
 /// <summary>
 ///     System used for sealable clothing (like modsuits)
 /// </summary>
-public abstract class SharedSealableClothingSystem : EntitySystem
+public sealed partial class SealableClothingSystem : EntitySystem
 {
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly ActionBlockerSystem _blocker = default!;
-    [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
-    [Dependency] private readonly ComponentTogglerSystem _toggler = default!;
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly ToggleableClothingSystem _toggleable = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private ActionBlockerSystem _blocker = default!;
+    [Dependency] private ActionContainerSystem _actionContainer = default!;
+    [Dependency] private ComponentTogglerSystem _toggler = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private ToggleableClothingSystem _toggleable = default!;
+    [Dependency] private InventorySystem _inventory = default!;
 
     public override void Initialize()
     {
@@ -60,13 +60,10 @@ public abstract class SharedSealableClothingSystem : EntitySystem
         SubscribeLocalEvent<SealableClothingControlComponent, ToggleClothingAttemptEvent>(OnToggleClothingAttempt);
         SubscribeLocalEvent<SealableClothingControlComponent, ToggledBackClothingFullUnequipAndInsertedEvent>(OnBackClothingUnequipped);
         SubscribeLocalEvent<SealableClothingControlComponent, BeingUnequippedAttemptEvent>(OnToggleableUnequipAttemptSealCheck);
-        SubscribeLocalEvent<SealableClothingControlComponent, OnToggleableUnequipAttemptEvent>(OnToggleSanityChecker);
+        SubscribeLocalEvent<SealableClothingControlComponent, AttachedClothingRemovedEvent>(OnToggleSanityChecker);
         SubscribeLocalEvent<SealableClothingControlComponent, InventoryRelayedEvent<GetVerbsEvent<EquipmentVerb>>>(OnRelayedVerbRequest);
 
         SubscribeLocalEvent<SealableClothingComponent, OnAttachedUnequipAttemptEvent>(OnAttachedUnequipAttemptSealCheck);
-
-
-
     }
 
     #region Events
@@ -163,7 +160,7 @@ public abstract class SharedSealableClothingSystem : EntitySystem
 
         // Prevent Station AI from toggling modsuit seals
         if (HasComp<StationAiHeldComponent>(user))
-            return;
+            throw new Exception("AI Should never be allowed to get strip verbs");
         // Since sealing control in wearer's container system just won't show verb on args.CanAccess
         if (!_interaction.InRangeUnobstructed(user, uid))
             return;
@@ -193,9 +190,10 @@ public abstract class SharedSealableClothingSystem : EntitySystem
 
         args.Verbs.Add(verb);
     }
+
     private void StartSealDoAfter(EntityUid user, Entity<SealableClothingControlComponent> control, EntityUid wearer)
     {
-        _popup.PopupClient("You start the suits' sealing process", wearer, user);
+        _popup.PopupClient("You start the suit's sealing process", wearer, user);
         var args = new DoAfterArgs(EntityManager, user, control.Comp.NonWearerSealingTime, new StartSealingProcessDoAfterEvent(), control, wearer, control)
         {
             BreakOnDamage = true,
@@ -596,7 +594,7 @@ public abstract class SharedSealableClothingSystem : EntitySystem
             return;
         }
 
-        if (!TryComp<ToggleableClothingComponent>(attached, out var toggleableComp))
+        if (!TryComp<ToggleableClothingComponent>(toggleableEnt, out var toggleableComp))
             return;
 
         // Cancel if any parts are sealed.
@@ -616,7 +614,7 @@ public abstract class SharedSealableClothingSystem : EntitySystem
         // Cancel if the control unit is sealed.
         if (TryComp<SealableClothingControlComponent>(toggleableEnt, out var controlSeal) && controlSeal.IsCurrentlySealed || controlSeal!.IsInProcess)
         {
-            _popup.PopupClient(Loc.GetString("sealable-clothing-sealed-toggle-fail"), toggleableEnt, args.Unequipee);
+            _popup.PopupClient(Loc.GetString("sealable-clothing-sealed-toggle-fail"), toggleableEnt, args.User);
             args.Cancel();
             return;
         }
@@ -629,12 +627,13 @@ public abstract class SharedSealableClothingSystem : EntitySystem
         {
             if (!TryComp<SealableClothingComponent>(partUid, out var partSeal) || !partSeal.IsSealed)
                 continue;
-            _popup.PopupClient(Loc.GetString("sealable-clothing-sealed-toggle-fail"), toggleableEnt, args.Unequipee);
+            _popup.PopupClient(Loc.GetString("sealable-clothing-sealed-toggle-fail"), toggleableEnt, args.User);
             args.Cancel();
             return;
         }
     }
-    private void OnToggleSanityChecker(Entity<SealableClothingControlComponent> sealable, ref OnToggleableUnequipAttemptEvent args)
+
+    private void OnToggleSanityChecker(Entity<SealableClothingControlComponent> sealable, ref AttachedClothingRemovedEvent args)
     {
         // AttachedUid = Toggleable Part | args.Toggleable
         // Owner       = Toggled Part    | args.Attached
@@ -648,11 +647,10 @@ public abstract class SharedSealableClothingSystem : EntitySystem
 
         if (inSlot && slot != null)
             return;
-        SealBreaker(args.Toggleable);
+
+        SealBreaker(sealable);
     }
 }
-
-
 
 [Serializable, NetSerializable]
 public sealed partial class SealClothingDoAfterEvent : SimpleDoAfterEvent
