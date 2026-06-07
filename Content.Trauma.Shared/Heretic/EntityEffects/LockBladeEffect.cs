@@ -3,7 +3,7 @@
 using Content.Medical.Common.Targeting;
 using Content.Medical.Common.Wounds;
 using Content.Medical.Shared.Body;
-using Content.Medical.Shared.Surgery.Components;
+using Content.Medical.Shared.Surgery.Steps.Parts;
 using Content.Medical.Shared.Wounds;
 using Content.Shared.Body;
 using Content.Shared.Body.Components;
@@ -15,7 +15,6 @@ using Content.Trauma.Shared.BloodSplatter;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
-using Robust.Shared.Utility;
 
 namespace Content.Trauma.Shared.Heretic.EntityEffects;
 
@@ -37,17 +36,17 @@ public sealed partial class LockBladeEffect : EntityEffectBase<LockBladeEffect>
     public ProtoId<DamageGroupPrototype> DamageGroup = "Brute";
 }
 
-public sealed class LockBladeEffectSystem : EntityEffectSystem<BodyComponent, LockBladeEffect>
+public sealed partial class LockBladeEffectSystem : EntityEffectSystem<BodyComponent, LockBladeEffect>
 {
-    [Dependency] private readonly WoundSystem _wound = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly ThrowingSystem _throw = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly BodySystem _body = default!;
-    [Dependency] private readonly BodyPartSystem _part = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private WoundSystem _wound = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private ThrowingSystem _throw = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private BodySystem _body = default!;
+    [Dependency] private BodyPartSystem _part = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     protected override void Effect(Entity<BodyComponent> target, ref EntityEffectEvent<LockBladeEffect> args)
     {
@@ -67,7 +66,10 @@ public sealed class LockBladeEffectSystem : EntityEffectSystem<BodyComponent, Lo
 
         // Open ribcage for easier ascension if chest is mangled
         if (TryComp(targetPart, out WoundableComponent? woundable) && woundable.RootWoundable == targetPart &&
-            woundable.WoundableSeverity >= WoundableSeverity.Mangled)
+            woundable.WoundableSeverity >= WoundableSeverity.Mangled &&
+            (!EnsureComp<SkinRetractedComponent>(targetPart, out _) |
+             !EnsureComp<IncisionOpenComponent>(targetPart, out _) |
+             !EnsureComp<BonesSawedComponent>(targetPart, out _) | !EnsureComp<BonesOpenComponent>(targetPart, out _)))
         {
             _audio.PlayPvs(args.Effect.OpeningSound, target);
             effectAmount = 2;
