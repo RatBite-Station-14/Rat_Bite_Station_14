@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Medical.Common.Targeting;
 using Content.Medical.Shared.Body;
 using Content.Medical.Shared.Traumas;
@@ -21,17 +22,17 @@ namespace Content.Medical.Shared.Tourniquet;
 /// <summary>
 /// This handles tourniqueting people
 /// </summary>
-public sealed class TourniquetSystem : EntitySystem
+public sealed partial class TourniquetSystem : EntitySystem
 {
-    [Dependency] private readonly BodySystem _body = default!;
-    [Dependency] private readonly BodyBloodstreamSystem _bloodstream = default!;
-    [Dependency] private readonly BodyPartSystem _part = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly WoundSystem _wound = default!;
+    [Dependency] private BodySystem _body = default!;
+    [Dependency] private BodyBloodstreamSystem _bloodstream = default!;
+    [Dependency] private BodyPartSystem _part = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private WoundSystem _wound = default!;
 
     private const string TourniquetContainerId = "Tourniquet";
 
@@ -119,7 +120,7 @@ public sealed class TourniquetSystem : EntitySystem
     {
         if (args.Handled
             || !args.CanReach
-            || args.Target is not { } target)
+            || args.Target is not {} target)
             return;
 
         if (TryTourniquet(target, args.User, ent, ent))
@@ -128,8 +129,8 @@ public sealed class TourniquetSystem : EntitySystem
 
     private void OnBodyDoAfter(EntityUid ent, BodyComponent comp, ref TourniquetDoAfterEvent args)
     {
-        if (args.Handled || args.Cancelled || args.Target is not { } target ||
-            args.Used is not { } used || !TryComp<TourniquetComponent>(used, out var tourniquet) ||
+        if (args.Handled || args.Cancelled || args.Target is not {} target ||
+            args.Used is not {} used || !TryComp<TourniquetComponent>(used, out var tourniquet) ||
             !TryComp<TargetingComponent>(args.User, out var targeting))
             return;
 
@@ -143,7 +144,7 @@ public sealed class TourniquetSystem : EntitySystem
         var (partType, symmetry) = _body.ConvertTargetBodyPart(targeting.Target);
 
         // if the target part exists put the tourniquet on it
-        if (_part.FindBodyPart((ent, comp), partType, symmetry) is { } targetPart)
+        if (_part.FindBodyPart((ent, comp), partType, symmetry) is {} targetPart)
         {
             if (!_container.Insert(used, container))
             {
@@ -213,7 +214,7 @@ public sealed class TourniquetSystem : EntitySystem
 
     private void OnTourniquetTakenOff(Entity<BodyComponent> ent, ref RemoveTourniquetDoAfterEvent args)
     {
-        if (args.Handled || args.Cancelled || args.Used is not { } used)
+        if (args.Handled || args.Cancelled || args.Used is not {} used)
             return;
 
         if (!TryComp<TourniquetComponent>(used, out var tourniquet))

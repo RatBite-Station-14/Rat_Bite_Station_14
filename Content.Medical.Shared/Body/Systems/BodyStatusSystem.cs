@@ -6,9 +6,10 @@ using Content.Shared.Mobs;
 
 namespace Content.Medical.Shared.Body;
 
-public sealed class BodyStatusSystem : EntitySystem
+public sealed partial class BodyStatusSystem : EntitySystem
 {
-    [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private WoundSystem _wound = default!;
 
     public override void Initialize()
     {
@@ -44,6 +45,9 @@ public sealed class BodyStatusSystem : EntitySystem
     {
         if (!Resolve(ent, ref ent.Comp, false))
             return;
+
+        ent.Comp.BodyStatus = _wound.GetWoundableStatesOnBody(ent.Owner);
+        Dirty(ent, ent.Comp);
 
         var ev = new TargetIntegrityChangedMessage();
         if (_net.IsClient)

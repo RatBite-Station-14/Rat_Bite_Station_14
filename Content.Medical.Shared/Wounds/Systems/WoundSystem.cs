@@ -1,53 +1,58 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Content.Medical.Common.CCVar;
 using Content.Medical.Shared.Body;
 using Content.Medical.Shared.Traumas;
+using Content.Medical.Shared.Wounds;
 using Content.Shared.Body;
+using Content.Shared.Body.Systems;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.FixedPoint;
+using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Inventory;
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Configuration;
-using Robust.Shared.Containers;
 using Robust.Shared.CPUJob.JobQueues;
 using Robust.Shared.CPUJob.JobQueues.Queues;
+using Robust.Shared.Configuration;
+using Robust.Shared.Containers;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Content.Medical.Shared.Wounds;
 
 public sealed partial class WoundSystem : EntitySystem
 {
-    [Dependency] private readonly EntityQuery<WoundComponent> _query = default!;
-    [Dependency] private readonly EntityQuery<WoundableComponent> _woundableQuery = default!;
+    [Dependency] private EntityQuery<WoundComponent> _query = default!;
+    [Dependency] private EntityQuery<WoundableComponent> _woundableQuery = default!;
 
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
-    [Dependency] private readonly BodySystem _body = default!;
-    [Dependency] private readonly BodyPartSystem _part = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private BodySystem _body = default!;
+    [Dependency] private BodyPartSystem _part = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private MobThresholdSystem _mobThreshold = default!;
 
     // I'm the one.... who throws........
-    [Dependency] private readonly ThrowingSystem _throwing = default!;
-    [Dependency] private readonly TraumaSystem _trauma = default!;
+    [Dependency] private ThrowingSystem _throwing = default!;
+    [Dependency] private TraumaSystem _trauma = default!;
 
     private float _medicalHealingTickrate = 5f;
     private TimeSpan _nextUpdate;
