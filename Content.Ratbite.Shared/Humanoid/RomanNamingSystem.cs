@@ -5,7 +5,7 @@ namespace Content.Shared._EinsteinEngines.Humanoid;
 
 public sealed partial class RomanNamingSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     private static readonly Dictionary<string, int> RomanMap = new()
     {

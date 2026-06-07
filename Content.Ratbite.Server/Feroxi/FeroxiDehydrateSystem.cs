@@ -7,9 +7,9 @@ using Content.Shared.Nutrition.Components;
 
 namespace Content.Ratbite.Server.Feroxi;
 
-public sealed class FeroxiDehydrateSystem : EntitySystem
+public sealed partial class FeroxiDehydrateSystem : EntitySystem
 {
-    [Dependency] private readonly BodySystem _body = default!;
+    [Dependency] private BodySystem _body = default!;
 
     public override void Update(float frameTime) /// Goob start, reverted this section back to what it was on DV (Durks change broke things)
     {

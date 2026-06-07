@@ -1,10 +1,7 @@
 using Content.Shared.Actions;
 using Content.Shared.Inventory;
-using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
-namespace Content.Shared._BRatbite.EmpGlove;
+namespace Content.Ratbite.Shared.EmpGlove;
 
 /// <summary>
 /// This is used for...

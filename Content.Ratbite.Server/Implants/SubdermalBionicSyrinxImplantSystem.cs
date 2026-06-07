@@ -32,13 +32,13 @@ namespace Content.Server._DV.Implants;
 
 public sealed class SubdermalBionicSyrinxImplantSystem : EntitySystem
 {
-    [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
-    [Dependency] private readonly PopupSystem _popupSystem = default!;
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly ActionsSystem _actions = default!;
+    [Dependency] private UserInterfaceSystem _uiSystem = default!;
+    [Dependency] private PopupSystem _popupSystem = default!;
+    [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private TagSystem _tag = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private ActionsSystem _actions = default!;
 
     [ValidatePrototypeId<TagPrototype>]
     public const string BionicSyrinxImplant = "BionicSyrinxImplant";

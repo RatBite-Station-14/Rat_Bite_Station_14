@@ -26,22 +26,22 @@ namespace Content.Ratbite.Server.PermaBrig;
 /// <summary>
 /// Handles perma brig and shit.
 /// </summary>
-public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
+public sealed partial class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    //[Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IChatManager _chat = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly GameTicker _ticker = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly PlayTimeTrackingSystem _playTimeTrackings = default!;
-    [Dependency] private readonly StationSpawningSystem _stationSpawning = default!;
-    [Dependency] private readonly AdminSystem _admin = default!;
-    [Dependency] private readonly SharedRoleSystem _roles = default!;
-    [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly SharedIdCardSystem _idCard = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    //[Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IChatManager _chat = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private GameTicker _ticker = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private PlayTimeTrackingSystem _playTimeTrackings = default!;
+    [Dependency] private StationSpawningSystem _stationSpawning = default!;
+    [Dependency] private AdminSystem _admin = default!;
+    [Dependency] private SharedRoleSystem _roles = default!;
+    [Dependency] private PermaBrigManager _permaBrigManager = default!;
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private SharedIdCardSystem _idCard = default!;
+    [Dependency] private InventorySystem _inventory = default!;
 
     public HashSet<ICommonSession> PermaIndividuals = new();
     public Dictionary<ICommonSession, (TimeSpan, TimeSpan)> PermaIndividualJoinedTime = new();

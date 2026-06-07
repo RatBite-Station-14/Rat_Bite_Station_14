@@ -26,6 +26,12 @@
             "name": "dark-mono"
         },
         {
+            "name": "dark-vertical-slats"
+        },
+        {
+            "name": "dark-horizontal-slats"
+        },
+        {
             "name": "dark-pavement"
         },
         {
@@ -33,6 +39,9 @@
         },
         {
             "name": "dark-offset"
+        },
+        {
+            "name": "desertsand"
         },
         {
             "name": "dirty"
@@ -129,6 +138,12 @@
         },
         {
             "name": "grass"
+        },
+        {
+            "name": "grassdark"
+        },
+        {
+            "name": "grasslight"
         },
         {
             "name": "grassjungle"
@@ -238,6 +253,12 @@
             "name": "steel-pavement-vertical"
         },
         {
+            "name": "steel-vertical-slats"
+        },
+        {
+            "name": "steel-horizontal-slats"
+        },
+        {
             "name": "silver"
         },
         {
@@ -266,6 +287,12 @@
         },
         {
             "name": "white-mono"
+        },
+        {
+            "name": "white-vertical-slats"
+        },
+        {
+            "name": "white-horizontal-slats"
         },
         {
             "name": "white-pavement"
@@ -439,11 +466,35 @@
             "directions": 4
         },
         {
+            "name": "grasslight-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "grasslight-inhand-right",
+            "directions": 4
+        },
+        {
             "name": "snow-inhand-left",
             "directions": 4
         },
         {
             "name": "snow-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "grassdark-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "grassdark-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "desertsand-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "desertsand-inhand-right",
             "directions": 4
         },
         {
@@ -567,10 +618,28 @@
             "name": "asteroid-inhand-left",
             "directions": 4
         },
-	    {
-	        "name": "white-marble"
-	    },
-	    {
+        {
+            "name": "xenofloor"
+        },
+        {
+            "name": "xeno-steel"
+        },
+        {
+            "name": "xeno-steel-corner"
+        },
+        {
+            "name": "xeno-techmaint"
+        },
+        {
+            "name": "xenoborg-floor"
+        },
+        {
+            "name": "dark-squiggly"
+        },
+        {
+            "name": "white-marble"
+        },
+        {
             "name": "white-marble-inhand-left",
             "directions": 4
         },

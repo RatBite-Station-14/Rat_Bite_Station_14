@@ -1,26 +1,19 @@
-// SPDX-FileCopyrightText: 2024 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Antag;
 using Content.Server.Antag.Components;
+using Content.Shared.Antag;
 using Content.Shared.GameTicking;
 using Content.Shared.Roles;
-using Robust.Shared.Network;
-using Robust.Shared.Prototypes;
 
-namespace Content.Server._Goobstation.PendingAntag;
+namespace Content.Ratbite.Server.PendingAntag;
 
-public sealed class PendingAntagSystem : EntitySystem
+public sealed partial class PendingAntagSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly AntagSelectionSystem _selection = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private AntagSelectionSystem _selection = default!;
 
-    public Dictionary<NetUserId, (AntagSelectionDefinition, Entity<AntagSelectionComponent>)> PendingAntags = new();
+    public Dictionary<NetUserId, (ProtoId<AntagSpecifierPrototype>, Entity<AntagSelectionComponent>)> PendingAntags = new();
 
     public override void Initialize()
     {
@@ -41,7 +34,7 @@ public sealed class PendingAntagSystem : EntitySystem
         if (!PendingAntags.Remove(ev.Player.UserId, out var pendingAntag))
             return;
 
-        _selection.TryMakeAntag(pendingAntag.Item2, ev.Player, pendingAntag.Item1, true);
+        _selection.TryMakeAntag(pendingAntag.Item2, pendingAntag.Item1, ev.Player, true);
     }
 
     private void OnRoundRestart(RoundRestartCleanupEvent ev)

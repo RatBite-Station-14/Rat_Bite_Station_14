@@ -147,7 +147,6 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   </Box>
   - Changeling injects organic with 2 units of blind toxin, blinding the target for 12 seconds.
   - Can be used while cuffed or in lesser form.
-  - Does not work on Yowies.
   - Can stack with itself.
 
   ## Cryogenic Sting
@@ -166,7 +165,6 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   - Changeling injects organic with 2 units of mute toxin, muting the target for 40 seconds.
   - Can be used while cuffed or in lesser form.
   - Can stack with itself.
-  - Does not work on Yowies.
 
   ## Lethargic Sting
   <Box>
@@ -178,7 +176,6 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   - Deals 15 stamina damage per second for ten seconds
   - Can be used while cuffed or in lesser form.
   - Can stack with itself.
-  - Does not work on Yowies.
 
   ## False Armblade Sting
   <Box>
@@ -204,14 +201,10 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   <Box>
     [color=#999999][italic] 2 Evolution Points / 30 Chems [italic][/color]
   </Box>
-  - User is given the "Anatomic panacea" status effect, lasting 10 seconds.
-  - Treats eye damage
-  - Sobers the user, removing the influence of drugs and alcohol.
-  - Removes any present disabilities from the user.
-  - Removes and destroys any present xenomorph embryos in the user.
-  - Cleanses 25u of chemicals from the bloodstream per tick (250 in total).
-  - Heals 10 overall toxin damage per tick (100 in total).
-  - Heals 10 cellular damage per tick (100 in total).
+  - Produces 10 units of Ling Panacea within the changeling.
+  - Heals 60 genetic, radiation and poison damage.
+  - Cures disabilities (permanent blindness, narcolepsy, leg paralysis ect)
+  - Can be used while cuffed or in lesser form.
 
   ## Last Resort
   <Box>
@@ -271,10 +264,10 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   <Box>
     [color=#999999][italic] 4 Evolution Points / 25 Chems [italic][/color]
   </Box>
-  - User is given the "Adrenaline reserves" status effect, lasting for 10 seconds.
-  - Renders the user completely immune to stuns, stamina damage, damage slowdown and most incapacitation methods.
-  - Regenerates 10 stamina per tick (100 in total).
-  - Deals 1.5 poison damage to the user per tick (15 in total).
+  - Changeling produces 5 units of Changeling Adrenaline.
+  - Deals 6.75 poison damage to changeling upon immediate second use.
+  - Removes stuns, knockdown times, and makes you impervious to most forms of fatigue.
+  - Can be used while cuffed or in lesser form.
   - Can be used while on fire.
 
   ## Hivemind Access
@@ -287,12 +280,13 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
   ## Void Adaption
   <Box>
-    [color=#999999][italic] 4 Evolution Points / Automatic  [italic][/color]
+    [color=#999999][italic] 4 Evolution Points / 0 Chems / 2 Absorbed Organics [italic][/color]
   </Box>
-  - Will automatically protect you from low pressure or temperature.
-  - Removes the need for the presence of air to breathe. Can still be affected by breathing in dangerous gases.
-  - Will not protect from cold damage from other sources.
-  - While active against low pressure or temperature, chem regen rate is decreased by 25%
+  - Renders you immune to barotrauma (spacing) damage if active.
+  - Immune to freezing temperatures and its effects if active.
+  - Does not protect from cold damage.
+  - Changeling no longer needs to breathe if active.
+  - Slows down chem regen rate by 25%.
 
   ## Fleshmend
   <Box>

@@ -10,13 +10,14 @@ using Robust.Shared.Console;
 
 namespace Content.Ratbite.Server.PermaBrig.Commands;
 
+
 [AnyCommand]
-public sealed class PermaSentenceCommand : IConsoleCommand
+public sealed partial class PermaSentenceCommand : IConsoleCommand
 {
-    [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
-    [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly IAdminManager _adminManager = default!;
-    [Dependency] private readonly PlayTimeTrackingManager _tracking = default!;
+    [Dependency] private PermaBrigManager _permaBrigManager = default!;
+    [Dependency] private IChatManager _chatManager = default!;
+    [Dependency] private IAdminManager _adminManager = default!;
+    [Dependency] private PlayTimeTrackingManager _tracking = default!;
     public string Command => "perma:sentence";
     public string Description => "check your/another players Brig Sentence";
 
@@ -114,10 +115,10 @@ public sealed class PermaSentenceCommand : IConsoleCommand
 }
 
 [AdminCommand(AdminFlags.Ban)]
-public sealed class PermaSentenceAddCommand : IConsoleCommand
+public sealed partial class PermaSentenceAddCommand : IConsoleCommand
 {
-    [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
-    [Dependency] private readonly IChatManager _chatManager = default!;
+    [Dependency] private PermaBrigManager _permaBrigManager = default!;
+    [Dependency] private IChatManager _chatManager = default!;
     public string Command => "perma:brig";
     public string Description => "Add time to player's brig sentence";
 
@@ -172,10 +173,10 @@ public sealed class PermaSentenceAddCommand : IConsoleCommand
 }
 
 [AdminCommand(AdminFlags.Ban)]
-public sealed class PermaSentenceRemoveCommand : IConsoleCommand
+public sealed partial class PermaSentenceRemoveCommand : IConsoleCommand
 {
-    [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
-    [Dependency] private readonly IChatManager _chatManager = default!;
+    [Dependency] private PermaBrigManager _permaBrigManager = default!;
+    [Dependency] private IChatManager _chatManager = default!;
     public string Command => "perma:pardon";
     public string Description => "Remove time from player's brig sentence";
 
@@ -229,10 +230,10 @@ public sealed class PermaSentenceRemoveCommand : IConsoleCommand
 }
 
 [AdminCommand(AdminFlags.Ban)]
-public sealed class PermaSentenceSetCommand : IConsoleCommand
+public sealed partial class PermaSentenceSetCommand : IConsoleCommand
 {
-    [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
-    [Dependency] private readonly IChatManager _chatManager = default!;
+    [Dependency] private PermaBrigManager _permaBrigManager = default!;
+    [Dependency] private IChatManager _chatManager = default!;
     public string Command => "perma:set";
     public string Description => "Set the time player is serving in brig";
 

@@ -6,10 +6,10 @@ using Content.Shared.Tag;
 
 namespace Content.Ratbite.Shared.Harpy;
 
-public sealed class HarpyVisualsSystem : EntitySystem
+public sealed partial class HarpyVisualsSystem : EntitySystem
 {
-    [Dependency] private readonly TagSystem _tagSystem = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private TagSystem _tagSystem = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
 
     [ValidatePrototypeId<TagPrototype>]
     private const string HarpyWingsTag = "HidesHarpyWings";

@@ -21,14 +21,14 @@ using Robust.Shared.Player;
 
 namespace Content.Ratbite.Server.Harpy;
 
-public sealed class HarpySingerSystem : EntitySystem
+public sealed partial class HarpySingerSystem : EntitySystem
 {
-    [Dependency] private readonly InstrumentSystem _instrument = default!;
-    [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-    [Dependency] private readonly InventorySystem _inventorySystem = default!;
-    [Dependency] private readonly ActionBlockerSystem _blocker = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private InstrumentSystem _instrument = default!;
+    [Dependency] private SharedPopupSystem _popupSystem = default!;
+    [Dependency] private InventorySystem _inventorySystem = default!;
+    [Dependency] private ActionBlockerSystem _blocker = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
 
     public override void Initialize()
     {
@@ -57,7 +57,7 @@ public sealed class HarpySingerSystem : EntitySystem
             (accent.ReplacementPrototype == "mumble" || accent.Accent == "MumbleAccent") &&
             args.Slot == "mask")
         {
-            CloseMidiUi(args.Equipee);
+            CloseMidiUi(args.Equipment);
         }
     }
 

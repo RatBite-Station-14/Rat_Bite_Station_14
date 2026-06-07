@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 MarkerWicker <markerWicker@proton.me>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
@@ -13,11 +10,11 @@ using Robust.Shared.Physics.Systems;
 
 namespace Content.Ratbite.Shared.HeightAdjust;
 
-public sealed class HeightAdjustSystem : EntitySystem
+public sealed partial class HeightAdjustSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly SharedContentEyeSystem _eye = default!;
-    [Dependency] private readonly IConfigurationManager _config = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private SharedContentEyeSystem _eye = default!;
+    [Dependency] private IConfigurationManager _config = default!;
 
 
     /// <summary>

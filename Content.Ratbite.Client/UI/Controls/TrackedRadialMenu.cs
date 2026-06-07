@@ -3,13 +3,13 @@ using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Timing;
 
-namespace Content.Client._White.UI.Controls;
+namespace Content.Ratbite.Client.UI.Controls;
 
 [Virtual]
-public class TrackedRadialMenu : RadialMenu
+public partial class TrackedRadialMenu : RadialMenu
 {
-    [Dependency] private readonly IClyde _clyde = default!;
-    [Dependency] private readonly IEntityManager _entManager = default!;
+    [Dependency] private IClyde _clyde = default!;
+    [Dependency] private IEntityManager _entManager = default!;
 
     private EntityUid _trackedEntity;
 

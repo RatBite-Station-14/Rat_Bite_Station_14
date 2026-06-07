@@ -10,8 +10,8 @@ namespace Content.Ratbite.Client.Overlays;
 
 public sealed partial class UltraVisionOverlay : Overlay
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
     [Dependency] IEntityManager _entityManager = default!;
 
     private readonly static ProtoId<ShaderPrototype> UltraVision = "UltraVision";

@@ -10,11 +10,11 @@ namespace Content.Ratbite.Server.EmpWearable;
 /// <summary>
 /// This handles items that apply an EMP effect when used on a target.
 /// </summary>
-public sealed class EmpOnUseSystem : EntitySystem
+public sealed partial class EmpOnUseSystem : EntitySystem
 {
-    [Dependency] private readonly EmpSystem _empSystem = default!;
-    [Dependency] private readonly ContainerSystem _container = default!;
-    [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
+    [Dependency] private EmpSystem _empSystem = default!;
+    [Dependency] private ContainerSystem _container = default!;
+    [Dependency] private SharedAudioSystem _audioSystem = default!;
     /// <inheritdoc/>
     public override void Initialize()
     {

@@ -264,7 +264,6 @@ entities:
     - type: GridPathfinding
     - type: Godmode
     - type: ImplicitRoof
-    - type: FTLDrive
 - proto: AirCanister
   entities:
   - uid: 214
@@ -436,7 +435,6 @@ entities:
       parent: 292
     - type: BatterySelfRecharger
       autoRechargeRate: 50000
-      autoRecharge: True
     - type: Godmode
     missingComponents:
     - Construction

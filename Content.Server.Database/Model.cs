@@ -457,6 +457,7 @@ namespace Content.Server.Database
         // <Trauma>
         public string BarkVoice { get; set; } = null!;
         public Dictionary<string, int> KnowledgeMastery { get; set; } = new();
+        public int Shitcoins { get; set; } = 0;
         // </Trauma>
         [Column(TypeName = "jsonb")] public JsonDocument? OrganMarkings { get; set; } = null!;
         [Column(TypeName = "jsonb")] public JsonDocument? Markings { get; set; } = null!;

@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 RadsammyT <32146976+RadsammyT@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Popups;
@@ -10,24 +5,22 @@ using Content.Server.Spawners.Components;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
-using Content.Shared.Localizations;
 using Content.Shared.Prototypes;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
-namespace Content.Server._EstacaoPirata.OpenTriggeredStorageFill;
+namespace Content.Ratbite.Server.OpenTriggeredStorageFill;
 
 /// <summary>
 /// This handles...
 /// </summary>
-public sealed class OpenTriggeredStorageFillSystem : EntitySystem
+public sealed partial class OpenTriggeredStorageFillSystem : EntitySystem
 {
 
-    [Dependency] private readonly SharedStorageSystem _storage = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private SharedStorageSystem _storage = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
 
     /// <inheritdoc/>
     public override void Initialize()

@@ -1,0 +1,31 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                xmlns:controls="using:Content.Client.UserInterface.Controls"
+                Title="Paykey Transfer Interface"
+                MinSize="300 250"
+                SetSize="300 250">
+    <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="12">
+
+        <BoxContainer Orientation="Vertical" SeparationOverride="4">
+            <Label Text="Transfer Amount (Min: 5):" StyleClasses="LabelSubText"/>
+            <LineEdit Name="AccountInput" 
+                      PlaceHolder="Enter account..." 
+                      HorizontalExpand="True"/>
+            <LineEdit Name="PasswordInput" 
+                      PlaceHolder="Enter password..." 
+                      HorizontalExpand="True"/>
+            <OptionButton Name="BankDropdown"
+                MinSize="0 30"
+                HorizontalExpand="True"/>
+            <LineEdit Name="AmountInput" 
+                PlaceHolder="Enter amount..."
+                HorizontalExpand="True"/>
+        </BoxContainer>
+
+        <Control VerticalExpand="True"/>
+
+        <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" SeparationOverride="8">
+            <Button Name="SendMoney" Text="CONFIRM" MinSize="80 30" StyleClasses="Caution"/>
+        </BoxContainer>
+
+    </BoxContainer>
+</controls:FancyWindow>

@@ -11,14 +11,6 @@
 		<ProjectReference Include="../Content.Shared/Content.Shared.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Anger\Systems\" />
-	  <Folder Include="Antags\" />
-	  <Folder Include="DoAfter\" />
-	  <Folder Include="Roles\" />
-	  <Folder Include="_Shitcode\Speech\Components\" />
-	</ItemGroup>
-
 	<Import Project="../RobustToolbox/Imports/Shared.props" />
 	<Import Project="../RobustToolbox/MSBuild/Robust.Properties.targets" />
 	<Import Project="../RobustToolbox/MSBuild/Robust.CompNetworkGenerator.targets" />

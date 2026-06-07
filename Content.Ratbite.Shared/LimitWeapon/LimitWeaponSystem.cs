@@ -4,12 +4,12 @@ using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Whitelist;
 using Robust.Shared.Timing;
 
-namespace Content.Shared._BRatbite.LimitWeapon;
+namespace Content.Ratbite.Shared.LimitWeapon;
 
 /// <summary>
 /// This handles...
 /// </summary>
-public sealed class LimitWeaponSystem : EntitySystem
+public sealed partial class LimitWeaponSystem : EntitySystem
 {
     [Dependency] private EntityWhitelistSystem _entityWhitelistSystem = default!;
     [Dependency] private SharedPopupSystem _popupSystem = default!;

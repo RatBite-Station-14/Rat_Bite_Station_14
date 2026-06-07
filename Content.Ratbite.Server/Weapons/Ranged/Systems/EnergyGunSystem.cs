@@ -1,23 +1,24 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Ratbite.Server.Weapons.Ranged.Components;
 using Content.Ratbite.Shared.Weapons.Ranged;
-using Content.Server._DV.Weapons.Ranged.Components;
 using Content.Server.Popups;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
 using Content.Shared.Verbs;
+using Content.Shared.Weapons.Ranged.Components;
 
-namespace Content.Server._DV.Weapons.Ranged.Systems;
+namespace Content.Ratbite.Server.Weapons.Ranged.Systems;
 
-public sealed class EnergyGunSystem : EntitySystem
+public sealed partial class EnergyGunSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly PopupSystem _popupSystem = default!;
-    [Dependency] private readonly SharedItemSystem _item = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private PopupSystem _popupSystem = default!;
+    [Dependency] private SharedItemSystem _item = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
 
     public override void Initialize()
     {
@@ -120,13 +121,11 @@ public sealed class EnergyGunSystem : EntitySystem
         if (!_prototypeManager.TryIndex<EntityPrototype>(fireMode.Prototype, out var prototype))
             return;
 
-        /*
-        if (!TryComp<ProjectileBatteryAmmoProviderComponent>(uid, out var projectileBatteryAmmoProvider))
+        if (!TryComp<BatteryAmmoProviderComponent>(uid, out var battery))
             return;
 
-        projectileBatteryAmmoProvider.Prototype = fireMode.Prototype;
-        projectileBatteryAmmoProvider.FireCost = fireMode.FireCost;
-        */
+        battery.Prototype = fireMode.Prototype;
+        battery.FireCost = fireMode.FireCost;
 
         if (user is { })
             _popupSystem.PopupEntity(Loc.GetString("gun-set-fire-mode", ("mode", component.CurrentFireMode.Name != string.Empty ? component.CurrentFireMode.Name : prototype.Name)), uid, user.Value);

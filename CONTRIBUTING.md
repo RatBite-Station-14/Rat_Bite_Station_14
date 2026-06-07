@@ -1,4 +1,4 @@
-# Trauma Station contribution guidelines and standards
+# Ratbite Station contribution guidelines and standards
 
 ## Core guidelines
 
@@ -20,16 +20,16 @@ Remember to test your PR again after making changes to it! Not doing so is one o
 
 ### C#
 
-1. All new C# code must go in the `Content.Trauma.*` modules.
-2. Try to only add events to `Content.Trauma.Common`, to allow for deocoupling for upstream's and your logic.
+1. All new C# code must go in the `Content.Ratbite.*` modules.
+2. Try to only add events to `Content.Ratbite.Common`, to allow for deocoupling for upstream's and your logic.
 3. If you absolutely need to use an upstream `Content.Shared` type from `Content.*.Common`, you *may* move it to `Content.Common` without changing its namespace to keep code compatible.
 4. If you are adding new methods, fields, etc. in upstream files make a partial class with the same filename but with `.Trauma.cs`. If it isn't partial already, make it partial with a comment.
-5. Do not add new event handlers to upstream systems, make your own system in `Content.Trauma.*` instead.
+5. Do not add new event handlers to upstream systems, make your own system in `Content.Ratbite.*` instead.
 6. Always use proxy methods when they are available, e.g. `TryComp` instead of `EntityManager.TryGetComponent`. This also means don't depend on `EntityManager` when you are in a `EntitySystem` or a BUI.
 
 ### Resources
 
-All resources go in a `_Trauma` subdirectory inside the resource's folder, e.g. `Resources/Prototypes/_Trauma` for all YML prototypes.
+All resources go in a `_Ratbite` subdirectory inside the resource's folder, e.g. `Resources/Prototypes/_Ratbite` for all YML prototypes.
 
 For entity prototypes, keep everything consistent and sort the top level fields by `abstract > categories > parent > id > name > suffix > description > placement > categories`.
 
@@ -75,20 +75,20 @@ All code should be in shared unless they have a hard dependency in server/client
 ## Commenting changes
 
 Changes to upstream files must be commented properly.
-For single line changes use `// Trauma - explanation` or in YML, `# Trauma - explanation`.
-This should basically be a single-line diff explaining what you changed, e.g. `// Trauma - removed Access` would clearly mean the `[Access]` attribute on a class was removed.
+For single line changes use `// Ratbite - explanation` or in YML, `# Ratbite - explanation`.
+This should basically be a single-line diff explaining what you changed, e.g. `// Ratbite - removed Access` would clearly mean the `[Access]` attribute on a class was removed.
 If you are changing a value say what it used to be, and optionally why it was changed. e.g. `attackRate: 1 # Trauma - was 2, nerfed for being op`
 
-For multi-line changes or replacements use the tag-like `// <Trauma>` `// </Trauma>` comment style.
-When removing entire sections of code use `/* Trauma` ... `*/`, assuming there are no multiline comments inside of that code.
+For multi-line changes or replacements use the tag-like `// <Ratbite>` `// </Ratbite>` comment style.
+When removing entire sections of code use `/* Ratbite` ... `*/`, assuming there are no multiline comments inside of that code.
 
 When adding things to a list where the order is not important, e.g. file imports, components in an entity prototype, always put them at the top to minimize the chances of conflicts.
 Examples of this:
 ```cs
-// <Trauma>
+// <Ratbite>
 using Content.Shared.Examine;
 using Robust.Shared.Prototypes;
-// </Trauma>
+// </Ratbite>
 using Content.Shared.Actions; // upstream's imports follow...
 ...
 ```
@@ -99,12 +99,12 @@ using Content.Shared.Actions; // upstream's imports follow...
   id: MobHuman
   name: Urist McHands
   components:
-  # <Trauma>
+  # <Ratbite>
   - type: Mutatable
     ...
   - type: Skinnable
     ...
-  # </Trauma>
+  # </Ratbite>
   - type: ... # upstream's components below
 ```
 

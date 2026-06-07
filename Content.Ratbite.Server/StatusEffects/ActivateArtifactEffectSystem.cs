@@ -11,9 +11,9 @@ using Content.Shared.Coordinates;
 
 namespace Content.Server._Shitmed.StatusEffects;
 
-public sealed class ActivateArtifactEffectSystem : EntitySystem
+public sealed partial class ActivateArtifactEffectSystem : EntitySystem
 {
-    [Dependency] private readonly XenoArtifactSystem _artifact = default!;
+    [Dependency] private XenoArtifactSystem _artifact = default!;
     public override void Initialize()
     {
         SubscribeLocalEvent<ActivateArtifactEffectComponent, ComponentInit>(OnInit);

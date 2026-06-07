@@ -1,4 +1,4 @@
-namespace Content.Shared._BRatbite.EmpGlove;
+namespace Content.Ratbite.Shared.EmpGlove;
 
 /// <summary>
 /// This is used for...

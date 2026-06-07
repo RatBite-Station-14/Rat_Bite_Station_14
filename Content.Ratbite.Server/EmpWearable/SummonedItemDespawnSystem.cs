@@ -1,16 +1,16 @@
-using Content.Shared._BRatbite.EmpGlove;
+using Content.Ratbite.Shared.EmpGlove;
 using Content.Shared.Actions;
 using Content.Shared.Interaction;
 
-namespace Content.Server._BRatbite.EmpWearable;
+namespace Content.Ratbite.Server.EmpWearable;
 
 /// <summary>
 /// This handles despawning a summoned item after it has been used.
 /// Also manages starting the action cooldown after item usage.
 /// </summary>
-public sealed class SummonedItemDespawnSystem : EntitySystem
+public sealed partial class SummonedItemDespawnSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
+    [Dependency] private SharedActionsSystem _actionsSystem = default!;
     /// <inheritdoc/>
     public override void Initialize()
     {

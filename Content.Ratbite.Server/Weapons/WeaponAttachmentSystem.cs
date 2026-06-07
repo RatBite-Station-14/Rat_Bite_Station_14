@@ -9,10 +9,10 @@ using Content.Shared.Toggleable;
 
 namespace Content.Ratbite.Server.Weapons;
 
-public sealed class WeaponAttachmentSystem : SharedWeaponAttachmentSystem
+public sealed partial class WeaponAttachmentSystem : SharedWeaponAttachmentSystem
 {
-    [Dependency] private readonly SharedHandheldLightSystem _handheldLight = default!;
-    [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private SharedHandheldLightSystem _handheldLight = default!;
+    [Dependency] private ItemSlotsSystem _itemSlots = default!;
 
     public override void Initialize()
     {

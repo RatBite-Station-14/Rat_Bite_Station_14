@@ -1,4 +1,4 @@
-using Content.Shared._BRatbite.EmpGlove;
+using Content.Ratbite.Shared.EmpGlove;
 using Content.Shared.Actions;
 using Content.Shared.Hands.EntitySystems;
 
@@ -8,10 +8,10 @@ namespace Content.Ratbite.Server.EmpWearable;
 /// This handles spawning in items for wearables.
 /// Functions very similarly to mansus grasp, but can take any entity.
 /// </summary>
-public sealed class ItemSummoningWearableSystem : EntitySystem
+public sealed partial class ItemSummoningWearableSystem : EntitySystem
 {
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private ActionContainerSystem _actionContainer = default!;
     /// <inheritdoc/>
     public override void Initialize()
     {

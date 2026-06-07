@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Ratbite.Shared.Abilities;
-using Content.Ratbite.Shared.CCVars;
+using Content.Trauma.Common.CCVar;
 using Robust.Client.Graphics;
 using Robust.Shared.Configuration;
 using Robust.Shared.Player;
@@ -10,9 +10,9 @@ namespace Content.Ratbite.Client.Overlays;
 
 public sealed partial class UltraVisionSystem : EntitySystem
 {
-    [Dependency] private readonly IOverlayManager _overlayMan = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly ISharedPlayerManager _playerMan = default!;
+    [Dependency] private IOverlayManager _overlayMan = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private ISharedPlayerManager _playerMan = default!;
 
     private UltraVisionOverlay _overlay = default!;
 
@@ -25,14 +25,14 @@ public sealed partial class UltraVisionSystem : EntitySystem
         SubscribeLocalEvent<UltraVisionComponent, LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<UltraVisionComponent, LocalPlayerDetachedEvent>(OnPlayerDetached);
 
-        Subs.CVar(_cfg, DCCVars.NoVisionFilters, OnNoVisionFiltersChanged);
+        Subs.CVar(_cfg, TraumaCVars.NoVisionFilters, OnNoVisionFiltersChanged);
 
         _overlay = new();
     }
 
     private void OnUltraVisionInit(EntityUid uid, UltraVisionComponent component, ComponentInit args)
     {
-        if (uid == _playerMan.LocalEntity && !_cfg.GetCVar(DCCVars.NoVisionFilters))
+        if (uid == _playerMan.LocalEntity && !_cfg.GetCVar(TraumaCVars.NoVisionFilters))
             _overlayMan.AddOverlay(_overlay);
     }
 
@@ -44,7 +44,7 @@ public sealed partial class UltraVisionSystem : EntitySystem
 
     private void OnPlayerAttached(EntityUid uid, UltraVisionComponent component, LocalPlayerAttachedEvent args)
     {
-        if (!_cfg.GetCVar(DCCVars.NoVisionFilters))
+        if (!_cfg.GetCVar(TraumaCVars.NoVisionFilters))
             _overlayMan.AddOverlay(_overlay);
     }
 

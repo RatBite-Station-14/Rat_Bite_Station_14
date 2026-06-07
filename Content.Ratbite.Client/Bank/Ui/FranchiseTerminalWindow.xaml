@@ -1,0 +1,76 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+        xmlns:controls="using:Content.Client.UserInterface.Controls"
+        Title="Corporate Franchise Console"
+        MinSize="850 500"
+        SetSize="850 500">
+    <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="8">
+
+        <BoxContainer Name="SelectionScreen" Orientation="Vertical" SeparationOverride="12" VerticalExpand="True" HorizontalExpand="True">
+            <Label Text="Initialize Commercial Hub Framework Network Node" StyleClasses="LabelHeading" HorizontalAlignment="Center"/>
+            <Label Text="Select an approved corporate identity structure profile to bind this terminal node location:" StyleClasses="LabelSubText" HorizontalAlignment="Center"/>
+
+            <ScrollContainer VerticalExpand="True" HorizontalExpand="True" MaxWidth="400" HorizontalAlignment="Center">
+                <BoxContainer Name="FranchiseSelectionContainer" Orientation="Vertical" SeparationOverride="6"/>
+            </ScrollContainer>
+
+            <Button Name="EstablishFranchiseButton" Text="ESTABLISH CORPORATE NODE" StyleClasses="Caution" MinSize="250 40" HorizontalAlignment="Center"/>
+        </BoxContainer>
+
+        <BoxContainer Name="DashboardScreen" Orientation="Horizontal" SeparationOverride="12" VerticalExpand="True" Visible="False">
+
+            <BoxContainer Orientation="Vertical" SeparationOverride="6" HorizontalExpand="True" MinSize="260 0">
+                <PanelContainer StyleClasses="PanelDark" MinSize="0 30">
+                    <Label Text="DIVISION ROSTER &amp; PAYROLL" Margin="4" HorizontalAlignment="Center"/>
+                </PanelContainer>
+                <ScrollContainer VerticalExpand="True">
+                    <BoxContainer Name="WorkersListContainer" Orientation="Vertical" SeparationOverride="6" HorizontalExpand="True"/>
+                </ScrollContainer>
+            </BoxContainer>
+
+            <Control VerticalExpand="True"/>
+
+            <BoxContainer Orientation="Vertical" SeparationOverride="6" HorizontalExpand="True" MinSize="260 0">
+                <PanelContainer StyleClasses="PanelDark" MinSize="0 30">
+                    <Label Name="ObjectiveHeaderLabel" Text="CORPORATE OPERATIONAL DIRECTIVES" Margin="4" HorizontalAlignment="Center"/>
+                </PanelContainer>
+                <ScrollContainer VerticalExpand="True">
+                    <BoxContainer Name="ObjectivesListContainer" Orientation="Vertical" SeparationOverride="8" HorizontalExpand="True"/>
+                </ScrollContainer>
+            </BoxContainer>
+
+            <Control HorizontalExpand="True"/>
+
+            <BoxContainer Orientation="Vertical" SeparationOverride="8" MinSize="240 0">
+                <PanelContainer StyleClasses="PanelDark" MinSize="0 30">
+                    <Label Text="TREASURY INTERFACE TRUCKING" Margin="4" HorizontalAlignment="Center"/>
+                </PanelContainer>
+
+                <BoxContainer Orientation="Vertical" SeparationOverride="4" Margin="4">
+                    <BoxContainer Orientation="Horizontal">
+                        <Label Text="Account Line: " FontColorOverride="#A0A0A0"/>
+                        <Label Name="AccountLabel" Text="UNLINKED" StyleClasses="MonospaceLabel"/>
+                    </BoxContainer>
+                    <BoxContainer Orientation="Horizontal">
+                        <Label Text="Liquid Cash Vault: " FontColorOverride="#A0A0A0"/>
+                        <Label Name="BalanceLabel" Text="0" StyleClasses="MonospaceLabel" FontColorOverride="#32CD32"/>
+                        <Label Text=" Credits" FontColorOverride="#A0A0A0"/>
+                    </BoxContainer>
+                </BoxContainer>
+
+                <Control VerticalExpand="True"/>
+
+                <BoxContainer Orientation="Vertical" SeparationOverride="6" Margin="0 4">
+                    <Label Text="Route Company Bank ID:" StyleClasses="LabelSubText"/>
+                    <LineEdit Name="CompanyAccountInput" PlaceHolder="Corporate Routing ID" HorizontalExpand="True"/>
+
+                    <Label Text="Network Access Password:" StyleClasses="LabelSubText"/>
+                    <LineEdit Name="CompanyPasswordInput" PlaceHolder="********" HorizontalExpand="True"/>
+                </BoxContainer>
+
+                <Control VerticalExpand="True"/>
+                <Button Name="UpdateAccountButton" Text="SYNC VAULT SECURITY" MinSize="0 35"/>
+            </BoxContainer>
+
+        </BoxContainer>
+    </BoxContainer>
+</controls:FancyWindow>

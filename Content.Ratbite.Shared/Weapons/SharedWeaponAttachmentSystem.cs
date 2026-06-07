@@ -15,10 +15,10 @@ namespace Content.Ratbite.Shared.Weapons;
 
 public abstract partial class SharedWeaponAttachmentSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
-    [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private ActionContainerSystem _actionContainer = default!;
+    [Dependency] private ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
     private static readonly ProtoId<DamageTypePrototype> Slash = "Slash";
     private static readonly ProtoId<DamageTypePrototype> Blunt = "Blunt";

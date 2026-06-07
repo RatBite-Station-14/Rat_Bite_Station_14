@@ -8,9 +8,9 @@ namespace Content.Ratbite.Shared.FiringPin;
 /// <summary>
 /// This handles whether a weapon with a FiringPinComponent should be allowed to fire
 /// </summary>
-public sealed class FiringPinSystem : EntitySystem
+public sealed partial class FiringPinSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     /// <inheritdoc/>
     public override void Initialize()

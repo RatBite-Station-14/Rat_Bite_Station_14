@@ -10,15 +10,14 @@ using Robust.Shared.Player;
 namespace Content.Ratbite.Server.PermaBrig;
 
 /// <summary>
-/// Handles getting and setting values in database for perma sentences
-/// Modified version of GoobStations ServerCurrencyManager
+/// Handles getting and setting values in database for perma sentences. Modified version of GoobStations ServerCurrencyManager.
 /// </summary>
-public sealed class PermaBrigManager
+public sealed partial class PermaBrigManager
 {
-    [Dependency] private readonly IServerDbManager _db = default!;
-    [Dependency] private readonly ITaskManager _task = default!;
-    //[Dependency] private readonly IEntityManager _entManager = default!;
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+    [Dependency] private IServerDbManager _db = default!;
+    [Dependency] private ITaskManager _task = default!;
+    //[Dependency] private IEntityManager _entManager = default!;
+    [Dependency] private IAdminLogManager _adminLogger = default!;
 
     private readonly List<Task> _pendingSaveTasks = new();
 
@@ -39,9 +38,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Adds perma minutes to a player.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <param name="minutes">The number of minutes to add in perma.</param>
-    /// <returns>An integer containing the new total of minutes to serve.</returns>
     public int AddBrigTime(NetUserId userId, int minutes)
     {
         var newTotal = ModifyBrigTime(userId, minutes);
@@ -131,9 +127,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Removes perma minutes from a player.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <param name="minutes">The number of minutes to remove in perma.</param>
-    /// <returns>An integer containing the new total of minutes to serve.</returns>
     public int RemoveBrigTime(NetUserId userId, int minutes)
     {
         var newTotal = ModifyBrigTime(userId, -minutes);
@@ -144,9 +137,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Sets perma rounds for player.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <param name="minutes">The number of minutes to spend in perma</param>
-    /// <returns>An integer containing the old sentence attributed to the player.</returns>
     /// <remarks>Use the return value instead of calling <see cref="GetBrigSentence(NetUserId)"/> prior to this.</remarks>
     public int SetBrigTime(NetUserId userId, int minutes)
     {
@@ -158,8 +148,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Gets a player's perma time.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <returns>The players current time in minutes.</returns>
     public int GetBrigTime(NetUserId userId)
     {
         return Task.Run(() => GetBrigTimeAsync(userId)).GetAwaiter().GetResult();
@@ -168,8 +156,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Gets a player's perma time.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <returns>The players current time as a formatted string.</returns>
     public string GetBrigTimeLabel(NetUserId userId)
     {
         return GetTimeLabel(GetBrigTime(userId));
@@ -190,9 +176,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Sets perma rounds for player.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <param name="rounds">The number of rounds to spend in perma</param>
-    /// <returns>An integer containing the old sentence attributed to the player.</returns>
     /// <remarks>Use the return value instead of calling <see cref="GetBrigSentence(NetUserId)"/> prior to this.</remarks>
     public int SetBrigSentence(NetUserId userId, int rounds)
     {
@@ -204,8 +187,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Gets a player's perma sentence.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <returns>The players current sentence.</returns>
     public int GetBrigSentence(NetUserId userId)
     {
         return Task.Run(() => GetBrigSentenceAsync(userId)).GetAwaiter().GetResult();
@@ -214,9 +195,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Adds PPpoints to a player.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <param name="amount">The amount of PPpoints to add.</param>
-    /// <returns>An integer containing the new amount of PPpoints attributed to the player.</returns>
     public int AddPPpoints(NetUserId userId, int amount)
     {
         var newAmount = ModifyPPpoints(userId, amount);
@@ -227,9 +205,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Removes PPpoints from a player.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <param name="amount">The amount of PPpoints to remove.</param>
-    /// <returns>An integer containing the old amount of PPpoints attributed to the player.</returns>
     public int RemovePPpoints(NetUserId userId, int amount)
     {
         var oldAmount = ModifyPPpoints(userId, -amount);
@@ -240,9 +215,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Sets a player's PPpoint total.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <param name="amount">The amount of PPpoints that will be set.</param>
-    /// <returns>An integer containing the old amount of PPpoints attributed to the player.</returns>
     /// <remarks>Use the return value instead of calling <see cref="GetPPpoints(NetUserId)"/> prior to this.</remarks>
     public int SetPPpoints(NetUserId userId, int amount)
     {
@@ -254,8 +226,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Gets a player's PPpoint total.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <returns>The players PPpoint total.</returns>
     public int GetPPpoints(NetUserId userId)
     {
         return Task.Run(() => GetPPpoints(userId)).GetAwaiter().GetResult();
@@ -266,9 +236,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Modifies a player's brig time.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <param name="amountDelta">The time in minutes to add to the perma sentence</param>
-    /// <returns>An integer containing the additional minutes in perma.</returns>
     /// <remarks>Use the return value instead of calling <see cref="GetBrigSentence(NetUserId)"/> after to this.</remarks>
     private int ModifyBrigTime(NetUserId userId, int amountDelta)
     {
@@ -285,9 +252,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Sets a player's brig time.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <param name="amount">The number of minutes in perma to set.</param>
-    /// <param name="oldAmount">The number of minutes originally set.</param>
     /// <remarks>This and its classes will block server shutdown until execution finishes.</remarks>
     private async Task SetBrigTimeAsyncInternal(NetUserId userId, int amount, int oldAmount)
     {
@@ -299,9 +263,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Sets a player's brig sentence.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <param name="amount">he number of minutes in perma to set.</param>
-    /// <returns>The number of rounds originally set.</returns>
     /// <remarks>Use the return value instead of calling <see cref="GetBrigSentence(NetUserId)"/> prior to this.</remarks>
     private async Task<int> SetBrigTimeAsync(NetUserId userId, int amount)
     {
@@ -314,16 +275,11 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Gets the number of rounds a player needs to serve in perma.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <returns>An integer containing the rounds left to serve.</returns>
     private async Task<int> GetBrigTimeAsync(NetUserId userId) => await _db.GetPermaTimeLeft(userId);
 
     /// <summary>
     /// Modifies a player's sentence.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <param name="amountDelta">The time in minutes to add to the perma sentence</param>
-    /// <returns>An integer containing the additional rounds in perma.</returns>
     /// <remarks>This and its classes will block server shutdown until execution finishes.</remarks>
     private async Task<int> ModifyBrigTimeAsync(NetUserId userId, int amountDelta)
     {
@@ -335,9 +291,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Sets a player's brig sentence.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <param name="amount">The number of rounds in perma to set.</param>
-    /// <param name="oldAmount">The number of rounds originally set.</param>
     /// <remarks>This and its classes will block server shutdown until execution finishes.</remarks>
     private async Task SetBrigSentenceAsyncInternal(NetUserId userId, int amount, int oldAmount)
     {
@@ -349,9 +302,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Sets a player's brig sentence.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <param name="amount">he number of rounds in perma to set.</param>
-    /// <returns>The number of rounds originally set.</returns>
     /// <remarks>Use the return value instead of calling <see cref="GetBrigSentence(NetUserId)"/> prior to this.</remarks>
     private async Task<int> SetBrigSentenceAsync(NetUserId userId, int amount)
     {
@@ -364,16 +314,11 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Gets the number of rounds a player needs to serve in perma.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <returns>An integer containing the rounds left to serve.</returns>
     private async Task<int> GetBrigSentenceAsync(NetUserId userId) => await _db.GetPermaRoundsLeft(userId);
 
     /// <summary>
     /// Modifies a player's sentence.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <param name="amountDelta">The rounds in perma that will to add.</param>
-    /// <returns>An integer containing the additional rounds in perma.</returns>
     /// <remarks>This and its classes will block server shutdown until execution finishes.</remarks>
     private async Task<int> ModifyBrigSentenceAsync(NetUserId userId, int amountDelta)
     {
@@ -385,9 +330,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Modifies a player's PPpoints total.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <param name="amountDelta">The PPpoints to add.</param>
-    /// <returns>An integer containing the new PPpoints.</returns>
     /// <remarks>Use the return value instead of calling <see cref="GetPPpoints(NetUserId)"/> after to this.</remarks>
     private int ModifyPPpoints(NetUserId userId, int amountDelta)
     {
@@ -398,9 +340,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Sets a player's PPpoints total.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <param name="amount">The number of PPpoints to set.</param>
-    /// <param name="oldAmount">The number of PPpoints originally set.</param>
     /// <remarks>This and its classes will block server shutdown until execution finishes.</remarks>
     private async Task SetPPpointsAsyncInternal(NetUserId userId, int amount, int oldAmount)
     {
@@ -412,9 +351,6 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Sets a player's PPpoints total.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <param name="amount">he number of PPpoints set.</param>
-    /// <returns>The number of PPpoints originally set.</returns>
     /// <remarks>Use the return value instead of calling <see cref="GetPPpoints(NetUserId)"/> prior to this.</remarks>
     private async Task<int> SetPPpointsAsync(NetUserId userId, int amount)
     {
@@ -427,16 +363,12 @@ public sealed class PermaBrigManager
     /// <summary>
     /// Gets the number of PPpoints a player has.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
     /// <returns>An integer containing the PPpoints total.</returns>
     private async Task<int> GetPPpointsAsync(NetUserId userId) => await _db.GetPPpoints(userId);
 
     /// <summary>
     /// Modifies a player's PPpoints total.
     /// </summary>
-    /// <param name="userId">The player's NetUserId</param>
-    /// <param name="amountDelta">The amount of PPpoints that will be given or taken.</param>
-    /// <returns>An integer containing the new amount of PPpoints attributed to the player.</returns>
     /// <remarks>This and its classes will block server shutdown until execution finishes.</remarks>
     private async Task<int> ModifyPPpointsAsync(NetUserId userId, int amountDelta)
     {

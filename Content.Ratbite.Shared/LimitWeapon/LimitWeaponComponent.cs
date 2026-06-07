@@ -1,7 +1,7 @@
 using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._BRatbite.LimitWeapon;
+namespace Content.Ratbite.Shared.LimitWeapon;
 
 /// <summary>
 /// This is used for...
