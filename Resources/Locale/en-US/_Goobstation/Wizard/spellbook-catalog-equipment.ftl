@@ -60,12 +60,12 @@ spellbook-staff-healing-desc =
 spellbook-staff-change-name = Staff of Change
 spellbook-staff-change-desc =
     An artefact that spits bolts of coruscating energy which cause the target's very form to reshape itself.
-    Automatically recharges once every 8 seconds.
+    Automatically recharges once every 15 seconds.
 
 spellbook-staff-chaos-name = Staff of Chaos
 spellbook-staff-chaos-desc =
     A caprious tool that can fire all sorts of magic without any rhyme or reason. Using it on people you care about is not recommended.
-    Automatically recharges once every 2 seconds.
+    Automatically recharges once every 4 seconds.
 
 spellbook-staff-slipping-name = Staff of Slipping
 spellbook-staff-slipping-desc =
@@ -83,17 +83,6 @@ spellbook-wand-desc =
 spellbook-ninjutsu-name = Ninjutsu Scroll
 spellbook-ninjutsu-desc =
     A scroll that teaches one Ninjutsu, a martial art and set of tactics used by ninja in feudal Japan.
-    Cannot be refunded.
-
-spellbook-hell-rip-name = Hell Ripte Scroll
-spellbook-hell-rip-desc =
-    A scroll that teaches one Hell Ripte, a martial art and set of tactics used by Slaughter Demons.
-    Buying this and Bottle of Blood unlocks purchasing a special slaughter demon heart.
-    Cannot be refunded.
-
-spellbook-demon-heart-name = Heart of the Demon
-spellbook-demon-heart-desc =
-    Upon use, implants itself in your body, granting you slaughter demon blood crawl demonic whisper and the ability to devour bodies to regenerate health.
     Cannot be refunded.
 
 spellbook-staff-animate-name = Staff of Animation

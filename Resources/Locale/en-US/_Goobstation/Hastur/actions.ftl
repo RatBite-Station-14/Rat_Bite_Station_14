@@ -18,6 +18,6 @@ hastur-announcement = The King is watching. It's time for you to perform.
 ghost-role-information-hastur-name-token = The King in Yellow (Token)
 ghost-role-information-hastur-name = The King in Yellow
 ghost-role-information-hastur-description = ????
-ghost-role-information-hastur-rules =  You are [color=yellow]???[/color]. 
+ghost-role-information-hastur-rules =  You are [color=yellow]???[/color].
 hastur-round-end-agent-name = ????
 hastur-role-greeting = I am the [color=yellow]King[/color]. Fear the unknown.

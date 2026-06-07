@@ -10,11 +10,14 @@
 job-name-futureagent = Future Agent
 job-name-salvagediver = Salvage Diver
 job-name-ntr = Nanotrasen Representative
-job-name-bs = Blueshield
-job-name-overall = Overall
 job-name-tider = Tider
 
 job-name-exec = Executive Access
+
+# event-resctricted jobs
+job-name-security-clown = Security Clown
+job-name-command-maid = Command Maid
+job-name-party-maker = Party Maker
 
 # Navy Stuff
 
@@ -23,7 +26,6 @@ job-name-navy-officer-undercover = Undercover Navy Officer
 job-name-navy-captain = Navy Captain
 job-name-diplomat = Diplomat
 job-name-inspector = Central Command Auditor
-job-name-nct = Nanotrasen Career Trainer
 
 # Syndicate
 
@@ -39,12 +41,12 @@ job-name-governmentman = The G-Man
 job-name-conquest = Conquest
 job-name-mercenarycaptain = Mercenary Captain
 job-name-radiohost = Radio Host
+job-name-phonemerchant = Phone Merchant
 
 # Role timers - Make these alphabetical or I cut you (dont listen to upstream, i copied and pasted this, make it very un-alphabetical :godo:)
 
-JobBlueshieldOfficer = Blueshield Officer
+JobCommandMaid = Command Maid
 JobNanotrasenRepresentative = Nanotrasen Representative
-JobNanotrasenCareerTrainer = Nanotrasen Career Trainer
 JobHecuOperative = HECU Operative
 JobNavyOfficer = Navy Officer
 JobNavyOfficerUndercover = Undercover Navy Officer
@@ -54,6 +56,8 @@ JobGovernmentMan = The G-Man
 JobConquest = Conquest
 JobInspector = Central Command Auditor
 JobMercenaryCaptain = Mercenary Captain
+JobPartyMaker = Party Maker
 JobRoboticist = Roboticist
 JobRadioHost = Radio Host
+JobSecurityClown = Security Clown
 JobVirologist = Virologist

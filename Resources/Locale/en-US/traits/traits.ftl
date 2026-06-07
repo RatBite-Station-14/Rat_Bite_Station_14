@@ -61,7 +61,7 @@ trait-pirate-accent-name = Pirate accent
 trait-pirate-accent-desc = You can't stop speaking like a pirate!
 
 trait-accentless-name = Accentless
-trait-accentless-desc = You don't have the accent that your species would usually have
+trait-accentless-desc = You don't have the accent that your species would usually have.
 
 trait-frontal-lisp-name = Frontal lisp
 trait-frontal-lisp-desc = You thpeak with a lithp.
@@ -104,3 +104,9 @@ trait-newyork-desc = You speak with a thick New York accent. I'm fuckin' walkin'
 
 trait-british-name = British accent
 trait-british-desc = You speak proper, unlike those bloody yanks.
+
+trait-hemophilia-name = Hemophilia
+trait-hemophilia-desc = Your body fails to make blood clots.
+
+trait-impaired-mobility-name = Impaired Mobility
+trait-impaired-mobility-desc = You have difficulty moving without a mobility aid.
