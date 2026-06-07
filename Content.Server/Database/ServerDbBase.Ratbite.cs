@@ -115,4 +115,43 @@ public abstract partial class ServerDbBase
     }
 
     #endregion
+
+    public async Task<int> GetShitcoins(NetUserId userId)
+    {
+        await using var db = await GetDb();
+
+        return await db.DbContext.Player
+            .Where(dbPlayer => dbPlayer.UserId == userId)
+            .Select(dbPlayer => dbPlayer.Shitcoins)
+            .SingleOrDefaultAsync();
+    }
+
+    public async Task SetShitcoins(NetUserId userId, int currency)
+    {
+        await using var db = await GetDb();
+
+        var dbPlayer = await db.DbContext.Player.Where(dbPlayer => dbPlayer.UserId == userId).SingleOrDefaultAsync();
+        if (dbPlayer == null)
+            return;
+
+        dbPlayer.Shitcoins = currency;
+        await db.DbContext.SaveChangesAsync();
+    }
+
+    public async Task<int> ModifyShitcoins(NetUserId userId, int currencyDelta)
+    {
+        await using var db = await GetDb();
+
+        var dbPlayer = await db.DbContext.Player.Where(dbPlayer => dbPlayer.UserId == userId).SingleOrDefaultAsync();
+        if (dbPlayer == null)
+            return 0;
+
+        var oldShitcoins = dbPlayer.Shitcoins;
+        dbPlayer.Shitcoins = Math.Clamp(oldShitcoins + currencyDelta, 0, 100000);
+        var actualDelta = dbPlayer.Shitcoins - oldShitcoins;
+        if (actualDelta == 0)
+            return 0;
+        await db.DbContext.SaveChangesAsync();
+        return actualDelta;
+    }
 }

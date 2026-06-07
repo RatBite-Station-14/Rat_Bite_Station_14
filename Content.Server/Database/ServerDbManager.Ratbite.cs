@@ -14,6 +14,9 @@ public partial interface IServerDbManager
     Task<int> GetPPpoints(NetUserId userId);
     Task SetPPpoints(NetUserId userId, int brigSentence);
     Task<int> ModifyPPpoints(NetUserId userId, int brigSentence);
+    Task<int> GetShitcoins(NetUserId userId);
+    Task SetShitcoins(NetUserId userId, int permaSentence);
+    public Task<int> ModifyShitcoins(NetUserId userId, int permaSentence);
 }
 
 public partial class ServerDbManager
@@ -70,5 +73,23 @@ public partial class ServerDbManager
     {
         DbReadOpsMetric.Inc();
         return RunDbCommand(() => _db.ModifyPPpoints(userId, permaSentence));
+    }
+
+    public Task<int> GetShitcoins(NetUserId userId)
+    {
+        DbReadOpsMetric.Inc();
+        return RunDbCommand(() => _db.GetShitcoins(userId));
+    }
+
+    public Task SetShitcoins(NetUserId userId, int permaSentence)
+    {
+        DbReadOpsMetric.Inc();
+        return RunDbCommand(() => _db.SetShitcoins(userId, permaSentence));
+    }
+
+    public Task<int> ModifyShitcoins(NetUserId userId, int permaSentence)
+    {
+        DbReadOpsMetric.Inc();
+        return RunDbCommand(() => _db.ModifyShitcoins(userId, permaSentence));
     }
 }

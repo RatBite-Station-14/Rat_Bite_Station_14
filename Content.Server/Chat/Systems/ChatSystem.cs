@@ -33,7 +33,6 @@ using Content.Shared.Players;
 using Content.Shared.Players.RateLimiting;
 using Content.Shared.Radio;
 using Content.Shared.Station.Components;
-using Content.Shared.Whitelist;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -56,26 +55,27 @@ namespace Content.Server.Chat.Systems;
 public sealed partial class ChatSystem : SharedChatSystem
 {
     // <Trauma>
-    [Dependency] private readonly CommonGhostVisibilitySystem _ghostVisibility = default!;
-    [Dependency] private readonly CommonScryingOrbSystem _scrying = default!;
-    [Dependency] private readonly CollectiveMindUpdateSystem _collectiveMind = default!;
-    [Dependency] private readonly CommonLanguageSystem _language = default!;
+    [Dependency] private CommonGhostVisibilitySystem _ghostVisibility = default!;
+    [Dependency] private CommonScryingOrbSystem _scrying = default!;
+    [Dependency] private CollectiveMindUpdateSystem _collectiveMind = default!;
+    [Dependency] private CommonLanguageSystem _language = default!;
     // </Trauma>
-    [Dependency] private readonly IReplayRecordingManager _replay = default!;
-    [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-    [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly IChatSanitizationManager _sanitizer = default!;
-    [Dependency] private readonly IAdminManager _adminManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
-    [Dependency] private readonly StationSystem _stationSystem = default!;
-    [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly ReplacementAccentSystem _wordreplacement = default!;
-    [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
+    [Dependency] private IReplayRecordingManager _replay = default!;
+    [Dependency] private IConfigurationManager _configurationManager = default!;
+    [Dependency] private IChatManager _chatManager = default!;
+    [Dependency] private IChatSanitizationManager _sanitizer = default!;
+    [Dependency] private IAdminManager _adminManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private ActionBlockerSystem _actionBlocker = default!;
+    [Dependency] private StationSystem _stationSystem = default!;
+    [Dependency] private MobStateSystem _mobStateSystem = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private ReplacementAccentSystem _wordreplacement = default!;
+    [Dependency] private ExamineSystemShared _examineSystem = default!;
+    [Dependency] private EntityQuery<GhostHearingComponent> _ghostHearingQuery = default!;
 
     public readonly Color DefaultSpeakColor = Color.White; // Einstein Engines - Language
 
@@ -570,7 +570,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         // The chat message wrapped in a "x says y" string.
         var wrappedMessage = WrapPublicMessage(source, name, message, speech, language: language, colorOverride);
         // The chat message obfuscated via language obfuscation.
-        var obfuscated = SanitizeInGameICMessage(source, _language.ObfuscateSpeech(message, language), out var emoteStr, true, _configurationManager.GetCVar(CCVars.ChatPunctuation),
+        var obfuscated = SanitizeInGameICMessage(source, _language.ObfuscateSpeech(message, language, source), out var emoteStr, true, _configurationManager.GetCVar(CCVars.ChatPunctuation),
         (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en")
         || (CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Name == "en"));
         // The language-obfuscated message wrapped in a "x says y" string.
@@ -662,7 +662,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             name = FormattedMessage.EscapeText(nameOverride ?? Name(ent));
         }
 
-        var languageObfuscatedMessage = SanitizeInGameICMessage(source, _language.ObfuscateSpeech(message, language), out var emoteStr, true, _configurationManager.GetCVar(CCVars.ChatPunctuation),
+        var languageObfuscatedMessage = SanitizeInGameICMessage(source, _language.ObfuscateSpeech(message, language, source), out var emoteStr, true, _configurationManager.GetCVar(CCVars.ChatPunctuation),
         (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en")
         || (CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Name == "en")); // Einstein Engines - Language
 
@@ -1112,7 +1112,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         var verbId = language.SpeechOverride.SpeechVerbOverrides is { } verbsOverride
             ? _random.Pick(verbsOverride).ToString()
-            : (speech is null ? string.Empty : _random.Pick(speech.SpeechVerbStrings));
+            : (speech is null ? "chat-speech-verb-default" : _random.Pick(speech.SpeechVerbStrings));
         var color = DefaultSpeakColor;
         colorOverride ??= language.SpeechOverride.Color;
         if (colorOverride != null)
@@ -1169,10 +1169,8 @@ public sealed partial class ChatSystem : SharedChatSystem
         // TODO proper speech occlusion
 
         var recipients = new Dictionary<ICommonSession, ICChatRecipientData>();
-        var ghostHearing = GetEntityQuery<GhostHearingComponent>();
-        var xforms = GetEntityQuery<TransformComponent>();
 
-        var transformSource = xforms.GetComponent(source);
+        var transformSource = Transform(source);
         var sourceMapId = transformSource.MapID;
         var sourceCoords = transformSource.Coordinates;
 
@@ -1181,12 +1179,12 @@ public sealed partial class ChatSystem : SharedChatSystem
             if (player.AttachedEntity is not { Valid: true } playerEntity)
                 continue;
 
-            var transformEntity = xforms.GetComponent(playerEntity);
+            var transformEntity = Transform(playerEntity);
 
             if (transformEntity.MapID != sourceMapId)
                 continue;
 
-            var observer = ghostHearing.HasComponent(playerEntity);
+            var observer = _ghostHearingQuery.HasComponent(playerEntity);
 
             // Floofstation - Check Line-Of-Sight begin
             sourceCoords.TryDistance(EntityManager, transformEntity.Coordinates, out var distance);

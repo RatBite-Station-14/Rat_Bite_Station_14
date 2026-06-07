@@ -43,6 +43,7 @@
                                     </BoxContainer>
                                 </controls:StripeBack>
                                 <RichTextLabel Name="PlaytimeComment" Visible="False" Access="Public" HorizontalAlignment="Center" />
+                                <!-- <BoxContainer x:Name="RoundstartMoney" Access="Public" MinHeight="30"/> Ratbite - Added Roundstart money-->
                             </BoxContainer>
                         </PanelContainer>
                         <!-- Voting Popups -->
