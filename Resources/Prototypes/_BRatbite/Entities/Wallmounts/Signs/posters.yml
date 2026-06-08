@@ -1,0 +1,28 @@
+# SPDX-FileCopyrightText: 2024 LevitatingTree <114672939+LevitatingTree@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 LevitatingTree <None>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 BeeRobynn <166929042+BeeRobynn@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Posters
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitGoobWorkHard
+  name: "Work Hard"
+  description: "If you work hard enough, YOU could earn your very own Nanotrasen Plunger Plus! Just be sure to survive long enough to redeem it!.."
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Structures/posters.rsi
+    state: goob_poster1_legit
+
+- type: entity
+  parent: PosterBase
+  id: PrayPoster
+  name: "Praying Clown Poster"
+  description: "A poster made with crayons displaying an image of a clown with the word PRAY written on it." 
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Structures/Wallmounts/posters.rsi #made by eirin
+    state: posterpray
+
