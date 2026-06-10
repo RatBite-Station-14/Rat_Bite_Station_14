@@ -194,7 +194,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
 
         if (comp.StripDelay == null)
             return;
-        var (time, stealth, _) = _strippable.GetStripTimeModifiers(user, wearer, acomp.AttachedUid, comp.StripDelay.Value*3/4); // 3/4's of toggleable
+        var (time, stealth, _) = _strippable.GetStripTimeModifiers(user, wearer, acomp.AttachedUid, comp.StripDelay.Value * 3 / 4); // 3/4's of toggleable
 
         var args = new DoAfterArgs(EntityManager, user, time, new AttachClothingDoAfterEvent(), attached, wearer, attached)
         {
@@ -246,7 +246,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
     }
 
     public bool IsToggled(Entity<ToggleableClothingComponent> ent, EntityUid clothing) // Goobstation
-///
+    ///
     {
         return !ent.Comp.Container.Contains(clothing);
     }
@@ -530,13 +530,14 @@ public sealed class ToggleableClothingSystem : EntitySystem
     /// </summary>
     private void ToggleClothing(EntityUid user, Entity<ToggleableClothingComponent> toggleable, EntityUid attachedUid)
     {
+        // Ratbite: put check at the start to fix unequip
+        if (!CanToggleClothing(user, toggleable, false))
+            return;
+
         var suitStorageItem = FindSuitStorage(user);
         var comp = toggleable.Comp;
         var attachedClothings = comp.ClothingUids;
         var container = comp.Container;
-
-        if (!CanToggleClothing(user, toggleable, false))
-            return;
 
         if (!attachedClothings.TryGetValue(attachedUid, out var slot) || string.IsNullOrEmpty(slot))
             return;
@@ -629,7 +630,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
         var storedClothing = attachedComp.ClothingContainer.ContainedEntity;
 
         if (storedClothing != null)
-            _inventorySystem.TryEquip(parent, storedClothing.Value, slot, force: true, triggerHandContact: true, silent:true);
+            _inventorySystem.TryEquip(parent, storedClothing.Value, slot, force: true, triggerHandContact: true, silent: true);
     }
     public bool EquipClothing(EntityUid user, Entity<ToggleableClothingComponent> toggleable, EntityUid clothing, string slot, bool silent = false) // Goobstation
     {
