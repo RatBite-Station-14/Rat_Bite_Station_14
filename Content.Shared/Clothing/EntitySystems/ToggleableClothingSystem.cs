@@ -308,6 +308,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
 
         var parts = comp.ClothingUids;
         var affectedParts = new List<(EntityUid, string)>();
+        var suitStorageItem = FindSuitStorage(args.Equipee);
 
         // if your toggleable clothing is a backslot and gets forcefully removed i.e. gibbing, Robust likes to forcefully eject the container(s)
         // you can try this by making a regular outerclothing item a back item with VV and equipping the toggle, then smiting yourself
@@ -340,8 +341,10 @@ public sealed class ToggleableClothingSystem : EntitySystem
                 var ev = new ToggledBackClothingFullUnequipAndInsertedEvent(toggleable.Owner, args.Equipee, affectedParts);
                 RaiseLocalEvent(toggleable.Owner, ref ev);
             }
+            ForceSuitStorage(args.Equipee, suitStorageItem);
             return;
         }
+
 
         foreach (var (partUid, slot) in parts)
         {
@@ -350,6 +353,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
 
             _inventorySystem.TryUnequip(args.Equipee, slot, force: true, triggerHandContact: true);
         }
+        ForceSuitStorage(args.Equipee, suitStorageItem);
     }
 
     private void OnRemoveToggleable(Entity<ToggleableClothingComponent> toggleable, ref ComponentRemove args)
@@ -545,13 +549,12 @@ public sealed class ToggleableClothingSystem : EntitySystem
         if (!container!.Contains(attachedUid))
         {
             UnequipClothing(user, toggleable, attachedUid, slot!);
-            ForceSuitStorage(user, suitStorageItem);
         }
         else
         {
             EquipClothing(user, toggleable, attachedUid, slot!);
-            ForceSuitStorage(user, suitStorageItem);
         }
+        ForceSuitStorage(user, suitStorageItem);
     }
 
     /// <summary>
@@ -565,14 +568,13 @@ public sealed class ToggleableClothingSystem : EntitySystem
 
         if (!CanToggleClothing(user, toggleable, true))
             return;
-
+        var suitStorageItem = FindSuitStorage(user);
         if (GetAttachedToggleStatus(user, toggleable, false, comp) == ToggleableClothingAttachedStatus.NoneToggled)
         {
             foreach (var clothing in attachedClothings)
             {
-                var suitStorageItem = FindSuitStorage(user);
                 EquipClothing(user, toggleable, clothing.Key, clothing.Value);
-                ForceSuitStorage(user, suitStorageItem);
+
             }
         }
         else
@@ -581,12 +583,11 @@ public sealed class ToggleableClothingSystem : EntitySystem
             {
                 if (!container!.Contains(clothing.Key))
                 {
-                    var suitStorageItem = FindSuitStorage(user);
                     UnequipClothing(user, toggleable, clothing.Key, clothing.Value);
-                    ForceSuitStorage(user, suitStorageItem);
                 }
             }
         }
+        ForceSuitStorage(user, suitStorageItem);
     }
 
     private bool CanToggleClothing(EntityUid user, Entity<ToggleableClothingComponent> toggleable, bool multiple)
