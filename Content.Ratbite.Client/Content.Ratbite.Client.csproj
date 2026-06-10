@@ -11,7 +11,7 @@
   <Import Project="../MSBuild/Content.props" />
   <ItemGroup>
     <ProjectReference Include="../Content.Ratbite.Shared/Content.Ratbite.Shared.csproj" />
-    <ProjectReference Include="../Content.Client/Content.Client.csproj" />
+    <ProjectReference Include="../Content.Trauma.Client/Content.Trauma.Client.csproj" />
   </ItemGroup>
 
   <Import Project="../RobustToolbox/Imports/Client.props" />

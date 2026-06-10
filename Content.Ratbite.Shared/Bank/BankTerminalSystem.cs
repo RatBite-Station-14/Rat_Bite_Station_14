@@ -101,7 +101,7 @@ public sealed partial class BankTerminalSystem : EntitySystem
             return;
         }
 
-        bank.Comp.Accounts[ent.Comp.LinkedAccount] = currentMoney - (args.Amount - _bank.PrintMoney(ent.Owner, args.Amount, _proto.Index(bank.Comp.Currency)));
+        bank.Comp.Accounts[ent.Comp.LinkedAccount] = currentMoney - (args.Amount - _bank.PrintMoney(ent.Owner, args.Amount, _proto.Index(bank.Comp.Currency), true));
         Dirty(bank);
     }
 

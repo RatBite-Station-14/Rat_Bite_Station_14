@@ -1,16 +1,11 @@
 using Content.Ratbite.Shared.Bank;
-using Content.Server.Mind;
-using Content.Server.Stack;
+using Content.Server.Preferences.Managers;
 using Content.Server.StationRecords.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Forensics.Components;
 using Content.Shared.GameTicking;
-using Content.Shared.Humanoid;
 using Content.Shared.Popups;
-using Content.Shared.Stacks;
 using Content.Shared.StationRecords;
-using Content.Shared.Store;
-using Content.Shared.Store.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 
@@ -19,30 +14,29 @@ namespace Content.Ratbite.Server.Bank;
 public sealed partial class BankSystem : SharedBankSystem
 {
     //[Dependency] private IPlayerManager _player = default!;
-    [Dependency] private MindSystem _mind = default!;
+    //[Dependency] private MindSystem _mind = default!;
     [Dependency] private BankManager _bank = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private StationRecordsSystem _records = default!;
+    [Dependency] private IServerPreferencesManager _pref = default!;
     [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IServerNetManager _net = default!;
 
     [Dependency] private EntityQuery<FingerprintComponent> _fingerQuery = default!;
     [Dependency] private EntityQuery<DnaComponent> _dnaQuery = default!;
+
+    private Dictionary<NetUserId, int> _moneyToBring = new();
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<HumanoidProfileComponent, PlayerSpawnCompleteEvent>(OnSpawn);
         SubscribeLocalEvent<PaykeyComponent, BankSendToOOCMessage>(OnSendMoneyOOC);
-    }
 
-    private void OnSpawn(Entity<HumanoidProfileComponent> ent, ref PlayerSpawnCompleteEvent args)
-    {
-        if (!_mind.TryGetMind(ent.Owner, out var mind, out var mindComp))
-            return;
-
-        GetNetEntity(mind);
+        _net.RegisterNetMessage<MsgRequestBankBalance>(OnRequestBalance);
+        _net.RegisterNetMessage<MsgUpdateLobbyBringAmount>(OnUpdateBringAmount);
+        _net.RegisterNetMessage<MsgBankBalanceResponse>();
     }
 
     private void OnSendMoneyOOC(Entity<PaykeyComponent> ent, ref BankSendToOOCMessage args)
@@ -86,6 +80,40 @@ public sealed partial class BankSystem : SharedBankSystem
             return;
         }
         _popup.PopupEntity($"{Name(args.Actor)} paid {Name(player.Owner)} {args.Amount} credits to an offshore bank account.", ent.Owner);
+    }
+
+    private void OnRequestBalance(MsgRequestBankBalance message)
+    {
+        var senderSession = message.MsgChannel.UserId;
+        var response = new MsgBankBalanceResponse { Balance = _bank.GetShitcoins(senderSession) };
+        _net.ServerSendMessage(response, message.MsgChannel);
+    }
+
+    private void OnUpdateBringAmount(MsgUpdateLobbyBringAmount message)
+    {
+        var senderSession = message.MsgChannel.UserId;
+        int clampedAmount = Math.Clamp(message.Balance, 0, _bank.GetShitcoins(senderSession));
+        var prefs = _pref.GetPreferences(senderSession);
+        foreach (var (id, character) in prefs.Characters)
+        {
+            character.Credits = clampedAmount;
+            _pref.SetProfile(senderSession, id, character);
+        }
+        _moneyToBring[senderSession] = clampedAmount;
+        Log.Info($"Player {senderSession} locked in {clampedAmount} credits for round deployment.");
+    }
+
+    public override void OnPlayerSpawnComplete(PlayerSpawnCompleteEvent ev)
+    {
+        base.OnPlayerSpawnComplete(ev);
+
+        var userId = ev.Player.UserId;
+
+        if (!_moneyToBring.Remove(userId, out var spentAmount) || spentAmount < 0)
+            return;
+
+        _bank.ModifyShitcoins(userId, -spentAmount);
+        Logger.GetSawmill("server_bank").Info($"Deducted {spentAmount} credits from persistent profile account of {ev.Player.Name} upon spawn completion.");
     }
 
     public int TransferCreditAccountsOOC(Entity<BankComponent> ent, string moneyAccount, NetUserId transferAccount, FixedPoint2 amount, FixedPoint2 conversionRate)

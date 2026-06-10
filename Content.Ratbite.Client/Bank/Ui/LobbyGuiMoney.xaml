@@ -1,0 +1,28 @@
+<BoxContainer xmlns="https://spacestation14.io"
+              Orientation="Vertical"
+              HorizontalExpand="True"
+              SeparationOverride="6"
+              Margin="6">
+
+    <PanelContainer StyleClasses="PanelDark" Margin="2">
+        <BoxContainer Orientation="Horizontal" Margin="6" SeparationOverride="12">
+
+            <BoxContainer Orientation="Horizontal" SeparationOverride="4" VerticalAlignment="Center">
+                <Label Text="OOC Balance: " FontColorOverride="#A0A0A0"/>
+                <Label Name="OOCBalanceLabel" Text="0" StyleClasses="MonospaceLabel" FontColorOverride="#E5A93C"/>
+                <Label Text=" Credits" FontColorOverride="#A0A0A0"/>
+            </BoxContainer>
+
+            <Control HorizontalExpand="True"/>
+
+            <BoxContainer Orientation="Horizontal" SeparationOverride="6" VerticalAlignment="Center">
+                <Label Text="Bring into Shift:" StyleClasses="LabelSubText" VerticalAlignment="Center"/>
+
+                <Button Name="MinusButton" Text="-" MinSize="24 24"/>
+                <LineEdit Name="BringAmountInput" Text="0" MinSize="60 24"/>
+                <Button Name="PlusButton" Text="+" MinSize="24 24"/>
+            </BoxContainer>
+
+        </BoxContainer>
+    </PanelContainer>
+</BoxContainer>

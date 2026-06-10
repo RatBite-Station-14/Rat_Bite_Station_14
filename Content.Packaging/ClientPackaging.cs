@@ -25,7 +25,7 @@ public static class ClientPackaging
                 ArgumentList =
                 {
                     "build",
-                    Path.Combine("Content.Trauma.Client", "Content.Trauma.Client.csproj"), // Trauma - Trauma.Client depends on everything
+                    Path.Combine("Content.Ratbite.Client", "Content.Ratbite.Client.csproj"), // Trauma - Trauma.Client depends on everything
                     "-c", configuration,
                     "--nologo",
                     "/v:m",
@@ -81,7 +81,7 @@ public static class ClientPackaging
 
         // <Trauma> - use DepsHandler instead of manually writing assemblies
         var sourcePath = Path.Combine(contentDir, "bin", "Content.Client");
-        var deps = DepsHandler.Load(Path.Combine(sourcePath, "Content.Trauma.Client.deps.json"));
+        var deps = DepsHandler.Load(Path.Combine(sourcePath, "Content.Ratbite.Client.deps.json"));
         var contentAssemblies = ServerPackaging.GetContentAssemblyNamesToCopy(deps, "Client");
         // </Trauma>
 

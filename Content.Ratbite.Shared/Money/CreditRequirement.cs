@@ -1,8 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Preferences;
+using Content.Shared.Roles;
 using Robust.Shared.Utility;
 
-namespace Content.Shared.Roles.Requirements;
+namespace Content.Ratbite.Shared.Roles.Requirements;
 
 [DataDefinition]
 public sealed partial class CreditRequirement : JobRequirement

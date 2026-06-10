@@ -1,6 +1,6 @@
 - type: entity
-  id: BaseSlotMachine
   parent: BaseMachinePowered
+  id: BaseSlotMachine
   name: slot machine
   abstract: true
   description: Gambling for the antisocial.
@@ -80,7 +80,6 @@
           components:
           - Cash
   - type: LanguageSpeaker # Einstein Engines - Languages
-  - type: LanguageKnowledge # Einstein Engines - Languages
     speaks:
     - TauCetiBasic
     - RobotTalk
@@ -91,8 +90,8 @@
   - type: DoAfter
 
 - type: entity
-  id: SlotMachine
   parent: BaseSlotMachine
+  id: SlotMachine
   name: slot machine
   description: Gambling for the antisocial.
   components:
@@ -123,8 +122,8 @@
         type: WiresBoundUserInterface
 
 - type: entity
-  id: SlotMachineHighRoller
   parent: BaseSlotMachine
+  id: SlotMachineHighRoller
   name: the QM's personal slot machine
   description: A high roller version of the slot machine, takes a whopping 100k per spin, but you can win 1 MILLION from it!
   components:
@@ -167,8 +166,8 @@
     godPotWinChance: .001
 
 - type: entity
-  id: CoinFlipper
   parent: BaseMachinePowered
+  id: CoinFlipper
   name: coin flipper
   description: Coinflipping for the antisocial.
   components:
@@ -258,7 +257,6 @@
           components:
           - Cash
   - type: LanguageSpeaker # Einstein Engines - Languages
-  - type: LanguageKnowledge # Einstein Engines - Languages
     speaks:
     - TauCetiBasic
     - RobotTalk
@@ -274,8 +272,8 @@
     rotateWhilePulling: true
 
 - type: entity
-  id: ClawMachine
   parent: BaseMachinePowered
+  id: ClawMachine
   name: claw machine
   description: Sure we got our health insurance benefits cut, and yeah we don't get any overtime on holidays, but hey - free to play claw machines!
   components:
@@ -366,7 +364,6 @@
   - type: DatasetVocalizer
     dataset: SlotMachineAds
   - type: LanguageSpeaker # Einstein Engines - Languages
-  - type: LanguageKnowledge # Einstein Engines - Languages
     speaks:
     - TauCetiBasic
     - RobotTalk
