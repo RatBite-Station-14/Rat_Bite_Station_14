@@ -1,0 +1,15 @@
+- type: latheRecipePack
+  id: KnivesPack
+  recipes:
+  - ButchCleaver
+  - KitchenKnife
+
+- type: latheRecipePack
+  id: CuffsPack
+  recipes:
+  - Handcuffs
+
+- type: latheRecipePack
+  id: ElectroPackPack
+  recipes:
+  - ClothingBackpackElectropack

@@ -359,6 +359,7 @@
         maxDistance: 10
         variation: 0.05
   - type: SpamEmitSoundRequirePower # Goobstation
+  - type: ManagerLatheRecipes # Ratbite. Add to all lathes so that the light works
 
 # a lathe that can be sped up with space lube / slowed down with glue
 - type: entity
@@ -460,6 +461,13 @@
     whitelist:
       tags:
       - BlueprintAutolathe
+  # ratbite
+  - type: ManagerLatheRecipes
+    managerStaticPacks:
+    - SecurityAmmoStatic
+    - CuffsPack
+    managerDynamicPacks:
+    - ElectroPackPack
   - type: ContainerContainer
     containers:
       machine_board: !type:Container
@@ -966,11 +974,15 @@
     - ClothingCommandSummer
   - type: EmagLatheRecipes
     emagStaticPacks:
-    - ClothingCentComm
-    - ClothingSyndie
+    # - ClothingCentComm # Ratbite: Move to manager wire instead
+    # - ClothingSyndie
     # Goobstation Packs
     - ClothingDurathreadArmoured
     - ClothingCasualContrabandJumpsuits
+  - type: ManagerLatheRecipes
+    managerStaticPacks:
+    - ClothingCentComm
+    - ClothingSyndie
   - type: MaterialStorage
     whitelist:
       tags:

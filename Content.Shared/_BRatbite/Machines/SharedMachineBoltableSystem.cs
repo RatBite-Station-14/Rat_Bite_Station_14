@@ -56,5 +56,6 @@ public abstract class SharedMachineBoltableSystem : EntitySystem
 public enum BoltableMachineWireStatus
 {
     BoltIndicator,
+    Manager,
 }
 
