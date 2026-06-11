@@ -13,7 +13,7 @@ public sealed partial class LatheManagerWireAction : ComponentWireAction<Manager
 
     public override StatusLightState? GetLightState(Wire wire, ManagerLatheRecipesComponent comp)
     {
-        return comp.Cut ? StatusLightState.Off : StatusLightState.On;
+        return comp.Cut ? StatusLightState.BlinkingSlow : StatusLightState.On;
     }
 
     public override object? StatusKey { get; } = BoltableMachineWireStatus.Manager;
