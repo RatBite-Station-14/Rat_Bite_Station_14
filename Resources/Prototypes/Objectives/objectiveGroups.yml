@@ -176,7 +176,7 @@
     HeadCloakStealCollectionObjective: 1           #command
     HeadBedsheetStealCollectionObjective: 1
     StampStealCollectionObjective: 1
-    DoorRemoteStealCollectionObjective: 1
+    # DoorRemoteStealCollectionObjective: 1 Ratbite: Remove
     TechnologyDiskStealCollectionObjective: 1        #rnd
     IDCardsStealCollectionObjective: 1
     LAMPStealCollectionObjective: 2 #only for moth

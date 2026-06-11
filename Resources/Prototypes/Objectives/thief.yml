@@ -179,16 +179,17 @@
   - type: Objective
     difficulty: 1.0
 
-- type: entity
-  parent: BaseThiefStealCollectionObjective
-  id: DoorRemoteStealCollectionObjective
-  components:
-  - type: StealCondition
-    stealGroup: DoorRemote
-    minCollectionSize: 2
-    maxCollectionSize: 5
-  - type: Objective
-    difficulty: 1.5
+# Ratbite: Remove remotes because they no longer spawn roundstart
+#- type: entity
+#  parent: BaseThiefStealCollectionObjective
+#  id: DoorRemoteStealCollectionObjective
+#  components:
+#  - type: StealCondition
+#    stealGroup: DoorRemote
+#    minCollectionSize: 2
+#    maxCollectionSize: 5
+#  - type: Objective
+#    difficulty: 1.5
 
 - type: entity
   parent: BaseThiefStealCollectionObjective

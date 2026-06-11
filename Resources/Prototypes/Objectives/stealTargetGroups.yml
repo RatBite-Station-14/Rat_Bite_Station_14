@@ -151,12 +151,13 @@
     sprite: Objects/Misc/stamps.rsi
     state: stamp-cap
 
-- type: stealTargetGroup
-  id: DoorRemote
-  name: steal-target-groups-door-remotes
-  sprite:
-    sprite: Objects/Devices/door_remote.rsi
-    state: door_remotebase
+# Ratbite: Remove because door remotes no longer spawn at roundstart
+#- type: stealTargetGroup
+#  id: DoorRemote
+#  name: steal-target-groups-door-remotes
+#  sprite:
+#    sprite: Objects/Devices/door_remote.rsi
+#    state: door_remotebase
 
 - type: stealTargetGroup
   id: EncryptionKey
