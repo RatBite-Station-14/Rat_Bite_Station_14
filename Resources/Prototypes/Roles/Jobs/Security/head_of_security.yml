@@ -198,6 +198,7 @@
     back:
     - Flash
  #   - MagazinePistol - Ratbite. Moved to loadouts.
+    - DoorRemoteSecurity # Ratbite
 
 - type: chameleonOutfit
   id: HeadOfSecurityChameleonOutfit

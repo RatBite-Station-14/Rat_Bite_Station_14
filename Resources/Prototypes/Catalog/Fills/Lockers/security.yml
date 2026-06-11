@@ -114,7 +114,7 @@
     - id: ClothingOuterCoatWarden
     - id: ClothingOuterWinterWarden
     - id: RubberStampWarden
-    - id: DoorRemoteArmory
+    # - id: DoorRemoteArmory Ratbite - Move to starting gear
     - id: HoloprojectorSecurity
     - id: BookSpaceLaw
     - id: ClothingBackpackElectropack

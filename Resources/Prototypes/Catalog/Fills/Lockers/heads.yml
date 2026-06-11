@@ -162,7 +162,7 @@
     - id: CigPackGreen
       prob: 0.75
     - id: ClothingHeadsetAltCargo
-    - id: DoorRemoteCargo
+    # - id: DoorRemoteCargo Ratbite: Spawn remotes in the head loadout instead of locker
     - id: RubberStampApproved
     - id: RubberStampDenied
     - id: RubberStampQm
@@ -197,7 +197,7 @@
     - id: ClothingHeadsetAltCommand
     - id: ClothingOuterArmorCaptainCarapace
     - id: CommsComputerCircuitboard
-    - id: DoorRemoteCustom
+    # - id: DoorRemoteCustom Ratbite: Spawn remotes in the head loadout instead of locker
     - id: MedalCase
     - id: NukeDisk
     - id: PinpointerNuclear
@@ -287,7 +287,7 @@
       prob: 0.5
     - id: ClothingHeadsetAltCommand # Goobstation
     - id: ClothingNeckGoldmedal
-    - id: DoorRemoteService
+    # - id: DoorRemoteService Ratbite: Spawn remotes in the head loadout instead of locker
   # - id: HoPIDCard
     - id: IDComputerCircuitboard
     - id: ComputerFundingAllocationFlatpack # Goobstation
@@ -323,7 +323,7 @@
     - id: ClothingEyesGlassesMeson
     - id: ClothingHandsGlovesColorYellow
     - id: ClothingHeadsetAltEngineering
-    - id: DoorRemoteEngineering
+    # - id: DoorRemoteEngineering Ratbite: Spawn remotes in the head loadout instead of locker
     - id: CargoRequestEngineeringComputerCircuitboard
     # - id: RCD # Goobstation
     - id: RCDAmmo
@@ -393,7 +393,7 @@
  #  - id: ClothingHeadHatBeretCmo
     - id: ClothingHeadsetAltMedical
     - id: ClothingMaskSterile
-    - id: DoorRemoteMedical
+    # - id: DoorRemoteMedical Ratbite: Spawn remotes in the head loadout instead of locker
     # - id: HandheldCrewMonitor # Goobstation - in webbing
     - id: Hypospray
     - id: MedicalTechFabCircuitboard
@@ -465,7 +465,7 @@
     #- id: CircuitImprinterMachineCircuitboard # Goobstation - Science Techfab
     - id: ClothingBeltUtilityFilled
     - id: ClothingHeadsetAltScience
-    - id: DoorRemoteResearch
+    # - id: DoorRemoteResearch Ratbite: Spawn remotes in the head loadout instead of locker
     - id: HandTeleporter
     #- id: ProtolatheMachineCircuitboard # Goobstation - Science Techfab
     - id: ResearchComputerCircuitboard
@@ -532,7 +532,7 @@
   # - id: ClothingMaskNeckGaiter
   # - id: ClothingOuterCoatHoSTrench
   # - id: ClothingShoesBootsJack
-    - id: DoorRemoteSecurity
+    # - id: DoorRemoteSecurity Ratbite: Spawn remotes in the head loadout instead of locker
    #- id: HoloprojectorSecurity
     - id: RubberStampHos
     - id: SecurityTechFabCircuitboard

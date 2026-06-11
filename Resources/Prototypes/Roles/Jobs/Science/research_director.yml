@@ -181,6 +181,7 @@
     back:
     - Flash
     - TelescopicBaton # Goobstation
+    - DoorRemoteResearch # Ratbite
 
 - type: chameleonOutfit
   id: ResearchDirectorChameleonOutfit

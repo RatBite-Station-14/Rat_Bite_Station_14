@@ -183,6 +183,7 @@
     back:
     - Flash
     - TelescopicBaton # Goobstation
+    - DoorRemoteCargo # Ratbite
 
 - type: chameleonOutfit
   id: QuartermasterChameleonOutfit

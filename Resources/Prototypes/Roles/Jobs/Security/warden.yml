@@ -184,6 +184,7 @@
     - Flash
  #   - MagazinePistol  - Ratbite. Moved to loadouts.
     - ClothingMaskGasSecurity # Goobstation
+    - DoorRemoteArmory
 
 - type: chameleonOutfit
   id: WardenChameleonOutfit

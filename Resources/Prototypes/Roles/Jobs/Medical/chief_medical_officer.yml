@@ -189,6 +189,7 @@
     back:
     - Flash
     - TelescopicBaton # Goobstation
+    - DoorRemoteMedical # ratbite
 
 - type: chameleonOutfit
   id: ChiefMedicalOfficerChameleonOutfit

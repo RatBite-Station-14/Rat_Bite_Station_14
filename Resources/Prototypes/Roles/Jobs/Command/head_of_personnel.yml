@@ -211,6 +211,7 @@
     back:
     - Flash
     - TelescopicBaton # Goobstation
+    - DoorRemoteService # ratbite
 
 - type: chameleonOutfit
   id: HeadOfPersonnelChameleonOutfit

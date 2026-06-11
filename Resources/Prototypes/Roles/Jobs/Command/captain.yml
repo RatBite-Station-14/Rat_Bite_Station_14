@@ -199,6 +199,7 @@
     - Flash
     - TelescopicBaton # Goobstation
     # - StationCharter
+    - DoorRemoteCustom # Ratbite
 
 - type: chameleonOutfit
   id: CaptainChameleonOutfit

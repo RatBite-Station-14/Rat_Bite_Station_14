@@ -189,6 +189,7 @@
     back:
     - Flash
     - TelescopicBaton # Goobstation
+    - DoorRemoteEngineering
 
 - type: chameleonOutfit
   id: ChiefEngineerChameleonOutfit
