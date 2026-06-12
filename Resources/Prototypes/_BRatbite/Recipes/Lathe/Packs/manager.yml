@@ -13,3 +13,13 @@
   id: ElectroPackPack
   recipes:
   - ClothingBackpackElectropack
+
+- type: latheRecipePack
+  id: ServiceGuns
+  recipes:
+  - RevolverCapGun
+  - BoxCartridgeCap
+  - SpeedLoaderCap
+  - WeaponRussianRevolver
+  - MagazineBoxMagnumPractice
+  - BoxBeanbag

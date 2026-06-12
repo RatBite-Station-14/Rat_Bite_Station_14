@@ -302,6 +302,7 @@
   - type: ManagerLatheRecipes # Ratbite, manager wire
     managerStaticPacks:
     - KnivesPack
+    - ServiceGuns
   - type: MaterialStorage
     whitelist:
       tags:

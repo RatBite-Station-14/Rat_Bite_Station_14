@@ -1,0 +1,30 @@
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: RevolverCapGun
+  result: RevolverCapGun
+  materials:
+    Wood: 100
+    Plastic: 800
+    
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: BoxCartridgeCap
+  result: BoxCartridgeCap
+  materials:
+    Plastic: 300
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: SpeedLoaderCap
+  result: SpeedLoaderCap
+  materials:
+    Plastic: 200
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: WeaponRussianRevolver
+  result: WeaponRussianRevolver
+  materials:
+    Steel: 500
+    Wood: 100
+

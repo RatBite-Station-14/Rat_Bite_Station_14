@@ -464,7 +464,6 @@
   # ratbite
   - type: ManagerLatheRecipes
     managerStaticPacks:
-    - SecurityAmmoStatic
     - CuffsPack
     managerDynamicPacks:
     - ElectroPackPack
@@ -930,6 +929,10 @@
   - type: EmagLatheRecipes # Goobstation Packs
     emagStaticPacks:
     - SyndicateCatridgesStatic
+  - type: ManagerLatheRecipes # Ratbite, manager wire
+    managerDynamicPacks:
+    - MedicalCybernetics
+    - AdvancedCybernetics
   - type: StealTarget
     stealGroup: MedicalTechFabCircuitboard
   - type: AccessReader # Ratbite: Add access reader to fabs
