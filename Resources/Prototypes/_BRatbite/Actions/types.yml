@@ -1,5 +1,19 @@
 - type: entity
   parent: BaseAction
+  id: ActionTraitLeap
+  name: Leap
+  description: Propel yourself a short distance in the direction of your gaze.
+  components:
+  - type: Action
+    useDelay: 8
+    icon:
+      sprite: Interface/Actions/jump.rsi
+      state: icon
+  - type: InstantAction
+    event: !type:GravityJumpEvent {}
+
+- type: entity
+  parent: BaseAction
   id: ActionActivateLegalFreedomImplant
   name: Break Free
   description: Activating this implant will free you from any hand restraints.

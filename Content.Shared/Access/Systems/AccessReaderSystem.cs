@@ -184,9 +184,11 @@ public sealed class AccessReaderSystem : EntitySystem
         if (!GetMainAccessReader(uid, out var accessReader))
             return;
 
-        if (accessReader.Value.Comp.AccessLists.Count < 1)
+        // Ratbite: make access breaker remove NeedsMindshield
+        if (accessReader.Value.Comp.AccessLists.Count < 1 && !accessReader.Value.Comp.NeedsMindshield)
             return;
 
+        accessReader.Value.Comp.NeedsMindshield = false;
         args.Repeatable = true;
         args.Handled = true;
         accessReader.Value.Comp.AccessLists.Clear();
@@ -391,7 +393,7 @@ public sealed class AccessReaderSystem : EntitySystem
             FindAccessTagsItem(ent, ref tags, ref owned);
         }
 
-        return (ICollection<ProtoId<AccessLevelPrototype>>?)tags ?? Array.Empty<ProtoId<AccessLevelPrototype>>();
+        return (ICollection<ProtoId<AccessLevelPrototype>>?) tags ?? Array.Empty<ProtoId<AccessLevelPrototype>>();
     }
 
     /// <summary>

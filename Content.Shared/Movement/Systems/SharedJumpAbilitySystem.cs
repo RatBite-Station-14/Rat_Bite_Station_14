@@ -45,9 +45,13 @@ public sealed partial class SharedJumpAbilitySystem : EntitySystem
         var throwing = xform.LocalRotation.ToWorldVec() * entity.Comp.JumpDistance;
         var direction = xform.Coordinates.Offset(throwing); // to make the character jump in the direction he's looking
 
+        RaiseLocalEvent(args.Performer, new JumpAbilityPerformedEvent());
+
         _throwing.TryThrow(args.Performer, direction, entity.Comp.JumpThrowSpeed);
 
         _audio.PlayPredicted(entity.Comp.JumpSound, args.Performer, args.Performer);
         args.Handled = true;
     }
 }
+
+public sealed class JumpAbilityPerformedEvent : EntityEventArgs;

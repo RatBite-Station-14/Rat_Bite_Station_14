@@ -57,6 +57,7 @@
   - PrybarProsthetics
   - SelfAware
   - Sericulture
+  - SmallTrait
   - SlowOnDamage
   - Snoring
   - SocialAnxiety
@@ -75,6 +76,8 @@
   - Voracious
   - WillToDie
   - WillToLive
+  - JumpAbility
+  - CrawlUnderObjects
   - Juggernaut
   - Kleptomania
   - ScentTracker
