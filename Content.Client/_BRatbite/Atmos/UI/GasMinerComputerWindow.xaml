@@ -1,0 +1,94 @@
+<controls:FancyWindow
+    xmlns="https://spacestation14.io"
+    xmlns:ui="clr-namespace:Content.Client._BRatbite.Atmos.UI"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+    Title="{Loc 'gas-miner-computer-window-title'}"
+    Resizable="False"
+    SetSize="1120 750"
+    MinSize="1120 750">
+    <BoxContainer Orientation="Vertical">
+	 <BoxContainer Orientation="Horizontal" VerticalExpand="True" HorizontalExpand="True">
+            <!-- Miner list -->
+            <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True" Margin="10 10 5 10">
+                <!-- Header -->
+                <controls:StripeBack>
+                    <PanelContainer>
+                        <Label Text="{Loc 'gas-miner-computer-window-miners'}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Margin="0 5 0 3"/>
+                    </PanelContainer>
+                </controls:StripeBack>
+
+                <!-- Miner entries -->
+		<BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True" Margin="0 0 10 0">
+		    <ScrollContainer VerticalExpand="True">
+			<ItemList Name="Miners"/>
+		    </ScrollContainer>
+		</BoxContainer>
+            </BoxContainer>
+
+            <!-- Right panel: selected miner details -->
+            <BoxContainer Name="RightContainer" Orientation="Vertical" VerticalExpand="True" SetWidth="800" Margin="0 10 10 10" Visible="false">
+                <!-- Selected miner name -->
+                <controls:StripeBack>
+                    <PanelContainer>
+                        <RichTextLabel Name="SelectedMinerName"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Margin="0 5 0 3"/>
+                    </PanelContainer>
+                </controls:StripeBack>
+
+                <!-- Balance -->
+                <GridContainer Columns="2" Margin="0 8 0 8">
+                    <Label StyleClasses="StatusFieldTitle" Text="{Loc 'gas-miner-computer-window-balance'}"/>
+                    <Label Name="BalanceLabel" Text="?" Margin="10 0 0 0"/>
+                    <Label StyleClasses="StatusFieldTitle" Text="{Loc 'gas-miner-computer-window-buy-price'}"/>
+                    <Label Name="BuyPriceLabel" Text="?" Margin="10 0 0 0"/>
+                    <Label StyleClasses="StatusFieldTitle" Text="{Loc 'gas-miner-computer-window-sell-price'}"/>
+                    <Label Name="SellPriceLabel" Text="?" Margin="10 0 0 0"/>
+		    <Label StyleClasses="StatusFieldTitle" Text="{Loc 'gas-miner-computer-window-available-moles'}"/>
+                    <Label Name="AvailableMoles" Text="?" Margin="10 0 0 0"/>
+                </GridContainer>
+
+                <!-- Buy / Sell controls -->
+                <BoxContainer Orientation="Vertical" Margin="0 10 0 0">
+		    
+                    <Label Text="{Loc 'gas-miner-computer-window-exchange-rate'}" Margin="0 0 0 5"/>
+		    <FloatSpinBox HorizontalExpand="True" Name="ExchangeRateInput" MinSize="70 0" />
+
+                    <Label Text="{Loc 'gas-miner-computer-window-trading'}" Margin="0 0 0 5"/>
+                    <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                        <Button Name="BuyButton"
+                                Text="{Loc 'gas-miner-computer-window-buy'}"
+                                Margin="0 0 5 0"
+                                HorizontalExpand="True"/>
+                        <Button Name="SellButton"
+                                Text="{Loc 'gas-miner-computer-window-sell'}"
+                                Margin="5 0 5 0"
+                                HorizontalExpand="True"/>
+                        <Button Name="StopButton"
+                                Text="{Loc 'gas-miner-computer-window-stop'}"
+                                Margin="5 0 0 0"
+                                HorizontalExpand="True"/>
+                    </BoxContainer>
+                </BoxContainer>
+
+            </BoxContainer>
+        </BoxContainer>
+
+        <!-- Footer -->
+        <BoxContainer Orientation="Vertical">
+            <PanelContainer StyleClasses="LowDivider"/>
+            <BoxContainer Orientation="Horizontal" Margin="10 2 5 0" VerticalAlignment="Bottom">
+                <Label Text="{Loc 'gas-miner-computer-window-flavor-left'}" StyleClasses="WindowFooterText"/>
+                <Label Text="{Loc 'gas-miner-computer-window-flavor-right'}" StyleClasses="WindowFooterText"
+                       HorizontalAlignment="Right" HorizontalExpand="True" Margin="0 0 5 0"/>
+                <TextureRect StyleClasses="NTLogoDark" Stretch="KeepAspectCentered"
+			     VerticalAlignment="Center" HorizontalAlignment="Right" SetSize="19 19"/>
+            </BoxContainer>
+        </BoxContainer>
+    </BoxContainer>
+</controls:FancyWindow>

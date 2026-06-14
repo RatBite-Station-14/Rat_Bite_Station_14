@@ -1,0 +1,4 @@
+<gasMiner:GasMiner xmlns="https://spacestation14.io"
+    xmlns:gasMiner="clr-namespace:Content.Client._BRatbite.Atmos.UI"
+    MinSize="150 150">
+</gasMiner:GasMiner>

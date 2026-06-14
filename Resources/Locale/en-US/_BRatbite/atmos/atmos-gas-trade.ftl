@@ -1,0 +1,13 @@
+gas-miner-computer-window-title = Gas Trading Computer
+gas-miner-computer-window-miners = Gas Miners
+gas-miner-computer-window-balance = Balance:
+gas-miner-computer-window-exchange-rate = Exchanged Moles Per Second:
+gas-miner-computer-window-buy-price = Buy Price:
+gas-miner-computer-window-sell-price = Sell Price:
+gas-miner-computer-window-trading = Trading Controls
+gas-miner-computer-window-buy = Buy
+gas-miner-computer-window-sell = Sell
+gas-miner-computer-window-stop = Stop
+gas-miner-computer-window-flavor-left = Nanotrasen Atmosian Division
+gas-miner-computer-window-flavor-right = Delivering Air to Crew
+gas-miner-computer-window-available-moles = Available moles

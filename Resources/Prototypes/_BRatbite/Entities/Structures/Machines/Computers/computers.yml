@@ -6,3 +6,39 @@
   components:
   - type: CommunicationsConsole
     title: comms-console-announcement-title-loneops
+
+- type: entity
+  parent: BaseComputerAiAccess
+  id: GasTradingComputer
+  name: Gas Trading Computer
+  description: Computer for fast and convenient access to the gas market
+  components:
+  - type: GasMinerComputer
+  - type: UserInterface
+    interfaces:
+      enum.GasMinerComputerUiKey.Key:
+        type: GasMinerComputerBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: ActivatableUI
+    key: enum.GasMinerComputerUiKey.Key
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: explosive
+    - map: ["computerLayerKeys"]
+      state: security_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#1f8c28"
+  - type: Computer
+    board: CriminalRecordsComputerCircuitboard
+  - type: AccessReader
+    access: [["Atmospherics"]]
