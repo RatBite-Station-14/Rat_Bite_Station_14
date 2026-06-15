@@ -14,6 +14,7 @@
   description: Computer for fast and convenient access to the gas market
   components:
   - type: GasMinerComputer
+    cargoAccount: Engineering
   - type: UserInterface
     interfaces:
       enum.GasMinerComputerUiKey.Key:
@@ -29,9 +30,7 @@
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
-      state: explosive
-    - map: ["computerLayerKeys"]
-      state: security_key
+      state: engine
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: PointLight
@@ -39,6 +38,6 @@
     energy: 1.6
     color: "#1f8c28"
   - type: Computer
-    board: CriminalRecordsComputerCircuitboard
+    board: GasTradingComputerCircuitboard
   - type: AccessReader
     access: [["Atmospherics"]]

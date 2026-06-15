@@ -14,7 +14,7 @@ public sealed partial class GasMiner : Container
         RobustXamlLoader.Load(this);
     }
 
-    public void Populate(GasMinerState state)
+    public void Populate(GasMinerUIState state)
     {
         var label = new Label();
         label.Text = state.Name;

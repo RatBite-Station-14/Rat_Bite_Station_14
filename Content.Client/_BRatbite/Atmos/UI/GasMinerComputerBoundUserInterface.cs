@@ -1,6 +1,5 @@
 using Content.Shared._BRatbite.Atmos;
 using Robust.Client.UserInterface;
-using Robust.Client.UserInterface.Controls;
 
 namespace Content.Client._BRatbite.Atmos.UI;
 
@@ -18,7 +17,11 @@ public sealed class GasMinerComputerBoundUserInterface : BoundUserInterface
         base.Open();
 
         _window = this.CreateWindow<GasMinerComputerWindow>();
-        //	_window.SetEntity(Owner);
+        _window.OnClose += () => _window = null;
+        _window.OnMessageSend += (args) =>
+        {
+            SendMessage(new GasMinerSetExchangeMessage(args.entity, args.exchangeValue, args.state));
+        };
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
@@ -27,13 +30,5 @@ public sealed class GasMinerComputerBoundUserInterface : BoundUserInterface
         if (_window == null || state is not GasMinerComputerBoundUserInterfaceState gasMinerState)
             return;
         _window.Populate(gasMinerState);
-    }
-
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
-        if (!disposing)
-            return;
-        _window?.Dispose();
     }
 }

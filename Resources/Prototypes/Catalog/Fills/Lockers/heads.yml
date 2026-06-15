@@ -322,6 +322,7 @@
     - id: ClothingHeadsetAltEngineering
     - id: DoorRemoteEngineering
     - id: CargoRequestEngineeringComputerCircuitboard
+    - id: GasTradingComputerCircuitboard # Ratbite
     # - id: RCD # Goobstation
     - id: RCDAmmo
     - id: RPD

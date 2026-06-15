@@ -128,7 +128,7 @@ public sealed class GasMinerSystem : SharedGasMinerSystem
         }
     }
 
-    private bool GetValidEnvironment(Entity<GasMinerComponent> ent, [NotNullWhen(true)] out GasMixture? environment)
+    public bool GetValidEnvironment(Entity<GasMinerComponent> ent, [NotNullWhen(true)] out GasMixture? environment)
     {
         var (uid, miner) = ent;
         var transform = Transform(uid);
@@ -145,7 +145,7 @@ public sealed class GasMinerSystem : SharedGasMinerSystem
         return environment != null;
     }
 
-    private float CapSpawnAmount(Entity<GasMinerComponent> ent, float toSpawnTarget, GasMixture environment)
+    public float CapSpawnAmount(Entity<GasMinerComponent> ent, float toSpawnTarget, GasMixture environment)
     {
         var (uid, miner) = ent;
 
@@ -156,7 +156,8 @@ public sealed class GasMinerSystem : SharedGasMinerSystem
 
         var toSpawnReal = Math.Clamp(allowableMoles, 0f, toSpawnTarget);
 
-        if (toSpawnReal < Atmospherics.GasMinMoles) {
+        if (toSpawnReal < Atmospherics.GasMinMoles)
+        {
             return 0f;
         }
 
