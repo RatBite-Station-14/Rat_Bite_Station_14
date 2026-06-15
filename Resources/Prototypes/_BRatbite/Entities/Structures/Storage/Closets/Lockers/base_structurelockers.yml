@@ -7,7 +7,7 @@
       thresholds:
         - trigger:
             !type:DamageTrigger
-            damage: 900
+            damage: 450 #900 is literally insane, what the hell are we smoking
           behaviors:
             - !type:DoActsBehavior
               acts: ["Destruction"]

@@ -136,6 +136,7 @@
   - Diona # Goobstation - Lack of legs makes it weaker than other species in combat
   - Harpy # Goobstation - Same with Diona
   - Plasmaman # Goobstation - Do i need to fucking say it?
+  - Scurret # Ratbite - Not sure if scurrets are already not allowed to be ghost roles, but it doesn't hurt to make sure
   components:
     - type: RandomHumanoidAppearance
       randomizeName: false
@@ -258,32 +259,25 @@
 
 - type: randomHumanoidSettings
   id: ERTLeader
-  parent: CentcommHumanoid # Goobstation
+  parent: ERTBase # Ratbite - why was there not a base for ERT to begin with??
   components:
     - type: GhostRole
       name: ghost-role-information-ert-leader-name
       description: ghost-role-information-ert-leader-description
-      rules: ghost-role-information-nonantagonist-rules
-      raffle:
-        settings: short
       job: ERTLeader
-      requirements:
-      - !type:DepartmentTimeRequirement
-        department: Security
-        time: 36000 # ten hours
-      - !type:DepartmentTimeRequirement
-        department: Command
-        time: 18000 # five hours
+    # Ratbite - This is already defined in ERTBase, but I'm leaving it here in case we want to increase playtimereq for ERTLeader
+    #  requirements:
+    #  - !type:DepartmentTimeRequirement
+    #    department: Security
+    #    time: 36000 # ten hours
+    #  - !type:DepartmentTimeRequirement
+    #    department: Command
+    #    time: 18000 # five hours
     - type: Loadout
       prototypes: [ ERTLeaderGear ]
       roleLoadout: [ RoleSurvivalExtended ]
     - type: AutoImplant
-      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm ] # Goobstation
-    - type: RandomMetadata
-      nameSegments:
-      - NamesMilitaryFirstLeader
-      - NamesMilitaryLast
-      nameFormat: name-format-ert
+      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm, BluespaceLifelineImplant ] # Goobstation; Ratbite - bluespace implant because unrobust ERT keep giving antags/selfantags free loot
 
 - type: entity
   id: RandomHumanoidSpawnerERTLeaderEVA
@@ -333,7 +327,7 @@
 
 - type: randomHumanoidSettings
   id: ERTChaplain
-  parent: ERTLeader
+  parent: ERTBase # Ratbite - why was there not a base for ERT to begin with??
   components:
     - type: BibleUser
     - type: GhostRole
@@ -400,7 +394,7 @@
 
 - type: randomHumanoidSettings
   id: ERTJanitor
-  parent: ERTLeader
+  parent: ERTBase # Ratbite - why was there not a base for ERT to begin with??
   components:
     - type: GhostRole
       name: ghost-role-information-ert-janitor-name
@@ -466,7 +460,7 @@
 
 - type: randomHumanoidSettings
   id: ERTEngineer
-  parent: ERTLeader
+  parent: ERTBase # Ratbite - why was there not a base for ERT to begin with??
   components:
     - type: GhostRole
       name: ghost-role-information-ert-engineer-name
@@ -539,7 +533,7 @@
 
 - type: randomHumanoidSettings
   id: ERTSecurity
-  parent: ERTLeader
+  parent: ERTBase # Ratbite - why was there not a base for ERT to begin with??
   components:
     - type: GhostRole
       name: ghost-role-information-ert-security-name
@@ -556,8 +550,7 @@
     - type: Loadout
       prototypes: [ ERTSecurityGear ]
       roleLoadout: [ RoleSurvivalExtended ]
-    - type: AutoImplant
-      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ] # Goobstation
+      # Ratbite - removed shitcode :godo:
 
 - type: entity
   id: RandomHumanoidSpawnerERTSecurityEVA
@@ -585,8 +578,7 @@
     - type: Loadout
       prototypes: [ ERTSecurityGearEVA ]
       roleLoadout: [ RoleSurvivalEVA ]
-    - type: AutoImplant
-      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ] # Goobstation
+      # Ratbite - removed shitcode :godo:
 
 # ERT Lecter is dead, and I have killed it. - Sol
 #- type: entity
@@ -633,7 +625,7 @@
 
 - type: randomHumanoidSettings
   id: ERTMedical
-  parent: ERTLeader
+  parent: ERTBase # Ratbite - why was there not a base for ERT to begin with??
   components:
     - type: GhostRole
       name: ghost-role-information-ert-medical-name
@@ -650,8 +642,7 @@
     - type: Loadout
       prototypes: [ ERTMedicalGear ]
       roleLoadout: [ RoleSurvivalExtended ]
-    - type: AutoImplant
-      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ] # Goobstation
+      # Ratbite - removed shitcode :godo:
 
 - type: entity
   id: RandomHumanoidSpawnerERTMedicalEVA
@@ -686,8 +677,7 @@
     - type: Loadout
       prototypes: [ ERTMedicalGearEVA ]
       roleLoadout: [ RoleSurvivalEVA ]
-    - type: AutoImplant
-      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ] # Goobstation
+      # Ratbite - removed shitcode :godo:
 
 ## CBURN
 
@@ -707,7 +697,7 @@
   parent: CentcommHumanoid
   components:
     - type: AutoImplant
-      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ] # Goobstation
+      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, BluespaceLifelineImplant ] # Goobstation; Ratbite - bluespace implant because unrobust ERT keep giving antags/selfantags free loot
     - type: Loadout
       prototypes: [CBURNGear]
       roleLoadout: [ RoleSurvivalEVA ]

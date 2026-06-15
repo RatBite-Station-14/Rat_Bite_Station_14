@@ -142,6 +142,7 @@ using Content.Shared.Throwing; // Goobstation
 using Content.Shared.Verbs;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Melee;
+using Content.Shared._BRatbite.Weapons.Melee;
 using Robust.Shared.Audio; // Goobstation
 using Robust.Shared.Audio.Systems; // Goobstation
 using Robust.Shared.Containers;
@@ -464,7 +465,9 @@ public sealed class PullingSystem : EntitySystem
 
         if (!_combatMode.IsInCombatMode(uid)
             || HasComp<GrabThrownComponent>(pulling)
-            || component.GrabStage <= GrabStage.Soft)
+            || component.GrabStage <= GrabStage.Soft
+        // Ratbite
+        || (TryComp<ImmuneToShoveComponent>(pulling, out var shoveImmune) && shoveImmune.ImmuneToThrow))
             return;
 
         var distanceToCursor = dir.Length();

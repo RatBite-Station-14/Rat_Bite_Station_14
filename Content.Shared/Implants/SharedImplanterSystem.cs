@@ -23,6 +23,8 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Shared.Administration.Components;
+using Content.Shared.Administration.Logs;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
@@ -40,6 +42,8 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using Content.Shared.Mindshield.Components;
+using Content.Shared.Database;
 
 namespace Content.Shared.Implants;
 
@@ -55,6 +59,7 @@ public abstract class SharedImplanterSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly INetManager _netMan = default!; // Goobstation - Labeled implants
     [Dependency] private readonly LabelSystem _label = default!; // Goobstation - Labeled implants
+    [Dependency] private readonly ISharedAdminLogManager _adminLog = default!; // Ratbite: add logs when drawing implants
 
     public override void Initialize()
     {
@@ -290,6 +295,11 @@ public abstract class SharedImplanterSystem : EntitySystem
                     }
                     else
                     {
+                        // Ratbite: add logs when removing mindshield implants
+                        if (HasComp<MindShieldImplantComponent>(implant))
+                        {
+                            _adminLog.Add(LogType.Action, LogImpact.Extreme, $"{ToPrettyString(user):player} removed mindshield implant from {(user == target ? "themselves" : $"{ToPrettyString(target):player}")}");
+                        }
                         DrawImplantIntoImplanter(implanter, target, implant.Value, implantContainer, implanterContainer, implantComp);
                         permanentFound = implantComp.Permanent;
                     }

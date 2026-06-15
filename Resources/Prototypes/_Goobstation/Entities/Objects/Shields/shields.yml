@@ -96,8 +96,8 @@
     - type: StaticPrice
       price: 350
     - type: Battery
-      maxCharge: 1200 #Ratbite
-      startingCharge: 900 #Ratbite
+      maxCharge: 2400 #Ratbite
+      startingCharge: 2400 #Ratbite
     - type: RechargeableBlocking
       dischargedRechargeRate: 0.5 #Ratbite
       chargedRechargeRate: 1 #Ratbite

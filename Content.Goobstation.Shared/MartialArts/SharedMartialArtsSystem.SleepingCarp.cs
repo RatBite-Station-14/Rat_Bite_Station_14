@@ -24,6 +24,7 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Popups;
 using Content.Shared.Weapons.Reflect;
+using Content.Shared._BRatbite.Weapons.Melee;
 using Robust.Shared.Audio;
 
 namespace Content.Goobstation.Shared.MartialArts;
@@ -163,7 +164,8 @@ public partial class SharedMartialArtsSystem
         {
             DoDamage(ent, target, proto.DamageType, proto.ExtraDamage / 2, out _);
             _stamina.TakeStaminaDamage(target, proto.StaminaDamage - 20, applyResistances: true);
-            _hands.TryDrop(target);
+            if (!HasComp<FirmGripComponent>(target))
+                _hands.TryDrop(target);
         }
         if (TryComp<PullableComponent>(target, out var pullable))
             _pulling.TryStopPull(target, pullable, ent, true);

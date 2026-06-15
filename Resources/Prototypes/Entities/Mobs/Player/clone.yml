@@ -139,6 +139,8 @@
   - Atheist
   - CombatTrained
   - CombatUntrained
+  - Mindshield # Prevent people from acting violent after cloning
+  - FakeMindshield # Just to prevent metagaming
   # End ratbite
 
   blacklist:
