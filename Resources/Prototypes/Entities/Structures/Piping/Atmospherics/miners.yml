@@ -101,7 +101,7 @@
     - type: GasMiner
       spawnGas: Oxygen
     - type: GasTrader
-      buyPrice: 100
+      buyPrice: 1
       sellPrice: 0
 
 - type: entity
@@ -131,7 +131,7 @@
     - type: GasMiner
       spawnGas: Nitrogen
     - type: GasTrader
-      buyPrice: 100
+      buyPrice: 1
       sellPrice: 0
 
 - type: entity
@@ -160,7 +160,7 @@
     - type: GasMiner
       spawnGas: CarbonDioxide
     - type: GasTrader
-      buyPrice: 100
+      buyPrice: 1
       sellPrice: 0
 
 - type: entity
@@ -171,7 +171,7 @@
     - type: GasMiner
       spawnGas: Plasma
     - type: GasTrader
-      buyPrice: 200
+      buyPrice: 2
       sellPrice: 0
 
 - type: entity
@@ -182,8 +182,8 @@
     - type: GasMiner
       spawnGas: Tritium
     - type: GasTrader
-      buyPrice: 10000
-      sellPrice: 50
+      buyPrice: 50
+      sellPrice: 5
 
 - type: entity
   name: frezon gas miner
@@ -193,8 +193,8 @@
     - type: GasMiner
       spawnGas: Frezon
     - type: GasTrader
-      buyPrice: 10000
-      sellPrice: 50
+      buyPrice: 50
+      sellPrice: 5
 
 - type: entity
   name: water vapor gas miner
@@ -204,8 +204,8 @@
     - type: GasMiner
       spawnGas: WaterVapor
     - type: GasTrader
-      buyPrice: 100
-      sellPrice: 50
+      buyPrice: 50
+      sellPrice: 5
 
 - type: entity
   name: ammonia gas miner
@@ -215,8 +215,8 @@
     - type: GasMiner
       spawnGas: Ammonia
     - type: GasTrader
-      buyPrice: 100
-      sellPrice: 50
+      buyPrice: 50
+      sellPrice: 5
 
 - type: entity
   name: nitrous oxide gas miner
@@ -226,6 +226,6 @@
     - type: GasMiner
       spawnGas: NitrousOxide
     - type: GasTrader
-      buyPrice: 200
-      sellPrice: 50
+      buyPrice: 50
+      sellPrice: 5
 
