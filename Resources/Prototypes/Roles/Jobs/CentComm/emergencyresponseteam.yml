@@ -146,7 +146,7 @@
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     head: ClothingHeadHelmetERTLeader
     neck: ExecutiveIDCard # Goobstation - Executive Access!
-    eyes: ClothingEyesGlassesSecurity
+    eyes: ClothingEyesGlassesCentCommNoThermal # Ratbiet - ERT Improvement
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
     id: ERTLeaderPDA
@@ -171,7 +171,7 @@
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     neck: ExecutiveIDCard # Goobstation - Executive Access!
     mask: ClothingMaskGasERT
-    eyes: ClothingEyesGlassesSecurity
+    eyes: ClothingEyesGlassesCentCommNoThermal # Ratbiet - ERT Improvement
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTLeader
     id: ERTLeaderPDA
@@ -231,7 +231,7 @@
     back: ClothingBackpackERTChaplain
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     head: ClothingHeadHatFez
-    eyes: ClothingEyesGlasses
+    eyes: ClothingEyesGlassesCentCommNoThermal # Ratbite - ERT Improvement
     neck: ClothingNeckStoleChaplain
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
@@ -252,9 +252,10 @@
     - FoodBakedBunHotX
     - FoodBakedBunHotX
     - FoodBakedBunHotX
-    - Nullrod # Goobstation
+    #- Nullrod # Goobstation # Ratbite - move to Undertermined weapon kit.
     - Lighter
     - ExecutiveIDCard # Goobstation - Executive Access!
+    - ERTHolyUndeterminedWeapon # Ratbite - ERT Improvement
 
 - type: startingGear
   id: ERTChaplainGearEVA
@@ -263,7 +264,7 @@
     back: ClothingBackpackERTChaplain
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     mask: ClothingMaskGasERT
-    eyes: ClothingEyesGlasses
+    eyes: ClothingEyesGlassesCentCommNoThermal # Ratbite - ERT Improvement
     neck: ClothingNeckStoleChaplain
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTChaplain
@@ -286,8 +287,9 @@
     - FoodBakedBunHotX
     - FoodBakedBunHotX
     - Lighter
-    - Nullrod # Goobstation
-    - ExecutiveIDCard # Goobstation - Executive Access!
+    #- Nullrod # Goobstation - ratbite - move to Undertermined weapon kit.
+    #- ExecutiveIDCard # Goobstation - Executive Access! - Ratbite - They dont need it
+    - ERTHolyUndeterminedWeapon # Ratbite - ERT Improvement
 
 - type: chameleonOutfit
   id: ERTChaplainChameleonOutfit
@@ -332,7 +334,7 @@
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     head: ClothingHeadHelmetERTEngineer
     neck: ExecutiveIDCard # Goobstation - Executive Access!
-    eyes: ClothingEyesGlassesMeson
+    eyes: ClothingEyesGlassesCentCommNoThermal # Ratbite - ERT Improvement
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
     id: ERTEngineerPDA
@@ -361,7 +363,7 @@
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     neck: ExecutiveIDCard # Goobstation - Executive Access!
     mask: ClothingMaskGasERT
-    eyes: ClothingEyesGlassesMeson
+    eyes: ClothingEyesGlassesCentCommNoThermal # Ratbite - ERT Improvement
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTEngineer
     id: ERTEngineerPDA
@@ -423,7 +425,7 @@
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     head: ClothingHeadHelmetERTSecurity
     neck: ExecutiveIDCard # Goobstation - Executive Access!
-    eyes: ClothingEyesGlassesSecurity
+    eyes: ClothingEyesGlassesCentCommNoThermal # Ratbite - ERT Improvement
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
     id: ERTSecurityPDA
@@ -448,7 +450,7 @@
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     mask: ClothingMaskGasERT
     neck: ExecutiveIDCard # Goobstation - Executive Access!
-    eyes: ClothingEyesGlassesSecurity
+    eyes: ClothingEyesGlassesCentCommNoThermal # Ratbite - ERT Improvement
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTSecurity
     id: ERTSecurityPDA
@@ -533,7 +535,7 @@
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     head: ClothingHeadHelmetERTMedic
     neck: ExecutiveIDCard # Goobstation - Executive Access!
-    eyes: ClothingEyesGlassesMedSec # Goobstation
+    eyes: ClothingEyesGlassesCentCommNoThermal # Ratbite - ERT Improvement
     gloves: ClothingHandsGlovesNitrile
     outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
     id: ERTMedicPDA
@@ -562,7 +564,7 @@
     shoes: ClothingShoesBootsMagEmergencyResponseTeam # Goobstation
     mask: ClothingMaskGasERT
     neck: ExecutiveIDCard # Goobstation - Executive Access!
-    eyes: ClothingEyesGlassesMedSec # Goobstation
+    eyes: ClothingEyesGlassesCentCommNoThermal # Ratbite - ERT Improvement
     gloves: ClothingHandsGlovesNitrile
     outerClothing: ClothingOuterHardsuitERTMedical
     id: ERTMedicPDA

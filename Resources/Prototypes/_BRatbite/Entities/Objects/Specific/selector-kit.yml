@@ -1,0 +1,14 @@
+- type: entity
+  id: ERTHolyUndeterminedWeapon
+  name: emergency response weaponry pack
+  description: A small remote utilizing bluespace technology to drop in a loadout directly to you. Choose wisely.
+  parent: [ BaseItem, BaseSetSelector, BaseCentcommContraband ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Security/ertundetermined.rsi
+    state: icon
+  - type: SetSelector
+    possibleSets:
+    - WeaponSelectorERTRapierHolyKit
+    - WeaponSelectorERTNullRodsHolyKit
+    maxSelectedSets: 1

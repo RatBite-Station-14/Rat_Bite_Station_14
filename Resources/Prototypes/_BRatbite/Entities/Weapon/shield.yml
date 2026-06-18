@@ -1,0 +1,19 @@
+- type: entity
+  parent: BlueShieldShield
+  id: BlueShieldShieldERT
+  suffix: ERT
+  description: A modified version of the greatshield reserved for emergency response teams. The identification number on this shield is still visible.
+  components:
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 1500
+  - type: RechargeableBlocking
+    dischargedRechargeRate: 100
+    chargedRechargeRate: 150
+  - type: BatterySelfRecharger
+    autoRechargeRate: 150
+    autoRecharge: true
+  - type: Item
+    size: Normal
+  - type: Tag
+    tags: [] # ignore "WhitelistChameleon" tag

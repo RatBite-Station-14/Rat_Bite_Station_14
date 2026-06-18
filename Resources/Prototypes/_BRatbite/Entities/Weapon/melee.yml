@@ -1,0 +1,60 @@
+- type: entity
+  name: Phoron Rapier
+  parent: [BaseMeleeWeaponEnergy, BaseCentcommContraband]
+  id: EnergySwordERT
+  description: An advanced phoron-powered energy rapier reserved for emergency response teams. Capable of cutting through most materials with ease.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Objects/Weapon/Melee/ert_esword.rsi
+    layers:
+    - state: e_sword
+    - state: e_sword_blade
+      color: "#FFFFFF"
+      visible: false
+      shader: unshaded
+      map: [ "blade" ]
+  - type: Item
+    sprite: Objects/Weapons/Melee/e_sword-inhands.rsi
+  - type: Tag
+    tags:
+    - EnergySword
+    - Stunbaton # just to fit in greatshield. yeah this is wacky but it work.
+  - type: ThrowableBlocker
+    blockSound:
+      path: /Audio/Weapons/eblade1.ogg
+      params:
+        variation: 0.250
+        volume: -2
+  - type: StaticPrice
+    price: 5000
+  - type: Reflect
+    reflectProb: .55
+  - type: ItemToggleMeleeWeapon
+    activatedSoundOnSwing:
+    activatedDamage:
+        types:
+            Slash: 15
+            Heat: 15
+        woundSeverityMultipliers:
+          Slash: 1
+
+- type: entity
+  parent: EnergySwordERT
+  name: Holy Phoron Rapier
+  id: EnergySwordERTHoly
+  suffix: HolyERTRapier
+  description: A modified version of the phoron rapier that has been blessed by an unknown deity. It emits a faint holy aura.
+  components:
+  - type: ItemToggleMeleeWeapon
+    activatedSoundOnSwing:
+    activatedDamage:
+        types:
+            Slash: 10
+            Heat: 5
+            Holy: 25
+        woundSeverityMultipliers:
+          Slash: 1
+  - type: Reflect
+    reflectProb: 1
+    reflects:
+    - Magic

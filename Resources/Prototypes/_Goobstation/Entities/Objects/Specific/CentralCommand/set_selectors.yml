@@ -64,5 +64,5 @@
     possibleSets:
     - ERTBallisticsSet
     - ERTPulseSet
+    - WeaponSelectorERTRapierKit # Ratbite - ERT Improvement
     maxSelectedSets: 1
-

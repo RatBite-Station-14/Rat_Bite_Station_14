@@ -33,3 +33,40 @@
   - WeaponSubMachineSmart
   - MagazineSmart
   - MagazineSmart
+
+# ERT weapon selector
+
+- type: selectableSet
+  id: WeaponSelectorERTRapierKit
+  name: selectable-set-ert-rapier-kit-name
+  description: selectable-set-ert-rapier-kit-desc
+  sprite:
+    sprite: _BRatBites/Objects/Weapon/Melee/ert_esword.rsi
+    state: icon
+  content:
+  - EnergySwordERT
+  - BlueShieldShieldERT
+  - BSOManual
+
+- type: selectableSet
+  id: WeaponSelectorERTRapierHolyKit
+  name: selectable-set-ert-rapier-kit-name
+  description: selectable-set-ert-holy-rapier-kit-desc
+  sprite:
+    sprite: _BRatBites/Objects/Weapon/Melee/ert_esword.rsi
+    state: icon
+  content:
+  - EnergySwordERTHoly
+  - BlueShieldShieldERT
+  - BSOManual
+
+- type: selectableSet
+  id: WeaponSelectorERTNullRodsHolyKit
+  name: selectable-set-ert-null-rods-kit-name
+  description: selectable-set-ert-null-rods-kit-desc
+  sprite:
+    sprite: _BRatBites/Objects/Weapon/Melee/ert_esword.rsi
+    state: icon
+  content:
+  - Nullrod
+  - BSOManual
