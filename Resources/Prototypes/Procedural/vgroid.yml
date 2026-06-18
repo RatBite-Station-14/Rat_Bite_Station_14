@@ -30,8 +30,8 @@
       proto: VGRoidSmallPaths
       inheritDungeons: All
     - !type:EntityTableDunGen
-      minCount: 7
-      maxCount: 12
+      minCount: 10 # Ratbite
+      maxCount: 15 # Ratbite
       table:
         id: VGRoidInteriorRoomMarker
     # Fill
@@ -42,67 +42,67 @@
     - !type:OreDunGen
       replacement: IronRock
       entity: IronRockIron
-      count: 45
+      count: 45 # Ratbite
       minGroupSize: 20
       maxGroupSize: 30
     - !type:OreDunGen
       replacement: IronRock
       entity: IronRockCoal
-      count: 45
+      count: 45 # Ratbite
       minGroupSize: 15
       maxGroupSize: 20
     - !type:OreDunGen
       replacement: IronRock
       entity: IronRockQuartz
-      count: 45
+      count: 45 # Ratbite
       minGroupSize: 20
       maxGroupSize: 30
     - !type:OreDunGen
       replacement: IronRock
       entity: IronRockGold
-      count: 40
+      count: 40 # Ratbite
       minGroupSize: 10
       maxGroupSize: 20
     - !type:OreDunGen
       replacement: IronRock
       entity: IronRockSilver
-      count: 40
+      count: 40 # Ratbite
       minGroupSize: 10
       maxGroupSize: 20
     - !type:OreDunGen
       replacement: IronRock
       entity: IronRockPlasma
-      count: 45
+      count: 45 # Ratbite
       minGroupSize: 10
       maxGroupSize: 20
     - !type:OreDunGen
       replacement: IronRock
       entity: IronRockUranium
-      count: 40
+      count: 40 # Ratbite
       minGroupSize: 10
       maxGroupSize: 20
     - !type:OreDunGen #Goob wiznerf partial revert
       replacement: IronRock
       entity: IronRockBananium
-      count: 45
+      count: 45 # Ratbite
       minGroupSize: 5
       maxGroupSize: 10
     - !type:OreDunGen
       replacement: IronRock
       entity: IronRockArtifactFragment
-      count: 45
+      count: 45 # Ratbite
       minGroupSize: 2
       maxGroupSize: 4
     - !type:OreDunGen
       replacement: IronRock
       entity: IronRockDiamond
-      count: 25
+      count: 25 # Ratbite
       minGroupSize: 1
       maxGroupSize: 2
     - !type:OreDunGen # Goobstation
       replacement: IronRock
       entity: IronRockBSCrystal
-      count: 45
+      count: 45 # Ratbite
       minGroupSize: 2
       maxGroupSize: 5
     - !type:OreDunGen
