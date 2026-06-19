@@ -11,3 +11,5 @@
     iconOn:
       sprite: _BRatBites/Actions/emp.rsi
       state: shock-on
+  - type: InstantAction
+    event: !type:ItemSummonActionEvent

@@ -281,8 +281,6 @@
     - id: BoxPDA
     - id: CigarGoldCase
       prob: 0.25
-      # Fuck the HoP they don't deserve fucking cigars.
-      # Yes they do fuck you.
     - id: ClothingBackpackIan
       prob: 0.5
     - id: ClothingHeadsetAltCommand # Goobstation
@@ -297,8 +295,7 @@
     - id: RubberStampHop
     - id: WeaponDisabler
     - id: ClothingEyesHudCommand
-    - id: ServiceTechFabCircuitboard # Goobstation - Service Techfab
-    - id: CommandMegaphone # goob - loudspeakers
+    - id: ReinforcementCallerHoP # Trauma
 
 - type: entity
   id: LockerHeadOfPersonnelFilled
@@ -541,6 +538,7 @@
     - id: WantedListCartridge
     - id: DrinkHosFlask
     - id: ClothingBeltSheathHeadOfSecurityFilled # Goobstation - security revamp
+    - id: ReinforcementCallerHos # Trauma
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable

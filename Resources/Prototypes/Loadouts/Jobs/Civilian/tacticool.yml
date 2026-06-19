@@ -1,0 +1,18 @@
+# SPDX-FileCopyrightText: 2026 Sprinkle <40203084+lnn0q@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: loadout
+  id: TacticoolJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTacticool
+
+- type: loadout
+  id: TacticoolJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTacticool
+
+- type: loadout
+  id: NeckGaiter
+  equipment:
+    mask: ClothingMaskNeckGaiter

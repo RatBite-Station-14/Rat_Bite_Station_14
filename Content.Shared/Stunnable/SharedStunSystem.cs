@@ -323,7 +323,8 @@ public abstract partial class SharedStunSystem : EntitySystem
             return false;
 
         // goob start
-        var ignoreEv = new BeforeKnockdownEvent();
+        // Ratbite: allow knockdown behavior changes
+        var ignoreEv = new BeforeKnockdownEvent(behavior, false);
         RaiseLocalEvent(uid, ref ignoreEv);
 
         if (ignoreEv.Cancelled)
@@ -331,7 +332,7 @@ public abstract partial class SharedStunSystem : EntitySystem
         // goob end
 
         var component = _componentFactory.GetComponent<KnockedDownComponent>();
-        component.DropHeldItemsBehavior = behavior;
+        component.DropHeldItemsBehavior = ignoreEv.Behavior;
         component.StandOnRemoval = standOnRemoval;
         if (!_statusEffect.TryAddStatusEffect(uid, "KnockedDown", time, refresh, component, status))
             return false;
@@ -356,34 +357,8 @@ public abstract partial class SharedStunSystem : EntitySystem
     public bool TryKnockdown(EntityUid uid, TimeSpan time, bool refresh,
         StatusEffectsComponent? status = null)
     {
-        var modifierEv = new GetClothingStunModifierEvent(uid);
-        RaiseLocalEvent(uid, modifierEv, true);
-        time *= modifierEv.Modifier;
-
-        if (!HasComp<LayingDownComponent>(uid)) // Goobstation - only knockdown mobs that can lie down
-            return false;
-
-        if (time <= TimeSpan.Zero)
-            return false;
-
-        if (!Resolve(uid, ref status, false))
-            return false;
-
-        if (!_statusEffect.TryAddStatusEffect<KnockedDownComponent>(uid, "KnockedDown", time, refresh))
-            return false;
-
-        // goob start
-        var ignoreEv = new BeforeStunEvent();
-        RaiseLocalEvent(uid, ref ignoreEv);
-
-        if (ignoreEv.Cancelled)
-            return false;
-        // goob end
-
-        var ev = new KnockedDownEvent();
-        RaiseLocalEvent(uid, ref ev);
-
-        return true;
+        // Ratbite: Goob devs are stupid
+        return TryKnockdown(uid, time, refresh, DropHeldItemsBehavior.AlwaysDrop, status);
     }
 
     /// <summary>

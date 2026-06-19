@@ -57,6 +57,7 @@
   - PrybarProsthetics
   - SelfAware
   - Sericulture
+  - SmallTrait
   - SlowOnDamage
   - Snoring
   - SocialAnxiety
@@ -75,6 +76,8 @@
   - Voracious
   - WillToDie
   - WillToLive
+  - JumpAbility
+  - CrawlUnderObjects
   - Juggernaut
   - Kleptomania
   - ScentTracker
@@ -136,6 +139,8 @@
   - Atheist
   - CombatTrained
   - CombatUntrained
+  - Mindshield # Prevent people from acting violent after cloning
+  - FakeMindshield # Just to prevent metagaming
   # End ratbite
 
   blacklist:

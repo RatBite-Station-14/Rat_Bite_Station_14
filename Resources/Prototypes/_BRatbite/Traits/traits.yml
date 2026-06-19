@@ -3,6 +3,53 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: trait
+  id: Small
+  name: trait-small-name
+  description: trait-small-desc
+  category: Physical
+  cost: 5
+  includedSpecies:
+  - Tajaran
+  - Resomi
+  - Rodentia
+  - Vulpkanin
+  components:
+  - type: SmallTrait
+
+- type: trait
+  id: Leap
+  name: trait-leap-name
+  description: trait-leap-desc
+  category: Physical
+  cost: 2
+  includedSpecies:
+  - Tajaran
+  - Resomi
+  - Allulalo
+  - Rodentia
+  - Vulpkanin
+  - Human
+  components:
+  - type: JumpAbility
+    action: ActionTraitLeap
+    jumpDistance: 4
+    jumpSound: /Audio/Effects/stealthoff.ogg
+
+- type: trait
+  id: Sneak
+  name: trait-sneak-name
+  description: trait-sneak-desc
+  category: Physical
+  cost: 2
+  includedSpecies:
+  - Tajaran
+  - Allulalo
+  - Vulpkanin
+  components:
+  - type: CrawlUnderObjects
+    actionProto: ActionToggleSneakMode
+
+- type: trait
   id: LoyaltyTraining
   name: trait-loyalty-training-name
   description: trait-loyalty-training-desc
@@ -185,4 +232,3 @@
   - Oni
   components:
     - type: ScaredOfGuns
-

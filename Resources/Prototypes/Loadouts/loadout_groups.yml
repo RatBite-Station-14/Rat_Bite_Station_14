@@ -400,6 +400,8 @@
   - GreyJumpsuit
   - GreyJumpskirt
   - AncientJumpsuit
+  - TacticoolJumpsuit
+  - TacticoolJumpskirt
 # ratbite adds
   - MercJumpsuit
   - MercGreenJumpsuit
@@ -443,6 +445,13 @@
   loadouts:
   - PassengerFace
   - MercBandana
+
+- type: loadoutGroup
+  id: CivilianTacticoolMask
+  name: loadout-group-civilian-tacticool-mask
+  minLimit: 0
+  loadouts:
+  - NeckGaiter
 
 - type: loadoutGroup
   id: PassengerGloves
@@ -501,6 +510,17 @@
   - ServiceMJ # goob
 
 - type: loadoutGroup
+  id: ServiceWorkerJumpsuit
+  name: loadout-group-service-worker-jumpsuit
+  loadouts:
+  - BartenderJumpsuit
+  - BartenderJumpskirt
+  - BartenderJumpsuitPurple
+  - ServiceMJ
+  - TacticoolJumpsuit
+  - TacticoolJumpskirt
+
+- type: loadoutGroup
   id: BartenderOuterClothing
   name: loadout-group-bartender-outerclothing
   minLimit: 0
@@ -549,6 +569,8 @@
   - CuratorJumpsuit
   - CuratorJumpskirt
   - ServiceMJ # goob
+  - TacticoolJumpsuit
+  - TacticoolJumpskirt
 
 - type: loadoutGroup
   id: LawyerJumpsuit
@@ -565,6 +587,8 @@
   - LawyerJumpsuitGood
   - LawyerJumpskirtGood
   - ServiceMJ # goob
+  - TacticoolJumpsuit
+  - TacticoolJumpskirt
 
 - type: loadoutGroup
   id: LawyerNeck
@@ -817,6 +841,8 @@
   - MusicianJumpsuit
   - MusicianJumpskirt
   - ServiceMJ # goob
+  - TacticoolJumpsuit
+  - TacticoolJumpskirt
 
 - type: loadoutGroup
   id: MusicianOuterClothing

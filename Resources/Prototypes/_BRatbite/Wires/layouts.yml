@@ -1,0 +1,7 @@
+- type: wireLayout
+  id: Lathe
+  wires:
+  - !type:PowerWireAction
+  - !type:AccessWireAction
+  - !type:LogWireAction
+  - !type:MachineBoltWireAction

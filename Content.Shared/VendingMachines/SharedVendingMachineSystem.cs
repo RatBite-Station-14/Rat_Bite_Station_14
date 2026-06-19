@@ -300,6 +300,8 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
         }
 
         _appearanceSystem.SetData(entity.Owner, VendingMachineVisuals.VisualState, finalState);
+        // Ratbite: Add tipped state
+        _appearanceSystem.SetData(entity.Owner, VendingMachineVisuals.Tipped, entity.Comp.Tipped ? VendingMachineTippedState.Tipped : VendingMachineTippedState.Untipped);
     }
 
     /// <summary>

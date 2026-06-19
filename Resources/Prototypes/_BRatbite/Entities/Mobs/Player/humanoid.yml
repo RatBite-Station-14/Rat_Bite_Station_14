@@ -1,0 +1,26 @@
+# because i am not a chud, i will put this in our namespace
+# even tho this should be a thing in upstream..
+- type: randomHumanoidSettings
+  id: ERTBase
+  parent: CentcommHumanoid # Goobstation
+  components:
+    - type: GhostRole
+      name: ghost-role-information-ert-leader-name
+      description: ghost-role-information-ert-leader-description
+      rules: ghost-role-information-nonantagonist-rules
+      raffle:
+        settings: short
+      requirements:
+      - !type:DepartmentTimeRequirement
+        department: Security
+        time: 36000 # ten hours
+      - !type:DepartmentTimeRequirement
+        department: Command
+        time: 18000 # five hours
+    - type: AutoImplant
+      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, BluespaceLifelineImplant ] # bluespace implant because unrobust ERT keep giving antags/selfantags free loot
+    - type: RandomMetadata
+      nameSegments:
+      - NamesMilitaryFirstLeader
+      - NamesMilitaryLast
+      nameFormat: name-format-ert

@@ -84,6 +84,7 @@
         Structural: 12
   - type: MovementSpeedModifier #Ratbite
     coefficient: 1.5
+  - type: ImmuneToShoveOnDeath # Ratbite
   - type: DamageOtherOnHit
     damage:
       types:

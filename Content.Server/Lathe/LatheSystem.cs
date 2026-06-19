@@ -110,6 +110,8 @@ using Robust.Shared.Timing;
 using Content.Server.Chat.Systems;
 using Content.Goobstation.Common.NTR.Scan; // Goobstation
 using Content.Shared.Chat;
+using Content.Shared.Access.Systems;
+using Content.Shared.Access.Components;
 
 namespace Content.Server.Lathe
 {
@@ -134,6 +136,7 @@ namespace Content.Server.Lathe
         [Dependency] private readonly TransformSystem _transform = default!;
         [Dependency] private readonly ChatSystem _chatSystem = default!; // Goobstation - New recipes message
         [Dependency] private readonly IComponentFactory _factory = default!; // Goobstation - Output to material storage
+        [Dependency] private readonly AccessReaderSystem _accessReader = default!;
 
         /// <summary>
         /// Per-tick cache
@@ -483,19 +486,21 @@ namespace Content.Server.Lathe
 
                 foreach (var (mat, amount) in allMaterials)
                 {
-                    if(!totalMaterials.ContainsKey(mat))
+                    if (!totalMaterials.ContainsKey(mat))
                         totalMaterials[mat] = 0;
                     totalMaterials[mat] += amount;
                 }
 
-                if(_materialStorage.CanChangeMaterialAmount(uid, totalMaterials))
+                if (_materialStorage.CanChangeMaterialAmount(uid, totalMaterials))
                 {
                     foreach (var (mat, amount) in totalMaterials)
                     {
                         _materialStorage.TryChangeMaterialAmount(uid, mat, amount);
                     }
                     component.Queue.Clear();
-                } else {
+                }
+                else
+                {
                     _popup.PopupEntity(Loc.GetString("lathe-queue-reset-material-overflow"), uid);
                 }
             }
@@ -517,6 +522,12 @@ namespace Content.Server.Lathe
 
         private void OnLatheQueueRecipeMessage(EntityUid uid, LatheComponent component, LatheQueueRecipeMessage args)
         {
+            // Ratbite
+            if (!_accessReader.IsAllowed(args.Actor, uid))
+            {
+                _popup.PopupEntity("lathe-no-access", args.Actor, args.Actor);
+                return;
+            }
             if (_proto.TryIndex(args.ID, out LatheRecipePrototype? recipe))
             {
                 var count = 0;
@@ -529,9 +540,15 @@ namespace Content.Server.Lathe
                 }
                 if (count > 0)
                 {
+                    // Ratbite: add logs
+                    if (TryComp<AccessReaderComponent>(uid, out var accessReaderComp))
+                    {
+                        _accessReader.LogAccess((uid, accessReaderComp), $"{count} {GetRecipeName(recipe)} queued.");
+                    }
                     _adminLogger.Add(LogType.Action,
                         LogImpact.Low,
                         $"{ToPrettyString(args.Actor):player} queued {count} {GetRecipeName(recipe)} at {ToPrettyString(uid):lathe}");
+
                 }
             }
             TryStartProducing(uid, component);

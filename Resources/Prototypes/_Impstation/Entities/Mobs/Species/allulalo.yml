@@ -112,6 +112,10 @@
     - FootstepSound
   - type: TypingIndicator
     proto: allulalo
+  - type: PseudoItem
+    storedOffset: 0,17
+    shape:
+    - 0,0,3,3
   - type: Vocal
     sounds:
       Male: Allulalo

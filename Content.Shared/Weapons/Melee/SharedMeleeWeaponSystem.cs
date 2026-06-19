@@ -163,6 +163,7 @@ using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Ranged.Systems;
+using Content.Shared._BRatbite.Weapons.Melee;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
@@ -1275,6 +1276,8 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
     private void PhysicalShove(EntityUid user, EntityUid target, EntityUid meleeUid)
     {
+        // Ratbite: Skip physical shove
+        if (TryComp<ImmuneToShoveComponent>(target, out var immuneToShove) && immuneToShove.ImmuneToPush) return;
         var force = _shoveRange * _contests.MassContest(user, target, rangeFactor: _shoveMass);
 
         if (TryGetBarehandPaciFist(user, meleeUid, out var paciFist))
