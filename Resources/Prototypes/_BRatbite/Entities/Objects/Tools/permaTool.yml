@@ -1,0 +1,113 @@
+#fuck the perma i said - CreatorBot01
+
+- type: entity
+  name: plastic mini hoe
+  parent: BaseItem
+  id: HydroponicsToolMiniHoePlastic
+  description: It's used for removing weeds or scratching your back.
+  components:
+  - type: Tag
+    tags:
+    - Hoe
+    - BotanyHoe
+  - type: Sprite
+    sprite: Objects/Tools/Hydroponics/hoe.rsi
+    state: icon
+  - type: MeleeWeapon
+    wideAnimationRotation: 135
+    swingLeft: true
+    damage:
+      types:
+        Slash: 2
+  - type: Item
+    sprite: Objects/Tools/Hydroponics/hoe.rsi
+  - type: PhysicalComposition
+    materialComposition:
+      Plastic: 100
+
+- type: entity
+  name: plastic plant clippers
+  parent: BaseItem
+  id: HydroponicsToolClippersPlastic
+  description: A tool used to take samples from plants.
+  components:
+  - type: Tag
+    tags:
+    - PlantSampleTaker
+    - HydroponicsToolClippers # Einstein Engines
+  - type: Sprite
+    sprite: Objects/Tools/Hydroponics/clippers.rsi
+    state: icon
+  - type: MeleeWeapon
+    wideAnimationRotation: 90
+    damage:
+      types:
+        Slash: 2
+  - type: Item
+    sprite: Objects/Tools/Hydroponics/clippers.rsi
+    storedRotation: -90
+  - type: Retractor # Shitmed: Same as wirecutters
+    speed: 0.2
+  - type: SurgeryTool # Shitmed
+    startSound:
+      path: /Audio/_Shitmed/Medical/Surgery/retractor1.ogg
+    endSound:
+      path: /Audio/_Shitmed/Medical/Surgery/retractor2.ogg
+  - type: PhysicalComposition
+    materialComposition:
+      Plastic: 100
+
+- type: entity
+  name: plastic scythe
+  parent: BaseItem
+  id: HydroponicsToolScythePlastic
+  description: A barely sharp and curved blade on a long fibreplastic handle, this tool makes it easy to reap what you sow.
+  components:
+  - type: Sharp
+  - type: Sprite
+    sprite: Objects/Tools/Hydroponics/scythe.rsi
+    state: icon
+  - type: MeleeWeapon
+    wideAnimationRotation: 135
+    damage:
+      types:
+        Slash: 3
+  - type: Item
+    size: Normal
+  - type: Clothing
+    sprite: Objects/Tools/Hydroponics/scythe.rsi
+    slots:
+    - back
+  - type: StaticPrice
+    price: 40
+  - type: PhysicalComposition
+    materialComposition:
+      Plastic: 200
+
+- type: entity
+  name: plastic spade
+  parent: BaseItem
+  id: HydroponicsToolSpadePlastic
+  description: A small tool for digging and moving dirt.
+  components:
+  - type: Tag
+    tags:
+    - BotanyShovel
+  - type: Sprite
+    sprite: Objects/Tools/Hydroponics/spade.rsi
+    state: icon
+  - type: MeleeWeapon
+    wideAnimationRotation: 45
+    damage:
+      types:
+        Blunt: 2
+        Piercing: 1 # I guess you can stab it into them?
+    soundHit:
+      collection: MetalThud
+  - type: Item
+    sprite: Objects/Tools/Hydroponics/spade.rsi
+  - type: Shovel
+    speedModifier: 0.60 # slower at digging than a full-sized shovel
+  - type: PhysicalComposition
+    materialComposition:
+      Plastic: 200

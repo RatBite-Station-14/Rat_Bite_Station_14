@@ -4,3 +4,51 @@
   result: ClothingOuterStraightjacket
   materials:
     Cloth: 300
+
+- type: latheRecipe
+  abstract: true
+  id: BasePlasticLightRecipe
+  categories:
+  - Lights
+  completetime: 2
+  materials:
+    Steel: 50
+    Plastic: 50
+
+- type: latheRecipe
+  parent: BasePlasticLightRecipe
+  id: LightTubePlastic
+  result: LightTubePlastic
+
+- type: latheRecipe
+  parent: BasePlasticLightRecipe
+  id: LightBulbPlastic
+  result: LightBulbPlastic
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: HydroponicsToolMiniHoePlastic
+  result: HydroponicsToolMiniHoePlastic
+  materials:
+    Plastic: 200
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: HydroponicsToolClippersPlastic
+  result: HydroponicsToolClippersPlastic
+  materials:
+    Plastic: 200
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: HydroponicsToolScythePlastic
+  result: HydroponicsToolScythePlastic
+  materials:
+    Plastic: 300
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: HydroponicsToolSpadePlastic
+  result: HydroponicsToolSpadePlastic
+  materials:
+    Plastic: 300

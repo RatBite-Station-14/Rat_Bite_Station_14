@@ -30,6 +30,8 @@
   - LedLightBulb
   - DimLightBulb
   - WarmLightBulb
+  - LightTubePlastic # Ratbite
+  - LightBulbPlastic # Ratbite
 
 - type: latheRecipePack
   id: PowerCellsStatic

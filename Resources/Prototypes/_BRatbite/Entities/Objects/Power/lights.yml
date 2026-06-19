@@ -1,0 +1,90 @@
+- type: entity
+  parent: BaseLightTube
+  name: plastic light tube
+  id: LightTubePlastic
+  description: A light fixture made of plastic.
+  components:
+  - type: LightBulb
+    color: "#FFE4CE" # 5000K color temp
+    lightEnergy: 0.8
+    lightRadius: 10
+    lightSoftness: 1
+    PowerUse: 25
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 5
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:DoActsBehavior
+        acts: [ "Breakage" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetPlastic1:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseLightbulb
+  name: plastic light bulb
+  id: LightBulbPlastic
+  description: A light bulb made of plastic.
+  components:
+  - type: LightBulb
+    bulb: Bulb
+    color: "#FFD1A3" # 4000K color temp
+    lightEnergy: 1.0
+    lightRadius: 6
+    lightSoftness: 1.1
+  - type: Tag
+    tags:
+    - LightBulb
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 5
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:DoActsBehavior
+        acts: [ "Breakage" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetPlastic1:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
