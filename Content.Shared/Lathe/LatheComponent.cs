@@ -50,6 +50,7 @@
 
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Lathe.Prototypes;
+using Content.Shared.Materials;
 using Content.Shared.Research.Prototypes;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -137,6 +138,10 @@ namespace Content.Shared.Lathe
         [DataField, ViewVariables(VVAccess.ReadWrite)]
         public bool OutputToStorage = false;
         // Goobstation change end
+
+        // Ratbite
+        [DataField]
+        public List<ProtoId<MaterialPrototype>> AdditionalMaterials = new();
     }
 
     public sealed class LatheGetRecipesEvent : EntityEventArgs
