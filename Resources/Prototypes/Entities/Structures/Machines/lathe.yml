@@ -978,7 +978,7 @@
         - RawMaterial
         - Ingot
   - type: AccessReader # Ratbite: Add access reader to fabs
-    access: [["Head of Personnel"]]
+    access: [["HeadOfPersonnel"]]
 
 - type: entity
   id: Biogenerator
