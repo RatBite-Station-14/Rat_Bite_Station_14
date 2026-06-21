@@ -20,15 +20,7 @@ public sealed partial class GasTraderSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<GasTraderComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<GasTraderComponent, AtmosDeviceUpdateEvent>(OnAtmoUpdate);
-    }
-
-    private void OnMapInit(Entity<GasTraderComponent> ent, ref MapInitEvent args)
-    {
-        if (!TryComp<GasMinerComponent>(ent, out var gasMiner)) return;
-        // Ensure spawn amounts are set to 0 at the start
-        gasMiner.SpawnAmount = 0f;
     }
 
     private void OnAtmoUpdate(Entity<GasTraderComponent> ent, ref AtmosDeviceUpdateEvent args)

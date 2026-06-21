@@ -84,7 +84,7 @@
     - type: AtmosDevice
     - type: GasMiner
       maxExternalPressure: 300
-      spawnAmount: 400
+      spawnAmount: 0
     - type: GuideHelp
       guides:
       - GasMiningAndStorage
@@ -100,8 +100,9 @@
   components:
     - type: GasMiner
       spawnGas: Oxygen
+      spawnAmount: 50
     - type: GasTrader
-      buyPrice: 1
+      buyPrice: 0.5
       sellPrice: 0
 
 - type: entity
@@ -130,8 +131,9 @@
   components:
     - type: GasMiner
       spawnGas: Nitrogen
+      spawnAmount: 50
     - type: GasTrader
-      buyPrice: 1
+      buyPrice: 0.5
       sellPrice: 0
 
 - type: entity

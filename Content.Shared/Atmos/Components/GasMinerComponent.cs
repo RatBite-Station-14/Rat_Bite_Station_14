@@ -123,7 +123,7 @@ public sealed partial class GasMinerComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField]
-    public float SpawnAmount = Atmospherics.MolesCellStandard * 20f;
+    public float SpawnAmount = 0; // Ratbite: default to 0
 }
 
 [Serializable, NetSerializable]
