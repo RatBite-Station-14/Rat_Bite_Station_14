@@ -867,6 +867,13 @@
       collection: Salutes
     Crack: # Imp
       collection: Cracks # Imp
+    Blink: # Ratbite
+      collection: Blinks
+      params:
+        volume: -3
+        variation: 0.1
+    ClapSingle: # Ratbite
+      collection: ClapSingle
 
 - type: emoteSounds
   id: DionaBodyEmotes
@@ -883,6 +890,13 @@
        volume: -5
     Crack: # Imp
       collection: Cracks # Imp
+    Blink: # Ratbite
+      collection: Blinks
+      params:
+        volume: -3
+        variation: 0.1
+    ClapSingle: # Ratbite
+      collection: ClapSingle
 
 - type: emoteSounds
   id: ReptilianBodyEmotes
@@ -901,6 +915,13 @@
       collection: Salutes
     Crack: # Imp
       collection: Cracks # Imp
+    Blink: # Ratbite
+      collection: Blinks
+      params:
+        volume: -3
+        variation: 0.1
+    ClapSingle: # Ratbite
+      collection: ClapSingle
 
 # mobs
 - type: emoteSounds
@@ -1024,3 +1045,10 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: WawaDeath
+    Blink: # Ratbite
+      collection: Blinks
+      params:
+        volume: -3
+        variation: 0.1
+    ClapSingle: # Ratbite 
+      collection: ClapSingle

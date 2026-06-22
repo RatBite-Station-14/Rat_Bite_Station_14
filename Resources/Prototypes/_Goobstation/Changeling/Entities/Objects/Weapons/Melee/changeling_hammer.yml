@@ -31,11 +31,11 @@
     attackRate: 0.75
     damage:
       types:
-        Blunt: 25
+        Blunt: 20
         Structural: 50
       woundSeverityMultipliers:
         Blunt: 2
-    heavyStaminaCost: 12
+    heavyStaminaCost: 20
     soundHit:
       collection: MetalThud
   - type: Item

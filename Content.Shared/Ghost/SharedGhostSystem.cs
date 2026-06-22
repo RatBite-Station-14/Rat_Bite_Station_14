@@ -196,15 +196,15 @@ namespace Content.Shared.Ghost
         ///     Player_ghost: Is this a ghost?
         ///     Antagonist: Is this a visible antagonist? (dragons, nukies and such.)
         /// </summary>
-        public bool Mob { get;  }
-        public bool IsDead { get;  }
-        public bool Player_ghost { get;  }
-        public bool Antagonist { get;  }
+        public bool Mob { get; }
+        public bool IsDead { get; }
+        public bool Player_ghost { get; }
+        public bool Antagonist { get; }
 
         /// <summary>
         /// How many followers this person has around them
         /// </summary>
-        public int Followers { get;  }
+        public int Followers { get; }
     }
 
     /// <summary>
@@ -264,6 +264,18 @@ namespace Content.Shared.Ghost
         public GhostUpdateGhostRoleCountEvent(int availableGhostRoleCount)
         {
             AvailableGhostRoles = availableGhostRoleCount;
+        }
+    }
+
+    // Ratbite: pop count
+    [Serializable, NetSerializable]
+    public sealed class AltServerPopUpdatedEvent : EntityEventArgs
+    {
+        public int PopCount { get; }
+
+        public AltServerPopUpdatedEvent(int popCount)
+        {
+            PopCount = popCount;
         }
     }
 }

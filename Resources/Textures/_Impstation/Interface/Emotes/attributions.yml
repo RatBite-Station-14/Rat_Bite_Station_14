@@ -10,3 +10,13 @@
   license: "CC-BY-SA-4.0"
   copyright: "Spritework by Pinkbat5"
   source: "https://github.com/Pinkbat5"
+
+- files: ["wuhey.png"]
+  license: "Custom"
+  copyright: "Barry, 63"
+  source: "https://en.wikipedia.org/wiki/Pub"
+
+- files: ["blink.png"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Made by Loltart"
+  source: "https://github.com/loltart"

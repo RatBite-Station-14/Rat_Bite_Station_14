@@ -232,3 +232,12 @@
   - Oni
   components:
     - type: ScaredOfGuns
+
+- type: trait
+  id: Stowaway
+  name: trait-stowaway-name
+  description: trait-stowaway-desc
+  category: Mental
+  cost: -1
+  components:
+  - type: Stowaway

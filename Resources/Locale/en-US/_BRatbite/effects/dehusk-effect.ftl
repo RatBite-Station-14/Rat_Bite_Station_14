@@ -1,0 +1,2 @@
+dehusk-effect-popup = The synthetic cells quickily get into the hollowed body and start filling it from the inside. You may be able to revive this body now.
+dehusk-effect-guidebook-text = This medicine is able to quickily fill hollowed out bodies

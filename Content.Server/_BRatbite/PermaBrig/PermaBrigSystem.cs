@@ -233,7 +233,7 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
             character);
 
         _stationRecords.OnPlayerSpawn(aev);
-        _trait.OnPlayerSpawnComplete(aev);
+        _trait.ApplyTraits(mob, character);
     }
 
     // private void OnRoundEnd(RoundEndMessageEvent ev) Auto decrease of perma sentence not yet implemented

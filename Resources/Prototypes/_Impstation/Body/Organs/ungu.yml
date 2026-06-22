@@ -30,14 +30,14 @@
       - Crayon
       - Paper
       - BananaPeel
-      - Ruminant
+    #  - Ruminant     # Ratbite, linter fails because the tag doesnt exist, too lazy to make it
       - Wheat
       - Vegetable
-      - UnguFood
+    #  - UnguFood     # Ratbite, linter fails because the tag doesnt exist, too lazy to make it
       - Flower
       - Mushroom
   - type: Metabolizer
-    maxReagents: 3
+    # maxReagents: 3    # linter fail; cant find where slimepeople define their 5 max reagents (might not even be in yml?) so not fixing this myself
     metabolizerTypes: [ Human ]
     groups:
     - id: Food

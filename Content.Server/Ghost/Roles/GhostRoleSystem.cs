@@ -78,6 +78,7 @@ using Content.Server.Popups;
 using Content.Shared.Verbs;
 using Robust.Shared.Collections;
 using Content.Shared.Ghost.Roles.Components;
+using Content.Server._BRatbite.Ghost;
 
 namespace Content.Server.Ghost.Roles;
 
@@ -97,6 +98,7 @@ public sealed class GhostRoleSystem : EntitySystem
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly PermaBrigManager _permaManager = default!;
+    [Dependency] private readonly AltServerPopCountManager _popCountManager = default!; // Ratbite
 
     private uint _nextRoleIdentifier;
     private bool _needsUpdateGhostRoleCount = true;
@@ -135,6 +137,8 @@ public sealed class GhostRoleSystem : EntitySystem
         SubscribeLocalEvent<GhostRoleMobSpawnerComponent, GetVerbsEvent<Verb>>(OnVerb);
         SubscribeLocalEvent<GhostRoleMobSpawnerComponent, GhostRoleRadioMessage>(OnGhostRoleRadioMessage);
         _playerManager.PlayerStatusChanged += PlayerStatusChanged;
+        // Ratbite: Send message on pop updated
+        _popCountManager.PopUpdated += OnPopUpdated;
     }
 
     private void OnMobStateChanged(Entity<GhostTakeoverAvailableComponent> component, ref MobStateChangedEvent args)
@@ -181,6 +185,16 @@ public sealed class GhostRoleSystem : EntitySystem
         var eui = _openUis[session] = new GhostRolesEui();
         _euiManager.OpenEui(eui, session);
         eui.StateDirty();
+    }
+
+    // Ratbite
+    private void OnPopUpdated(int newPop)
+    {
+        var response = new AltServerPopUpdatedEvent(newPop);
+        foreach (var player in _playerManager.Sessions)
+        {
+            RaiseNetworkEvent(response, player.Channel);
+        }
     }
 
     public void OpenMakeGhostRoleEui(ICommonSession session, EntityUid uid)
@@ -347,6 +361,8 @@ public sealed class GhostRoleSystem : EntitySystem
         {
             var response = new GhostUpdateGhostRoleCountEvent(_ghostRoles.Count);
             RaiseNetworkEvent(response, args.Session.Channel);
+            // Ratbite
+            RaiseNetworkEvent(new AltServerPopUpdatedEvent(_popCountManager.GetCachedPlayerPop()), args.Session.Channel);
         }
         else
         {
@@ -409,7 +425,7 @@ public sealed class GhostRoleSystem : EntitySystem
 
         var raffle = ent.Comp;
         raffle.Identifier = ghostRole.Identifier;
-        var countdown = _cfg.GetCVar(CCVars.GhostQuickLottery)? 1 : settings.InitialDuration;
+        var countdown = _cfg.GetCVar(CCVars.GhostQuickLottery) ? 1 : settings.InitialDuration;
         raffle.Countdown = TimeSpan.FromSeconds(countdown);
         raffle.CumulativeTime = TimeSpan.FromSeconds(settings.InitialDuration);
         // we copy these settings into the component because they would be cumbersome to access otherwise
@@ -452,8 +468,8 @@ public sealed class GhostRoleSystem : EntitySystem
         if (raffle.AllMembers.Add(player) && raffle.AllMembers.Count > 1
             && raffle.CumulativeTime.Add(raffle.JoinExtendsDurationBy) <= raffle.MaxDuration)
         {
-                raffle.Countdown += raffle.JoinExtendsDurationBy;
-                raffle.CumulativeTime += raffle.JoinExtendsDurationBy;
+            raffle.Countdown += raffle.JoinExtendsDurationBy;
+            raffle.CumulativeTime += raffle.JoinExtendsDurationBy;
         }
 
         UpdateAllEui();
@@ -571,7 +587,7 @@ public sealed class GhostRoleSystem : EntitySystem
 
         // After taking a ghost role, the player cannot return to the original body, so wipe the player's current mind
         // unless it is a visiting mind
-        if(_mindSystem.TryGetMind(player.UserId, out _, out var mind) && !mind.IsVisitingEntity)
+        if (_mindSystem.TryGetMind(player.UserId, out _, out var mind) && !mind.IsVisitingEntity)
             _mindSystem.WipeMind(player);
 
         var newMind = _mindSystem.CreateMind(player.UserId,
@@ -676,7 +692,7 @@ public sealed class GhostRoleSystem : EntitySystem
 
         if (ghostRole.JobProto != null)
         {
-            _roleSystem.MindAddJobRole(args.Mind, args.Mind, silent:false,ghostRole.JobProto);
+            _roleSystem.MindAddJobRole(args.Mind, args.Mind, silent: false, ghostRole.JobProto);
         }
 
         ghostRole.Taken = true;
@@ -780,7 +796,7 @@ public sealed class GhostRoleSystem : EntitySystem
         args.TookRole = true;
     }
 
-    private bool CanTakeGhost(EntityUid uid, GhostRoleComponent? component = null)
+    public bool CanTakeGhost(EntityUid uid, GhostRoleComponent? component = null) // Trauma - made public
     {
         return Resolve(uid, ref component, false) &&
                !component.Taken &&

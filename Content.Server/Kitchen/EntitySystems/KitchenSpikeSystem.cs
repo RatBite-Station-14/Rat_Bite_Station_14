@@ -339,7 +339,7 @@ namespace Content.Server.Kitchen.EntitySystems
                 _popupSystem.PopupEntity(Loc.GetString("comp-kitchen-spike-deny-changeling", ("victim", Identity.Entity(victimUid, EntityManager)), ("this", uid)), victimUid, userUid);
                 return false;
             }
-            if (HasComp<AbsorbedComponent>(victimUid))
+            if (TryComp<AbsorbedComponent>(victimUid, out var absorbed) && !absorbed.Dehusked)
             {
                 _popupSystem.PopupEntity(Loc.GetString("comp-kitchen-spike-deny-absorbed", ("victim", Identity.Entity(victimUid, EntityManager)), ("this", uid)), victimUid, userUid);
                 return false;

@@ -83,7 +83,7 @@
         Blunt: 8
         Structural: 12
   - type: MovementSpeedModifier #Ratbite
-    coefficient: 1.5
+    baseAcceleration: 15 # bevv thats not how it works.. there is not a "coefficient"... :sob: YAMLlinter exists for a fucking reason
   - type: ImmuneToShoveOnDeath # Ratbite
   - type: DamageOtherOnHit
     damage:
@@ -152,10 +152,12 @@
       types:
         Heat: 3.0 #per second, scales with temperature & other constants
   - type: Bloodstream
-    bloodReferenceSolution:
-      reagents:
-      - ReagentId: Blood
-        Quantity: 300
+    bloodReagent: Blood     # Ratbite - not adding a max blood volume since funny :godo: 15 bloodpack uses for you!
+    # bloodReferenceSolution: 
+    #   reagents:
+    #   - ReagentId: Blood
+    #     Quantity: 300
+    # ^ LLM hallucinated shitcode? or impstation dependent? Call it.
   - type: DamageVisuals
     thresholds: [ 10, 20, 30, 50, 70, 100 ]
     targetLayers:
@@ -171,7 +173,8 @@
         color: "#ff624a"
   - type: Speech
     speechSounds: Ungu
-    allowedEmotes: ['Moo']
+    # allowedEmotes: ['Moo']   the git commit message does not lie, this WAS shitcoded in :godo:
+    # TODO: actually add the emote :godo:
   - type: TypingIndicator
     proto: ungu
   - type: HumanoidAppearance

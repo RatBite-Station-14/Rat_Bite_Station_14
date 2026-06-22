@@ -30,10 +30,10 @@
   - type: MeleeWeapon
     angle: 0
     wideAnimationRotation: 75
-    attackRate: 1.5
+    attackRate: 1
     damage:
       types:
-        Slash: 20
+        Slash: 15
         Structural: 20
       woundSeverityMultipliers:
         Slash: 2.5

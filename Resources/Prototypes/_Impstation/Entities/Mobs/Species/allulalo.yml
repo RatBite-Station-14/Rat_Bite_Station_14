@@ -49,10 +49,13 @@
     damageContainer: Biological
     damageModifierSet: Allulalo #stops them from being oppressive hopefully
   - type: Bloodstream
-    bloodReferenceSolution:
-      reagents:
-      - ReagentId: BloodAllulalo
-        Quantity: 250 #should be 50 less than the default of 300. theyre small
+    bloodReagent: BloodAllulalo
+    bloodMaxVolume: 250 # small
+    # bloodReferenceSolution:
+    #   reagents:
+    #   - ReagentId: BloodAllulalo
+    #     Quantity: 250 #should be 50 less than the default of 300. theyre small
+    # LLM hallucinated shitcode? or impstation dependent? Call it.
  # - type: DamageVisuals - Ratbite
  #   thresholds: [ 10, 15, 20, 30, 40, 50 ]
  #   targetLayers:

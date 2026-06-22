@@ -23,6 +23,13 @@ public sealed partial class BurnBodyBehavior : IThresholdBehavior
 
     public void Execute(EntityUid bodyId, DestructibleSystem system, EntityUid? cause = null)
     {
+        // Ratbite: make it work with shitmed
+        if (system.EntityManager.TryGetComponent(bodyId, out BodyPartComponent? bodyPart) && bodyPart.Body != null)
+        {
+            Execute(bodyPart.Body.Value, system, cause);
+            return;
+        }
+
         var transformSystem = system.EntityManager.System<TransformSystem>();
         var inventorySystem = system.EntityManager.System<InventorySystem>();
         var sharedPopupSystem = system.EntityManager.System<SharedPopupSystem>();
