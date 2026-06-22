@@ -55,6 +55,7 @@
     stateBaseClosed: emergency
     stateDoorOpen: emergency_open
     stateDoorClosed: emergency_door
+  - type: StowawaySpawnPoint # Ratbite
 
 # Emergency N2 closet
 - type: entity
@@ -68,6 +69,7 @@
     stateBaseClosed: n2
     stateDoorOpen: n2_open
     stateDoorClosed: n2_door
+  - type: StowawaySpawnPoint # Ratbite
 
 # Fire safety closet
 - type: entity
@@ -81,6 +83,7 @@
     stateBaseClosed: fire
     stateDoorOpen: fire_open
     stateDoorClosed: fire_door
+  - type: StowawaySpawnPoint # Ratbite
 
 # EOD closet
 - type: entity
@@ -179,6 +182,7 @@
   - type: EntityStorageVisuals
     stateDoorOpen: generic_open
     stateDoorClosed: generic_door
+  - type: StowawaySpawnPoint # Ratbite
 
 # Syndicate
 - type: entity

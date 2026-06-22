@@ -6,7 +6,7 @@
   id: Ungu
   name: species-name-ungu
   roundStart: true
-  randomViable: true
+  # randomViable: true    # ? possibly some impstation shit, linter fails on it
   prototype: MobUngu
   sprites: MobUnguSprites
   markingLimits: MobUnguMarkingLimits
@@ -22,7 +22,7 @@
   - Female
   youngAge: 60
   oldAge: 150
-  ancientAge: 200
+  maxAge: 200
 
 - type: speciesBaseSprites
   id: MobUnguSprites

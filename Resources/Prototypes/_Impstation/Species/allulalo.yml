@@ -6,7 +6,7 @@
   id: Allulalo
   name: species-name-allulalo
   roundStart: true
-  randomViable: true
+  # randomViable: true    # ? possibly some impstation shit, linter fails on it
   prototype: MobAllulalo
   sprites: MobAllulaloSprites
   defaultSkinTone: "#385878"

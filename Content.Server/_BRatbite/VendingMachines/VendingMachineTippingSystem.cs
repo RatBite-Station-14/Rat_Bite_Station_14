@@ -9,6 +9,7 @@ using Content.Shared.Verbs;
 using Content.Shared.DoAfter;
 using Robust.Shared.Serialization;
 using Content.Shared.VendingMachines;
+using System.Numerics;
 
 namespace Content.Server._BRatbite.VendingMachines;
 
@@ -33,14 +34,14 @@ public sealed partial class VendingMachineTippingSystem : EntitySystem
     private void OnCollision(Entity<VendingMachineComponent> ent, ref StartCollideEvent args)
     {
         if (ent.Comp.Tipped) return;
-        var force = ((args.OurBody.LinearVelocity - args.OtherBody.LinearVelocity) * args.OtherBody.Mass).Length();
+        var force = Vector2.Dot(args.OurBody.LinearVelocity - args.OtherBody.LinearVelocity, args.WorldNormal) * args.OtherBody.Mass;
         if (force >= 600)
         {
             ent.Comp.Tipped = true;
             _transformSystem.Unanchor(ent.Owner, Transform(ent.Owner));
             _vendingMachineSystem.TryUpdateVisualState((ent.Owner, ent.Comp));
 
-            _stunSystem.TryParalyze(args.OtherEntity, TimeSpan.FromSeconds(10), true);
+            _stunSystem.TryParalyze(args.OtherEntity, TimeSpan.FromSeconds(5), true);
             _stunSystem.TrySeeingStars(args.OtherEntity);
             _damageableSystem.TryChangeDamage(args.OtherEntity, new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Blunt"), 15));
         }
@@ -57,7 +58,7 @@ public sealed partial class VendingMachineTippingSystem : EntitySystem
             Priority = 1,
             Act = () =>
             {
-                var dargs = new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(4), new VendingMachineUntipEvent(), ent.Owner)
+                var dargs = new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(20), new VendingMachineUntipEvent(), ent.Owner)
                 {
                     BreakOnMove = true,
                     BreakOnDamage = true,
@@ -72,6 +73,7 @@ public sealed partial class VendingMachineTippingSystem : EntitySystem
 
     private void OnUntipMachine(Entity<VendingMachineComponent> ent, ref VendingMachineUntipEvent args)
     {
+        if (args.Cancelled || args.Handled) return;
         ent.Comp.Tipped = false;
         _vendingMachineSystem.TryUpdateVisualState((ent.Owner, ent.Comp));
     }

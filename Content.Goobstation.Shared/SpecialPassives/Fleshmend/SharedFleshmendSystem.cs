@@ -120,13 +120,11 @@ public sealed class SharedFleshmendSystem : EntitySystem
     #region Helper Methods
 
     public readonly ProtoId<DamageGroupPrototype> BruteDamageGroup = "Brute";
-    public readonly ProtoId<DamageGroupPrototype> BurnDamageGroup = "Burn";
 
     private void HealDamage(Entity<FleshmendComponent> ent)
     {
         // the dmg groups
         var bruteTypes = _proto.Index(BruteDamageGroup);
-        var burnTypes = _proto.Index(BurnDamageGroup);
 
         // set the amount of healing depending on non-zero damage types present
         if (!_damageableQuery.TryComp(ent, out var damage))
@@ -137,21 +135,12 @@ public sealed class SharedFleshmendSystem : EntitySystem
             damage.Damage.DamageDict.GetValueOrDefault(type)
             != FixedPoint2.Zero);
 
-        var burnDiv =
-            burnTypes.DamageTypes.Count(type =>
-            damage.Damage.DamageDict.GetValueOrDefault(type)
-            != FixedPoint2.Zero);
-
         var bruteHealAmount = ent.Comp.BruteHeal / bruteDiv;
-        var burnHealAmount = ent.Comp.BurnHeal / burnDiv;
 
         var healSpec = new DamageSpecifier();
 
         foreach (var brute in bruteTypes.DamageTypes)
             healSpec.DamageDict.Add(brute, bruteHealAmount);
-
-        foreach (var burn in burnTypes.DamageTypes)
-            healSpec.DamageDict.Add(burn, burnHealAmount);
 
         healSpec.DamageDict.Add("Asphyxiation", ent.Comp.AsphyxHeal);
 

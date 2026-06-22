@@ -1,6 +1,3 @@
-using Robust.Shared.Physics;
-using Robust.Shared.Physics.Components;
-using Robust.Shared.Physics.Dynamics.Joints;
 using Robust.Shared.Physics.Systems;
 using Content.Shared.DragDrop;
 using Content.Shared.Physics;
@@ -10,10 +7,11 @@ using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Body.Components;
-using Robust.Shared.GameObjects;
 using Robust.Shared.Containers;
 using Content.Shared.Verbs;
 using Content.Shared.Hands;
+using Content.Shared.DoAfter;
+using Content.Shared.Popups;
 
 namespace Content.Shared._BRatbite.Medical;
 
@@ -26,6 +24,8 @@ public sealed partial class IVSystem : EntitySystem
     [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {
@@ -37,6 +37,7 @@ public sealed partial class IVSystem : EntitySystem
         SubscribeLocalEvent<IVComponent, EntRemovedFromContainerMessage>(OnContainerModified);
         SubscribeLocalEvent<IVComponent, GetVerbsEvent<AlternativeVerb>>(AddAlternativeVerbs);
         SubscribeLocalEvent<IVComponent, GotEquippedHandEvent>(OnGetEquipped);
+        SubscribeLocalEvent<IVComponent, IVAttachDoAfterEvent>(OnDoAfterAttach);
 
     }
 
@@ -50,6 +51,14 @@ public sealed partial class IVSystem : EntitySystem
             if (_timing.CurTime < comp.NextUpdate)
                 continue;
             if (comp.AttachedEntity == null) continue;
+            var xform = Transform(comp.Owner);
+
+            if (xform.GridUid != xform.ParentUid || !xform.Coordinates.TryDistance(EntityManager, Transform(comp.AttachedEntity.Value).Coordinates, out var distance) || distance > comp.MaxDistance)
+            {
+                ChangeAttachedEntity((comp.Owner, comp), null);
+                return;
+            }
+
             comp.NextUpdate = _timing.CurTime + comp.UpdateTime;
 
             TryInject((comp.Owner, comp));
@@ -99,28 +108,32 @@ public sealed partial class IVSystem : EntitySystem
 
     private void OnDragDropDragged(Entity<IVComponent> ent, ref DragDropDraggedEvent args)
     {
-        ChangeAttachedEntity(ent, args.Target);
+        var dargs = new DoAfterArgs(EntityManager, args.User, TimeSpan.FromSeconds(4), new IVAttachDoAfterEvent(EntityManager.GetNetEntity(args.Target)), ent.Owner)
+        {
+            BreakOnMove = true,
+            BreakOnDamage = true,
+            BreakOnWeightlessMove = true,
+            NeedHand = true,
+            DuplicateCondition = DuplicateConditions.SameEvent,
+        };
+        _doAfter.TryStartDoAfter(dargs);
+        _popup.PopupClient(Loc.GetString("iv-attach-popup"), args.Target, args.Target, PopupType.MediumCaution);
     }
 
     private void ChangeAttachedEntity(Entity<IVComponent> ent, EntityUid? target)
     {
         ent.Comp.AttachedEntity = target;
-        _joints.ClearJoints(ent);
-        var jointComponent = EnsureComp<JointComponent>(ent);
         var visuals = EnsureComp<JointVisualsComponent>(ent);
         if (target != null)
         {
             visuals.Sprite = ent.Comp.LineSprite;
             visuals.Target = GetNetEntity(target);
-            var joint = _joints.CreateDistanceJoint(ent, (EntityUid) target);
-            joint.MinLength = 0;
-            joint.MaxLength = ent.Comp.MaxDistance;
         }
         else
         {
             visuals.Target = null;
         }
-        Dirty(ent.Owner, jointComponent);
+        Dirty(ent.Owner, visuals);
     }
 
     private void OnContainerModified<T>(Entity<IVComponent> ent, ref T args) where T : ContainerModifiedMessage
@@ -151,7 +164,13 @@ public sealed partial class IVSystem : EntitySystem
         if (_timing.ApplyingState)
             return;
         ChangeAttachedEntity(ent, null);
-        _entityManager.RemoveComponent<JointComponent>(ent.Owner);
         _entityManager.RemoveComponent<JointVisualsComponent>(ent.Owner);
+    }
+
+    private void OnDoAfterAttach(Entity<IVComponent> ent, ref IVAttachDoAfterEvent args)
+    {
+        if (args.Cancelled || args.Handled) return;
+
+        ChangeAttachedEntity(ent, EntityManager.GetEntity(args.NewEntity));
     }
 }

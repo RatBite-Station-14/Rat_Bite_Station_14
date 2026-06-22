@@ -22,11 +22,13 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.StatusIcon;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
+using Content.Shared.Damage;
 
 namespace Content.Goobstation.Shared.Changeling.Components;
 
@@ -198,6 +200,57 @@ public sealed partial class ChangelingIdentityComponent : Component
 
     [ViewVariables(VVAccess.ReadOnly)]
     public TransformData? SelectedForm;
+    
+        // Standard options. Try to fit these in if you can!
+
+    /// <summary>
+    ///     Sound to play when clumsy interactions fail.
+    /// </summary>
+    [DataField]
+    public SoundSpecifier ClumsySound = new SoundPathSpecifier("/Audio/Weapons/Xeno/alien_spitacid.ogg");
+
+    /// <summary>
+    ///     Default chance to fail a clumsy interaction.
+    ///     If a system needs to use something else, add a new variable in the component, do not modify this percentage.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float ClumsyDefaultCheck = 20f;
+
+    /// <summary>
+    ///     Default stun time.
+    ///     If a system needs to use something else, add a new variable in the component, do not modify this number.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public TimeSpan ClumsyDefaultStunTime = TimeSpan.FromSeconds(2.5);
+
+    // Specific options
+
+    /// <summary>
+    ///     Stun time after failing to shoot a gun.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public TimeSpan GunShootFailStunTime = TimeSpan.FromSeconds(3);
+
+    /// <summary>
+    ///     Damage taken after failing to shoot a gun.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public DamageSpecifier? GunShootFailDamage = new() {DamageDict = new Dictionary<string, FixedPoint2> {{"Brute", 12}}}; // Goob edit - add a default value (evil)
+
+    /// <summary>
+    ///     Noise to play after failing to shoot a gun. Boom!
+    /// </summary>
+    [DataField]
+    public SoundSpecifier GunShootFailSound = new SoundPathSpecifier("/Audio/Weapons/Xeno/alien_spitacid.ogg");
+
+    /// <summary>
+    ///      Whether or not to apply Clumsy to guns.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool ClumsyGuns = true;
+
+    [DataField]
+    public LocId GunFailedMessage = "clumsy-gun-fail-message";
 }
 
 [DataDefinition]
@@ -225,5 +278,5 @@ public sealed partial class TransformData
     ///     Entity's humanoid appearance component.
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadOnly), NonSerialized]
-    public HumanoidAppearanceComponent Appearance;
+    public HumanoidAppearanceComponent Appearance;              
 }

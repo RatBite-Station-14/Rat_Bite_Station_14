@@ -163,6 +163,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server._BRatbite.Ghost;
 using Content.Server._BRatbite.PermaBrig;
 using Content.Server._Goobstation.Antag;
 using Content.Server._RMC14.LinkAccount; // RMC - Patreon
@@ -197,6 +198,7 @@ using Content.Shared.Chat;
 using Content.Shared.Kitchen;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Players.RateLimiting;
+using Robust.Shared.Network;
 
 namespace Content.Server.IoC
 {
@@ -248,6 +250,7 @@ namespace Content.Server.IoC
             IoCManager.Register<LastRolledAntagManager>(); // Goobstation - antag pity
             IoCManager.Register<LinkAccountManager>(); // RMC - Patreon
             IoCManager.Register<PermaBrigManager>(); // Ratbite - Multi-round permas
+            IoCManager.Register<AltServerPopCountManager>(); // Ratbite - button with alt server pop
         }
     }
 }

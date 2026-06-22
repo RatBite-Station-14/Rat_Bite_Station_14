@@ -1,0 +1,254 @@
+- type: entity
+  id: BaseERTReinforcement
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Trauma/Objects/Devices/reinforcement_callers/reinforcement_beacon.rsi
+    state: icon
+  - type: GhostRole
+    job: ERTLeader
+    name: ghost-role-information-leader-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    requirements:
+    - !type:DepartmentTimeRequirement
+       department: Security
+       time: 36000 # ten hours
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 18000 # five hours
+  - type: GhostCharacterSpawner
+    components:
+    - type: IdBind
+    - type: Loadout
+    - type: AutoImplant
+      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, BluespaceLifelineImplant ] # bluespace implant because unrobust ERT keep giving antags/selfantags free loot
+    - type: MindShield
+    - type: CombatTrained
+
+# ERT leader
+      
+- type: entity
+  parent: BaseERTReinforcement
+  id: ERTLeaderReinforcement
+  suffix: ERT Leader
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-leader-name
+    description: ghost-role-information-ert-leader-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: ERTLeader
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ ERTLeaderGear ]
+      roleLoadout: [ RoleSurvivalExtended ]
+    - type: AutoImplant
+      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, BluespaceLifelineImplant, DeathRattleImplantCentcomm ]
+
+
+- type: entity
+  parent: ERTLeaderReinforcement
+  id: ERTLeaderReinforcementEVA
+  suffix: ERT Leader, Armored EVA
+  components:
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ ERTLeaderGearEVA ]
+      roleLoadout: [ RoleSurvivalEVA ]
+
+# ERT Chaplain
+
+- type: entity
+  parent: BaseERTReinforcement
+  id: ERTChaplainReinforcement
+  suffix: ERT Chaplain
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-chaplain-name
+    description: ghost-role-information-ert-chaplain-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: ERTChaplain
+  - type: GhostCharacterSpawner
+    components:
+    - type: BibleUser
+    - type: Loadout
+      prototypes: [ ERTChaplainGear ]
+      roleLoadout: [ RoleSurvivalExtended ]
+
+
+- type: entity
+  parent: ERTChaplainReinforcement
+  id: ERTChaplainReinforcementEVA
+  suffix: ERT Chaplain, Armored EVA
+  components:
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ ERTChaplainGearEVA ]
+      roleLoadout: [ RoleSurvivalEVA ]
+
+# ERT Janitor
+
+- type: entity
+  parent: BaseERTReinforcement
+  id: ERTJanitorReinforcement
+  suffix: ERT Janitor
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-janitor-name
+    description: ghost-role-information-ert-janitor-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: ERTJanitor
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ ERTJanitorGear ]
+      roleLoadout: [ RoleSurvivalExtended ]
+
+- type: entity
+  parent: ERTJanitorReinforcement
+  id: ERTJanitorReinforcementEVA
+  suffix: ERT Janitor, Armored EVA
+  components:
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ ERTJanitorGearEVA ]
+      roleLoadout: [ RoleSurvivalEVA ]
+
+# ERT Engineer
+
+- type: entity
+  parent: BaseERTReinforcement
+  id: ERTEngineerReinforcement
+  suffix: ERT Engineer
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-engineer-name
+    description: ghost-role-information-ert-engineer-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ ERTEngineerGear ]
+      roleLoadout: [ RoleSurvivalExtended ]
+
+- type: entity
+  parent: ERTEngineerReinforcement
+  id: ERTEngineerReinforcementEVA
+  suffix: ERT Engineer, Armored EVA
+  components:
+  - type: GhostCharacterSpawner
+    components:
+    - type: CombatTrained
+    - type: Loadout
+      prototypes: [ ERTEngineerGearEVA ]
+      roleLoadout: [ RoleSurvivalEVA ]
+
+# ERT security
+
+- type: entity
+  parent: BaseERTReinforcement
+  id: ERTSecurityReinforcement
+  suffix: ERT Security
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-security-name
+    description: ghost-role-information-ert-security-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: ERTSecurity
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ ERTSecurityGear ]
+      roleLoadout: [ RoleSurvivalExtended ]
+
+
+- type: entity
+  parent: ERTSecurityReinforcement
+  id: ERTSecurityReinforcementEVA
+  suffix: ERT Security, Armored EVA
+  components:
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ ERTSecurityGearEVA ]
+      roleLoadout: [ RoleSurvivalEVA ]
+
+
+# ERT medic
+
+- type: entity
+  parent: BaseERTReinforcement
+  id: ERTMedicReinforcement
+  suffix: ERT Medic
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-medical-name
+    description: ghost-role-information-ert-medical-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    requirements:
+    - !type:DepartmentTimeRequirement
+       department: Medical
+       time: 36000 # ten hours
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 18000 # five hours
+  - type: GhostCharacterSpawner
+    components:
+    - type: CombatTrained
+    - type: Loadout
+      prototypes: [ ERTMedicalGear ]
+      roleLoadout: [ RoleSurvivalExtended ]
+
+- type: entity
+  parent: ERTMedicReinforcement
+  id: ERTMedicReinforcementEVA
+  suffix: ERT Medic, Armored EVA
+  components:
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ ERTMedicalGearEVA ]
+      roleLoadout: [ RoleSurvivalEVA ]
+
+# CBurn
+- type: entity
+  parent: BaseERTReinforcement
+  id: CBURNReinforcement
+  suffix: CBURN
+  components:
+  - type: GhostRole
+    name: ghost-role-information-cburn-agent-name
+    description: ghost-role-information-cburn-agent-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    requirements:
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 36000 # ten hours
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 18000 # five hours
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ CBURNGear ]
+      roleLoadout: [ RoleSurvivalEVA ]
+

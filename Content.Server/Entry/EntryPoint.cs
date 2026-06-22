@@ -134,6 +134,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server._BRatbite.Ghost;
 using Content.Server._BRatbite.PermaBrig;
 using Content.Server._Goobstation.Antag;
 using Content.Server.Acz;
@@ -187,6 +188,7 @@ namespace Content.Server.Entry
         private IConnectionManager? _connectionManager;
         private LastRolledAntagManager? _lastAntagManager; // Goobstation
         private PermaBrigManager? _permaBrigManager;
+        private AltServerPopCountManager? _altServerPopCountManager;
 
         /// <inheritdoc />
         public override void Init()
@@ -259,6 +261,7 @@ namespace Content.Server.Entry
                 _lastAntagManager.Initialize(); // Goobstation
                 _permaBrigManager = IoCManager.Resolve<PermaBrigManager>(); // Ratbite
                 _permaBrigManager.Initialize(); // Ratbite
+
             }
         }
 
@@ -296,6 +299,9 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<IConnectionManager>().PostInit();
                 IoCManager.Resolve<MultiServerKickManager>().Initialize();
                 IoCManager.Resolve<CVarControlManager>().Initialize();
+                // Ratbite
+                _altServerPopCountManager = IoCManager.Resolve<AltServerPopCountManager>();
+                _altServerPopCountManager.Initialize();
             }
         }
 
@@ -306,11 +312,13 @@ namespace Content.Server.Entry
             switch (level)
             {
                 case ModUpdateLevel.PostEngine:
-                {
-                    _euiManager.SendUpdates();
-                    _voteManager.Update();
-                    break;
-                }
+                    {
+                        _euiManager.SendUpdates();
+                        _voteManager.Update();
+                        // Ratbite
+                        _altServerPopCountManager?.Update();
+                        break;
+                    }
 
                 case ModUpdateLevel.FramePostEngine:
                     _updateManager.Update();

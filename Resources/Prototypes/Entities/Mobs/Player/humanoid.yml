@@ -239,8 +239,9 @@
       nameFormat: name-format-ert
 
 
-## ERT Leader
-
+## ERT Leader 
+# Ratbite note: as of #432 these are unused
+# Edit ERT in Resources/Prototypes/_BRatbite/Entities/Objects/Devices/Reiforcements/ert_beacons.yml
 - type: entity
   id: RandomHumanoidSpawnerERTLeader
   name: ERT leader

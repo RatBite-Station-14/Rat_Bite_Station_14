@@ -72,3 +72,6 @@ trait-scared-of-guns-name = Scared of guns
 trait-scared-of-guns-desc = You are scared of guns and may drop them accidentally when shooting.
 gun-fail-drop-shoot = You accidentally drop your gun!
 gun-fail-shoot = Your hands tremble and you were unable to shoot.
+
+trait-stowaway-name = Stowaway
+trait-stowaway-desc = You weren't mean to be on this ship, but you are here anyways and have to survive.

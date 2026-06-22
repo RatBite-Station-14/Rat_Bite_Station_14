@@ -179,8 +179,8 @@ namespace Content.Shared.Damage
             }, true);
             Subs.CVar(_config, CCVars.PlaytestReagentHealModifier, value =>
             {
-                 UniversalReagentHealModifier = value;
-                 _chemistryGuideData.ReloadAllReagentPrototypes();
+                UniversalReagentHealModifier = value;
+                _chemistryGuideData.ReloadAllReagentPrototypes();
             }, true);
             Subs.CVar(_config, CCVars.PlaytestExplosionDamageModifier, value => UniversalExplosionDamageModifier = value, true);
             Subs.CVar(_config, CCVars.PlaytestThrownDamageModifier, value => UniversalThrownDamageModifier = value, true);
@@ -512,6 +512,8 @@ namespace Content.Shared.Damage
             if (!Resolve(uid, ref damageable) || damage == null)
                 return null;
 
+            bool skipCap = false;
+
             // Apply resistances
             if (!ignoreResistances)
             {
@@ -528,21 +530,24 @@ namespace Content.Shared.Damage
                     if (bodyPart.Body != null)
                     {
                         // First raise the event on the parent to apply any parent modifiers
-                        var parentEv = new DamageModifyEvent(bodyPart.Body.Value, damage, origin, target);
+                        var parentEv = new DamageModifyEvent(bodyPart.Body.Value, damage, origin, target, skipCap);
                         RaiseLocalEvent(bodyPart.Body.Value, parentEv);
                         damage = parentEv.Damage;
+                        skipCap = parentEv.SkipCap;
                     }
 
                     // Then raise on the part itself for any part-specific modifiers
-                    var ev = new DamageModifyEvent(uid, damage, origin, target);
+                    var ev = new DamageModifyEvent(uid, damage, origin, target, skipCap);
                     RaiseLocalEvent(uid, ev);
+                    skipCap = ev.SkipCap;
                     damage = ev.Damage;
                 }
                 else
                 {
                     // Not a body part, just apply modifiers normally
-                    var ev = new DamageModifyEvent(uid, damage, origin);
+                    var ev = new DamageModifyEvent(uid, damage, origin, skipCap: skipCap);
                     RaiseLocalEvent(uid, ev);
+                    skipCap = ev.SkipCap;
                     damage = ev.Damage;
                 }
 
@@ -569,7 +574,7 @@ namespace Content.Shared.Damage
 
             // Apply damage
             var currentTotalDamage = damageable.TotalDamage.Float();
-            FixedPoint2? remainingCap = damageCap.HasValue ? damageCap.Value - currentTotalDamage : null;
+            FixedPoint2? remainingCap = (damageCap.HasValue && !skipCap) ? damageCap.Value - currentTotalDamage : null;
 
             foreach (var (type, value) in damage.DamageDict)
             {
@@ -1070,14 +1075,16 @@ namespace Content.Shared.Damage
         public DamageSpecifier Damage;
         public EntityUid? Origin;
         public readonly TargetBodyPart? TargetPart; // Shitmed Change
+        public bool SkipCap;
 
-        public DamageModifyEvent(EntityUid target, DamageSpecifier damage, EntityUid? origin = null, TargetBodyPart? targetPart = null) // Shitmed + Goobstation Change
+        public DamageModifyEvent(EntityUid target, DamageSpecifier damage, EntityUid? origin = null, TargetBodyPart? targetPart = null, bool skipCap = false) // Shitmed + Goobstation Change
         {
             Target = target; // Goobstation
             OriginalDamage = damage;
             Damage = damage;
             Origin = origin;
             TargetPart = targetPart; // Shitmed Change
+            SkipCap = skipCap;
         }
     }
 

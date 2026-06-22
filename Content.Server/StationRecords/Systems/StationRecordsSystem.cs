@@ -27,6 +27,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 using Content.Server._BRatbite.PermaBrig;
+using Content.Server._BRatbite.Spawners;
 using Content.Server.Access.Systems;
 using Content.Server.Administration;
 using Content.Server.CriminalRecords.Systems;
@@ -90,7 +91,8 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
     {
         if (!TryComp<StationRecordsComponent>(args.Station, out var stationRecords))
             return;
-
+        // Ratbite: skip stowaway records
+        if (HasComp<StowawayComponent>(args.Mob)) return;
         CreateGeneralRecord(args.Station, args.Mob, args.Profile, args.JobId, stationRecords, args.Player);
     }
 
@@ -128,7 +130,7 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
 
         if (roleBans.Count > 0)
         {
-            _criminalRecords.TryAddHistory(stationRecordKey, "Banned from job "+string.Join(", ",roleBans));
+            _criminalRecords.TryAddHistory(stationRecordKey, "Banned from job " + string.Join(", ", roleBans));
         }
         else
         {
@@ -138,7 +140,7 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
         var brigTime = _permaBrigManager.GetBrigTime(session.UserId);
         if (brigTime > 0)
         {
-            var reason = "Sentenced to perma for "+_permaBrigManager.GetTimeLabel(brigTime);
+            var reason = "Sentenced to perma for " + _permaBrigManager.GetTimeLabel(brigTime);
             _criminalRecords.TryChangeStatus(stationRecordKey,
                 SecurityStatus.Perma,
                 reason);

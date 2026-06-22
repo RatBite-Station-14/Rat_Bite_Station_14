@@ -23,11 +23,11 @@
     angle: 0
     wideAnimationRotation: 45
     attackRate: 1
-    heavyStaminaCost: 8
+    heavyStaminaCost: 12
     damage:
       types:
         Slash: 5
-        Piercing: 15
+        Piercing: 10
         Structural: 10
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
