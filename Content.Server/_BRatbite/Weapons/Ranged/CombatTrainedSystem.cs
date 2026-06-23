@@ -1,5 +1,4 @@
 using Content.Goobstation.Common.Weapons.Ranged;
-using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared._BRatbite.Weapons.Ranged;
 using Content.Shared.NukeOps;
 
@@ -14,32 +13,33 @@ public sealed partial class CombatTrainedSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<CombatUntrainedComponent, GetRecoilModifiersEvent>(OnRecoilModifiersEvent);
-        SubscribeLocalEvent<CombatTrainedComponent, ComponentStartup>(OnInitializeComp);
+        SubscribeLocalEvent<CombatTrainedComponent, MapInitEvent>(OnInitializeComp);
         SubscribeLocalEvent<CombatTrainedComponent, ComponentShutdown>(OnShutdownComp);
-        SubscribeLocalEvent<NukeOperativeComponent, ComponentStartup>(OnInitializeNukeOps);
+        SubscribeLocalEvent<NukeOperativeComponent, MapInitEvent>(OnInitializeNukeOps);
     }
 
-    private void OnInitializeNukeOps(Entity<NukeOperativeComponent> ent, ref ComponentStartup args)
+    private void OnInitializeNukeOps(Entity<NukeOperativeComponent> ent, ref MapInitEvent args)
     {
         // Add it like this to nukeops because there are a bunch of nuclear operative prototypes
         // And I don't want to add them manually
-        _entityManager.RemoveComponent<CombatUntrainedComponent>(ent.Owner);
-        AddComp<CombatTrainedComponent>(ent.Owner);
+        RemComp<CombatUntrainedComponent>(ent.Owner);
+        EnsureComp<CombatTrainedComponent>(ent.Owner);
     }
 
-    private void OnInitializeComp(Entity<CombatTrainedComponent> ent, ref ComponentStartup args)
+    private void OnInitializeComp(Entity<CombatTrainedComponent> ent, ref MapInitEvent args)
     {
-        _entityManager.RemoveComponent<CombatUntrainedComponent>(ent.Owner);
+        if (LifeStage(ent) >= EntityLifeStage.Terminating) return;
+        RemComp<CombatUntrainedComponent>(ent.Owner);
     }
 
     private void OnShutdownComp(Entity<CombatTrainedComponent> ent, ref ComponentShutdown args)
     {
-        AddComp<CombatUntrainedComponent>(ent.Owner);
+        if (LifeStage(ent) >= EntityLifeStage.Terminating) return;
+        EnsureComp<CombatUntrainedComponent>(ent.Owner);
     }
 
     private void OnRecoilModifiersEvent(Entity<CombatUntrainedComponent> ent, ref GetRecoilModifiersEvent args)
     {
         args.Modifier = (args.Modifier * ent.Comp.RecoilDebuff) + ent.Comp.FlatRecoilDebuff;
     }
-
 }

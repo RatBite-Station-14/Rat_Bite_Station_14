@@ -19,11 +19,16 @@
       connections:
       - right arm
       - left arm
-      - right leg
-      - left leg
+      - groin
       organs:
         heart: OrganAnimalHeart
         lungs: OrganHumanLungs
+    groin:
+      part: GroinUngu
+      connections:
+      - right leg
+      - left leg
+      organs:
         stomach: OrganUnguStomach
         liver: OrganHumanLiver
         kidneys: OrganHumanKidneys

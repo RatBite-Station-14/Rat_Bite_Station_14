@@ -158,10 +158,10 @@ namespace Content.IntegrationTests.Tests
                     continue;
                 if (warninglog)
                     await TestContext.Progress.WriteLineAsync(
-                        "Warning:\n"+
+                        "Warning:\n" +
                         $"[SpawnAndDeleteAllEntitiesOnDifferentMaps] Memory usage reached {memoryUsed / (1024 * 1024 * 1024.0):F2} GB at tick {tick + 1} out of {maxTicks} \n" +
                         "Stopping early (limit: 13 GB)." +
-                        $"\nWe spawned a total of {protoIds.Count} entities and held on for {tick+1} ticks. We're probably fine."
+                        $"\nWe spawned a total of {protoIds.Count} entities and held on for {tick + 1} ticks. We're probably fine."
                     );
 
                 break; // stop ticking early
@@ -323,10 +323,10 @@ namespace Content.IntegrationTests.Tests
                     continue;
                 if (warninglog)
                     await TestContext.Progress.WriteLineAsync(
-                        "Warning:\n"+
+                        "Warning:\n" +
                         $"[SpawnAndDirtyAllEntities] Memory usage reached {memoryUsed / (1024 * 1024 * 1024.0):F2} GB at tick {tick + 1} out of {maxTicks}\n" +
                         "Stopping early (limit: 13 GB)." +
-                        $"\nWe spawned and dirtied {protoIds.Count} entities and held on for {tick+1} ticks. We're probably fine."
+                        $"\nWe spawned and dirtied {protoIds.Count} entities and held on for {tick + 1} ticks. We're probably fine."
                     );
 
                 break; // stop ticking early
@@ -397,7 +397,15 @@ namespace Content.IntegrationTests.Tests
                 "AnnounceOnSpawn",
 
                 "PendingSlimeSpawn", // shut the fuck up please
-                "Slime" // please
+                "Slime", // please
+		"MobDebugCounter",
+        "MobDebugRandomCounter",
+        "MobDebugRandomLess",
+        "MobDiona",
+        "MobDionaDummy",
+        "MobDionaNymph",
+        "MobDionaNymphAccent",
+        "MobDionaRandom",
             };
 
             Assert.That(server.CfgMan.GetCVar(CVars.NetPVS), Is.False);
@@ -424,7 +432,7 @@ namespace Content.IntegrationTests.Tests
             await pair.RunTicksSync(3);
 
             // We consider only non-audio entities, as some entities will just play sounds when they spawn.
-            int Count(IEntityManager ent) =>  ent.EntityCount - ent.Count<AudioComponent>();
+            int Count(IEntityManager ent) => ent.EntityCount - ent.Count<AudioComponent>();
             IEnumerable<EntityUid> Entities(IEntityManager entMan) => entMan.GetEntities().Where(entMan.HasComponent<AudioComponent>);
 
             await Assert.MultipleAsync(async () =>
@@ -563,7 +571,7 @@ namespace Content.IntegrationTests.Tests
 
                     foreach (var type in componentFactory.AllRegisteredTypes)
                     {
-                        var component = (Component)componentFactory.GetComponent(type);
+                        var component = (Component) componentFactory.GetComponent(type);
                         var name = componentFactory.GetComponentName(type);
 
                         if (HasRequiredDataField(component))

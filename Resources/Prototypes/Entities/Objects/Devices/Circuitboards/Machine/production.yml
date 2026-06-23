@@ -1119,18 +1119,19 @@
       Manipulator: 1
       Steel: 1
 
-- type: entity
-  id: MaterialSiloMachineCircuitboard
-  parent: BaseMachineCircuitboard
-  name: material silo machine board
-  components:
-  - type: Sprite
-    state: supply
-  - type: MachineBoard
-    prototype: MaterialSilo #Goobstation - Silo
-    stackRequirements:
-      Manipulator: 4
-      Cable: 1
+# Ratbite: For some reason we have our own with a slightly different recipe
+#- type: entity
+#  id: MaterialSiloMachineCircuitboard
+#  parent: BaseMachineCircuitboard
+#  name: material silo machine board
+#  components:
+#  - type: Sprite
+#    state: supply
+#  - type: MachineBoard
+#    prototype: MaterialSilo #Goobstation - Silo
+#    stackRequirements:
+#      Manipulator: 4
+#      Cable: 1
 
 - type: entity
   id: OreProcessorMachineCircuitboard

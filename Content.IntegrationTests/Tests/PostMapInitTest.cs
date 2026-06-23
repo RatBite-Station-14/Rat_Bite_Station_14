@@ -206,41 +206,42 @@ namespace Content.IntegrationTests.Tests
             "Atlas",
             "Bagel",
             "Barratry",
-            "Box",            // Not in pool
+            //"Box",            // Not in pool
             "CentComm",       // CentComm
-            "Chloris",        // Not in pool
+            //"Chloris",        // Not in pool
             "Cluster",
-            "Cog",            // Not in pool
+            //"Cog",            // Not in pool
             "Core",
-            "Delta",          // Not in pool
+            //"Delta",          // Not in pool
             "Dev",            // Dev map
             "dm01-entryway",  // Deathmatch
-            "Europa",         // Not in pool
-            "Fland",          // Not in pool
-            "FlandHighPop",   // Not in pool
-            "Gate",           // Not in pool
+	    "Elkridge", // Ratbite
+            //"Europa",         // Not in pool
+            //"Fland",          // Not in pool
+            //"FlandHighPop",   // Not in pool
+            //"Gate",           // Not in pool
             "Kettle",
-            "Lambda",         // Not in pool
+            //"Lambda",         // Not in pool
             "Lavatest",       // Dev map
-            "Leonid",         // Not in pool
+            //"Leonid",         // Not in pool
             "Loop",
             "Marathon",
-            "Meta",           // Not in pool
+            // "Meta",           // Not in pool
             "MeteorArena",    // Deathmatch
-            "Oasis",
             "OasisHighPop",
             "Omega",
             "Opticon", // Ratbite original work
-            "Origin",         // Not in pool
-            "OriginHighPop",  // Not in pool
+            // "Origin",         // Not in pool
+            // "OriginHighPop",  // Not in pool
             "Packed",
-            "Prison",         // Not in pool
+            // "Prison",         // Not in pool
             "Reach",
             "Saltern",
-            "Serpentcrest",   // Not in pool
-            "Submarine",      // Not in pool
+            // "Serpentcrest",   // Not in pool
+	    "Snowball",       // Ratbite
+            //"Submarine",      // Not in pool
             "TestTeg",        // Dev map
-            "Train"           // Not in pool
+            // "Train"           // Not in pool
             // Goob end
         };
         // Goobstation edit start, yeah i know, but this is easier and less load than loading protoman or something.
@@ -272,7 +273,7 @@ namespace Content.IntegrationTests.Tests
               "Marathon",
             //"Meta",           // Not in pool
             //"MeteorArena",    // Deathmatch
-              "Oasis",
+              //"Oasis",
               "OasisHighPop",
               "Omega",
               "Opticon",
@@ -489,7 +490,7 @@ namespace Content.IntegrationTests.Tests
 
             Assert.Multiple(() =>
             {
-                foreach (var yamlEntity in (YamlSequenceNode)yamlEntities)
+                foreach (var yamlEntity in (YamlSequenceNode) yamlEntities)
                 {
                     var protoId = yamlEntity["proto"].AsString();
 

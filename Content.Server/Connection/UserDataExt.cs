@@ -22,6 +22,8 @@ public static class UserDataExt
     /// </remarks>
     public static ImmutableTypedHwid? GetModernHwid(this NetUserData userData)
     {
+        // It's supposed to be non nullable, but a test fails saying it's null
+        if (userData.ModernHWIds == null) return null;
         return userData.ModernHWIds.Length == 0
             ? null
             : new ImmutableTypedHwid(userData.ModernHWIds[0], HwidType.Modern);

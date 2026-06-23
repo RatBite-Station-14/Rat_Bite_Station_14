@@ -1,10 +1,4 @@
 - type: latheRecipePack
-  id: SecurityAmmoRatbiteDynamic
-  recipes:
-  - EnergyMagPistolIon
-  - EnergyMagPistolOverchargeLethal
-
-- type: latheRecipePack
   id: SecurityAmmoRatbiteStatic
   recipes:
   - EnergyMagPistolLethal

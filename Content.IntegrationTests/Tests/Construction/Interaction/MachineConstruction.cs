@@ -16,6 +16,7 @@ public sealed class MachineConstruction : InteractionTest
     private const string Unfinished = "UnfinishedMachineFrame";
     private const string ProtolatheBoard = "ProtolatheMachineCircuitboard";
     private const string Protolathe = "Protolathe";
+    private const string Ape = "MachineAPE"; // Ratbite: Change to ape because protolathes have bolts
     private const string Beaker = "Beaker";
 
     [Test]
@@ -31,9 +32,9 @@ public sealed class MachineConstruction : InteractionTest
     }
 
     [Test]
-    public async Task DeconstructProtolathe()
+    public async Task DeconstructApe()
     {
-        await StartDeconstruction(Protolathe);
+        await StartDeconstruction(Ape);
         await Interact(Screw, Pry);
         AssertPrototype(MachineFrame);
         await Interact(Pry, Cut);
@@ -42,17 +43,17 @@ public sealed class MachineConstruction : InteractionTest
         AssertDeleted();
         await AssertEntityLookup(
             (Steel, 5),
-            (Cable, 1),
-            (Beaker, 2),
-            (Manipulator1, 4),
-            (ProtolatheBoard, 1));
+            (Cable, 2),
+        (Glass, 1),
+            (Manipulator1, 2),
+            ("APECircuitboard", 1));
     }
 
     [Test]
     public async Task ChangeMachine()
     {
         // Partially deconstruct a protolathe.
-        await SpawnTarget(Protolathe);
+        await SpawnTarget(Ape);
         await Interact(Screw, Pry, Pry);
         AssertPrototype(MachineFrame);
 

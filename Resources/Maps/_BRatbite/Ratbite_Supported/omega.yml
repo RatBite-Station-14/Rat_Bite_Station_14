@@ -39605,8 +39605,6 @@ entities:
       pos: -30.5,27.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 33
   - uid: 13988
@@ -39615,8 +39613,6 @@ entities:
       pos: -30.5,28.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 33
 - proto: FirelockElectronics

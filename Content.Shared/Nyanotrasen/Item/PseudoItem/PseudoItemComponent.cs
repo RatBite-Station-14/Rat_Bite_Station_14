@@ -4,6 +4,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Item;
+using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Nyanotrasen.Item.PseudoItem;
@@ -12,7 +13,7 @@ namespace Content.Shared.Nyanotrasen.Item.PseudoItem;
 /// For entities that behave like an item under certain conditions,
 /// but not under most conditions.
 /// </summary>
-[RegisterComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class PseudoItemComponent : Component
 {
     [DataField("size")]

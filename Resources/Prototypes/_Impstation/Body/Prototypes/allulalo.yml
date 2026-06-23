@@ -19,12 +19,17 @@
       organs:
         heart: OrganAllulaloHeart
         lungs: OrganHumanLungs
+      connections:
+      - right arm
+      - left arm
+      - groin
+    groin:
+      part: GroinAllulalo
+      organs:
         stomach: OrganAnimalStomach
         liver: OrganAnimalLiver
         kidneys: OrganHumanKidneys
       connections:
-      - right arm
-      - left arm
       - right leg
       - left leg
     right arm:
