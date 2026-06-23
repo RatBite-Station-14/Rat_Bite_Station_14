@@ -36704,8 +36704,6 @@ entities:
       pos: 13.5,9.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 19
   - uid: 5452

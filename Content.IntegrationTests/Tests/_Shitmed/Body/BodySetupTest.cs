@@ -179,7 +179,8 @@ public sealed class BodySetupTest
             {
                 Assert.That(dummy, Is.Not.EqualTo(EntityUid.Invalid));
                 var handCount = handsSys.EnumerateHands(dummy).Count();
-                Assert.That(handCount, Is.GreaterThanOrEqualTo(2), $"hands {speciesPrototype.ID}({speciesPrototype.Prototype})");
+                // Ratbite: Allulus have one hand
+                Assert.That(handCount, Is.GreaterThanOrEqualTo(1), $"hands {speciesPrototype.ID}({speciesPrototype.Prototype})");
             });
 
         }

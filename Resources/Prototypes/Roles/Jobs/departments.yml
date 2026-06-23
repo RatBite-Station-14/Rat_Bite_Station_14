@@ -152,7 +152,7 @@
   - ERTEngineer
   - DeathSquad
   - HecuOperative
-  - RedsightOverseer # Ratbite
+  # - RedsightOverseer # Ratbite (Jobs shouldn't have more than one primary department. Removing from CC because it's not used in any time requirements)
   - BlueshieldOfficer # Goobstation - Start
   - NanotrasenRepresentative
   - NanotrasenCareerTrainer

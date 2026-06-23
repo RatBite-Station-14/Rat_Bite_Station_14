@@ -5,6 +5,7 @@
 using Content.Server.Body.Components;
 using Content.Shared._BRatbite.Traits;
 using Content.Shared._Shitmed.Body.Organ;
+using Content.Shared.Body.Components;
 using Content.Shared.Body.Events;
 using Content.Shared.Body.Organ;
 using Content.Shared.Body.Systems;
@@ -23,15 +24,15 @@ public sealed class NeurogenesisImperfectaSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<NeurogenesisImperfectaComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<NeurogenesisImperfectaComponent, MapInitEvent>(OnStartup);
         SubscribeLocalEvent<BrainComponent, OrganComponentsModifyEvent>(OnBrainOrganModify);
         SubscribeLocalEvent<NeurogenesisImperfectaBrainComponent, BeforeOrganInsertedEvent>(OnBeforeBrainInserted);
         SubscribeLocalEvent<NeurogenesisImperfectaBrainComponent, ItemSlotInsertAttemptEvent>(OnBrainInsertAttempt);
     }
 
-    private void OnStartup(Entity<NeurogenesisImperfectaComponent> ent, ref ComponentStartup args)
+    private void OnStartup(Entity<NeurogenesisImperfectaComponent> ent, ref MapInitEvent args)
     {
-        if (!_body.TryGetBodyOrganEntityComps<BrainComponent>(ent.Owner, out var brains))
+        if (!HasComp<BodyComponent>(ent) || !_body.TryGetBodyOrganEntityComps<BrainComponent>(ent.Owner, out var brains))
             return;
 
         foreach (var brain in brains)

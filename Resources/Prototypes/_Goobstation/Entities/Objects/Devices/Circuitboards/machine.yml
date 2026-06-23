@@ -9,7 +9,7 @@
 
 
 - type: entity
-  id: MaterialSiloCircuitboard #ratbite re-add since goob removed it for no reason
+  id: MaterialSiloMachineCircuitboard #ratbite re-add since goob removed it for no reason
   parent: BaseMachineCircuitboard
   name: material silo machine board
   description: A machine printed circuit board for a material silo.

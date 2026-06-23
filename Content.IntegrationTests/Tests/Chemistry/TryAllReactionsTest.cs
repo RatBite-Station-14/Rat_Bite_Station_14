@@ -45,7 +45,7 @@ namespace Content.IntegrationTests.Tests.Chemistry
   - type: SolutionContainerManager
     solutions:
       beaker:
-        maxVol: 50
+        maxVol: 500
         canMix: true";
 
         [Test]

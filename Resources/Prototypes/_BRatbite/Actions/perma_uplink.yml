@@ -5,8 +5,8 @@
 - type: entity
   parent: BaseAction
   id: ActionOpenPermaUplink
-  name: action-name-open-perma-uplink
-  description: action-description-open-perma-uplink
+  name: Perma Uplink
+  description: Open your prison commissary uplink.
   components:
   - type: Action
     itemIconStyle: BigAction

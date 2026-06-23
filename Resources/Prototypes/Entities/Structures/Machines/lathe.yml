@@ -804,7 +804,6 @@
     - PowerCells
     # Ratbite
     - LegalTechSciSec
-    - SecurityAmmoRatbiteDynamic
   - type: EmagLatheRecipes # Goobstation
     emagStaticPacks:
     - SyndicateAmmoLightStatic

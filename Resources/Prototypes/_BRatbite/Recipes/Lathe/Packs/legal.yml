@@ -2,7 +2,6 @@
   id: LegalTechSciOnly
   recipes:
   - LegalRadioJammer
-  - LegalLanternFlash
   - ReverseBearTrap
   - ReverseBearTrapKey
   - LegalSyndieTrickyBomb

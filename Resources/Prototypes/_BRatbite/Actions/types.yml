@@ -32,8 +32,8 @@
 - type: entity
   parent: BaseAction
   id: ActionMald
-  name: action-name-mald
-  description: action-description-mald
+  name: Mald
+  description: Succumb to Lord Perstronzio's Rage.
   components:
   - type: Action
     checkCanInteract: false

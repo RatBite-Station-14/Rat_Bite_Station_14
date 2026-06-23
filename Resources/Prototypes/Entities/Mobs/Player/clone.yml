@@ -134,13 +134,13 @@
   # Einstein Engines - Language end
 
   # Ratbite
-  - CaptainSaberWeaknessComponent
+  - CaptainSaberWeakness
   - Prisoner
   - Atheist
   - CombatTrained
   - CombatUntrained
-  - Mindshield # Prevent people from acting violent after cloning
-  - FakeMindshield # Just to prevent metagaming
+  - MindShield # Prevent people from acting violent after cloning
+  - FakeMindShield # Just to prevent metagaming
   # End ratbite
 
   blacklist:
