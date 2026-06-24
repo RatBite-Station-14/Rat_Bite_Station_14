@@ -1,0 +1,2 @@
+cryosickness-end-popup = You suddenly feel awake and ready to fight
+cryosickness-popup = This will remove spawn protection but disable pacifism, you may be brigged if you attack someone too fast after doing this, are you SURE?!

@@ -23,7 +23,7 @@
     damageContainer: Silicon
   - type: Cybernetics
   - type: Nerve
-    painMultiplier: 1.5
+    painMultiplier: 0.25 # Ratbite - The Phantom Pain...Multiplier
   - type: Woundable
     canBleed: false
 

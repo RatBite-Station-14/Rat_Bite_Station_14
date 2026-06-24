@@ -141,6 +141,10 @@ public sealed partial class ReflectComponent : Component
     [DataField, AutoNetworkedField]
     public float DamageOnReflectModifier;
     // WD END
+
+    // Ratbite
+    [DataField, AutoNetworkedField]
+    public bool ReflectionOnStandingStill = false;
 }
 
 [Flags, Serializable, NetSerializable]

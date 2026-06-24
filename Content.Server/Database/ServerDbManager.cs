@@ -497,6 +497,8 @@ namespace Content.Server.Database
         Task SetPermaRoundsLeft(NetUserId userId, int BrigSentence); // Ratbite
         Task<int> ModifyPermaRoundsLeft(NetUserId userId, int BrigSentence); // Ratbite
         Task<int> GetPermaTimeLeft(NetUserId userId); // Ratbite
+        Task<bool> GetPermaInpatient(NetUserId userId); // Ratbite
+        Task SetPermaInpatient(NetUserId userId, bool status); // Ratbite
         Task SetPermaTimeLeft(NetUserId userId, int minutes); // Ratbite
         Task<int> ModifyPermaTimeLeft(NetUserId userId, int minutes); // Ratbite
         Task<int> GetPPpoints(NetUserId userId); // Ratbite
@@ -843,6 +845,17 @@ namespace Content.Server.Database
         {
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.GetPermaTimeLeft(userId));
+        }
+
+        public Task<bool> GetPermaInpatient(NetUserId userId) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetPermaInpatient(userId));
+        }
+        public Task SetPermaInpatient(NetUserId userId, bool status) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetPermaInpatient(userId, status));
         }
         public Task SetPermaTimeLeft(NetUserId userId, int minutes) // Ratbite
         {

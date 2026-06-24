@@ -49,6 +49,8 @@
       lateJoinAdditional: true
       mindRoles:
       - MindRoleTraitor
+      components:
+      - type: CombatTrained
   - type: Tag
     tags:
       - MidroundAntag

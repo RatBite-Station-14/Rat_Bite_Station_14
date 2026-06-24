@@ -45,3 +45,21 @@
     popup: mald-action-popup
   - type: InstantAction
     event: !type:MaldActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionShakeAwake
+  name: Shake Yourself Awake
+  description: Shake yourself awake from cryo sickness
+  components:
+  - type: Action
+    checkCanInteract: false
+    itemIconStyle: BigAction
+    icon:
+      sprite: Objects/Fun/card_sword.rsi
+      state: icon
+  - type: ConfirmableAction
+    popup: cryosickness-popup
+  - type: InstantAction
+    event: !type:ShakeAwakeEvent
+  

@@ -199,7 +199,10 @@ public sealed class ReflectSystem : EntitySystem
 
         var rotation = _random.NextAngle(-reflector.Comp.Spread / 2, reflector.Comp.Spread / 2).Opposite();
         var existingVelocity = _physics.GetMapLinearVelocity(projectile, component: physics);
-        var relativeVelocity = existingVelocity - _physics.GetMapLinearVelocity(user);
+        var userVelocity = _physics.GetMapLinearVelocity(user);
+        // Ratbite
+        if (reflector.Comp.ReflectionOnStandingStill && userVelocity != Vector2.Zero) return false;
+        var relativeVelocity = existingVelocity - userVelocity;
         var newVelocity = rotation.RotateVec(relativeVelocity);
 
         // Have the velocity in world terms above so need to convert it back to local.
@@ -254,7 +257,7 @@ public sealed class ReflectSystem : EntitySystem
             !_toggle.IsActivated(reflector.Owner) ||
             // Goob edit start
             !((reflector.Comp.Reflects & hitscanReflectType) != 0x0 && _random.Prob(reflector.Comp.ReflectProb)))
-            // Goob edit end
+        // Goob edit end
         {
             newDirection = null;
             return false;

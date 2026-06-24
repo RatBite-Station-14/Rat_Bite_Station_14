@@ -383,6 +383,8 @@
       lateJoinAdditional: true
       mindRoles:
       - MindRoleTraitor
+      components:
+      - type: CombatTrained
 
 - type: entity
   id: Revolutionary

@@ -610,7 +610,7 @@ namespace Content.Shared.Cuffs
             EnsureComp<HandcuffComponent>(handcuff, out var handcuffsComp);
             handcuffsComp.Used = true;
             Dirty(handcuff, handcuffsComp);
-            
+
             var ev = new TargetHandcuffedEvent();
             RaiseLocalEvent(target, ref ev);
 

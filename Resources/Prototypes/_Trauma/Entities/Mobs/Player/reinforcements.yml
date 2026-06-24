@@ -14,7 +14,8 @@
   parent: ReinforcementOfficer
   id: ReinforcementOfficerSpec
   equipment:
-    pocket1: WeaponLaserSidearm
+    pocket1: WeaponPistolMk58
+    pocket2: MagazinePistol
     outerClothing: ClothingOuterArmorBasic
     head: ClothingHeadHelmetBasic
   storage:
