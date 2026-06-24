@@ -287,4 +287,92 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
             };
         }
     }
+
+[AdminCommand(AdminFlags.Ban)]
+public sealed class PermaSentenceInpatientCommand : IConsoleCommand
+{
+    [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
+    [Dependency] private readonly IChatManager _chatManager = default!;
+
+    public string Command => "perma:inpatient";
+    public string Description => "Set whether a player spawns as an inpatient prisoner (cuffed high security)";
+
+    public string Help => "Usage: perma:inpatient <player> <bool>"
+                          + "\n    player: who to set flag for."
+                          + "\n    status: true or false (also accepts yes/no or 1/0)";
+
+    public void Execute(IConsoleShell shell, string argStr, string[] args)
+    {
+        if (args.Length != 2)
+        {
+            return;
+        }
+
+        var plyMgr = IoCManager.Resolve<IPlayerManager>();
+        if (!plyMgr.TryGetUserId(args[0], out var targetPlayer))
+        {
+            shell.WriteError(Loc.GetString("perma-command-invalid-player"));
+            return;
+        }
+
+        if (!TryParseBool(args[1], out var status))
+        {
+            shell.WriteError("Invalid status. Use true/false, yes/no, or 1/0.");
+            return;
+        }
+
+        _permaBrigManager.SetBrigInpatient(targetPlayer, status);
+
+        var message = Loc.GetString("perma-set-inpatient-status",
+            ("status", status),
+            ("player", targetPlayer.UserId));
+
+        shell.WriteLine(message);
+
+        if (shell.Player is { } player)
+        {
+            _chatManager.ChatMessageToOne(ChatChannel.Local,
+                message,
+                message,
+                EntityUid.Invalid,
+                false,
+                shell.Player.Channel);
+        }
+    }
+
+    public CompletionResult GetCompletion(IConsoleShell shell, string[] args)
+    {
+        return args.Length switch
+        {
+            1 => CompletionResult.FromHintOptions(CompletionHelper.SessionNames(), "<Player>"),
+            2 => CompletionResult.FromHintOptions(
+                new[] { "true", "false"},
+                "<Bool>"),
+            _ => CompletionResult.Empty
+        };
+    }
+
+    private static bool TryParseBool(string input, out bool value)
+    {
+        switch (input.Trim().ToLowerInvariant())
+        {
+            case "true":
+            case "yes":
+            case "1":
+                value = true;
+                return true;
+
+            case "false":
+            case "no":
+            case "0":
+                value = false;
+                return true;
+
+            default:
+                value = false;
+                return false;
+        }
+    }
+}
+
 }

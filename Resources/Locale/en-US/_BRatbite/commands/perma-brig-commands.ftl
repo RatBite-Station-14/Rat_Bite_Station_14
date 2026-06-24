@@ -8,3 +8,5 @@ perma-set-time-to-player = Set {CAPITALIZE($player)}'s sentence to {$minutes} mi
 
 perma-command-invalid-player = Could not find player with that Username!
 perma-command-invalid-time = Invalid number of rounds provided!
+
+perma-set-inpatient-status = Inpatient status for {CAPITALIZE($player)}'s set to {$status}.

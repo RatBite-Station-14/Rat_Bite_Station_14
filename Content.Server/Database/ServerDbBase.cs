@@ -2204,6 +2204,28 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
                 .SingleOrDefaultAsync();
         }
 
+        public async Task<bool> GetPermaInpatient(NetUserId userId) // Ratbite
+        {
+            await using var db = await GetDb();
+
+            return await db.DbContext.Player
+                .Where(dbPlayer => dbPlayer.UserId == userId)
+                .Select(dbPlayer => dbPlayer.Inpatient)
+                .SingleOrDefaultAsync();
+        }
+
+        public async Task SetPermaInpatient(NetUserId userId, bool status) // Ratbite
+        {
+            await using var db = await GetDb();
+
+            var dbPlayer = await db.DbContext.Player.Where(dbPlayer => dbPlayer.UserId == userId).SingleOrDefaultAsync();
+            if (dbPlayer == null)
+                return;
+
+            dbPlayer.Inpatient = status;
+            await db.DbContext.SaveChangesAsync();
+        }
+
         public async Task SetPermaTimeLeft(NetUserId userId, int minutes) // Ratbite
         {
             await using var db = await GetDb();

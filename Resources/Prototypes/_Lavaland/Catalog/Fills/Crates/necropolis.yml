@@ -36,6 +36,7 @@
   - type: StorageFill
     contents:
       - id: ClothingOuterArmorCult
+      - id: ClothingHeadHelmetCult # Ratbite - Cult Crate has the full fucking set
 
 - type: entity
   id: LavalandCrateNecropolisCultRobe

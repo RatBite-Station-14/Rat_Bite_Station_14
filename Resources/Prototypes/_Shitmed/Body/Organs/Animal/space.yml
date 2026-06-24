@@ -16,7 +16,7 @@
     integrityThresholds:
       Normal: 28
       Damaged: 16
-      Destroyed: 0  
+      Destroyed: 0
     onAdd:
     - type: BreathingImmunity
 
@@ -31,7 +31,7 @@
     integrityThresholds:
       Normal: 21
       Damaged: 12
-      Destroyed: 0  
+      Destroyed: 0
     onAdd:
     - type: PressureImmunity
 
@@ -43,6 +43,7 @@
   - type: Organ
     onAdd:
     - type: GoliathTentacle
+    - type: PressureImmunity # Ratbite - Space Animals Are Spaceproof
   - type: Sprite
     sprite: _Shitmed/Mobs/Species/Space/Goliath/organs.rsi
     state: heart-on
@@ -57,6 +58,7 @@
     - type: ActionGun
       action: ActionDragonsBreath
       gunProto: DragonsBreathGun
+    - type: BreathingImmunity # Ratbite - Space Animals Are Spaceproof
 
 - type: entity
   parent: OrganHumanEyes
@@ -95,6 +97,7 @@
     - type: StealthOnMove
       passiveVisibilityRate: -0.25
       movementVisibilityRate: 0.25
+    - type: PressureImmunity # Ratbite - Space Animals Are Spaceproof
   - type: Sprite
     sprite: _Shitmed/Mobs/Species/Space/Cobra/organs.rsi
     state: heart-on

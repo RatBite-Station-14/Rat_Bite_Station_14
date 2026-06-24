@@ -237,7 +237,7 @@
       coefficients:
         Blunt: 0.35
         Slash: 0.35
-        Piercing: 0.4 # Ratbite Balance
+        Piercing: 0.6 # Ratbite - Did you know armor is actually SUPPOSED to have tradeoffs?
         Heat: 0.6
         Caustic: 0.75
   - type: ClothingSpeedModifier
@@ -278,13 +278,10 @@
       NerveDamage: 0
     modifiers:
       coefficients:
-        Blunt: 0.8
-        Slash: 0.8
-        Piercing: 0.3
+        Blunt: 0.8 # Ratbite - Resists are balanced by the fact that if you get melee'd
+        Slash: 0.8 # at ALL in a bullet vest you WILL just fold.
+        Piercing: 0.2 # DIDN'T READ THE RESISTS AWARD, ISSUED TO ONE BEVVERIUS RATBITES
         Heat: 0.6
-  - type: ClothingSpeedModifier #Ratbite add
-    walkModifier: 0.80
-    sprintModifier: 0.80
   - type: ExplosionResistance
     damageCoefficient: 0.8
 
