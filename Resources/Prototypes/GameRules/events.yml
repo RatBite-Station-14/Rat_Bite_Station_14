@@ -455,6 +455,7 @@
       - type: AutoImplant
         implants:
         - MicroBombImplant # Goobstation
+        - PacifismImplant # Ratbite, space ninjas when you tell them to not murderbone (you can do objectives easily with pacifism)
       - type: RandomMetadata
         nameSegments:
         - NamesNinjaTitle
