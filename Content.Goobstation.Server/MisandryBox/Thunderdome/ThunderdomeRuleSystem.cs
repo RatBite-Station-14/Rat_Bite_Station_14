@@ -105,7 +105,7 @@ public sealed class ThunderdomeRuleSystem : EntitySystem
 
     private void OnRoundEnding(RoundRestartCleanupEvent ev)
     {
-        foreach (var eui in _activeEuis.Values)
+        foreach (var eui in _activeEuis.Values.ToList())
             eui.Close();
         _activeEuis.Clear();
 
@@ -165,6 +165,14 @@ public sealed class ThunderdomeRuleSystem : EntitySystem
         var eui = new ThunderdomeLoadoutEui(this, _ruleEntity.Value, session);
         _euiManager.OpenEui(eui, session);
         _activeEuis[session] = eui;
+    }
+
+    internal void RemoveActiveEui(ICommonSession session, ThunderdomeLoadoutEui eui)
+    {
+        if (_activeEuis.TryGetValue(session, out var activeEui) && ReferenceEquals(activeEui, eui))
+        {
+            _activeEuis.Remove(session);
+        }
     }
 
     private void OnLeaveRequest(ThunderdomeLeaveRequestEvent ev, EntitySessionEventArgs args)

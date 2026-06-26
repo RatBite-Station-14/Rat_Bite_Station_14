@@ -90,7 +90,11 @@ namespace Content.Server.EUI
         public void CloseEui(BaseEui eui)
         {
             eui.Shutdown();
-            _playerData[eui.Player].OpenUIs.Remove(eui.Id);
+
+            if (_playerData.TryGetValue(eui.Player, out var plyDat))
+            {
+                plyDat.OpenUIs.Remove(eui.Id);
+            }
 
             var msg = new MsgEuiCtl();
             msg.Id = eui.Id;
