@@ -31,7 +31,7 @@
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
-        Blunt: 24
+        Blunt: 12 #Ratbite kill
 
 - type: entity
   id: WeakBulletKinetic
@@ -42,7 +42,7 @@
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
-        Blunt: 12
+        Blunt: 8 #Ratbite kill
 
 - type: entity
   id: PelletKinetic

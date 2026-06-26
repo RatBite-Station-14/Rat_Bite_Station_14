@@ -609,8 +609,8 @@
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
-        Blunt: 40 # Lavaland Change - TOTAL PKA VICTORY
-  #        Structural: 30 Lavaland Change - No easy break-ins :)
+        Blunt: 15 # Ratbite kill dam
+        Structural: 20 # Ratbite re add
   # Short lifespan
   - type: TimedDespawn
     lifetime: 0.22 # roughly 5.5 tiles

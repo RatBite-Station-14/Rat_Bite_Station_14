@@ -34,7 +34,6 @@ public sealed partial class GhostGui : UIWidget
     public event Action? ReturnToBodyPressed;
     public event Action? GhostRolesPressed;
     public event Action? AltServerConnectPressed;
-    public event Action? ThunderdomePressed; // Goobstation - Thunderdome
     private int _prevNumberRoles;
 
     public GhostGui()
@@ -49,8 +48,7 @@ public sealed partial class GhostGui : UIWidget
         ReturnToBodyButton.OnPressed += _ => ReturnToBodyPressed?.Invoke();
         GhostRolesButton.OnPressed += _ => GhostRolesPressed?.Invoke();
         GhostRolesButton.OnPressed += _ => GhostRolesButton.StyleClasses.Remove(StyleBase.ButtonCaution);
-        AltServerConnectButton.OnPressed += _ => AltServerConnectPressed?.Invoke(); // Ratbite - rb2 button
-        ThunderdomeButton.OnPressed += _ => ThunderdomePressed?.Invoke(); // Goobstation - Thunderdome
+        AltServerConnectButton.OnPressed += _ => AltServerConnectPressed?.Invoke();
     }
 
     public void Hide()
@@ -84,12 +82,6 @@ public sealed partial class GhostGui : UIWidget
             AltServerConnectButton.Text = Loc.GetString("ghost-gui-connect-alt-server", ("count", altServerPopCount), ("serverName", altServerName));
 
         TargetWindow.Populate();
-    }
-
-    // Goobstation - Thunderdome
-    public void UpdateThunderdome(int playerCount)
-    {
-        ThunderdomeButton.Text = Loc.GetString("thunderdome-ghost-button", ("count", playerCount));
     }
 
     protected override void Dispose(bool disposing)
