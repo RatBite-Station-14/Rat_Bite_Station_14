@@ -172,7 +172,6 @@
     sprite: Clothing/Ears/Headsets/mining.rsi
   - type: Clothing
     sprite: Clothing/Ears/Headsets/mining.rsi
-  - type: FlashSoundSuppression # Ratbite - Mining charges are loud, ergo the headset doubles as earpro.
 
 - type: entity
   parent: [ClothingHeadsetCargo, BaseCommandContraband]

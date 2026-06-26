@@ -70,8 +70,8 @@
       types:
         Blunt: 5
         Structural: 10
-  - type: StaminaDamageOnHit # goob - bat makes you hurt and tired (but not as much as the real stun stick)
-    damage: 12 # goob - 8 hits to stamcrit someone with armor vest + helmet
+ # - type: StaminaDamageOnHit # goob - bat makes you hurt and tired (but not as much as the real stun stick)
+ #   damage: 12 # ratbite removes stam dam from bat
   - type: MeleeThrowOnHit # Goobstation
     distance: 1
     speed: 5
