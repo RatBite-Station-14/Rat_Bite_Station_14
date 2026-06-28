@@ -10,6 +10,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Objectives.Systems;
+using Content.Shared.Roles;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Objectives.Components;
 
@@ -24,4 +26,8 @@ public sealed partial class PickRandomPersonComponent : Component
 
     [DataField]
     public bool ExcludeChangeling; // Goobstation: Determine if you can get changelings as an objective
+
+    [DataField]
+    // Ratbite: Which antag does the person need to have enabled for it to be picked
+    public ProtoId<AntagPrototype>? NeedsAntagSelected;
 }

@@ -48,6 +48,7 @@
   - type: TargetObjective
     title: objective-condition-pkill-person
   - type: PickRandomPerson
+    needsAntagSelected: Traitor # Ratbite
   - type: KillPersonCondition
     requireDead: true
 

@@ -11,10 +11,12 @@ using Content.Server.Cloning;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Medical.SuitSensors;
 using Content.Server.Objectives.Components;
+using Content.Server.Preferences.Managers;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Gibbing.Components;
 using Content.Shared.Medical.SuitSensor;
 using Content.Shared.Mind;
+using Content.Shared.Preferences;
 using Content.Shared.Whitelist;
 using Robust.Shared.Random;
 
@@ -28,6 +30,7 @@ public sealed class ParadoxCloneRuleSystem : GameRuleSystem<ParadoxCloneRuleComp
     [Dependency] private readonly CloningSystem _cloning = default!;
     [Dependency] private readonly SuitSensorSystem _sensor = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!; // Goobstation
+    [Dependency] private readonly IServerPreferencesManager _preferences = default!;
 
     public override void Initialize()
     {
@@ -72,6 +75,15 @@ public sealed class ParadoxCloneRuleSystem : GameRuleSystem<ParadoxCloneRuleComp
             // get possible targets
             var allAliveHumanoids = _mind.GetAliveHumans();
             allAliveHumanoids.RemoveWhere(human => _whitelist.IsBlacklistPass(ent.Comp.TargetBlacklist, human)); // Goobstation
+                                                                                                                 // Ratbite: Remove targets who don't have paradox clone enabled
+            allAliveHumanoids.RemoveWhere((mind) =>
+            {
+                if (mind.Comp.UserId is null) return false;
+                if (!_preferences.TryGetCachedPreferences(mind.Comp.UserId.Value, out var pref)) return false;
+                var profile = pref.SelectedCharacter;
+                if (profile is not HumanoidCharacterProfile humanoid) return false;
+                return !humanoid.AntagPreferences.Contains("ParadoxClone");
+            });
 
             // we already checked when starting the gamerule, but someone might have died since then.
             if (allAliveHumanoids.Count == 0)

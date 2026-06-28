@@ -1,0 +1,1 @@
+antag-ghost-role-not-allowed = You don't have this antagonist selected in your antagonist preferences

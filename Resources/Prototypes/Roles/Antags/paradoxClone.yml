@@ -3,7 +3,7 @@
   name: roles-antag-paradox-clone-name
   antagonist: true
   objective: roles-antag-paradox-clone-objective
-  setPreference: false
+  setPreference: true # Ratbite
 
 # they need to be able to espace when spawning inside a locked room
 # TODO: remove this once we got a better spawning loacation selection

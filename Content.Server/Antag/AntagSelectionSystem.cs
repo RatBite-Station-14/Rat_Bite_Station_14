@@ -122,6 +122,8 @@ using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
 using Content.Shared.Mind;
 using Content.Shared.Players;
+using Content.Shared.Popups;
+using Content.Shared.Preferences;
 using Content.Shared.Roles;
 using Content.Shared.Whitelist;
 using Robust.Server.Audio;
@@ -153,6 +155,8 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
     [Dependency] private readonly LastRolledAntagManager _lastRolled = default!; // Goobstation
     [Dependency] private readonly PlayTimeTrackingManager _playTime = default!; // Goobstation
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     // arbitrary random number to give late joining some mild interest.
     public const float LateJoinRandomChance = 0.5f;
@@ -184,6 +188,19 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
 
         if (!Exists(rule) || !TryComp<AntagSelectionComponent>(rule, out var select))
             return;
+
+        // Ratbite start
+        var selectableRoles = def.PrefRoles.Select(a => (a, _proto.Index(a))).Where(a => a.Item2.SetPreference).ToList();
+        if (selectableRoles.Count() > 0 && _pref.TryGetCachedPreferences(args.Player.UserId, out var pref))
+        {
+            var profile = pref.SelectedCharacter;
+            if (profile is HumanoidCharacterProfile humanoid && !selectableRoles.Any(a => humanoid.AntagPreferences.Contains(a.Item1)))
+            {
+                _popup.PopupCursor(Loc.GetString("antag-ghost-role-not-allowed"), args.Player);
+                return;
+            }
+        }
+        // Ratbite end
 
         MakeAntag((rule, select), args.Player, def, ignoreSpawner: true);
         args.TookRole = true;

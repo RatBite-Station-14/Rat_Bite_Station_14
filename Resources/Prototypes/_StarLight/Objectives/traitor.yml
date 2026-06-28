@@ -29,6 +29,7 @@
   - type: TargetObjective
     title: objective-condition-teach-lesson-title
   - type: PickRandomPerson
+    needsAntagSelected: Traitor # Ratbite
 
 
 - type: entity

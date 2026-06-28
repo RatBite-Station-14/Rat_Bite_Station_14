@@ -15,6 +15,8 @@ using Content.Server.Revolutionary.Components;
 using Robust.Shared.Random;
 using System.Linq;
 using Content.Shared.NukeOps;
+using Content.Shared.Preferences;
+using Content.Server.Preferences.Managers;
 
 namespace Content.Server.Objectives.Systems;
 
@@ -28,6 +30,7 @@ public sealed class PickObjectiveTargetSystem : EntitySystem
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly TraitorRuleSystem _traitorRule = default!;
+    [Dependency] private readonly IServerPreferencesManager _preferences = default!;
 
     public override void Initialize()
     {
@@ -86,6 +89,18 @@ public sealed class PickObjectiveTargetSystem : EntitySystem
         var allHumans = _mind.GetAliveHumans(args.MindId,
             ent.Comp.NeedsOrganic, ent.Comp.ExcludeChangeling); // Goob edit - exclude IPCs and/or changelings
 
+        // Ratbite start
+        if (ent.Comp.NeedsAntagSelected is { } needsAntagSelected)
+            allHumans.RemoveWhere((mind) =>
+                    {
+                        if (mind.Comp.UserId is null) return false;
+                        if (!_preferences.TryGetCachedPreferences(mind.Comp.UserId.Value, out var pref)) return false;
+                        var profile = pref.SelectedCharacter;
+                        if (profile is not HumanoidCharacterProfile humanoid) return false;
+                        return !humanoid.AntagPreferences.Contains(needsAntagSelected);
+                    });
+        // Ratbite end
+
         // Can't have multiple objectives to kill the same person
         foreach (var objective in args.Mind.Objectives)
         {
@@ -131,7 +146,7 @@ public sealed class PickObjectiveTargetSystem : EntitySystem
         {
             if (TryComp<MindComponent>(person, out var mind) && mind.OwnedEntity is { } owned && HasComp<CommandStaffComponent>(owned) && !HasComp<NukeOperativeComponent>(owned))
                 allHeads.Add(person); // Goob edit - exclude nuke ops from being selected as heads (bruh why would you even want that)
-        } 
+        }
 
         // Goobstation - Cancel if there is no command staff
         if (allHeads.Count == 0)

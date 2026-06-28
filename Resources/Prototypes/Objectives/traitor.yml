@@ -183,6 +183,7 @@
   - type: TargetObjective
     title: objective-condition-maroon-person-title
   - type: PickRandomPerson
+    needsAntagSelected: Traitor # Ratbite
   - type: KillPersonCondition
     requireMaroon: true
 

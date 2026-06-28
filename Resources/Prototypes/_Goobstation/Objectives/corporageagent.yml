@@ -100,6 +100,7 @@
   - type: TargetObjective
     title: objective-condition-maroon-person-title
   - type: PickRandomPerson
+    needsAntagSelected: CorporateAgent # Ratbite
   - type: KillPersonCondition
     requireMaroon: true
 
@@ -353,6 +354,7 @@
   - type: TargetObjective
     title: objective-condition-pkill-person
   - type: PickRandomPerson
+    needsAntagSelected: CorporateAgent # Ratbite
   - type: KillPersonCondition
     requireDead: true
 

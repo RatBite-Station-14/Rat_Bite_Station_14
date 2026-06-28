@@ -508,6 +508,8 @@
         sound: /Audio/Misc/paradox_clone_greeting.ogg
       mindRoles:
       - MindRoleParadoxClone
+      # Ratbite
+      prefRoles: [ ParadoxClone ]
 
 #- type: entity   Goobstaion start - disabled until rework
 #  parent: BaseGameRule
