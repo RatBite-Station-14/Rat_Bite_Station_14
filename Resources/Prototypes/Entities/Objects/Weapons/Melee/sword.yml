@@ -308,9 +308,9 @@
     wideAnimationRotation: -60
     damage:
       types:
-        Slash: 30
+        Slash: 15
       woundSeverityMultipliers:
-        Slash: 2
+        Slash: 1.5
   - type: Item
     storedSprite:
       state: storage
@@ -320,9 +320,9 @@
   - type: EnergyKatana
   - type: DashAbility
   - type: LimitedCharges
-    maxCharges: 3
+    maxCharges: 2
   - type: AutoRecharge
-    rechargeDuration: 20
+    rechargeDuration: 30
   - type: Clothing
     sprite: Objects/Weapons/Melee/energykatana.rsi
     slots:
