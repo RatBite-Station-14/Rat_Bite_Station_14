@@ -485,6 +485,9 @@
       components:
       - BorgBrain # No copying the AI or borgs.
       - AntagImmune # No copying people who are immune to antags. (Gemini Hologram, Ghost bar, etcetera.)
+      - AbductorScientist
+      - Abductor
+      - Slasher
 
   - type: AntagObjectives
     objectives:
