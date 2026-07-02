@@ -31,6 +31,10 @@
     id: TrainerPDA
     ears: ClothingHeadsetAltCentCom
     eyes: ClothingEyesGlassesCentComm
+    jumpsuit: ClothingUniformJumpsuitTrainer
+    back: ClothingBackpackSatchelLeather
+    head: ClothingHeadHatTrainer
+    shoes: ClothingShoesBootsLaceup
     pocket1: WeaponDisabler
     pocket2: FoodSnackLollypopWrappedCentComm # Come on, it's a trademark at this point.
   storage:

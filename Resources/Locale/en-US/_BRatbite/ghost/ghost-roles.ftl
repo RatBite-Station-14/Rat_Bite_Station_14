@@ -1,0 +1,14 @@
+ghost-role-information-event-reinforcement-sec-name = Security Hire
+ghost-role-information-event-reinforcement-passenger-name = Passenger Hire
+ghost-role-information-event-reinforcement-engineering-name = Engineering Hire
+ghost-role-information-event-reinforcement-medical-name = Medical Hire
+ghost-role-information-event-reinforcement-science-name = Science Hire
+ghost-role-information-event-reinforcement-cargo-name = Cargo Hire
+ghost-role-information-event-reinforcement-bartender-name = Bartender Hire
+ghost-role-information-event-reinforcement-chef-name = Chef Hire
+ghost-role-information-event-reinforcement-botanist-name = Botanist Hire
+ghost-role-information-event-reinforcement-atmos-name = Atmospheric Technician Hire
+ghost-role-information-event-reinforcement-chemist-name = Chemist Hire
+ghost-role-information-event-reinforcement-salvage-name = Salvage Hire
+ghost-role-information-event-reinforcement-command-name = Command Hire
+ghost-role-information-event-reinforcement-description = You are a Nanotrasen new hire hired due to excess budget

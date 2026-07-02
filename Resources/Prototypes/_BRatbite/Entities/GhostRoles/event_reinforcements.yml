@@ -1,0 +1,207 @@
+## These are the spawners that ReinforcementRule spawns.
+## It's just a variety of job roles
+- type: entity
+  abstract: true
+  id: BaseEventReinforcement
+  name: reinforcement spawner
+  components:
+  - type: GhostRole
+    description: ghost-role-information-event-reinforcement-description
+    rules: ghost-role-information-nonantagonist-rules
+    mindRoles:
+    - MindRoleGhostRoleNeutral
+  - type: GhostCharacterSpawner
+    components:
+    - type: IdBind
+    - type: Loadout
+      roleLoadout: [ RoleSurvivalStandard ]
+
+- type: entity
+  parent: BaseEventReinforcement
+  id: EventReinforcementSecurity
+  name: security reinforcement
+  components:
+  - type: GhostRole
+    job: SecurityOfficer
+    name: ghost-role-information-event-reinforcement-sec-name
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ ReinforcementOfficerSpec ]
+      roleLoadout: [ RoleSurvivalSecurity ]
+    - type: AutoImplant
+      implants:
+      - MindShieldImplant
+    - type: AntagImmune
+
+- type: entity
+  parent: BaseEventReinforcement
+  id: EventReinforcementPassenger
+  name: passenger reinforcement
+  components:
+  - type: GhostRole
+    job: Passenger
+    name: ghost-role-information-event-reinforcement-passenger-name
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ AssistantReinforcement ]
+      roleLoadout: [ RoleSurvivalStandard ]
+
+- type: entity
+  parent: BaseEventReinforcement
+  id: EventReinforcementEngineering
+  name: engineering reinforcement
+  components:
+  - type: GhostRole
+    job: StationEngineer
+    name: ghost-role-information-event-reinforcement-engineering-name
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ EngineerReinforcement ]
+      roleLoadout: [ RoleSurvivalExtended ]
+
+- type: entity
+  parent: BaseEventReinforcement
+  id: EventReinforcementMedical
+  name: medical reinforcement
+  components:
+  - type: GhostRole
+    job: MedicalDoctor
+    name: ghost-role-information-event-reinforcement-medical-name
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ DoctorReinforcement ]
+      roleLoadout: [ RoleSurvivalMedical ]
+
+- type: entity
+  parent: BaseEventReinforcement
+  id: EventReinforcementScience
+  name: science reinforcement
+  components:
+  - type: GhostRole
+    job: Scientist
+    name: ghost-role-information-event-reinforcement-science-name
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ ScienceReinforcement ]
+      roleLoadout: [ RoleSurvivalStandard ]
+
+- type: entity
+  parent: BaseEventReinforcement
+  id: EventReinforcementCargo
+  name: cargo reinforcement
+  components:
+  - type: GhostRole
+    job: CargoTechnician
+    name: ghost-role-information-event-reinforcement-cargo-name
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ CargoReinforcement ]
+      roleLoadout: [ RoleSurvivalStandard ]
+
+- type: entity
+  parent: BaseEventReinforcement
+  id: EventReinforcementBartender
+  name: bartender reinforcement
+  components:
+  - type: GhostRole
+    job: Bartender
+    name: ghost-role-information-event-reinforcement-bartender-name
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ BartenderReinforcement ]
+      roleLoadout: [ RoleSurvivalStandard ]
+
+- type: entity
+  parent: BaseEventReinforcement
+  id: EventReinforcementChef
+  name: chef reinforcement
+  components:
+  - type: GhostRole
+    job: Chef
+    name: ghost-role-information-event-reinforcement-chef-name
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ ChefReinforcement ]
+      roleLoadout: [ RoleSurvivalStandard ]
+
+- type: entity
+  parent: BaseEventReinforcement
+  id: EventReinforcementBotanist
+  name: botanist reinforcement
+  components:
+  - type: GhostRole
+    job: Botanist
+    name: ghost-role-information-event-reinforcement-botanist-name
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ BotanistReinforcement ]
+      roleLoadout: [ RoleSurvivalStandard ]
+
+- type: entity
+  parent: BaseEventReinforcement
+  id: EventReinforcementAtmos
+  name: atmospheric technician reinforcement
+  components:
+  - type: GhostRole
+    job: AtmosphericTechnician
+    name: ghost-role-information-event-reinforcement-atmos-name
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ AtmosReinforcement ]
+      roleLoadout: [ RoleSurvivalExtended ]
+
+- type: entity
+  parent: BaseEventReinforcement
+  id: EventReinforcementChemist
+  name: chemist reinforcement
+  components:
+  - type: GhostRole
+    job: Chemist
+    name: ghost-role-information-event-reinforcement-chemist-name
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ ChemistReinforcement ]
+      roleLoadout: [ RoleSurvivalMedical ]
+
+- type: entity
+  parent: BaseEventReinforcement
+  id: EventReinforcementSalvage
+  name: salvage reinforcement
+  components:
+  - type: GhostRole
+    job: SalvageSpecialist
+    name: ghost-role-information-event-reinforcement-salvage-name
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ SalvageReinforcement ]
+      roleLoadout: [ RoleSurvivalStandard ]
+
+- type: entity
+  parent: BaseEventReinforcement
+  id: EventReinforcementCommand
+  name: command reinforcement
+  components:
+  - type: GhostRole
+    job: NanotrasenCareerTrainer
+    name: ghost-role-information-event-reinforcement-command-name
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ NanotrasenCareerTrainerGear ]
+      roleLoadout: [ RoleSurvivalStandard ]
+    - type: AutoImplant
+      implants:
+      - MindShieldImplant
+    - type: AntagImmune

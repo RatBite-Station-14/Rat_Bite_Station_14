@@ -18,6 +18,7 @@
     - id: BluespaceArtifact
     - id: GiftsPizzaPartyLarge
     - id: GiftsMedical
+    - id: HireReinforcement
 
 # Used in: Susrat, Squeakrat
 - type: entityTable

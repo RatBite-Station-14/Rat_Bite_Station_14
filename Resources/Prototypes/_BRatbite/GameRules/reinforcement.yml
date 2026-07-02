@@ -1,0 +1,48 @@
+- type: entity
+  parent: BaseGameRule
+  id: HireReinforcement
+  components:
+  - type: StationEvent
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    weight: 8
+    reoccurrenceDelay: 30
+    earliestStart: 30
+    duration: 1
+    maxOccurrences: 3
+    chaos:
+      Friend: -20
+    eventType: FriendlySpawn
+  - type: GameRule
+    chaosScore: -140
+  - type: ReinforcementRule
+    reinforcementsPrototypes:
+      Civilian:
+        prototypes:
+        - EventReinforcementPassenger
+        - EventReinforcementBotanist
+        - EventReinforcementChef
+        - EventReinforcementBartender
+      Command:
+        prototypes:
+        - EventReinforcementCommand
+        weightModifier: 0.1 # Make command rarer
+      Engineering:
+        prototypes:
+        - EventReinforcementEngineering
+        - EventReinforcementAtmos
+      Medical:
+        prototypes:
+        - EventReinforcementChemist
+        - EventReinforcementMedical
+      Security:
+        prototypes:
+        - EventReinforcementSecurity
+        weightModifier: 1.2 # Make security slightly more likely because it's usually what's needed
+      Science:
+        prototypes:
+        - EventReinforcementScience
+      Cargo:
+        prototypes:
+        - EventReinforcementCargo
+      
