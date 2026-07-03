@@ -84,7 +84,7 @@
   startingGear: PassengerGear
   icon: "JobIconPassenger"
   supervisors: job-supervisors-everyone
-  goobcoins: 5 #Goob content    # why did tiders get 20 GC but bartenders 10?
+  goobcoins: 5 #Goob content    # Ratbite - why did tiders get 20 GC but bartenders 10? lowered
   access:
   - Maintenance
   special: # Goobstation
