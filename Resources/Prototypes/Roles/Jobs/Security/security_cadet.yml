@@ -119,7 +119,7 @@
   - Security
   - OfficerCadet SOP
   - Searches SOP
-  goobcoins: 75 #Ratbite - less ratcoin for cadet
+  goobcoins: 40 # Ratbite
   access:
   - Security
   - Brig

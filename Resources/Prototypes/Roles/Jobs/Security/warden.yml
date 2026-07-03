@@ -154,7 +154,7 @@
   - Security
   - Warden SOP
   - KravMaga
-  goobcoins: 175 #Ratbite
+  goobcoins: 50 #Ratbite
   access:
   - Security
   - Brig

@@ -127,7 +127,7 @@
   startingGear: ClownGear
   icon: "JobIconClown"
   supervisors: job-supervisors-hop
-  goobcoins: 15 #Goob content
+  goobcoins: 10 #Goob content     # Ratbite - lowered a bit
   access:
   - Theatre
   - Maintenance

@@ -28,7 +28,7 @@
   - MedicalDoctor
   - Brigmedic SOP
   - Medicine
-  goobcoins: 35
+  goobcoins: 45 # Ratbite - increased
   access: # EE parity, make corpsman able function.
   - Security
   - Brig

@@ -85,7 +85,7 @@
   - Forensics
   - Security
   - Detective SOP
-  goobcoins: 150 #Ratbite
+  goobcoins: 45 # Ratbite
   access:
   - Security
   - Brig
