@@ -280,7 +280,7 @@
       coefficients:
         Blunt: 0.8 # Ratbite - Resists are balanced by the fact that if you get melee'd
         Slash: 0.8 # at ALL in a bullet vest you WILL just fold.
-        Piercing: 0.4 # I read it yo.
+        Piercing: 0.25 # Set it to the same as a normal vest award. - Ducks
         Heat: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.8
