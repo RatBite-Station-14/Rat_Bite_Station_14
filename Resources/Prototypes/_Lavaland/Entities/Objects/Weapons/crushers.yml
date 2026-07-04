@@ -191,10 +191,10 @@
     sprite: _Lavaland/Objects/Weapons/Crushers/crusher_glaive-inhands.rsi
   - type: Clothing
     sprite: _Lavaland/Objects/Weapons/Crushers/crusher_glaive.rsi
-  #- type: LeechOnMarker # TODO make it a crusher upgrade
-  #  leech:
-  #    groups:
-  #      Brute: -10
+  - type: LeechOnMarker # TODO make it a crusher upgrade
+    leech:
+      groups:
+        Brute: -10
   - type: MeleeWeapon
     attackRate: 1.1
     range: 2.5

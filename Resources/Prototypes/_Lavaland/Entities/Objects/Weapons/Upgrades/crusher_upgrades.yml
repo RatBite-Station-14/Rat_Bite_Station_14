@@ -43,11 +43,11 @@
       soundGunshot: /Audio/Weapons/plasma_cutter.ogg
       fireRate: 1
       useKey: false
-    - type: MapRestrictedGun
-      planetWhitelist:
-        components:
-        - Biome
-      popupOnBlock: gun-lavaland-restricted-message
+    #- type: MapRestrictedGun # Ratbite - Can we just kill Roudenn?, Crushers everywhere.
+    #  planetWhitelist:
+    #    components:
+    #    - Biome
+    #  popupOnBlock: gun-lavaland-restricted-message
     - type: RechargeBasicEntityAmmo
       rechargeCooldown: 1
       rechargeSound:
@@ -84,11 +84,11 @@
       soundGunshot: /Audio/Weapons/plasma_cutter.ogg
       fireRate: 0.125
       useKey: false
-    - type: MapRestrictedGun
-      planetWhitelist:
-        components:
-        - Biome
-      popupOnBlock: gun-lavaland-restricted-message
+    #- type: MapRestrictedGun # see above
+    #  planetWhitelist:
+    #    components:
+    #    - Biome
+    #  popupOnBlock: gun-lavaland-restricted-message
     - type: RechargeBasicEntityAmmo
       rechargeCooldown: 8
       rechargeSound:
@@ -190,7 +190,7 @@
   - type: WeaponUpgradeDamage
     bonusDamage:
       types:
-        Slash: 7 # Let's just say crusher hammer becomes extra-sharp on the sides
+        Slash: 10 # Let's just say crusher hammer becomes extra-sharp on the sides
   - type: Construction
     graph: CrusherUpgradeCrystalConstructionGraph
     node: crystal
