@@ -16520,6 +16520,13 @@ entities:
       parent: 2
     - type: ActiveListener
       range: 2
+- proto: WeaponEnergyShotgun
+  entities:
+  - uid: 2443
+    components:
+    - type: Transform
+      pos: 18.5,-2.5
+      parent: 2
 - proto: WeaponPistolCHIMP
   entities:
   - uid: 2444
