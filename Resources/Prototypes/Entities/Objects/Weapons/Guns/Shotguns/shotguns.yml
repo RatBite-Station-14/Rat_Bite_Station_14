@@ -172,7 +172,7 @@
     - Back
     - suitStorage
   - type: AmmoCounter
-  # - type: GunRequiresWield #remove when inaccuracy on spreads is fixed # (Ratbite: fixed)
+  - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     fireRate: 3 # Goobstation edit
     selectedMode: FullAuto
@@ -227,7 +227,7 @@
     shape:
     - 0,0,4,0
     sprite: Objects/Weapons/Guns/Shotguns/db_shotgun_inhands_64x.rsi
-  # - type: GunRequiresWield #remove when inaccuracy on spreads is fixed (Ratbite: fixed)
+  - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     fireRate: 3
   - type: GunSpreadModifier
@@ -263,7 +263,7 @@
     shape: # Goobstation
     - 0,0,4,1
   - type: BallisticAmmoProvider
-  # - type: GunRequiresWield #remove when inaccuracy on spreads is fixed (Ratbite: fixed)
+  - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     fireRate: 1.7 # Goobstation
   - type: FiringPin #Ratbite, mindshield restriction system
@@ -296,7 +296,7 @@
     sprite: Objects/Weapons/Guns/Shotguns/pump.rsi
   - type: Clothing
     sprite: Objects/Weapons/Guns/Shotguns/pump.rsi
-  # - type: GunRequiresWield #remove when inaccuracy on spreads is fixed (Ratbite: fixed)
+  - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     # fireRate: 1 # goob
   - type: GunSpreadModifier
@@ -389,7 +389,7 @@
     - 0,0,4,0
   - type: Sprite
     sprite: Objects/Weapons/Guns/Shotguns/blunderbuss.rsi
-  # - type: GunRequiresWield #remove when inaccuracy on spreads is fixed (Ratbite: fixed)
+  - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     fireRate: 2
   - type: BallisticAmmoProvider
@@ -412,7 +412,7 @@
     shape:
     - 0,0,4,0
     sprite: Objects/Weapons/Guns/Shotguns/improvised_shotgun_inhands_64x.rsi
-  # - type: GunRequiresWield #remove when inaccuracy on spreads is fixed (Ratbite: fixed)
+  - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     fireRate: 4 #No reason to stifle the firerate since you have to manually reload every time anyways.
   - type: BallisticAmmoProvider
