@@ -89,7 +89,7 @@
         Structural: 15
       armorPenetration: -0.65 # Ratbite - fuck tiders/fauna specifically :godo:
       woundSeverityMultipliers:
-        Slash: 2 # Ratbite - tider delimbing
+        Slash: 1.25 # Ratbite - tider delimbing
 #  - type: StaminaDamageOnCollide
 #    damage: 20            # Ratbite - removed
   - type: TimedDespawn

@@ -122,6 +122,7 @@
             MedOrderly: [ 1, 1 ] #ratbite
             Chemist: [ 2, 2 ]
             MedicalDoctor: [ 3, 3 ]
+            Psychologist: [ 1, 1 ] #ratbite
             Paramedic: [ 1, 1 ]
             MedicalIntern: [ 4, 4 ]
             #science

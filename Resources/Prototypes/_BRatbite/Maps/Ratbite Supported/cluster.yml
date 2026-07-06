@@ -74,6 +74,7 @@
             ChiefMedicalOfficer: [ 1, 1 ]
             MedOrderly: [ 1, 1 ] #ratbite
             Chemist: [ 1, 1 ]
+            Psychologist: [ 1, 1 ] #ratbite
             MedicalDoctor: [ 2, 2 ]
             MedicalIntern: [ 2, 2 ]
             #science

@@ -45,3 +45,8 @@
   id: DepartmentalGuard SOP
   name: Departmental Security SOP
   text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/StationJobs/DepartmentalGuardSOP.xml"
+
+- type: guideEntry
+  id: Psychologist SOP
+  name: Psychologist/PsychWard SOP
+  text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/StationJobs/PsychologistSOP.xml"

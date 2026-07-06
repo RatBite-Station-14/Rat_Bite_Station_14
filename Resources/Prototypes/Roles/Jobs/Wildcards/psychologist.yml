@@ -106,12 +106,16 @@
   startingGear: PsychologistGear
   icon: "JobIconPsychologist"
   supervisors: job-supervisors-cmo
+  canBeAntag: false
   goobcoins: 15 #Goob content
   access:
   - Medical
   - Maintenance
   extendedAccess:
   - Chemistry
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
 
 - type: startingGear
   id: PsychologistGear
@@ -122,6 +126,8 @@
   storage:
     back:
     - RubberStampPsychologist
+    - Flash
+    - SyringeKetamine
 
 - type: chameleonOutfit
   id: PsychologistChameleonOutfit

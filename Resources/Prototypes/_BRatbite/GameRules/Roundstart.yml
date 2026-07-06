@@ -43,5 +43,101 @@
       min: 300
       max: 700
 
+- type: entity
+  id: SusRatRoundstartAntag
+  parent: BaseGameRule
+  components:
+  - type: SubGamemodes
+    rules:
+    - id: SusRatTraitor
+      prob: 1
+      orGroup: SusRatAntag
+    - id: SusRatChangeling
+      prob: 1
+      orGroup: SusRatAntag
+    - id: SusRatHeretic
+      prob: 1
+      orGroup: SusRatAntag
+
+- type: entity
+  id: SusRatTraitor
+  parent: Traitor
+  components:
+  - type: GameRule
+    minPlayers: 0
+  - type: AntagSelection
+    selectionTime: IntraPlayerSpawn
+    definitions:
+    - prefRoles: [ Traitor ]
+      min: 0
+      maxRange:
+        min: 1
+        max: 10
+      playerRatio: 10
+      chaosScore: 150
+      blacklist:
+        components:
+        - CommandStaff
+        - AntagImmune
+        - Changeling
+      lateJoinAdditional: true
+      mindRoles:
+      - MindRoleTraitor
+      components:
+      - type: CombatTrained
+
+- type: entity
+  id: SusRatChangeling
+  parent: Changeling
+  components:
+  - type: GameRule
+    minPlayers: 0
+  - type: AntagSelection
+    selectionTime: IntraPlayerSpawn
+    agentName: changeling-roundend-name
+    definitions:
+    - prefRoles: [ Changeling ]
+      min: 0
+      maxRange:
+        min: 1
+        max: 10
+      playerRatio: 10
+      chaosScore: 200
+      jobBlacklist: [ Chaplain ]
+      blacklist:
+        components:
+        - CommandStaff
+      lateJoinAdditional: true
+      mindRoles:
+      - MindRoleChangeling
+
+- type: entity
+  id: SusRatHeretic
+  parent: Heretic
+  components:
+  - type: GameRule
+    minPlayers: 0
+  - type: AntagSelection
+    selectionTime: IntraPlayerSpawn
+    agentName: heretic-roundend-name
+    definitions:
+    - prefRoles: [ Heretic ]
+      min: 0
+      maxRange:
+        min: 1
+        max: 10
+      playerRatio: 17
+      chaosScore: 500
+      lateJoinAdditional: true
+      jobBlacklist: [ Chaplain ]
+      blacklist:
+        components:
+        - CommandStaff
+      mindRoles:
+      - MindRoleHeretic
+      components:
+      - type: WeakToHoly
+      - type: CanEnchant
+
 
 #Ratbite end

@@ -18,21 +18,21 @@
   categories:
   - PermaEntertainment
 
-- type: listing
-  id: PermaUplinkBotanyStarter
-  productEntity: CratePermaBotanyStarter
-  cost:
-    PermaPoint: 3
-  categories:
-  - PermaBotany
+#- type: listing
+#  id: PermaUplinkBotanyStarter
+#  productEntity: CratePermaBotanyStarter
+#  cost:
+#    PermaPoint: 3
+#  categories:
+#  - PermaBotany - Pending Rework
 
-- type: listing
-  id: PermaUplinkGuitar
-  productEntity: AcousticGuitarInstrument
-  cost:
-    PermaPoint: 1
-  categories:
-  - PermaMusic
+#- type: listing
+#  id: PermaUplinkGuitar
+#  productEntity: AcousticGuitarInstrument
+#  cost:
+#    PermaPoint: 1
+#  categories:
+#  - PermaMusic - Pending Rework
 
 - type: listing
   id: PermaUplinkHeadphones
@@ -42,10 +42,10 @@
   categories:
   - PermaMusic
 
-- type: listing
-  id: PermaUplinkJukebox
-  productEntity: Jukebox
-  cost:
-    PermaPoint: 3
-  categories:
-  - PermaMusic
+#- type: listing
+#  id: PermaUplinkJukebox
+#  productEntity: Jukebox
+#  cost:
+#    PermaPoint: 3
+#  categories:
+#  - PermaMusic - Pending Rework

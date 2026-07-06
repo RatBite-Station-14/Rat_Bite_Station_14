@@ -69,7 +69,7 @@
             TechnicalAssistant: [ 1, 1 ]
             #medical
             ChiefMedicalOfficer: [ 1, 1 ]
-            MedOrderly: [ 1, 1 ] #ratbite
+            MedOrderly: [ 2, 2 ] #ratbite
             Chemist: [ 2, 2 ]
             MedicalDoctor: [ 2, 4 ]
             Paramedic: [ 2, 2 ]

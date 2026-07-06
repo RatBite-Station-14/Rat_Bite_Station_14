@@ -76,6 +76,7 @@
             MedOrderly: [ 1, 1 ] #ratbite
             Chemist: [ 2, 3 ]
             Paramedic: [ 2, 2 ]
+            Psychologist: [ 1, 1 ] #ratbite
             MedicalDoctor: [ 3, 5 ]
             MedicalIntern: [ 8, 8 ]
             #science
