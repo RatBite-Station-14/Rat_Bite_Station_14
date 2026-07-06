@@ -1,0 +1,10 @@
+- type: loadout
+  id: KravMagaGloves
+  equipment:
+    gloves: ClothingHandsGlovesKravMaga
+
+- type: loadout
+  id: WardenEnergyShotgun
+  storage:
+    back:
+    - WeaponEnergyShotgun

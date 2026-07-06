@@ -100048,21 +100048,6 @@ entities:
     - type: Transform
       pos: -59.5,53.5
       parent: 2
-- proto: GlassBoxLaserFilled
-  entities:
-  - uid: 14783
-    components:
-    - type: Transform
-      pos: -4.5,-2.5
-      parent: 2
-- proto: GlassBoxLawbringerFilled
-  entities:
-  - uid: 14784
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -22.5,-0.5
-      parent: 2
 - proto: GravityGenerator
   entities:
   - uid: 14785

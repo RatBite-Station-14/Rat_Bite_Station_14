@@ -193,9 +193,9 @@
  #  - id: CaptainIDCard
     - id: CigarGoldCase
       prob: 0.25
-    - id: ClothingBeltSheathFilled
+    # - id: ClothingBeltSheathFilled # Ratbite: Move to loadout
     - id: ClothingHeadsetAltCommand
-    - id: ClothingOuterArmorCaptainCarapace
+    # - id: ClothingOuterArmorCaptainCarapace # Ratbite: Armor is OP and should not be in the locker, captain should use the in their loadout
     - id: CommsComputerCircuitboard
     - id: DoorRemoteCustom
     - id: MedalCase
@@ -219,14 +219,14 @@
     children:
     - !type:NestedSelector
       tableId: LockerFillCaptainNoLaser
-    - id: WeaponAntiqueLaser
+    # - id: WeaponAntiqueLaser # Ratbite: Move to loadout
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
   id: FillCaptainHardsuit
   table: !type:AllSelector
     children:
-    - id: UndeterminedVoidsuitCaptain # Goobstation - Modsuit Update
+    # - id: UndeterminedVoidsuitCaptain # Goobstation - Modsuit Update (Ratbite: Move to loadout)
     - id: ClothingMaskGasCaptain
     - id: JetpackCaptainFilled
     - id: OxygenTankFilled
@@ -316,7 +316,7 @@
     - id: BoxEncryptionKeyEngineering
     - id: CigarCase
       prob: 0.15
-    - id: ClothingBeltChiefEngineerFilled
+    # - id: ClothingBeltChiefEngineerFilled # (Ratbite move to loadout)
     - id: ClothingEyesGlassesMeson
     - id: ClothingHandsGlovesColorYellow
     - id: ClothingHeadsetAltEngineering
@@ -337,7 +337,7 @@
  #  - id: CartridgeRocketSingularityBuster
  #  - id: WeaponLauncherSingularityBuster
     - id: MachinePowerTransmissionLaserFlatpack
-    - id: RCDRechargingCE
+    # - id: RCDRechargingCE # (Ratbite move to loadout)
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -345,8 +345,8 @@
   table: !type:AllSelector
     children:
     - id: ClothingMaskGasAtmos
-    - id: ClothingOuterHardsuitEngineeringWhite
-    - id: ClothingShoesBootsMagAdv
+    # - id: ClothingOuterHardsuitEngineeringWhite # (Ratbite move to loadout)
+    # - id: ClothingShoesBootsMagAdv # (Ratbite move to loadout)
     - id: JetpackVoidFilled
     - id: OxygenTankFilled
     - id: NitrogenTankFilled
@@ -392,7 +392,7 @@
     - id: ClothingMaskSterile
     - id: DoorRemoteMedical
     # - id: HandheldCrewMonitor # Goobstation - in webbing
-    - id: Hypospray
+    # - id: Hypospray # (Ratbite, move to loadout)
     - id: MedicalTechFabCircuitboard
     - id: ComputerCargoRequestMedicalFlatpack # Goobstation
     - id: MedkitFilled
@@ -407,7 +407,7 @@
     - id: MedTekCartridge
     - id: SyringeGun
  #  - id: BoxSyringePax
-    - id: ClothingBeltMilitaryWebbingCMOFilled
+    # - id: ClothingBeltMilitaryWebbingCMOFilled # (Ratbite, move to loadout)
     - id: ClothingBackpackDuffelSurgeryFilled
     # Shitmed
     - id: MedicalBiofabricatorFlatpack
@@ -422,7 +422,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingMaskBreathMedical
-    - id: ClothingOuterHardsuitMedical
+    # - id: ClothingOuterHardsuitMedical # (Ratbite, move to loadout)
     - id: OxygenTankFilled
     - id: NitrogenTankFilled
 
@@ -483,7 +483,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingMaskBreath
-    - id: UndeterminedVoidsuitRD
+    # - id: UndeterminedVoidsuitRD # Ratbite: Move to loadout
     - id: OxygenTankFilled
     - id: NitrogenTankFilled
 
@@ -546,7 +546,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingMaskGasSwat
-    - id: UndeterminedVoidsuitHeadOfSecurity # Goob edit
+    # - id: UndeterminedVoidsuitHeadOfSecurity # Goob edit (Ratbite: move to loadouts)
     - id: JetpackSecurityFilled
     - id: OxygenTankFilled
     - id: NitrogenTankFilled

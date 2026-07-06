@@ -97164,21 +97164,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 10.5,-1.5
       parent: 22305
-- proto: GlassBoxLaserFilled
-  entities:
-  - uid: 13837
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 39.5,-30.5
-      parent: 2
-- proto: GlassBoxLawbringerFilled
-  entities:
-  - uid: 13838
-    components:
-    - type: Transform
-      pos: -11.5,31.5
-      parent: 2
 - proto: GlowstickBase
   entities:
   - uid: 13839

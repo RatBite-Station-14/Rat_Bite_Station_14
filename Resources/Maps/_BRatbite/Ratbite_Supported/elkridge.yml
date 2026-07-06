@@ -83994,21 +83994,6 @@ entities:
     - type: Transform
       pos: -38.5,-46.5
       parent: 2
-- proto: GlassBoxLaserFilled
-  entities:
-  - uid: 11817
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -28.5,-1.5
-      parent: 2
-- proto: GlassBoxLawbringerFilled
-  entities:
-  - uid: 11818
-    components:
-    - type: Transform
-      pos: 0.5,-36.5
-      parent: 2
 - proto: GlockenspielInstrument
   entities:
   - uid: 5

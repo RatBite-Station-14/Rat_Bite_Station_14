@@ -124,7 +124,11 @@
   - CaptainJumpsuit
   - CaptainMask # Goobstation - Lollypops!
   - CaptainBackpack
+  # Ratbite loadouts:
   - CaptainBelt # Ratbite - Captain Powergaming
+  - CaptainWeapon
+  - CaptainHardsuit
+  # End ratbite loadouts
   - CaptainOuterClothing
   - Survival
   - Trinkets
@@ -465,6 +469,8 @@
   - ChiefEngineerNeck
   - ChiefEngineerOuterClothing
   - ChiefEngineerShoes
+  - CERCD
+  - CEBelt
   - SurvivalExtended
   - Trinkets
   - Animals
@@ -536,6 +542,7 @@
   - ResearchDirectorJumpsuit
   - ScientistBackpack
   - ResearchDirectorOuterClothing
+  - RDHardsuit # Ratbite
   - ScientistGloves
   - ResearchDirectorShoes
   - Glasses
@@ -594,8 +601,12 @@
   - HeadofSecurityNeck
   - HeadofSecurityJumpsuit
   - SecurityBackpack
-  - SecuritySidearm #Ratbite
-  - SecurityAmmo #Ratbite
+  # Ratbite loadouts start
+  - SecuritySidearm
+  - SecurityAmmo
+  - HosWeapon
+  - HosHardsuit
+  # Ratbite loadouts end
   - SecurityMelee # Goobstation
   - SecurityBelt
   - HeadofSecurityOuterClothing
@@ -617,8 +628,12 @@
   - WardenHead
   - WardenJumpsuit
   - SecurityBackpack
-  - SecuritySidearm #Ratbite
-  - SecurityAmmo #Ratbite
+  # Ratbite loadouts start
+  - SecuritySidearm
+  - SecurityAmmo
+  - WardenWeapon
+  - WardenGlove
+  # Ratbite loadouts end
   - SecurityMelee # Goobstation
   - SecurityNeck
   - SecurityBelt
@@ -712,6 +727,8 @@
   - SurvivalMedical
   - Trinkets
   - Animals
+  - CMOBelt
+  - CMOHypospray
   - GroupSpeciesBreathToolMedical
   # Goobstation - EE Plasmeme Change.
   - ChiefMedicalOfficerEnvirohelm

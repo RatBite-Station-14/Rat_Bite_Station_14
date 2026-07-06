@@ -1025,14 +1025,16 @@
 - type: loadoutGroup
   id: ChiefEngineerOuterClothing
   name: loadout-group-chief-engineer-outerclothing
-  minLimit: 0
+  minLimit: 1
   loadouts:
-  - ChiefEngineerWintercoat
+  # - ChiefEngineerWintercoat Ratbite: Make sure CE's take their hardsuit
+  - CEHardsuit
 
 - type: loadoutGroup
   id: ChiefEngineerShoes
   name: loadout-group-chief-engineer-shoes
   loadouts:
+  - CEMagboots
   - BrownShoes
   - EngineeringWinterBoots
 
@@ -1487,10 +1489,13 @@
 - type: loadoutGroup
   id: ChiefMedicalOfficerOuterClothing
   name: loadout-group-chief-medical-officer-outerclothing
-  minLimit: 0
+  minLimit: 1
   loadouts:
-  - ChiefMedicalOfficerLabCoat
-  - ChiefMedicalOfficerWintercoat
+  # - ChiefMedicalOfficerLabCoat
+  # - ChiefMedicalOfficerWintercoat
+  - CMOHardsuit # Ratbite: Make sure CMO's select their hardsuit (They
+                # can take the labcoat and wintercoat from the dresser
+                # later
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerNeck

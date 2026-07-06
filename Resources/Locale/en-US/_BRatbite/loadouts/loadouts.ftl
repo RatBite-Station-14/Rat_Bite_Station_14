@@ -1,0 +1,11 @@
+loadout-group-captain-hardsuit=Hardsuit
+loadout-group-hos-hardsuit=Hardsuit
+loadout-group-hos-weapon=Primary Weapon
+loadout-group-warden-weapon=Primary Weapon
+loadout-group-warden-glove=Gloves
+loadout-group-cmo-hypospray=Hypospray
+loadout-group-cmo-belt=Belt
+loadout-group-ce-belt=Belt
+loadout-group-ce-rcd=RCD
+loadout-group-rd-hardsuit=Hardsuit
+loadout-group-captain-weapon=Primary Weapon

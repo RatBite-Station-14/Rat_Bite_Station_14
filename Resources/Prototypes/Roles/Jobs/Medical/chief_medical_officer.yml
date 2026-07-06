@@ -184,7 +184,7 @@
     id: CMOPDA
     ears: ClothingHeadsetAltMedical # Goobstation
     eyes: ClothingEyesGlassesMed # Goobstation
-    belt: ClothingBeltMedicalFilled
+    # belt: ClothingBeltMedicalFilled # Ratbite, they now have chestrig in their loadouts
   storage:
     back:
     - Flash

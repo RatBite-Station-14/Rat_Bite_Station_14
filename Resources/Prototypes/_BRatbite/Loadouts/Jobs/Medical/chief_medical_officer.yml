@@ -1,0 +1,15 @@
+- type: loadout
+  id: CMOChestRig
+  equipment:
+    belt: ClothingBeltMilitaryWebbingCMOFilled
+
+- type: loadout
+  id: CMOHypospray
+  storage:
+    back:
+    - Hypospray
+
+- type: loadout
+  id: CMOHardsuit
+  equipment:
+    outerClothing: ClothingOuterHardsuitMedical

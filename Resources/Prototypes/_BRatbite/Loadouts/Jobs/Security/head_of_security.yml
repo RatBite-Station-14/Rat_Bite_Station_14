@@ -1,0 +1,14 @@
+- type: loadout
+  id: HosLawbringer
+  storage:
+    back:
+    - WeaponEnergyGunLawbringer
+
+- type: loadout
+  id: HosHardsuitSelector
+  storage:
+    back:
+    - UndeterminedVoidsuitHeadOfSecurity
+
+# We intentionally keep the energy sword in the locker
+# Otherwise nobody would select it, because it's only good against permas

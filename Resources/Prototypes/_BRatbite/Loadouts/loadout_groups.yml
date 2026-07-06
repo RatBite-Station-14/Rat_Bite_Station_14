@@ -97,6 +97,22 @@
   - SecurityWebbing
   - SecurityJudoBelt
   - MedicalBelt
+  - CaptainSaber
+
+- type: loadoutGroup
+  id: CaptainWeapon
+  name: loadout-group-captain-weapon
+  maxLimit: 1
+  loadouts:
+  - WeaponAntiqueLaser
+  - Enforcer
+
+- type: loadoutGroup
+  id: CaptainHardsuit
+  name: loadout-group-captain-hardsuit
+  maxLimit: 1
+  loadouts:
+  - CaptainHardsuitSelector
 
 #endregion
 
@@ -161,4 +177,72 @@
   - EngiGuardInsideJumpsuit
 #endregion
 
+# region HoS
+- type: loadoutGroup
+  id: HosHardsuit
+  name: loadout-group-hos-hardsuit
+  loadouts:
+  - HosHardsuitSelector
+
+- type: loadoutGroup
+  id: HosWeapon
+  name: loadout-group-hos-weapon
+  loadouts:
+  - HosLawbringer
+  - Enforcer
+# endregion
+
+# region Warden
+- type: loadoutGroup
+  id: WardenWeapon
+  name: loadout-group-warden-weapon
+  loadouts:
+  - WardenEnergyShotgun
+  - Enforcer
+
+- type: loadoutGroup
+  id: WardenGlove
+  name: loadout-group-warden-glove
+  loadouts:
+  - KravMagaGloves
+  - CombatGloves
+  
+# endregion
+
+# region CMO
+- type: loadoutGroup
+  id: CMOHypospray
+  name: loadout-group-cmo-hypospray
+  loadouts:
+  - CMOHypospray
+
+- type: loadoutGroup
+  id: CMOBelt
+  name: loadout-group-cmo-belt
+  loadouts:
+  - CMOChestRig
+# end region
+
+# region CE
+- type: loadoutGroup
+  id: CEBelt
+  name: loadout-group-ce-belt
+  loadouts:
+  - CEBelt
+
+- type: loadoutGroup
+  id: CERCD
+  name: loadout-group-ce-rcd
+  loadouts:
+  - CERCD
+
+# end region
+# region RD
+- type: loadoutGroup
+  id: RDHardsuit
+  name: loadout-group-rd-hardsuit
+  loadouts:
+  - RDHardsuit
+# end region
 #endregion
+

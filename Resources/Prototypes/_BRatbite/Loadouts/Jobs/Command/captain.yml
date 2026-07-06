@@ -1,0 +1,28 @@
+# Move import equipment to loadout
+
+# Captain
+- type: loadout
+  id: WeaponAntiqueLaser
+  storage:
+    back:
+    - WeaponAntiqueLaser
+
+- type: loadout
+  id: CaptainSaber
+  equipment:
+    belt: ClothingBeltSheathFilled
+  
+- type: loadout
+  id: Enforcer
+  dummyEntity: WeaponShotgunEnforcer
+  storage:
+    back:
+    - WeaponShotgunEnforcer
+    - BoxLethalshot
+
+- type: loadout
+  id: CaptainHardsuitSelector
+  storage:
+    back:
+    - UndeterminedVoidsuitCaptain
+  
