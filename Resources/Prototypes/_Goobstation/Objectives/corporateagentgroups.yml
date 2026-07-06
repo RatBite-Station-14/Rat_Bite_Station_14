@@ -26,12 +26,12 @@
     # CorporateCERocketLauncherStealObjective: 1
     CorporateCorgiMeatStealObjective: 1
     CorporateClipboardStealObjective: 1
-    CorporateCaptainGunStealObjective: 0.5
+    # CorporateCaptainGunStealObjective: 0.5
     CorporateCaptainJetpackStealObjective: 0.5
     CorporateHandTeleporterStealObjective: 0.5
-    CorporateEnergyShotgunStealObjective: 0.5
+    # CorporateEnergyShotgunStealObjective: 0.5
     CorporateStealSupermatterSliverObjective: 0.5 # Goobstation - supermatter
-    CorporateLawbringerStealObjective: 0.5 # Goobstation specific
+    # CorporateLawbringerStealObjective: 0.5 # Goobstation specific
     CorporateGeminiProjectorStealObjective: 0.5 # Goobstation specific
 
 - type: weightedRandom

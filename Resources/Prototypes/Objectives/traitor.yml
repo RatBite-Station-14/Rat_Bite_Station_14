@@ -249,6 +249,7 @@
   components:
   - type: StealCondition
     stealGroup: Hypospray
+    requiredJob: ChiefMedicalOfficer
 
 #- type: entity # Goobstation - made this public
 #  parent: BaseCMOStealObjective
@@ -275,6 +276,7 @@
   components:
   - type: StealCondition
     stealGroup: ClothingOuterHardsuitRd
+    requiredJob: ResearchDirector
   - type: Objective
     # This item must be worn or stored in a slowing duffelbag, very hard to hide.
     difficulty: 3
@@ -288,18 +290,19 @@
 
 ## warden
 
-- type: entity
-  parent: BaseTraitorStealObjective
-  id: EnergyShotgunStealObjective
-  components:
-  - type: Objective
-    # Warden will have this on them a lot of the time so..
-    difficulty: 3
-  - type: NotJobRequirement
-    job: Warden # Goob edit
-  - type: StealCondition
-    stealGroup: WeaponEnergyShotgun
-    owner: job-name-warden # Goob edit
+# Ratbite: Energy shotgun is not guaranteed to spawn (Wardens can pick enforcer)
+#- type: entity
+#  parent: BaseTraitorStealObjective
+#  id: EnergyShotgunStealObjective
+#  components:
+#  - type: Objective
+#    # Warden will have this on them a lot of the time so..
+#    difficulty: 3
+#  - type: NotJobRequirement
+#    job: Warden # Goob edit
+#  - type: StealCondition
+#    stealGroup: WeaponEnergyShotgun
+#    owner: job-name-warden # Goob edit
 
 ## ce
 
@@ -319,6 +322,7 @@
   components:
   - type: StealCondition
     stealGroup: ClothingShoesBootsMagAdv
+    requiredJob: ChiefEngineer
 
 ## qm
 
@@ -383,13 +387,14 @@
   - type: StealCondition
     stealGroup: JetpackCaptainFilled
 
-- type: entity
-  parent: BaseCaptainObjective
-  id: CaptainGunStealObjective
-  components:
-  - type: StealCondition
-    stealGroup: WeaponAntiqueLaser
-    owner: job-name-captain
+# Ratbite: Antique Laser is not guaranteed to spawn
+#- type: entity
+#  parent: BaseCaptainObjective
+#  id: CaptainGunStealObjective
+#  components:
+#  - type: StealCondition
+#    stealGroup: WeaponAntiqueLaser
+#    owner: job-name-captain
 
 - type: entity
   parent: BaseCaptainObjective

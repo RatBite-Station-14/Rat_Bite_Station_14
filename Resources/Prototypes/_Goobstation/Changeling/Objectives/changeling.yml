@@ -146,6 +146,7 @@
   components:
   - type: StealCondition
     stealGroup: Hypospray
+    requiredJob: ChiefMedicalOfficer # Ratbite
 
 - type: entity
   parent: LingCMOStealObjective
@@ -172,6 +173,7 @@
   components:
   - type: StealCondition
     stealGroup: ClothingOuterHardsuitRd
+    requiredJob: ResearchDirector # Ratbite
 
 - type: entity
   parent: LingRDStealObjective
@@ -182,15 +184,16 @@
 
 ## warden
 
-- type: entity
-  parent: ChangelingStealObjective
-  id: LingEnergyShotgunStealObjective
-  components:
-  - type: NotJobRequirement
-    job: Warden # Goob edit
-  - type: StealCondition
-    stealGroup: WeaponEnergyShotgun
-    owner: job-name-warden # Goob edit
+# Ratbite: Energy shotgun is not guaranteed to spawn (Wardens can pick enforcer)
+#- type: entity
+#  parent: ChangelingStealObjective
+#  id: LingEnergyShotgunStealObjective
+#  components:
+#  - type: NotJobRequirement
+#    job: Warden # Goob edit
+#  - type: StealCondition
+#    stealGroup: WeaponEnergyShotgun
+#    owner: job-name-warden # Goob edit
 
 ## ce
 
@@ -210,6 +213,7 @@
   components:
   - type: StealCondition
     stealGroup: ClothingShoesBootsMagAdv
+    requiredJob: ChiefEngineer
 
 ## qm
 
@@ -269,13 +273,14 @@
   - type: StealCondition
     stealGroup: JetpackCaptainFilled
 
-- type: entity
-  parent: LingCaptainObjective
-  id: LingCaptainGunStealObjective
-  components:
-  - type: StealCondition
-    stealGroup: WeaponAntiqueLaser
-    owner: job-name-captain
+# Ratbite: Antique laser is not guaranteed to spawn (Captains can pick enforcer instead)
+#- type: entity
+#  parent: LingCaptainObjective
+#  id: LingCaptainGunStealObjective
+#  components:
+#  - type: StealCondition
+#    stealGroup: WeaponAntiqueLaser
+#    owner: job-name-captain
 
 - type: entity
   parent: LingCaptainObjective

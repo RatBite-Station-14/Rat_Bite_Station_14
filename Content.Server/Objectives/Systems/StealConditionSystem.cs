@@ -93,6 +93,9 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Stacks;
+using Content.Server.Station.Systems;
+using Content.Server.Station.Components;
+using System.Linq;
 
 namespace Content.Server.Objectives.Systems;
 
@@ -105,6 +108,9 @@ public sealed class StealConditionSystem : EntitySystem
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly SharedObjectivesSystem _objectives = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly StationJobsSystem _stationJobsSystem = default!;
+    [Dependency] private readonly StationSystem _stationSystem = default!;
+    private ISawmill _sawmill = default!;
 
     private EntityQuery<ContainerManagerComponent> _containerQuery;
 
@@ -120,6 +126,7 @@ public sealed class StealConditionSystem : EntitySystem
         SubscribeLocalEvent<StealConditionComponent, ObjectiveAssignedEvent>(OnAssigned);
         SubscribeLocalEvent<StealConditionComponent, ObjectiveAfterAssignEvent>(OnAfterAssign);
         SubscribeLocalEvent<StealConditionComponent, ObjectiveGetProgressEvent>(OnGetProgress);
+        _sawmill = Logger.GetSawmill("system.objectives.steal-condition");
     }
 
     /// start checks of target acceptability, and generation of start values.
@@ -142,6 +149,28 @@ public sealed class StealConditionSystem : EntitySystem
             args.Cancelled = true;
             return;
         }
+
+        // Ratbite start
+
+        if (condition.Comp.RequiredJob is { } requiredJob)
+        {
+            if (_stationSystem.GetOwningStation(args.Mind.OwnedEntity) is not { } owningStation || !TryComp<StationJobsComponent>(owningStation, out var stationJobsComponent))
+            {
+                _sawmill.Warning($"Warning: No owning station found for entity {condition.Owner}");
+                args.Cancelled = true;
+                return;
+            }
+            else
+            {
+                if (!stationJobsComponent.PlayerJobs.Any(p => p.Value.Contains(requiredJob)))
+                {
+                    _sawmill.Debug($"Canceling {condition.Comp.StealGroup.Id} because no jobs are available");
+                    args.Cancelled = true;
+                    return;
+                }
+            }
+        }
+        // Ratbite end
 
         //setup condition settings
         var maxSize = condition.Comp.VerifyMapExistence
@@ -236,7 +265,7 @@ public sealed class StealConditionSystem : EntitySystem
             }
         } while (containerStack.TryPop(out currentManager));
 
-        var result = count / (float)condition.CollectionSize;
+        var result = count / (float) condition.CollectionSize;
         result = Math.Clamp(result, 0, 1);
         return result;
     }

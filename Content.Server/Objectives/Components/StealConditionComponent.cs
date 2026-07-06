@@ -76,6 +76,7 @@
 
 using Content.Server.Objectives.Systems;
 using Content.Shared.Objectives;
+using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Objectives.Components;
@@ -127,6 +128,12 @@ public sealed partial class StealConditionComponent : Component
     /// </summary>
     [DataField]
     public int CollectionSize;
+
+    /// <summary>
+    /// Ratbite: If this job was not picked by anyone, it will be skipped.
+    /// </summary>
+    [DataField]
+    public ProtoId<JobPrototype>? RequiredJob;
 
     /// <summary>
     /// Help newer players by saying e.g. "steal the chief engineer's advanced magboots"
