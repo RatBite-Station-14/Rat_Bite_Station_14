@@ -113,7 +113,7 @@
           proto: Cablecuffs
 
       sleep: !type:ItemSwitchState
-        verb: sleep
+        verb: mute
         sprite:
           sprite: _Shitmed/Objects/Weapons/Melee/wonderprod.rsi
           state: sleep-icon
@@ -128,7 +128,7 @@
           animation: WeaponArcThrust
         - type: InjectOnHit
           reagents:
-          - ReagentId: Nocturine
+          - ReagentId: MuteToxin #nocturine is too OP
             Quantity: 5
           limit: 20
           needsRestrain: true
