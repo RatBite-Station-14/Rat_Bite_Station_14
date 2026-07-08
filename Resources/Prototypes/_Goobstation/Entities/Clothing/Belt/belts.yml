@@ -184,8 +184,8 @@
 - type: entity
   parent: ClothingBeltSheath
   id: ClothingBeltSheathHeadOfSecurity
-  name: head of security's sheath
-  description: A rugged sheath, designed to hold the Head of Security's custom energy sword.
+  name: security sheath
+  description: A rugged sheath, designed to hold a DT-2 for high ranking security staff.
   components:
   - type: Sprite
     sprite: _Goobstation/Clothing/Belt/hossheath.rsi
@@ -274,7 +274,7 @@
   - type: Tag
     tags:
     - ScurretWearable # Ratbite because funny goidaaa and if somehow a scurret is a DS/ERT its not Completely fucked
-      
+
 - type: entity
   parent: [ClothingBeltStorageBase, ContentsExplosionResistanceBase, BaseCentcommContraband]
   id: ClothingBeltMilitaryWebbingBSOFilled

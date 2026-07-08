@@ -70,3 +70,34 @@
   storage:
     back:
     - EnergyMagPistolLethal
+
+# Security Head Gloves/Marts
+
+- type: loadout
+  id: SecurityCombatGloves
+  equipment:
+    gloves: ClothingHandsGlovesCombat
+
+- type: loadout
+  id: SecurityKravGloves
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EnergyPistolUnlock
+  equipment:
+    gloves: ClothingHandsGlovesKravMaga
+# Security Head Longarms
+
+- type: loadout
+  id: SecurityEShottie
+  equipment:
+    suitstorage: WeaponEnergyShotgun
+
+- type: loadout
+  id: SecurityERifle
+  equipment:
+    suitstorage: WeaponEnergyRifle
+
+- type: loadout
+  id: SecurityJustice
+  equipment:
+    suitstorage: ClothingBeltSheathHeadOfSecurityFilled

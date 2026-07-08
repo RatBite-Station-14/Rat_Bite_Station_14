@@ -372,6 +372,9 @@
       damageCoefficient: 0.4
     - type: FireProtection
       reduction: 0.8
+    - type: TemperatureProtection #Ratbite
+      coolingCoefficient: 0.01
+      heatingCoefficient: 0.01
 
 - type: entity
   parent: [ClothingModsuitBootsCorporate, ClothingModsuitBootsStandard, BaseCentcommContraband]

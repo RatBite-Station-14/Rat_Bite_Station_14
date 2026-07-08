@@ -594,10 +594,12 @@
   - HeadofSecurityNeck
   - HeadofSecurityJumpsuit
   - SecurityBackpack
+  - SecuritySpecialLongarm #Ratbite
   - SecuritySidearm #Ratbite
   - SecurityAmmo #Ratbite
   - SecurityMelee # Goobstation
   - SecurityBelt
+  - SecuritySpecialGloves #Ratbite
   - HeadofSecurityOuterClothing
   - HeadofSecurityShoes # Goobstation edit
   - SurvivalSecurity
@@ -609,7 +611,6 @@
   - HeadofSecurityEnvirohelm
   - HeadofSecurityEnvirosuit
   - HeadofSecurityEnvirogloves
-  - HeadofSecurityGloves
 
 - type: roleLoadout
   id: JobWarden
@@ -617,11 +618,13 @@
   - WardenHead
   - WardenJumpsuit
   - SecurityBackpack
+  - SecuritySpecialLongarm #Ratbite
   - SecuritySidearm #Ratbite
   - SecurityAmmo #Ratbite
   - SecurityMelee # Goobstation
   - SecurityNeck
   - SecurityBelt
+  - SecuritySpecialGloves #Ratbite
   - WardenOuterClothing
   - SecurityShoes
   - SurvivalSecurity

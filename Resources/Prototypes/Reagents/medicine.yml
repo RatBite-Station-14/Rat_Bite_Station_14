@@ -126,6 +126,7 @@
   color: "#3a1d8a"
   metabolisms:
     Medicine:
+      metabolismRate: 0.25 #Ratbite - was default (0.5)
       effects:
       - !type:HealthChange
         damage:
@@ -252,10 +253,10 @@
   desc: reagent-desc-bicaridine
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
-  color: "#e0a5b9" # Ratbite - add a recipe for romerol, other minor chem changes, original was #ffaa00
+  color: "#ffaa00"
   metabolisms:
     Medicine:
-      metabolismRate: 0.25 # Ratbite - made niche/underused chems more balanced
+      metabolismRate: 0.2 # Ratbite - was default (0.5)
       effects:
       - !type:SuppressPain
         amount: 1.2
@@ -1081,6 +1082,7 @@
   color: "#00e5ff"
   metabolisms:
     Medicine:
+      metabolismRate: 0.2 # Ratbite - was default (0.5)
       effects:
       - !type:HealthChange
         conditions:

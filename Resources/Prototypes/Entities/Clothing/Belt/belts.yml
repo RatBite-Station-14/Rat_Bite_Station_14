@@ -722,7 +722,8 @@
   - type: Sprite
     sprite: Clothing/Belt/sheath.rsi
     state: sheath
-  - type: Clothing
+  - type: Clothing # Ratbite: Allow sheats to go into suit storage
+    slots: [belt, suitstorage]
     sprite: Clothing/Belt/sheath.rsi
   - type: Item
     size: Ginormous

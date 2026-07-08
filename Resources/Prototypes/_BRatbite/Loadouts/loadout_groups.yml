@@ -41,6 +41,25 @@
   - SecurityMK58Ammo
   - SecurityK38Ammo
   - SecurityEP12Ammo
+
+- type: loadoutGroup
+  id: SecuritySpecialLongarm
+  name: Security Longarm
+  minLimit: 0
+  maxLimit: 1
+  loadouts:
+  - SecurityERifle
+  - SecurityEShottie
+  - SecurityJustice
+
+- type: loadoutGroup
+  id: SecuritySpecialGloves
+  name: Security Gloves
+  minLimit: 0
+  maxLimit: 1
+  loadouts:
+  - SecurityCombatGloves
+  - SecurityKravGloves
 #endregion
 
 #region RSO

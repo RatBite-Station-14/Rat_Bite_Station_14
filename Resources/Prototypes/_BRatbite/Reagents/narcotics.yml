@@ -1,0 +1,62 @@
+- type: reagent
+  id: Pump-up
+  name: reagent-name-pumpup
+  group: Narcotics
+  desc: reagent-desc-pumpup
+  physicalDesc: reagent-physical-desc-robust
+  flavor: robust
+  color: "#e38e44"
+  metabolisms:
+    Narcotic:
+      metabolismRate: 0.6
+      effects:
+      - !type:HealthChange
+        conditions:
+        - !type:OrganType # Goobstation - Yowie
+          type: Yowie
+        damage:
+          groups:
+            Brute: -1
+          types:
+            Heat: -0.5
+            Shock: -0.5
+            Cold: -0.5
+            Radiation: -0.5
+      - !type:HealthChange
+        conditions:
+          - !type:OrganType
+            type: Yowie
+            shouldHave: false
+          - !type:ReagentThreshold
+            min: 30
+        damage:
+          types:
+            Poison: 2
+      - !type:MovespeedModifier
+        walkSpeedModifier: 1.1
+        sprintSpeedModifier: 1.1
+      - !type:Jitter 
+      - !type:GenericStatusEffect
+        key: Stun
+        time: 1
+        type: Remove
+      - !type:GenericStatusEffect
+        key: KnockedDown
+        time: 1
+        type: Remove
+      - !type:GenericStatusEffect 
+        key: Adrenaline
+        component: IgnoreSlowOnDamage
+        time: 5
+      - !type:RemoveComponentEffect
+        component: DelayedKnockdown
+        locale: reagent-effect-guidebook-remove-delayed-knockdown
+      - !type:SuppressPain # Shitmed
+        amount: 1.1
+        time: 5
+      - !type:TakeStaminaDamage
+        conditions:
+          - !type:ReagentThreshold
+            min: 30
+        amount: 8
+        immediate: true

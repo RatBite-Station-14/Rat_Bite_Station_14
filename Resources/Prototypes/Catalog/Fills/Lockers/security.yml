@@ -109,7 +109,7 @@
     - id: ClothingBeltSecurityFilled
     - id: Flash
     - id: ClothingEyesGlassesSecurity
-    - id: ClothingHandsGlovesCombat
+  # - id: ClothingHandsGlovesCombat #Ratbite, moved to loadout
     - id: ClothingShoesBootsJack
     - id: ClothingOuterCoatWarden
     - id: ClothingOuterWinterWarden
@@ -122,8 +122,8 @@
     - id: RemoteSignaller
       amount: 2
     - id: Binoculars
-    - id: WeaponEnergyShotgun # Goobstation
-    - id: ClothingHandsGlovesKravMaga # Goobstation - Martial Arts
+   #- id: WeaponEnergyShotgun # ratbite, moved to loadout
+   #- id: ClothingHandsGlovesKravMaga # Ratbite, moved to loadout
     - id: BoxLethalInjection # Goobstation
     - id: ClothingHeadsetAltWarden # Goobstation
     - id: Multitool # Goobstation

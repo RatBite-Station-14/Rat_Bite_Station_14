@@ -25,6 +25,7 @@
   components:
   - type: Stomach
   - type: SolutionContainerManager
+    metabolizerTypes: [ Resomi ] # Ratbite - for Lectrazine and any future chems that may want to do shit only to Resomi's
     solutions:
       stomach:
         maxVol: 50

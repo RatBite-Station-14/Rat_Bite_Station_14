@@ -75,7 +75,7 @@
       - !type:HealthChange
         damage:
           groups:
-            Brute: -1.5 # Lower than Bicardine, offloading healing onto mitotrophin
+            Brute: -3 # Ratbite - was -1.5
       - !type:TakeStaminaDamage
         conditions:
         - !type:ReagentThreshold
@@ -270,6 +270,9 @@
       - !type:AdjustReagent
         amount: -25
         reagent: Aluite
+      - !type:AdjustReagent # Ratbite
+        amount: -50
+        reagent: Chornexalinn
 
 - type: reagent
   id: Musiver
@@ -354,6 +357,9 @@
       - !type:AdjustReagent
         amount: -25
         reagent: Aluite
+      - !type:AdjustReagent # Ratbite
+        amount: -50
+        reagent: Chornexalinn
 
 - type: reagent
   id: Tehifin
@@ -444,6 +450,9 @@
       - !type:AdjustReagent
         amount: -25
         reagent: Aluite
+      - !type:AdjustReagent # Ratbite
+        amount: -50
+        reagent: Chornexalinn
 
 - type: reagent
   id: Bozaide

@@ -149,7 +149,8 @@
   storage:
     back:
     - Flash
-    - MagazinePistol
+    #- MagazinePistol - #Ratbite, PEW for cadet
+    - WeaponEnergyGunLockedEnergyPistol #Ratbite, PEW for cadet
 
 - type: chameleonOutfit
   id: SecurityCadetChameleonOutfit
