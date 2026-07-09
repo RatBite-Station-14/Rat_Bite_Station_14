@@ -20,6 +20,8 @@
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"] # this makes the combat visual work
       state: null
+    # Ratbite: Add even if they don't have a groin because it's used for AI id vision
+    - map: [ "enum.HumanoidVisualLayers.Groin" ]
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
     - map: [ "enum.HumanoidVisualLayers.Snout" ]

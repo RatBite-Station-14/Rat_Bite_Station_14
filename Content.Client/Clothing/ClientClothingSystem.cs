@@ -121,7 +121,7 @@ public sealed class ClientClothingSystem : ClothingSystem
         UpdateAllSlots(ent.Owner, clothing: ent.Comp);
     }
 
-    private void UpdateAllSlots(
+    public void UpdateAllSlots(
         EntityUid uid,
         InventoryComponent? inventoryComponent = null,
         ClothingComponent? clothing = null)
@@ -293,7 +293,10 @@ public sealed class ClientClothingSystem : ClothingSystem
         }
 
         var ev = new GetEquipmentVisualsEvent(equipee, slot);
-        RaiseLocalEvent(equipment, ev);
+        // Ratbite: Also raise on the equipee first
+        RaiseLocalEvent(equipee, ev);
+        if (!ev.Handled)
+            RaiseLocalEvent(equipment, ev);
 
         if (ev.Layers.Count == 0)
         {
@@ -383,7 +386,7 @@ public sealed class ClientClothingSystem : ClothingSystem
             if (displacementData is not null)
             {
                 //Checking that the state is not tied to the current race. In this case we don't need to use the displacement maps.
-                if (layerData.State is not null && inventory.SpeciesId is not null && layerData.State.EndsWith(inventory.SpeciesId))
+                if (ev.SkipSpecies || (layerData.State is not null && inventory.SpeciesId is not null && layerData.State.EndsWith(inventory.SpeciesId)))
                     continue;
 
                 if (_displacement.TryAddDisplacement(displacementData, (equipee, sprite), index, key, out var displacementKey))

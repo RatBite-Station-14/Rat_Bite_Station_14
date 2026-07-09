@@ -15,7 +15,7 @@ namespace Content.Shared.Clothing;
 /// <summary>
 ///     Raised directed at a piece of clothing to get the set of layers to show on the wearer's sprite
 /// </summary>
-public sealed class GetEquipmentVisualsEvent : EntityEventArgs
+public sealed class GetEquipmentVisualsEvent : HandledEntityEventArgs
 {
     /// <summary>
     ///     Entity that is wearing the item.
@@ -31,6 +31,9 @@ public sealed class GetEquipmentVisualsEvent : EntityEventArgs
     ///     Note that the actual ordering of the layers depends on the order in which they are added to this list;
     /// </remarks>
     public List<(string, PrototypeLayerData)> Layers = new();
+
+    // Ratbite
+    public bool SkipSpecies = false;
 
     public GetEquipmentVisualsEvent(EntityUid equipee, string slot)
     {

@@ -3,6 +3,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Client._BRatbite.Silicons.StationAi;
 using Content.Goobstation.Client.Clothing.Components;
 using Content.Goobstation.Common.Clothing;
 using Content.Shared.Inventory;
@@ -20,7 +21,7 @@ public sealed class HideClothingLayerClothingSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<InventoryComponent, CheckClothingSlotHiddenEvent>(OnCheck);
+        SubscribeLocalEvent<InventoryComponent, CheckClothingSlotHiddenEvent>(OnCheck, after: [typeof(StationAiIdVisionSystem)]);
 
         SubscribeLocalEvent<HideClothingLayerClothingComponent, GotEquippedEvent>(OnEquip);
         SubscribeLocalEvent<HideClothingLayerClothingComponent, GotUnequippedEvent>(OnUnequip);
@@ -47,6 +48,7 @@ public sealed class HideClothingLayerClothingSystem : EntitySystem
 
     private void OnCheck(Entity<InventoryComponent> ent, ref CheckClothingSlotHiddenEvent args)
     {
+        if (args.Handled) return;
         var enumerator = _inventory.GetSlotEnumerator((ent.Owner, ent.Comp), SlotFlags.WITHOUT_POCKET);
         while (enumerator.NextItem(out var item))
         {

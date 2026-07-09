@@ -831,4 +831,19 @@ public sealed class AccessReaderSystem : EntitySystem
 
         Dirty(ent);
     }
+
+    // Ratbite: helper method
+    public bool GetIdCardComponent(EntityUid uid, [NotNullWhen(true)] out IdCardComponent? idCardComponent)
+    {
+        idCardComponent = null;
+        if (FindAccessItemsInventory(uid, out var items))
+            foreach (var item in items)
+            {
+                if (TryComp<IdCardComponent>(item, out idCardComponent) || (TryComp<PdaComponent>(item, out var pda) && TryComp(pda.ContainedId, out idCardComponent)))
+                {
+                    break;
+                }
+            }
+        return idCardComponent != null;
+    }
 }

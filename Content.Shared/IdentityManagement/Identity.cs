@@ -42,6 +42,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._BRatbite.Traits;
+using Content.Shared.Access.Systems;
 using Content.Shared.Ghost;
 using Content.Shared.IdentityManagement.Components;
 using Robust.Shared.Utility; // Goob
@@ -71,6 +73,14 @@ public static class Identity
 
         if (!ent.TryGetComponent<IdentityComponent>(uid, out var identity))
             return FormattedMessage.EscapeText(uidName); // Goob Sanitize Text
+
+        // Ratbite: Always return ID or Unknown
+        if (ent.HasComponent<FaceBlindComponent>(viewer))
+        {
+            var accessReader = ent.EntitySysManager.GetEntitySystem<AccessReaderSystem>();
+            accessReader.GetIdCardComponent(uid, out var idCardComponent);
+            return FormattedMessage.EscapeText(idCardComponent?.FullName ?? "Unknown");
+        }
 
         var ident = identity.IdentityEntitySlot.ContainedEntity;
         if (ident is null)

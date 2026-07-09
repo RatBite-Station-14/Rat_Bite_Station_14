@@ -6,4 +6,4 @@
 namespace Content.Goobstation.Common.Clothing;
 
 [ByRefEvent]
-public record struct CheckClothingSlotHiddenEvent(string Slot, bool Visible = true);
+public record struct CheckClothingSlotHiddenEvent(string Slot, bool Visible = true, bool Handled = false);

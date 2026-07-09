@@ -324,7 +324,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
     /// <param name="sync">Whether to synchronize this to the humanoid mob, or not.</param>
     /// <param name="verify">Whether to verify the skin color can be set on this humanoid or not</param>
     /// <param name="humanoid">Humanoid component of the entity</param>
-    public virtual void SetSkinColor(EntityUid uid, Color skinColor, bool sync = true, bool verify = true, HumanoidAppearanceComponent? humanoid = null)
+    public virtual void SetSkinColor(EntityUid uid, Color skinColor, bool sync = true, bool verify = true, HumanoidAppearanceComponent? humanoid = null, bool drawOnly = false)
     {
         if (!Resolve(uid, ref humanoid))
             return;
@@ -339,7 +339,8 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
             skinColor = SkinColor.ValidSkinTone(species.SkinColoration, skinColor);
         }
 
-        humanoid.SkinColor = skinColor;
+        if (!drawOnly)
+            humanoid.SkinColor = skinColor;
 
         if (sync)
             Dirty(uid, humanoid);

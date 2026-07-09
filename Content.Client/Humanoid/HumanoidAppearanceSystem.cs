@@ -19,6 +19,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
+using Content.Client._BRatbite.Humanoid;
 using Content.Client.DisplacementMap;
 using Content.Shared.CCVar;
 using Content.Shared.Humanoid;
@@ -53,6 +54,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         UpdateSprite((uid, component, Comp<SpriteComponent>(uid)));
     }
 
+
     private void OnCvarChanged(bool value)
     {
         var humanoidQuery = AllEntityQuery<HumanoidAppearanceComponent, SpriteComponent>();
@@ -70,6 +72,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         var humanoidAppearance = entity.Comp1;
         var sprite = entity.Comp2;
 
+
         // begin Goobstation: port EE height/width sliders
         var speciesPrototype = _prototypeManager.Index<SpeciesPrototype>(humanoidAppearance.Species);
 
@@ -77,11 +80,15 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         var width = Math.Clamp(humanoidAppearance.Width, speciesPrototype.MinWidth, speciesPrototype.MaxWidth);
         humanoidAppearance.Height = height;
         humanoidAppearance.Width = width;
-
-        _sprite.SetScale((entity, sprite), new Vector2(width, height));
+        // Ratbite
+        var ev = new BeforeGetHumanoidAppearanceEvent(humanoidAppearance.Species, humanoidAppearance.Height, humanoidAppearance.Width, humanoidAppearance.EyeColor, humanoidAppearance.SkinColor);
+        RaiseLocalEvent(entity, ref ev);
+        _sprite.SetScale((entity, sprite), new Vector2(ev.Width, ev.Height));
         // end Goobstation: port EE height/width sliders
 
-        sprite[_sprite.LayerMapReserve((entity.Owner, sprite), HumanoidVisualLayers.Eyes)].Color = humanoidAppearance.EyeColor;
+        sprite[_sprite.LayerMapReserve((entity.Owner, sprite), HumanoidVisualLayers.Eyes)].Color = ev.EyeColor;
+        // Ratbite: also set skin color
+        SetSkinColor(entity.Owner, ev.SkinColor, sync: false, verify: false, humanoidAppearance, drawOnly: true);
     }
 
     private static bool IsHidden(HumanoidAppearanceComponent humanoid, HumanoidVisualLayers layer)
@@ -90,13 +97,15 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
     private void UpdateLayers(Entity<HumanoidAppearanceComponent, SpriteComponent> entity)
     {
         var component = entity.Comp1;
+        var ev = new BeforeGetHumanoidAppearanceEvent(component.Species, component.Height, component.Width, component.EyeColor, component.SkinColor);
+        RaiseLocalEvent(entity, ref ev);
         var sprite = entity.Comp2;
 
         var oldLayers = new HashSet<HumanoidVisualLayers>(component.BaseLayers.Keys);
         component.BaseLayers.Clear();
 
         // add default species layers
-        var speciesProto = _prototypeManager.Index(component.Species);
+        var speciesProto = _prototypeManager.Index(ev.Species);
         var baseSprites = _prototypeManager.Index(speciesProto.SpriteSet);
         foreach (var (key, id) in baseSprites.Sprites)
         {
@@ -159,6 +168,8 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
 
         if (proto.BaseSprite != null)
             _sprite.LayerSetSprite((entity.Owner, sprite), layerIndex, proto.BaseSprite);
+        else
+            _sprite.LayerSetVisible((entity.Owner, sprite), layerIndex, false);
     }
 
     /// <summary>
@@ -274,6 +285,11 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         // I am lazy and I CBF resolving the previous mess, so I'm just going to nuke the markings.
         // Really, markings should probably be a separate component altogether.
         ClearAllMarkings(entity);
+        // Ratbite start
+        var ev = new AttemptHumanoidMarkingEvent(false);
+        RaiseLocalEvent(entity, ref ev);
+        if (ev.Cancelled) return;
+        // Ratbite end
 
         foreach (var markingList in humanoid.MarkingSet.Markings.Values)
         {
@@ -424,12 +440,12 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         }
     }
 
-    public override void SetSkinColor(EntityUid uid, Color skinColor, bool sync = true, bool verify = true, HumanoidAppearanceComponent? humanoid = null)
+    public override void SetSkinColor(EntityUid uid, Color skinColor, bool sync = true, bool verify = true, HumanoidAppearanceComponent? humanoid = null, bool drawOnly = false)
     {
         if (!Resolve(uid, ref humanoid) || humanoid.SkinColor == skinColor)
             return;
 
-        base.SetSkinColor(uid, skinColor, false, verify, humanoid);
+        base.SetSkinColor(uid, skinColor, false, verify, humanoid, drawOnly);
 
         if (!TryComp(uid, out SpriteComponent? sprite))
             return;
