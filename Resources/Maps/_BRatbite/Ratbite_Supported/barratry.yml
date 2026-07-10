@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 05/29/2026 15:50:05
-  entityCount: 15883
+  time: 07/10/2026 03:19:47
+  entityCount: 15886
 maps:
 - 1
 grids:
@@ -50920,7 +50920,7 @@ entities:
       pos: -2.5,38.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -7512.012
+      secondsUntilStateChange: -7827.9263
       state: Closing
   - uid: 6749
     components:
@@ -89441,6 +89441,23 @@ entities:
     - type: Transform
       pos: -33.5,43.5
       parent: 2
+- proto: SpawnPointShaftMiner
+  entities:
+  - uid: 15884
+    components:
+    - type: Transform
+      pos: -52.5,-12.5
+      parent: 2
+  - uid: 15885
+    components:
+    - type: Transform
+      pos: -51.5,-12.5
+      parent: 2
+  - uid: 15886
+    components:
+    - type: Transform
+      pos: -50.5,-12.5
+      parent: 2
 - proto: SpawnPointStationEngineer
   entities:
   - uid: 12538
@@ -93907,11 +93924,15 @@ entities:
   entities:
   - uid: 13245
     components:
-    - type: AccessReader
-      access: [["HeadOfPersonnel"]]
     - type: Transform
       pos: -21.5,42.5
       parent: 2
+    - type: AccessReader
+      accessLog: []
+      accessKeys: []
+      access:
+      - - HeadOfPersonnel
+      denyTags: []
     - type: TechnologyDatabase
       supportedDisciplines:
       - Industrial

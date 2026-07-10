@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 07/05/2026 00:14:42
-  entityCount: 23680
+  time: 07/10/2026 03:08:56
+  entityCount: 23683
 maps:
 - 1
 grids:
@@ -19146,7 +19146,7 @@ entities:
       pos: -25.5,-25.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -11186.482
+      secondsUntilStateChange: -11300.969
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -131022,6 +131022,23 @@ entities:
     components:
     - type: Transform
       pos: -9.5,-37.5
+      parent: 2
+- proto: SpawnPointShaftMiner
+  entities:
+  - uid: 23681
+    components:
+    - type: Transform
+      pos: 36.5,25.5
+      parent: 2
+  - uid: 23682
+    components:
+    - type: Transform
+      pos: 37.5,25.5
+      parent: 2
+  - uid: 23683
+    components:
+    - type: Transform
+      pos: 38.5,25.5
       parent: 2
 - proto: SpawnPointStationEngineer
   entities:

@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 07/04/2026 21:48:52
-  entityCount: 15625
+  time: 07/10/2026 03:45:49
+  entityCount: 15629
 maps:
 - 1
 grids:
@@ -7624,17 +7624,6 @@ entities:
     - type: Transform
       pos: 21.5,21.5
       parent: 2
-  - uid: 109
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 5.5,19.5
-      parent: 2
-  - uid: 110
-    components:
-    - type: Transform
-      pos: 8.5,22.5
-      parent: 2
 - proto: AirlockCentralCommandLocked
   entities:
   - uid: 111
@@ -8875,7 +8864,7 @@ entities:
       pos: 28.5,-21.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -29870.559
+      secondsUntilStateChange: -29972.357
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -9236,6 +9225,18 @@ entities:
     components:
     - type: Transform
       pos: 62.5,12.5
+      parent: 2
+- proto: AirlockSalvageGlassLocked
+  entities:
+  - uid: 109
+    components:
+    - type: Transform
+      pos: 8.5,22.5
+      parent: 2
+  - uid: 110
+    components:
+    - type: Transform
+      pos: 5.5,19.5
       parent: 2
 - proto: AirlockScienceGlassLocked
   entities:
@@ -81716,6 +81717,18 @@ entities:
     - type: Transform
       pos: 34.5,-4.5
       parent: 2
+- proto: SpawnPointShaftMiner
+  entities:
+  - uid: 15628
+    components:
+    - type: Transform
+      pos: 4.5,18.5
+      parent: 2
+  - uid: 15629
+    components:
+    - type: Transform
+      pos: 4.5,19.5
+      parent: 2
 - proto: SpawnPointStationEngineer
   entities:
   - uid: 12398
@@ -99427,6 +99440,16 @@ entities:
     components:
     - type: Transform
       pos: 7.5,22.5
+      parent: 2
+  - uid: 15626
+    components:
+    - type: Transform
+      pos: 3.5,17.5
+      parent: 2
+  - uid: 15627
+    components:
+    - type: Transform
+      pos: 4.5,17.5
       parent: 2
 - proto: WindoorSecureScienceLocked
   entities:

@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 01/20/2026 23:49:13
-  entityCount: 2513
+  time: 07/10/2026 03:47:04
+  entityCount: 2515
 maps:
 - 1
 grids:
@@ -6005,13 +6005,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 21.5,2.5
       parent: 2
-- proto: ChemDispenser
-  entities:
-  - uid: 877
-    components:
-    - type: Transform
-      pos: 7.5,1.5
-      parent: 2
 - proto: ChemistryHotplate
   entities:
   - uid: 878
@@ -7380,6 +7373,13 @@ entities:
     components:
     - type: Transform
       pos: 2.3683515,-0.47065163
+      parent: 2
+- proto: EnergyChemDispenser
+  entities:
+  - uid: 877
+    components:
+    - type: Transform
+      pos: 7.5,1.5
       parent: 2
 - proto: EngineeringTechFab
   entities:
@@ -12987,6 +12987,7 @@ entities:
       - Arsenal
       - Experimental
       - CivilianServices
+      - LEGAL
 - proto: Screen
   entities:
   - uid: 1838
@@ -13027,6 +13028,7 @@ entities:
       - Arsenal
       - Experimental
       - CivilianServices
+      - LEGAL
 - proto: SeedExtractor
   entities:
   - uid: 1844
@@ -13047,6 +13049,7 @@ entities:
       - Arsenal
       - Experimental
       - CivilianServices
+      - LEGAL
 - proto: SheetGlass
   entities:
   - uid: 1846
@@ -14045,6 +14048,18 @@ entities:
     components:
     - type: Transform
       pos: 17.5,-3.5
+      parent: 2
+- proto: SpawnPointShaftMiner
+  entities:
+  - uid: 2514
+    components:
+    - type: Transform
+      pos: -1.5,15.5
+      parent: 2
+  - uid: 2515
+    components:
+    - type: Transform
+      pos: 0.5,15.5
       parent: 2
 - proto: SpawnPointStationEngineer
   entities:

@@ -64,6 +64,7 @@
             Lawyer: [ 1, 1 ]
             #supply (4 - 5)
             SalvageSpecialist: [ 2, 2 ]
+            ShaftMiner: [ 2, 3 ] # lavaland 1.5
             CargoTechnician: [ 2, 3 ]
             CargoInsurance: [ 1, 1 ] #ratbite
             #civilian (3+)

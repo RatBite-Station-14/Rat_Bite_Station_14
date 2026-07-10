@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 05/29/2026 06:17:38
-  entityCount: 22572
+  time: 07/10/2026 03:31:00
+  entityCount: 22585
 maps:
 - 1
 grids:
@@ -15509,6 +15509,14 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -68.5,-30.5
+      parent: 2
+- proto: AirlockExternalGlassShuttleMiningFilled
+  entities:
+  - uid: 9004
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 41.5,22.5
       parent: 2
 - proto: AirlockExternalLocked
   entities:
@@ -39369,6 +39377,21 @@ entities:
     - type: Transform
       pos: 80.5,-26.5
       parent: 2
+  - uid: 22578
+    components:
+    - type: Transform
+      pos: 40.5,21.5
+      parent: 2
+  - uid: 22579
+    components:
+    - type: Transform
+      pos: 41.5,21.5
+      parent: 2
+  - uid: 22580
+    components:
+    - type: Transform
+      pos: 42.5,21.5
+      parent: 2
 - proto: CableApcStack
   entities:
   - uid: 4731
@@ -57498,6 +57521,12 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 65.5,-35.5
       parent: 2
+  - uid: 8999
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 41.5,21.5
+      parent: 2
   - uid: 22383
     components:
     - type: Transform
@@ -57569,6 +57598,36 @@ entities:
       rot: 3.141592653589793 rad
       pos: 5.5,-5.5
       parent: 22305
+  - uid: 22573
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 41.5,20.5
+      parent: 2
+  - uid: 22574
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 42.5,21.5
+      parent: 2
+  - uid: 22575
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 42.5,20.5
+      parent: 2
+  - uid: 22576
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 43.5,21.5
+      parent: 2
+  - uid: 22577
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 43.5,20.5
+      parent: 2
 - proto: Chair
   entities:
   - uid: 8162
@@ -62541,11 +62600,11 @@ entities:
     - type: Transform
       pos: 40.5,-32.5
       parent: 2
-  - uid: 8999
+  - uid: 22582
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 40.5,21.5
+      rot: 3.141592653589793 rad
+      pos: 40.5,20.5
       parent: 2
 - proto: ComputerResearchAndDevelopment
   entities:
@@ -62606,11 +62665,11 @@ entities:
       parent: 2
 - proto: ComputerShuttleMiningLavaland
   entities:
-  - uid: 9004
+  - uid: 22581
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 40.5,20.5
+      rot: 3.141592653589793 rad
+      pos: 41.5,20.5
       parent: 2
 - proto: ComputerSolarControl
   entities:
@@ -121889,6 +121948,23 @@ entities:
     - type: Transform
       pos: -30.5,0.5
       parent: 2
+- proto: SpawnPointShaftMiner
+  entities:
+  - uid: 22583
+    components:
+    - type: Transform
+      pos: 34.5,21.5
+      parent: 2
+  - uid: 22584
+    components:
+    - type: Transform
+      pos: 34.5,20.5
+      parent: 2
+  - uid: 22585
+    components:
+    - type: Transform
+      pos: 34.5,19.5
+      parent: 2
 - proto: SpawnPointStationEngineer
   entities:
   - uid: 17697
@@ -128307,11 +128383,15 @@ entities:
   entities:
   - uid: 18564
     components:
-    - type: AccessReader
-      access: [["HeadOfPersonnel"]]
     - type: Transform
       pos: 40.5,-25.5
       parent: 2
+    - type: AccessReader
+      accessLog: []
+      accessKeys: []
+      access:
+      - - HeadOfPersonnel
+      denyTags: []
     - type: TechnologyDatabase
       supportedDisciplines:
       - Industrial

@@ -154,6 +154,7 @@
             Quartermaster: [ 1, 1 ]
             CargoInsurance: [ 1, 1 ] #ratbite
             SalvageSpecialist: [ 3, 3 ]
+            ShaftMiner: [ 2, 3 ] # lavaland 1.5
             CargoTechnician: [ 4, 4 ]
             #civilian
             Passenger: [ -1, -1 ]

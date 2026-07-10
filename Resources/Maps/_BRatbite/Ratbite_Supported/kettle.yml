@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 07/04/2026 22:46:40
-  entityCount: 26965
+  time: 07/10/2026 03:33:24
+  entityCount: 26969
 maps:
 - 1
 grids:
@@ -17629,6 +17629,12 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 51.5,33.5
+      parent: 2
+  - uid: 26966
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 51.5,37.5
       parent: 2
 - proto: AtmosDeviceFanTiny
   entities:
@@ -118516,7 +118522,7 @@ entities:
       pos: -41.5,-25.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -305.92465
+      secondsUntilStateChange: -401.78458
       state: Opening
   - uid: 17959
     components:
@@ -144574,6 +144580,23 @@ entities:
     components:
     - type: Transform
       pos: -30.5,-14.5
+      parent: 2
+- proto: SpawnPointShaftMiner
+  entities:
+  - uid: 26967
+    components:
+    - type: Transform
+      pos: 40.5,32.5
+      parent: 2
+  - uid: 26968
+    components:
+    - type: Transform
+      pos: 39.5,32.5
+      parent: 2
+  - uid: 26969
+    components:
+    - type: Transform
+      pos: 38.5,32.5
       parent: 2
 - proto: SpawnPointStationEngineer
   entities:

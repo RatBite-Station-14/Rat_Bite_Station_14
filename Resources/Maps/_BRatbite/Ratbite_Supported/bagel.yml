@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 07/05/2026 21:12:36
-  entityCount: 25104
+  time: 07/10/2026 03:14:15
+  entityCount: 25108
 maps:
 - 1
 grids:
@@ -12154,7 +12154,7 @@ entities:
       parent: 2
 - proto: AirlockExternalGlassShuttleMiningFilled
   entities:
-  - uid: 265
+  - uid: 25105
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -14869,6 +14869,12 @@ entities:
       parent: 2
 - proto: AtmosDeviceFanDirectional
   entities:
+  - uid: 265
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 55.5,0.5
+      parent: 2
   - uid: 676
     components:
     - type: Transform
@@ -131894,6 +131900,23 @@ entities:
     components:
     - type: Transform
       pos: 21.5,-37.5
+      parent: 2
+- proto: SpawnPointShaftMiner
+  entities:
+  - uid: 25106
+    components:
+    - type: Transform
+      pos: 50.5,-1.5
+      parent: 2
+  - uid: 25107
+    components:
+    - type: Transform
+      pos: 52.5,-1.5
+      parent: 2
+  - uid: 25108
+    components:
+    - type: Transform
+      pos: 54.5,-1.5
       parent: 2
 - proto: SpawnPointStationEngineer
   entities:

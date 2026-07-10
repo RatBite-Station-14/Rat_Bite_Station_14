@@ -4,7 +4,7 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 07/04/2026 23:40:21
+  time: 07/10/2026 03:30:21
   entityCount: 18754
 maps:
 - 1
@@ -13928,6 +13928,14 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -52.5,-8.5
+      parent: 2
+- proto: AirlockExternalGlassShuttleMiningFilled
+  entities:
+  - uid: 14288
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 18.5,41.5
       parent: 2
 - proto: AirlockExternalLocked
   entities:
@@ -51216,12 +51224,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: -57.511723,-31.479378
       parent: 2
-  - uid: 7355
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 18.534142,39.723858
-      parent: 2
   - uid: 7356
     components:
     - type: Transform
@@ -53508,6 +53510,14 @@ entities:
     components:
     - type: Transform
       pos: 0.5,40.5
+      parent: 2
+- proto: ComputerShuttleMiningLavaland
+  entities:
+  - uid: 7355
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 18.5,37.5
       parent: 2
 - proto: ComputerSolarControl
   entities:
@@ -85993,11 +86003,6 @@ entities:
     - type: Transform
       pos: 26.5,43.5
       parent: 2
-  - uid: 12212
-    components:
-    - type: Transform
-      pos: 18.5,41.5
-      parent: 2
   - uid: 12213
     components:
     - type: Transform
@@ -88090,7 +88095,7 @@ entities:
   - uid: 12620
     components:
     - type: Transform
-      pos: 18.979774,40.704395
+      pos: 19.761908,40.600754
       parent: 2
 - proto: HandheldStationMap
   entities:
@@ -91340,7 +91345,7 @@ entities:
   - uid: 13062
     components:
     - type: Transform
-      pos: 18.522177,40.602978
+      pos: 19.480658,40.350754
       parent: 2
   - uid: 13063
     components:
@@ -98248,12 +98253,6 @@ entities:
     - type: Transform
       pos: 13.5,40.5
       parent: 2
-  - uid: 14288
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 18.5,41.5
-      parent: 2
   - uid: 14289
     components:
     - type: Transform
@@ -103371,6 +103370,18 @@ entities:
     - type: Transform
       pos: 1.5,-0.5
       parent: 2
+- proto: SpawnPointShaftMiner
+  entities:
+  - uid: 12212
+    components:
+    - type: Transform
+      pos: 21.5,39.5
+      parent: 2
+  - uid: 15470
+    components:
+    - type: Transform
+      pos: 22.5,37.5
+      parent: 2
 - proto: SpawnPointStationEngineer
   entities:
   - uid: 15083
@@ -106581,11 +106592,6 @@ entities:
     components:
     - type: Transform
       pos: 19.5,40.5
-      parent: 2
-  - uid: 15470
-    components:
-    - type: Transform
-      pos: 18.5,40.5
       parent: 2
   - uid: 15471
     components:

@@ -58,8 +58,9 @@
             Lawyer: [ 1, 1 ]
             RedsightOverseer: [ 1, 1 ] #Ratbite
             Brigmedic: [ 1, 1 ] # i forgor - CR - Ratbite
-            #supply (6-8)
+            #supply (9-12)
             SalvageSpecialist: [ 3, 3 ]
+            ShaftMiner: [ 2, 3 ] # lavaland 1.5
             CargoTechnician: [ 3, 5 ]
             CargoInsurance: [ 1, 1 ] #ratbite
             #civilian (3+)

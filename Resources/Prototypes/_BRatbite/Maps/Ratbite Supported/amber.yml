@@ -93,6 +93,7 @@
             CargoInsurance: [ 1, 1 ] #ratbite
             SalvageSpecialist: [ 2, 3 ]
             CargoTechnician: [ 2, 3 ]
+            ShaftMiner: [ 2, 3 ] # lavaland 1.5
             #civilian
             Passenger: [ -1, -1 ]
             Clown: [ 1, 1 ]

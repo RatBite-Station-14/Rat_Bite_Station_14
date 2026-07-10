@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 07/05/2026 15:41:27
-  entityCount: 12334
+  time: 07/10/2026 03:48:33
+  entityCount: 12337
 maps:
 - 1
 grids:
@@ -34226,7 +34226,7 @@ entities:
       pos: 25.5,-2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -1084.3177
+      secondsUntilStateChange: -1153.6842
       state: Closing
   - uid: 5567
     components:
@@ -34935,7 +34935,7 @@ entities:
       pos: 40.5,-12.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -17151.549
+      secondsUntilStateChange: -17220.916
       state: Closing
   - uid: 5696
     components:
@@ -61894,20 +61894,20 @@ entities:
       parent: 2
 - proto: SpawnPointSalvageSpecialist
   entities:
-  - uid: 9783
+  - uid: 12335
     components:
     - type: Transform
-      pos: 28.5,5.5
+      pos: 22.5,8.5
       parent: 2
-  - uid: 9784
+  - uid: 12336
     components:
     - type: Transform
-      pos: 26.5,5.5
+      pos: 21.5,9.5
       parent: 2
-  - uid: 9785
+  - uid: 12337
     components:
     - type: Transform
-      pos: 27.5,5.5
+      pos: 22.5,10.5
       parent: 2
 - proto: SpawnPointSanitariumPatient
   entities:
@@ -61983,6 +61983,23 @@ entities:
     components:
     - type: Transform
       pos: -28.5,0.5
+      parent: 2
+- proto: SpawnPointShaftMiner
+  entities:
+  - uid: 9783
+    components:
+    - type: Transform
+      pos: 27.5,5.5
+      parent: 2
+  - uid: 9784
+    components:
+    - type: Transform
+      pos: 28.5,5.5
+      parent: 2
+  - uid: 9785
+    components:
+    - type: Transform
+      pos: 26.5,5.5
       parent: 2
 - proto: SpawnPointStationEngineer
   entities:

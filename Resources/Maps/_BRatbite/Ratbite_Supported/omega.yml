@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 07/05/2026 00:07:20
-  entityCount: 13991
+  time: 07/10/2026 03:43:53
+  entityCount: 13993
 maps:
 - 1
 grids:
@@ -74184,6 +74184,18 @@ entities:
     components:
     - type: Transform
       pos: 4.5,-0.5
+      parent: 2
+- proto: SpawnPointShaftMiner
+  entities:
+  - uid: 13992
+    components:
+    - type: Transform
+      pos: 28.5,14.5
+      parent: 2
+  - uid: 13993
+    components:
+    - type: Transform
+      pos: 28.5,15.5
       parent: 2
 - proto: SpawnPointStationEngineer
   entities:
