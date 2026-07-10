@@ -356,7 +356,6 @@
     alternateState: Standing
   - type: FootprintOwner # Corvax-Next-Footprints
   - type: Carriable # Goobstation
-  - type: CPRTraining # Goobstation - Just give to everyone! This ain't MRP.
   # Goobstation end
   - type: Hands
     leftHandDisplacement:

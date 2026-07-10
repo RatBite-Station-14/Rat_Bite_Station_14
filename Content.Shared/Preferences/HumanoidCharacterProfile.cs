@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2025 Monolith Station contributors
+// SPDX-FileCopyrightText: 2026 Sprinkle <40203084+lnn0q@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 // SPDX-FileCopyrightText: 2019 Pieter-Jan Briers <pieterjan.briers@gmail.com>
 // SPDX-FileCopyrightText: 2020 20kdc <asdd2808@gmail.com>
 // SPDX-FileCopyrightText: 2020 DamianX <DamianX@users.noreply.github.com>
@@ -36,6 +41,7 @@
 // SPDX-FileCopyrightText: 2024 dffdff2423 <dffdff2423@gmail.com>
 // SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2026 Sprinkle <40203084+lnn0q@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 BeBright <98597725+be1bright@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 BeBright <98597725+bebr3ght@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
@@ -500,6 +506,9 @@ namespace Content.Shared.Preferences
             if (!protoManager.TryIndex(traitId, out var traitProto))
                 return new(this);
 
+            if (IsTraitExcludedForSpecies(traitProto))
+                return new(this);
+
             var category = traitProto.Category;
 
             // Category not found so dump it.
@@ -510,6 +519,9 @@ namespace Content.Shared.Preferences
 
             var list = new HashSet<ProtoId<TraitPrototype>>(_traitPreferences) { traitId };
 
+            if (!traitProto.RequiredTraits.IsSubsetOf(list))
+                return new(this);
+
             if (traitCategory == null || traitCategory.MaxTraitPoints < 0)
             {
                 return new(this)
@@ -518,18 +530,7 @@ namespace Content.Shared.Preferences
                 };
             }
 
-            var count = 0;
-            foreach (var trait in list)
-            {
-                // If trait not found or another category don't count its points.
-                if (!protoManager.TryIndex<TraitPrototype>(trait, out var otherProto) ||
-                    otherProto.Category != traitCategory)
-                {
-                    continue;
-                }
-
-                count += otherProto.Cost;
-            }
+            var count = GetTraitPointTotalForCategory(list, GetTraitPointPoolCategory(traitCategory.ID), protoManager);
 
             if (count > traitCategory.MaxTraitPoints && traitProto.Cost != 0)
             {
@@ -549,7 +550,15 @@ namespace Content.Shared.Preferences
 
             return new(this)
             {
-                _traitPreferences = list,
+                _traitPreferences = GetValidTraits(list, protoManager).ToHashSet(),
+            };
+        }
+
+        public HumanoidCharacterProfile WithoutAllTraitPreferences()
+        {
+            return new(this)
+            {
+                _traitPreferences = new(),
             };
         }
 
@@ -772,10 +781,23 @@ namespace Content.Shared.Preferences
             // Track points count for each group.
             var groups = new Dictionary<string, int>();
             var result = new List<ProtoId<TraitPrototype>>();
+            var traitList = traits
+                .Select((trait, index) => (trait, index))
+                .Where(entry => protoManager.HasIndex<TraitPrototype>(entry.trait))
+                .OrderBy(entry => protoManager.Index<TraitPrototype>(entry.trait).Cost)
+                .ThenBy(entry => entry.index)
+                .Select(entry => entry.trait)
+                .ToList();
 
-            foreach (var trait in traits)
+            foreach (var trait in traitList)
             {
                 if (!protoManager.TryIndex(trait, out var traitProto))
+                    continue;
+
+                if (IsTraitExcludedForSpecies(traitProto))
+                    continue;
+
+                if (!traitProto.RequiredTraits.IsSubsetOf(result.ToHashSet()))
                     continue;
 
                 // Always valid.
@@ -789,18 +811,73 @@ namespace Content.Shared.Preferences
                 if (!protoManager.TryIndex(traitProto.Category, out var category))
                     continue;
 
-                var existing = groups.GetOrNew(category.ID);
+                if (category.MaxTraitPoints < 0)
+                {
+                    result.Add(trait);
+                    continue;
+                }
+
+                var poolCategory = GetTraitPointPoolCategory(category.ID);
+                var existing = groups.GetOrNew(poolCategory);
                 existing += traitProto.Cost;
 
                 // Too expensive.
                 if (existing > category.MaxTraitPoints)
                     continue;
 
-                groups[category.ID] = existing;
+                groups[poolCategory] = existing;
                 result.Add(trait);
             }
 
             return result;
+        }
+
+        private bool IsTraitExcludedForSpecies(TraitPrototype trait)
+        {
+            return trait.SpeciesBlacklist.Contains(Species) ||
+                   trait.ExcludedSpecies.Contains(Species) ||
+                   trait.IncludedSpecies.Count > 0 && !trait.IncludedSpecies.Contains(Species);
+        }
+
+        private static int GetTraitPointTotalForCategory(
+            IEnumerable<ProtoId<TraitPrototype>> traitIds,
+            ProtoId<TraitCategoryPrototype> categoryId,
+            IPrototypeManager protoManager)
+        {
+            var count = 0;
+
+            foreach (var traitId in traitIds)
+            {
+                if (!protoManager.TryIndex<TraitPrototype>(traitId, out var trait))
+                    continue;
+
+                if (IsSharedTraitPointPool(categoryId))
+                {
+                    if (trait.Category == "Physical" ||
+                        trait.Category == "Mental" ||
+                        trait.Category == "Disabilities")
+                        count += trait.Cost;
+
+                    continue;
+                }
+
+                if (trait.Category == categoryId)
+                    count += trait.Cost;
+            }
+
+            return count;
+        }
+
+        private static ProtoId<TraitCategoryPrototype> GetTraitPointPoolCategory(ProtoId<TraitCategoryPrototype> categoryId)
+        {
+            return IsSharedTraitPointPool(categoryId) || categoryId == "Disabilities"
+                ? "Physical"
+                : categoryId;
+        }
+
+        private static bool IsSharedTraitPointPool(ProtoId<TraitCategoryPrototype> categoryId)
+        {
+            return categoryId == "Physical" || categoryId == "Mental";
         }
 
         public ICharacterProfile Validated(ICommonSession session, IDependencyCollection collection)

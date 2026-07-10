@@ -166,7 +166,7 @@
   parent: ClothingHeadsetCargo
   id: ClothingHeadsetMining
   name: mining headset
-  description: Headset used by shaft miners.
+  description: Headset used by shaft miners and salvagers. # Ratbite - Given to salvies, desc updated
   components:
   - type: Sprite
     sprite: Clothing/Ears/Headsets/mining.rsi

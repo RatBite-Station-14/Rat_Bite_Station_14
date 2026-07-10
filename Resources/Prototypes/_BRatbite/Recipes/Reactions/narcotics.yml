@@ -1,0 +1,9 @@
+- type: reaction
+  id: Pump-up
+  reactants:
+    Epinephrine:
+      amount: 1
+    Coffee:
+      amount: 2
+  products:
+    Pump-up: 2

@@ -34,6 +34,7 @@
   - !type:AddComponentSpecial
     components:
     - type: DeathSquadMember # Goobstation
+    - type: CombatTrained # ratbite
 
   # Goobstation Start - I basically re-did all of deathsquads stuff so. - Sol
 - type: startingGear

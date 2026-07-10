@@ -166,7 +166,8 @@ namespace Content.Client.Voting
                 {
                     Entries = message.Options
                         .Select(c => new VoteEntry(c.name))
-                        .ToArray()
+                        .ToArray(),
+                    AllowMultiple = message.AllowMultiple,
                 };
 
                 existingVote = vote;
@@ -187,8 +188,8 @@ namespace Content.Client.Voting
             }
 
             // Update vote data from incoming.
-            if (message.IsYourVoteDirty)
-                existingVote.OurVote = message.YourVote;
+            if (message.AreYourVotesDirty)
+                existingVote.OurVotes = message.YourVotes!.Select(s => (int) s).ToList();
             // On the server, most of these params can't change.
             // It can't hurt to just re-set this stuff since I'm lazy and the server is sending it anyways, so...
             existingVote.Initiator = message.VoteInitiator;
@@ -241,9 +242,17 @@ namespace Content.Client.Voting
         public void SendCastVote(int voteId, int option)
         {
             var data = _votes[voteId];
+            if (!data.AllowMultiple) data.OurVotes.Clear();
             // Update immediately to avoid any funny reconciliation bugs.
             // See also code in server side to avoid bulldozing this.
-            data.OurVote = option;
+            if (!data.OurVotes.Contains(option))
+            {
+                data.OurVotes.Add(option);
+            }
+            else
+            {
+                data.OurVotes.Remove(option);
+            }
             _console.LocalShell.RemoteExecuteCommand($"vote {voteId} {option}");
         }
 
@@ -256,10 +265,11 @@ namespace Content.Client.Voting
             public TimeSpan EndTime;
             public string Title = "";
             public string Initiator = "";
-            public int? OurVote;
+            public List<int> OurVotes = new();
             public int Id;
             public bool DisplayVotes;
             public int? TargetEntity; // NetEntity
+            public bool AllowMultiple;
             public ActiveVote(int voteId)
             {
                 Id = voteId;

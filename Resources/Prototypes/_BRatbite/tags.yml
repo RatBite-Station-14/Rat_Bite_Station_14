@@ -1,2 +1,5 @@
 - type: Tag
   id: EnergyPistolMagAmmo
+
+- type: Tag
+  id: PermaAscended

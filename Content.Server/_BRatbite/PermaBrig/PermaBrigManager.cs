@@ -25,7 +25,6 @@ namespace Content.Server._BRatbite.PermaBrig
         [Dependency] private readonly ITaskManager _task = default!;
         [Dependency] private readonly IEntityManager _entManager = default!;
         [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-        [Dependency] private readonly EntityManager _entityManager = default!;
 
         private readonly List<Task> _pendingSaveTasks = new();
 
@@ -171,6 +170,27 @@ namespace Content.Server._BRatbite.PermaBrig
         {
             return Task.Run(() => GetBrigTimeAsync(userId)).GetAwaiter().GetResult();
         }
+
+        /// <summary>
+        /// Check wether a prisoner is a inpatient
+        /// </summary>
+        /// <param name="userId">The player's NetUserId</param>
+        /// <returns>The players current time in minutes.</returns>
+        public bool GetBrigInpatient(NetUserId userId)
+        {
+            return Task.Run(() => GetBrigInpatientAsync(userId)).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Check wether a prisoner is a inpatient
+        /// </summary>
+        /// <param name="userId">The player's NetUserId</param>
+        /// <returns>The players current time in minutes.</returns>
+        public void SetBrigInpatient(NetUserId userId, bool status)
+        {
+            Task.Run(() => SetBrigInpatientAsync(userId, status)).GetAwaiter().GetResult();
+        }
+
 
         /// <summary>
         /// Gets a player's perma time.
@@ -326,6 +346,20 @@ namespace Content.Server._BRatbite.PermaBrig
         /// <param name="userId">The player's NetUserId</param>
         /// <returns>An integer containing the rounds left to serve.</returns>
         private async Task<int> GetBrigTimeAsync(NetUserId userId) => await _db.GetPermaTimeLeft(userId);
+
+        /// <summary>
+        /// Gets the number of rounds a player needs to serve in perma.
+        /// </summary>
+        /// <param name="userId">The player's NetUserId</param>
+        /// <returns>An integer containing the rounds left to serve.</returns>
+        private async Task<bool> GetBrigInpatientAsync(NetUserId userId) => await _db.GetPermaInpatient(userId);
+
+        /// <summary>
+        /// Gets the number of rounds a player needs to serve in perma.
+        /// </summary>
+        /// <param name="userId">The player's NetUserId</param>
+        /// <returns>An integer containing the rounds left to serve.</returns>
+        private async Task SetBrigInpatientAsync(NetUserId userId, bool status) => await _db.SetPermaInpatient(userId, status);
 
         /// <summary>
         /// Modifies a player's sentence.

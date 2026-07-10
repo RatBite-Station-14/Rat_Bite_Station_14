@@ -120,12 +120,27 @@ public sealed class VendingMachineSystem : SharedVendingMachineSystem
             visualState = VendingMachineVisualState.Normal;
         }
 
+        if (args.AppearanceData.TryGetValue(VendingMachineVisuals.Tipped, out var tipped) && tipped is VendingMachineTippedState state)
+        {
+
+            // ratbite: tipped vending machines
+            if (state == VendingMachineTippedState.Tipped)
+            {
+                _sprite.SetRotation(uid, Angle.FromDegrees(90));
+            }
+            else
+            {
+                _sprite.SetRotation(uid, 0);
+            }
+        }
+
         UpdateAppearance(uid, visualState, component, args.Sprite);
     }
 
     private void UpdateAppearance(EntityUid uid, VendingMachineVisualState visualState, VendingMachineComponent component, SpriteComponent sprite)
     {
         SetLayerState(VendingMachineVisualLayers.Base, component.OffState, (uid, sprite));
+
 
         switch (visualState)
         {

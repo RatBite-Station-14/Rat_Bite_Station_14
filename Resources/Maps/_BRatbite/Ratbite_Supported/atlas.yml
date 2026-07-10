@@ -52454,6 +52454,8 @@ entities:
   entities:
   - uid: 7841
     components:
+    - type: AccessReader
+      access: [["HeadOfPersonnel"]]
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 27.5,-4.5

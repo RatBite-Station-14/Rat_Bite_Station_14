@@ -96,8 +96,25 @@ trait-spanish-desc = Hola señor, donde esta la biblioteca.
 trait-dementia-name = Dementia
 trait-dementia-desc = I-... uh, what was this one about again? Oh thats right! You forget a lot sometimes
 
-trait-painnumbness-name = Numb
-trait-painnumbness-desc = You lack any sense of feeling pain, being unaware of how hurt you may be.
+trait-painnumbness-name = High Pain Tolerance
+trait-painnumbness-desc = You cannot assess your own health status. Your health alert is hidden, and pain feedback is unreliable.
+
+trait-tracking-by-scent-name = Tracking by Scent
+trait-tracking-by-scent-desc = Either through bionic augmentation or some genetic circumstance, your sense of smell is heightened. Just sniff it, alright!
+
+trait-all-ears-name = All Ears
+trait-all-ears-desc = Allows for a higher threshold of hearing conversations - through walls and even whispers.
+
+trait-clumsiness-name = Clumsiness
+trait-clumsiness-desc = You're not that good with your hands... Your hand coordination leaves people around you speechless. Just don't try to hold a gun. We don't need any casualties...
+
+trait-kleptomania-name = Kleptomania
+trait-kleptomania-desc = ..Y'know it's just... it's not like I can help it. I see the shine of that disabler... God, it's intoxicating to think that I could have one if I were sneakier.
+    Will randomly pick up objects and attempt to pickpocket nearby employees, even trying to strip them of important gear like PDAs, armor vests, and weapons.
+    Security will hate you.
+
+trait-chronic-kleptomania-name = Chronic Kleptomania
+trait-chronic-kleptomania-desc = Basically makes you attempt to steal stuff from nearby people every 3 seconds.
 
 trait-newyork-name = New York accent
 trait-newyork-desc = You speak with a thick New York accent. I'm fuckin' walkin' 'ere!

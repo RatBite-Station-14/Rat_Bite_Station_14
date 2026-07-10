@@ -146,66 +146,6 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-#Ratbite
-- type: entityTable
-  id: RatbiteEventsTable #Used for SqueakRat
-  table: !type:AllSelector
-    children:
-#    - id: SnakeSpawn - Redrick greytide invisibility.
-    - id: SpiderSpawn
-    - id: MalignRiftSpawn # DeltaV
-    - id: RandomSentience
-    - id: SlimesSpawn
-    - id: MothroachSpawn # DeltaV
-    - id: MouseMigration
-   # - id: VentClog SHIT IS UGLY
-    - id: GasLeak
-    - id: IonStorm # its calm like 90% of the time smh
-    - id: CockroachMigration
-    - id: BluespaceLocker
-    - id: BluespaceArtifact
-    - id: GiftsPizzaPartyLarge
-    - id: GiftsMedical
-
-- type: entityTable
-  id: LowImpactAntagTable #Used for SqueakRat modes
-  table: !type:AllSelector
-    children:
-    - id: ClosetSkeleton
-    - id: KingRatMigration
-    - id: ParadoxCloneSpawn
-    - id: BingleSpawn
-    - id: FloorGoblinMidRound
-    - id: DarkPriestMidround
-    - id: GiftsSecurityGuns # Hilarious, leads to good rp
-
-- type: entityTable
-  id: HeavierAntagTable #Used for SqueakRat modes
-  table: !type:AllSelector
-    children:
-    - id: SlasherSpawn
- #   - id: XenomorphsInfestation
- #   - id: SleeperAgents
- #   - id: ChangelingMidround Got annoying, moved to susrat
-    - id: NinjaSpawn
-    - id: DerelictCyborgSpawn # RB, This shit is annoying, antag, not normal ghost role.
-    - id: Devil
-    - id: LoneAbductorSpawn
-    - id: LoneOpsSpawn
-
-- type: entityTable
-  id: SusAntagTable #Used for the antag mode where it could be anyone
-  table: !type:AllSelector
-    children:
-    - id: Traitor
-    - id: Heretic
-    - id: Changeling
-    - id: SleeperAgents
-    - id: ChangelingMidround
-    - id: HereticMidround
-
-# Ratbite Over
-
 - type: entityTable
   id: BasicCalmEventsTable
   table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
@@ -484,17 +424,7 @@
   - type: GameRule
     chaosScore: 900 # Ratbite antag cut
   - type: SpaceSpawnRule
-  - type: AntagLoadProfileRule
-    # Goobstation start
-    speciesOverride: Human
-    speciesOverrideBlacklist:
-    - Yowie
-    - IPC
-    - Diona
-    - Abductor
-    - Harpy
-    - Plasmaman # EE
-    # Goobstation end
+  - type: AntagGhostCharacterRule # Trauma - use ghost character instead of AntagLoadProfileRule
   - type: AntagObjectives
     objectives:
     - StealResearchObjective

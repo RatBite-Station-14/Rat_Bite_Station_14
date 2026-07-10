@@ -17,9 +17,8 @@
   description: The antag could be any one of us...He could be you!
   rules:
     - PermaBrig # Needed
-    - LowImpactAntagStationScheduler
+    - SusRatRoundstartAntag
     - RatbiteBasicEventsScheduler
-    - SusStationEventScheduler
 
 - type: gamePreset
   id: RatGuide

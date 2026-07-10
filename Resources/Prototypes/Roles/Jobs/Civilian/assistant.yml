@@ -94,6 +94,8 @@
       factions:
       - NanoTrasen
       - Assistant
+    - type: CaptainSaberWeakness # Ratbite: Make captain saber deal more damage to passengers
+      damageMultiplier: 1.2
 
 - type: startingGear
   id: PassengerGear

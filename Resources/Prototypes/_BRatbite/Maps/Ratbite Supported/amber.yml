@@ -32,7 +32,7 @@
   id: Amber
   mapName: 'Amber'
   mapPath: /Maps/_BRatbite/Ratbite_Supported/amber.yml
-  minPlayers: 20
+  minPlayers: 30
   maxPlayers: 60
   stations:
     Amber:
@@ -69,7 +69,7 @@
             TechnicalAssistant: [ 1, 1 ]
             #medical
             ChiefMedicalOfficer: [ 1, 1 ]
-            MedOrderly: [ 1, 1 ] #ratbite
+            MedOrderly: [ 2, 2 ] #ratbite
             Chemist: [ 2, 2 ]
             MedicalDoctor: [ 2, 4 ]
             Paramedic: [ 2, 2 ]

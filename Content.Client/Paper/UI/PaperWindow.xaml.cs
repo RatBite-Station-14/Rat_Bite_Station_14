@@ -96,6 +96,7 @@ using Robust.Shared.Utility;
 using Robust.Client.UserInterface.RichText;
 using Content.Client.UserInterface.RichText;
 using Robust.Shared.Input;
+using Content.Shared._BRatbite.Paper;
 
 namespace Content.Client.Paper.UI
 {
@@ -133,7 +134,7 @@ namespace Content.Client.Paper.UI
             typeof(MonoTag)
         };
 
-        public event Action<string>? OnSaved;
+        public event Action<string, List<PaperStroke>>? OnSaved;
 
         private int _MaxInputLength = -1;
         public int MaxInputLength
@@ -146,6 +147,20 @@ namespace Content.Client.Paper.UI
             {
                 _MaxInputLength = value;
                 UpdateFillState();
+            }
+        }
+
+        private int _MaxDrawingPoints = -1;
+        public int MaxDrawingPoints
+        {
+            get
+            {
+                return _MaxDrawingPoints;
+            }
+            set
+            {
+                DrawWindow.MaxDrawingPoints = value;
+                _MaxDrawingPoints = value;
             }
         }
 
@@ -179,13 +194,30 @@ namespace Content.Client.Paper.UI
                 UpdateFillState();
             };
 
+            DrawButton.OnPressed += _ =>
+            {
+                OnDrawToggle();
+            };
+
             SaveButton.OnPressed += _ =>
             {
                 RunOnSaved();
             };
+            UndoDrawing.OnPressed += _ =>
+            {
+                OnUndoDrawing();
+            };
+            ClearDrawing.OnPressed += _ =>
+            {
+                OnClearDrawing();
+            };
 
             SaveButton.Text = Loc.GetString("paper-ui-save-button",
                 ("keybind", _inputManager.GetKeyFunctionButtonString(EngineKeyFunctions.MultilineTextSubmit)));
+
+            DrawButton.Text = Loc.GetString("paper-ui-draw-button");
+            UndoDrawing.Text = Loc.GetString("paper-ui-undo-drawing");
+            ClearDrawing.Text = Loc.GetString("paper-ui-clear-drawing");
         }
 
         /// <summary>
@@ -196,11 +228,11 @@ namespace Content.Client.Paper.UI
         {
             // Randomize the placement of any stamps based on the entity UID
             // so that there's some variety in different papers.
-            StampDisplay.PlacementSeed = (int)entity;
+            StampDisplay.PlacementSeed = (int) entity;
 
             // Initialize the background:
             PaperBackground.ModulateSelfOverride = visuals.BackgroundModulate;
-            var backgroundImage = visuals.BackgroundImagePath != null? _resCache.GetResource<TextureResource>(visuals.BackgroundImagePath) : null;
+            var backgroundImage = visuals.BackgroundImagePath != null ? _resCache.GetResource<TextureResource>(visuals.BackgroundImagePath) : null;
             if (backgroundImage != null)
             {
                 var backgroundImageMode = visuals.BackgroundImageTile ? StyleBoxTexture.StretchMode.Tile : StyleBoxTexture.StretchMode.Stretch;
@@ -235,7 +267,7 @@ namespace Content.Client.Paper.UI
                     visuals.HeaderMargin.Right, visuals.HeaderMargin.Bottom);
 
             // Then the footer
-            if (visuals.FooterImagePath is {} path)
+            if (visuals.FooterImagePath is { } path)
             {
                 FooterImage.TexturePath = path.ToString();
                 FooterImage.MinSize = FooterImage.TextureNormal?.Size ?? Vector2.Zero;
@@ -269,7 +301,7 @@ namespace Content.Client.Paper.UI
 
             if (visuals.MaxWritableArea != null)
             {
-                var a = (Vector2)visuals.MaxWritableArea;
+                var a = (Vector2) visuals.MaxWritableArea;
                 // Paper has requested that this has a maximum area that you can write on.
                 // So, we'll make the window non-resizable and fix the size of the content.
                 // Ideally, would like to be able to allow resizing only one direction.
@@ -324,7 +356,7 @@ namespace Content.Client.Paper.UI
                 {
                     var headerHeight = HeaderImage.Size.Y + HeaderImage.Margin.Top + HeaderImage.Margin.Bottom;
                     var headerInLines = headerHeight / (fontLineHeight * _paperContentLineScale);
-                    var paddingRequiredInLines = (float)Math.Ceiling(headerInLines) - headerInLines;
+                    var paddingRequiredInLines = (float) Math.Ceiling(headerInLines) - headerInLines;
                     var verticalMargin = fontLineHeight * paddingRequiredInLines * _paperContentLineScale;
                     TextAlignmentPadding.Margin = new Thickness(0.0f, verticalMargin, 0.0f, 0.0f);
                 }
@@ -367,15 +399,26 @@ namespace Content.Client.Paper.UI
             }
             WrittenTextLabel.SetMessage(msg, _allowedTags, DefaultTextColor);
 
-            WrittenTextLabel.Visible = !isEditing && state.Text.Length > 0;
-            BlankPaperIndicator.Visible = !isEditing && state.Text.Length == 0;
+            var isEmpty = (state.Text.Length == 0 && state.Strokes.Count == 0);
+            WrittenTextLabel.Visible = !isEditing && !isEmpty;
+            BlankPaperIndicator.Visible = !isEditing && isEmpty;
 
             StampDisplay.RemoveAllChildren();
             StampDisplay.RemoveStamps();
-            foreach(var stamper in state.StampedBy)
+            foreach (var stamper in state.StampedBy)
             {
-                StampDisplay.AddStamp(new StampWidget{ StampInfo = stamper });
+                StampDisplay.AddStamp(new StampWidget { StampInfo = stamper });
             }
+
+            // Ratbite
+            DrawWindow.Strokes = state.Strokes;
+            DrawingButtons.Visible = isEditing && DrawWindow.Drawing;
+
+            // We disable the Draw Window during editing because we are never drawing
+            // at this point, and we don't want to see our scribbles when we are editing
+            // text
+            DrawWindow.Visible = !isEditing;
+
         }
 
         /// <summary>
@@ -387,6 +430,10 @@ namespace Content.Client.Paper.UI
         protected override DragMode GetDragModeFor(Vector2 relativeMousePos)
         {
             var mode = DragMode.None;
+
+            // Ratbite: Disable dragging while drawing
+            if (DrawWindow.Drawing)
+                return mode;
 
             // Be quite generous with resize margins:
             if (relativeMousePos.Y < DRAG_MARGIN_SIZE)
@@ -407,7 +454,7 @@ namespace Content.Client.Paper.UI
                 mode |= DragMode.Right;
             }
 
-            if((mode & _allowedResizeModes) == DragMode.None)
+            if ((mode & _allowedResizeModes) == DragMode.None)
             {
                 return DragMode.Move;
             }
@@ -418,7 +465,15 @@ namespace Content.Client.Paper.UI
         {
             // Prevent further saving while text processing still in
             SaveButton.Disabled = true;
-            OnSaved?.Invoke(Rope.Collapse(Input.TextRope));
+            // Ratbite: Stop drawing
+            DrawWindow.Drawing = false;
+            var strokes = DrawWindow.Strokes;
+            if (strokes.Count > 0 && strokes[^1].Points.Count == 0)
+            {
+                strokes.RemoveAt(strokes.Count - 1);
+            }
+            UpdateDrawingState();
+            OnSaved?.Invoke(Rope.Collapse(Input.TextRope), DrawWindow.Strokes);
         }
 
         private void UpdateFillState()
@@ -439,6 +494,47 @@ namespace Content.Client.Paper.UI
                 FillStatus.Text = "";
                 SaveButton.Disabled = false;
             }
+        }
+
+        // Ratbite
+        private void UpdateDrawingState()
+        {
+            DrawButton.Pressed = DrawWindow.Drawing;
+            DrawingButtons.Visible = DrawWindow.Drawing;
+            DrawWindow.Visible = DrawWindow.Drawing;
+
+            if (DrawWindow.Drawing)
+            {
+                WrittenTextLabel.SetMessage(Rope.Collapse(Input.TextRope), _allowedTags, DefaultTextColor);
+                Input.MouseFilter = MouseFilterMode.Ignore;
+                WrittenTextLabel.Visible = true;
+                InputContainer.Visible = false;
+            }
+            else
+            {
+                Input.MouseFilter = MouseFilterMode.Stop;
+                WrittenTextLabel.Visible = false;
+                InputContainer.Visible = true;
+            }
+            InputContainer.Visible = !DrawWindow.Drawing;
+        }
+
+        // Ratbite: toggle drawing mode
+        private void OnDrawToggle()
+        {
+            DrawWindow.Drawing = !DrawWindow.Drawing;
+            UpdateDrawingState();
+        }
+
+        private void OnUndoDrawing()
+        {
+            if (DrawWindow.Strokes.Count > 0)
+                DrawWindow.Strokes.RemoveAt(DrawWindow.Strokes.Count - 1);
+        }
+
+        private void OnClearDrawing()
+        {
+            DrawWindow.Strokes.Clear();
         }
     }
 }

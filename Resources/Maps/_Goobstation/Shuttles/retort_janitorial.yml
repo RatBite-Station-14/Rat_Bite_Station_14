@@ -1883,7 +1883,7 @@ entities:
     - type: Transform
       pos: 2.5,-6.5
       parent: 1
-- proto: RandomHumanoidSpawnerERTJanitorEVA
+- proto: ERTJanitorReinforcementEVA
   entities:
   - uid: 217
     components:
@@ -1900,14 +1900,14 @@ entities:
     - type: Transform
       pos: -0.5293221,-9.356291
       parent: 1
-- proto: RandomHumanoidSpawnerERTLeaderEVA
+- proto: ERTLeaderReinforcementEVA
   entities:
   - uid: 220
     components:
     - type: Transform
       pos: 0.49530488,0.47161847
       parent: 1
-- proto: RandomHumanoidSpawnerERTMedicalEVA
+- proto: ERTMedicReinforcementEVA
   entities:
   - uid: 221
     components:

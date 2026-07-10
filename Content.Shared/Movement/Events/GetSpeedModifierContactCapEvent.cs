@@ -15,6 +15,10 @@ public record struct GetSpeedModifierContactCapEvent() : IInventoryRelayEvent
 {
     SlotFlags IInventoryRelayEvent.TargetSlots => ~SlotFlags.POCKET;
 
+    public float CurrentSprintSlowdown = 0f;
+
+    public float CurrentWalkSlowdown = 0f;
+
     public float MaxSprintSlowdown = 0f;
 
     public float MaxWalkSlowdown = 0f;
@@ -23,5 +27,11 @@ public record struct GetSpeedModifierContactCapEvent() : IInventoryRelayEvent
     {
         MaxSprintSlowdown = MathF.Max(MaxSprintSlowdown, valueSprint);
         MaxWalkSlowdown = MathF.Max(MaxWalkSlowdown, valueWalk);
+    }
+
+    public GetSpeedModifierContactCapEvent(float currentWalkSlowdown, float currentSprintSlowdown) : this()
+    {
+        CurrentWalkSlowdown = currentWalkSlowdown;
+        CurrentSprintSlowdown = currentSprintSlowdown;
     }
 }

@@ -32,6 +32,7 @@
   id: Central Command SOP
   name: guide-entry-sop-central-command-general
   text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/CentralCommandSOP.xml"
+  priority: 1
   children:
   - HighCommand SOP
   - NanotrasenRep SOP
@@ -44,3 +45,8 @@
   id: DepartmentalGuard SOP
   name: Departmental Security SOP
   text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/StationJobs/DepartmentalGuardSOP.xml"
+
+- type: guideEntry
+  id: Psychologist SOP
+  name: Psychologist/PsychWard SOP
+  text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/StationJobs/PsychologistSOP.xml"

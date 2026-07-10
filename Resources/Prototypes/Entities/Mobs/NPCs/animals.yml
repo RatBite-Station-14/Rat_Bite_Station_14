@@ -287,6 +287,11 @@
   id: MobBat
   description: Some cultures find them terrifying, others crunchy on the teeth.
   components:
+  # Ratbite: allow critters to pull stuff
+  - type: Puller
+    needsHands: false
+  - type: WeakPuller
+  # End ratbite
   - type: MovementSpeedModifier
     baseWalkSpeed : 3
     baseSprintSpeed : 6
@@ -640,6 +645,11 @@
   id: MobCockroach
   description: This station is just crawling with bugs.
   components:
+  # Ratbite: allow critters to pull stuff
+  - type: Puller
+    needsHands: false
+  - type: WeakPuller
+  # End ratbite
   - type: Sprite
     drawdepth: SmallMobs
     sprite: Mobs/Animals/cockroach.rsi
@@ -2046,6 +2056,11 @@
   id: MobMouse
   description: Squeak!
   components:
+  # Ratbite: allow critters to pull stuff
+  - type: Puller
+    needsHands: false
+  - type: WeakPuller
+  # End ratbite
   - type: VentCrawler # goobstation - Ventcrawl
     enterDelay: 0.5
   - type: Body
@@ -3869,6 +3884,11 @@
   description: A cute, fluffy, robust hamster.
   components:
   - type: VentCrawler # goobstation - Ventcrawl
+  # Ratbite: allow critters to pull stuff
+  - type: Puller
+    needsHands: false
+  - type: WeakPuller
+  # End ratbite
   - type: GhostRole
     makeSentient: true
     allowSpeech: true

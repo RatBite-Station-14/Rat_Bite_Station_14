@@ -61,6 +61,7 @@ namespace Content.Shared.Strip.Components
         public float Multiplier = 1f;
         public TimeSpan Additive = TimeSpan.Zero;
         public bool Stealth = stealth;
+        public bool Subtle;
 
         public TimeSpan Time => TimeSpan.FromSeconds(MathF.Max(InitialTime.Seconds * Multiplier + Additive.Seconds, 0f));
 

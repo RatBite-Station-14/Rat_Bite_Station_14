@@ -10,11 +10,13 @@
 - type: latheRecipe
   id: WeaponPlasmaCutter
   result: WeaponPlasmaCutterEmpty
-  completetime: 3
+  completetime: 6 # Ratbite
   materials:
     Steel: 500
     Glass: 300
     Plasma: 300
+    Plastic: 300 # Ratbite
+    Gold: 50 # Ratbite
 
 - type: latheRecipe
   id: WeaponPlasmaRifle

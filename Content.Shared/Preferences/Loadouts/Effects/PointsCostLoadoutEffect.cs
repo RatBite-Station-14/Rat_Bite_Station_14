@@ -3,6 +3,7 @@
 // SPDX-FileCopyrightText: 2024 Mr. 27 <koolthunder019@gmail.com>
 // SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Monolith Station contributors
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -33,7 +34,7 @@ public sealed partial class PointsCostLoadoutEffect : LoadoutEffect
             return true;
         }
 
-        if (loadout.Points <= Cost)
+        if (loadout.Points < Cost)
         {
             reason = FormattedMessage.FromUnformatted("loadout-group-points-insufficient");
             return false;

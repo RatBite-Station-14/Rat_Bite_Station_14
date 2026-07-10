@@ -83,11 +83,17 @@
     deleteOnCollide: false
     damage:
       types:
-        Heat: 5
-  - type: StaminaDamageOnCollide
-    damage: 20
+        Heat: 5 # Ratbite - Made plasmacutter deal damage instead of stam damage
+        Slash: 20 # Ratbite - 4 shot to crit, causes quite a bit of bleeding
+        # 14 shots kills a goliath, should be good enough for salv
+        Structural: 15
+      armorPenetration: -0.65 # Ratbite - fuck tiders/fauna specifically :godo:
+      woundSeverityMultipliers:
+        Slash: 1.25 # Ratbite - tider delimbing
+#  - type: StaminaDamageOnCollide
+#    damage: 20            # Ratbite - removed
   - type: TimedDespawn
-    lifetime: 0.2
+    lifetime: 0.20
   - type: PointLight
     radius: 2
     color: purple

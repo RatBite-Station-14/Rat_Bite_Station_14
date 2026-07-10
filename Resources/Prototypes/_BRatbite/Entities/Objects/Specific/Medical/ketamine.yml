@@ -1,0 +1,29 @@
+- type: entity
+  suffix: ketamine
+  parent: PrefilledSyringe
+  id: SyringeKetamine
+  components:
+  - type: Label
+    currentLabel: reagent-name-ketamine
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 15
+        reagents:
+        - ReagentId: Ketamine
+          Quantity: 15
+
+- type: entity
+  name: ketamine syringe box
+  parent: BoxCardboard
+  id: BoxSyringeKetamine
+  description: A box full of ketamine syringes.
+  components:
+  - type: StorageFill
+    contents:
+    - id: SyringeKetamine
+      amount: 9
+  - type: Sprite
+    layers:
+    - state: box
+    - state: syringe

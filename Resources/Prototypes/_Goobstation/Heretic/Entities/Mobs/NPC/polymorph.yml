@@ -46,6 +46,7 @@
   parent: BaseMobJaunt
   categories: [ HideSpawnMenu ]
   components:
+  - type: AshJaunt
   - type: MovementSpeedModifier
     baseWalkSpeed: 3
     baseSprintSpeed: 3

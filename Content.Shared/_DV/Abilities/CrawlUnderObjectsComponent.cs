@@ -24,7 +24,7 @@ public sealed partial class CrawlUnderObjectsComponent : Component
     [DataField]
     public EntProtoId? ActionProto;
 
-    [DataField]
+    [DataField, AutoNetworkedField]
     public bool Enabled = false;
 
     /// <summary>

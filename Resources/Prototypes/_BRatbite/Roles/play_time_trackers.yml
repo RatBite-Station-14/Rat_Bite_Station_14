@@ -2,6 +2,9 @@
   id: JobPrisoner
 
 - type: playTimeTracker
+  id: JobSanitariumPatient
+
+- type: playTimeTracker
   id: JobRedsightOverseer
 
 - type: playTimeTracker

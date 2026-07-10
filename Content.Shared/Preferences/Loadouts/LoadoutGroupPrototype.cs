@@ -30,6 +30,7 @@
 // SPDX-FileCopyrightText: 2024 Арт <123451459+JustArt1m@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2025 Monolith Station contributors
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -72,4 +73,16 @@ public sealed partial class LoadoutGroupPrototype : IPrototype
 
     [DataField(required: true)]
     public List<ProtoId<LoadoutPrototype>> Loadouts = new();
+
+    /// <summary>
+    /// Additional loadout groups that are displayed and validated as part of this group.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<LoadoutGroupPrototype>> Subgroups = new();
+
+    /// <summary>
+    /// Preferred default loadouts for this group.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<LoadoutPrototype>> Fallbacks = new();
 }

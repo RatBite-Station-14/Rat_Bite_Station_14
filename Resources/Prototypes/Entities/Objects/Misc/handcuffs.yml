@@ -216,6 +216,14 @@
     state: cuff
 
 - type: entity
+  id: CablecuffsTemporary
+  parent: Cablecuffs
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TemporaryCuffs
+    lifetime: 30
+
+- type: entity
   id: BaseHandcuffsBroken
   parent: BaseItem
   abstract: true

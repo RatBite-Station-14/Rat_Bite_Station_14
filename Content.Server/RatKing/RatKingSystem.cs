@@ -72,6 +72,12 @@ namespace Content.Server.RatKing
                 _popup.PopupEntity(Loc.GetString("rat-king-too-hungry"), uid, uid);
                 return;
             }
+            // Ratbite: Add a cap to servants
+            if (component.Servants.Count + 1 > component.MaxServantsToSpawn)
+            {
+                _popup.PopupEntity(Loc.GetString("rat-king-too-many-servants"), uid, uid);
+                return;
+            }
             args.Handled = true;
             _hunger.ModifyHunger(uid, -component.HungerPerArmyUse, hunger);
             var servant = Spawn(component.ArmyMobSpawnId, Transform(uid).Coordinates);

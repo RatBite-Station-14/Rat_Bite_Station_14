@@ -118,6 +118,10 @@
           conditions:
             - !type:EntityAnchored
             - !type:WirePanel
+              # Ratbite Require it to be bolted and wires cut
+            - !type:MachineBolted
+              value: false
+            - !type:AllWiresCut
           steps:
             - tool: Prying
               doAfter: 2

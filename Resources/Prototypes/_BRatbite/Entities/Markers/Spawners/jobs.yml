@@ -11,6 +11,18 @@
       - state: prisoner
 
 - type: entity
+  id: SpawnPointSanitariumPatient
+  parent: SpawnPointJobBase
+  name: sanitariumpatient
+  components:
+  - type: SpawnPoint
+    job_id: SanitariumPatient
+  - type: Sprite
+    layers:
+      - state: green
+      - state: prisoner
+
+- type: entity
   id: SpawnPointRedsightOverseer
   parent: SpawnPointJobBase
   name: redsightoverseer

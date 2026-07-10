@@ -17,6 +17,7 @@
 using System.Numerics;
 using Content.Server.Radiation.Components;
 using Content.Server.Radiation.Events;
+using Content.Shared._BRatbite.Radiation;
 using Content.Shared.Radiation.Components;
 using Content.Shared.Radiation.Systems;
 using Content.Shared.Singularity.Components; // Goobstation - Radiation Overhaul
@@ -34,11 +35,14 @@ public partial class RadiationSystem
     private readonly record struct SourceData(
         float Intensity,
         Entity<RadiationSourceComponent, TransformComponent> Entity,
-        Vector2 WorldPosition)
+        Vector2 WorldPosition
+    )
     {
         public EntityUid? GridUid => Entity.Comp2.GridUid;
         public float Slope => Entity.Comp1.Slope;
         public TransformComponent Transform => Entity.Comp2;
+        // Ratbite
+        public bool IsWeakSource => Entity.Comp1.IsWeakSource;
     }
 
     private void UpdateGridcast()
@@ -89,8 +93,11 @@ public partial class RadiationSystem
             var rads = 0f;
             foreach (var source in _sources)
             {
+                // Ratbite: Thick skin component
+                if (source.IsWeakSource && HasComp<ThickSkinComponent>(destUid))
+                    continue;
                 // send ray towards destination entity
-                if (Irradiate(source, destUid, destTrs, destWorld, debug) is not {} ray)
+                if (Irradiate(source, destUid, destTrs, destWorld, debug) is not { } ray)
                     continue;
 
                 // add rads to total rad exposure
@@ -154,10 +161,10 @@ public partial class RadiationSystem
         // Goobstation Start - Radiation Overhaul
         // get direction from rad source to destination and its distance
         var dir = destWorld - source.WorldPosition;
-        var dist = Math.Max(dir.Length(),0.5f);
+        var dist = Math.Max(dir.Length(), 0.5f);
         if (TryComp(source.Entity.Owner, out EventHorizonComponent? horizon)) // if we have a horizon emit radiation from the horizon,
             dist = Math.Max(dist - horizon.Radius, 0.5f);
-        var rads = source.Intensity / (dist );
+        var rads = source.Intensity / (dist);
         if (rads < 0.01)
             return null;
         // Goobstation End - Radiation Overhaul
@@ -170,7 +177,7 @@ public partial class RadiationSystem
         // if source and destination on the same grid it's possible that
         // between them can be another grid (ie. shuttle in center of donut station)
         // however we can do simplification and ignore that case
-        if (GridcastSimplifiedSameGrid && destTrs.GridUid is {} gridUid && source.GridUid == gridUid)
+        if (GridcastSimplifiedSameGrid && destTrs.GridUid is { } gridUid && source.GridUid == gridUid)
         {
             if (!_gridQuery.TryGetComponent(gridUid, out var gridComponent))
                 return ray;
@@ -219,15 +226,15 @@ public partial class RadiationSystem
 
         if (delta.LengthSquared() < 0.0001f)
         {
-            yield return (new Vector2i((int)Math.Floor(sourceGridPos.X), (int)Math.Floor(sourceGridPos.Y)), 0f);
+            yield return (new Vector2i((int) Math.Floor(sourceGridPos.X), (int) Math.Floor(sourceGridPos.Y)), 0f);
             yield break;
         }
-        
-        var currentX = (int)Math.Floor(sourceGridPos.X);
-        var currentY = (int)Math.Floor(sourceGridPos.Y);
-        var destX = (int)Math.Floor(destGridPos.X);
-        var destY = (int)Math.Floor(destGridPos.Y);
-        
+
+        var currentX = (int) Math.Floor(sourceGridPos.X);
+        var currentY = (int) Math.Floor(sourceGridPos.Y);
+        var destX = (int) Math.Floor(destGridPos.X);
+        var destY = (int) Math.Floor(destGridPos.Y);
+
         var stepX = 0;
         float tDeltaX = 0, tMaxX = float.MaxValue;
         if (delta.X != 0)
@@ -237,7 +244,7 @@ public partial class RadiationSystem
             tMaxX = (xEdge - sourceGridPos.X) / delta.X;
             tDeltaX = stepX / delta.X;
         }
-        
+
         var stepY = 0;
         float tDeltaY = 0, tMaxY = float.MaxValue;
         if (delta.Y != 0)
@@ -247,16 +254,16 @@ public partial class RadiationSystem
             tMaxY = (yEdge - sourceGridPos.Y) / delta.Y;
             tDeltaY = stepY / delta.Y;
         }
-        
+
         var entry = sourceGridPos;
         var maxIterations = Math.Abs(destX - currentX) + Math.Abs(destY - currentY) + 2;
         var iterations = 0;
-        
+
         while (true)
         {
             if (++iterations > maxIterations)
                 yield break;
-            
+
             var tExit = Math.Min(tMaxX, tMaxY);
             var exitIsX = tMaxX < tMaxY;
             if (tExit > 1f)
@@ -264,10 +271,10 @@ public partial class RadiationSystem
             var exit = sourceGridPos + delta * tExit;
             var cell = new Vector2i(currentX, currentY);
             yield return (cell, (exit - entry).Length());
-            
+
             if (tExit >= 1f - 1e-6f)
                 break;
-                
+
             if (exitIsX)
             {
                 currentX += stepX;
@@ -319,7 +326,7 @@ public partial class RadiationSystem
             dstLocal.X / grid.Comp1.TileSize,
             dstLocal.Y / grid.Comp1.TileSize);
 
-        foreach (var (point,dist) in AdvancedGridRaycast(sourceGrid,destGrid))
+        foreach (var (point, dist) in AdvancedGridRaycast(sourceGrid, destGrid))
         {
             if (resistanceMap.TryGetValue(point, out var resData))
             {
@@ -375,7 +382,7 @@ public partial class RadiationSystem
             if (_blockerQuery.TryComp(xform.ParentUid, out var blocker))
             {
                 // Goobstation Start - Radiation Overhaul
-                var ratio = blocker.RadDecay>2? 1 / (blocker.RadDecay/2):1;
+                var ratio = blocker.RadDecay > 2 ? 1 / (blocker.RadDecay / 2) : 1;
                 rads = (rads - blocker.RadResistance) * ratio;
                 if (rads < 0.1)
                     return 0;

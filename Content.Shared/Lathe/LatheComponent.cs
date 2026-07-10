@@ -160,4 +160,8 @@ namespace Content.Shared.Lathe
     /// </summary>
     [ByRefEvent]
     public readonly record struct LatheStartPrintingEvent(LatheRecipePrototype Recipe);
+
+    // Ratbite: Event raised on a lathe when it finishes printing
+    [ByRefEvent]
+    public readonly record struct LatheFinishPrintingEvent(LatheRecipePrototype Recipe, EntityUid? SpawnedEntity);
 }

@@ -14,6 +14,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
     <BoxContainer Margin="4" Orientation="Vertical">
         <Label Name="VoteCaller" />
         <RichTextLabel Name="VoteTitle" />
+	<Label Name="AllowMultipleVotesLabel" Text="{Loc 'ui-vote-allow-multiple'}" />
         <Button Margin="4 4" Name="FollowVoteTarget" Text="{Loc 'ui-vote-follow-button-popup'}" Visible="False"></Button>
         
         <GridContainer Columns="3" Name="VoteOptionsContainer"/>

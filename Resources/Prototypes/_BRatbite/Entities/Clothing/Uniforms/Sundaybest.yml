@@ -1,0 +1,11 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSundayBest
+  name: Sunday best
+  description: the CCO's best friend.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Uniforms/SundayBest.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Uniforms/SundayBest.rsi
+    

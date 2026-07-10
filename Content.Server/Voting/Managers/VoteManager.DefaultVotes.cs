@@ -183,7 +183,9 @@ namespace Content.Server.Voting.Managers
                 Duration = alone
                     ? TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.VoteTimerAlone))
                     : TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.VoteTimerRestart)),
-                InitiatorTimeout = TimeSpan.FromMinutes(5)
+                InitiatorTimeout = TimeSpan.FromMinutes(5),
+                // Ratbite
+                AllowMultiple = false,
             };
 
             if (alone)
@@ -491,7 +493,9 @@ namespace Content.Server.Voting.Managers
                 InitiatorTimeout = TimeSpan.FromMinutes(_cfg.GetCVar(CCVars.VotekickTimeout)),
                 VoterEligibility = voterEligibility,
                 DisplayVotes = false,
-                TargetEntity = targetNetEntity
+                TargetEntity = targetNetEntity,
+                // Ratbite
+                AllowMultiple = false,
             };
 
             WirePresetVoteInitiator(options, initiator);
@@ -515,8 +519,9 @@ namespace Content.Server.Voting.Managers
                 // Get the voters, for logging purposes.
                 List<ICommonSession> yesVoters = new();
                 List<ICommonSession> noVoters = new();
-                foreach (var (voter, castVote) in vote.CastVotes)
+                foreach (var (voter, votes) in vote.CastVotes)
                 {
+                    var castVote = votes.FirstOrDefault();
                     if (castVote == 0)
                     {
                         yesVoters.Add(voter);

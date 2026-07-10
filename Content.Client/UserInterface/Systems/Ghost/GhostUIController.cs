@@ -23,20 +23,31 @@
 using Content.Client.Ghost;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.UserInterface.Systems.Ghost.Widgets;
+using Content.Shared._BRatbite.CCVar;
 using Content.Shared.Ghost;
+using Robust.Client;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
+using Robust.Shared.Configuration;
+using Robust.Shared.Network;
 
 namespace Content.Client.UserInterface.Systems.Ghost;
 
 // TODO hud refactor BEFORE MERGE fix ghost gui being too far up
 public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSystem>
 {
+
     [Dependency] private readonly IEntityNetworkManager _net = default!;
+
     [UISystemDependency] private readonly GhostSystem? _system = default;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly IGameController _gameController = default!;
+
+    private int _altServerPopCount = 0;
 
     private GhostGui? Gui => UIManager.GetActiveUIWidgetOrNull<GhostGui>();
 
+    public static event Action<GhostGui>? OnGuiLoaded; // Trauma
 
     public override void Initialize()
     {
@@ -65,6 +76,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         system.PlayerDetached += OnPlayerDetached;
         system.GhostWarpsResponse += OnWarpsResponse;
         system.GhostRoleCountUpdated += OnRoleCountUpdated;
+        system.AltServerPopUpdated += OnAltServerPopUpdated;
     }
 
     public void OnSystemUnloaded(GhostSystem system)
@@ -75,6 +87,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         system.PlayerDetached -= OnPlayerDetached;
         system.GhostWarpsResponse -= OnWarpsResponse;
         system.GhostRoleCountUpdated -= OnRoleCountUpdated;
+        system.AltServerPopUpdated -= OnAltServerPopUpdated;
     }
 
     public void UpdateGui()
@@ -85,7 +98,9 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         }
 
         Gui.Visible = _system?.IsGhost ?? false;
-        Gui.Update(_system?.AvailableGhostRoleCount, _system?.Player?.CanReturnToBody, _system?.Player?.CanTakeGhostRoles);
+        // Ratbite: connect to alt server
+        var altServerName = _cfg.GetCVar(RatbiteCVars.AltServerName);
+        Gui.Update(_system?.AvailableGhostRoleCount, _system?.Player?.CanReturnToBody, _system?.Player?.CanTakeGhostRoles, altServerName, _altServerPopCount);
     }
 
     private void OnPlayerRemoved(GhostComponent component)
@@ -126,6 +141,12 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         UpdateGui();
     }
 
+    private void OnAltServerPopUpdated(AltServerPopUpdatedEvent msg)
+    {
+        _altServerPopCount = msg.PopCount;
+        UpdateGui();
+    }
+
     private void OnWarpClicked(NetEntity player)
     {
         var msg = new GhostWarpToTargetRequestEvent(player);
@@ -148,6 +169,8 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         Gui.GhostRolesPressed += GhostRolesPressed;
         Gui.TargetWindow.WarpClicked += OnWarpClicked;
         Gui.TargetWindow.OnGhostnadoClicked += OnGhostnadoClicked;
+        OnGuiLoaded?.Invoke(Gui); // Trauma
+        Gui.AltServerConnectPressed += OnAltServerConnectButtonClicked;
 
         UpdateGui();
     }
@@ -180,5 +203,16 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
     private void GhostRolesPressed()
     {
         _system?.OpenGhostRoles();
+    }
+
+    // Ratbite: Connect to server when clicking the button
+    private void OnAltServerConnectButtonClicked()
+    {
+        var serverIp = _cfg.GetCVar(RatbiteCVars.AltServerIP);
+        var serverPort = _cfg.GetCVar(RatbiteCVars.AltServerPort);
+        if (serverIp.Length != 0)
+        {
+            _gameController.Redial($"ss14://{serverIp}:{serverPort}");
+        }
     }
 }

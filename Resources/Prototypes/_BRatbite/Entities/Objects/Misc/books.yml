@@ -1,0 +1,53 @@
+- type: entity
+  parent: BaseItem
+  id: BookCombatTraining
+  name: "How to Robust 101"
+  description: "A guide made by NT aimed to train cadets in the intricate art of combat"
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/books.rsi
+    layers:
+    - state: paper
+    - state: cover_base
+      color: "#8b1a1a"
+    - state: decor_wingette
+      color: "#c8a800"
+    - state: icon_apple
+    - state: icon_corner
+      color: gold
+  - type: Tag
+    tags:
+    - Book
+    - Paper # Goobstation - Moth food
+  - type: MeleeWeapon
+    soundHit:
+      collection: Punch
+    damage:
+      types:
+        Blunt: 1
+  - type: DamageOtherOnHit
+    damage:
+      types:
+  # Goobstation Edit Start - Moth food
+  - type: Food
+    requiresSpecialDigestion: true
+    delay: 15
+    forceFeedDelay: 15
+  - type: BadFood
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 10
+  - type: FlavorProfile
+    flavors:
+    - paper
+    ignoreReagents:
+    - Fiber
+  # Goobstation Edit End
+  - type: AddComponentsOnInteract
+    popupText: book-combat-training-success
+    components:
+    - type: CombatTrained

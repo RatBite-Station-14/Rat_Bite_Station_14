@@ -369,7 +369,7 @@ public abstract partial class SharedSurgerySystem
 
         if (!HasComp(args.Tool, firstOrgan.Component.GetType())
             || !TryComp<OrganComponent>(args.Tool, out var insertedOrgan)
-            || !_body.InsertOrgan(args.Part, args.Tool, insertedOrgan.SlotId, partComp, insertedOrgan))
+            || !_body.InsertOrgan(args.Part, args.Tool, insertedOrgan.SlotId, partComp, insertedOrgan, args.User))
             return;
 
         EnsureComp<OrganReattachedComponent>(args.Tool);

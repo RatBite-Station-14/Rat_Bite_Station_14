@@ -17,6 +17,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Actions;
+using Content.Shared.DoAfter;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
@@ -86,6 +87,10 @@ namespace Content.Shared.VendingMachines
         public string? NextItemToEject;
 
         public bool Broken;
+
+        // Ratbite: Tipped vending machines
+        [DataField]
+        public bool Tipped;
 
         /// <summary>
         /// When true, will forcefully throw any object it dispenses
@@ -246,7 +251,17 @@ namespace Content.Shared.VendingMachines
     [Serializable, NetSerializable]
     public enum VendingMachineVisuals : byte
     {
-        VisualState
+        VisualState,
+        // Ratbite: Tip vending machines
+        Tipped,
+    }
+
+    // Ratbite: Tip vending machines
+    [Serializable, NetSerializable]
+    public enum VendingMachineTippedState : byte
+    {
+        Tipped,
+        Untipped
     }
 
     [Serializable, NetSerializable]
@@ -310,4 +325,9 @@ namespace Content.Shared.VendingMachines
 
         public TimeSpan? DispenseOnHitEnd;
     }
+
+    // Ratbite: Untip vending machines
+    [Serializable, NetSerializable]
+    public sealed partial class VendingMachineUntipEvent : SimpleDoAfterEvent;
 }
+

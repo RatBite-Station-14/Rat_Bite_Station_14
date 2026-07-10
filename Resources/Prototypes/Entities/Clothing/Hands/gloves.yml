@@ -14,6 +14,7 @@
 # SPDX-FileCopyrightText: 2022 ike709 <ike709@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
 # SPDX-FileCopyrightText: 2023 GoodWheatley <109803540+GoodWheatley@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2026 Sprinkle <40203084+lnn0q@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2023 HerCoyote23 <131214189+HerCoyote23@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2023 JoeHammad1844 <130668733+JoeHammad1844@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2023 KingFroozy <140668342+KingFroozy@users.noreply.github.com>
@@ -146,6 +147,7 @@
       collection: BoxingHit
     animation: WeaponArcFist
     mustBeEquippedToUse: true
+  - type: UnarmedCombatSkillBlocker
   - type: Fiber
     fiberMaterial: fibers-leather
     fiberColor: fibers-red
@@ -555,6 +557,7 @@
     animation: WeaponArcFist
     mustBeEquippedToUse: true
     heavyStaminaCost: 3 # goob edit
+  - type: UnarmedCombatSkillBlocker
   - type: Fiber
     fiberMaterial: fibers-leather
     fiberColor: fibers-blue

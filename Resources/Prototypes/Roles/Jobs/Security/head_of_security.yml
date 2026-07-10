@@ -184,6 +184,7 @@
     components:
       - type: CommandStaff
       - type: SecurityStaff # goobstation
+      - type: CombatTrained
 
 - type: startingGear
   id: HoSGear

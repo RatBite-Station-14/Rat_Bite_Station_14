@@ -6,6 +6,7 @@
 // SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
 // SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Monolith Station contributors
 //
 // SPDX-License-Identifier: MIT
 
@@ -77,7 +78,11 @@ public sealed class DrunkOverlay : Overlay
         if (args.Viewport.Eye != eyeComp.Eye)
             return false;
 
-        _visualScale = BoozePowerToVisual(CurrentBoozePower);
+        var visualPower = CurrentBoozePower;
+        if (_entityManager.TryGetComponent(_playerManager.LocalEntity, out Content.Shared.Traits.Assorted.AlcoholToleranceComponent? tolerance))
+            visualPower *= tolerance.VisualScaleMultiplier;
+
+        _visualScale = BoozePowerToVisual(visualPower);
         return _visualScale > 0;
     }
 

@@ -3,6 +3,7 @@
 // SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2024 Krunklehorn <42424291+Krunklehorn@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Monolith Station contributors
 //
 // SPDX-License-Identifier: MIT
 
@@ -32,6 +33,36 @@ public sealed partial class ThievingComponent : Component
     public bool Stealthy;
 
     /// <summary>
+    /// Reduces strip warning popups to small non-caution text without hiding the do-after.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool Subtle;
+
+    /// <summary>
+    /// Toggles <see cref="Subtle"/> instead of <see cref="Stealthy"/> when the alert is clicked.
+    /// </summary>
+    [DataField]
+    public bool ToggleSubtle;
+
+    /// <summary>
+    /// Multiplies the final strip time.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float TimeMultiplier = 1f;
+
+    /// <summary>
+    /// Allows seeing strip slots that are normally hidden.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool IdentifyHidden;
+
+    /// <summary>
+    /// Marks thieving granted by the character trait, as opposed to thief role or equipment sources.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool TraitGranted;
+
+    /// <summary>
     /// Variable pointing at the Alert modal
     /// </summary>
     [DataField]
@@ -49,4 +80,3 @@ public sealed partial class ThievingComponent : Component
 /// Event raised to toggle the thieving component.
 /// </summary>
 public sealed partial class ToggleThievingEvent : BaseAlertEvent;
-

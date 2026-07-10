@@ -150,6 +150,8 @@
       weight: 1
     - id: VinylDiskRed
       weight: 1
+    - id: VinylDiskMoonchild
+      weight: 1
     - id: VinylDiskLightBlue
       weight: 1
     - id: VinylDiskBanana

@@ -11,7 +11,7 @@
   name: plasma cutter
   parent: BaseWeaponBatterySmall
   id: WeaponPlasmaCutter
-  description: A self-defense weapon that exhausts organic targets, weakening them until they collapse.
+  description: A self-defense weapon that uses condensed plasma to cut through objects and people. Ineffective against armor.
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Battery/cutter.rsi

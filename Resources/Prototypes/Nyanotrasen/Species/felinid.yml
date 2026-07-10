@@ -21,7 +21,7 @@
 - type: species
   id: Felinid
   name: species-name-felinid
-  roundStart: false # Goobstation change
+  roundStart: false # RatBite - hairballs moved to a trait
   prototype: MobFelinid
   sprites: MobHumanSprites
   markingLimits: MobFelinidMarkingLimits

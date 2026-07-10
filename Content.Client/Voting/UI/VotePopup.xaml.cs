@@ -46,19 +46,20 @@ namespace Content.Client.Voting.UI
 
             Modulate = Color.White.WithAlpha(0.75f);
             _voteButtons = new Button[vote.Entries.Length];
-            var group = new ButtonGroup();
 
             for (var i = 0; i < _voteButtons.Length; i++)
             {
                 var button = new Button
                 {
                     ToggleMode = true,
-                    Group = group
                 };
                 _voteButtons[i] = button;
                 VoteOptionsContainer.AddChild(button);
                 var i1 = i;
-                button.OnPressed += _ => _voteManager.SendCastVote(vote.Id, i1);
+                button.OnToggled += _ =>
+                {
+                    _voteManager.SendCastVote(vote.Id, i1);
+                };
             }
         }
 
@@ -66,6 +67,7 @@ namespace Content.Client.Voting.UI
         {
             VoteTitle.SetMessage(FormattedMessage.FromUnformatted(_vote.Title));
             VoteCaller.Text = Loc.GetString("ui-vote-created", ("initiator", _vote.Initiator));
+            AllowMultipleVotesLabel.Visible = _vote.AllowMultiple;
 
             for (var i = 0; i < _voteButtons.Length; i++)
             {
@@ -78,9 +80,7 @@ namespace Content.Client.Voting.UI
                 {
                     _voteButtons[i].Text = Loc.GetString("ui-vote-button-no-votes", ("text", entry.Text));
                 }
-
-                if (_vote.OurVote == i)
-                    _voteButtons[i].Pressed = true;
+                _voteButtons[i].Pressed = _vote.OurVotes.Contains(i);
             }
         }
 

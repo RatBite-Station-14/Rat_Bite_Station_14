@@ -1,0 +1,448 @@
+- type: reagent
+  id: Teriparatide
+  name: reagent-name-teriparatide
+  group: Medicine
+  desc: reagent-desc-teriparatide
+  physicalDesc: reagent-physical-desc-translucent
+  flavor: medicine
+  color: "#2d8c74"
+  worksOnTheDead: true # Cryo chems should work on the dead
+  metabolisms:
+    Medicine:
+      effects:
+        - !type:AdjustBoneDamage
+          amount: -10
+          conditions:
+          - !type:Temperature
+            max: 213.0
+        - !type:HealthChange
+          conditions:
+          - !type:OrganType
+            type: Yowie
+            shouldHave: false
+          damage:
+            types:
+              Poison: 0.5
+
+- type: reagent
+  id: Ketamine
+  name: reagent-name-ketamine
+  group: Narcotics
+  desc: reagent-desc-ketamine
+  physicalDesc: reagent-physical-desc-milky
+  flavor: bitter
+  color: "#f7a3c6"
+  metabolisms:
+    Narcotic:
+      metabolismRate: 0.2
+      effects:
+      - !type:GenericStatusEffect
+        key: KetamineSlurredSpeech
+        component: KetamineSlurredAccent
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Charcoal
+          max: 9.99
+        time: 60
+        refresh: false
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectSeeingRainbow
+        time: 16
+        type: Add
+        refresh: true
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Charcoal
+          max: 9.99
+      - !type:Drunk
+        boozePower: 3
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Charcoal
+          max: 9.99
+      - !type:MovespeedModifier
+        walkSpeedModifier: 0.5
+        sprintSpeedModifier: 0.5
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Charcoal
+          max: 9.99
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Ketamine
+          min: 15
+        - !type:ReagentThreshold
+          reagent: Charcoal
+          max: 9.99
+        damage:
+          types:
+            Cellular: 0.2
+      - !type:GenericStatusEffect
+        key: KetamineSedation
+        component: KetamineSedation
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Charcoal
+          max: 9.99
+        time: 60
+        refresh: false
+      - !type:GenericStatusEffect
+        key: KetamineSedation
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Charcoal
+          min: 10
+        time: 300
+        type: Remove
+      - !type:GenericStatusEffect
+        key: KetamineSlurredSpeech
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Charcoal
+          min: 10
+        time: 300
+        type: Remove
+
+- type: reagent
+  id: Libital
+  name: reagent-name-libital
+  group: Medicine
+  desc: reagent-desc-libital
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#e8d199"
+  metabolisms:
+    Medicine:
+      effects:
+        - !type:HealthChange
+          damage:
+            groups:
+              Brute: -2.5
+        - !type:HealthChange
+          conditions:
+          - !type:ReagentThreshold
+            min: 20
+          damage:
+            types:
+              Heat: 1
+        - !type:Jitter
+          conditions:
+          - !type:ReagentThreshold
+            min: 20
+
+- type: reagent
+  id: Lenturi
+  name: reagent-name-lenturi
+  group: Medicine
+  desc: reagent-desc-lenturi
+  physicalDesc: reagent-physical-desc-tropical
+  flavor: medicine
+  color: "#634aef"
+  metabolisms:
+    Medicine:
+      effects:
+        - !type:HealthChange
+          conditions: # yes i know i can just make it do more for OD, but this makes it more understandable in the guidebook
+          - !type:ReagentThreshold
+            max: 20
+          damage:
+            types:
+              Heat: -0.8
+              Shock: -0.8
+              Cold: -0.8
+        - !type:HealthChange
+          conditions:
+          - !type:ReagentThreshold
+            min: 20
+          damage:
+            types:
+              Heat: -1.2
+              Shock: -1.2
+              Cold: -1.2
+        - !type:SatiateThirst
+          conditions:
+          - !type:ReagentThreshold
+            min: 20
+          factor: -4
+        - !type:Jitter
+          conditions:
+          - !type:ReagentThreshold
+            min: 20
+
+- type: reagent
+  id: Aiuri
+  name: reagent-name-aiuri
+  group: Medicine
+  desc: reagent-desc-aiuri
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: medicine
+  color: "#a69ff4"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.1
+      effects:
+        - !type:HealthChange
+          damage:
+            groups:
+              Burn: -1
+
+- type: reagent
+  id: Caridine
+  name: reagent-name-caridine
+  group: Medicine
+  desc: reagent-desc-caridine
+  physicalDesc: reagent-physical-desc-thick
+  flavor: medicine
+  color: "#ff91af"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.05
+      effects:
+        - !type:HealthChange
+          damage:
+            groups:
+              Brute: -0.6
+            types:
+              Poison: -0.1
+        - !type:ChemVomit
+          conditions:
+          - !type:ReagentThreshold
+            max: 50
+          probability: 0.5 # this shit gonna be used as better ipecac for sure but whatever.. (ipecac has 30%, min 4u)
+        - !type:ChemVomit
+          conditions:
+          - !type:ReagentThreshold
+            min: 50
+          probability: 0.02
+        - !type:Drunk
+
+- type: reagent
+  id: Lectrazine
+  name: reagent-name-lectrazine
+  group: Medicine
+  desc: reagent-desc-lectrazine
+  physicalDesc: reagent-physical-desc-shocking
+  flavor: medicine
+  color: "#b36f9d"
+  metabolisms:
+    Medicine:
+      effects:
+        - !type:HealthChange
+          conditions:
+          - !type:OrganType
+            type: Human
+          damage:
+            groups:
+              Airloss: -8 # matches description better than just Bloodloss
+        - !type:HealthChange
+          conditions:
+          - !type:OrganType
+            type: Human
+            shouldHave: false
+          - !type:OrganType
+            type: Yowie
+            shouldHave: false
+          damage:
+            types:
+              Poison: 2
+        - !type:HealthChange # yeah i know this is goida code, dont care
+          conditions:
+          - !type:OrganType
+            type: Vox
+          damage:
+            types:
+              Asphyxiation: 4
+        - !type:HealthChange
+          conditions:
+          - !type:OrganType
+            type: Slime
+          damage:
+            types:
+              Asphyxiation: 4
+        - !type:HealthChange
+          conditions:
+          - !type:OrganType
+            type: Resomi
+          damage:
+            types:
+              Asphyxiation: 4
+        - !type:HealthChange
+          conditions:
+          - !type:ReagentThreshold
+            min: 35
+          damage:
+            types:
+              Cellular: 0.5
+              Blunt: 0.1
+              Poison: 0.5
+        - !type:ModifyStatusEffect
+          effectProto: StatusEffectDrowsiness
+          time: 1.5
+          type: Add
+          refresh: false
+        - !type:AdjustBoneDamage
+          conditions:
+          - !type:ReagentThreshold
+            min: 35
+          amount: 1 # this displays wrong in guidebook AND in medtek AND in surgery UI, blame shitmed, too lazy to fix
+
+- type: reagent
+  id: Chornexalinn
+  name: reagent-name-chornexalinn
+  group: Medicine
+  desc: reagent-desc-chornexalinn
+  physicalDesc: reagent-physical-desc-shiny
+  flavor: medicine
+  color: "#93ff7d"
+  worksOnTheDead: true
+  metabolisms:
+    Medicine:
+      metabolismRate: 3
+      effects:
+        - !type:HealthChange
+          damage:
+            types:
+              Radiation: -40 # alternative for synthflesh yay!
+              Cellular: -6
+        - !type:HealthChange
+          conditions:
+          - !type:ReagentThreshold
+            min: 4
+          damage:
+            types:
+              Blunt: 43
+        - !type:AdjustReagent
+          amount: 3
+          reagent: Arithrazine # tbh arith just SEEMS like something that would be a T4 byproduct so it fits
+        - !type:AdjustReagent
+          amount: -25
+          reagent: Syriniver
+        - !type:AdjustReagent
+          amount: -50
+          reagent: Ebifin
+        - !type:AdjustReagent
+          amount: -25
+          reagent: ProcenylLazide
+        - !type:AdjustReagent
+          amount: -25
+          reagent: Aluite
+        - !type:AdjustReagent
+          amount: -50
+          reagent: Chornexalinn
+
+- type: reagent
+  id: Tepalal
+  name: reagent-name-tepalal
+  group: Medicine
+  desc: reagent-desc-tepalal
+  physicalDesc: reagent-physical-desc-viscous
+  flavor: medicine
+  color: "#21153b"
+  plantMetabolism:
+    - !type:PlantAdjustWeeds
+      amount: -8
+    - !type:PlantAdjustHealth
+      amount: -20
+  worksOnTheDead: true
+  reactiveEffects:
+    Acidic:
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        scaleByQuantity: true
+        ignoreResistances: false
+        ignoreBlockers: false
+        damage:
+          groups:
+            Brute: -1.5 
+          types:
+            Heat: -0.5
+            Cold: -0.5
+            Shock: -0.5
+        conditions:
+        - !type:HasComponentOnEquipmentCondition
+          components:
+          - type: PressureProtection # can't get through this to reach the bodyparts!
+          invert: true
+      - !type:ModifyBleedAmount
+        amount: -2
+        conditions:
+        - !type:HasComponentOnEquipmentCondition
+          components:
+          - type: PressureProtection
+          invert: true
+  metabolisms:
+    Poison:
+      metabolismRate: 3
+      effects:
+        - !type:HealthChange
+          damage:
+            groups:
+              Brute: -1.5 
+            types:
+              Heat: -0.5
+              Cold: -0.5
+              Shock: -0.5
+        - !type:HealthChange
+          conditions:
+            - !type:OrganType
+              type: Yowie
+              shouldHave: false
+          damage:
+            types:
+              Poison: 2
+
+- type: reagent
+  id: Granitbitulari
+  name: reagent-name-granitbitulari
+  group: Medicine
+  desc: reagent-desc-granitbitulari
+  physicalDesc: reagent-physical-desc-bubbling
+  flavor: medicine
+  color: "#c7e4e8"
+  worksOnTheDead: true
+  metabolisms:
+    Medicine:
+      effects:
+        - !type:HealthChange
+          damage:
+            groups:
+              Brute: -9
+        - !type:HealthChange
+          conditions:
+            - !type:ReagentThreshold
+              min: 15
+            - !type:OrganType
+              type: Yowie
+              shouldHave: false
+          damage:
+            types:
+              Poison: 2
+
+- type: reagent
+  id: Revivopine
+  name: reagent-name-revivopine
+  group: Medicine
+  desc: reagent-desc-revivopine
+  physicalDesc: reagent-physical-desc-cloudy
+  flavor: medicine
+  color: "#04ea9a"
+  worksOnTheDead: true
+  metabolisms:
+    Medicine:
+      effects:
+        - !type:HealthChange
+          damage:
+            groups:
+              Burn: -12
+        - !type:HealthChange
+          conditions:
+            - !type:ReagentThreshold
+              min: 15
+            - !type:OrganType
+              type: Yowie
+              shouldHave: false
+          damage:
+            types:
+              Poison: 2

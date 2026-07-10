@@ -13,10 +13,16 @@ using Content.Shared.Chat;
 using Content.Shared.GameTicking;
 using Content.Shared.Inventory;
 using Content.Shared.Mind;
+using Content.Shared.Preferences;
 using Content.Shared.Players;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.Security.Components;
+using Content.Shared._BRatbite.PermaBrig;
+using Content.Server.Traits;
+using Content.Shared.Cuffs;
+using Content.Shared.Cuffs.Components;
+using Content.Shared.Hands.EntitySystems;
 using Robust.Server.Audio;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
@@ -25,6 +31,11 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Server._BRatbite.CryoSickness;
+using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Body.Components;
+using Content.Shared.Chemistry.EntitySystems;
+using Content.Goobstation.Maths.FixedPoint;
 
 namespace Content.Server._BRatbite.PermaBrig;
 
@@ -50,6 +61,14 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
     [Dependency] private readonly SharedIdCardSystem _idCard = default!;
     [Dependency] private readonly EntityManager _ent = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
+    [Dependency] private readonly TraitSystem _trait = default!;
+    [Dependency] private readonly CryoSicknessSystem _cryoSicknessSystem = default!;
+    [Dependency] private readonly SharedCuffableSystem _cuffableSystem = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
+    private readonly ProtoId<ReagentPrototype> _ketamine = "Ketamine";
+    // This is the equivalent of 10 minutes of sedation
+    private readonly FixedPoint2 _amountToInject = 2f;
 
     public HashSet<ICommonSession> PermaIndividuals = new();
     public Dictionary<ICommonSession, (TimeSpan, TimeSpan)> PermaIndividualJoinedTime = new();
@@ -91,7 +110,7 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
             pool.Remove(player);
             GameTicker.PlayerJoinGame(player);
 
-            SpawnPrisonerPlayer(player);
+            SpawnPrisonerPlayer(player, _permaBrigManager.GetBrigInpatient(player.UserId));
 
             _sawmill.Info($"Player sent to perma: {player}");
         }
@@ -111,14 +130,14 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
 
         PermaIndividuals.Add(ev.Player);
 
-        SpawnPrisonerPlayer(ev.Player);
+        SpawnPrisonerPlayer(ev.Player, _permaBrigManager.GetBrigInpatient(ev.Player.UserId));
 
         ev.Handled = true;
 
         _sawmill.Info($"Player sent to perma: {ev.Player}");
     }
 
-    private EntityCoordinates? GetSpawnLocation()
+    private EntityCoordinates? GetSpawnLocation(string jobId)
     {
         var points = EntityQueryEnumerator<SpawnPointComponent, TransformComponent>();
         var possiblePositions = new List<EntityCoordinates>();
@@ -126,7 +145,7 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
         while (points.MoveNext(out var uid, out var spawnPoint, out var xform))
         {
             if (spawnPoint.SpawnType == SpawnPointType.Job &&
-                (spawnPoint.Job == "Prisoner"))
+                spawnPoint.Job == jobId)
             {
                 possiblePositions.Add(xform.Coordinates);
             }
@@ -138,7 +157,7 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
         return _random.Pick(possiblePositions);
     }
 
-    private void SpawnPrisonerPlayer(ICommonSession player)
+    private void SpawnPrisonerPlayer(ICommonSession player, bool inpatient)
     {
         var stations = _ticker.GetSpawnableStations();
         _random.Shuffle(stations);
@@ -147,40 +166,57 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
             station = stations[0];
 
         var character = _ticker.GetPlayerProfile(player);
+        var forcedSpawnProfile = character.WithSpawnPriorityPreference(SpawnPriorityPreference.None);
 
         var data = player.ContentData();
 
         var newMind = _mind.CreateMind(data!.UserId, character.Name);
         _mind.SetUserId(newMind, data.UserId);
 
-        var jobPrototype = _prototypeManager.Index<JobPrototype>("Prisoner");
+        var jobId = inpatient ? "SanitariumPatient" : "Prisoner";
 
         _playTimeTrackings.PlayerRolesChanged(player);
-
-        GetSpawnLocation();
 
         EntityCoordinates? spawnLoc = null;
         EntityUid? mobMaybe = null;
 
-        spawnLoc = GetSpawnLocation();
+        spawnLoc = GetSpawnLocation(jobId);
+
+        if (inpatient && spawnLoc == null)
+        {
+            _sawmill.Warning("No spawn loc found for sanitarium patient");
+            // If no sanitarium spawnpoint exists, use Prisoner spawn routing instead of station fallback.
+            jobId = "Prisoner";
+            spawnLoc = GetSpawnLocation(jobId);
+        }
+
+        var jobPrototype = _prototypeManager.Index<JobPrototype>(jobId);
 
         if (spawnLoc != null)
         {
             mobMaybe = _stationSpawning.SpawnPlayerMob(
                 spawnLoc.Value,
-                "Prisoner",
+                jobId,
                 character,
                 station);
         }
         else
         {
-            mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(station, "Prisoner", character);
+            // Forced perma/sanitarium joins should not be redirected to cryosleep based on profile preference.
+            mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(station, jobId, forcedSpawnProfile);
         }
 
         DebugTools.AssertNotNull(mobMaybe);
         var mob = mobMaybe!.Value;
 
+        // Inpatients should always receive a straightjacket, regardless of spawn path.
+        if (inpatient)
+        {
+            CuffAndInjectWithKetamine(mob);
+        }
+
         var brigTime = _permaBrigManager.GetBrigTime(player.UserId);
+        var expireTime = TimeSpan.FromMinutes(brigTime) + Timing.CurTime;
         if (_inventory.TryGetSlotEntity(mob, "id", out var idUid))
         {
             var cardId = idUid.Value;
@@ -193,15 +229,16 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
                     expire.ExpireChannel = "Security";
                     expire.ExpireMessage = "perma-prisoner-release";
                 }
-                Dirty(cardId,card);
+                Dirty(cardId, card);
             }
-            _idCard.SetExpireTime(cardId, TimeSpan.FromMinutes(brigTime) + Timing.CurTime);
+            _idCard.SetExpireTime(cardId, expireTime);
         }
+        AddComp(mob, new PrisonerComponent { PermaBrigSentenceExpireTime = expireTime });
 
         _mind.TransferTo(newMind, mob);
         _admin.UpdatePlayerList(player);
 
-        _roles.MindAddJobRole(newMind, silent: false, jobPrototype: "Prisoner");
+        _roles.MindAddJobRole(newMind, silent: false, jobPrototype: jobId);
 
         var briefing = Loc.GetString("perma-prisoner-briefing",
             ("minutes", brigTime));
@@ -220,7 +257,7 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
 
         var aev = new PlayerSpawnCompleteEvent(mob,
             player,
-            "prisoner",
+            jobId,
             false,
             true,
             0,
@@ -228,6 +265,20 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
             character);
 
         _stationRecords.OnPlayerSpawn(aev);
+        _trait.ApplyTraits(mob, character);
+        _cryoSicknessSystem.ApplyComponent(mob);
+    }
+
+    private void CuffAndInjectWithKetamine(EntityUid prisoner)
+    {
+        var cuffs = _ent.SpawnEntity("ClothingOuterStraightjacket", Transform(prisoner).Coordinates);
+        var cuffableComp = EnsureComp<CuffableComponent>(prisoner);
+        _cuffableSystem.TryAddNewCuffs(prisoner, prisoner, cuffs, cuffableComp);
+        if (!TryComp<BloodstreamComponent>(prisoner, out var bloodstream)) return;
+        if (!_solutionContainerSystem.ResolveSolution(prisoner, bloodstream.ChemicalSolutionName, ref bloodstream.ChemicalSolution))
+            return;
+
+        _solutionContainerSystem.TryAddReagent(bloodstream.ChemicalSolution.Value, new ReagentId(_ketamine, null), _amountToInject, out _);
     }
 
     // private void OnRoundEnd(RoundEndMessageEvent ev) Auto decrease of perma sentence not yet implemented

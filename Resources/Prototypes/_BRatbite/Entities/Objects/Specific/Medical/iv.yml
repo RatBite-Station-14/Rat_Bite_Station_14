@@ -1,0 +1,29 @@
+- type: entity
+  name: IV Equipment
+  parent: BaseItem
+  id: IVEquipment
+  description: Equipment used to administer drugs intravenously.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Objects/Specific/Medical/iv.rsi
+    layers:
+    - state: iv
+    - state: iv-fill1
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+  - type: IV
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 4
+    fillBaseName: iv-fill
+    insertedItemSlotID: ivBag
+    solutionName: beaker
+  - type: ItemSlots
+    slots:
+      ivBag:
+        whitelist:
+          tags:
+          - ChemDispensable
+  - type: ContainerContainer
+    containers:
+      ivBag: !type:ContainerSlot
+    

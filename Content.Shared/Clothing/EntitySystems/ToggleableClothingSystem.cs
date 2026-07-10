@@ -165,7 +165,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
         if (comp.StripDelay == null)
             return;
 
-        var (time, stealth) = _strippable.GetStripTimeModifiers(user, wearer, toggleable, comp.StripDelay.Value);
+        var (time, stealth, _) = _strippable.GetStripTimeModifiers(user, wearer, toggleable, comp.StripDelay.Value);
 
         var args = new DoAfterArgs(EntityManager, user, time, new ToggleClothingDoAfterEvent(), toggleable, wearer, toggleable)
         {
@@ -194,7 +194,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
 
         if (comp.StripDelay == null)
             return;
-        var (time, stealth) = _strippable.GetStripTimeModifiers(user, wearer, acomp.AttachedUid, comp.StripDelay.Value*3/4); // 3/4's of toggleable
+        var (time, stealth, _) = _strippable.GetStripTimeModifiers(user, wearer, acomp.AttachedUid, comp.StripDelay.Value*3/4); // 3/4's of toggleable
 
         var args = new DoAfterArgs(EntityManager, user, time, new AttachClothingDoAfterEvent(), attached, wearer, attached)
         {
@@ -898,5 +898,4 @@ public readonly record struct ToggledBackClothingFullUnequipAndInsertedEvent(
 
     List<(EntityUid Part, string Slot)> Parts
 );
-
 

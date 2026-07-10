@@ -1,5 +1,19 @@
 - type: entity
   parent: BaseAction
+  id: ActionTraitLeap
+  name: Leap
+  description: Propel yourself a short distance in the direction of your gaze.
+  components:
+  - type: Action
+    useDelay: 8
+    icon:
+      sprite: Interface/Actions/jump.rsi
+      state: icon
+  - type: InstantAction
+    event: !type:GravityJumpEvent {}
+
+- type: entity
+  parent: BaseAction
   id: ActionActivateLegalFreedomImplant
   name: Break Free
   description: Activating this implant will free you from any hand restraints.
@@ -14,3 +28,38 @@
       state: freedom
   - type: InstantAction
     event: !type:UseFreedomImplantEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionMald
+  name: action-name-mald
+  description: action-description-mald
+  components:
+  - type: Action
+    checkCanInteract: false
+    itemIconStyle: BigAction
+    icon:
+      sprite: Clothing/Mask/clown.rsi
+      state: icon
+  - type: ConfirmableAction
+    popup: mald-action-popup
+  - type: InstantAction
+    event: !type:MaldActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionShakeAwake
+  name: Shake Yourself Awake
+  description: Shake yourself awake from cryo sickness
+  components:
+  - type: Action
+    checkCanInteract: false
+    itemIconStyle: BigAction
+    icon:
+      sprite: Objects/Fun/card_sword.rsi
+      state: icon
+  - type: ConfirmableAction
+    popup: cryosickness-popup
+  - type: InstantAction
+    event: !type:ShakeAwakeEvent
+  

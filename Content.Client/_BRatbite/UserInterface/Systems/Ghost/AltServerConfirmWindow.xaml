@@ -1,0 +1,17 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+               xmlns:widgets="clr-namespace:Content.Client._BRatbite.UserInterface.Systems.Ghost"
+               Title="{Loc 'alt-server-connect-confirm-title'}"
+               MinSize="200 200"
+               SetSize="300 230">
+    <BoxContainer Orientation="Vertical" VerticalExpand="True">
+        <Label
+            Text="{Loc 'alt-server-connect-confirm-desc'}"
+            VerticalExpand="True"
+            VerticalAlignment="Top"
+            Margin="4 4 4 0" />
+        <Button
+            Name="ConfirmButton"
+            Text="{Loc 'alt-server-connect-button'}"
+            Margin="4 8 4 4" />
+    </BoxContainer>
+</DefaultWindow>

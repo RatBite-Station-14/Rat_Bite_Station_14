@@ -94,7 +94,7 @@
   id: Loop
   mapName: 'Loop Station'
   mapPath: /Maps/_BRatbite/Ratbite_Supported/loop.yml
-  minPlayers: 45
+  minPlayers: 35
   maxPlayers: 75
   stations:
     Loop:
@@ -130,7 +130,7 @@
             TechnicalAssistant: [ 5, 5 ]
             #medical
             ChiefMedicalOfficer: [ 1, 1 ]
-            MedOrderly: [ 1, 1 ] #ratbite
+            MedOrderly: [ 2, 2 ] #ratbite
             Chemist: [ 2, 2 ]
             MedicalDoctor: [ 4, 5 ]
             Paramedic: [ 2, 2 ]

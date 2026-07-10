@@ -9,3 +9,16 @@
   - type: Vinyl
     song:
       path: /Audio/_BRatbite/Radiostation/music/worldorder.ogg
+
+- type: entity
+  name: "lunar vinyl disk"
+  id: VinylDiskMoonchild
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/RadioStation/vinyls.rsi
+    state: white-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/Radiostation/music/Moonchild.ogg
+      

@@ -70,3 +70,38 @@
     - cracks her knuckles
     - cracks his knuckles
     - cracks its knuckles
+
+- type: emote
+  id: Wuhey
+  name: chat-emote-name-wuhey
+  category: Vocal
+  icon: _Impstation/Interface/Emotes/wuhey.png
+  chatMessages: ["chat-emote-msg-wuhey"]
+
+- type: emote
+  id: Ungh
+  name: chat-emote-name-weh
+  category: Vocal
+  chatMessages: [UNGHs!]
+
+- type: emote
+  id: Moo
+  name: chat-emote-name-moo
+  category: General
+  available: false
+  chatMessages: ["chat-emote-msg-moo"]
+  chatTriggers:
+    - moo
+    - moos
+    - mooed
+
+- type: emote
+  id: Blink
+  name: chat-emote-name-blink
+  category: General
+  icon: _Impstation/Interface/Emotes/blink.png
+  chatMessages: ["chat-emote-msg-blink"]
+  chatTriggers:
+    - blink
+    - blinks
+    - blinked

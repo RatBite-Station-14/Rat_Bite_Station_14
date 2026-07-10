@@ -65,6 +65,8 @@ public struct RadiationRay(
     /// </remarks>
     public Dictionary<NetEntity, List<(Vector2i, float)>>? Blockers;
 
+    // Ratbite: Thick skin component
+    public bool IsWeakSource = false;
 }
 
 // Variant of RadiationRay that uses NetEntities.

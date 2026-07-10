@@ -1945,21 +1945,21 @@ entities:
     - type: Transform
       pos: 2.5,-6.5
       parent: 1
-- proto: RandomHumanoidSpawnerERTLeaderEVA
+- proto: ERTLeaderReinforcementEVA
   entities:
   - uid: 215
     components:
     - type: Transform
       pos: 0.49530488,0.47161847
       parent: 1
-- proto: RandomHumanoidSpawnerERTMedicalEVA
+- proto: ERTMedicReinforcementEVA
   entities:
   - uid: 216
     components:
     - type: Transform
       pos: 2.5057218,-4.4959784
       parent: 1
-- proto: RandomHumanoidSpawnerERTSecurityEVA
+- proto: ERTSecurityReinforcementEVA
   entities:
   - uid: 217
     components:

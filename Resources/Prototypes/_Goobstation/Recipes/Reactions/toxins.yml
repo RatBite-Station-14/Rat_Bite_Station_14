@@ -101,3 +101,38 @@
       amount: 1
   products:
     Honk: 4
+
+- type: reaction
+  id: Romerol
+  impact: High # uh...
+  maxTemp: 100
+  reactants:
+    Opporozidone:
+      amount: 10
+    Formaldehyde:
+      amount: 10
+    Fentanyl:
+      amount: 30
+    Omnizine:
+      amount: 1
+    Ebifin:
+      amount: 1
+    ProcenylLazide:
+      amount: 1
+    Syriniver:
+      amount: 1
+    Blood:
+      amount: 6
+    Vomit:
+      amount: 35
+    Cognizine:
+      amount: 4
+    Vestine:
+      amount: 1
+      catalyst: true
+  products: # should work, might not, didn't test it, comma, comma, comma, comma. Added catalyst thingy buhbuhbuh. Added cognizine to the recipe, 4 brains worth. Lessened the amount needed, 4 brains for 5u.
+    Romerol: 1
+
+
+
+

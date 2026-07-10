@@ -166,10 +166,14 @@
     jumpsuit: ClothingUniformJumpsuitNanotrasenRepresentativeFancy
 
 - type: loadout
+  id: NanotrasenRepresentativeSundayJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSundayBest
+  
+- type: loadout
   id: NanotrasenRepresentativeJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtNanotrasenRepresentative
-
 
 - type: loadout
   id: NanotrasenRepresentativeEnvirosuit

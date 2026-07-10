@@ -12,6 +12,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Alert;
+using Content.Shared.Weapons.Melee;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -72,4 +73,15 @@ public sealed partial class PacifiedComponent : Component
     // Prevent cheat clients from using this to identify thieves and players that cannot fight back.
     // This should not matter for prediction reasons since it only blocks user input.
     public override bool SendOnlyToOwner => true;
+}
+
+// Ratbite. Event raised on the entity before they attack.
+// If it's cancelled, the entity will be able to attack as normal
+[ByRefEvent]
+public sealed class BeforePacifiedAttackEvent(EntityUid? Target, Entity<MeleeWeaponComponent>? Weapon, bool Disarm)
+    : CancellableEntityEventArgs
+{
+    public EntityUid? Target { get; } = Target;
+    public Entity<MeleeWeaponComponent>? Weapon { get; } = Weapon;
+    public bool Disarm { get; } = Disarm;
 }

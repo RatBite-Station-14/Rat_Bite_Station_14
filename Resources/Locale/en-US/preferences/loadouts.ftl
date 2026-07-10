@@ -4,6 +4,7 @@
 # SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
 # SPDX-FileCopyrightText: 2025 lzk <124214523+lzk228@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Monolith Station contributors
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -16,7 +17,6 @@ loadout-name-edit-tooltip = {$max} characters max. If no name is specified a ran
 loadout-restrictions = Restrictions
 loadouts-min-limit = Min count: {$count}
 loadouts-max-limit = Max count: {$count}
-loadouts-points-limit = Points: {$count} / {$max}
 
 loadouts-count-items-in-group = {$item} and {$count} other {$count ->
 [1] item

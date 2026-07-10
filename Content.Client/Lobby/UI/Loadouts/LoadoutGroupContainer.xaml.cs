@@ -3,6 +3,7 @@
 // SPDX-FileCopyrightText: 2024 Mr. 27 <koolthunder019@gmail.com>
 // SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Monolith Station contributors
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -15,7 +16,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using System.Linq;
+using Robust.Shared.Utility;
 
 namespace Content.Client.Lobby.UI.Loadouts;
 
@@ -51,6 +52,7 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
     {
         var protoMan = collection.Resolve<IPrototypeManager>();
         var loadoutSystem = collection.Resolve<IEntityManager>().System<LoadoutSystem>();
+        loadout.EnsureValid(profile, session, collection);
         RestrictionsContainer.DisposeAllChildren();
 
         if (_groupProto.MinLimit > 0)
@@ -71,19 +73,11 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
             });
         }
 
-        if (protoMan.TryIndex(loadout.Role, out var roleProto) && roleProto.Points != null && loadout.Points != null)
-        {
-            RestrictionsContainer.AddChild(new Label()
-            {
-                Text = Loc.GetString("loadouts-points-limit", ("count", loadout.Points.Value), ("max", roleProto.Points.Value)),
-                Margin = new Thickness(5, 0, 5, 5),
-            });
-        }
-
         LoadoutsContainer.DisposeAllChildren();
 
         // Get all loadout prototypes for this group.
-        var validProtos = _groupProto.Loadouts.Select(id => protoMan.Index(id));
+        var validProtos = GetLoadoutPrototypes(protoMan)
+            .Where(proto => !loadout.IsHidden(profile, session, proto.ID, collection));
 
         /*
          * Group the prototypes based on their GroupBy field.
@@ -120,6 +114,9 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
                         return elem;
                     })
                     .ToList();
+
+                if (uiElements.Count == 0)
+                    continue;
 
                 /* 
                 * Determine which element should be displayed first: 
@@ -227,11 +224,12 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
 
         var pressed = selected.Any(e => e.Prototype == proto.ID);
 
-        var enabled = loadout.IsValid(profile, session, proto.ID, collection, out var reason);
+        FormattedMessage? reason = null;
+        var enabled = pressed || loadout.IsValid(profile, session, proto.ID, collection, out reason);
 
         var cont = new LoadoutContainer(proto, !enabled, reason);
 
-        cont.Text = loadoutSystem.GetName(proto);
+        cont.Text = string.IsNullOrEmpty(proto.Name) ? loadoutSystem.GetName(proto) : proto.Name;
 
         cont.Select.Pressed = pressed;
 
@@ -244,5 +242,26 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
         };
 
         return cont;
+    }
+
+    private IEnumerable<LoadoutPrototype> GetLoadoutPrototypes(IPrototypeManager protoMan)
+    {
+        foreach (var id in _groupProto.Loadouts)
+        {
+            if (protoMan.TryIndex(id, out var proto))
+                yield return proto;
+        }
+
+        foreach (var subgroup in _groupProto.Subgroups)
+        {
+            if (!protoMan.TryIndex(subgroup, out var groupProto))
+                continue;
+
+            foreach (var id in groupProto.Loadouts)
+            {
+                if (protoMan.TryIndex(id, out var proto))
+                    yield return proto;
+            }
+        }
     }
 }

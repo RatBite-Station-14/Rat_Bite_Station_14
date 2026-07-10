@@ -190,6 +190,9 @@ public sealed class SlipperySystem : EntitySystem
 
         // goob edit - stunmeta
         var time = component.SlipData.ParalyzeTime;
+        if (TryComp<SlippableModifierComponent>(other, out var modifier))
+            time *= modifier.ParalyzeTimeMultiplier;
+
         if (hardStun)
             _stun.TryParalyze(other, time, true);
         else

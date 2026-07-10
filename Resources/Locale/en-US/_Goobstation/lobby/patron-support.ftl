@@ -1,5 +1,5 @@
-patron-support-window-title = Ratbite Commission Ad
-patron-support-window-header = Just wanted to quickly bring attention to the fact we offer rat commissions!
+patron-support-window-title = Support the Rats Biting...
+patron-support-window-header = I wanna do this fulltime someday, support us on patreon to make Ratbite greater!
 patron-support-window-description1 = If you got cash to spare, we offer commission design, programming, and spriting work via patreon.
 patron-support-window-description2 = We can guarantee that it is added to Ratbite and worked into being playable on the regular. It will be licensed under CC0 so anyone can use it!
 
@@ -18,10 +18,10 @@ patron-support-window-tier2-perk1 = • We will make you a plushie OR a poster i
 patron-support-window-tier2-perk2 = • All previous tier benefits
 
 patron-support-window-tier3-name = Stakeholder ($100/month)
-patron-support-window-tier3-perk1 = • We will work with you to design, create, and implement a brand new antagonist/role/item(s) with you in the director's chair!
+patron-support-window-tier3-perk1 = • We will work with you to design, create, and implement a brand new antagonist/role/item(s) with you in the director's chair, each month is another feature!
 patron-support-window-tier3-perk2 = • All previous tier benefits
 
-patron-support-window-tier4-name = AdSlop
+patron-support-window-tier4-name = Scroll to bottom and click to support, yo.
 patron-support-window-tier4-perk1 = • AdSlop
 patron-support-window-tier4-perk2 = • AdSlop
 
@@ -29,4 +29,4 @@ patron-support-window-tier5-name = AdSlop
 patron-support-window-tier5-perk1 = • AdSlop
 patron-support-window-tier5-perk2 = • AdSlop
 
-patron-support-window-button = Visit our Patreon
+patron-support-window-button = Click for Patreon

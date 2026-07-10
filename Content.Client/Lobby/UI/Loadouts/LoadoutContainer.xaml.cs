@@ -5,6 +5,7 @@
 // SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Monolith Station contributors
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -52,7 +53,7 @@ public sealed partial class LoadoutContainer : BoxContainer
 
         if (_protoManager.TryIndex(proto, out var loadProto))
         {
-            var ent = loadProto.DummyEntity ?? _entManager.System<LoadoutSystem>().GetFirstOrNull(loadProto);
+            var ent = loadProto.PreviewEntity ?? loadProto.DummyEntity ?? _entManager.System<LoadoutSystem>().GetFirstOrNull(loadProto);
 
             if (ent == null)
                 return;
@@ -61,7 +62,11 @@ public sealed partial class LoadoutContainer : BoxContainer
             Sprite.SetEntity(_entity);
 
             var spriteTooltip = new Tooltip();
-            spriteTooltip.SetMessage(FormattedMessage.FromUnformatted(_entManager.GetComponent<MetaDataComponent>(_entity.Value).EntityDescription));
+            var description = string.IsNullOrEmpty(loadProto.Description)
+                ? _entManager.GetComponent<MetaDataComponent>(_entity.Value).EntityDescription
+                : loadProto.Description;
+
+            spriteTooltip.SetMessage(FormattedMessage.FromUnformatted(description));
 
             TooltipSupplier = _ => spriteTooltip;
         }

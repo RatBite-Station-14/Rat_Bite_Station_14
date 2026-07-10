@@ -1,0 +1,96 @@
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Anything human specific (e.g. UI, input) goes under MobHuman
+- type: entity
+  parent: [BaseMobSpeciesOrganic]
+  id: BaseMobPermaAscended
+  name: Urist McPerma
+  abstract: true
+  components:
+  - type: Icon # It will not have an icon in the adminspawn menu without this. Body parts seem fine for whatever reason.
+    sprite: _BRatBites/Entities/Mobs/PermaSpecies/parts.rsi
+    state: full
+  - type: Body
+    prototype: PermaAscended
+  - type: Hunger
+  - type: Thirst
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatHuman
+      amount:
+        10
+  - type: Bloodstream
+    bloodMaxVolume: 600
+    # if you fuck with the gorilla he will harambe you
+  - type: LanguageKnowledge # Einstein Engines - Languages
+    speaks:
+#   - TauCetiBasic - Gorillas dont speak people smh
+    - Monkey
+    understands:
+    - TauCetiBasic # they can UNDERSTAND people though
+    - Monkey
+  - type: HumanoidAppearance
+    species: PermaAscended
+    hideLayersOnEquip:
+    - Hair
+    - Snout
+  - type: MeleeWeapon
+    soundHit:
+      collection: Punch
+    damage:
+      types:
+        Blunt: 20 #Gorillas do da big damage
+    animation: WeaponArcFist
+  - type: MobThresholds # Goobstation
+    thresholds:
+      0: Alive
+      120: Critical
+      220: Dead
+  - type: SlowOnDamage # Goobstation
+    speedModifierThresholds:
+      80: 0.7
+      100: 0.5
+  - type: Vocal
+    sounds:
+      Male: MonkeyMode
+      Female: MonkeyMode
+      Unsexed: MonkeyMode
+  - type: NameIdentifier
+    group: Monkey
+  - type: Speech
+    speechSounds: Monkey
+    speechVerb: Monkey
+  - type: Deathgasp
+    prototype: MonkeyDeathgasp
+  - type: PlayerToolModifier
+    pryTimeMultiplier: 0.3
+  - type: Carriable
+    freeHandsRequired: 4 # easiest way to make them uncarriable without removing carriable from base mob
+ #- type: DashAction # Goobstation - dark souls gorilla - <= no -bevv
+ #  actionProto: ActionDashMoth
+  - type: Fixtures #Make gorillas THICC
+    fixtures: # TODO: This needs a second fixture just for mob collisions.
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 200
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Inventory
+    templateId: PermaAscended
+
+- type: entity
+  save: false
+  name: Ascended Perma Dummy
+  parent: MobHumanDummy
+  id: MobPermaAscendedDummy
+  categories: [ HideSpawnMenu ]
+  description: A dummy perma meant to be used in character setup.
+  components:
+  - type: HumanoidAppearance
+    species: PermaAscended

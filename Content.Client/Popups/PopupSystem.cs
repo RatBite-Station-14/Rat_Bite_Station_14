@@ -80,6 +80,7 @@ namespace Content.Client.Popups
         // WD EDIT START
         private static readonly Dictionary<PopupType, string> FontSizeDict = new()
         {
+            { PopupType.MediumWhite, "12" },
             { PopupType.Medium, "12" },
             { PopupType.MediumCaution, "12" },
             { PopupType.Large, "15" },
@@ -159,6 +160,7 @@ namespace Content.Client.Popups
             _aliveWorldLabels.Add(popupData, label);
 
             if (_shouldLogInChat &&
+                type != PopupType.MediumWhite &&
                 _playerManager.LocalEntity != null &&
                 _examine.InRangeUnOccluded(_playerManager.LocalEntity.Value, coordinates, 10))
             {

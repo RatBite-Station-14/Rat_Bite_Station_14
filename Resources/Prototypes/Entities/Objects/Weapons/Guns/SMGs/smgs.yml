@@ -199,8 +199,8 @@
 #    minAngle: -19
 #    maxAngle: -16
   - type: Gun
-#    minAngle: 21 # Base SMG already has minAngle: 2 maxAngle: 16
-#    maxAngle: 32 # Goob - one-handed C20R - end
+    minAngle: 2 # Ratbite - C20 Unshitting
+    maxAngle: 10 # Ratbite - Make SMGs Great Again
     shotsPerBurst: 5
     availableModes:
     - Burst
@@ -311,7 +311,7 @@
     boltClosed: null
   - type: Gun # Goobstation - I am the one who nerfs the WT.
     minAngle: 2
-    maxAngle: 16
+    maxAngle: 10 # C-20 parity
     fireRate: 5
     burstFireRate: 8
     angleIncrease: 3

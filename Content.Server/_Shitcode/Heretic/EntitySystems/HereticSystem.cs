@@ -103,7 +103,9 @@ public sealed class HereticSystem : EntitySystem
     }
 
     private void OnPolymorphed(Entity<HereticComponent> ent, ref PolymorphedEvent args)
-        => _polymorph.CopyPolymorphComponent<HereticComponent>(ent, args.NewEntity);
+    {
+        _polymorph.CopyPolymorphComponent<HereticComponent>(ent, args.NewEntity, !args.IsRevert);
+    }
 
     private void OnRestart(RoundRestartCleanupEvent ev)
     {

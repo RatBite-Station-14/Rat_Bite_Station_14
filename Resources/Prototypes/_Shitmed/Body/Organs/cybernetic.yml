@@ -80,6 +80,8 @@
     - type: ShowHealthIcons
       damageContainers:
       - Biological
+    - type: FlashImmunity # Ratbite - Cybernetics Are Arcflash Proof
+    - type: EyeProtection # Ratbite
 
 - type: entity
   parent: BasicCyberneticEyes
@@ -101,6 +103,8 @@
       - Inorganic
       - Silicon
       - SiliconRadiation
+    - type: FlashImmunity # Ratbite - Cybernetics Are Arcproof
+    - type: EyeProtection # Ratbite - Like cmon, fucking DIAGNOSTIC eyes didn't have weldprot?
 
 # Heart
 
@@ -108,7 +112,7 @@
   parent: BaseCyberneticOrgan
   id: BasicCyberneticHeart
   name: cybernetic heart
-  description: A precision-tuned heart that accelerates medicine absorption while slowing the effects of poisons and narcotics.
+  description: A precision-tuned heart that optimizes medicine absorption while filtering and accelerating the metabolization of poisons and narcotics.
   components:
   - type: Sprite
     state: heart-on
@@ -127,13 +131,13 @@
   - type: Metabolizer
     maxPoisonsProcessable: 2
     metabolizerTypes: [ Cybernetic ]
-    groups:
-    - id: Medicine
-      rateModifier: 1.3
+    groups: # Ratbite Start: Did you know? Due to SuperCode™, lower digestion rate is better for chemicals,
+    - id: Medicine # Since if they stay in your system longer, they effect you more.
+      rateModifier: 0.7 # This means we want medicine to actually stay in the body LONGER.
     - id: Poison
-      rateModifier: 0.7
+      rateModifier: 1.3 # Aaand poisons to stay in the body shorter.
     - id: Narcotic
-      rateModifier: 0.8
+      rateModifier: 1.2 # Ratbite End: Flipped to match desc, ev&doe most narcotics are actually good for you.
   - type: Tag
     tags:
     - Organ
@@ -166,11 +170,11 @@
     metabolizerTypes: [ Cybernetic ]
     groups:
     - id: Medicine
-      rateModifier: 2.25
+      rateModifier: 0.35 # Ratbite Start - Rates swapped to match *probably* intended effects. See above.
     - id: Poison
-      rateModifier: 0.35
+      rateModifier: 2.25 # Ratbite
     - id: Narcotic
-      rateModifier: 0.6
+      rateModifier: 1.4 # Ratbite End
 
 # Liver
 
@@ -268,3 +272,4 @@
     onAdd:
     - type: StaminaRegeneration
       regenerationRate: -3.0
+    - type: BreathingImmunity # Ratbite - From the moment I understood the weakness of my flesh...

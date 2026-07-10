@@ -162,6 +162,16 @@ public sealed partial class GuideReagentEmbed : BoxContainer, IDocumentTag, ISea
                 EffectsDescriptionContainer.AddChild(groupLabel);
                 EffectsDescriptionContainer.AddChild(descriptionLabel);
             }
+            // Ratbite: Add works on the dead effect in guidebook
+            if (reagent.WorksOnTheDead)
+            {
+                RichTextLabel worksOnTheDeadLabel = new();
+                FormattedMessage worksOnTheDeadText = new();
+                worksOnTheDeadText.AddText(Loc.GetString("guidebook-reagent-works-on-the-dead"));
+                worksOnTheDeadLabel.SetMessage(worksOnTheDeadText);
+                EffectsDescriptionContainer.AddChild(worksOnTheDeadLabel);
+            }
+
         }
         else
         {

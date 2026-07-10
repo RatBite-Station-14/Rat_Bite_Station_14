@@ -67,6 +67,10 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 30
+  - type: AppendageToggleClothing
+    layers:
+    - Tail
+    - Wings
   - type: Tag
     tags:
     - ClothMade

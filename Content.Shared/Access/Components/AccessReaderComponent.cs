@@ -162,6 +162,12 @@ public sealed partial class AccessReaderComponent : Component
     /// </summary>
     [DataField]
     public bool BreakOnAccessBreaker = true;
+
+    /// <summary>
+    /// Wheter or not this needs mindshield to access
+    /// </summary>
+    [DataField]
+    public bool NeedsMindshield = false;
 }
 
 [DataDefinition, Serializable, NetSerializable]

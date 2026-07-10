@@ -52,8 +52,8 @@
   # Lavaland Change start
   - type: WeaponAttachment
     lightActionPrototype: ActionTogglePKALight
-  - type: PressureDamageChange
-    applyToMelee: false
+  #- type: PressureDamageChange # Ratbite - DEATH TO PRESSURESLOP
+  #  applyToMelee: false # Ratbite - RAAAGHGH I HATE PRESSURECOMP
   - type: Multishot # Goobstation V
     missChance: 0.4
     spreadMultiplier: 3

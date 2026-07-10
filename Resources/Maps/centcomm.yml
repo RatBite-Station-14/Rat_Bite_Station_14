@@ -2975,12 +2975,6 @@ entities:
     - type: Transform
       pos: 4.5448904,18.624214
       parent: 1
-- proto: ActionToggleLight
-  entities:
-  - uid: 5
-    components:
-    - type: Transform
-      parent: 4
 - proto: AirCanister
   entities:
   - uid: 6
@@ -26902,7 +26896,6 @@ entities:
       pos: -0.9167746,1.8699629
       parent: 1
     - type: HandheldLight
-      toggleActionEntity: 5
     - type: ContainerContainer
       containers:
         cell_slot: !type:ContainerSlot
@@ -26912,8 +26905,6 @@ entities:
         actions: !type:Container
           showEnts: False
           occludes: True
-          ents:
-          - 5
     - type: Physics
       angularDamping: 0
       linearDamping: 0

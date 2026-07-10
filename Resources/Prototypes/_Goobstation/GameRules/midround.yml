@@ -49,6 +49,8 @@
       lateJoinAdditional: true
       mindRoles:
       - MindRoleTraitor
+      components:
+      - type: CombatTrained
   - type: Tag
     tags:
       - MidroundAntag
@@ -132,11 +134,14 @@
         - CommandStaff
         - AntagImmune
         - BibleUser
-      startingGear: Heretictmidround
+      startingGear: HereticMidround
       lateJoinAdditional: true
       jobBlacklist: [ Chaplain ] # GOOBSTATION
       mindRoles:
       - MindRoleHeretic
+      components: # Ratbite - Why the fuck didn't midround heretics have WeakToHoly and CanEnchant?
+      - type: WeakToHoly
+      - type: CanEnchant
   - type: Tag
     tags:
       - MidroundAntag

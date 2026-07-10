@@ -27,11 +27,13 @@ public sealed partial class AbsorbedSystem : EntitySystem
 
     private void OnExamine(Entity<AbsorbedComponent> ent, ref ExaminedEvent args)
     {
+	if (ent.Comp.Dehusked) return;
         args.PushMarkup(Loc.GetString("changeling-absorb-onexamine"));
     }
 
     private void OnMobStateChange(Entity<AbsorbedComponent> ent, ref MobStateChangedEvent args)
     {
+	if (ent.Comp.Dehusked) return;
         // in case one somehow manages to dehusk someone
         if (args.NewMobState != MobState.Dead)
             RemComp<AbsorbedComponent>(ent);

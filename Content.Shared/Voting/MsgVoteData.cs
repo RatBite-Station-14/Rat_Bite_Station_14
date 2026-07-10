@@ -28,10 +28,11 @@ namespace Content.Shared.Voting
         public TimeSpan StartTime; // Server RealTime.
         public TimeSpan EndTime; // Server RealTime.
         public (ushort votes, string name)[] Options = default!;
-        public bool IsYourVoteDirty;
-        public byte? YourVote;
+        public bool AreYourVotesDirty => YourVotes != null;
+        public byte[]? YourVotes;
         public bool DisplayVotes;
         public int TargetEntity;
+        public bool AllowMultiple;
 
         public override void ReadFromBuffer(NetIncomingMessage buffer, IRobustSerializer serializer)
         {
@@ -55,10 +56,17 @@ namespace Content.Shared.Voting
                 Options[i] = (buffer.ReadUInt16(), buffer.ReadString());
             }
 
-            IsYourVoteDirty = buffer.ReadBoolean();
-            if (IsYourVoteDirty)
+            AllowMultiple = buffer.ReadBoolean();
+
+            var areYourVotesDirty = buffer.ReadBoolean();
+            if (areYourVotesDirty)
             {
-                YourVote = buffer.ReadBoolean() ? buffer.ReadByte() : null;
+                YourVotes = new byte[buffer.ReadByte()];
+                for (var i = 0; i < YourVotes.Length; i++)
+                {
+                    YourVotes[i] = buffer.ReadByte();
+                }
+
             }
         }
 
@@ -85,13 +93,14 @@ namespace Content.Shared.Voting
                 buffer.Write(name);
             }
 
-            buffer.Write(IsYourVoteDirty);
-            if (IsYourVoteDirty)
+            buffer.Write(AllowMultiple);
+            buffer.Write(AreYourVotesDirty);
+            if (AreYourVotesDirty)
             {
-                buffer.Write(YourVote.HasValue);
-                if (YourVote.HasValue)
+                buffer.Write((byte) YourVotes!.Length);
+                foreach (var vote in YourVotes)
                 {
-                    buffer.Write(YourVote.Value);
+                    buffer.Write((byte) vote);
                 }
             }
         }

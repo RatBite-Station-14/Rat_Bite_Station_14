@@ -1,0 +1,1 @@
+guidebook-reagent-works-on-the-dead = This chemical shimmers with an otherworldly translucency. Rumored to work even on those who are dead.

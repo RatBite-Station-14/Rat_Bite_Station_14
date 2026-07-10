@@ -358,7 +358,14 @@ public sealed class CarryingSystem : EntitySystem
             !HasComp<BeingCarriedComponent>(carrier) &&
             !HasComp<BeingCarriedComponent>(carried) &&
             // finally check that there are enough free hands
-            _hands.CountFreeHands(carrier) >= carried.Comp.FreeHandsRequired;
+            _hands.CountFreeHands(carrier) >= GetFreeHandsRequired(carrier, carried.Comp);
+    }
+
+    private int GetFreeHandsRequired(EntityUid carrier, CarriableComponent carried)
+    {
+        return HasComp<CarrierOneHandComponent>(carrier) && !carried.OneHandOverride
+            ? 1
+            : carried.FreeHandsRequired;
     }
 
     private TimeSpan GetPickupDuration(EntityUid carrier, EntityUid carried)

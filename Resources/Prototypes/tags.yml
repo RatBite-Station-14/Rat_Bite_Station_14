@@ -1176,6 +1176,9 @@
   id: FakeMindShieldImplant
 
 - type: Tag
+  id: BypassMindshieldAccessRequirement
+
+- type: Tag
   id: MindTransferTarget
 
 - type: Tag

@@ -1,0 +1,5 @@
+# This is ratbite, but it is directly related to Resomi which live in _Floofstation so i'm putting this here
+# Not sure why this wasn't here in the first place, either floof was lazy or goob didnt port it. Who knows.
+- type: metabolizerType
+  id: Resomi
+  name: metabolizer-type-resomi

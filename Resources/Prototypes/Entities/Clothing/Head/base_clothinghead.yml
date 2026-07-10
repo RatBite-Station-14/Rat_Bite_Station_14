@@ -126,6 +126,12 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 10
+  - type: AppendageToggleClothing
+    layers:
+    - HeadTop
+    - HeadSide
+    - Snout
+    - Special
   - type: Tag
     tags:
     - ClothMade

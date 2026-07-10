@@ -1,0 +1,1 @@
+ui-vote-allow-multiple = You may select multiple options.

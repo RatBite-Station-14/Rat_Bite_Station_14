@@ -1,0 +1,152 @@
+- type: reaction
+  id: Teriparatide
+  reactants:
+    Tramadol:
+      amount: 1
+    Bicaridine:
+      amount: 1
+    Protein:
+      amount: 0.25
+    Plasma:
+      amount: 1
+      catalyst: true
+  products:
+    Teriparatide: 4
+
+- type: reaction
+  id: Ketamine
+  reactants:
+    Tramadol:
+      amount: 1
+    SpaceDrugs:
+      amount: 1
+    Ephedrine:
+      amount: 1
+    Acetone:
+      amount: 0.5
+      catalyst: true
+  products:
+    Ketamine: 3
+
+- type: reaction
+  id: KetamineNeutralized
+  reactants:
+    Ketamine:
+      amount: 1
+    FoamingAgent:
+      amount: 1
+  products:
+    Water: 2
+
+- type: reaction
+  id: Libital
+  reactants:
+    WeldingFuel:
+      amount: 1
+    Saline:
+      amount: 1
+    Ethanol:
+      amount: 1
+  products:
+    Libital: 3
+
+- type: reaction
+  id: Lenturi
+  reactants:
+    Dexalin:
+      amount: 1
+    Sugar:
+      amount: 1
+    Ash:
+      amount: 1
+  products:
+    Lenturi: 3
+
+- type: reaction
+  id: Aiuri
+  reactants:
+    WeldingFuel:
+      amount: 1
+    Ammonia:
+      amount: 1
+  products:
+    Aiuri: 2
+
+- type: reaction
+  id: Caridine
+  reactants:
+    Inaprovaline:
+      amount: 2
+    WeldingFuel:
+      amount: 1
+  products:
+    Caridine: 4
+
+- type: reaction
+  id: Lectrazine
+  reactants:
+    Oxygen:
+      amount: 4
+    Saline:
+      amount: 1
+    Iron:
+      amount: 1
+    Tirimol:
+      amount: 1
+    FluorosulfuricAcid:
+      amount: 1
+      catalyst: true
+  products:
+    Lectrazine: 7
+
+- type: reaction
+  id: Chornexalinn
+  minTemp: 600
+  reactants:
+    Aluite:
+      amount: 5
+    Honk:
+      amount: 2
+    PentenicAcid:
+      amount: 2
+    Plasma:
+      amount: 1
+  products:
+    Chornexalinn: 5
+
+- type: reaction
+  id: Tepalal
+  reactants:
+    Tricordrazine:
+      amount: 1
+    Lenturi:
+      amount: 1
+    Slime:
+      amount: 1
+  products:
+    Tepalal: 3
+
+- type: reaction
+  id: Granitbitulari
+  reactants:
+    Libital:
+      amount: 2
+    SodiumPolyacrylate:
+      amount: 1
+    SulfuricAcid:
+      amount: 1
+  products:
+    Granitbitulari: 4
+
+- type: reaction
+  id: Revivopine
+  reactants:
+    Lenturi:
+      amount: 2
+    Sigynate:
+      amount: 1
+    SulfuricAcid:
+      amount: 1
+  products:
+    Revivopine: 4
+

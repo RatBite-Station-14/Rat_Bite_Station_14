@@ -33,4 +33,8 @@ public sealed partial class RadiationSourceComponent : Component
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public bool Enabled = true;
+
+    // Ratbite: ThickSkinComponent
+    [DataField]
+    public bool IsWeakSource = false;
 }

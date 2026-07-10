@@ -317,6 +317,7 @@
     Glass: 500
     Plasma: 300
     Gold: 50
+  radioChannel: Security
 
 - type: latheRecipe
   parent: BaseToolRecipe

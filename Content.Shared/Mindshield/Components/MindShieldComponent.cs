@@ -79,6 +79,7 @@
 using Content.Shared.Revolutionary;
 using Robust.Shared.GameStates;
 using Content.Shared.StatusIcon;
+using Content.Shared.Alert;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Mindshield.Components;
@@ -99,4 +100,7 @@ public sealed partial class MindShieldComponent : Component
     // Goobstation - uses to show headrevs with disabled ability
     [DataField, AutoNetworkedField]
     public bool Broken = false;
+
+    [DataField]
+    public ProtoId<AlertPrototype> MindShieldAlert = "MindShielded";
 }

@@ -16,3 +16,14 @@
     shoes: ClothingShoesColorBlack
     ears: ClothingHeadsetGrey
     id: PrisonerIDCard
+
+- type: job
+  id: SanitariumPatient
+  name: job-name-sanitarium-patient
+  description: job-description-sanitarium-patient
+  playTimeTracker: JobSanitariumPatient
+  whitelisted: true
+  startingGear: PrisonerGear
+  icon: "JobIconPrisoner"
+  supervisors: job-supervisors-security
+  canBeAntag: false
