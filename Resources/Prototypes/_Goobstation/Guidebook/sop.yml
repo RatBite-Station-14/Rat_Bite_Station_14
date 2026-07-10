@@ -132,7 +132,7 @@
   - DoctorIntern SOP
   - Chemist SOP
   - Psychologist SOP # Ratbite
-  
+
 - type: guideEntry
   id: Science SOP
   name: guide-entry-sop-science
