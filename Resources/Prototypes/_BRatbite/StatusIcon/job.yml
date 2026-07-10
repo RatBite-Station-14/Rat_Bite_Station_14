@@ -45,3 +45,27 @@
     sprite: /Textures/_BRatBites/Interface/Misc/job_icons.rsi
     state: ntrintern
   jobName: job-name-ntrintern
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconOperator
+  icon:
+    sprite: /Textures/_BRatBites/Interface/Misc/job_icons.rsi
+    state: Operator
+  jobName: job-name-operator
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconMedicOperator
+  icon:
+    sprite: /Textures/_BRatBites/Interface/Misc/job_icons.rsi
+    state: medicoperator
+  jobName: job-name-medicoperator
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTeamLead
+  icon:
+    sprite: /Textures/_BRatBites/Interface/Misc/job_icons.rsi
+    state: TeamLead
+  jobName: job-name-teamlead

@@ -24,3 +24,12 @@
 
 - type: playTimeTracker
   id: JobNTRLeadIntern
+
+- type: playTimeTracker
+  id: JobOperator
+
+- type: playTimeTracker
+  id: JobMedicOperator
+
+- type: playTimeTracker
+  id: JobTeamLead

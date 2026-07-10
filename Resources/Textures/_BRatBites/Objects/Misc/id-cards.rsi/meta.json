@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/d917f4c2a088419d5c3aec7656b7ff8cebd1822e , Intern made by Creatorbot01",
+  "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/d917f4c2a088419d5c3aec7656b7ff8cebd1822e , Intern and operator team made by Creatorbot01",
   "size": {
     "x": 32,
     "y": 32
@@ -12,6 +12,15 @@
     },
     {
       "name": "idintern"
+    },
+    {
+      "name": "idteamlead"
+    },
+    {
+      "name": "idmedicoperator"
+    },
+    {
+      "name": "idoperator"
     },
     {
       "name": "default-inhand-left",

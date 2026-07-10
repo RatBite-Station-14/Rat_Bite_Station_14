@@ -1,0 +1,59 @@
+- type: job
+  id: operatorT1
+  name: job-name-operator
+  description: job-description-operator
+  playTimeTracker: JobOperator
+  setPreference: false
+  startingGear: NTInternGear
+  icon: "JobIconOperator"
+  supervisors: job-supervisors-centcom job-supervisors-teamLead
+  canBeAntag: false
+  accessGroups:
+  - AAWithoutCommandRoom
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, BluespaceLifelineImplant ] # CC gets bluespace
+  - !type:AddComponentSpecial
+    components:
+      - type: CombatTrained # god forbit combat team without this
+
+- type: job
+  id: MedicOperatorT1
+  name: job-name-medic-operator
+  description: job-description-medic-operator
+  playTimeTracker: JobMedicOperator
+  setPreference: false
+  startingGear: NTInternGear
+  icon: "JobIconMedicOperator"
+  supervisors: job-supervisors-centcom job-supervisors-teamLead
+  canBeAntag: false
+  accessGroups:
+  - AAWithoutCommandRoom
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, BluespaceLifelineImplant ] # CC gets bluespace
+  - !type:AddComponentSpecial
+    components:
+      - type: CombatTrained # god forbit combat team without this
+      - type: SurgerySpeedModifier
+        speedModifier: 1.3
+
+- type: job
+  id: teamLeadT1
+  name: job-name-teamlead
+  description: job-description-teamlead
+  playTimeTracker: JobTeamLead
+  setPreference: false
+  startingGear: NTInternGear
+  icon: "JobIconTeamLead"
+  supervisors: job-supervisors-centcom
+  canBeAntag: false
+  accessGroups:
+  - AAWithoutCommandRoom
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, BluespaceLifelineImplant ] # CC gets bluespace
+  - !type:AddComponentSpecial
+    components:
+      - type: CombatTrained # god forbit combat team without this
+

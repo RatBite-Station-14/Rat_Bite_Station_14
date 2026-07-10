@@ -1,0 +1,32 @@
+- type: accessGroup # All access but no command room access, for the T1 intervention team
+  id: AAWithoutCommandRoom
+  tags:
+  - EmergencyShuttleRepealAll
+  - Command
+  - Cryogenics
+  - Security
+  - Detective
+  - Armory
+  - Brig
+  - Lawyer
+  - Engineering
+  - Medical
+  - Quartermaster
+  - Salvage
+  - Cargo
+  - Research
+  - Service
+  - Maintenance
+  - External
+  - Janitor
+  - Theatre
+  - Bar
+  - Chemistry
+  - Kitchen
+  - Chapel
+  - Hydroponics
+  - Atmospherics
+  - GenpopEnter
+  - GenpopLeave
+  - Robotics
+  - Journalism

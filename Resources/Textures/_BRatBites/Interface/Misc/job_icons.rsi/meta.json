@@ -24,6 +24,15 @@
       },
       {
       "name": "ntrintern"
-     }
+     },
+     {
+        "name" : "TeamLead"
+     },
+     {
+        "name" : "medicoperator"
+     },
+    {
+        "name" : "Operator"
+    }
     ]
 }
