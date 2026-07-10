@@ -61,7 +61,8 @@
         Blunt: 0.7
         Slash: 0.7
         Piercing: 0.7
-        Heat: 0.7
+Piercing: 0.65
+Heat: 0.65
         Radiation: 0.7
   - type: FlashImmunity
   - type: FlashSoundSuppression
