@@ -29,7 +29,7 @@ selectable-set-rso-weaponkit-order-desc =
     Enforce order with the Order energy pistol. ID locked for use by the worthy.
     Include : EX-04 Order.
 
-selectable-set-rso-weaponkit-martialart-name = CapoeiraManual Set
+selectable-set-rso-weaponkit-martialart-name = Capoeira Manual Set
 selectable-set-rso-weaponkit-martialart-desc =
     A manual that will teach you the moves of a Capoeira dancer.
     Dont question where we got you this.
