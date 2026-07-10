@@ -17,6 +17,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
 using System.Globalization;
+using Content.Shared.IdentityManagement;
 
 namespace Content.Server._White.Examine;
 public sealed class ExaminableCharacterSystem : EntitySystem
@@ -52,7 +53,8 @@ public sealed class ExaminableCharacterSystem : EntitySystem
             canseeloc += "-selfaware";
             nameloc += "-selfaware";
         }
-        var identity = _identitySystem.GetEntityIdentity(uid);
+        // Ratbite: use proper identity
+        var identity = Identity.Name(args.Examined, EntityManager, args.Examiner);
         var name = Loc.GetString(nameloc, ("name", identity));
         var cansee = Loc.GetString(canseeloc, ("ent", uid));
         logLines.Add($"[color=DarkGray][font size=10]{cansee}[/font][/color]");
@@ -155,7 +157,8 @@ public sealed class ExaminableCharacterSystem : EntitySystem
             if (!args.IsSecondaryInfo)
             {
                 TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
-                var item = Loc.GetString("examine-present-tex", ("name", textInfo.ToTitleCase(metaData.EntityName)), ("id", GetNetEntity(uid).Id), ("size", 14));
+                // Ratbite: use proper name
+                var item = Loc.GetString("examine-present-tex", ("name", textInfo.ToTitleCase(Identity.Name(args.Examined, EntityManager, args.Examiner))), ("id", GetNetEntity(uid).Id), ("size", 14));
                 message.AddText($"[color=DarkGray][font size=11]{item}[/font][/color]");
                 message.PushNewline();
             }

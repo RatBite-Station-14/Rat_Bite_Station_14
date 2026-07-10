@@ -56,6 +56,7 @@ using Robust.Shared.Serialization.Markdown;
 using Robust.Shared.Utility;
 using YamlDotNet.RepresentationModel;
 using Robust.Shared.Enums;
+using Content.Shared._BRatbite.Traits;
 
 namespace Content.Shared.Humanoid;
 
@@ -146,12 +147,13 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
 
     private void OnExamined(EntityUid uid, HumanoidAppearanceComponent component, ExaminedEvent args)
     {
-        var identity = Identity.Entity(uid, EntityManager);
+        var identity = Identity.Name(uid, EntityManager, args.Examiner);
         var species = GetSpeciesRepresentation(component.Species).ToLower();
         var age = GetAgeRepresentation(component.Species, component.Age);
 
         // WWDP EDIT
-        string locale = "humanoid-appearance-component-examine";
+        // Ratbite: handle face blindness
+        string locale = HasComp<FaceBlindComponent>(args.Examiner) ? "station-ai-examine-humanoid-desc" : "humanoid-appearance-component-examine";
 
         if (args.Examiner == args.Examined) // Use the selfaware locale when examining yourself
             locale += "-selfaware";
