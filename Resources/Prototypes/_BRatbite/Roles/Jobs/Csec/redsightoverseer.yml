@@ -63,7 +63,7 @@
     - BookSpaceLaw
     - Flash
     - RSOUndeterminedWeapon
-#    - UndeterminedRSOHardsuit  Removed until rework
+    - UndeterminedRSOHardsuit
 
 - type: chameleonOutfit
   id: RedsightOverseerChameleonOutfit
