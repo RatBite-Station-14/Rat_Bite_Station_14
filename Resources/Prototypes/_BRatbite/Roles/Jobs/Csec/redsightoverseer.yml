@@ -38,7 +38,6 @@
   - Service
   - Detective
   - Cryogenics
-  - RedsightOverseer
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, BluespaceLifelineImplant ] # CC gets bluespace
@@ -47,6 +46,7 @@
       - type: CommandStaff
       - type: Condemned
         soulOwnedNotDevil: true
+      - type: CombatTrained # ratbite
 
 - type: startingGear
   id: RSOGear
@@ -59,8 +59,24 @@
     pocket1: ClothingMaskGasSecurity
   storage:
     back:
-   # - CQCManual, No fuck you - For real damn
+   # - CQCManual, No fuck you
     - BookSpaceLaw
     - Flash
     - RSOUndeterminedWeapon
-    - UndeterminedRSOHardsuit
+#    - UndeterminedRSOHardsuit  Removed until rework
+
+- type: chameleonOutfit
+  id: RedsightOverseerChameleonOutfit
+  job: RedsightOverseer
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetRSOLaw
+    eyes: ClothingEyesGlassesRSO
+    ears: ClothingHeadsetAltCentCom
+    mask: ClothingMaskGasSecurity
+    neck: SurveillanceWirelessCameraBodySecurity
+    jumpsuit: ClothingUniformJumpsuitRedsightOverseer
+    belt: ClothingBeltSecurity
+    outerClothing: RSOJack
+    gloves: ClothingHandsGlovesRSOShock
+    shoes: ClothingShoesBootsJack
