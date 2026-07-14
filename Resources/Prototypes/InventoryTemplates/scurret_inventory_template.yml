@@ -55,9 +55,11 @@
     stripTime: 3
     uiWindowPos: 2,0
     strippingWindowPos: 2,5
-    dependsOn: jumpsuit
-    dependsOnComponents:
-    - type: AllowSuitStorage
+    whitelist:
+      tags:
+      - ScurretWearable
+      - GasTank
+
     displayName: Suit Storage
   - name: outerClothing
     slotTexture: suit
@@ -93,4 +95,5 @@
     whitelist:
       tags:
       - ScurretWearable
+      - GasTank
 

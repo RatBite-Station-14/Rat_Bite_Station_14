@@ -916,8 +916,8 @@
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000
   - type: TemperatureProtection #Ratbite
-    heatingCoefficient: 0.5
-    coolingCoefficient: 0.5
+    heatingCoefficient: 0.2
+    coolingCoefficient: 0.1
   - type: ExplosionResistance
     damageCoefficient: 0.45
   - type: Armor

@@ -7,14 +7,15 @@
   parent: MobBaseAncestor
   abstract: true
   components:
-  - type: LanguageKnowledge # Einstein Engines - Language
+  - type: LanguageKnowledge # Einstein Engines - Language # Ratbite - scurret language edit start
     speaks:
-    - TauCetiBasic
+    - Wawa
     understands:
-    - TauCetiBasic
+    - Wawa
+    - TauCetiBasic # Ratbite - scurret language edit end
   # Custom names
-  - type: ReplacementAccent
-    accent: scurret
+  #- type: ReplacementAccent # Ratbite - scurret accent
+  #  accent: scurret
   # Shitmed Start
   - type: HumanoidAppearance
     species: Scurret

@@ -7,7 +7,7 @@ using Content.Shared.GameTicking;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Popups;
-using Content.Shared.StatusEffectNew;
+using Content.Shared.StatusEffect;
 using Content.Shared.Tag;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -19,6 +19,7 @@ public abstract class SharedCryoSicknessSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly TagSystem _tagSystem = default!;
@@ -53,16 +54,26 @@ public abstract class SharedCryoSicknessSystem : EntitySystem
         }
     }
 
-    private void OnMapInit(Entity<CryoSicknessComponent> ent, ref MapInitEvent args)
+    private void EnsureCryoInitialized(Entity<CryoSicknessComponent> ent)
     {
-        var duration = TimeSpan.FromMinutes(ent.Comp.DurationInMinutes);
-        ent.Comp.ExpireTime = _timing.CurTime + duration;
-        ent.Comp.HadPacifism = HasComp<PacifiedComponent>(ent);
-        if (!_statusEffectsSystem.HasStatusEffect(ent.Owner, ent.Comp.Effect))
-            _statusEffectsSystem.TryAddStatusEffectDuration(ent.Owner, ent.Comp.Effect, duration);
+        if (ent.Comp.ExpireTime == default)
+        {
+            var duration = TimeSpan.FromMinutes(ent.Comp.DurationInMinutes);
+            ent.Comp.ExpireTime = _timing.CurTime + duration;
+            ent.Comp.HadPacifism = HasComp<PacifiedComponent>(ent);
+
+            if (!_statusEffectsSystem.HasStatusEffect(ent.Owner, ent.Comp.Effect))
+                _statusEffectsSystem.TryAddStatusEffect(ent.Owner, ent.Comp.Effect, duration, true, new PacifiedComponent());
+        }
+
         EnsureComp<PacifiedComponent>(ent);
         _actions.AddAction(ent.Owner, ref ent.Comp.ActionEntity, ent.Comp.Action);
         _tagSystem.AddTag(ent, _cryoSicknessTag);
+    }
+
+    private void OnMapInit(Entity<CryoSicknessComponent> ent, ref MapInitEvent args)
+    {
+        EnsureCryoInitialized(ent);
     }
 
     private void OnShutdown(Entity<CryoSicknessComponent> ent, ref ComponentShutdown args)
@@ -84,7 +95,7 @@ public abstract class SharedCryoSicknessSystem : EntitySystem
 
     private void OnPlayerAttach<T>(Entity<CryoSicknessComponent> ent, ref T args) where T : EntityEventArgs
     {
-        _actions.AddAction(ent.Owner, ref ent.Comp.ActionEntity, ent.Comp.Action);
+        EnsureCryoInitialized(ent);
     }
 
     private void OnDamageChange(Entity<CryoSicknessComponent> ent, ref DamageChangedEvent args)
@@ -127,7 +138,8 @@ public abstract class SharedCryoSicknessSystem : EntitySystem
 
     public void ApplyComponent(EntityUid ent)
     {
-        EnsureComp<CryoSicknessComponent>(ent);
+        var comp = EnsureComp<CryoSicknessComponent>(ent);
+        EnsureCryoInitialized((ent, comp));
 
     }
 
@@ -149,13 +161,15 @@ public abstract class SharedCryoSicknessSystem : EntitySystem
 
     private void OnBeforePacifiedAttack(Entity<CryoSicknessComponent> ent, ref BeforePacifiedAttackEvent args)
     {
-        if (ent.Comp.HadPacifism) return;
-        if (args.Target is not { } target) return;
-        // Allow entities to attack other entities that have never had cryo sickness (e.g. rats, etc)
-        if (!_tagSystem.HasTag(target, _cryoSicknessTag))
-        {
-            args.Cancel();
+        if (ent.Comp.HadPacifism)
             return;
-        }
+
+        if (args.Target is not { } target)
+            return;
+
+        // Allow defending against non-player mobs/entities while keeping cryo PvP protection.
+        if (!_mind.TryGetMind(target, out _, out _))
+            args.Cancel();
     }
+
 }

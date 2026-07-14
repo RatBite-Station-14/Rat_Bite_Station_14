@@ -13,6 +13,7 @@ using Content.Shared.Chat;
 using Content.Shared.GameTicking;
 using Content.Shared.Inventory;
 using Content.Shared.Mind;
+using Content.Shared.Preferences;
 using Content.Shared.Players;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
@@ -165,6 +166,7 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
             station = stations[0];
 
         var character = _ticker.GetPlayerProfile(player);
+        var forcedSpawnProfile = character.WithSpawnPriorityPreference(SpawnPriorityPreference.None);
 
         var data = player.ContentData();
 
@@ -200,7 +202,8 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
         }
         else
         {
-            mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(station, jobId, character);
+            // Forced perma/sanitarium joins should not be redirected to cryosleep based on profile preference.
+            mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(station, jobId, forcedSpawnProfile);
         }
 
         DebugTools.AssertNotNull(mobMaybe);

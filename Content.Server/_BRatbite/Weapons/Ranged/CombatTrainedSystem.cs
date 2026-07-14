@@ -34,6 +34,9 @@ public sealed partial class CombatTrainedSystem : EntitySystem
 
     private void OnShutdownComp(Entity<CombatTrainedComponent> ent, ref ComponentShutdown args)
     {
+        if (TerminatingOrDeleted(ent.Owner))
+            return;
+
         AddComp<CombatUntrainedComponent>(ent.Owner);
     }
 

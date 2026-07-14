@@ -1,5 +1,6 @@
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Actions;
+using Content.Shared.StatusEffect;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -18,7 +19,7 @@ public sealed partial class CryoSicknessComponent : Component
     public EntProtoId Action = "ActionShakeAwake";
 
     [DataField]
-    public EntProtoId Effect = "Pacified";
+    public ProtoId<StatusEffectPrototype> Effect = "Pacified";
 
     [DataField]
     public float DamageResistance = 0.6f;
@@ -26,7 +27,7 @@ public sealed partial class CryoSicknessComponent : Component
     [DataField, AutoNetworkedField]
     public TimeSpan ExpireTime;
 
-    [DataField]
+    [DataField, AutoNetworkedField]
     public bool HadPacifism = false;
 
     [DataField]

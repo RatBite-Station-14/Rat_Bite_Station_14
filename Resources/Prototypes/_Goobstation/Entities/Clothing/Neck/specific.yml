@@ -20,6 +20,7 @@
     nameSet: True
     mobile: True  # Goobstation - mobile cameras fix
     id: Bodycam
+  - type: BodyCam # Ratbite - custom deactivation logic
   - type: Eye
   - type: WirelessNetworkConnection
     range: 200

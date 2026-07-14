@@ -24,6 +24,7 @@
   - SchechiTranslator
   - GruntishTranslator
   - YowKriolTranslator # goob edit - yowie language
+  - ScurretTranslator # Ratbite edit - Scurret language
 
 - type: latheRecipePack
   id: TranslatorImplanters
@@ -46,3 +47,4 @@
   - SchechiTranslatorImplanter
   - GruntishTranslatorImplanter
   - YowKriolTranslatorImplanter # goob edit - yowie language
+  - WawaTranslatorImplanter # Ratbite edit - Scurret language

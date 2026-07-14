@@ -24,5 +24,9 @@ public sealed partial class RatbiteCVars
         CVarDef.Create("misc.pop_count_refresh_seconds", 60, CVar.SERVER | CVar.REPLICATED);
 
     public static readonly CVarDef<string> AltServerName =
-    CVarDef.Create("misc.alt_server_name", "Ratbite 2", CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("misc.alt_server_name", "Ratbite 2", CVar.SERVER | CVar.REPLICATED);
+
+    public static readonly CVarDef<float> PointerScale = CVarDef.Create("accessibility.pointer_scale", 1f, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    public static readonly CVarDef<bool> PointerOutline = CVarDef.Create("accessibility.pointer_outline", false, CVar.CLIENTONLY | CVar.ARCHIVE);
 }

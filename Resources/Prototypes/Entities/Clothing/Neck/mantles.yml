@@ -75,6 +75,7 @@
     nameSet: True
     mobile: True
     id: Bodycam
+  - type: BodyCam
   - type: Eye
   - type: WirelessNetworkConnection
     range: 200

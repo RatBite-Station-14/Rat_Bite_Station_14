@@ -12,3 +12,5 @@ lathe-recipe-MedkitBrute-name = brute trauma treatment kit (empty)
 lathe-recipe-MedkitAdvanced-name = advanced first aid kit (empty)
 lathe-recipe-MedkitRadiation-name = radiation treatment kit (empty)
 lathe-recipe-MedkitCombat-name = combat medical kit (empty)
+
+lathe-recipe-WawaTranslatorImplanter-subname = scurret translator implant

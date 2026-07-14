@@ -78,7 +78,8 @@ public sealed class TraitSystem : EntitySystem
             // End Goobstation: Species trait support
 
             // Add all components required by the prototype
-            EntityManager.AddComponents(mob, traitPrototype.Components, false);
+            // Ratbite: Remove existing otherwise some components don't work
+            EntityManager.AddComponents(mob, traitPrototype.Components, true);
 
             // Einstein Engines - Language begin (remove this if trait system refactor)
             // Remove/Add Languages required by the prototype

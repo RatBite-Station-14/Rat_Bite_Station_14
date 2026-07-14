@@ -20,7 +20,10 @@
     - HideContextMenu
   - type: Sprite
     sprite: Interface/Misc/pointing.rsi
-    state: pointing
+    layers:
+    - state: pointing
+    - state: outline
+      map: [ "outline" ]
     drawdepth: Overlays
     noRot: true
   - type: PointingArrow

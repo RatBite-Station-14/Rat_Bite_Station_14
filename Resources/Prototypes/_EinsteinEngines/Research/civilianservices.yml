@@ -32,6 +32,7 @@
   - SchechiTranslator
   - GruntishTranslator
   - YowKriolTranslator # goob edit - yowie language
+  - ScurretTranslator # Ratbite edit - Scurret language
   position: -4, 4
   technologyPrerequisites:
   - AdvancedEntertainment
@@ -65,6 +66,7 @@
   - XenoTranslator
   - GruntishTranslatorImplanter
   - YowKriolTranslatorImplanter # goob edit - yowie language
+  - WawaTranslatorImplanter
   position: -4, 5
   technologyPrerequisites:
   - BasicTranslation

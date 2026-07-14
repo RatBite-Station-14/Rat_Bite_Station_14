@@ -26,3 +26,5 @@ loadout-group-engiguard-jumpsuit = Engi Sentry Jumpsuit
 # Weapon Loadouts
 loadout-group-security-sidearms = Security Sidearm
 loadout-group-security-ammo = Sidearm Ammo
+loadout-group-security-longarm = Security Longarm
+loadout-group-security-gloves = Security Gloves

@@ -1,6 +1,7 @@
 # Used by Binglekind.
 - type: language
   id: Bingle
+  isVisibleLanguage: true
   speech:
     color: "#008080"
   obfuscation:

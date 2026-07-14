@@ -211,8 +211,8 @@
   components:
     - type: SlowOnDamage
       speedModifierThresholds:
-        "45": 0.70
-        "65": 0.46
+        45: 0.70
+        65: 0.46
 
 - type: trait
   id: TrapAvoider
@@ -220,10 +220,6 @@
   description: trait-trap-avoider-desc
   category: Physical
   cost: 3
-  speciesBlacklist:
-    - Felinid
-    - Tajaran
-    - Harpy
   components:
     - type: TrapAvoider
 
@@ -302,8 +298,8 @@
   components:
   - type: SlowOnDamage
     speedModifierThresholds:
-      "70": 0.83
-      "90": 0.70
+      70: 0.83
+      90: 0.70
 
 - type: trait
   id: DermalArmor

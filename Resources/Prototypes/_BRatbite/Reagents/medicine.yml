@@ -234,7 +234,7 @@
             type: Human
           damage:
             groups:
-              Airloss: -8 # matches description better than just Bloodloss
+              Airloss: -14 # matches description better than just Bloodloss
         - !type:HealthChange
           conditions:
           - !type:OrganType

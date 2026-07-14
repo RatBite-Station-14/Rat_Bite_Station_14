@@ -409,6 +409,7 @@
   - MagazineShotgunLeverRifleEmpty
   - MagazineBoxShotgunHighCaliberEMP
   - MagazineBoxShotgunHighCaliberEnsnaring
+  - MagazineBoxShotgunHighCaliber #ratbite no more hugbox
 #  tables:
 #  - ChesterRandomAmmoTable
 

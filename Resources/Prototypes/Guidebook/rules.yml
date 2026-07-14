@@ -15,11 +15,11 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-- type: guideEntry # Default for the RatBite SS14 Server.
-  id: DefaultServerRules
-  name: guide-entry-rules
-  priority: 60
-  text: "/ServerInfo/_BRatbite/Guidebook/ServerRules/DefaultServerRules.xml"
+#- type: guideEntry # Default for the RatBite SS14 Server.
+#  id: DefaultServerRules
+#  name: guide-entry-rules
+#  priority: 60
+#  text: "/ServerInfo/_BRatbite/Guidebook/ServerRules/DefaultServerRules.xml"
 #  children:
 #  - SOP
 

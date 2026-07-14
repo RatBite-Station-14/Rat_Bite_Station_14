@@ -44,7 +44,7 @@
 
 - type: loadoutGroup
   id: SecuritySpecialLongarm
-  name: Security Longarm
+  name: loadout-group-security-longarm
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -54,7 +54,7 @@
 
 - type: loadoutGroup
   id: SecuritySpecialGloves
-  name: Security Gloves
+  name: loadout-group-security-gloves
   minLimit: 0
   maxLimit: 1
   loadouts:
