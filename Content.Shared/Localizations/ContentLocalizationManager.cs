@@ -106,23 +106,14 @@ namespace Content.Shared.Localizations
         }
 
         private static readonly Regex PluralEsRule = new("^.*(s|sh|ch|x|z)$");
-        // Ratbite: fix grammar for things like Head of Security -> Heads of Security
-        private static readonly Regex HeadOfRule = new("^Head of (.*)$");
 
         private ILocValue FormatMakePlural(LocArgs args)
         {
             var text = ((LocValueString) args.Args[0]).Value;
-
-            var split = text.Split(" ", 1);
+            // Ratbite: Changed 1 to 2 because it looks like a typo
+            // when looking at the code that's after
+            var split = text.Split(" ", 2);
             var firstWord = split[0];
-
-            // Ratbite start
-            var match = HeadOfRule.Match(firstWord);
-            if (match.Success)
-            {
-                return new LocValueString($"Heads of {match.Groups[1]}");
-            }
-            // Ratbite end
             if (PluralEsRule.IsMatch(firstWord))
             {
                 if (split.Length == 1)
