@@ -202,7 +202,7 @@
     count: 1
 
 - type: entity
-  parent: BananiumOre
+  parent: [BananiumOre, BaseMajorContraband] # Ratbite: contraband changes
   id: BananiumOreUnprocessed
   name: unprocessed bananium ore
   suffix: Full
