@@ -186,7 +186,7 @@
         Blunt: 10
 
 - type: entity
-  parent: [ClothingEyesBase, BaseEngineeringContraband] # goobstation - tider nation - no longer contra # Ratbite: Make contraband again
+  parent: ClothingEyesBase # goobstation - tider nation - no longer contra
   id: ClothingEyesGlassesMeson
   name: meson goggles # goobstation - they're called MESONS!!!!
   description: Green-tinted goggles using a proprietary polymer that provides protection from eye damage of all types.
@@ -203,6 +203,9 @@
     tags:
     - PetWearable
     - WhitelistChameleon
+  - type: Contraband # Ratbite: Made contraband again
+    allowedDepartments: [ Engineering, Cargo ]
+    allowedJobs: [ BlueshieldOfficer ]
 
 - type: entity
   parent: ClothingEyesBase
