@@ -344,7 +344,7 @@
 
 - type: entity
   name: multitool
-  parent: [BaseItem, BaseSecurityEngineeringContraband] ] # Ratbite: contraband changes. Warden spawns with a multitool, so needs to be security too
+  parent: [BaseItem, BaseSecurityEngineeringContraband] # Ratbite: contraband changes. Warden spawns with a multitool, so needs to be security too
   id: Multitool
   description: An advanced tool to copy, store, and send electrical pulses and signals through wires and machines.
   components:
