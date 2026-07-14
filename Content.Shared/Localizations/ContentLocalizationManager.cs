@@ -110,9 +110,7 @@ namespace Content.Shared.Localizations
         private ILocValue FormatMakePlural(LocArgs args)
         {
             var text = ((LocValueString) args.Args[0]).Value;
-            // Ratbite: Changed 1 to 2 because it looks like a typo
-            // when looking at the code that's after
-            var split = text.Split(" ", 2);
+            var split = text.Split(" ", 1);
             var firstWord = split[0];
             if (PluralEsRule.IsMatch(firstWord))
             {
