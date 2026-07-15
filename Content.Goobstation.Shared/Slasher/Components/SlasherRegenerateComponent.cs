@@ -32,10 +32,11 @@ public sealed partial class SlasherRegenerateComponent : Component
     /// <summary>
     /// Whether the slasher has a stolen soul available to use for regenerate.
     /// Acts as ammo for the regenerate ability.
-    /// Max of one soul at a time to prevent stacking.
+    /// Ratbite - Made integer instead to allow for having multiple souls stored
+    /// Ratbite - Max of three souls at a time (see SlasherRegenerateSystem.cs)
     /// </summary>
     [DataField, AutoNetworkedField]
-    public bool HasSoulAvailable = true; // Start with one soul available
+    public int SoulsAvailable = 1; // Start with one soul available
 
     /// <summary>
     /// The sound that plays when regenerating

@@ -65,28 +65,29 @@
   - type: InstantAction
     event: !type:ToggleBloodTrailEvent
 
-- type: entity
-  id: ActionSlasherPossession
-  name: Possession
-  description: Use this on a person to begin to exact your control on them, giving you temporary control of their body for 45 seconds. Once time is up, both bodies return.
-  components:
-  - type: Action
-    raiseOnUser: true
-    useDelay: 180
-    checkCanInteract: false
-    itemIconStyle: BigAction
-    icon: { sprite: _Goobstation/Actions/slashericons.rsi, state: Possession }
-  - type: TargetAction
-    range: 3.5
-    interactOnMiss: false
-  - type: EntityTargetAction
-    canTargetSelf: false
-    event: !type:SlasherPossessionEvent
+# Ratbite - Removed possession in favor of regeneration being able to store souls
+#- type: entity
+#  id: ActionSlasherPossession
+#  name: Possession
+#  description: Use this on a person to begin to exact your control on them, giving you temporary control of their body for 45 seconds. Once time is up, both bodies return.
+#  components:
+#  - type: Action
+#    raiseOnUser: true
+#    useDelay: 180
+#    checkCanInteract: false
+#    itemIconStyle: BigAction
+#    icon: { sprite: _Goobstation/Actions/slashericons.rsi, state: Possession }
+#  - type: TargetAction
+#    range: 3.5
+#    interactOnMiss: false
+#  - type: EntityTargetAction
+#    canTargetSelf: false
+#    event: !type:SlasherPossessionEvent
 
 - type: entity
   id: ActionSlasherRegenerate
   name: Regenerate
-  description: Quickly regenerate your being, restoring all lost health, repairing wounds, and removing all stuns. Must be recharged by stealing a soul after every use.
+  description: Quickly regenerate your being, restoring all lost health, repairing wounds, and removing all stuns. Steal souls to gain more uses, capped at 3 uses at a time. # Ratbite
   components:
   - type: Action
     raiseOnUser: true
