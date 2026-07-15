@@ -29,14 +29,22 @@ public sealed partial class SlasherRegenerateComponent : Component
     [DataField("reagentAmount")]
     public float ReagentAmount = 10f;
 
+    // <Ratbite> - Regenerate can now store more souls
+
     /// <summary>
-    /// Whether the slasher has a stolen soul available to use for regenerate.
+    /// How many souls the slasher has for the Regenerate ability
     /// Acts as ammo for the regenerate ability.
-    /// Ratbite - Made integer instead to allow for having multiple souls stored
-    /// Ratbite - Max of three souls at a time (see SlasherRegenerateSystem.cs)
     /// </summary>
     [DataField, AutoNetworkedField]
-    public int SoulsAvailable = 1; // Start with one soul available
+    public int SoulsAvailable = 1; // Start with one soul available   Ratbite - Now integer, see summary above
+
+    /// <summary>
+    /// The max amount of souls that Regenerate can store
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public int MaxSouls = 3; // Max 3 souls can be stored
+
+    // </Ratbite>
 
     /// <summary>
     /// The sound that plays when regenerating

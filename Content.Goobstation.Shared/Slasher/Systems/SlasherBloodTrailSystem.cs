@@ -7,6 +7,7 @@ using Content.Shared.Fluids;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Timing;
+using Content.Shared.Movement.Systems; // Ratbite
 
 namespace Content.Goobstation.Shared.Slasher.Systems;
 
@@ -20,6 +21,7 @@ public sealed class SlasherBloodTrailSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly MovementSpeedModifierSystem _movement = default!; // Ratbite
 
     // Next time at which we should drop a blood puddle for an entity.
     private readonly Dictionary<EntityUid, TimeSpan> _nextDropAt = new();
@@ -33,6 +35,7 @@ public sealed class SlasherBloodTrailSystem : EntitySystem
         SubscribeLocalEvent<SlasherBloodTrailComponent, ToggleBloodTrailEvent>(OnToggle);
 
         SubscribeLocalEvent<SlasherBloodTrailComponent, SlasherIncorporealizeDoAfterEvent>(OnIncorporealize);
+        SubscribeLocalEvent<SlasherBloodTrailComponent, RefreshMovementSpeedModifiersEvent>(OnMovementSpeedRefresh); // Ratbite
     }
 
     private void OnMapInit(Entity<SlasherBloodTrailComponent> ent, ref MapInitEvent args)
@@ -77,7 +80,7 @@ public sealed class SlasherBloodTrailSystem : EntitySystem
             _nextDropAt.Remove(ent.Owner);
             StopFunkyslasher(ent.Owner, ent.Comp); // Aura loss
         }
-
+        _movement.RefreshMovementSpeedModifiers(ent.Owner, null); // Ratbite
         args.Handled = true;
     }
 
@@ -146,4 +149,12 @@ public sealed class SlasherBloodTrailSystem : EntitySystem
 
         comp.FunkyslasherStream = _audio.Stop(comp.FunkyslasherStream);
     }
+
+    // <Ratbite> - Made blood trail not pure larp (movement speed buff), slasher doesnt have aura anyway
+    private void OnMovementSpeedRefresh(Entity<SlasherBloodTrailComponent> ent, ref RefreshMovementSpeedModifiersEvent args)
+    {
+        if (ent.Comp.IsActive)
+            args.ModifySpeed(ent.Comp.BloodTrailMovementBonus, ent.Comp.BloodTrailMovementBonus);;
+    }
+    // </Ratbite>
 }

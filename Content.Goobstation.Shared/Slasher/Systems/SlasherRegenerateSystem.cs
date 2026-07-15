@@ -109,7 +109,7 @@ public sealed class SlasherRegenerateSystem : EntitySystem
         if (!Resolve(uid, ref comp))
             return;
         // <Ratbite> - made storing souls possible in exchange for removing possession
-        if (comp.SoulsAvailable >= 3) // 3 souls storage max
+        if (comp.SoulsAvailable >= comp.MaxSouls)
             return;
         comp.SoulsAvailable++;
         // </Ratbite>

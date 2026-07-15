@@ -26,6 +26,7 @@ public sealed class SlasherPossessionSystem : EntitySystem
     private void OnMapInit(Entity<SlasherPossessionComponent> ent, ref MapInitEvent args)
     {
         // Ratbite - Removed possession in favor of regeneration being able to store souls
+        // Ratbite - Leaving the rest of the code uncommented (since it doesnt really get called anyway.. shouldnt be that much of a problem..?)
         //    _actions.AddAction(ent.Owner, ref ent.Comp.ActionEnt, ent.Comp.ActionId);
     }
 

@@ -49,4 +49,13 @@ public sealed partial class SlasherBloodTrailComponent : Component
 
     [ViewVariables]
     public EntityUid? FunkyslasherStream;
+
+    // <Ratbite> - made Blood Trail not pure larp/"aura"
+
+    /// <summary>
+    /// The amount of movement speed bonus the slasher gets when using blood trail
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float BloodTrailMovementBonus = 1.15f;
+    // </Ratbite>
 }

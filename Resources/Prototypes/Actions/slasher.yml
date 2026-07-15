@@ -54,7 +54,7 @@
 - type: entity
   id: ActionSlasherBloodTrail
   name: Blood Trail
-  description: Begin trailing blood in your wake with some funky music. Spooky!
+  description: Begin trailing blood in your wake with some funky music. Makes you faster. Spooky!
   components:
   - type: Action
     raiseOnUser: true
