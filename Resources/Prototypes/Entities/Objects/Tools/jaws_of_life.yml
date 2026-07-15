@@ -137,7 +137,7 @@
       Plasma: 75
       Gold: 12
   - type: Contraband # Ratbite: contraband changes
-    allowedDepartments: [ Engineering, Cargo ]
+    allowedDepartments: [ Engineering, Cargo, Science ]
 
 - type: entity
   name: syndicate jaws of life
