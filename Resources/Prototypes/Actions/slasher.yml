@@ -87,7 +87,7 @@
 - type: entity
   id: ActionSlasherRegenerate
   name: Regenerate
-  description: Quickly regenerate your being, restoring all lost health, repairing wounds, and removing all stuns. Steal souls to gain more uses, capped at 3 uses at a time. # Ratbite
+  description: Quickly regenerate your being, restoring all lost health, repairing wounds, and removing all stuns. Consume souls to gain more uses, capped at 3 uses at a time. # Ratbite
   components:
   - type: Action
     raiseOnUser: true
