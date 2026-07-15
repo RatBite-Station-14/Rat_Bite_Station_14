@@ -79,7 +79,14 @@ public sealed class SlasherRegenerateSystem : EntitySystem
         _audio.PlayPredicted(comp.RegenerateSound, uid, uid);
 
         // Consume the soul
-        comp.SoulsAvailable--; // Ratbite - made storing souls possible in exchange for removing possession
+        // <Ratbite> - made storing souls possible in exchange for removing possession
+        comp.SoulsAvailable--;
+
+        if (comp.SoulsAvailable == 0)
+            _popup.PopupPredicted(Loc.GetString("slasher-regenerate-soul-emptied"), uid, uid, PopupType.MediumCaution);
+
+        // </Ratbite>
+
         Dirty(uid, comp);
 
         args.Handled = true;
@@ -108,11 +115,14 @@ public sealed class SlasherRegenerateSystem : EntitySystem
     {
         if (!Resolve(uid, ref comp))
             return;
+
         // <Ratbite> - made storing souls possible in exchange for removing possession
         if (comp.SoulsAvailable >= comp.MaxSouls)
             return;
+
         comp.SoulsAvailable++;
         // </Ratbite>
+
         Dirty(uid, comp);
     }
 }

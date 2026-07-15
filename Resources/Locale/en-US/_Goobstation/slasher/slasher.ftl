@@ -12,6 +12,7 @@ slasher-staggerarea-victim = A horrifying chill runs down your spine!
 slasher-staggerarea-popup = You unleash a wave of terror.
 
 slasher-regenerate-no-soul = You need a stolen soul to regenerate!
+slasher-regenerate-soul-emptied = That was the last soul in your buffer.
 
 slasher-soulsteal-success = You feel a dark energy course through you.
 slasher-soulsteal-start = You begin to siphon the life force of your victim...

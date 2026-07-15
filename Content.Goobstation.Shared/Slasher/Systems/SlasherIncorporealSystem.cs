@@ -509,7 +509,7 @@ public sealed class SlasherIncorporealSystem : EntitySystem
 
     private bool IsInsideSolidObject(EntityUid uid)
     {
-        var entities = _lookup.GetEntitiesInRange(uid, 1f, LookupFlags.Static | LookupFlags.Sundries);
+        var entities = _lookup.GetEntitiesInRange(uid, 0.4f, LookupFlags.Static | LookupFlags.Sundries); // Ratbite - lowered checking range, should still not let you corporealize inside walls while not being extremely limiting 
 
         foreach (var entity in entities)
         {
