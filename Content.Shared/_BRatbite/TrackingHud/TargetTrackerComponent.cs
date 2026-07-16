@@ -1,0 +1,33 @@
+using System.Numerics;
+using Robust.Shared.GameStates;
+using Robust.Shared.Map;
+using Robust.Shared.Serialization;
+using Robust.Shared.Utility;
+
+namespace Content.Shared._BRatbite.TrackingHud;
+
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(SharedTrackingTargetSystem))]
+public sealed partial class TargetTrackerComponent : Component
+{
+    // Don't spam other clients with this
+    public override bool SendOnlyToOwner => true;
+
+    [DataField, AutoNetworkedField]
+    public Dictionary<string, TrackingTarget> Targets = new();
+}
+
+[Serializable, NetSerializable, DataDefinition]
+public partial struct TrackingTarget
+{
+    [DataField]
+    public Vector2 TargetLocation;
+
+    [DataField]
+    public Color PinColor = new Color(255, 0, 0, 180);
+
+    [DataField]
+    public MapId MapId;
+
+    [DataField]
+    public SpriteSpecifier Sprite;
+}

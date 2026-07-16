@@ -3,14 +3,13 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.DoAfter;
 using Content.Server.Pinpointer;
 using Content.Server.Radio.EntitySystems;
-using Content.Shared._Goobstation.Security;
-using Content.Shared.DoAfter;
+using Content.Shared._BRatbite.TrackingHud;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Radio;
 using Content.Shared.Timing;
+using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -22,6 +21,8 @@ namespace Content.Goobstation.Server.PanicButton
         [Dependency] private readonly RadioSystem _radioSystem = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
         [Dependency] private readonly UseDelaySystem _useDelaySystem = default!;
+        [Dependency] private readonly SharedTrackingTargetSystem _trackingTargetSystem = default!;
+        [Dependency] private readonly TransformSystem _transform = default!;
 
         public override void Initialize()
         {
@@ -51,6 +52,16 @@ namespace Content.Goobstation.Server.PanicButton
             var distressMessage = Loc.GetString(comp.DistressMessage, ("position", posText));
 
             _radioSystem.SendRadioMessage(uid, distressMessage, _prototypeManager.Index<RadioChannelPrototype>(comp.RadioChannel), uid);
+
+            // Ratbite start: tracker hud
+            var coordinates = _transform.GetMapCoordinates(ent);
+            _trackingTargetSystem.AddTargetToAllEntities(new TrackingTarget
+            {
+                TargetLocation = coordinates.Position,
+                MapId = coordinates.MapId,
+                Sprite = new SpriteSpecifier.Rsi(new("/Textures/Effects/crayondecals.rsi"), "exclamationmark"),
+            }, TimeSpan.FromSeconds(30));
+            // Ratbite end
 
             args.Handled = true;
         }
