@@ -1,7 +1,7 @@
 - type: entity
   parent: [ClothingNeckBase, BaseWardenContraband, ClothingSlotBase]
   id: ClothingNeckWardenParryCloak
-  name: warden's dueling cloak
+  name: dueling cloak
   description: A red cloak with an integrated scabbard, useful for dramatically swishing at prisoners.
   components:
   - type: Sprite
@@ -16,4 +16,4 @@
         ejectSound: /Audio/Items/unsheath.ogg
         whitelist:
           tags:
-          - WardenRapier
+          - DuelingRapier

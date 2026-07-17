@@ -1,7 +1,7 @@
 - type: entity
-  name: warden's rapier
+  name: dueling rapier
   parent: [ BaseSword, BaseGrandTheftContraband ]
-  id: WardenRapier
+  id: DuelingRapier
   description: A thin, elegant sword made for lunging over banana peels.
   components:
   - type: Sprite
@@ -28,7 +28,7 @@
     delay: 1.5
   - type: Tag
     tags:
-    - WardenRapier
+    - DuelingRapier
   - type: StealTarget
     stealGroup: WeaponEnergyShotgun
   - type: DisarmMalus
