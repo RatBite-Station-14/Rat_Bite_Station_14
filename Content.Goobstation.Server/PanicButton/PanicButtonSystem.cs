@@ -61,7 +61,7 @@ namespace Content.Goobstation.Server.PanicButton
                 MapId = coordinates.MapId,
                 Sprite = ent.Comp.SecHudIcon,
                 PinColor = ent.Comp.SecHudIconColor,
-            }, TimeSpan.FromSeconds(30));
+            }, deleteAfter: TimeSpan.FromSeconds(30));
             // Ratbite end
 
             args.Handled = true;

@@ -60,7 +60,7 @@ public sealed class RelayedDeathrattleSystem : EntitySystem
             TargetLocation = coordinates.Position,
             MapId = coordinates.MapId,
             Sprite = new SpriteSpecifier.Rsi(new("/Textures/Effects/crayondecals.rsi"), "exclamationmark")
-        }, TimeSpan.FromSeconds(30));
+        }, deleteAfter: TimeSpan.FromSeconds(30));
         // Ratbite end
         _chat.TrySendInGameICMessage(comp.Target.Value, Loc.GetString(dead ? comp.DeathMessage : comp.CritMessage, ("user", uid), ("position", posText)), InGameICChatType.Speak, hideChat: false);
     }

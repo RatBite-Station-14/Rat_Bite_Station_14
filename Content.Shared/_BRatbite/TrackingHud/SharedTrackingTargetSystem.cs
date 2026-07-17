@@ -47,10 +47,9 @@ public abstract partial class SharedTrackingTargetSystem : EntitySystem
 
     // Add target to all entities that have TrackerTargetComponent. Returns the id to remove this
     // tracker later
-    public string AddTargetToAllEntities(TrackingTarget target, TimeSpan? deleteAfter = null)
+    public string AddTargetToAllEntities(TrackingTarget target, string? defaultId = null, TimeSpan? deleteAfter = null)
     {
-
-        var id = (_counter++).ToString();
+        var id = defaultId ?? (_counter++).ToString();
         if (_activeTargets.ContainsKey(id)) return id;
         _activeTargets.Add(id, target);
         var a = EntityQueryEnumerator<TargetTrackerComponent>();

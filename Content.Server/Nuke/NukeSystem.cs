@@ -665,7 +665,7 @@ public sealed class NukeSystem : EntitySystem
             TargetLocation = coordinates.Position,
             MapId = coordinates.MapId,
             Sprite = new SpriteSpecifier.Rsi(new("/Textures/Objects/Devices/nuke.rsi"), "nuclearbomb_base"),
-        }, TimeSpan.FromMinutes(10));
+        }, deleteAfter: TimeSpan.FromMinutes(10));
         // Ratbite end
         var sender = Loc.GetString("nuke-component-announcement-sender");
         _chatSystem.DispatchStationAnnouncement(stationUid ?? uid, announcement, sender, false, null, Color.Red);

@@ -159,6 +159,7 @@
     - ActionAIViewLaws
     - ActionOpenRemoteDevicesMenu # Corvax-Next-AiRemoteControl
     - ActionOpenCameraWarpMenu # Goobstation-Ai-Camera-Jumping
+    - ActionAlertSecurity # Ratbite
   - type: UserInterface
     interfaces:
       enum.RadarConsoleUiKey.Key:
@@ -327,6 +328,7 @@
     needsPower: false
   - type: StationAiCore
   - type: StationAiVision
+  - type: TargetTracker # Ratbite
   - type: InteractionOutline
   - type: Sprite
     sprite: Mobs/Silicon/station_ai.rsi
@@ -430,6 +432,7 @@
     group: StationAi
   - type: SpeechSynthesis # Corvax-Frontier-Barks
     voice: Borg
+  - type: TargetTracker # Ratbite
 
 # Hologram projection that the AI's eye tracks.
 - type: entity
@@ -476,6 +479,7 @@
   - type: Alerts
   - type: FTLSmashImmune
   - type: CargoSellBlacklist
+  - type: TargetTracker # Ratbite
   - type: StationAiVision
     range: 20
 
