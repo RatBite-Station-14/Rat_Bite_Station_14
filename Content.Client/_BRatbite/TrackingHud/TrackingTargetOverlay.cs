@@ -29,22 +29,38 @@ public sealed partial class TrackingTargetOverlay : Overlay
         if (!_entity.TryGetComponent<TargetTrackerComponent>(_playerManager.LocalEntity, out var tracker)) return;
         if (args.ViewportControl is not { } viewportControl)
             return;
+        if (args.Viewport.Eye is not { } eye) return;
+
         var _sprite = _entity.System<SpriteSystem>();
 
         foreach (var (_, target) in tracker.Targets)
         {
             if (target.MapId != args.MapId) continue;
-            var local = viewportControl.WorldToScreen(target.TargetLocation);
-            var size = viewportControl.WorldToScreen(args.WorldBounds.BottomRight);
-
-            var gap = new Vector2(230f, 120f);
+            var eyePosition = eye.Position;
+            float worldGap = 200f * eye.Zoom.X / EyeManager.PixelsPerMeter;
+            var local = viewportControl.WorldToScreen(
+                ClampMagnitude(target.TargetLocation - eyePosition.Position, worldGap) + eyePosition.Position
+            );
             var texture = _sprite.GetFrame(target.Sprite, _timing.RealTime);
             var iconSize = new Vector2(100f, 100f);
             args.ScreenHandle.DrawTextureRect(texture,
                                               UIBox2.FromDimensions(
-                                                  Vector2.Clamp(local, Vector2.Zero + gap, size - gap) - (iconSize / 2),
+                                                  local - iconSize / 2,
                                                   iconSize),
                                               target.PinColor);
         }
+    }
+
+    private static Vector2 ClampMagnitude(Vector2 vec, float maxLength)
+    {
+        float sqrMagnitude = vec.X * vec.X + vec.Y * vec.Y;
+
+        if (sqrMagnitude <= maxLength * maxLength)
+            return vec;
+
+        float magnitude = MathF.Sqrt(sqrMagnitude);
+        float scale = maxLength / magnitude;
+
+        return new(vec.X * scale, vec.Y * scale);
     }
 }
