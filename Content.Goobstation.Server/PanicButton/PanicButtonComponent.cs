@@ -5,6 +5,7 @@
 
 using Content.Shared.Radio;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Goobstation.Server.PanicButton
 {
@@ -28,5 +29,12 @@ namespace Content.Goobstation.Server.PanicButton
         /// </summary>
         [DataField]
         public ProtoId<RadioChannelPrototype> RadioChannel = "Security";
+
+        // Ratbite
+        [DataField]
+        public SpriteSpecifier SecHudIcon = new SpriteSpecifier.Rsi(new("/Textures/Effects/crayondecals.rsi"), "exclamationmark");
+
+        [DataField]
+        public Color SecHudIconColor = Color.Red;
     }
 }

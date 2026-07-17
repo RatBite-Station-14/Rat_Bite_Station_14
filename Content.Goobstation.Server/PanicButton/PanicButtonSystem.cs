@@ -59,7 +59,8 @@ namespace Content.Goobstation.Server.PanicButton
             {
                 TargetLocation = coordinates.Position,
                 MapId = coordinates.MapId,
-                Sprite = new SpriteSpecifier.Rsi(new("/Textures/Effects/crayondecals.rsi"), "exclamationmark"),
+                Sprite = ent.Comp.SecHudIcon,
+                PinColor = ent.Comp.SecHudIconColor,
             }, TimeSpan.FromSeconds(30));
             // Ratbite end
 
