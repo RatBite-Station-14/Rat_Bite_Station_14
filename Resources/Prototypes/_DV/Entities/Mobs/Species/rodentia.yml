@@ -161,6 +161,10 @@
     spitDamageThreshold: 3
   - type: CrawlUnderObjects
     actionProto: ActionToggleSneakMode
+  - type: NightVision # ratbite - Nightvision
+    color: Gray
+    activateSound: null
+    deactivateSound: null
 
 - type: entity
   save: false
