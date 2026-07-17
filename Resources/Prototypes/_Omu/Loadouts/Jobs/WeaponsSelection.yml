@@ -1,0 +1,6 @@
+# Security Head Longarms
+
+- type: loadout
+  id: WardenCloak
+  equipment:
+    suitstorage: ClothingNeckWardenParryCloakFilled

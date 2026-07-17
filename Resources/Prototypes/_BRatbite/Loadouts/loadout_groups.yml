@@ -51,6 +51,7 @@
   - SecurityERifle
   - SecurityEShottie
   - SecurityJustice
+  - WardenCloak # Omu
 
 - type: loadoutGroup
   id: SecuritySpecialGloves
