@@ -32,7 +32,7 @@ namespace Content.Goobstation.Server.PanicButton
 
         // Ratbite
         [DataField]
-        public SpriteSpecifier SecHudIcon = new SpriteSpecifier.Rsi(new("/Textures/Effects/crayondecals.rsi"), "exclamationmark");
+        public SpriteSpecifier SecHudIcon = new SpriteSpecifier.Rsi(new("/Textures/_BRatBites/Interface/Misc/exclamation-mark.rsi"), "exclamation-mark");
 
         [DataField]
         public Color SecHudIconColor = Color.Red;

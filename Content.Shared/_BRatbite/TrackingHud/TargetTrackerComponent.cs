@@ -29,5 +29,5 @@ public partial struct TrackingTarget
     public MapId MapId;
 
     [DataField]
-    public SpriteSpecifier Sprite;
+    public SpriteSpecifier Sprite = new SpriteSpecifier.Rsi(new("/Textures/_BRatBites/Interface/Misc/exclamation-mark.rsi"), "exclamation-mark");
 }

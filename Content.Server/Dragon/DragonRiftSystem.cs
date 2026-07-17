@@ -106,7 +106,6 @@ public sealed class DragonRiftSystem : EntitySystem
                     TargetLocation = coordinates.Position,
                     PinColor = Color.Red,
                     MapId = coordinates.MapId,
-                    Sprite = new SpriteSpecifier.Rsi(new("/Textures/Effects/crayondecals.rsi"), "exclamationmark"),
                 }, deleteAfter: TimeSpan.FromMinutes(10));
                 // Ratbite end
                 _chat.DispatchGlobalAnnouncement(msg, playSound: false, colorOverride: Color.Red);
