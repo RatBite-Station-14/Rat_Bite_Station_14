@@ -609,9 +609,9 @@
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
-        Blunt: 8 # Ratbite kill dam
+        Blunt: 15 # Ratbite - bevv the base PKA is NOT meta, stop nerfing it for fucks sake..
         Structural: 20 # Ratbite re add
-        armorPenetration: -0.5 # Ratbite, balance against antags/sec still a murder weapon keep away from tidas
+      armorPenetration: -0.5 # Ratbite, balance against antags/sec still a murder weapon keep away from tidas
   # Short lifespan
   - type: TimedDespawn
     lifetime: 0.22 # roughly 5.5 tiles

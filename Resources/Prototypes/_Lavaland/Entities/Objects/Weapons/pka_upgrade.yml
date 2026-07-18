@@ -60,7 +60,7 @@
   - type: GunUpgradeDamage
     damage:
       types:
-        Blunt: 10
+        Blunt: 4
 
 - type: entity
   id: PKAUpgradeRange

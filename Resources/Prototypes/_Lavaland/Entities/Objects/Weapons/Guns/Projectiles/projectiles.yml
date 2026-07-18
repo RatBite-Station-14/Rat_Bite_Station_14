@@ -31,8 +31,8 @@
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
-        Blunt: 4 #Ratbite kill
-        armorPenetration: -0.5 # Ratbite, balance against antags/sec still a murder weapon keep away from tidas
+        Blunt: 8 # Ratbite - this is for the PK repeater, it was literally the worst PKA option during the height of the PK pistol meta and still is, buff offmeta a bit :godo:
+      armorPenetration: -0.5 # Ratbite, balance against antags/sec still a murder weapon keep away from tidas
 
 - type: entity
   id: WeakBulletKinetic
@@ -43,8 +43,8 @@
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
-        Blunt: 4 #Ratbite kill
-        armorPenetration: -0.5 # Ratbite, balance against antags/sec still a murder weapon keep away from tidas
+        Blunt: 6 #Ratbite kill
+      armorPenetration: -0.65 # Ratbite, balance against antags/sec still a murder weapon keep away from tidas
 
 - type: entity
   id: PelletKinetic
