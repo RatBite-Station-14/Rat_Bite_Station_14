@@ -14,6 +14,17 @@ public sealed partial class TargetTrackerComponent : Component
 
     [DataField, AutoNetworkedField]
     public Dictionary<string, TrackingTarget> Targets = new();
+
+    [DataField]
+    public ListeningChannels Channels = ListeningChannels.SECURITY;
+}
+
+[Serializable, NetSerializable, Flags]
+public enum ListeningChannels : byte
+{
+    NONE = 0,
+    SECURITY = 1 << 0,
+    SILICON = 1 << 1,
 }
 
 [Serializable, NetSerializable, DataDefinition]
@@ -30,4 +41,7 @@ public partial struct TrackingTarget
 
     [DataField]
     public SpriteSpecifier Sprite = new SpriteSpecifier.Rsi(new("/Textures/_BRatBites/Interface/Misc/exclamation-mark.rsi"), "exclamation-mark");
+
+    [DataField]
+    public ListeningChannels Channels = ListeningChannels.SECURITY;
 }

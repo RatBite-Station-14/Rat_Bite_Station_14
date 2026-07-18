@@ -19,6 +19,8 @@ public abstract partial class SharedTrackingTargetSystem : EntitySystem
         if (!Resolve(ent.Owner, ref ent.Comp))
             return;
 
+        if (((int) ent.Comp.Channels & (int) target.Channels) == 0) return;
+
         if (!ent.Comp.Targets.ContainsKey(id))
         {
             ent.Comp.Targets.Add(id, target);
