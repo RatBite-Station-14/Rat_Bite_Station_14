@@ -29,7 +29,7 @@
       color: "#4B96FF"
   - type: PanicButton
     distressMessage: "panic-button-distress-medical"
-    secHudIconColor: "#4B96FF"
+    secHudIconColor: "#4B96FF80"
 
 - type: entity
   id: PanicButtonCargo
@@ -41,10 +41,10 @@
     layers:
     - state: icon
     - state: top
-      color: "#FFD700"
+      color: "#FFA500"
   - type: PanicButton
     distressMessage: "panic-button-distress-cargo"
-    secHudIconColor: "#FFD700"
+    secHudIconColor: "#FFA50080"
 
 - type: entity
   id: PanicButtonEngineering
@@ -56,10 +56,10 @@
     layers:
     - state: icon
     - state: top
-      color: "#FFA500"
+      color: "#FFD700"
   - type: PanicButton
     distressMessage: "panic-button-distress-engineering"
-    secHudIconColor: "#FFA500"
+    secHudIconColor: "#FFD70080"
 
 - type: entity
   id: PanicButtonScience
@@ -74,6 +74,6 @@
       color: "#FF00FF"
   - type: PanicButton
     distressMessage: "panic-button-distress-science"
-    secHudIconColor: "#FF00FF"
+    secHudIconColor: "#FF00FF80"
         
 

@@ -12,6 +12,7 @@
       color: "#FF0000"
   - type: PanicButton
     radioChannel: "Security"
+    secHudIconColor: "#FF000080"
   - type: UseDelay
     delay: 45
   - type: Tag
