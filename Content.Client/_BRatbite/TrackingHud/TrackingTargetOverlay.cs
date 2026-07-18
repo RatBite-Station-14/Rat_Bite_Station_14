@@ -52,7 +52,7 @@ public sealed partial class TrackingTargetOverlay : Overlay
 
             if (direction.LengthSquared() >= worldGap * worldGap)
             {
-                var angle = new Angle(-direction) - eye.Rotation;
+                var angle = Angle.FromWorldVec(-direction);
                 var arrowTexture = _sprite.GetFrame(arrowSprite, _timing.RealTime);
                 var arrowSize = new Vector2(16f, 16f) * eye.Zoom.X / EyeManager.PixelsPerMeter;
                 var arrowCenter = local + angle.RotateVec(new Vector2(0f, 1f)) * iconSize * MathF.Sqrt(2) / 2;
