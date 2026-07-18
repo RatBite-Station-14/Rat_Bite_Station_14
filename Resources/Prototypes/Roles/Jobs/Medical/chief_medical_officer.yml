@@ -172,6 +172,7 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+      - type: NTRTerminatable # Ratbite
   # Shitmed Change
   - !type:AddComponentSpecial
     components:

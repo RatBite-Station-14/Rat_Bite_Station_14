@@ -185,6 +185,7 @@
       - type: CommandStaff
       - type: SecurityStaff # goobstation
       - type: CombatTrained
+      - type: NTRTerminatable # Ratbite
 
 - type: startingGear
   id: HoSGear

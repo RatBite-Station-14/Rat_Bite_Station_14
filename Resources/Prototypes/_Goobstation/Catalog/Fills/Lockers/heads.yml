@@ -23,7 +23,8 @@
   id: LockerFillNanorep
   table: !type:AllSelector
     children:
-    - id: BoxFolderCentCom
+    # - id: BoxFolderCentCom # Ratbite replace with demotion papers
+    - id: FolderCentcomDemotion
     # - id: BriefcaseBrownFilled
     - id: WeaponDisablerAdvanced
     - id: BedsheetCentcom

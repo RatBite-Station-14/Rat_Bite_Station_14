@@ -1,0 +1,20 @@
+- type: entity
+  id: FolderCentcomDemotion
+  parent: BoxFolderCentCom
+  name: Termination Papers Folder
+  description: Terminate incompetent heads of staff with this!
+  components:
+  - type: StorageFill
+    contents:
+      - id: DemotionPaper
+        prob: 1
+
+- type: entity
+  id: DemotionPaper
+  parent: Paper
+  name: Termination Papers
+  description: Terminate incompetent heads of staff with this!
+  components:
+  - type: Paper
+    content: ntr-termination-paper-content
+  - type: NTRTerminationPaper

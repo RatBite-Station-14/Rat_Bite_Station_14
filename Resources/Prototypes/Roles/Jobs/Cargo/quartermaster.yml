@@ -171,6 +171,7 @@
     components:
       - type: CommandStaff
       - type: QuartermasterTraining
+      - type: NTRTerminatable # Ratbite
 
 - type: startingGear
   id: QuartermasterGear

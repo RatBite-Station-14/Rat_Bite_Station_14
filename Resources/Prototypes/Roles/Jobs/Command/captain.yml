@@ -185,6 +185,7 @@
       - type: Condemned # Goobstation - Nanotrasen owns your soul pal.
         soulOwnedNotDevil: true
       - type: CombatTrained # Ratbite
+      - type: NTRTerminatable # Ratbite
 
 - type: startingGear
   id: CaptainGear

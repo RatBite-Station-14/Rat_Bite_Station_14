@@ -171,6 +171,7 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+      - type: NTRTerminatable # Ratbite
 
 - type: startingGear
   id: ResearchDirectorGear

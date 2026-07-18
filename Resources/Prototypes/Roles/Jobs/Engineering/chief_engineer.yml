@@ -177,6 +177,7 @@
     components:
       - type: CommandStaff
       - type: EngineeringStaff # Goobstation
+      - type: NTRTerminatable # Ratbite
 
 - type: startingGear
   id: ChiefEngineerGear
