@@ -1,0 +1,26 @@
+- type: reagent
+  id: DepletedUranium
+  name: reagent-name-depleteduranium
+  group: Toxins
+  desc: reagent-desc-depleteduranium
+  physicalDesc: reagent-physical-desc-metallic
+  flavor: metallic
+  color: "#8fa191"
+  plantMetabolism:
+  - !type:PlantAdjustMutationLevel
+    amount: 0.3
+  - !type:PlantAdjustToxins
+    amount: 3
+  - !type:PlantAdjustHealth
+    amount: -1.0
+  - !type:PlantAdjustMutationMod
+    probability: 0.2
+    amount: 0.05
+  metabolisms:
+    Poison:
+      metabolismRate: 0.06
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Radiation: 0.12
