@@ -48,15 +48,15 @@ public sealed partial class NTRTerminationSystem : EntitySystem
             return;
         }
 
-        if (!TryComp<NTRTerminatableComponent>(args.Target, out var ntrTerminatable) || ntrTerminatable.LastMind is not { } userId)
-        {
-            _popup.PopupEntity(Loc.GetString("ntr-termination-only-command"), args.User, args.User);
-            return;
-        }
-
         if (TryComp<CuffableComponent>(target, out var cuffableComp) && !_cuffableSystem.IsCuffed((target, cuffableComp)))
         {
             _popup.PopupEntity(Loc.GetString("ntr-termination-need-cuff"), args.User, args.User);
+            return;
+        }
+
+        if (!TryComp<NTRTerminatableComponent>(args.Target, out var ntrTerminatable) || ntrTerminatable.LastMind is not { } userId)
+        {
+            _popup.PopupEntity(Loc.GetString("ntr-termination-only-command"), args.User, args.User);
             return;
         }
 
@@ -100,7 +100,7 @@ public sealed partial class NTRTerminationSystem : EntitySystem
         if (!isStamped) return;
 
         var reasonForDemotion = FindReasonOfDemotion(paper.Content);
-        
+
         ReceiveFax(ent, args.Fax, Loc.GetString(ent.Comp.AcceptedMessage, [("reason", reasonForDemotion)]));
         _permaBrigManager.AddBrigTime(user, (int) ent.Comp.AddedTime.TotalMinutes);
         AddAdminRemark(terminator, user, Loc.GetString("ntr-termination-success-admin-remark", [("reason", reasonForDemotion)]));
@@ -160,7 +160,7 @@ public sealed partial class NTRTerminationSystem : EntitySystem
 
     private void OnPaperInit(Entity<NTRTerminationPaperComponent> ent, ref MapInitEvent args)
     {
-        if(!TryComp<PaperComponent>(ent, out var paper)) return;
+        if (!TryComp<PaperComponent>(ent, out var paper)) return;
         paper.Content += '\n' + Loc.GetString("ntr-termination-paper-reson-for-demotion");
     }
 }
