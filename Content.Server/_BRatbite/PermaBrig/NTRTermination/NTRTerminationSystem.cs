@@ -32,6 +32,7 @@ public sealed partial class NTRTerminationSystem : EntitySystem
         SubscribeLocalEvent<NTRTerminatableComponent, MindAddedMessage>(OnMindAdded);
         SubscribeLocalEvent<NTRTerminatableComponent, MapInitEvent>(OnMapInit);
 
+        SubscribeLocalEvent<NTRTerminationPaperComponent, MapInitEvent>(OnPaperInit);
         SubscribeLocalEvent<NTRTerminationPaperComponent, AfterInteractEvent>(OnInteract);
         SubscribeLocalEvent<NTRTerminationPaperComponent, GettingFaxedSentEvent>(OnGettingFaxed);
         SubscribeLocalEvent<NTRTerminationPaperComponent, InteractUsingEvent>(OnInteractUsing);
@@ -88,7 +89,8 @@ public sealed partial class NTRTerminationSystem : EntitySystem
             args.Handled = true;
             ReceiveFax(ent, args.Fax, Loc.GetString(ent.Comp.ForgedMessage));
             _permaBrigManager.AddBrigTime(forgedBy, (int) ent.Comp.AddedTime.TotalMinutes * 3);
-            AddAdminRemark(terminator, terminator, Loc.GetString("ntr-termination-forge-admin-remark"));
+            // Terminator and forgedBy will pretty much always be the same person
+            AddAdminRemark(terminator, forgedBy, Loc.GetString("ntr-termination-forge-admin-remark"));
             RemComp<NTRTerminationPaperComponent>(ent);
             return;
         }
@@ -96,12 +98,29 @@ public sealed partial class NTRTerminationSystem : EntitySystem
             locId => paper.StampedBy.Select(p => p.StampedName).Contains(locId)
         );
         if (!isStamped) return;
-        ReceiveFax(ent, args.Fax, Loc.GetString(ent.Comp.AcceptedMessage));
+
+        var reasonForDemotion = FindReasonOfDemotion(paper.Content);
+        
+        ReceiveFax(ent, args.Fax, Loc.GetString(ent.Comp.AcceptedMessage, [("reason", reasonForDemotion)]));
         _permaBrigManager.AddBrigTime(user, (int) ent.Comp.AddedTime.TotalMinutes);
-        AddAdminRemark(terminator, user, Loc.GetString("ntr-termination-success-admin-remark"));
+        AddAdminRemark(terminator, user, Loc.GetString("ntr-termination-success-admin-remark", [("reason", reasonForDemotion)]));
         // Remove component so they can't brig the same person again
         RemComp<NTRTerminationPaperComponent>(ent);
         args.Handled = true;
+    }
+
+    private string FindReasonOfDemotion(string content)
+    {
+        var reasonField = Loc.GetString("ntr-termination-paper-reson-for-demotion");
+        var startIndex = content.IndexOf(reasonField);
+        if (startIndex == -1) // NTR messed up the form, I guess take the last line
+        {
+            var line = content.Split("\n").LastOrDefault((l) => l.Trim().Length > 0) ?? "";
+            return line.Substring(0, Math.Min(300, line.Length));
+        }
+        var field = content.Substring(startIndex + reasonField.Length);
+        var result = (string.Join("\n", field.Split("\n").Take(3))).Trim();
+        return result.Substring(0, Math.Min(300, result.Length));
     }
 
     private void ReceiveFax(Entity<NTRTerminationPaperComponent> ent, EntityUid fax, string message)
@@ -137,5 +156,11 @@ public sealed partial class NTRTerminationSystem : EntitySystem
             // NTR is a moron and is trying to forge the stamp
             ent.Comp.ForgedBy = mind.UserId;
         }
+    }
+
+    private void OnPaperInit(Entity<NTRTerminationPaperComponent> ent, ref MapInitEvent args)
+    {
+        if(!TryComp<PaperComponent>(ent, out var paper)) return;
+        paper.Content += '\n' + Loc.GetString("ntr-termination-paper-reson-for-demotion");
     }
 }
