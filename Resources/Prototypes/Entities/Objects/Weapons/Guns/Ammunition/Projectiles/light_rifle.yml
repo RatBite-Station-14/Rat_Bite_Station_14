@@ -41,7 +41,7 @@
     damage:
       types:
         Piercing: 30 #Ratbite balance
-      armorPenetration: 0.25 # Ratbite - 0.4 is a BIT extreme, also it made L6 the meta for loneops, BOOORING!
+      armorPenetration: 0.20 # Ratbite - 0.4 is a BIT extreme, also it made L6 the meta for loneops, BOOORING!
 
 - type: entity
   id: BulletLightRiflePractice
@@ -93,7 +93,7 @@
       ammo:
         reagents:
         - ReagentId: DepletedUranium
-          Quantity: 1.2
-  # 2.4 rad DOT (unaffected by armor), 2 rad damage (35% AP), 22 pierce damage (35% AP), 26.4 total
-  # not accounting for bleed which will lower the DOT's damage due to removing it from the bloodstream
+          Quantity: 1.5
+  # 3 rad DOT (unaffected by armor), 2 rad damage (35% AP), 22 pierce damage (35% AP), 27 total
+  # not accounting for bleed which will lower the DOT's damage due to removing DU from the bloodstream
   # </Ratbite>

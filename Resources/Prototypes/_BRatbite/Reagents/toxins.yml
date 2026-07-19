@@ -18,7 +18,7 @@
     amount: 0.05
   metabolisms:
     Poison:
-      metabolismRate: 0.06
+      metabolismRate: 0.06 # I *would* make it less, but because bleeding also reduces the amount of reagents in the bloodstream this should be a good enough compromise
       effects:
       - !type:HealthChange
         damage:

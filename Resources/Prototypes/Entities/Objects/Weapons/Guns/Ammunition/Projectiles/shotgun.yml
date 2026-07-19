@@ -331,9 +331,27 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 5 # Ratbite - Lingering radiation from DU fragments
-        Piercing: 10 # Ratbite
-      armorPenetration: 0.3 # Ratbite - Who knew depleted uranium was good at piercing armor?
+        Radiation: 1 # Ratbite - Lingering radiation from DU fragments
+        Piercing: 14 # Ratbite
+      armorPenetration: 0.25 # Ratbite - Who knew depleted uranium was good at piercing armor?
+  # <Ratbite> - uranium rounds arent INSTANT radiation (ignoring the fact that DU is significantly less radioactive than natural uranium..), duh.
+  - type: RefillableSolution
+    solution: ammo
+  - type: DrainableSolution
+    solution: ammo
+  - type: SolutionInjectOnProjectileHit
+    transferAmount: 2
+    solution: ammo
+  - type: InjectableSolution
+    solution: ammo
+  - type: SolutionContainerManager
+    solutions:
+      ammo:
+        reagents:
+        - ReagentId: DepletedUranium
+          Quantity: 0.80
+  # </Ratbite>
+  
 
 - type: entity
   id: PelletShotgunUraniumSpread
@@ -342,7 +360,7 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgunUranium
-    count: 5 # 15*5=75 with tight spread and okay AP
+    count: 5 # 15*5=75 with tight spread and okay AP (and some DOT)
     spread: 6
 
 - type: entity

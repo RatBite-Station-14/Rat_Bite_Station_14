@@ -93,5 +93,23 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 20 #Ratbite balance
-        Piercing: 30 #Ratbite balance
+        Radiation: 2 #Ratbite balance
+        Piercing: 32 #Ratbite balance
+      armorPiercing: 0.35 # Ratbite - Uranium ammo rework; magnum deserves some higher amount of AP
+  # <Ratbite> - uranium rounds arent INSTANT radiation (ignoring the fact that DU is significantly less radioactive than natural uranium..), duh.
+  - type: RefillableSolution
+    solution: ammo
+  - type: DrainableSolution
+    solution: ammo
+  - type: SolutionInjectOnProjectileHit
+    transferAmount: 2
+    solution: ammo
+  - type: InjectableSolution
+    solution: ammo
+  - type: SolutionContainerManager
+    solutions:
+      ammo:
+        reagents:
+        - ReagentId: DepletedUranium
+          Quantity: 3
+  # </Ratbite>
