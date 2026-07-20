@@ -150,3 +150,18 @@
   products:
     Revivopine: 4
 
+- type: reaction
+  id: AllInOneGenderAffirmingHormone
+  reactants:
+    UnstableMutagen:
+      amount: 1
+    Hydroxide:
+      amount: 2
+    UniversalEnzyme:
+      amount: 1
+      catalsyt: true
+    Plasma:
+      amount: 1
+      catalsyt: true
+  products:
+    AllInOneGenderAffirmingHormone: 3
