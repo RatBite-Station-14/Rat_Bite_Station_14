@@ -4,6 +4,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Pinpointer;
+using Content.Server.Radio;
 using Content.Server.Radio.EntitySystems;
 using Content.Shared._BRatbite.TrackingHud;
 using Content.Shared.Interaction.Events;
@@ -50,6 +51,14 @@ namespace Content.Goobstation.Server.PanicButton
             // Gets location of the implant
             var posText = FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString(uid));
             var distressMessage = Loc.GetString(comp.DistressMessage, ("position", posText));
+
+            // Ratbite start
+            if (!_prototypeManager.TryIndex(comp.RadioChannel, out var channel)) return;
+            var ev = new RadioSendAttemptEvent(channel, uid);
+            RaiseLocalEvent(ref ev);
+            RaiseLocalEvent(ent, ref ev);
+            if (ev.Cancelled) return;
+            // Ratbite end
 
             _radioSystem.SendRadioMessage(uid, distressMessage, _prototypeManager.Index<RadioChannelPrototype>(comp.RadioChannel), uid);
 
