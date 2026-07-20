@@ -1,1 +1,34 @@
+- type: reaction
+  id: Ethanotoxin
+  reactants:
+    Ethanol:
+      amount: 3
+    TranexamicAcid:
+      amount: 1
+    Chlorine:
+      amount: 1
+  products:
+    Ethanotoxin: 5
+
+- type: reaction
+  id: Tranquility
+  reactants:
+    Romerol:
+      amount: 1
+    Ventcrud:
+      amount: 1
+    MicroPlastics:
+      amount: 1
+  products:
+    Tranquility: 3
+
+- type: reaction
+  id: Profanol
+  reactants:
+    Tranquility:
+      amount: 1
+    Vestine:
+      amount: 1
+  products:
+    Profanol: 2
 
