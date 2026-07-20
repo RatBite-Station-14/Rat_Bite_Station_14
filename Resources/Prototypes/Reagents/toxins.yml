@@ -589,7 +589,6 @@
               Brute: -65
               Burn: -65
               Airloss: -65
-              Radiation: -65
 
 - type: reagent
   id: UncookedAnimalProteins
