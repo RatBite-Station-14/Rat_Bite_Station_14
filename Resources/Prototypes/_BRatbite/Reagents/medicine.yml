@@ -452,7 +452,7 @@
   name: reagent-name-aiogah
   group: Medicine
   desc: reagent-desc-aiogah
-  physicalDesc: reagent-psysical-desc-viscous
+  physicalDesc: reagent-physical-desc-viscous
   flavor: medicine
   color: "#ff919e"
   metabolisms:
@@ -464,14 +464,16 @@
         - !type:ReagentThreshold
           min: 20
       - !type:AdjustReagent
-        reagent: XenobioGenderFluid
+        reagent: AllInOneGenderAffirmingHormone
         amount: -50.0
         conditions:
         - !type:ReagentThreshold
           min: 20
-              - !type:HealthChange
+      Medicine:
+      effects:
+      - !type:HealthChange
           conditions:
-            - !type:ReagentThreshold
+          - !type:ReagentThreshold
               min: 30
             - !type:OrganType
               type: Yowie
