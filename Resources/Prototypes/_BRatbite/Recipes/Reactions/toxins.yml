@@ -21,14 +21,3 @@
       amount: 1
   products:
     Tranquility: 3
-
-- type: reaction
-  id: Profanol
-  reactants:
-    Tranquility:
-      amount: 1
-    Vestine:
-      amount: 1
-  products:
-    Profanol: 2
-
