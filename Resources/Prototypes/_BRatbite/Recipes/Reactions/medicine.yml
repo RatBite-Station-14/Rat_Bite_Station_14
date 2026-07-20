@@ -157,7 +157,7 @@
       amount: 1
     Hydroxide:
       amount: 2
-    UniversalEnzyme:
+    Enzyme:
       amount: 1
       catalsyt: true
     Plasma:
