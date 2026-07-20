@@ -1,0 +1,51 @@
+- type: entity
+  name: All-in-One Gender Affirming Hormone pill
+  parent: BaseItem
+  id: AllInOneGenderAffirmingPill
+  description: The new and improved all-in-one gender affirming hormone pill! 
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Chemistry/pills.rsi
+    state: pill
+  - type: Item
+    size: Tiny
+    sprite: Objects/Specific/Chemistry/pills.rsi
+  - type: Pill
+  - type: Food
+    delay: 0.2
+    forceFeedDelay: 1.5
+    transferAmount: null
+    eatMessage: food-swallow
+    useSound: /Audio/Items/pill.ogg
+  - type: BadFood
+  - type: FlavorProfile
+    ignoreReagents: []
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        - reagentID: AllInOneGenderAffirmingHormone
+          Quantity: 20
+  - type: ExplosionResistance
+    damageCoefficient: 0.025 # survives conventional explosives but not minibombs and nukes
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:SpillBehavior
+        solution: food
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: SolutionSpiker
+    sourceSolution: food
+  - type: Extractable
+    grindableSolutionName: food
+  - type: StaticPrice
+    price: 0
+  - type: Tag
+    tags:
+    - Pill
