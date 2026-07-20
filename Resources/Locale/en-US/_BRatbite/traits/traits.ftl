@@ -76,5 +76,5 @@ gun-fail-shoot = Your hands tremble and you were unable to shoot.
 trait-stowaway-name = Stowaway
 trait-stowaway-desc = You weren't mean to be on this ship, but you are here anyways and have to survive.
 
-trait-nude-name = Nudist
-trait-nude-description = You have a hatred for clothing, and are faster when not wearing anything
+trait-nude-name = Vestiphobia
+trait-nude-description = You have an irrational fear of clothing, and are slower when wearing them
