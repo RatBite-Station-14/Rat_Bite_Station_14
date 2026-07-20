@@ -469,7 +469,8 @@
         conditions:
         - !type:ReagentThreshold
           min: 20
-      Medicine:
+    Medicine:
+      metabolismRate: 1
       effects:
       - !type:HealthChange
           conditions:
