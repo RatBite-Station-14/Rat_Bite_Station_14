@@ -294,8 +294,8 @@
             Cold: -0.5
             Radiation: -0.5
       - !type:MovespeedModifier
-        walkSpeedModifier: 1.3
-        sprintSpeedModifier: 1.3
+        walkSpeedModifier: 1.45 #Ratbite, changed from 1.3
+        sprintSpeedModifier: 1.45
       - !type:GenericStatusEffect
         key: Stun
         time: 3
