@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingNeckBase, BaseWardenContraband, ClothingSlotBase]
+  parent: [ClothingNeckBase, BaseSecurityCommandContraband, ClothingSlotBase]
   id: ClothingNeckWardenParryCloak
   name: dueling cloak
   description: A red cloak with an integrated scabbard, useful for dramatically swishing at prisoners.
