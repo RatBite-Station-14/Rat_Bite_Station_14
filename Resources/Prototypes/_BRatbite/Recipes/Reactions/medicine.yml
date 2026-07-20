@@ -97,7 +97,7 @@
       amount: 1
       catalyst: true
   products:
-    Lectrazine: 7
+    Lectrazine: 9 #Ratbite, now it is slop
 
 - type: reaction
   id: Chornexalinn
@@ -122,7 +122,7 @@
     Lenturi:
       amount: 1
     Slime:
-      amount: 1
+      amount: 0.5
   products:
     Tepalal: 3
 
