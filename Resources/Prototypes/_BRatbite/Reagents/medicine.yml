@@ -118,7 +118,7 @@
         - !type:HealthChange
           damage:
             groups:
-              Brute: -2.5
+              Brute: -3 #Ratbite, changed from -2.5 to -3 so that it is faster healing than bic
         - !type:HealthChange
           conditions:
           - !type:ReagentThreshold
@@ -209,7 +209,7 @@
           conditions:
           - !type:ReagentThreshold
             max: 50
-          probability: 0.5 # this shit gonna be used as better ipecac for sure but whatever.. (ipecac has 30%, min 4u)
+          probability: 0.1 #Ratbite changed from 0.5 to 0.1
         - !type:ChemVomit
           conditions:
           - !type:ReagentThreshold
