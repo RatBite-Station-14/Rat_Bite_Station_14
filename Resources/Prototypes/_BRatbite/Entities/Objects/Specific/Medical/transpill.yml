@@ -49,3 +49,18 @@
   - type: Tag
     tags:
     - Pill
+
+- type: entity
+  suffix: pump-up
+  parent: PrefilledSyringe
+  id: SyringePumpUp
+  components:
+  - type: Label
+    currentLabel: reagent-name-pumpup
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 15
+        reagents:
+        - ReagentId: Pump-up
+          Quantity: 15
