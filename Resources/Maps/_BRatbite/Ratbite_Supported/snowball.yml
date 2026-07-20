@@ -4,7 +4,7 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 07/04/2026 03:52:01
+  time: 07/17/2026 04:49:02
   entityCount: 18411
 maps:
 - 1793
@@ -9015,13 +9015,6 @@ entities:
     - type: Transform
       pos: 48.5,27.5
       parent: 1
-  - uid: 14702
-    components:
-    - type: MetaData
-      name: brigmed office
-    - type: Transform
-      pos: 47.5,39.5
-      parent: 1
 - proto: AirlockEngineeringGlassLocked
   entities:
   - uid: 5710
@@ -10781,7 +10774,7 @@ entities:
       pos: 6.5,90.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -4060.7458
+      secondsUntilStateChange: -4118.0454
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -10934,6 +10927,13 @@ entities:
       name: security locker room glass airlock
     - type: Transform
       pos: 45.5,32.5
+      parent: 1
+  - uid: 14702
+    components:
+    - type: MetaData
+      name: brigmed office
+    - type: Transform
+      pos: 47.5,39.5
       parent: 1
 - proto: AirlockSecurityLocked
   entities:
@@ -100517,11 +100517,15 @@ entities:
   entities:
   - uid: 12845
     components:
-    - type: AccessReader
-      access: [["HeadOfPersonnel"]]
     - type: Transform
       pos: 33.5,63.5
       parent: 1
+    - type: AccessReader
+      accessLog: []
+      accessKeys: []
+      access:
+      - - HeadOfPersonnel
+      denyTags: []
     - type: TechnologyDatabase
       supportedDisciplines:
       - Industrial
