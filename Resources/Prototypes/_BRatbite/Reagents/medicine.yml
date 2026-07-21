@@ -214,7 +214,7 @@
           conditions:
           - !type:ReagentThreshold
             min: 50
-          probability: 0.02
+          probability: 0.2
         - !type:Drunk
 
 - type: reagent
