@@ -42,7 +42,7 @@
         type: Remove
       - !type:GenericStatusEffect
         key: KnockedDown
-        time: 2 #Ratbite, same here
+        time: 2 #same here
         type: Remove
       - !type:GenericStatusEffect 
         key: Adrenaline
