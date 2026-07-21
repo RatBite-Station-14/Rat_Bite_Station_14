@@ -209,7 +209,7 @@
           conditions:
           - !type:ReagentThreshold
             max: 50
-          probability: 0.1 #Ratbite changed from 0.5 to 0.1
+          probability: 0.1 # changed from 0.5 to 0.1
         - !type:ChemVomit
           conditions:
           - !type:ReagentThreshold
