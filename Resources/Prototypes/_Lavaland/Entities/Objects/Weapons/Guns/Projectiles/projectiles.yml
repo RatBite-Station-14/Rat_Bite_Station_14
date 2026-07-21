@@ -43,7 +43,7 @@
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
-        Blunt: 6 #Ratbite kill
+        Blunt: 4 #Ratbite kill
       armorPenetration: -0.65 # Ratbite, balance against antags/sec still a murder weapon keep away from tidas
 
 - type: entity
