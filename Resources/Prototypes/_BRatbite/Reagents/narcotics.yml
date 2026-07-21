@@ -8,7 +8,7 @@
   color: "#e38e44"
   metabolisms:
     Narcotic:
-      metabolismRate: 1 #ratbite, to make up for it now being a bit more powerful
+      metabolismRate: 1 #to make up for it now being a bit more powerful
       effects:
       - !type:HealthChange
         conditions:
@@ -33,12 +33,12 @@
           types:
             Poison: 2
       - !type:MovespeedModifier
-        walkSpeedModifier: 1.2 #Ratbite, changed from 1.1 on both to 1.2 so that it moves you faster than coffee. Ephedrine and desoxy's speed was changed to accommodate for this change
+        walkSpeedModifier: 1.2 #changed from 1.1 on both to 1.2 so that it moves you faster than coffee. Ephedrine and desoxy's speed was changed to accommodate for this change
         sprintSpeedModifier: 1.2
       - !type:Jitter 
       - !type:GenericStatusEffect
         key: Stun
-        time: 2 #Ratbite, controversial but needed. Closer to (now old) desoxy whilst being stupidly easy to make, balanced because it is consumed faster
+        time: 2 #controversial but needed. Closer to (now old) desoxy whilst being stupidly easy to make, balanced because it is consumed faster
         type: Remove
       - !type:GenericStatusEffect
         key: KnockedDown
