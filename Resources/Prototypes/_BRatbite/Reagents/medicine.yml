@@ -118,7 +118,7 @@
         - !type:HealthChange
           damage:
             groups:
-              Brute: -3 #Ratbite, changed from -2.5 to -3 so that it is faster healing than bic
+              Brute: -3 #changed from -2.5 to -3 so that it is faster healing than bic
         - !type:HealthChange
           conditions:
           - !type:ReagentThreshold
