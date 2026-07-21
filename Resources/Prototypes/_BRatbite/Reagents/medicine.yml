@@ -469,3 +469,95 @@
         conditions:
         - !type:ReagentThreshold
           min: 20
+
+- type: reagent
+  id: Biofoam
+  name: reagent-name-biofoam
+  group: Medicine
+  desc: reagent-desc-biofoam
+  physicalDesc: reagent-physical-desc-thick
+  flavor: powdery
+  color: "#edd9c0"
+  worksOnTheDead: true
+  metabolisms:
+    Medicine:
+      metabolismRate: 1
+      effects:
+      - !type:AdjustReagent
+        reagent: BiofoamRemnants
+        amount: 0.75
+      - !type:EvenHealthChange
+        conditions:
+        - !type:ReagentThreshold
+          max: 10.5
+        damage:
+          Brute: -10
+          Burn: -10
+          Airloss: -10
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          min: 10.5
+        damage:
+          types:
+            Blunt: 4
+            Asphyxiation: 4
+            Poison: 4
+      - !type:ModifyBleedAmount
+        amount: -3
+      - !type:PopupMessage
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Biofoam
+          max: 10.5
+        visualType: Medium
+        messages: ["biofoam-effect-organrepair", "biofoam-effect-bodyrepair"]
+        type: Local
+        probability: 0.2
+      - !type:Jitter
+      - !type:AdjustReagent
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Biofoam
+          min: 11
+          max: 12
+        reagent: Biofoam
+        amount: -15
+      - !type:MovespeedModifier
+        walkSpeedModifier: 0.75
+        sprintSpeedModifier: 0.75
+      - !type:PopupMessage
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Biofoam
+          min: 10.5
+        visualType: MediumCaution
+        messages: ["reagent-effect-overdose1", "reagent-effect-overdose2", "reagent-effect-overdose3"]
+        type: Local
+        probability: 0.3
+
+- type: reagent
+  id: BiofoamRemnants
+  name: biofoam remnants
+  group: Medicine
+  desc: The remnants of biofoam use, can interfere with a fresh injection, causing an overdose.
+  physicalDesc: reagent-physical-desc-thick
+  flavor: powdery
+  color: "#edd9c0"
+  worksOnTheDead: true
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.5
+      effects:
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          min: 3.5
+        damage:
+          types:
+            Blunt: 2
+            Asphyxiation: 2
+            Poison: 2
+      - !type:MovespeedModifier
+        walkSpeedModifier: 0.8
+        sprintSpeedModifier: 0.8
