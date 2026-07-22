@@ -13,17 +13,14 @@
       task: SecuritronCompound
   - type: Anchorable
   - type: InteractionPopup
-    interactSuccessString: petting-success-medibot
-    interactFailureString: petting-failure-medibot
-    interactSuccessSpawn: EffectHearts
-    interactSuccessSound:
-      path: /Audio/Animals/cat_meow.ogg
+    interactSuccessString: petting-success-securitron
+    interactFailureString: petting-failure-securitron
   - type: Advertise
-    pack: MedibotAds
+    pack: SecuritronAds
   - type: Vocalizer
   - type: CombatMode
   - type: DatasetVocalizer
-    dataset: MedibotAds
+    dataset: SecuritronAds
   - type: Inventory
     templateId: medibot
   - type: DoAfter
@@ -31,6 +28,14 @@
     range: 1
   - type: Puller
     needsHands: false
-  - type: Access # TODO: temp
-    groups:
-    - AllAccess
+  - type: Access
+    tags:
+    - Security
+    - Brig
+    - Maintenance
+
+- type: localizedDataset
+  id: SecuritronAds
+  values:
+    prefix: advertisement-securitron-
+    count: 4

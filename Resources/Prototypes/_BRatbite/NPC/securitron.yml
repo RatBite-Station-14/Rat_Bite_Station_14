@@ -19,7 +19,7 @@
       operator: !type:PickSecuritronTargetOperator
     - !type:HTNPrimitiveTask
       operator: !type:SpeakOperator
-        speech: Stop breaking the law, asshole
+        speech: securitron-picked-target-message
     - !type:HTNPrimitiveTask
       operator: !type:MoveToOperator
         pathfindInPlanning: true
@@ -42,7 +42,7 @@
       operator: !type:CuffOperator
     - !type:HTNPrimitiveTask
       operator: !type:SpeakOperator
-        speech: Target down
+        speech: securitron-subdued-message
     - !type:HTNPrimitiveTask
       operator: !type:UtilityOperator
         proto: GenpopLockers
@@ -55,9 +55,6 @@
   - tasks:
     - !type:HTNPrimitiveTask
       operator: !type:StopPullingOperator
-    - !type:HTNPrimitiveTask
-      operator: !type:SpeakOperator
-        speech: Patrolling...
     - !type:HTNPrimitiveTask
       operator: !type:UtilityOperator
         proto: StationBeacons
