@@ -34,6 +34,12 @@
     - Brig
     - Maintenance
 
+- type: entity
+  id: OfficerBeepsky
+  parent: MobSecuritron
+  name: Officer Beepsky # Just a reskin for now
+  description: Security's best robot
+
 - type: localizedDataset
   id: SecuritronAds
   values:
