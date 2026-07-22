@@ -1,0 +1,110 @@
+- type: htnCompound
+  id: SecuritronCompound
+  branches:
+  - tasks:
+    - !type:HTNCompoundTask
+      task: StunCriminalsCompound
+  - tasks:
+    - !type:HTNCompoundTask
+      task: PatrolCompound
+
+
+- type: htnCompound
+  id: StunCriminalsCompound
+  branches:
+  - tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:StopPullingOperator
+    - !type:HTNPrimitiveTask
+      operator: !type:PickSecuritronTargetOperator
+    - !type:HTNPrimitiveTask
+      operator: !type:SpeakOperator
+        speech: Stop breaking the law, asshole
+    - !type:HTNPrimitiveTask
+      operator: !type:MoveToOperator
+        pathfindInPlanning: true
+    - !type:HTNPrimitiveTask
+      operator: !type:MeleeOperator
+        targetKey: Target
+        stopWhenStunned: true
+        removeTargetKeyOnShutdown: false
+    - !type:HTNPrimitiveTask
+      operator: !type:SetFloatOperator
+        targetKey: IdleTime
+        amount: 3
+    - !type:HTNPrimitiveTask
+      operator: !type:WaitOperator
+        key: IdleTime
+      preconditions:
+      - !type:KeyExistsPrecondition
+        key: IdleTime
+    - !type:HTNPrimitiveTask
+      operator: !type:CuffOperator
+    - !type:HTNPrimitiveTask
+      operator: !type:SpeakOperator
+        speech: Target down
+    - !type:HTNPrimitiveTask
+      operator: !type:UtilityOperator
+        proto: GenpopLockers
+    - !type:HTNPrimitiveTask
+      operator: !type:MoveToOperator
+
+- type: htnCompound
+  id: PatrolCompound
+  branches:
+  - tasks:
+    - !type:HTNPrimitiveTask
+      operator: !type:StopPullingOperator
+    - !type:HTNPrimitiveTask
+      operator: !type:SpeakOperator
+        speech: Patrolling...
+    - !type:HTNPrimitiveTask
+      operator: !type:UtilityOperator
+        proto: StationBeacons
+    - !type:HTNPrimitiveTask
+      operator: !type:MoveToOperator
+    
+
+
+- type: utilityQuery
+  id: StationBeacons
+  query:
+  - !type:ComponentQuery
+    visionRadius: 1000
+    components:
+    - type: NavMapBeacon
+  considerations:
+  - !type:RandomCon
+    curve: !type:QuadraticCurve
+      slope: 1
+      exponent: 1
+      yOffset: 0
+      xOffset: 0
+
+- type: utilityQuery
+  id: GenpopLockers
+  query:
+  - !type:ComponentQuery
+    visionRadius: 1000
+    components:
+    - type: GenpopLocker
+  considerations:
+  - !type:TargetDistanceCon
+    visionRadius: 1000
+    curve: !type:QuadraticCurve
+      slope: -0.001
+      exponent: 1
+      yOffset: 1
+      xOffset: 0
+  
+- type: entity
+  id: SecuritronStunbaton
+  name: securitron stun baton
+  parent: Stunbaton
+  description: A stun baton made for securitrons
+  components:
+  - type: Stunbaton
+    energyPerUse: 0
+  - type: ItemToggle
+    predictable: false
+    activated: true

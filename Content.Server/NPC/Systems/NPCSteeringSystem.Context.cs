@@ -103,6 +103,10 @@ public sealed partial class NPCSteeringSystem
         {
             return true;
         }
+        else if ((node.Data.Flags & PathfindingBreadcrumbFlag.Door) != 0) // TODO: remove this garbage
+        {
+            return true;
+        }
 
         // TODO: Ideally for "FreeSpace" we check all entities on the tile and build flags dynamically (pathfinder refactor in future).
         var ents = _entSetPool.Get();

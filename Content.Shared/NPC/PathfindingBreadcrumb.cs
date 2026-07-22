@@ -65,7 +65,7 @@ public struct PathfindingData : IEquatable<PathfindingData>
     public int CollisionMask;
     public float Damage;
 
-    public bool IsFreeSpace => (Flags == PathfindingBreadcrumbFlag.None && Damage.Equals(0f));
+    public bool IsFreeSpace => ((Flags == PathfindingBreadcrumbFlag.None && Damage.Equals(0f)) || (Flags & PathfindingBreadcrumbFlag.Door) != 0);
 
     public PathfindingData(PathfindingBreadcrumbFlag flag, int layer, int mask, float damage)
     {

@@ -66,6 +66,8 @@ using Content.Server._Goobstation.Wizard.NPC;
 using Content.Shared.Foldable;
 using Content.Shared.Wieldable;
 using Content.Shared.Wieldable.Components;
+using Robust.Shared.Random;
+using Content.Server._BRatbite.NPC.Queries.Considerations;
 
 namespace Content.Server.NPC.Systems;
 
@@ -93,6 +95,7 @@ public sealed class NPCUtilitySystem : EntitySystem
     [Dependency] private readonly MobThresholdSystem _thresholdSystem = default!;
     [Dependency] private readonly TurretTargetSettingsSystem _turretTargetSettings = default!;
     [Dependency] private readonly SharedWieldableSystem _wieldable = default!; // Goobstation
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     private EntityQuery<PuddleComponent> _puddleQuery;
     private EntityQuery<TransformComponent> _xformQuery;
@@ -307,9 +310,9 @@ public sealed class NPCUtilitySystem : EntitySystem
 
                 return 1f;
             }
-            case TargetDistanceCon:
+            case TargetDistanceCon con:
             {
-                var radius = blackboard.GetValueOrDefault<float>(blackboard.GetVisionRadiusKey(EntityManager), EntityManager);
+                var radius = con.VisionRadius ?? blackboard.GetValueOrDefault<float>(blackboard.GetVisionRadiusKey(EntityManager), EntityManager);
 
                 if (!TryComp(targetUid, out TransformComponent? targetXform) ||
                     !TryComp(owner, out TransformComponent? xform))
@@ -439,6 +442,12 @@ public sealed class NPCUtilitySystem : EntitySystem
 
                     return temperature.CurrentTemperature <= con.MinTemp ? 1f : 0f;
                 }
+            // Ratbite start
+            case RandomCon con:
+                {
+                    return _random.NextFloat(0f, 1f);
+                }
+            // Ratbite end
             default:
                 throw new NotImplementedException();
         }
@@ -491,7 +500,7 @@ public sealed class NPCUtilitySystem : EntitySystem
                 }
 
                 _entitySet.Clear();
-                _lookup.GetEntitiesInRange(compZero.Component.GetType(), mapPos, vision, _entitySet);
+                _lookup.GetEntitiesInRange(compZero.Component.GetType(), mapPos, compQuery.VisionRadius ?? vision, _entitySet);
 
                 foreach (var comp in _entitySet)
                 {

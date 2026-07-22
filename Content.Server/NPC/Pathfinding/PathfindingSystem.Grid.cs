@@ -522,6 +522,8 @@ public sealed partial class PathfindingSystem
                                     continue;
                                 }
 
+                                if (_doorQuery.HasComponent(ent)) continue; // TODO: this is a shit fix, do it properly
+
                                 collisionLayer |= fixture.CollisionLayer;
                                 collisionMask |= fixture.CollisionMask;
                                 colliding = true;
@@ -533,7 +535,7 @@ public sealed partial class PathfindingSystem
 
                             if (_accessQuery.HasComponent(ent))
                             {
-                                flags |= PathfindingBreadcrumbFlag.Access;
+                                //flags |= PathfindingBreadcrumbFlag.Access;
                             }
 
                             if (_doorQuery.HasComponent(ent))

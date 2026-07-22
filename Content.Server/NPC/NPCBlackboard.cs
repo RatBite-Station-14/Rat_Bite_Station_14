@@ -41,6 +41,7 @@ public sealed partial class NPCBlackboard : IEnumerable<KeyValuePair<string, obj
         {"InteractRange", SharedInteractionSystem.InteractionRange},
         {"MaximumIdleTime", 7f},
         {MedibotInjectRange, 4f},
+        {SecuritronRange, 4f}, // Ratbite
         {WeldbotWeldRange, 4f}, // Einstein Engines
         {FillbotPickupRange, 10f}, // Einstein Engines
         {PlantbotServiceRange, 4f}, // Einstein Engines
@@ -324,6 +325,7 @@ public sealed partial class NPCBlackboard : IEnumerable<KeyValuePair<string, obj
     public const string Inventory = "Inventory";
     public const string MedibotInjectRange = "MedibotInjectRange";
     public const string WeldbotWeldRange = "WeldbotWeldRange"; // Einstein Engines
+    public const string SecuritronRange = "SecuritronRange"; // Ratbite
     public const string FillbotPickupRange = "FillbotPickupRange"; // Einstein Engines
     public const string PlantbotServiceRange = "PlantbotServiceRange"; // Einstein Engines
 
