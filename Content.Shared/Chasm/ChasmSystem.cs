@@ -107,6 +107,7 @@ public sealed class ChasmSystem : EntitySystem
     private void OnStepTriggerAttempt(EntityUid uid, ChasmComponent component, ref StepTriggerAttemptEvent args)
     {
         args.Continue = true;
+        args.Cancelled = false;
     }
 
     private void OnUpdateCanMove(EntityUid uid, ChasmFallingComponent component, UpdateCanMoveEvent args)
