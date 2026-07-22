@@ -311,7 +311,7 @@ namespace Content.Server.NPC.Pathfinding
                 (layer, mask) = _physics.GetHardCollision(entity, fixtures);
             }
 
-            var request = new BFSPathRequest(maxRange, limit, start.Coordinates, flags, layer, mask, cancelToken);
+            var request = new BFSPathRequest(entity, maxRange, limit, start.Coordinates, flags, layer, mask, cancelToken);
             var path = await GetPath(request);
 
             if (path.Result != PathResult.Path)
@@ -400,6 +400,7 @@ namespace Content.Server.NPC.Pathfinding
         /// Asynchronously gets a path.
         /// </summary>
         public async Task<PathResultEvent> GetPath(
+            EntityUid entity,
             EntityCoordinates start,
             EntityCoordinates end,
             float range,
@@ -409,7 +410,7 @@ namespace Content.Server.NPC.Pathfinding
             PathFlags flags = PathFlags.None)
         {
             // Don't allow the caller to pass in the request in case they try to do something with its data.
-            var request = new AStarPathRequest(start, end, flags, range, layer, mask, cancelToken);
+            var request = new AStarPathRequest(entity, start, end, flags, range, layer, mask, cancelToken);
             return await GetPath(request);
         }
 
@@ -471,7 +472,7 @@ namespace Content.Server.NPC.Pathfinding
                 (layer, mask) = _physics.GetHardCollision(entity, fixtures);
             }
 
-            return new AStarPathRequest(start, end, flags, range, layer, mask, cancelToken);
+            return new AStarPathRequest(entity, start, end, flags, range, layer, mask, cancelToken);
         }
 
         public PathFlags GetFlags(EntityUid uid)

@@ -20,6 +20,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
+using Content.Shared.Access.Systems;
 using Content.Shared.NPC;
 using Content.Shared.Physics;
 using Robust.Shared.Collections;
@@ -474,6 +475,7 @@ public sealed partial class PathfindingSystem
                 {
                     for (var subY = 0; subY < SubStep; subY++)
                     {
+                        NetEntity? mostRelevantEntity = null;
                         var xOffset = x * SubStep + subX;
                         var yOffset = y * SubStep + subY;
 
@@ -522,8 +524,6 @@ public sealed partial class PathfindingSystem
                                     continue;
                                 }
 
-                                if (_doorQuery.HasComponent(ent)) continue; // TODO: this is a shit fix, do it properly
-
                                 collisionLayer |= fixture.CollisionLayer;
                                 collisionMask |= fixture.CollisionMask;
                                 colliding = true;
@@ -535,12 +535,14 @@ public sealed partial class PathfindingSystem
 
                             if (_accessQuery.HasComponent(ent))
                             {
-                                //flags |= PathfindingBreadcrumbFlag.Access;
+                                flags |= PathfindingBreadcrumbFlag.Access;
+                                mostRelevantEntity = GetNetEntity(ent);
                             }
 
                             if (_doorQuery.HasComponent(ent))
                             {
                                 flags |= PathfindingBreadcrumbFlag.Door;
+                                mostRelevantEntity = GetNetEntity(ent);
                             }
 
                             if (_climbableQuery.HasComponent(ent))
@@ -565,7 +567,7 @@ public sealed partial class PathfindingSystem
                         var crumb = new PathfindingBreadcrumb()
                         {
                             Coordinates = new Vector2i(xOffset, yOffset),
-                            Data = new PathfindingData(flags, collisionLayer, collisionMask, damage),
+                            Data = new PathfindingData(flags, collisionLayer, collisionMask, damage, mostRelevantEntity),
                         };
 
                         points[xOffset, yOffset] = crumb;
