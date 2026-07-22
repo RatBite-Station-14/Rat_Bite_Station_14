@@ -36,6 +36,7 @@ public sealed partial class SecuritronSystem : EntitySystem
         SubscribeLocalEvent<SecuritronComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<SecuritronComponent, GetMeleeWeaponEvent>(OnGetWeapon);
         SubscribeLocalEvent<SecuritronComponent, GotEmaggedEvent>(OnEmagged);
+        SubscribeLocalEvent<SecuritronComponent, ComponentShutdown>(OnShutdown);
     }
 
     private void OnGetWeapon(Entity<SecuritronComponent> ent, ref GetMeleeWeaponEvent args)
@@ -47,7 +48,6 @@ public sealed partial class SecuritronSystem : EntitySystem
     private void OnMapInit(Entity<SecuritronComponent> ent, ref MapInitEvent args)
     {
         // TODO: put it in the inventory
-        // We're leaking stunbatons
         ent.Comp.Stunbaton = Spawn(ent.Comp.WeaponPrototype);
     }
 
@@ -133,5 +133,13 @@ public sealed partial class SecuritronSystem : EntitySystem
     {
         if ((args.Type & EmagType.Interaction) != 0)
             args.Handled = true;
+    }
+
+    private void OnShutdown(Entity<SecuritronComponent> ent, ref ComponentShutdown args)
+    {
+        if (ent.Comp.Stunbaton is { } baton && !TerminatingOrDeleted(baton))
+        {
+            Del(baton);
+        }
     }
 }
