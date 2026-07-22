@@ -98,23 +98,11 @@ public sealed class ContrabandSystem : EntitySystem
             departmentExamineMessage = Loc.GetString(severity.ExamineText);
         }
 
-        // text based on ID card
-        List<ProtoId<DepartmentPrototype>> departments = new();
-        var jobId = "";
-        if (_id.TryFindIdCard(args.User, out var id))
-        {
-            departments = id.Comp.JobDepartments;
-            if (id.Comp.LocalizedJobTitle is not null)
-            {
-                jobId = id.Comp.LocalizedJobTitle;
-            }
-        }
 
         // if it is fully restricted, you're department-less, or your department isn't in the allowed list, you cannot carry it. Otherwise, you can.
         var carryingMessage = Loc.GetString("contraband-examine-text-avoid-carrying-around");
         var iconTexture = "/Textures/Interface/VerbIcons/lock-red.svg.192dpi.png";
-        if (departments.Intersect(ent.Comp.AllowedDepartments).Any()
-            || jobs.Contains(jobId))
+        if (CanWearContraband(ent, args.User))
         {
             carryingMessage = Loc.GetString("contraband-examine-text-in-the-clear");
             iconTexture = "/Textures/Interface/VerbIcons/unlock-green.svg.192dpi.png";
@@ -126,6 +114,26 @@ public sealed class ContrabandSystem : EntitySystem
             examineMarkup.ToMarkup(),
             iconTexture);
     }
+
+    // Ratbite: Helper function
+    public bool CanWearContraband(Entity<ContrabandComponent> ent, EntityUid user)
+    {
+        var jobs = ent.Comp.AllowedJobs.Select(p => _proto.Index(p).LocalizedName).ToArray();
+        // text based on ID card
+        List<ProtoId<DepartmentPrototype>> departments = new();
+        var jobId = "";
+        if (_id.TryFindIdCard(user, out var id))
+        {
+            departments = id.Comp.JobDepartments;
+            if (id.Comp.LocalizedJobTitle is not null)
+            {
+                jobId = id.Comp.LocalizedJobTitle;
+            }
+        }
+        return departments.Intersect(ent.Comp.AllowedDepartments).Any()
+            || jobs.Contains(jobId);
+    }
+    // Ratbite end
 
     private FormattedMessage GetContrabandExamine(String deptMessage, String carryMessage)
     {
