@@ -469,3 +469,96 @@
         conditions:
         - !type:ReagentThreshold
           min: 20
+
+#biofoam from battlefield 14, put in this folder because idk
+
+- type: reagent
+  id: Biofoam
+  name: reagent-name-biofoam
+  group: Medicine
+  desc: reagent-desc-biofoam
+  physicalDesc: reagent-physical-desc-thick
+  flavor: powdery
+  color: "#edd9c0"
+  worksOnTheDead: true
+  metabolisms:
+    Medicine:
+      metabolismRate: 1
+      effects:
+      - !type:AdjustReagent
+        reagent: BiofoamRemnants
+        amount: 0.75
+      - !type:EvenHealthChange
+        conditions:
+        - !type:ReagentThreshold
+          max: 10.5
+        damage:           #no airloss because I don't get why it would heal that lol
+          Brute: -11
+          Burn: -6
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          min: 10.5
+        damage:
+          types:
+            Blunt: 6
+            Airloss: 4
+            Poison: 1
+      - !type:ModifyBleedAmount
+        amount: -5
+      - !type:PopupMessage
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Biofoam
+          max: 10.5
+        visualType: Medium
+        messages: ["You feel the foam expand", "You feel the foam fill your wounds"]
+        type: Local
+        probability: 0.2
+      - !type:Jitter
+      - !type:AdjustReagent
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Biofoam
+          min: 11
+          max: 12
+        reagent: Biofoam
+        amount: -15
+      - !type:MovespeedModifier
+        walkSpeedModifier: 0.9
+        sprintSpeedModifier: 0.9
+      - !type:PopupMessage
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Biofoam
+          min: 10.5
+        visualType: MediumCaution
+        messages: ["The foam violently jitters", "The foam chokes you", "You feel ill"]
+        type: Local
+        probability: 0.3
+
+- type: reagent
+  id: BiofoamRemnants
+  name: biofoam remnants
+  group: Medicine
+  desc: The remnants of biofoam use, can interfere with a fresh injection, causing an overdose.
+  physicalDesc: reagent-physical-desc-thick
+  flavor: powdery
+  color: "#edd9c0"
+  worksOnTheDead: true
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.5
+      effects:
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          min: 3.5
+        damage:
+          types:
+            Blunt: 2
+            Asphyxiation: 2
+            Poison: 2
+      - !type:MovespeedModifier
+        walkSpeedModifier: 0.8
+        sprintSpeedModifier: 0.8
