@@ -512,7 +512,7 @@
           reagent: Biofoam
           max: 10.5
         visualType: Medium
-        messages: [""biofoam-effect-organrepair", "biofoam-effect-bodyrepair""]
+        messages: ["biofoam-effect-organrepair", "biofoam-effect-bodyrepair"]
         type: Local
         probability: 0.2
       - !type:Jitter
