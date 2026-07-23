@@ -22,3 +22,29 @@
     song:
       path: /Audio/_BRatbite/Radiostation/music/Moonchild.ogg
       
+- type: entity
+  name: "vinyl disk: please call"
+  description: a truly funkalicious disk
+  id: VinylDiskcalldapolice
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/RadioStation/vinyls.rsi
+    state: red-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/Radiostation/music/Pleasecalldapolice.ogg      
+      
+- type: entity
+  name: "vinyl disk: shitsec themesong"
+  description: a theme made to commemorate the glorious security department.
+  id: VinylDiskHumanshields
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/RadioStation/vinyls.rsi
+    state: devil-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/Radiostation/music/SHITSECTHEME.ogg
+      
