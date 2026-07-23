@@ -24,3 +24,5 @@ reagent-name-pumpup = pump-up
 reagent-desc-pumpup = A stimulant engineered by the United Tider's Association during the second tider war to combat the rising 'meta' of stun stun prods on the dwarf planet and phoron drilling outpost nicknamed 'Salt' after its unnaturally high amount of limestone on the surface.
 reagent-name-aiogah = All-in-One Gender Affirming Hormone
 reagent-desc-aiogah = A concoction of hormones and chemicals that miraculously rearrange the DNA of the metaboliser, completely switching their biological sex. Not really a horomone... but it gets the job done.
+reagent-name-biofoam = Biofoam
+reagent-desc-biofoam = A thick foam that expands inside the body to fill wound cavities and stem bleeding. Risk of rejection is NEAR zero.
