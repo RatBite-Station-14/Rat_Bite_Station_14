@@ -1,0 +1,79 @@
+- type: entity
+  id: PanicButtonBase
+  abstract: true
+  name: security request button
+  description: A small device to alert security of any crimes happening in your department.
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Security/panicbutton.rsi
+    layers:
+    - state: icon
+    - state: top
+      color: "#000000"
+  - type: PanicButton
+    radioChannel: "Security"
+  - type: UseDelay
+    delay: 45
+
+- type: entity
+  id: PanicButtonMedical
+  suffix: Medical
+  parent: PanicButtonBase
+  name: security request button
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: top
+      color: "#4B96FF"
+  - type: PanicButton
+    distressMessage: "panic-button-distress-medical"
+    secHudIconColor: "#4B96FF80"
+
+- type: entity
+  id: PanicButtonCargo
+  suffix: Cargo
+  parent: PanicButtonBase
+  name: security request button
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: top
+      color: "#FFA500"
+  - type: PanicButton
+    distressMessage: "panic-button-distress-cargo"
+    secHudIconColor: "#FFA50080"
+
+- type: entity
+  id: PanicButtonEngineering
+  suffix: Engineering
+  parent: PanicButtonBase
+  name: security request button
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: top
+      color: "#FFD700"
+  - type: PanicButton
+    distressMessage: "panic-button-distress-engineering"
+    secHudIconColor: "#FFD70080"
+
+- type: entity
+  id: PanicButtonScience
+  suffix: Science
+  parent: PanicButtonBase
+  name: security request button
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: top
+      color: "#FF00FF"
+  - type: PanicButton
+    distressMessage: "panic-button-distress-science"
+    secHudIconColor: "#FF00FF80"
+        
+
