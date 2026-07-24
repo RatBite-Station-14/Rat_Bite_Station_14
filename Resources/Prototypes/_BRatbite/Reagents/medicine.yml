@@ -470,7 +470,7 @@
         - !type:ReagentThreshold
           min: 20
 
-#biofoam from battlefield 14, put in this folder because idk
+# biofoam from battlefield 14, put in this folder because idk
 
 - type: reagent
   id: Biofoam
@@ -492,7 +492,7 @@
         conditions:
         - !type:ReagentThreshold
           max: 10.5
-        damage:           #no airloss because I don't get why it would heal that lol
+        damage:           # no airloss because I don't get why it would heal that lol
           Brute: -11
           Burn: -6
       - !type:HealthChange
@@ -539,9 +539,9 @@
 
 - type: reagent
   id: BiofoamRemnants
-  name: biofoam remnants
+  name: reagent-name-biofoamremnants
   group: Medicine
-  desc: The remnants of biofoam use, can interfere with a fresh injection, causing an overdose.
+  desc: reagent-desc-biofoamremnants
   physicalDesc: reagent-physical-desc-thick
   flavor: powdery
   color: "#edd9c0"
@@ -560,5 +560,5 @@
             Asphyxiation: 2
             Poison: 2
       - !type:MovespeedModifier
-        walkSpeedModifier: 0.8
-        sprintSpeedModifier: 0.8
+        walkSpeedModifier: 0.9
+        sprintSpeedModifier: 0.9
