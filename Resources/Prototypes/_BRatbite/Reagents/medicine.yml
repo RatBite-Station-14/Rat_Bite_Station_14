@@ -533,7 +533,7 @@
           reagent: Biofoam
           min: 10.5
         visualType: MediumCaution
-        messages: ["reagent-effect-damage-blunt2", "reagent-effect-damage-asphyxiation", "reagent-effect-damage-poison", "reagent-effect-overdose1"]
+        messages: ["reagent-effect-blunt2", "reagent-effect-asphyxiation", "reagent-effect-poison", "reagent-effect-overdose1"]
         type: Local
         probability: 0.3
 
