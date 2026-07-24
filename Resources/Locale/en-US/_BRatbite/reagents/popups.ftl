@@ -1,4 +1,4 @@
-#only include these in strong medications, you shouldn't feel anything with very minor healing or damage
+# only include these in strong medications, you shouldn't feel anything with very minor healing or damage
 medicine-effect-brute1 = I feel my wounds close.
 medicine-effect-brute2 = I feel my cuts seal.
 medicine-effect-brute3 = I feel my scars heal.
@@ -11,24 +11,24 @@ medicine-effect-oxyloss2 = I feel like I can breathe better.
 
 medicine-effect-bonedamage = I feel my bones mend.
 
-#poisons and overdoses
+# poisons and overdoses
 
-reagent-effect-damage-poison = I feel like shit.
+reagent-effect-poison = I feel like shit.
 reagent-effect-overdose1 = I fucking overdosed!
-reagent-effect-damage-burning = My blood is on fire!
-reagent-effect-damage-asphyxiation = I can't breathe!
-reagent-effect-damage-bloodloss1 = I feel light-headed...
-reagent-effect-damage-bloodloss2 = My blood feels thin.
-reagent-effect-damage-blunt1 = I feel it kicking me.
-reagent-effect-damage-blunt2 = It is biting me from within.
-reagent-effect-damage-slash1 = AAAAAAAAAAAAAAAAGHAHGAAAAAAAAA!!!
-reagent-effect-damage-slash2 = It is cutting me open!
-reagent-effect-damage-piercing1 = It is drilling through me!
-reagent-effect-damage-piercing2 = AAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!
+reagent-effect-burning = My blood is on fire!
+reagent-effect-asphyxiation = I can't breathe!
+reagent-effect-bloodloss1 = I feel light-headed...
+reagent-effect-bloodloss2 = My blood feels thin.
+reagent-effect-blunt1 = I feel it kicking me.
+reagent-effect-blunt2 = It is biting me from within.
+reagent-effect-slash1 = AAAAAAAAAAAAAAAAGHAHGAAAAAAAAA!!!
+reagent-effect-slash2 = It is cutting me open!
+reagent-effect-piercing1 = It is drilling through me!
+reagent-effect-piercing2 = AAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!
 reagent-effect-overdose2 = I shouldn't of took so much of that...
 reagent-effect-radiationcellular = This is so much cancer that I feel the tumors growing on my back.
 
-#for hallucinations maybe; didn't code it into this PR. Here for funnies
+# for hallucinations maybe; didn't code it into this PR. Here for funnies
 
 hallucination-effect-ratstapping = 89 rats wrapped in my skin. I feel their little feet tap-tap-tap tapping against my ribs, spine, my arms and legs. Trapped. They're all trapped. The rats. They're trying to eat their way out of me. I know they are. Don't you quetsion me.
 hallucination-effect-council = The council are looking for me, I see them poking their noses. They are searching for me. They will never find me. The space elves and space dwarves and space orks will never find me. I'm far from them now. They are gone.
@@ -41,7 +41,7 @@ hallucination-effect-capgras = They are a traitor. They are not real. They took 
 hallucination-effect-fleshprison = MY FLESH IS A PRISON. LET ME OUT. HELP ME. GET SOMEONE TO HELP ME. FAST. GET IT OFF. FREE ME, PLEASE.
 hallucination-effect-behindyou = They are watching. Behind me.
 
-#for misc stuff
+# for misc stuff
 
 biofoam-effect-organrepair = I can feel my organs knitting themselves back together!
 biofoam-effect-bodyrepair = I can feel my body knitting itself back together!
