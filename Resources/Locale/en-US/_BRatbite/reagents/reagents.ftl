@@ -26,3 +26,5 @@ reagent-name-aiogah = All-in-One Gender Affirming Hormone
 reagent-desc-aiogah = A concoction of hormones and chemicals that miraculously rearrange the DNA of the metaboliser, completely switching their biological sex. Not really a horomone... but it gets the job done.
 reagent-name-biofoam = Biofoam
 reagent-desc-biofoam = A thick foam that expands inside the body to fill wound cavities and stem bleeding. Risk of rejection is NEAR zero.
+reagent-name-biofoamremnants = Biofoam remnants
+reagent-desc-biofoamremnants = The remnants of biofoam use, can interfere with a fresh injection, causing an overdose.
