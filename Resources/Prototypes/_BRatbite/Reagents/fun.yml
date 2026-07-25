@@ -23,4 +23,4 @@
       amount: 5
   effects:
     - !type:CreateEntityReactionEffect
-      entity: MobHuman
+      entity: MobHumanRandom
