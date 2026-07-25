@@ -34,3 +34,47 @@
         conditions:
         - !type:ReagentThreshold
           min: 10
+
+- type: reagent
+  id: Celoxradine
+  name: reagent-name-celoxradine
+  group: Medicine
+  desc: reagent-desc-celoxradine
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#fc035e"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.1 # for healing uncommon (in-combat) damage types slowly
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Shock: -4
+            Radiation: -2
+            Heat: -1.25
+          groups:
+            Brute: -0.5
+      - !type:HealthChange
+        conditions:
+        - !type:OrganType
+          type: Yowie
+          shouldHave: false
+        - !type:ReagentThreshold
+          min: 15
+        damage:
+          types:
+            Asphyxiation: 2.5
+            Poison: 2.0
+      - !type:ChemVomit
+        conditions:
+        - !type:OrganType
+          type: Yowie
+          shouldHave: false
+        - !type:ReagentThreshold
+          min: 30
+        probability: 0.5
+      - !type:Jitter
+        conditions:
+        - !type:ReagentThreshold
+          min: 15
