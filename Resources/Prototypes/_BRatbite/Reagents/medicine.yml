@@ -562,3 +562,37 @@
       - !type:MovespeedModifier
         walkSpeedModifier: 0.9
         sprintSpeedModifier: 0.9
+
+- type: reagent
+  id: Meralyne
+  name: reagent-name-meralyne
+  group: Medicine
+  desc: reagent-desc-meralyne
+  physicalDesc: reagent-physical-desc-thick
+  flavor: medicine
+  color: "#fd5964"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2
+      effects:
+        - !type:HealthChange
+          damage:
+            groups:
+              Brute: -6.5
+            types:
+              Cellular: -0.2
+        - !type:HealthChange
+        conditions:
+          - !type:ReagentThreshold
+          min: 15.5
+        damage:
+          types:
+            Blunt: 2
+            Heat: 4
+            Poison: 4
+        - !type:ChemVomit
+          conditions:
+          - !type:ReagentThreshold
+            min: 30
+          probability: 0.2
+        - !type:Drunk
