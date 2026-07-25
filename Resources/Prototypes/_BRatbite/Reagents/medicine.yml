@@ -596,26 +596,19 @@
           probability: 0.2
 
 - type: reagent
-  id: UniversalBloodReplacement  # nanoblood but fits lore of ratbite by being the stuff in
+  id: UniversalBloodReplacement  # nanoblood but fits lore of ratbite by being the stuff in bloodpacks
   name: reagent-name-universalbloodreplacement
   group: Medicine
   desc: reagent-desc-universalbloodreplacement
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
-  color: "#6e0606"
+  color: "#63062a"
   worksOnTheDead: true
   metabolisms:
     Medicine:
       effects:
       - !type:ModifyBloodLevel
         amount: 10 # ~33% blood in 5u, for 10 poison
-      - !type:HealthChange
-        conditions:
-        - !type:ReagentThreshold
-          max: 5.5 # BF14
-        damage:
-          types:
-            Poison: 1
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
@@ -646,10 +639,10 @@
     Narcotic:
       metabolismRate: 5
       effects:
-      - !type:TakeStaminaDamage # double that of hyperzine because this is a specialised medicine
+      - !type:TakeStaminaDamage # 4x that of hyperzine because this is a specialised medicine and is metabolised VERY fast
         conditions:
         - !type:ReagentThreshold
           min: 5
           max: 20
-        amount: -20
+        amount: -40
         immediate: true
