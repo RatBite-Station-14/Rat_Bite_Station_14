@@ -63,7 +63,7 @@
   - type: OnUseTimerTrigger
     delay: 0.5
   - type: SoundOnTrigger
-    sound: 
+    sound:
       path: /Audio/_Crescent/Weapons/Grenades/troll_nade/trigger.ogg
       params:
         variation: 0.25
@@ -83,9 +83,9 @@
   components:
   - type: Explosive
     explosionType: HardBomb
-    maxIntensity: 100
-    intensitySlope: 5
-    totalIntensity: 12000 # kaboom?
+    maxIntensity: 1250
+    intensitySlope: 150
+    totalIntensity: 150000 # kaboom?
     canCreateVacuum: true
 
 # </Ratbite>
