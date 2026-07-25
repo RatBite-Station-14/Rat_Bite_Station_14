@@ -64,6 +64,7 @@
     sprite: _Crescent/Objects/Fun/Plushies/orange.rsi
     state: icon
   - type: Item
+<<<<<<< HEAD
     sprite: _Crescent/Objects/Fun/Plushies/orange.rsi
   - type: EmitSoundOnActivate
     sound:
@@ -101,3 +102,6 @@
   - "/Audio/_Crescent/Fun/OrangePlushCollection/orange3.ogg"
   - "/Audio/_Crescent/Fun/OrangePlushCollection/orange4.ogg"
   - "/Audio/_Crescent/Fun/OrangePlushCollection/orange5.ogg"
+=======
+    sprite: _Crescent/Objects/Fun/Plushies/orange.rsi
+>>>>>>> 811945b908b2d4fa36e42b3d7e62ea570dbb4a75
