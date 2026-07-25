@@ -179,3 +179,15 @@
       amount: 1
   products:
     Biofoam: 3
+
+- type: reaction
+  id: Meralyne
+  reactants:
+    Caridine:
+      amount: 1
+    Bicaridine:
+      amount: 1
+    Carbon:
+      amount: 1
+  products:
+    Meralyne: 3
