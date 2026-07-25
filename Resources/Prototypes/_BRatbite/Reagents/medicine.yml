@@ -603,6 +603,7 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
   color: "#6e0606"
+  worksOnTheDead: true
   metabolisms:
     Medicine:
       effects:
