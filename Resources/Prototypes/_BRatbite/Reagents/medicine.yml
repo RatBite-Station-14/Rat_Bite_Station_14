@@ -469,7 +469,7 @@
         - !type:ReagentThreshold
           min: 20
 
-# biofoam from battlefield 14, put in this folder because idk
+# biofoam, meralyne, and universal blood replacement (renamed from nanoblood) are from battlefield 14, put in this folder because idk
 
 - type: reagent
   id: Biofoam
@@ -492,8 +492,8 @@
         - !type:ReagentThreshold
           max: 10.5
         damage:           # no airloss because I don't get why it would heal that lol
-          Brute: -16
-          Burn: -15
+          Brute: -13
+          Burn: -13
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
@@ -595,3 +595,38 @@
             min: 30
           probability: 0.2
 
+- type: reagent
+  id: UniversalBloodReplacement  # nanoblood but fits lore of ratbite by being the stuff in
+  name: reagent-name-universalbloodreplacement
+  group: Medicine
+  desc: reagent-desc-universalbloodreplacement
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#6e0606"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ModifyBloodLevel
+        amount: 10 # ~33% blood in 5u, for 10 poison
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          max: 5.5 # BF14
+        damage:
+          types:
+            Poison: 1
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          min: 5.5
+          max: 10 # BF14
+        damage:
+          types:
+            Poison: 3.5 # TGMC parity lol
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          min: 10
+        damage:
+          types:
+            Poison: 7.5 # TGMC parity lol
