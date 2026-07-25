@@ -137,6 +137,10 @@ namespace Content.Shared.Lathe
         [DataField, ViewVariables(VVAccess.ReadWrite)]
         public bool OutputToStorage = false;
         // Goobstation change end
+
+        // Ratbite, limit queue to a max length
+        [DataField]
+        public int MaxQueueLength = 300;
     }
 
     public sealed class LatheGetRecipesEvent : EntityEventArgs
