@@ -30,3 +30,7 @@ reagent-name-biofoamremnants = Biofoam remnants
 reagent-desc-biofoamremnants = The remnants of biofoam use, can interfere with a fresh injection, causing an overdose.
 reagent-name-meralyne = Meralyne
 reagent-desc-meralyne = Meralyne is a concentrated form of Bicaridine and can be used to treat extensive blunt trauma. It isn't very complicated, and can be described as 'double bicaridine'.
+reagent-name-universalbloodreplacement = Universal blood replacement
+reagent-desc-universalbloodreplacement = The groundbreaking universal blood replacement! Usually put in blood packs and applied topically but can be administered the same as any other chemical.
+reagent-name-ephedrinephoride = Ephedrine Phoride
+reagent-desc-ephedrinephoride = Ephedrine bonded with plasma through space hogwash. Ephedrine phoride manages to quickly resupply stamina to the metaboliser without any notable negative effects.
