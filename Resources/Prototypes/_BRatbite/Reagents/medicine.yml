@@ -582,7 +582,7 @@
             types:
               Cellular: -0.2
         - !type:HealthChange
-        conditions:
+          conditions:
           - !type:ReagentThreshold
           min: 15.5
         damage:
