@@ -209,9 +209,6 @@
       amount: 2
     Water:
       amount: 2
-    Enzyme:
-      amount: 1
-      catalyst: true
   products:
     UniversalBloodReplacement: 9
 
