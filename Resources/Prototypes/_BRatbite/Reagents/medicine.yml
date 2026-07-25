@@ -493,17 +493,17 @@
         - !type:ReagentThreshold
           max: 10.5
         damage:           # no airloss because I don't get why it would heal that lol
-          Brute: -11
-          Burn: -6
+          Brute: -16
+          Burn: -15
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
           min: 10.5
         damage:
           types:
-            Blunt: 6
-            Asphyxiation: 4
-            Poison: 1
+            Blunt: 10
+            Asphyxiation: 8
+            Poison: 2
       - !type:ModifyBleedAmount
         amount: -5
       - !type:PopupMessage
