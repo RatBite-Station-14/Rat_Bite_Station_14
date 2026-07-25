@@ -502,7 +502,7 @@
         damage:
           types:
             Blunt: 6
-            Airloss: 4
+            Asphyxiation: 4
             Poison: 1
       - !type:ModifyBleedAmount
         amount: -5
