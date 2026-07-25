@@ -633,3 +633,22 @@
 
 # that is all of the stolen BoyFriend14 chemicals
 
+- type: reagent
+  id: EphedrinePhoride
+  name: reagent-name-ephedrinephoride
+  group: Medicine
+  desc: reagent-desc-ephedrinephoride
+  physicalDesc: reagent-physical-desc-shocking
+  flavor: medicine
+  color: "#9900ff"
+  metabolisms:
+    Narcotic:
+      metabolismRate: 5
+      effects:
+      - !type:TakeStaminaDamage # double that of hyperzine because this is a specialised medicine
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+          max: 20
+        amount: -20
+        immediate: true
