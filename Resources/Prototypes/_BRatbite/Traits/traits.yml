@@ -195,7 +195,7 @@
   name: trait-atheist-name
   description: trait-atheist-desc
   category: Mental
-  cost: -2
+  cost: 0
   mutuallyExclusiveTraits:
   - Believer
   components:
@@ -206,7 +206,7 @@
   name: trait-believer-name
   description: trait-believer-desc
   category: Mental
-  cost: 8
+  cost: 2
   mutuallyExclusiveTraits:
   - Atheist
   components:
