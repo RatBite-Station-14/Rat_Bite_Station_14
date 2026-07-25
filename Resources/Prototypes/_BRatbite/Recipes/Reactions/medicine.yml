@@ -209,7 +209,7 @@
       amount: 2
     Water:
       amount: 2
-    Plasma:
+    Enzyme:
       amount: 1
       catalyst: true
   products:
