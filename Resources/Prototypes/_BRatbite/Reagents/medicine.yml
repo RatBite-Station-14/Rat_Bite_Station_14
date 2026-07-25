@@ -608,7 +608,7 @@
     Medicine:
       effects:
       - !type:ModifyBloodLevel
-        amount: 10 # ~33% blood in 5u, for 10 poison
+        amount: 10 # ~33% blood in 5u
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
