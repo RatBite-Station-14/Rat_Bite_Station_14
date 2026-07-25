@@ -165,3 +165,17 @@
       catalyst: true
   products:
     AllInOneGenderAffirmingHormone: 3
+
+- type: reaction
+  id: Biofoam
+  reactants:
+    Synthcells:
+      amount: 1
+    Fluorosurfactant:
+      amount: 1
+    Carbon:
+      amount: 1
+    Tepalal:
+      amount: 1
+  products:
+    Biofoam: 3
