@@ -28,3 +28,5 @@ reagent-name-biofoam = Biofoam
 reagent-desc-biofoam = A thick foam that expands inside the body to fill wound cavities and stem bleeding. Risk of rejection is NEAR zero.
 reagent-name-biofoamremnants = Biofoam remnants
 reagent-desc-biofoamremnants = The remnants of biofoam use, can interfere with a fresh injection, causing an overdose.
+reagent-name-meralyne = Meralyne
+reagent-desc-meralyne = Meralyne is a concentrated form of Bicaridine and can be used to treat extensive blunt trauma. It isn't very complicated, and can be described as 'double bicaridine'.
