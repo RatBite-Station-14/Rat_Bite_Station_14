@@ -512,7 +512,7 @@
           reagent: Biofoam
           max: 10.5
         visualType: Medium
-        messages: ["biofoam-effect-organrepair", "biofoam-effect-bodyrepair"]
+        messages: ["test", "test"]
         type: Local
         probability: 0.2
       - !type:Jitter
@@ -533,7 +533,7 @@
           reagent: Biofoam
           min: 10.5
         visualType: MediumCaution
-        messages: ["reagent-effect-blunt2", "reagent-effect-asphyxiation", "reagent-effect-poison", "reagent-effect-overdose1"]
+        messages: ["test", "test", "test", "test"]
         type: Local
         probability: 0.3
 
