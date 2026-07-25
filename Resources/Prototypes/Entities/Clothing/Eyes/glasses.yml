@@ -203,6 +203,9 @@
     tags:
     - PetWearable
     - WhitelistChameleon
+  - type: Contraband # Ratbite: Made contraband again
+    allowedDepartments: [ Engineering, Cargo ]
+    allowedJobs: [ BlueshieldOfficer ]
 
 - type: entity
   parent: ClothingEyesBase

@@ -256,6 +256,8 @@ namespace Content.Server.Lathe
             if (!CanProduce(uid, recipe, 1, component))
                 return false;
 
+            if (component.Queue.Count + 1 > component.MaxQueueLength) return false;
+
             foreach (var (mat, amount) in recipe.Materials)
             {
                 var adjustedAmount = recipe.ApplyMaterialDiscount

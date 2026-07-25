@@ -126,7 +126,7 @@
 
 - type: entity
   id: EnergyChemDispenserMachineCircuitboard
-  parent: BaseMachineCircuitboard
+  parent: [BaseMachineCircuitboard, BaseMedicalScienceContraband] # Ratbite: contraband changes
   name: energy chem dispenser machine board
   description: A machine printed circuit board for an energy chem dispenser.
   components:
