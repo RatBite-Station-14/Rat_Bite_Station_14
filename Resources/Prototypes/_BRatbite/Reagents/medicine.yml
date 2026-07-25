@@ -646,3 +646,52 @@
           max: 20
         amount: -40
         immediate: true
+
+- type: reagent # this chemical will not be addictive once we get addictions. Bicaridine, caridine, and meralyne will be
+  id: Metorapan
+  name: reagent-name-metorapan
+  group: Medicine
+  desc: reagent-desc-metorapan
+  physicalDesc: reagent-physical-desc-oily
+  flavor: medicine
+  color: "#857d57"
+  metabolisms:
+    Medicine:
+      metabolismRate: 1
+      effects:
+        - !type:HealthChange
+          damage:
+            groups:
+              Brute: -20
+        - !type:HealthChange
+          conditions:
+          - !type:ReagentThreshold
+            min: 5
+          damage:
+            types:
+              Caustic: -4
+
+- type: reagent
+  id: Metorapan
+  name: reagent-name-metorapan
+  group: Medicine
+  desc: reagent-desc-metorapan
+  physicalDesc: reagent-physical-desc-oily
+  flavor: medicine
+  color: "#857d57"
+  metabolisms:
+    Medicine:
+      metabolismRate: 1
+      effects:
+        - !type:HealthChange
+          damage:
+            groups:
+              Brute: -20
+        - !type:HealthChange
+          conditions:
+          - !type:ReagentThreshold
+            min: 5
+          damage:
+            types:
+              Caustic: -4
+
