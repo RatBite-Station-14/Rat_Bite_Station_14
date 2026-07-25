@@ -68,7 +68,7 @@
   - type: OnUseTimerTrigger
     delay: 0.5
   - type: SoundOnTrigger
-    sound: 
+    sound:
       path: /Audio/_Crescent/Weapons/Grenades/troll_nade/trigger.ogg
       params:
         variation: 0.25
@@ -113,6 +113,30 @@
           Unprimed: { state: icon }
   - type: DeleteOnTrigger
 
--
-
--
+- type: entity
+  name: Troll
+  parent: GrenadeBase
+  description: Dont you fucking dare!
+  suffix: UNSTOPABLE CHAOS!
+  id: TrollREALNade
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Fun/Plushies/troll.rsi
+    layers:
+    - state: icon
+      map: ["enum.TriggerVisualLayers.Base"]
+  - type: Item
+    size: Normal
+  - type: ClusterGrenade
+    fillPrototype: TrollNadeProjectile
+    velocity: 15
+    maxGrenadesCount: 30
+    grenadeTriggerIntervalMax: 0.25
+    grenadeTriggerIntervalMin: 0.0
+    baseTriggerDelay: 0.25
+    randomSpread: true
+  - type: OnUseTimerTrigger
+    delay: 1.5
+  - type: TimerTriggerVisuals
+    primingSound:
+      path: /Audio/_Crescent/Weapons/Grenades/troll_nade/trigger.ogg
