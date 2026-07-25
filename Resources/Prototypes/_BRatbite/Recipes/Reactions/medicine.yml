@@ -191,3 +191,37 @@
       amount: 1
   products:
     Meralyne: 3
+
+- type: reaction
+  id: UniversalBloodReplacement
+  reactants:
+    Saline:
+      amount: 1
+    Iron:
+      amount: 1
+    Copper:
+      amount: 1
+    Nitrogen:
+      amount: 1
+    Oxygen:
+      amount: 1
+    Sugar:
+      amount: 2
+    Water:
+      amount: 2
+    Plasma:
+      amount: 1
+      catalyst: true
+  products:
+    UniversalBloodReplacement: 9
+
+- type: reaction
+  id: EphedrinePhoride
+  mintemp: 400
+  reactants:
+    Ephedrine:
+      amount: 1
+    Plasma:
+      amount: 1
+  products:
+    Ephedrine Phoride: 1
