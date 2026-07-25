@@ -9,6 +9,18 @@
     sprite: _Crescent/Objects/Fun/Plushies/chudjak.rsi
     state: icon
   - type: Item
+    sprite: _Crescent/Objects/Fun/Plushies/pearcat.rsi
+
+- type: entity
+  parent: BasePlushie
+  id: PlushieChudjak
+  name: chudjak plushie
+  description: What the fuck is this?
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Fun/Plushies/chudjak.rsi
+    state: icon
+  - type: Item
     sprite: _Crescent/Objects/Fun/Plushies/chudjak.rsi
 
 - type: entity
@@ -90,5 +102,6 @@
   - "/Audio/_Crescent/Fun/OrangePlushCollection/orange3.ogg"
   - "/Audio/_Crescent/Fun/OrangePlushCollection/orange4.ogg"
   - "/Audio/_Crescent/Fun/OrangePlushCollection/orange5.ogg"
+    sprite: _Crescent/Objects/Fun/Plushies/orange.rsi
 =======
     sprite: _Crescent/Objects/Fun/Plushies/orange.rsi
