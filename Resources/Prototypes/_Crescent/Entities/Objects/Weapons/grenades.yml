@@ -57,39 +57,38 @@
     damage:
       types:
         Blunt: 5000
-  - type: ClusterGrenade
-    fillPrototype: TrollNadeProjectile
-    velocity: 30
-    maxGrenadesCount: 30
-    grenadeTriggerIntervalMax: 0.25
-    grenadeTriggerIntervalMin: 0.0
-    baseTriggerDelay: 0.25
-    randomSpread: true
+  - type: ScatteringGrenade # Ratbite - we dont have ClusterGrenade
+    fillPrototype: TrollNadeProjectileCluster # Ratbite - works differently than in hullrot, shitcode limitations :happening1:
+    distance: 8
   - type: OnUseTimerTrigger
     delay: 0.5
   - type: SoundOnTrigger
-    sound:
+    sound: 
       path: /Audio/_Crescent/Weapons/Grenades/troll_nade/trigger.ogg
       params:
         variation: 0.25
-  - type: EmitSoundOnUse
-    sound:
+  - type: TimerTriggerVisuals
+    primingSound:
       path: /Audio/_Crescent/Weapons/Grenades/troll_nade/trigger.ogg
       params:
         variation: 0.25
-  - type: EmitSoundOnTrigger
-    sound:
-      path: /Audio/_Crescent/Weapons/Grenades/troll_nade/trigger.ogg
-      params:
-        variation: 0.25
-  - type: MeleeWeapon
-    soundHit:
-      path: /Audio/_Crescent/Weapons/Grenades/troll_nade/trigger.ogg
-      params:
-        variation: 0.25
-  - type: SpawnItemsOnUse
-    items:
-      - id: TrollNadeProjectile
+
+# <Ratbite>
+
+- type: entity
+  name: The concequences of your actions
+  parent: ExGrenade
+  description: WHAT THE FUCK HAVE YOU DONE?????
+  id: TrollNadeProjectileCluster
+  components:
+  - type: Explosive
+    explosionType: HardBomb
+    maxIntensity: 100
+    intensitySlope: 5
+    totalIntensity: 12000 # kaboom?
+    canCreateVacuum: true
+
+# </Ratbite>
 
 - type: entity
   name: Chudjak
