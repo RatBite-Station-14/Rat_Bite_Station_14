@@ -17,7 +17,7 @@
         reagents:
         - ReagentId: Bicaridine
           Quantity: 7.5
-         - ReagentId: Meralyne
+        - ReagentId: Meralyne
           Quantity: 7.5
 
 - type: entity
