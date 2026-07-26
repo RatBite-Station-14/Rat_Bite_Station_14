@@ -673,11 +673,11 @@
           damage:
             types:
               Caustic: 4
-      - !type:SuppressPain
-        amount: 3
-        time: 30
-      - !type:AdjustPainFeels
-        conditions:
+        - !type:SuppressPain
+          amount: 3
+          time: 30
+        - !type:AdjustPainFeels
+          conditions:
         - !type:ReagentThreshold
           min: 1
         amount: 0.04
