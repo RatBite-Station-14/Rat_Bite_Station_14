@@ -181,3 +181,18 @@
         reagents:
         - ReagentId: Dylovene
           Quantity: 30
+
+- type: entity
+  id: ChemistryBottleInaprovaline
+  suffix: inaprovaline
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-inaprovaline
+  - type: SolutionContainerManager
+    solutions:
+      drink: # This solution name and target volume is hard-coded in ChemMasterComponent
+        maxVol: 30
+        reagents:
+        - ReagentId: Inaprovaline
+          Quantity: 30
