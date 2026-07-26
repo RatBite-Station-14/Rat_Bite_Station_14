@@ -112,6 +112,7 @@
     ChemistryBottleAiuri: 3 # ratbite
     ChemistryBottleDylovene: 3 # ratbite
     ChemistryBottleHyronalin: 3 # ratbite
+    ChemistryBottleInaprovaline: 3 # ratbite
     Syringe: 5
     BoxBottle: 3
     ClothingEyesHudMedical: 2
@@ -130,7 +131,7 @@
     FoodSnackLollypopWrappedMystery: 10
     FoodSnackLollypopWrappedTricordrazine: 8
     NitrousOxideTankFilled: 2
-    JugUniversalBloodReplacement: 1 # ratbite
+    JugUniversalBloodReplacement: 3 # ratbite
     IVEquipment: 3 # Ratbite
   emaggedInventory:
     SyringeMicroplastics: 2 #Technically a medicine
