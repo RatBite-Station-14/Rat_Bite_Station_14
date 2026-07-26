@@ -693,3 +693,57 @@
           damage:
             groups:
              Brute: -30
+
+- type: reagent
+  id: Paracetamol
+  name: reagent-name-paracetamol
+  group: Medicine
+  desc: reagent-desc-paracetamol
+  physicalDesc: reagent-physical-desc-crystalline
+  flavor: medicine
+  color: "#bcb448"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.1
+      effects:
+      - !type:SuppressPain
+        amount: 7.5
+        time: 15
+      - !type:AdjustPainFeels
+        conditions:
+        - !type:ReagentThreshold
+          min: 15
+        amount: 0.04
+      - !type:HealthChange
+        damage:
+          types:
+            Heat: -0.5
+      - !type:AdjustTemperature # 1/10 of lepo
+        conditions:
+        - !type:Temperature
+          max: 293.15
+        amount: 100000
+      - !type:AdjustTemperature
+        conditions:
+        - !type:Temperature
+          min: 293.15
+        amount: -10000
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 0.4
+        conditions:
+        - !type:ReagentThreshold
+          min: 35
+        - !type:OrganType
+          type: Yowie
+          shouldHave: false
+      - !type:AdjustConsciousness
+        conditions:
+        - !type:ReagentThreshold
+          min: 10
+        allowNewModifiers: true
+        modifierType: Pain
+        identifier: Suffocation
+        amount: -2.4
+        time: 12
