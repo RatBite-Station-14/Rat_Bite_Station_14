@@ -695,5 +695,5 @@
             types:
               Caustic: -4
         - !type:SuppressPain
-        amount: 9
-        time: 30
+          amount: 9
+          time: 30
