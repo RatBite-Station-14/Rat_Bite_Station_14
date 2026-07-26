@@ -311,7 +311,7 @@
           Quantity: 5
         - ReagentId: Atropine # Goobstation
           Quantity: 5
-        - ReagentId: TranexamicAcid # Goobstation
+        - ReagentId: Biofoam # ratbite
           Quantity: 5
   - type: Tag
     tags:
@@ -360,7 +360,7 @@
   name: brute auto-injector
   parent: ChemicalMedipen
   id: BruteAutoInjector
-  description: A rapid dose of bicaridine, salicylic acid, tranexamic acid, and tramadol, intended for combat applications. Usage of multiple highly recommended against. # goobstation
+  description: A rapid dose of bicaridine, salicylic acid, biofoam, and tramadol, intended for combat applications. Usage of multiple highly recommended against. # goobstation
   components:
   - type: Item
     inhandVisuals:
@@ -397,7 +397,7 @@
           Quantity: 10
         - ReagentId: Bicaridine # goobstation
           Quantity: 5
-        - ReagentId: TranexamicAcid
+        - ReagentId: Biofoam # ratbite
           Quantity: 5
         - ReagentId: Tramadol # goobstation
           Quantity: 5
@@ -779,7 +779,7 @@
         reagents:
         - ReagentId: Omnizine
           Quantity: 30 # goobstation
-        - ReagentId: TranexamicAcid
+        - ReagentId: Biofoam # ratbite
           Quantity: 5
   - type: Hypospray
     solutionName: pen
