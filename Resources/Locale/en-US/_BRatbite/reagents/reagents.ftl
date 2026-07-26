@@ -36,3 +36,5 @@ reagent-name-ephedrinephoride = Ephedrine Phoride
 reagent-desc-ephedrinephoride = Ephedrine bonded with plasma through space hogwash. Ephedrine phoride manages to quickly resupply stamina to the metaboliser without any notable negative effects.
 reagent-name-metorapan = Metorapan
 reagent-desc-metorapan = An analgesic medicine derived from meralyne. It is also very effective at treating brute trauma quickly
+reagent-name-metorixadone = Metorixadone
+reagent-desc-metorixadone = A cryogenics chemical. It is used to treat severe brute trauma.
