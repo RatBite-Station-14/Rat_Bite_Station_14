@@ -694,4 +694,6 @@
           damage:
             types:
               Caustic: -4
-
+        - !type:SuppressPain
+        amount: 9
+        time: 30
