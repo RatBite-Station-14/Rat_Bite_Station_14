@@ -32,6 +32,7 @@
     ClothingBackpackMessengerMedical: 4 # Frontier
     ClothingUniformJumpsuitMedicalDoctor: 4
     ClothingUniformJumpskirtMedicalDoctor: 4
+    ClothingUniformJumpskirtOfLife: 4
     ClothingBeltMedical: 4
     ClothingHeadHatBeretMedic: 4
     ClothingHeadNurseHat: 4
@@ -50,7 +51,6 @@
     ClothingHeadHatSurgcapPurple: 4
     ClothingShoesBootsWinterMed: 2
   contrabandInventory:
-    ClothingUniformJumpskirtOfLife: 1
     ToyFigurineMedicalDoctor: 1
     ToyFigurineParamedic: 1
     ToyFigurineChiefMedicalOfficer: 1
