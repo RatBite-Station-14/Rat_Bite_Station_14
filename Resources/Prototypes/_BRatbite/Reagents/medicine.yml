@@ -694,7 +694,7 @@
             groups:
              Brute: -30
 
-- type: reagent
+- type: reagent # ibuprofen but different name :godo: also stops pain a bit more
   id: Paracetamol
   name: reagent-name-paracetamol
   group: Medicine
@@ -707,22 +707,22 @@
       metabolismRate: 0.1
       effects:
       - !type:SuppressPain
-        amount: 7.5
+        amount: 15
         time: 15
       - !type:AdjustPainFeels
         conditions:
         - !type:ReagentThreshold
-          min: 15
+          min: 0.1
         amount: 0.04
       - !type:HealthChange
         damage:
           types:
             Heat: -0.5
-      - !type:AdjustTemperature # 1/10 of lepo
+      - !type:AdjustTemperature
         conditions:
         - !type:Temperature
           max: 293.15
-        amount: 100000
+        amount: 10000
       - !type:AdjustTemperature
         conditions:
         - !type:Temperature
@@ -741,7 +741,7 @@
       - !type:AdjustConsciousness
         conditions:
         - !type:ReagentThreshold
-          min: 10
+          min: 0.1
         allowNewModifiers: true
         modifierType: Pain
         identifier: Suffocation
