@@ -2,7 +2,7 @@
   name: pill
   suffix: bicaridine 7.5u, meralyne 7.5u
   parent: Pill
-  id: PillBicaMera
+  id: PillBicarMera
   components:
   - type: Pill
     pillType: 7
@@ -30,7 +30,7 @@
     currentLabel: Bicaridine 7.5u, meralyne 7.5u, 15
   - type: StorageFill
     contents:
-    - id: PillBicaMera
+    - id: PillBicarMera
       amount: 15
 
 - type: entity
