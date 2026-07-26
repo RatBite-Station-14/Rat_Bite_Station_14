@@ -237,3 +237,13 @@
       amount: 1
   products:
     Metorapan: 4
+
+- type: reaction
+  id: Metorixadone
+  reactants:
+    Cryoxadone:
+      amount: 3
+    Metorapan:
+      amount: 1
+  products:
+    Metorixadone: 4
