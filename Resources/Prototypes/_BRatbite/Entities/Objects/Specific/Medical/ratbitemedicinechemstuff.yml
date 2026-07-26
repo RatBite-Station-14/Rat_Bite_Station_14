@@ -48,7 +48,7 @@
         - ReagentId: Caridine
           Quantity: 30
 
-  - type: entity
+- type: entity
   id: ChemistryBottleAiuri
   suffix: aiuri
   parent: BaseChemistryBottleFilled
@@ -63,7 +63,7 @@
         - ReagentId: Aiuri
           Quantity: 30
 
-    - type: entity
+- type: entity
   id: ChemistryBottleLenturi
   suffix: lenturi
   parent: BaseChemistryBottleFilled
@@ -78,7 +78,7 @@
         - ReagentId: Lenturi
           Quantity: 30
 
-  - type: entity
+- type: entity
   id: ChemistryBottleLibital
   suffix: libital
   parent: BaseChemistryBottleFilled
@@ -93,7 +93,7 @@
         - ReagentId: Libital
           Quantity: 30
 
-  - type: entity
+- type: entity
   id: ChemistryBottleBiofoam
   suffix: biofoam
   parent: BaseChemistryBottleFilled
