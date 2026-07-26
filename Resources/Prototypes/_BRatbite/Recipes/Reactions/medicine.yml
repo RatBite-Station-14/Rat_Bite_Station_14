@@ -247,3 +247,15 @@
       amount: 1
   products:
     Metorixadone: 4
+
+- type: reaction
+  id: Paracetamol
+  reactants:
+    Tramadol:
+      amount: 1
+    Nitrogen:
+      amount: 1
+    Water:
+      amount: 1
+  products:
+    Paracetamol: 3
