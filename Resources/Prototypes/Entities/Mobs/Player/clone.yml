@@ -143,6 +143,7 @@
   - FakeMindShield # Just to prevent metagaming
   - ScaredOfGuns
   - Nudist
+  - Trigger
   # End ratbite
 
   blacklist:

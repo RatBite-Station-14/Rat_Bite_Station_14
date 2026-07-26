@@ -270,3 +270,13 @@
       OUTERCLOTHING:
         speedModifier: .85
         staminaModifier: .90
+
+- type: trait
+  id: Trigger
+  name: trait-trigger-name
+  description: trait-trigger-desc
+  category: Mental
+  cost: -2
+  components:
+  - type: Trigger
+
