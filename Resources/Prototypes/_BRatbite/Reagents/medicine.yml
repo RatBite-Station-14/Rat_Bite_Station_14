@@ -707,7 +707,7 @@
       metabolismRate: 0.1
       effects:
       - !type:SuppressPain
-        amount: 10
+        amount: 5
         time: 15
       - !type:AdjustPainFeels
         conditions:
