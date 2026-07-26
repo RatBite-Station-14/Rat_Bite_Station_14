@@ -1,0 +1,25 @@
+- type: reaction
+  id: Rhymatine
+  minTemp: 320
+  reactants:
+    FluorosulfuricAcid:
+      amount: 2
+    Ethylredoxrazine:
+      amount: 1
+    Doxarubixadone:
+      amount: 2
+  products:
+    Rhymatine: 5
+
+- type: reaction
+  id: Celoxradine
+  minTemp: 320
+  reactants:
+    Arithrazine:
+      amount: 1.75
+    Insuzine:
+      amount: 1.25
+    Lacerinol:
+      amount: 1
+  products:
+    Rhymatine: 5
