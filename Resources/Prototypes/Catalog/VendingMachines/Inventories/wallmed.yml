@@ -24,6 +24,14 @@
     Ointment: 3
     Bloodpack: 3
     ChemistryBottleEpinephrine: 3
+    PillCanisterBicaMera: 2 # ratbite
+    ChemistryBottleBicaridine: 2 # ratbite
+    ChemistryBottleCaridine: 2 # ratbite
+    ChemistryBottleKelotane: 2 # ratbite
+    ChemistryBottleAiuri: 2 # ratbite
+    ChemistryBottleDylovene: 2 # ratbite
+    ChemistryBottleHyronalin: 2 # ratbite
+    ChemistryBottleInaprovaline: 2 # ratbite
     Syringe: 3
     Tourniquet: 3 #Goobstation - ParamedHypo
   contrabandInventory:
