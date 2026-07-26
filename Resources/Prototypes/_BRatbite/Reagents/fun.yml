@@ -1,26 +1,16 @@
-- type: reaction
-  id: CreateHumanReaction
-  impact: Low
-  quantized: true
-  reactants:
-    Fat:
-      amount: 50
-    Plasma:
-      amount: 25
-    Blood:
-      amount: 50
-    Milk:
-      amount: 10
-    Biofoam:
-      amount: 10
-    Laughter:
-      amount: 25
-    UnstableMutagen:
-      amount: 20
-    Romerol:
-      amount: 5
-    Cognizine:
-      amount: 5
-  effects:
-    - !type:CreateEntityReactionEffect
-      entity: MobHumanRandom
+- type: reagent
+  id: Irwizine
+  name: reagent-name-irwizine
+  desc: reagent-desc-irwizine
+  physicalDesc: reagent-physical-desc-translucent
+  flavor: irwizine
+  color: "#fff174"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:FactionChange
+        faction: Passive
+        conditions:
+        - !type:ReagentCondition
+          reagent: Irwizine
+          min: 10
