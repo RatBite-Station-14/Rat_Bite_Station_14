@@ -41,7 +41,7 @@
   name: The concequences of your actions
   parent: GrenadeBase
   description: WHAT THE FUCK HAVE YOU DONE?????
-  categories: [ HideSpawnMenu ]
+  suffix: DO NOT FUCKING MAP
   id: TrollNadeProjectile
   components:
   - type: TriggerOnSpawn
@@ -56,7 +56,8 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Blunt: 5000
+        Blunt: 15000
+        Structural: 15000
   - type: ScatteringGrenade # Ratbite - we dont have ClusterGrenade
     fillPrototype: TrollNadeProjectileCluster # Ratbite - works differently than in hullrot, shitcode limitations :happening1:
     distance: 8
@@ -83,7 +84,7 @@
   components:
   - type: Explosive
     explosionType: HardBomb
-    maxIntensity: 1250
+    maxIntensity: 150000
     intensitySlope: 150
     totalIntensity: 150000 # kaboom?
     canCreateVacuum: true
