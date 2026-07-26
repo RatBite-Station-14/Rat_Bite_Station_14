@@ -1,16 +1,1 @@
-- type: reagent
-  id: Irwizine
-  name: reagent-name-irwizine
-  desc: reagent-desc-irwizine
-  physicalDesc: reagent-physical-desc-translucent
-  flavor: irwizine
-  color: "#fff174"
-  metabolisms:
-    Medicine:
-      effects:
-      - !type:FactionChange
-        faction: Passive
-        conditions:
-        - !type:ReagentCondition
-          reagent: Irwizine
-          min: 10
+
