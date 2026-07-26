@@ -1,0 +1,123 @@
+- type: entity
+  name: pill
+  suffix: bicaridine 7.5u, meralyne 7.5u
+  parent: Pill
+  id: PillBicaMera
+  components:
+  - type: Pill
+    pillType: 7
+  - type: Sprite
+    state: pill7
+  - type: Label
+    currentLabel: Bicaridine 7.5u, meralyne 7.5u
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Bicaridine
+          Quantity: 7.5
+         - ReagentId: Meralyne
+          Quantity: 7.5
+
+- type: entity
+  name: pill canister
+  parent: PillCanister
+  id: PillCanisterBicaMera
+  suffix: bicaridine 7.5u, meralyne 7.5u, 15
+  components:
+  - type: Label
+    currentLabel: Bicaridine 7.5u, meralyne 7.5u, 15
+  - type: StorageFill
+    contents:
+    - id: PillBicaMera
+      amount: 15
+
+- type: entity
+  id: ChemistryBottleCaridine
+  suffix: caridine
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-caridine
+  - type: SolutionContainerManager
+    solutions:
+      drink: # This solution name and target volume is hard-coded in ChemMasterComponent
+        maxVol: 30
+        reagents:
+        - ReagentId: Caridine
+          Quantity: 30
+
+  - type: entity
+  id: ChemistryBottleAiuri
+  suffix: aiuri
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-aiuri
+  - type: SolutionContainerManager
+    solutions:
+      drink: # This solution name and target volume is hard-coded in ChemMasterComponent
+        maxVol: 30
+        reagents:
+        - ReagentId: Aiuri
+          Quantity: 30
+
+    - type: entity
+  id: ChemistryBottleLenturi
+  suffix: lenturi
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-lenturi
+  - type: SolutionContainerManager
+    solutions:
+      drink: # This solution name and target volume is hard-coded in ChemMasterComponent
+        maxVol: 30
+        reagents:
+        - ReagentId: Lenturi
+          Quantity: 30
+
+  - type: entity
+  id: ChemistryBottleLibital
+  suffix: libital
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-libital
+  - type: SolutionContainerManager
+    solutions:
+      drink: # This solution name and target volume is hard-coded in ChemMasterComponent
+        maxVol: 30
+        reagents:
+        - ReagentId: Libital
+          Quantity: 30
+
+  - type: entity
+  id: ChemistryBottleBiofoam
+  suffix: biofoam
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-biofoam
+  - type: SolutionContainerManager
+    solutions:
+      drink: # This solution name and target volume is hard-coded in ChemMasterComponent
+        maxVol: 30
+        reagents:
+        - ReagentId: Biofoam
+          Quantity: 30
+
+- type: entity
+  parent: Jug
+  suffix: universalbloodreplacement
+  id: JugUniversalBloodReplacement
+  components:
+  - type: Label
+    currentLabel: reagent-name-universalbloodreplacement
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        reagents:
+        - ReagentId: UniversalBloodReplacement
+          Quantity: 200
