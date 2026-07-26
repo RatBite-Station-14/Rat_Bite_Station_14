@@ -680,4 +680,4 @@
           conditions:
         - !type:ReagentThreshold
           min: 1
-        amount: 0.04
+          amount: 0.04
