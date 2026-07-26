@@ -59,7 +59,7 @@
         variation: 0.25
 
 - type: entity
-  parent: [BasePlushie, BaseSyndicateContraband]
+  parent: [BasePlushie, BaseMagicalContraband]
   id: PlushieOrange
   name: orange plushie
   description: Annoying asshole.
