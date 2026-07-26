@@ -195,7 +195,7 @@
 - type: reaction
   id: UniversalBloodReplacement
   reactants:
-    Saline:
+    PolytrinicAcid:
       amount: 1
     Iron:
       amount: 1
@@ -222,3 +222,18 @@
       amount: 1
   products:
     EphedrinePhoride: 1
+
+- type: reaction
+  id: Metorapan
+  mintemp: 500
+  reactants:
+    PolytrinicAcid:
+      amount: 1
+    Meralyne:
+      amount: 1
+    Hydroxide:
+      amount: 1
+    Ibuprofen:
+      amount: 1
+  products:
+    Metorapan: 4
