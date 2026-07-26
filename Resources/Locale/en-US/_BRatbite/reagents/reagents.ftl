@@ -34,3 +34,5 @@ reagent-name-universalbloodreplacement = Universal blood replacement
 reagent-desc-universalbloodreplacement = The groundbreaking universal blood replacement! Usually put in blood packs and applied topically but can be administered the same as any other chemical.
 reagent-name-ephedrinephoride = Ephedrine Phoride
 reagent-desc-ephedrinephoride = Ephedrine bonded with plasma through space hogwash. Ephedrine phoride manages to quickly resupply stamina to the metaboliser without any notable negative effects.
+reagent-name-metorapan = Metorapan
+reagent-desc-metorapan = An analgesic medicine derived from meralyne. It is also very effective at treating brute trauma quickly
