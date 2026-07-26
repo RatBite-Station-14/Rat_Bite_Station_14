@@ -686,7 +686,7 @@
         - !type:HealthChange
           damage:
             groups:
-              Brute: -20
+              Brute: -25
         - !type:HealthChange
           conditions:
           - !type:ReagentThreshold
