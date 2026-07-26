@@ -707,7 +707,7 @@
       metabolismRate: 0.1
       effects:
       - !type:SuppressPain
-        amount: 15
+        amount: 10
         time: 15
       - !type:AdjustPainFeels
         conditions:
@@ -722,12 +722,12 @@
         conditions:
         - !type:Temperature
           max: 293.15
-        amount: 10000
+        amount: 1000
       - !type:AdjustTemperature
         conditions:
         - !type:Temperature
           min: 293.15
-        amount: -10000
+        amount: -1000
       - !type:HealthChange
         damage:
           types:
