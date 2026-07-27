@@ -743,3 +743,49 @@
         identifier: Suffocation
         amount: -2.4
         time: 12
+
+- type: reagent
+  id: PrussianBlue
+  name: reagent-name-prussianblue
+  group: Medicine
+  desc: reagent-desc-prussianblue
+  physicalDesc: reagent-physical-desc-powdery
+  flavor: medicine
+  color: "#1d285d"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2
+      effects:
+        - !type:HealthChange
+          conditions:
+          - !type:ReagentThreshold
+             damage:
+               types:
+                 Radiation: -0.2
+        - !type:ChemVomit
+          conditions:
+          - !type:ReagentThreshold
+            min: 1
+          probability: 0.15
+        - !type:ChemVomit
+          conditions:
+          - !type:ReagentThreshold
+            min: 20
+          probability: 0.3
+
+- type: reagent
+  id: Ratbites
+  name: reagent-name-ratbites
+  group: Medicine
+  desc: reagent-desc-ratbites
+  physicalDesc: shitty
+  flavor: shit, like actual shit
+  color: "#7A5901"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2
+      effects:
+        - !type:HealthChange
+          damage:
+            types:
+              Cellular: 3274237894227
