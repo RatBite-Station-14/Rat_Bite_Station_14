@@ -18,15 +18,15 @@ reagent-effect-overdose1 = I fucking overdosed!
 reagent-effect-burning = My blood is on fire!
 reagent-effect-asphyxiation = I can't breathe!
 reagent-effect-bloodloss1 = I feel light-headed...
-reagent-effect-bloodloss2 = My blood feels thin.
+reagent-effect-bloodloss2 = My skin pales...
 reagent-effect-blunt1 = I feel it kicking me.
-reagent-effect-blunt2 = It is biting me from within.
+reagent-effect-blunt2 = It is clawing at me from within.
 reagent-effect-slash1 = AAAAAAAAAAAAAAAAGHAHGAAAAAAAAA!!!
 reagent-effect-slash2 = It is cutting me open!
 reagent-effect-piercing1 = It is drilling through me!
 reagent-effect-piercing2 = AAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!
 reagent-effect-overdose2 = I shouldn't of took so much of that...
-reagent-effect-radiationcellular = This is so much cancer that I feel the tumors growing on my back.
+reagent-effect-radiationcellular = This is so much cancer that I feel the tumors growing on my back...
 
 # for hallucinations maybe; didn't code it into this PR. Here for funnies
 
