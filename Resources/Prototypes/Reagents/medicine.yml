@@ -302,6 +302,12 @@
         identifier: Suffocation
         amount: -1.2
         time: 12
+      - !type:PopupMessage
+        conditions:
+        visualType: MediumCaution
+        messages: ["medicine-effect-brute1", "medicine-effect-brute2", "medicine-effect-brute3"]
+        type: Local
+        probability: 0.4
 
 - type: reagent
   id: Cryoxadone
