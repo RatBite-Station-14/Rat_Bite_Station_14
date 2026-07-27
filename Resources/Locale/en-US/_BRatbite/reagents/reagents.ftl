@@ -42,3 +42,5 @@ reagent-name-paracetamol = Paracetamol
 reagent-desc-paracetamol = Paracetamol is an analgesic and antipyretic medicine used to treat fever and mild to moderate pain It is widely available as an over-the-counter drug. 
 reagent-name-sodiumbicarbonate = Sodium Bicarbonate
 reagent-desc-sodiumbicarbonate = Baking soda. Commonly used in baking. And sodas too probably.
+reagent-name-ratbites = Ratbites
+reagent-desc-ratbites = Bevv was whipping up shit in a kettle boiling shit actual shit boiling poo in a kettle bro the smell.
