@@ -18,7 +18,7 @@
         color: "#c7be5d"
       - state: base-colorB-inhand-right
   - type: Sprite
-    sprite: Objects/Specific/Medical/medipen.rsi
+    sprite: _BRatBites/Objects/Specific/Medical/medipen.rsi
     layers:
     - state: Secpen
       map: ["enum.SolutionContainerLayers.Fill"]
