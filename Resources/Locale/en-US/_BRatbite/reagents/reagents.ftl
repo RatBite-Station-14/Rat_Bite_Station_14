@@ -40,3 +40,5 @@ reagent-name-metorixadone = Metorixadone
 reagent-desc-metorixadone = A cryogenics chemical. It is used to treat severe brute trauma.
 reagent-name-paracetamol = Paracetamol
 reagent-desc-paracetamol = Paracetamol is an analgesic and antipyretic medicine used to treat fever and mild to moderate pain It is widely available as an over-the-counter drug. 
+reagent-name-sodiumbicarbonate = Sodium Bicarbonate
+reagent-desc-sodiumbicarbonate = Baking soda. Commonly used in baking. And sodas too probably.
