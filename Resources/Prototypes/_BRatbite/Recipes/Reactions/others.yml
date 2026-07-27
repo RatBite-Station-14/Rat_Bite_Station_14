@@ -3,11 +3,20 @@
   reactants:
     CarbonDioxide:
       amount: 1
-    Water:
-      amount: 1
     Ammonia:
       amount: 1
     TableSalt:
       amount: 1
   products:
-    SodiumBicarbonate: 2
+    SodiumBicarbonate: 3
+
+- type: reaction
+  id: CarbonDioxideRecipeTemporary # I know that upstream will add it and also the uh... octogen PR but I have no clue when those are getting merged 
+  reactants:
+  mintemp: 600
+    Carbon:
+      amount: 1
+    Oxygen:
+      amount: 1
+  products:
+    CarbonDioxide: 2
