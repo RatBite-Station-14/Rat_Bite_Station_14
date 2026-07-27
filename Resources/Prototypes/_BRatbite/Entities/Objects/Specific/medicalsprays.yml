@@ -1,0 +1,19 @@
+- type: entity
+  name: silver sulfadiazine spray bottle
+  id: SprayBottleTepalal
+  suffix: Filled, Tepalal
+  parent: SprayBottle
+  components:
+  - type: Sprite
+    sprite: _BRatbites/Objects/Specific/Medical/Tepalalspray.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - Spray
+  - type: SolutionContainerManager
+    solutions:
+      spray:
+        maxVol: 100
+        reagents:
+        - ReagentId: Tepalal
+          Quantity: 100
