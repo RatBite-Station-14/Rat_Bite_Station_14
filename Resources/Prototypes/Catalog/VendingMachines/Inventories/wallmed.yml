@@ -23,8 +23,12 @@
     Brutepack: 3
     Ointment: 3
     Bloodpack: 3
-    ChemistryBottleEpinephrine: 3
+    PillCanisterTricordrazine: 2 # ratbite
+    PillCanisterPotassiumIodide: 2 # ratbite
+    PillCanisterIron: 2 # ratbite
+    PillCanisterCopper: 2 # ratbite
     PillCanisterBicaMera: 2 # ratbite
+    ChemistryBottleEpinephrine: 3
     ChemistryBottleBicaridine: 2 # ratbite
     ChemistryBottleCaridine: 2 # ratbite
     ChemistryBottleKelotane: 2 # ratbite
