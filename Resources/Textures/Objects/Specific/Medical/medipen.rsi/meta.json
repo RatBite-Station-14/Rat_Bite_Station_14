@@ -144,6 +144,12 @@
     },
     {
       "name": "livepen_empty"
+    },
+    {
+      "name": "secpen"
+    },
+    {
+      "name": "secpen_empty"
     }
   ]
 }
