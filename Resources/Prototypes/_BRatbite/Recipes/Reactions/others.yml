@@ -1,0 +1,13 @@
+- type: reaction
+  id: SodiumBicarbonate 
+  reactants:
+    CarbonDioxide:
+      amount: 1
+    Water:
+      amount: 1
+    Ammonia:
+      amount: 1
+    TableSalt:
+      amount: 1
+  products:
+    SodiumBicarbonate: 2
