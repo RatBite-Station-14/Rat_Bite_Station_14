@@ -1767,3 +1767,12 @@
   hidden: true
   loadouts:
   - LoadoutSpeciesBreathToolSecurity
+
+- type: loadoutGroup
+  id: MedicalSprayBottle
+  name: loadout-group-medical-spraybottle
+  minLimit: 0
+  loadouts:
+  - SprayBottleStypticPowder
+  - SprayBottleSilverSulfadiazine
+  - SprayBottleTepalal
