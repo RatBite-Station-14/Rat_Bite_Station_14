@@ -5,7 +5,7 @@
   parent: SprayBottle
   components:
   - type: Sprite
-    sprite: _BRatbites/Objects/Specific/Medical/Tepalalspray.rsi
+    sprite: _BRatBites/Objects/Specific/Medical/Tepalalspray.rsi
     state: icon
   - type: Tag
     tags:
