@@ -205,12 +205,7 @@
               Brute: -0.6
             types:
               Poison: -0.1
-        - !type:ChemVomit
-          conditions:
-          - !type:ReagentThreshold
-            max: 50
-          probability: 0.1 # changed from 0.5 to 0.1
-        - !type:ChemVomit
+        - !type:ChemVomit # removed vomiting when not overdosing
           conditions:
           - !type:ReagentThreshold
             min: 50
