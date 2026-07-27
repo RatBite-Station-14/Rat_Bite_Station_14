@@ -712,6 +712,7 @@
   - ChiefMedicalOfficerNeck
   - ChiefMedicalOfficerShoes
   - MedicalEyewear
+  - MedicalSprayBottle
   - SurvivalMedical
   - Trinkets
   - Animals
@@ -734,6 +735,7 @@
   - MedicalShoes
   - MedicalDoctorPDA
   - MedicalEyewear
+  - MedicalSprayBottle
   - SurvivalMedical
   - Trinkets
   - Animals
@@ -750,6 +752,7 @@
   - MedicalInternJumpsuit
   - MedicalBackpack
   - MedicalEyewear
+  - MedicalSprayBottle
   - SurvivalMedical
   - Trinkets
   - Animals
@@ -791,6 +794,7 @@
   - ParamedicOuterClothing
   - ParamedicShoes
   - MedicalEyewear
+  - MedicalSprayBottle
   - SurvivalMedical
   - Trinkets
   - Animals
