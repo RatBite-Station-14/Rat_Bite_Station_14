@@ -34,7 +34,7 @@
   - type: SolutionContainerManager
     solutions:
       pen:
-        maxVol: 20
+        maxVol: 30
         reagents:
         - ReagentId: Synaptizine
           Quantity: 10
