@@ -675,7 +675,7 @@
   name: reagent-name-metorixadone
   group: Medicine
   desc: reagent-desc-metorixadone
-  physicalDesc: reagent-physical-desc-fizzing
+  physicalDesc: reagent-physical-desc-fizzy
   flavor: medicine
   color: "#f5b782"
   worksOnTheDead: true
