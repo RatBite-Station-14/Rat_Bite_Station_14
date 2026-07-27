@@ -487,13 +487,14 @@
       - !type:AdjustReagent
         reagent: BiofoamRemnants
         amount: 0.75
-      - !type:EvenHealthChange
+      - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
           max: 10.5
-        damage:           # no airloss because I don't get why it would heal that lol
-          Brute: -11
-          Burn: -11
+        damage:                        # no airloss because I don't get why it would heal that lol
+          groups:
+            Brute: -14
+            Burn: -19
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
