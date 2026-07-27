@@ -18,14 +18,14 @@
         color: "#c7be5d"
       - state: base-colorB-inhand-right
   - type: Sprite
-    sprite: _BRatBites/Objects/Specific/Medical/medipen.rsi
+    sprite: Objects/Specific/Medical/medipen.rsi
     layers:
-    - state: Secpen
+    - state: secpen
       map: ["enum.SolutionContainerLayers.Fill"]
   - type: SolutionContainerVisuals
     maxFillLevels: 1
     changeColor: false
-    emptySpriteName: Secpen_empty
+    emptySpriteName: secpen_empty
   - type: Hypospray
     solutionName: pen
     transferAmount: 20
