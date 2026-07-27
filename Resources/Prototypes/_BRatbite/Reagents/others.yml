@@ -1,0 +1,8 @@
+- type: reagent
+  id: SodiumBicarbonate
+  name: reagent-name-sodiumbicarbonate
+  group: Medicine
+  desc: reagent-desc-sodiumbicarbonate
+  physicalDesc: reagent-physical-desc-powdery
+  flavor: Chalky
+  color: "#e8e8e8"
