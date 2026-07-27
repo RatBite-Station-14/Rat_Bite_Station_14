@@ -1,1 +1,11 @@
-
+- type: reaction
+  id: SlimeRecipe
+  reactants:
+    SpaceGlue:
+      amount: 1
+    Saline:
+      amount: 1
+    SodiumBicarbonate:
+      amount: 1
+  products:
+    Slime: 3
