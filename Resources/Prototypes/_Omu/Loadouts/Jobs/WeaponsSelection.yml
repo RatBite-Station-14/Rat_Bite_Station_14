@@ -1,4 +1,4 @@
 - type: loadout
   id: ParryCloak
   equipment:
-    neck: ClothingNeckWardenParryCloakFilled
+    neck: ClothingNeckWardenParryCloak

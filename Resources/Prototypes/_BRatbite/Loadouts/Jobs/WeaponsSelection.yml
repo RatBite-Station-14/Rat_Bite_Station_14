@@ -101,3 +101,8 @@
   id: SecurityJustice
   equipment:
     suitstorage: ClothingBeltSheathHeadOfSecurityFilled
+
+- type: loadout
+  id: ParryRapier
+  equipment:
+    suitstorage: DuelingRapier
