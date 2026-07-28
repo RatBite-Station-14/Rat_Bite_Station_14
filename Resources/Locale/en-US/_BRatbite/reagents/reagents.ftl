@@ -42,3 +42,5 @@ reagent-name-paracetamol = Paracetamol
 reagent-desc-paracetamol = Paracetamol is an analgesic and antipyretic medicine used to treat fever and mild to moderate pain It is widely available as an over-the-counter drug. 
 reagent-name-sodiumbicarbonate = Sodium Bicarbonate
 reagent-desc-sodiumbicarbonate = Baking soda. Commonly used in baking. And sodas too probably.
+reagent-name-hexachlorobenzene = Hexachlorobenzene
+reagent-desc-hexachlorobenzene = A really dogshit fungicide that is usually the byproduct of making other better chemicals. It is also commonly used to kill people.
