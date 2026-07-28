@@ -6,6 +6,11 @@
   physicalDesc: reagent-physical-desc-crystalline
   flavor: Burning
   color: "#ffffff"
+  plantMetabolism:
+    - !type:PlantAdjustWeeds
+      amount: -5
+    - !type:PlantAdjustToxins
+      amount: 1
   metabolisms:
     Poison:
       metabolismRate: 0.01
