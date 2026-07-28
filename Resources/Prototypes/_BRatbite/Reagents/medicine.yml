@@ -655,6 +655,7 @@
           conditions:
           - !type:ReagentThreshold
             min: 1
+            max: 5
           damage:
             groups:
               Brute: -23
@@ -743,3 +744,31 @@
         identifier: Suffocation
         amount: -2.4
         time: 12
+
+- type: reagent
+  id: Dermarpan
+  name: reagent-name-dermapan
+  group: Medicine
+  desc: reagent-desc-dermarpan
+  physicalDesc: reagent-physical-desc-oily
+  flavor: medicine
+  color: "#68d0fc"
+  metabolisms:
+    Medicine:
+      metabolismRate: 1
+      effects:
+        - !type:HealthChange
+          conditions:
+          - !type:ReagentThreshold
+            min: 1
+            max: 5
+          damage:
+            groups:
+              Burn: -23
+        - !type:HealthChange
+          conditions:
+          - !type:ReagentThreshold
+            min: 5
+          damage:
+            types:
+              Caustic: 4
