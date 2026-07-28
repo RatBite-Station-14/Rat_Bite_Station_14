@@ -5,8 +5,8 @@
 # Fillable reagent implant. Functions normally as a reagent container
 - type: entity
   id: EmptyReagentImplanter
-  name: implanter # Ratbite - parity with other implanters, no more knowing what implant was used :godo:
-  suffix: empty, fillable
+ # name: reagent implanter # Ratbite - parity with other implanters, no more knowing what implant was used :godo:
+  suffix: reagent, empty, fillable # Ratbite
   parent: BaseImplantOnlyImplanterSyndi
   components:
     - type: Implanter
@@ -36,8 +36,8 @@
 # Static content reagent implants. Can't be filled or emptied
 - type: entity
   id: HyperzineReagentImplanter
-  name: implanter # Ratbite - parity with other implanters, no more knowing what implant was used :godo:
-  suffix: hyperzine
+ # name: reagent implanter # Ratbite - parity with other implanters, no more knowing what implant was used :godo:
+  suffix: reagent, hyperzine # Ratbite
   parent: BaseImplantOnlyImplanterSyndi
   components:
     - type: Implanter
