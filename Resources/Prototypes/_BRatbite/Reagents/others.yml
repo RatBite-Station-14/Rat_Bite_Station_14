@@ -1,7 +1,7 @@
 - type: reagent
   id: SodiumBicarbonate
   name: reagent-name-sodiumbicarbonate
-  group: Medicine
+  group: Others
   desc: reagent-desc-sodiumbicarbonate
   physicalDesc: reagent-physical-desc-powdery
   flavor: Chalky
