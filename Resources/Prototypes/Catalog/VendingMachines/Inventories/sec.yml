@@ -72,7 +72,7 @@
     CartridgeSaline: 2
     CartridgeBicaridine: 2
     CartridgeDermaline: 2 # Goobstation - end
-    SecurityStimulantAutoInjector: 5 # Ratbite
+  #  SecurityStimulantAutoInjector: 5 # Ratbite. Bevv said no...
   # security officers need to follow a diet regimen!
   contrabandInventory:
     WeaponMeleeNeedle: 2
