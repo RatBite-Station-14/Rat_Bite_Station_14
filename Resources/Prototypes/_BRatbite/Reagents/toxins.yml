@@ -1,7 +1,7 @@
 - type: reagent
   id: Hexachlorobenzene
   name: reagent-name-hexachlorobenzene
-  group: Toxin
+  group: Toxins
   desc: reagent-desc-hexachlorobenzene
   physicalDesc: reagent-physical-desc-crystalline
   flavor: Burning
