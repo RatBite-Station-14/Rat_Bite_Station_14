@@ -5,7 +5,7 @@
   desc: reagent-desc-rhymatine
   physicalDesc: reagent-physical-desc-translucent
   flavor: medicine
-  worksOnTheDead: true
+  worksOnTheDead: false # It is true on omu and mono but I don't really think it is needed - Ratbite change
   color: "#03fc9d"
   metabolisms:
     Medicine:
@@ -15,8 +15,8 @@
         damage:
           types:
             Cellular: -2.5
-            Shock: 1.25
-            Cold: 1.25
+            Shock: 1 # Ratbite, changed from 1.25
+            Cold: 1 # Ratbite, changed from 1.25
       - !type:HealthChange
         conditions:
         - !type:OrganType # Goobstation - Yowie
