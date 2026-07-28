@@ -1,0 +1,17 @@
+- type: reagent
+  id: Hexachlorobenzene
+  name: reagent-name-hexachlorobenzene
+  group: Toxin
+  desc: reagent-desc-hexachlorobenzene
+  physicalDesc: reagent-physical-desc-crystalline
+  flavor: Burning
+  color: "#ffffff"
+  metabolisms:
+    Poison:
+      metabolismRate: 0.01
+      effects:
+        - !type:HealthChange   # same as cyanide but it metabolises wayyyyyy slower. Should also combat fungal infections if we ever get those.
+          damage:
+            types:
+             Poison: 0.2
+             Asphyxiation: 0.4 # a bit more because asphyx heals back very fast
