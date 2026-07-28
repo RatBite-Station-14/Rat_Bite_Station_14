@@ -8,7 +8,7 @@
   color: "#ffffff"
   plantMetabolism:
     - !type:PlantAdjustWeeds
-      amount: -5
+      amount: -3
     - !type:PlantAdjustToxins
       amount: 1
   metabolisms:
