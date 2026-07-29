@@ -46,3 +46,5 @@ reagent-name-hexachlorobenzene = hexachlorobenzene
 reagent-desc-hexachlorobenzene = A really dogshit fungicide that is usually the byproduct of making other better chemicals. It is also commonly used to kill people.
 reagent-name-dermarpan = dermarpan
 reagent-desc-dermarpan = A powerful medicine used for treating burn damage quickly in low doses. Derived from dermaline.
+reagent-name-compressedtricordrazine = compressed tricordrazine
+reagent-desc-compressedtricordrazine = Compressed tricordrazine. Dissolves in the bloodstream into normal tricordrazine. Really dense. Would hurt if you were hit in the head with it.
