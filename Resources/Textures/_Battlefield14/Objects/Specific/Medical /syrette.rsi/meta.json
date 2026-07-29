@@ -12,6 +12,18 @@
     },
     {
       "name": "syrette_e"
+    },
+    {
+      "name": "cap_red"
+    },
+    {
+      "name": "cap_blue"
+    },
+    {
+      "name": "cap_green"
+    },
+    {
+      "name": "cap_yellow"
     }
   ]
 }
