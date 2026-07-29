@@ -747,7 +747,7 @@
 
 - type: reagent
   id: Dermarpan
-  name: reagent-name-dermapan
+  name: reagent-name-dermarpan
   group: Medicine
   desc: reagent-desc-dermarpan
   physicalDesc: reagent-physical-desc-oily
