@@ -157,7 +157,7 @@
     - trigger:
         !type:DamageTypeTrigger
         damageType: Heat
-        damage: 1500
+        damage: 500 # Ratbite, lower due to logarithmic damage
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawnInContainer: true
