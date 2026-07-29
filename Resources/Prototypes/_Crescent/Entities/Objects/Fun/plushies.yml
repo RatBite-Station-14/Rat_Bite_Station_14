@@ -90,7 +90,7 @@
       params:
         variation: 0.25
   - type: SpamEmitSound
-    minInterval: 20
+    minInterval: 10
     maxInterval: 60
     sound:
       collection: AnnoyingOrange

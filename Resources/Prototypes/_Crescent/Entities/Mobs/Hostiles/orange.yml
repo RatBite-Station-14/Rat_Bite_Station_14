@@ -122,7 +122,7 @@
   id: AdmemeMobGoot
   parent: [ SimpleSpaceMobBase, FlyingMobBase, MobCombat ]
   suffix: Admeme (HESBACK)
-  description: God this guy is fucking annoying
+  description: HES FUCKING BACK RUN!!!
   components:
     - type: Absorbable
     - type: InputMover
@@ -169,10 +169,10 @@
           variation: 0.25
       damage:
         types:
-          Burn: 14888
+          Heat: 99999998
           Structural: 99999998
     - type: IgniteOnMeleeHit
-      fireStacks: 5
+      fireStacks: 200
     - type: SpamEmitSound
       minInterval: 10
       maxInterval: 30
