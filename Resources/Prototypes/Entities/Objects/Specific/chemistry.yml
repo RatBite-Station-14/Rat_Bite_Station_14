@@ -606,6 +606,7 @@
       injector:
         maxVol: 15
   - type: Injector
+    delay: 2
     injectOnly: false
     # Goobstation Start - Added embeddable properties for syringe gun
   - type: MeleeWeapon
