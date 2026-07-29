@@ -274,3 +274,13 @@
       amount: 1
   products:
     Dermarpan: 4
+
+- type: reaction
+  id: CompressedTricordrazine
+  reactants:
+    Tricordrazine:
+      amount: 10
+    Plasma:
+      amount: 1 # with plasma, anything can happen!
+  products:
+    CompressedTricordrazine: 1
