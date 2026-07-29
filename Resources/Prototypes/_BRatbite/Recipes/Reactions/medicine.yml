@@ -259,3 +259,18 @@
       amount: 1
   products:
     Paracetamol: 3
+
+- type: reaction
+  id: Dermarpan
+  mintemp: 500
+  reactants:
+    PolytrinicAcid:
+      amount: 1
+    Dermaline:
+      amount: 1
+    Probital:
+      amount: 1
+    Paracetamol:
+      amount: 1
+  products:
+    Dermarpan: 4
