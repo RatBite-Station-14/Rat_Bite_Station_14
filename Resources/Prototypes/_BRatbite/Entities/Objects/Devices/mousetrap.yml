@@ -1,0 +1,19 @@
+- type: entity
+  name: giant mouse trap
+  parent: Mousetrap
+  id: GiantMousetrap
+  description: Useful for catching giant rodents sneaking into your kitchen.
+  components:
+    - type: Sprite
+      sprite: Objects/Devices/mousetrap.rsi
+      scale: 2, 2
+      layers:
+        - state: mousetrap
+          map: ["base"]
+    - type: GiantMouseTrap
+    - type: Item
+      sprite: Objects/Devices/mousetrap.rsi
+      size: Ginormous
+    - type: Construction
+      graph: GiantMousetrap
+      node: giantMouseTrap

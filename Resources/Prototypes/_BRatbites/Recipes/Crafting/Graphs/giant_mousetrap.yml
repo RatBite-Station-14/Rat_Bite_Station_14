@@ -1,0 +1,24 @@
+- type: constructionGraph
+  id: GiantMousetrap
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: giantMouseTrap
+          steps:
+            - material: WoodPlank
+              amount: 15
+              doAfter: 4
+            - material: Steel
+              amount: 10
+              doAfter: 4
+    - node: giantMouseTrap
+      entity: GiantMousetrap
+
+- type: construction
+  id: GiantMousetrap
+  graph: GiantMousetrap
+  startNode: start
+  targetNode: giantMouseTrap
+  category: construction-category-tools
+  objectType: Item
