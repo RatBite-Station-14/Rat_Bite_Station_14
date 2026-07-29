@@ -223,7 +223,7 @@ loadout-group-paramedic-shoes = Paramedic shoes
 
 loadout-group-medical-glasses = Medical glasses
 
-loudout-group-medical-spraybottle = Spray bottle # Ratbite
+loudout-group-medical-spraybottle = Medicines # Ratbite
 
 # Wildcards
 loadout-group-reporter-jumpsuit = Reporter jumpsuit
