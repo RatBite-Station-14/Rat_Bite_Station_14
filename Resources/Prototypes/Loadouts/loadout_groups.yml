@@ -1771,7 +1771,7 @@
 
 - type: loadoutGroup
   id: MedicalSprayBottle # says that but just put any med here :godo:
-  name: loadout-group-medical-spraybottle
+  name: Medicines
   minLimit: 0
   loadouts:
   - SprayBottleStypticPowder
