@@ -2,6 +2,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared.Chasm;
+using Content.Shared.Slippery;
 using Content.Shared.StepTrigger.Components;
 using Content.Shared.StepTrigger.Systems;
 
@@ -14,12 +16,12 @@ public sealed class TrapAvoiderSystem : EntitySystem
 {
     public override void Initialize()
     {
-        SubscribeLocalEvent<StepTriggerComponent, StepTriggerAttemptEvent>(OnStepTriggerAttempt);
+        SubscribeLocalEvent<TrapAvoiderComponent, StepTriggerAttemptEvent>(OnStepTriggerAttempt);
     }
 
-    private void OnStepTriggerAttempt(Entity<StepTriggerComponent> ent, ref StepTriggerAttemptEvent args)
+    private void OnStepTriggerAttempt(Entity<TrapAvoiderComponent> ent, ref StepTriggerAttemptEvent args)
     {
-        if (HasComp<TrapAvoiderComponent>(args.Tripper))
-            args.Cancelled = true;
+        if (HasComp<SlipperyComponent>(args.Source) || HasComp<ChasmComponent>(args.Source)) return;
+        args.Cancelled = true;
     }
 }

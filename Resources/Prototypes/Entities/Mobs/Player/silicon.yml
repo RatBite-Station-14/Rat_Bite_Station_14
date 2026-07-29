@@ -267,6 +267,7 @@
   parent:
   - BaseItem
   - AiHolder
+  - BaseScienceContraband # Ratbite: contraband changes
   suffix: Empty
   components:
   - type: ContainerComp

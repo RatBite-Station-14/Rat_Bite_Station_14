@@ -12,3 +12,19 @@
   - !type:BuyerJobCondition
     whitelist:
     - Clown
+
+- type: listing
+  id: UplinkSwordfish
+  name: uplink-swordfish-name
+  description: uplink-swordfish-desc
+  icon: { sprite: _Omu/Objects/Weapons/Melee/syndieswordfish.rsi, state: icon }
+  productEntity: SyndieRapier
+  cost:
+    Telecrystal: 30
+  categories:
+  - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
