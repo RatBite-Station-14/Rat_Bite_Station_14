@@ -121,29 +121,3 @@
   id: ChemistWintercoat
   equipment:
     outerClothing: ClothingOuterWinterChem
-
-#Spray bottles, ratbite
-
-- type: loadout
-  id: SprayBottleStypticPowder
-  storage:
-    back:
-    - SprayBottleStypticPowder
-
-- type: loadout
-  id: SprayBottleSilverSulfadiazine
-  storage:
-    back:
-    - SprayBottleSilverSulfadiazine
-
-- type: loadout
-  id: SprayBottleTepalal
-  storage:
-    back:
-    - SprayBottleTepalal
-
-- type: loadout
-  id: ChemistryBottleBiofoam
-  storage:
-    back:
-    - ChemistryBottleBiofoam
