@@ -772,3 +772,22 @@
           damage:
             types:
               Caustic: 4
+
+- type: reagent
+  id: CompressedTricordrazine
+  name: reagent-name-compressedtricordrazine
+  group: Medicine
+  desc: reagent-desc-compressedtricordrazine
+  physicalDesc: reagent-physical-desc-solid # when you can't even say my name
+  flavor: medicine
+  color: "#00e5ff"
+  metabolisms:
+    Medicine:
+      metabolismRate: 1
+      effects:
+        - !type:AdjustReagent
+          conditions:
+          - !type:ReagentThreshold
+            min: 1
+          amount: 10
+          reagent: Tricordrazine
