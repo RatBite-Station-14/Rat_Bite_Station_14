@@ -94,6 +94,7 @@
           Quantity: 30
 
 - type: entity
+  name: biofoam bottle # for the loadout to work
   id: ChemistryBottleBiofoam
   suffix: biofoam
   parent: BaseChemistryBottleFilled
