@@ -279,7 +279,7 @@
   id: CompressedTricordrazine
   reactants:
     Tricordrazine:
-      amount: 10
+      amount: 3
     Plasma:
       amount: 1 # with plasma, anything can happen!
   products:
