@@ -145,10 +145,17 @@ public sealed partial class WoundSystem
 
     private void OnWoundSeverityChanged(EntityUid wound, WoundComponent woundComponent, WoundSeverityChangedEvent args)
     {
-        if (args.NewSeverity != WoundSeverity.Healed)
-            return;
-
-        RemoveWound(wound, woundComponent);
+        switch (args.NewSeverity)
+        {
+            case WoundSeverity.Loss: // Ratbite: Add loss
+                var part = woundComponent.HoldingWoundable;
+                if (!TryComp<WoundableComponent>(part, out var woundableComp) || woundableComp!.ParentWoundable is not { } parentUid) break;
+                DestroyWoundable(parentUid, part, woundableComp);
+                break;
+            case WoundSeverity.Healed:
+                RemoveWound(wound, woundComponent);
+                break;
+        }
     }
 
     private void OnWoundSeverityPointChanged(EntityUid uid, WoundComponent component, WoundSeverityPointChangedEvent args)
