@@ -4,7 +4,7 @@
   group: Toxins
   desc: reagent-desc-hexachlorobenzene
   physicalDesc: reagent-physical-desc-crystalline
-  flavor: Burning
+  flavor: tasteless
   color: "#ffffff"
   plantMetabolism:
     - !type:PlantAdjustWeeds
