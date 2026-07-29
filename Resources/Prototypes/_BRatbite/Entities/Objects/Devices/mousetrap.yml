@@ -1,6 +1,6 @@
 - type: entity
   name: giant mouse trap
-  parent: Mousetrap
+  parent: [ Mousetrap, BaseMinorContraband ]
   id: GiantMousetrap
   description: Useful for catching giant rodents sneaking into your kitchen.
   components:
