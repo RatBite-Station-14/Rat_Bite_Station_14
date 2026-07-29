@@ -302,3 +302,9 @@
   storage:
     back:
     - SprayBottleTepalal
+
+- type: loadout
+  id: ChemistryBottleBiofoam
+  storage:
+    back:
+    - ChemistryBottleBiofoam
