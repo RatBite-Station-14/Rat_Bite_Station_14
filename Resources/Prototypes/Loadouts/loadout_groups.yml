@@ -1770,10 +1770,11 @@
   - LoadoutSpeciesBreathToolSecurity
 
 - type: loadoutGroup
-  id: MedicalSprayBottle
+  id: MedicalSprayBottle # says that but just put any med here :godo:
   name: loadout-group-medical-spraybottle
   minLimit: 0
   loadouts:
   - SprayBottleStypticPowder
   - SprayBottleSilverSulfadiazine
   - SprayBottleTepalal
+  - ChemistryBottleBiofoam
