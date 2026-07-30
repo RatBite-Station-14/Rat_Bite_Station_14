@@ -308,3 +308,39 @@
   storage:
     back:
     - ChemistryBottleBiofoam
+
+- type: loadout
+  id: EmergencyMedipen # now they get 3 emerg medipens :godo:
+  storage:
+    back:
+    - EmergencyMedipen
+
+- type: loadout
+  id: BruteAutoInjector
+  storage:
+    back:
+    - BruteAutoInjector
+
+- type: loadout
+  id: BurnAutoInjector
+  storage:
+    back:
+    - BurnAutoInjector
+
+- type: loadout
+  id: AirlossAutoInjector
+  storage:
+    back:
+    - AirlossAutoInjector
+
+- type: loadout
+  id: SpaceMedipen
+  storage:
+    back:
+    - SpaceMedipen
+
+- type: loadout
+  id: PillCanisterBicaMera
+  storage:
+    back:
+    - PillCanisterBicaMera
