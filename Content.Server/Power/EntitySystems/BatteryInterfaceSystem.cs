@@ -53,12 +53,14 @@ public sealed class BatteryInterfaceSystem : EntitySystem
 
     private void HandleSetChargeRate(Entity<BatteryInterfaceComponent> ent, ref BatterySetChargeRateMessage args)
     {
+        if (!float.IsFinite(args.Rate)) return; // Ratbite: check against malicious messages
         var netBattery = Comp<PowerNetworkBatteryComponent>(ent);
         netBattery.MaxChargeRate = Math.Clamp(args.Rate, ent.Comp.MinChargeRate, ent.Comp.MaxChargeRate);
     }
 
     private void HandleSetDischargeRate(Entity<BatteryInterfaceComponent> ent, ref BatterySetDischargeRateMessage args)
     {
+        if (!float.IsFinite(args.Rate)) return; // Ratbite: check against malicious messages
         var netBattery = Comp<PowerNetworkBatteryComponent>(ent);
         netBattery.MaxSupply = Math.Clamp(args.Rate, ent.Comp.MinSupply, ent.Comp.MaxSupply);
     }
