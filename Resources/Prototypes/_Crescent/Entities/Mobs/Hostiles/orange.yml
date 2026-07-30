@@ -49,10 +49,6 @@
         collection: AnnoyingOrange
         params:
           variation: 0.25
-      damage:
-        types:
-          Blunt: 99999998
-          Structural: 99999998
     - type: SpamEmitSound
       minInterval: 10
       maxInterval: 30
