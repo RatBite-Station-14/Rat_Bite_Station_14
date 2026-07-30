@@ -14,7 +14,7 @@
       - !type:HealthChange
         damage:
           types:
-            Cellular: -2.5
+            Cellular: -1 # Ratbite, changed from -2.5 to -1 because of balance
             Shock: 1 # Ratbite, changed from 1.25
             Cold: 1 # Ratbite, changed from 1.25
       - !type:HealthChange
