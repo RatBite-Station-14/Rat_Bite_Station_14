@@ -783,7 +783,7 @@
             shouldHave: false
           damage:
             types:
-              Caustic: 4
+              Poison: 4
 
 - type: reagent
   id: CompressedTricordrazine
