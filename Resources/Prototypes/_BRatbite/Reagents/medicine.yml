@@ -467,7 +467,7 @@
 # biofoam, meralyne, and universal blood replacement (renamed from nanoblood) are from battlefield 14, put in this folder because idk
 
 - type: reagent
-  id: Biofoam
+  id: Biofoam # Yowie still overdose on purpose
   name: reagent-name-biofoam
   group: Medicine
   desc: reagent-desc-biofoam
@@ -580,6 +580,9 @@
           conditions:
           - !type:ReagentThreshold
             min: 15.5
+          - !type:OrganType
+            type: Yowie
+            shouldHave: false
           damage:
             types:
               Blunt: 2
@@ -613,6 +616,9 @@
         conditions:
         - !type:ReagentThreshold
           min: 5.5
+        - !type:OrganType
+          type: Yowie
+          shouldHave: false
         damage:
           types:
             Poison: 3
@@ -663,6 +669,9 @@
           conditions:
           - !type:ReagentThreshold
             min: 5
+          - !type:OrganType
+            type: Yowie
+            shouldHave: false
           damage:
             types:
               Caustic: 4
@@ -769,6 +778,9 @@
           conditions:
           - !type:ReagentThreshold
             min: 5
+          - !type:OrganType
+            type: Yowie
+            shouldHave: false
           damage:
             types:
               Caustic: 4
