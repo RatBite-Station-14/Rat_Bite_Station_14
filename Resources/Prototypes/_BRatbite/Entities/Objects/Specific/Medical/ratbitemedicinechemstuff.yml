@@ -21,7 +21,7 @@
           Quantity: 7.5
 
 - type: entity
-  name: pill canister
+  name: brute pill canister
   parent: PillCanister
   id: PillCanisterBicaMera
   suffix: Bicaridine 7.5u, meralyne 7.5u, 15
