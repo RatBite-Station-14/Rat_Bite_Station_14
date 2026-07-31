@@ -5,7 +5,7 @@
   id: PillBicarMera
   components:
   - type: Pill
-    pillType: 7
+    pillType: 6
   - type: Sprite
     state: pill7
   - type: Label
