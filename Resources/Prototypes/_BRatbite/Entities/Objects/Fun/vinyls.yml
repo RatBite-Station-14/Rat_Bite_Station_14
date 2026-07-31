@@ -46,5 +46,68 @@
     state: devil-vinyl-disk
   - type: Vinyl
     song:
-      path: /Audio/_BRatbite/Radiostation/music/SHITSECTHEME.ogg
+      path: /Audio/_BRatbite/Radiostation/music/SHITSECTHEME.ogg      
+
+- type: entity
+  name: "vinyl disk: donotmakeafulltheme"
+  description: do not make a full theme.avi
+  id: VinylDiskLarpepe
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/RadioStation/vinyls.rsi
+    state: devil-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/Radiostation/music/mainlarppeepee.ogg
       
+- type: entity
+  name: "vinyl disk: search for my dreams"
+  id: VinylDiskSearchofdreams
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/RadioStation/vinyls.rsi
+    state: darkblue-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/Radiostation/music/SearchinformyDreams.ogg
+
+- type: entity
+  name: "Russian heritage month celebratory vinyl"
+  description: what?
+  id: VinylDiskracism
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/RadioStation/vinyls.rsi
+    state: forgotten-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/Radiostation/music/tobucussong.ogg
+      
+- type: entity
+  name: "vinyl disk: BIG"
+  id: VinylDiskparappastg2
+  description: you wanna be BIG kid?
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/RadioStation/vinyls.rsi
+    state: lime-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/Radiostation/music/BIGparappa.ogg
+      
+- type: entity
+  name: "vinyl disk: Giant Steps"
+  id: VinylDiskGiantme
+  description: oh jesus
+  parent: BaseVinylDisk
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/RadioStation/vinyls.rsi
+    state: lightishred-vinyl-disk
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/Radiostation/music/Giantme.ogg

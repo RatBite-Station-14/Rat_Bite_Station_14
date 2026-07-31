@@ -1,0 +1,14 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitBatter
+  name: Batter's uniform
+  description: I have a sacred mission to fulfill. I must purify the Station.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Uniforms/Batter.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Uniforms/Batter.rsi
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon

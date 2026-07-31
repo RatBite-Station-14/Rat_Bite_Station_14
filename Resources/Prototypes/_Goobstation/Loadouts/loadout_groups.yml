@@ -907,6 +907,7 @@
   minLimit: 0
   loadouts:
   - ClothingNeckScarfStripedCentcom
+  - ClothingNeckMantleCentcom
 
 - type: loadoutGroup
   id: NanotrasenRepresentativeBackpack

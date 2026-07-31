@@ -1,0 +1,20 @@
+- type: entity
+  parent: [ClothingOuterStorageBase, BaseSyndicateContraband]
+  id: ClothingOuterCoatDesignercoat
+  name: Designer's coat
+  description: A stylish black armored jacket, it even has a rose!
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/OuterClothing/Coats/Guccicoat.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/OuterClothing/Coats/Guccicoat.rsi
+  - type: Item
+    size: Normal
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.35
+        Slash: 0.55
+        Piercing: 0.55
+        Heat: 0.45
+        Caustic: 0.6

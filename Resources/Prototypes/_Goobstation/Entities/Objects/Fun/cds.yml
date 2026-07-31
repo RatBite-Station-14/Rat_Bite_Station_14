@@ -289,17 +289,7 @@
   - type: Sprite
     state: synd-cd
 
-- type: entity
-  parent: SyndiCdDisk
-  name: cd disk (Numbers)
-  id: JVNECdDiskNumber
-  description: All around the mulberry bush, the monkey chased the weasel...
-  components:
-  - type: Vinyl
-    song:
-      path: /Audio/_Goobstation/RadioStation/ads/Number.ogg
-  - type: VinylSummonRule
-    gameRule: NumberStationThreats
+ 
 
 - type: entity
   parent: SyndiCdDisk

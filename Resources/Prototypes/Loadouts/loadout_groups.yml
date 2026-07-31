@@ -407,6 +407,7 @@
   - MercGreenJumpsuit
   - MercBlueJumpsuit
   - FreakPants
+  - MimeJumpsuitBatter
 
 #ratbite end
   - RainbowJumpsuit
@@ -499,6 +500,7 @@
   loadouts:
   - BartenderHead
   - BartenderBowler
+  - BartenderBoaterHat
 
 - type: loadoutGroup
   id: BartenderJumpsuit
@@ -507,6 +509,7 @@
   - BartenderJumpsuit
   - BartenderJumpskirt
   - BartenderJumpsuitPurple
+  - BartenderJumpsuitBarber # Ratbite
   - ServiceMJ # goob
 
 - type: loadoutGroup
@@ -514,6 +517,7 @@
   name: loadout-group-service-worker-jumpsuit
   loadouts:
   - BartenderJumpsuit
+  - BartenderJumpsuitBarber
   - BartenderJumpskirt
   - BartenderJumpsuitPurple
   - ServiceMJ
@@ -794,6 +798,7 @@
   name: loadout-group-mime-jumpsuit
   loadouts:
   - MimeJumpsuit
+  - MimeJumpsuitBatter
   - MimeJumpskirt
 
 - type: loadoutGroup
