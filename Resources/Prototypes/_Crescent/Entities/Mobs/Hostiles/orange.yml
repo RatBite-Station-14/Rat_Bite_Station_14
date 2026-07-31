@@ -119,7 +119,7 @@
 
 - type: entity
   name: Goot
-  id: AdmemeMobGoot
+  id: AdmemeMobOrangeGoot
   parent: [ SimpleSpaceMobBase, FlyingMobBase, MobCombat ]
   suffix: Admeme (HESBACK)
   description: HES FUCKING BACK RUN!!!
@@ -174,8 +174,8 @@
     - type: IgniteOnMeleeHit
       fireStacks: 200
     - type: SpamEmitSound
-      minInterval: 10
-      maxInterval: 30
+      minInterval: 5
+      maxInterval: 20
       sound:
         collection: AnnoyingOrange
         params:
@@ -183,3 +183,89 @@
     - type: Reflect
       reflectProb: 1
       spread: 0
+    - type: PassiveDamage # Slight passive regen. Assuming one damage type, comes out to about 4 damage a minute from base.yml.
+      allowedStates:
+      - Alive
+      damage:
+         types:
+         Bloodloss: -5
+         Poison: -5
+        groups:
+          Brute: -0.07
+          Burn: -0.07
+
+- type: entity
+  name: Goot
+  id: AdmemeMobOrangeGootPacified
+  parent: [ SimpleSpaceMobBase, FlyingMobBase, MobCombat ]
+  suffix: Admeme (Goot weakened, PACIFIED EDITION)
+  description: A false idol of true power of Goot. He will be coming for you... true verison
+  components:
+    - type: Absorbable
+    - type: InputMover
+    - type: MobMover
+    - type: HTN
+      rootTask:
+        task: SimpleHostileCompound
+      blackboard:
+        NavSmash: !type:Bool
+          true
+    - type: Sprite
+      drawdepth: Mobs
+      sprite: _Crescent/Objects/Fun/Plushies/orange.rsi
+      layers:
+      - map: [ "enum.DamageStateVisualLayers.Base" ]
+        state: base
+    - type: CombatMode
+    - type: Physics
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.40
+          density: 80
+          mask:
+            - FlyingMobMask
+          layer:
+            - FlyingMobLayer
+    - type: MobState
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        99999998: Dead
+    - type: Stamina
+      critThreshold: 99999998
+    - type: MeleeWeapon
+      altDisarm: false
+      angle: 0
+      animation: WeaponArcBite
+      soundHit:
+        collection: AnnoyingOrange
+        params:
+          variation: 0.25
+      damage:
+        types:
+          Stamina: 1000
+    - type: IgniteOnMeleeHit
+      fireStacks: 200
+    - type: SpamEmitSound
+      minInterval: 5
+      maxInterval: 20
+      sound:
+        collection: AnnoyingOrange
+        params:
+          variation: 0.25
+    - type: Reflect
+      reflectProb: 1
+      spread: 0
+    - type: PassiveDamage # Slight passive regen. Assuming one damage type, comes out to about 4 damage a minute from base.yml.
+      allowedStates:
+      - Alive
+      damage:
+         types:
+         Bloodloss: -5
+         Poison: -5
+        groups:
+          Brute: -0.07
+          Burn: -0.07
