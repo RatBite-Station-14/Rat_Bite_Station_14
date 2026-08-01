@@ -30,7 +30,7 @@ reagent-effect-radiationcellular = This is so much cancer that I feel the tumors
 
 # for hallucinations maybe; didn't code it into this PR. Here for funnies
 
-hallucination-effect-ratstapping = 89 rats wrapped in my skin. I feel their little feet tap-tap-tap tapping against my ribs, spine, my arms and legs. Trapped. They're all trapped. The rats. They're trying to eat their way out of me. I know they are. Don't you quetsion me.
+hallucination-effect-ratstapping = 89 rats wrapped in my skin. I feel their little feet tap-tap-tap tapping against my ribs, spine, my arms and legs. Trapped. They're all trapped. The rats. They're trying to eat their way out of me. I know they are. Don't you question me.
 hallucination-effect-council = The council are looking for me, I see them poking their noses. They are searching for me. They will never find me. The space elves and space dwarves and space orks will never find me. I'm far from them now. They are gone.
 hallucination-effect-laughter = HAHAHAHAHAHAHAHA!
 hallucination-effect-catmeow = Cats... cats... so many of them... 
