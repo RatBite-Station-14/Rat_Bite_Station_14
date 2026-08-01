@@ -609,10 +609,6 @@
       - !type:ModifyBloodLevel
         amount: 5 # weaker than artiplates
       - !type:HealthChange
-        damage:
-          types:
-            Bloodloss: -2 # again, weaker than artiplates
-      - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
           min: 5.5
