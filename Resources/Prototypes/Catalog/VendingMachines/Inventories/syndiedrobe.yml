@@ -28,6 +28,10 @@
     ClothingNeckScarfStripedSyndieGreen: 2
     ClothingNeckScarfStripedSyndieRed: 2
     ClothingShoesBootsWinterSyndicate: 2
+    ClothingOuterCoatSyndieCapArmored: 1
+    ClothingOuterWinterSyndieCapArmored: 1
+    ClothingOuterCoatDesignercoat: 1
+    ClothingOuterCoatcybersunovercoat: 2
   contrabandInventory:
     ToyFigurineFootsoldier: 1
     ToyFigurineNukieElite: 1
@@ -37,5 +41,5 @@
     ClothingHandsTacticalMaidGloves: 5
     ClothingShoesRealJordans: 1 # Goobstation
   emaggedInventory:
-    ClothingOuterCoatSyndieCapArmored: 1
-    ClothingOuterWinterSyndieCapArmored: 1
+    SarinGasGrenade: 3
+    CameraBug: 1

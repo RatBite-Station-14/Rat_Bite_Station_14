@@ -407,8 +407,8 @@
     - id: BiomassReclaimerFlatpack
     - id: Multitool
     - id: MedTekCartridge
-    - id: SyringeGun
- #  - id: BoxSyringePax
+    - id: RapidSyringeGun
+    - id: BoxSyringePax
     - id: ClothingBeltMilitaryWebbingCMOFilled
     - id: ClothingBackpackDuffelSurgeryFilled
     # Shitmed
