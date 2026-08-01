@@ -19,7 +19,8 @@
       ]
     },
     {
-      "name": "barberchair"
+      "name": "barberchair",
+	  "directions": 4
     },
     {
       "name": "dyedispenser"
