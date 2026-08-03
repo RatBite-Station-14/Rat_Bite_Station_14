@@ -10,7 +10,7 @@
     angle: 0
     animationRotation: -90
     wideAnimationRotation: -90
-    heavyStaminaCost: 2.5
+    heavyStaminaCost: 10 #ratbite
     damage:
       types:
         Piercing: 20 # slightly more than the captain sabre but with less attack speed, idk how high this should really be
@@ -25,7 +25,7 @@
     length: 2
     canDashWhileWeightless: false # Omu
   - type: UseDelay
-    delay: 1.5
+    delay: 5 # ratbite
   - type: Tag
     tags:
     - DuelingRapier

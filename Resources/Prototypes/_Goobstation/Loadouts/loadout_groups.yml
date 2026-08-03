@@ -1020,7 +1020,7 @@
   - BSOMarineVest # EE
   - BSOArmoredVest # EE
   - BlueshieldOfficerOuterKimonoBlueshield #Omu
-  
+
 - type: loadoutGroup
   id: BlueshieldOfficerNeck
   name: loadout-group-bso-neck
@@ -1045,7 +1045,7 @@
   - BlackCowboyBoots
   - SnowjacksBso
   - BSOAdvancedJackBoots #Omu
-  
+
 - type: loadoutGroup
   id: BlueshieldOfficerEnvirohelm
   name: loadout-group-bso-envirohelm
@@ -1171,6 +1171,7 @@
   loadouts:
   - Bodycam # Goobstation - Body cameras
   - ClothingNeckCWPSec
+  - ParryCloak #Ratbite
 
 #honkops
 
