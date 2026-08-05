@@ -13,7 +13,7 @@ trait-sneak-desc = You feel more sneaky.
 
 trait-loyalty-training-name = NanoTrasen Loyalty Training
 trait-loyalty-training-desc =
-    You start with a mindshield implant. Normal mindshield rules apply.
+    You received extensive loyalty training, start with a mindshield and cannot be an antagonist. Normal mindshield rules apply.
 
 trait-pct-training-name = PCT Training
 trait-pct-training-desc =
