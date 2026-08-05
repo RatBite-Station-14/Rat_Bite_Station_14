@@ -86,6 +86,7 @@ using Content.Server.Chat.Systems;
 using Content.Shared._EinsteinEngines.Revolutionary;
 using Robust.Shared.Player;
 using Content.Goobstation.Shared.Changeling.Components;
+using Content.Shared._BRatbite.Traits;
 
 
 namespace Content.Server.GameTicking.Rules;
@@ -250,7 +251,8 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
             HasComp<ZombieComponent>(ev.Target) ||
             HasComp<HereticComponent>(ev.Target) ||
             HasComp<ChangelingIdentityComponent>(ev.Target) || // goob edit - no more ling or heretic revs
-            HasComp<AntagImmuneComponent>(ev.Target)) // Antag immune MEANS antag immune.
+            HasComp<AntagImmuneComponent>(ev.Target) ||
+            HasComp<UnconvertableComponent>(ev.Target)) // Antag immune MEANS antag immune.
         {
             if (ev.User != null)
                 _popup.PopupEntity("The conversion failed!", ev.User.Value, ev.User.Value);

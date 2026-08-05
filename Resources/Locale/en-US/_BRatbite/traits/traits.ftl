@@ -81,3 +81,6 @@ trait-nude-description = You have an irrational fear of clothing, and are slower
 
 trait-trigger-name = Trigger
 trait-trigger-desc = Careful examination of your internals may cause you to explode
+
+trait-unconvertable-name = Unconvertable
+trait-unconvertable-desc = Your strong will makes you unable to be converted.

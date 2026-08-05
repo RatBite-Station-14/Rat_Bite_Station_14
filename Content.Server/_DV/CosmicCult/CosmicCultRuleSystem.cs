@@ -76,6 +76,7 @@ using Content.Goobstation.Common.Religion;
 using Content.Server.Station.Systems;
 using Content.Shared.Cuffs.Components;
 using Content.Server.Cuffs;
+using Content.Shared._BRatbite.Traits;
 
 namespace Content.Server._DV.CosmicCult;
 
@@ -701,6 +702,9 @@ public sealed class CosmicCultRuleSystem : GameRuleSystem<CosmicCultRuleComponen
 
         if (!_mind.TryGetMind(uid, out var mindId, out var mind))
             return;
+
+        // Ratbite
+        if (HasComp<UnconvertableComponent>(uid)) return;
 
         _role.MindAddRole(mindId, "MindRoleCosmicCult", mind, true);
         _role.MindHasRole<CosmicCultRoleComponent>(mindId, out var cosmicRole);

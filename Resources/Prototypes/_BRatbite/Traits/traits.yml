@@ -280,3 +280,11 @@
   components:
   - type: Trigger
 
+- type: trait
+  id: Unconvertable
+  name: trait-unconvertable-name
+  description: trait-unconvertable-desc
+  category: Mental
+  cost: 0
+  components:
+  - type: Unconvertable
