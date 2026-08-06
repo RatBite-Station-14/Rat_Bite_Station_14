@@ -660,11 +660,11 @@
             max: 5
           damage:
             groups:
-              Brute: -23
+              Brute: -27 # buffed a little
         - !type:HealthChange
           conditions:
           - !type:ReagentThreshold
-            min: 5
+            min: 5.5
           - !type:OrganType
             type: Yowie
             shouldHave: false
@@ -769,11 +769,11 @@
             max: 5
           damage:
             groups:
-              Burn: -23
+              Burn: -36 # 9 of each burn type, same as metorapan
         - !type:HealthChange
           conditions:
           - !type:ReagentThreshold
-            min: 5
+            min: 5.5
           - !type:OrganType
             type: Yowie
             shouldHave: false
