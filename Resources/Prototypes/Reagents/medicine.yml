@@ -1599,7 +1599,7 @@
   metabolisms:
     Medicine:
       effects:
-        - !type:ModifyBloodLevel # Goobstation - Cryo rebalance
+        - !type:ModifyBloodLevel # Goobstation - Cryo rebalance. Ratbite is here too...
           conditions:
           - !type:Temperature
             max: 213.0
@@ -1615,9 +1615,9 @@
           damage: # Goobstation - Cryo rebalance
             groups:
               Airloss: -10.0
-              Brute: -5.0
-              Burn: -5.0
-              Toxin: -5.0
+              Brute: -15 # buffed by ratbite
+              Burn: -20  # buffed by ratbite
+              Toxin: -6 # again, buffed by ratbite
 
 - type: reagent
   id : Aloxadone
