@@ -150,3 +150,5 @@
     whitelist:
       tags:
       - DrinkBottle
+  - type: StorageFill # Ratbite
+    contents: []

@@ -151,3 +151,6 @@
   parent: SodaDispenser
   id: SodaDispenserEmpty
   suffix: Empty
+  components:
+  - type: StorageFill # Ratbite
+    contents: []
