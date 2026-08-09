@@ -485,6 +485,10 @@
       - id: Machete
       - id: BaseBallBat
       - id: CombatKnife
+      - id: N14PoolCue
+      - id: N14GolfClub
+      - id: N14BrokenPipe
+      - id: N14Machete
       - id: Spear
       - id: RifleStock
       - id: ModularReceiver
@@ -515,6 +519,10 @@
       - id: SawImprov
       - id: HydroponicsToolMiniHoe
       - id: ClothingHandsKnuckleDusters
+      - id: N14TribalSword
+        weight: 0.1
+      - id: N14PoliceBaton
+        weight: 0.1
 
 - type: entity
   name: Maint Loot Spawner
