@@ -27,7 +27,7 @@ public sealed partial class CryoSicknessComponent : Component
     [DataField, AutoNetworkedField]
     public TimeSpan ExpireTime;
 
-    [DataField]
+    [DataField, AutoNetworkedField]
     public bool HadPacifism = false;
 
     [DataField]

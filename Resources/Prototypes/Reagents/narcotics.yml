@@ -98,8 +98,8 @@
     Narcotic:
       effects:
       - !type:MovespeedModifier
-        walkSpeedModifier: 1.35
-        sprintSpeedModifier: 1.35
+        walkSpeedModifier: 1.5 #Ratbite, changed from 1.35
+        sprintSpeedModifier: 1.5 #Ratbite, changed from 1.35
       - !type:GenericStatusEffect
         key: Stutter
         component: StutteringAccent
@@ -160,8 +160,8 @@
             Cold: -0.5
             Radiation: -0.5
       - !type:MovespeedModifier
-        walkSpeedModifier: 1.25
-        sprintSpeedModifier: 1.25
+        walkSpeedModifier: 1.35 #Ratbite changed from 1.25
+        sprintSpeedModifier: 1.35
       - !type:HealthChange
         conditions:
         - !type:OrganType # Goobstation - Yowie
@@ -239,8 +239,8 @@
             Cold: -0.5
             Radiation: -0.5
       - !type:MovespeedModifier
-        walkSpeedModifier: 1.3
-        sprintSpeedModifier: 1.3
+        walkSpeedModifier: 1.45 #Ratbite, changed from 1.3
+        sprintSpeedModifier: 1.45
       - !type:HealthChange
         conditions:
         - !type:OrganType # Goobstation - Yowie

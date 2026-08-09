@@ -10,6 +10,9 @@
         {
             "name": "pointing",
             "delays": [[1]]
+        },
+        {
+            "name": "outline"
         }
     ]
 }

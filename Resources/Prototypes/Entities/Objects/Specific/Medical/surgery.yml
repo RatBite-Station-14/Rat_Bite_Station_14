@@ -53,7 +53,7 @@
 # Base
 
 - type: entity
-  parent: BaseItem
+  parent: [BaseItem, BaseMedicalScienceContraband] # Ratbite: contraband changes
   id: BaseToolSurgery
   abstract: true
   components:

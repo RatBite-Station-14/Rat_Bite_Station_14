@@ -1,0 +1,23 @@
+# Used by scurret WAWA.
+- type: language
+  id: Wawa # wawa # okay i dont know what good name for this or description so i just put wawa
+  speech:
+    color: "#bfbfbf"
+  obfuscation:
+    !type:ReplacementObfuscation
+    replacement:
+    - Wawa
+    - Wa
+    - WAWA
+    - WAW
+    - Waw
+    - wawa
+    - wa
+    - waWa
+    - rain # rainworld???
+    - waawawa
+    - waaaa
+    - wwwwawa
+    - wawaawawa
+    - wawaawawawa
+    - Waaaaa

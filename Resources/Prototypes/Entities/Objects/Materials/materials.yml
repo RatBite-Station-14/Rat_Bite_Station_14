@@ -639,7 +639,7 @@
     count: 1
 
 - type: entity
-  parent: MaterialBase
+  parent: [MaterialBase, BaseMajorContraband] # Ratbite: contraband changes
   id: MaterialBananium
   name: bananium
   suffix: Full

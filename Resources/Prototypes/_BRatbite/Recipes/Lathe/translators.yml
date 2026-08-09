@@ -1,0 +1,9 @@
+- type: latheRecipe
+  id: ScurretTranslator
+  result: ScurretTranslator
+  completetime: 2
+  materials:
+    Steel: 500
+    Glass: 100
+    Plastic: 50
+    Gold: 50

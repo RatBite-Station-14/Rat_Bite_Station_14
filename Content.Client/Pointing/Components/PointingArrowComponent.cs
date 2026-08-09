@@ -25,4 +25,6 @@ public sealed partial class PointingArrowComponent : SharedPointingArrowComponen
     public Vector2 Offset = new(0, 0.25f);
 
     public readonly string AnimationKey = "pointingarrow";
+
+    public readonly string OutlineLayer = "outline";
 }

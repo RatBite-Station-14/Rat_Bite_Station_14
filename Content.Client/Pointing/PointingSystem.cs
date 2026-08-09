@@ -35,6 +35,8 @@ public sealed partial class PointingSystem : SharedPointingSystem
         SubscribeLocalEvent<RoguePointingArrowComponent, ComponentStartup>(OnRogueArrowStartup);
         SubscribeLocalEvent<PointingArrowComponent, ComponentHandleState>(HandleCompState);
 
+        // Ratbite: Scale pointers
+        SubscribeCVars();
         InitializeVisualizer();
     }
 
@@ -71,7 +73,11 @@ public sealed partial class PointingSystem : SharedPointingSystem
     private void OnArrowStartup(EntityUid uid, PointingArrowComponent component, ComponentStartup args)
     {
         if (TryComp<SpriteComponent>(uid, out var sprite))
-            _sprite.SetDrawDepth((uid, sprite), (int)DrawDepth.Overlays);
+        {
+            // Ratbite: Scale pointers
+            ScalePointer((uid, component, sprite));
+            _sprite.SetDrawDepth((uid, sprite), (int) DrawDepth.Overlays);
+        }
 
         BeginPointAnimation(uid, component.StartPosition, component.Offset, component.AnimationKey);
     }

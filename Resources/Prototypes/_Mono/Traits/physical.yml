@@ -220,10 +220,6 @@
   description: trait-trap-avoider-desc
   category: Physical
   cost: 3
-  speciesBlacklist:
-    - Felinid
-    - Tajaran
-    - Harpy
   components:
     - type: TrapAvoider
 

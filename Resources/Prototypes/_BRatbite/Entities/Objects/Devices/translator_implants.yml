@@ -1,0 +1,12 @@
+- type: entity
+  parent: BaseSubdermalImplant
+  id: WawaTranslatorImplant
+  name: Scurret translator implant
+  description: Provides you the ability to speak the wawa.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TranslatorImplant
+    understood:
+    - Wawa
+    spoken:
+    - Wawa

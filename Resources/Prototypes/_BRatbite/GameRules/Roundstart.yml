@@ -70,9 +70,7 @@
     definitions:
     - prefRoles: [ Traitor ]
       min: 0
-      maxRange:
-        min: 1
-        max: 10
+      max: 10
       playerRatio: 10
       chaosScore: 150
       blacklist:
@@ -98,9 +96,7 @@
     definitions:
     - prefRoles: [ Changeling ]
       min: 0
-      maxRange:
-        min: 1
-        max: 10
+      max: 10
       playerRatio: 10
       chaosScore: 200
       jobBlacklist: [ Chaplain ]
@@ -123,9 +119,7 @@
     definitions:
     - prefRoles: [ Heretic ]
       min: 0
-      maxRange:
-        min: 1
-        max: 10
+      max: 10
       playerRatio: 17
       chaosScore: 500
       lateJoinAdditional: true

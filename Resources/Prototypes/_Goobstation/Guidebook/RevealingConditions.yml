@@ -3,8 +3,9 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-- type: guideEntry
-  id: Conditions
-  name: "Antag Revealing Conditions"
-  priority: 60
-  text: "/ServerInfo/_Goobstation/Guidebook/Antagonist/MetaReveal.xml"
+# Ratbite: Remove
+#- type: guideEntry
+#  id: Conditions
+#  name: "Antag Revealing Conditions"
+#  priority: 60
+#  text: "/ServerInfo/_Goobstation/Guidebook/Antagonist/MetaReveal.xml"

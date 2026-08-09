@@ -63,6 +63,10 @@
   - type: DelayedGhostRole
     job: SecurityOfficer
     name: ghost-role-information-reinforcement-sec-name
+    requirements:
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 18000 # five hours
   - type: GhostCharacterSpawner
     components:
     - type: Loadout

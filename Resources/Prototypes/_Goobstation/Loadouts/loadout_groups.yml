@@ -982,6 +982,7 @@
   - BlueshieldOfficerBeret
   - BlueshieldOfficerHeadCowboy
   - BlueshieldOfficerGoidaHelmet
+  - BlueshieldOfficerBeretElite # Omu
 
 - type: loadoutGroup
   id: BlueshieldOfficerBackpack
@@ -999,6 +1000,13 @@
   - BlueshieldOfficerInnerBlueshieldSuit
   - BlueshieldOfficerInnerBlueshieldSkirt
   - BlueshieldOfficerInnerBlueshieldShirt
+  - BlueshieldOfficerTurtleneck # Omu
+  - BlueshieldOfficerTurtleneckSkirt # Omu
+  - BlackBlueshieldOfficerTurtleneck # Omu
+  - BlackBlueshieldOfficerTurtleneckSkirt # Omu
+  - EliteBlueShieldJumpsuit # Starlight
+  - EliteBlueShieldJumpskirt # Starlight
+  - FormalBlueShieldJumpsuit # Starlight
 
 - type: loadoutGroup
   id: BlueshieldOfficerOuter
@@ -1008,6 +1016,10 @@
   - BlueshieldOfficerOuterBlueshieldArmoredJacket
   - BlueshieldOfficerOuterBlueshieldCowboyVest
   - BlueshieldOfficerOuterWinterBlueshield
+  - BSOArmoredCoat # EE
+  - BSOMarineVest # EE
+  - BSOArmoredVest # EE
+  - BlueshieldOfficerOuterKimonoBlueshield #Omu
 
 - type: loadoutGroup
   id: BlueshieldOfficerNeck
@@ -1015,6 +1027,7 @@
   minLimit: 0
   loadouts:
   - BlueshieldOfficerOuterBlueshieldMantle
+  - BlueShieldEliteCloak # Starlight
 
 - type: loadoutGroup
   id: BlueshieldOfficerMask
@@ -1031,6 +1044,7 @@
   - JackBoots
   - BlackCowboyBoots
   - SnowjacksBso
+  - BSOAdvancedJackBoots #Omu
 
 - type: loadoutGroup
   id: BlueshieldOfficerEnvirohelm
@@ -1157,6 +1171,7 @@
   loadouts:
   - Bodycam # Goobstation - Body cameras
   - ClothingNeckCWPSec
+  - ParryCloak #Ratbite
 
 #honkops
 

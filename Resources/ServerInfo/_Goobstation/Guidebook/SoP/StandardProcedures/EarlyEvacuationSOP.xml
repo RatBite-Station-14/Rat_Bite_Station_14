@@ -20,8 +20,5 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
   5. Early Evacuation should be called when there are hostiles on the evacuation shuttle that are threatening the lives of the station personnel and bridge personnel.
   <Box>Said hostiles must be, in reasonable suspicion, unable to be taken down without significant loss of life to everyone currently on-board.</Box>
-
-  6. Early Evacuation must be called when there is a Violet Alert to prevent potential specimens from arriving aboard the shuttle.
-  <Box>If it is possible to defend the shuttle, this should be prioritized.</Box>
-
+  
 </Document>

@@ -51,6 +51,7 @@
   - SecurityERifle
   - SecurityEShottie
   - SecurityJustice
+  - ParryRapier #Rapier from omu
 
 - type: loadoutGroup
   id: SecuritySpecialGloves
@@ -71,6 +72,11 @@
   loadouts:
   - RedsightOverseerLawHelm
   - RedsightOverseerCap
+  - SecurityHelmet
+  - SecurityHelmetAlt # Goobstation
+  - SecurityBeret
+  - SecurityHat
+  - TrooperHat
 
 - type: loadoutGroup
   id: RedsightOverseerJumpsuit

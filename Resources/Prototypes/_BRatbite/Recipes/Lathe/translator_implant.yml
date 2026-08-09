@@ -1,0 +1,5 @@
+- type: latheRecipe
+  parent: BaseTranslatorImplanter
+  id: WawaTranslatorImplanter
+  subname: lathe-recipe-WawaTranslatorImplanter-subname
+  result: WawaTranslatorImplanter

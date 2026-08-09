@@ -560,6 +560,11 @@
   - type: BatterySelfRecharger # Goobstation - CentComm Job Revamp
     autoRecharge: true
     autoRechargeRate: 40
+  - type: FiringPin #Ratbite, mindshield restriction system
+  - type: Lock #Ratbite
+    locked: true
+  - type: AccessReader #Ratbite
+    access: [ [ "CentralCommand" ] ]
 
 - type: entity
   name: pulse carbine
@@ -617,6 +622,11 @@
     size: Huge
     shape:
     - 0,0,4,1
+  - type: FiringPin #Ratbite, mindshield restriction system
+  - type: Lock #Ratbite
+    locked: true
+  - type: AccessReader #Ratbite
+    access: [ [ "CentralCommand" ] ]
 
 - type: entity
   name: pulse rifle
@@ -671,6 +681,11 @@
     size: Huge
     shape:
     - 0,0,5,1
+  - type: FiringPin #Ratbite, mindshield restriction system
+  - type: Lock #Ratbite
+    locked: true
+  - type: AccessReader #Ratbite
+    access: [ [ "CentralCommand" ] ]
 
 - type: entity
   name: laser cannon
@@ -708,6 +723,11 @@
     size: Huge
     shape:
     - 0,0,4,1
+  - type: FiringPin #Ratbite, mindshield restriction system
+  - type: Lock #Ratbite
+    locked: true
+  - type: AccessReader #Ratbite
+    access: [ [ "Security" ] ]
 
 - type: entity
   name: portable particle decelerator

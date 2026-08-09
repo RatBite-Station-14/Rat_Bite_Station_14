@@ -170,6 +170,7 @@
   minLimit: 0
   maxLimit: 3
   loadouts:
+  - PlushieCarmella
   - FlowerWreath
   - Hairflower
   - Headphones
@@ -1282,6 +1283,11 @@
   - HeadofSecurityHead
   - HeadofSecurityBeret
   - HeadofSecuritySpecialBeret # Goobstation
+  - SecurityHelmet
+  - SecurityHelmetAlt # Goobstation
+  - SecurityBeret
+  - SecurityHat
+  - TrooperHat
 
 - type: loadoutGroup
   id: HeadofSecurityJumpsuit
@@ -1303,6 +1309,7 @@
   - HeadofSecurityCloak
   - HeadofSecurityMantle
   - Bodycam # Goobstation - Body cameras
+  - ParryCloak #ratbite
 
 - type: loadoutGroup
   id: HeadofSecurityOuterClothing
@@ -1321,6 +1328,11 @@
   - WardenHelmet #Ratbite
   - WardenHead
   - WardenBeret
+  - SecurityHelmet
+  - SecurityHelmetAlt # Goobstation
+  - SecurityBeret
+  - SecurityHat
+  - TrooperHat
 
 - type: loadoutGroup
   id: WardenJumpsuit
@@ -1410,6 +1422,11 @@
   loadouts:
   - DetectiveFedora
   - DetectiveFedoraGrey
+  - SecurityHelmet
+  - SecurityHelmetAlt # Goobstation
+  - SecurityBeret
+  - SecurityHat
+  - TrooperHat
 
 - type: loadoutGroup
   id: DetectiveNeck

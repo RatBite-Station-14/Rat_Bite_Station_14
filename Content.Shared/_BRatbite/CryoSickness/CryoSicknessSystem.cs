@@ -19,6 +19,7 @@ public abstract class SharedCryoSicknessSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly TagSystem _tagSystem = default!;
@@ -32,13 +33,13 @@ public abstract class SharedCryoSicknessSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<CryoSicknessComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<CryoSicknessComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<CryoSicknessComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<CryoSicknessComponent, DamageModifyEvent>(OnDamageModifyEvent);
         SubscribeLocalEvent<CryoSicknessComponent, DamageChangedEvent>(OnDamageChange);
         SubscribeLocalEvent<CryoSicknessComponent, MindAddedMessage>(OnPlayerAttach);
         SubscribeLocalEvent<CryoSicknessComponent, PlayerAttachedEvent>(OnPlayerAttach);
         SubscribeLocalEvent<CryoSicknessComponent, ShakeAwakeEvent>(OnShakeAwake);
+        SubscribeLocalEvent<CryoSicknessComponent, BeforePacifiedAttackEvent>(OnBeforePacifiedAttack);
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawn);
     }
 
@@ -68,11 +69,6 @@ public abstract class SharedCryoSicknessSystem : EntitySystem
         EnsureComp<PacifiedComponent>(ent);
         _actions.AddAction(ent.Owner, ref ent.Comp.ActionEntity, ent.Comp.Action);
         _tagSystem.AddTag(ent, _cryoSicknessTag);
-    }
-
-    private void OnStartup(Entity<CryoSicknessComponent> ent, ref ComponentStartup args)
-    {
-        EnsureCryoInitialized(ent);
     }
 
     private void OnMapInit(Entity<CryoSicknessComponent> ent, ref MapInitEvent args)
@@ -161,6 +157,19 @@ public abstract class SharedCryoSicknessSystem : EntitySystem
         _adminLog.Add(LogType.Action, LogImpact.Extreme, $"{ToPrettyString(ent):player} shook themselves off cryo sickness.");
 
         RemComp<CryoSicknessComponent>(ent);
+    }
+
+    private void OnBeforePacifiedAttack(Entity<CryoSicknessComponent> ent, ref BeforePacifiedAttackEvent args)
+    {
+        if (ent.Comp.HadPacifism)
+            return;
+
+        if (args.Target is not { } target)
+            return;
+
+        // Allow defending against non-player mobs/entities while keeping cryo PvP protection.
+        if (!_mind.TryGetMind(target, out _, out _))
+            args.Cancel();
     }
 
 }

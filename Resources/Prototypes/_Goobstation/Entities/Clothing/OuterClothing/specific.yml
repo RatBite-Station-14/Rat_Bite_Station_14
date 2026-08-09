@@ -70,6 +70,7 @@
       nameSet: True
       mobile: True  # Goobstation - mobile cameras fix
       id: NoPro Camera
+    - type: BodyCam
     - type: Eye
     - type: WirelessNetworkConnection
       range: 200

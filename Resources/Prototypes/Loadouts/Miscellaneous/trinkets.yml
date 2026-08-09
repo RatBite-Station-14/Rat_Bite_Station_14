@@ -122,6 +122,12 @@
 
 # Toys
 - type: loadout
+  id: PlushieCarmella
+  storage:
+    back:
+    - PlushieCarmella
+    
+- type: loadout
   id: PlushieLizard
   storage:
     back:

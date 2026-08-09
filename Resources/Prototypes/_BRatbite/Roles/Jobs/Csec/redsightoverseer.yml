@@ -59,7 +59,7 @@
     pocket1: ClothingMaskGasSecurity
   storage:
     back:
-   # - CQCManual, No fuck you
+    - KravMagaImplanter
     - BookSpaceLaw
     - Flash
     - RSOUndeterminedWeapon

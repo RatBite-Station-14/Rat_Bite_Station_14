@@ -168,6 +168,11 @@
     steps: 1
     zeroVisible: true
   - type: Appearance
+  - type: FiringPin #Ratbite, mindshield restriction system
+  - type: Lock #Ratbite
+    locked: true
+  - type: AccessReader #Ratbite
+    access: [ [ "CentralCommand" ] ]
 
 - type: entity
   name: WSPR

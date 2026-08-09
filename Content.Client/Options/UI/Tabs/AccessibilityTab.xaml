@@ -23,6 +23,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 <ui:OptionSlider Name="SpeechBubbleTextOpacitySlider" Title="{Loc 'ui-options-speech-bubble-text-opacity'}" />
                 <ui:OptionSlider Name="SpeechBubbleSpeakerOpacitySlider" Title="{Loc 'ui-options-speech-bubble-speaker-opacity'}" />
                 <ui:OptionSlider Name="SpeechBubbleBackgroundOpacitySlider" Title="{Loc 'ui-options-speech-bubble-background-opacity'}" />
+                <ui:OptionSlider Name="PointerScaleSlider" Title="{Loc 'ui-options-pointer-scale'}" />
+                <CheckBox Name="PointerOutlineCheckBox" Text="{Loc 'ui-options-pointer-outline'}" />
                 <CheckBox Name="AutoFillHighlightsCheckBox" Text="{Loc 'ui-options-auto-fill-highlights'}" />
                 <CheckBox Name="HighlightSoundCheckBox" Text="{Loc 'ui-options-highlight-sound'}" /> <!-- Goobstation - Highlight chat sounds! -->
                 <ui:OptionColorSlider Name="HighlightsColorSlider"

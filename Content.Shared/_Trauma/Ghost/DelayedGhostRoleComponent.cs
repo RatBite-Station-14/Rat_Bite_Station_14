@@ -44,4 +44,8 @@ public sealed partial class DelayedGhostRoleComponent : Component
     /// </summary>
     [DataField]
     public ProtoId<JobPrototype>? Job;
+
+    // Ratbite Add job requirements to delayed ghost roles as well
+    [DataField]
+    public HashSet<JobRequirement>? Requirements;
 }

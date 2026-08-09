@@ -75,6 +75,7 @@
     nameSet: True
     mobile: True
     id: Bodycam
+  - type: BodyCam
   - type: Eye
   - type: WirelessNetworkConnection
     range: 200
@@ -90,6 +91,17 @@
     component:
       - type: StationAiVision
         range: 4
+  - type: ItemSlots
+    slots:
+      item:
+        name: Rapier
+        insertVerbText: sheath-insert-verb
+        ejectVerbText: sheath-eject-verb
+        insertSound: /Audio/Items/sheath.ogg
+        ejectSound: /Audio/Items/unsheath.ogg
+        whitelist:
+          tags:
+          - DuelingRapier
 
 - type: entity
   parent: [ClothingNeckBase, BaseCommandContraband]
@@ -122,4 +134,4 @@
   - type: Sprite
     sprite: Clothing/Neck/mantles/mantle.rsi
   - type: Clothing
-    sprite: Clothing/Neck/mantles/mantle.rsi 
+    sprite: Clothing/Neck/mantles/mantle.rsi

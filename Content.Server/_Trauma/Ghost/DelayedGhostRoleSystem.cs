@@ -86,6 +86,7 @@ public sealed class DelayedGhostRoleSystem : EntitySystem
         role.RoleRules = comp.Rules;
         role.MindRoles = comp.MindRoles;
         role.JobProto = comp.Job;
+        role.Requirements = comp.Requirements;
         RemComp(uid, comp);
     }
 }

@@ -46,10 +46,10 @@ public sealed class BatteryBoundUserInterface : BoundUserInterface, IBuiPreTickU
 
     void IBuiPreTickUpdate.PreTickUpdate()
     {
-        if (_chargeRateCoalescer.CheckIsModified(out var chargeRateValue))
+        if (_chargeRateCoalescer.CheckIsModified(out var chargeRateValue) && float.IsFinite(chargeRateValue)) // Ratbite: add float finite check
             _pred!.SendMessage(new BatterySetChargeRateMessage(chargeRateValue));
 
-        if (_dischargeRateCoalescer.CheckIsModified(out var dischargeRateValue))
+        if (_dischargeRateCoalescer.CheckIsModified(out var dischargeRateValue) && float.IsFinite(dischargeRateValue)) // Ratbite: add float finite check
             _pred!.SendMessage(new BatterySetDischargeRateMessage(dischargeRateValue));
     }
 
