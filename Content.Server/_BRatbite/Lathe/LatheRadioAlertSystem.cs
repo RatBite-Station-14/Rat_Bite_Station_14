@@ -1,5 +1,6 @@
 using Content.Server.Radio.EntitySystems;
 using Content.Shared.Lathe;
+using Content.Shared.Speech;
 
 namespace Content.Server._BRatbite.Lathe;
 
@@ -15,7 +16,7 @@ public sealed partial class LatheRadioAlertSystem : EntitySystem
 
     private void OnLathePrint(Entity<LatheComponent> ent, ref LatheFinishPrintingEvent args)
     {
-        if (args.Recipe.PrintMessageLocId is not { } printMessageLocId || args.Recipe.RadioChannel is not { } radioChannel || !TryComp<MetaDataComponent>(ent, out var metadata)) return;
+        if (args.Recipe.PrintMessageLocId is not { } printMessageLocId || args.Recipe.RadioChannel is not { } radioChannel || !TryComp<MetaDataComponent>(ent, out var metadata) || !EnsureComp<SpeechComponent>(ent).Enabled) return;
 
         _radioSystem.SendRadioMessage(ent.Owner, Loc.GetString(printMessageLocId, [("recipeName", _latheSystem.GetRecipeName(args.Recipe)), ("fabName", metadata.EntityName)]), radioChannel, ent.Owner);
     }
