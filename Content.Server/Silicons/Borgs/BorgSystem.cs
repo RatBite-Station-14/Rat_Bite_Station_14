@@ -348,7 +348,7 @@ public sealed partial class BorgSystem : SharedBorgSystem
             DisableAllModules(uid, comp);
 
         // only enable the powerdraw if there is a player in the chassis
-        var drawing = _mind.TryGetMind(uid, out _, out _) && _mobState.IsAlive(ent);
+        var drawing = _mind.TryGetMind(uid, out _, out _) && !_mobState.IsIncapacitated(ent);
         _powerCell.SetDrawEnabled(uid, drawing);
 
         UpdateUI(uid, comp);
@@ -432,7 +432,7 @@ public sealed partial class BorgSystem : SharedBorgSystem
         if (_powerCell.HasDrawCharge(uid))
         {
             Toggle.TryActivate(uid);
-            _powerCell.SetDrawEnabled(uid, _mobState.IsAlive(uid));
+            _powerCell.SetDrawEnabled(uid, !_mobState.IsIncapacitated(uid));
         }
         _appearance.SetData(uid, BorgVisuals.HasPlayer, true);
     }

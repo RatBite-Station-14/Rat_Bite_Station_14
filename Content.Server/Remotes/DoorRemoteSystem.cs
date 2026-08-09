@@ -27,10 +27,12 @@ using Content.Server.Power.EntitySystems;
 using Content.Shared.Access.Components;
 using Content.Shared.Database;
 using Content.Shared.Doors.Components;
+using Content.Shared.Electrocution;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Remotes.Components;
 using Content.Shared.Remotes.EntitySystems;
+using Robust.Shared.Audio.Systems;
 
 namespace Content.Shared.Remotes
 {
@@ -38,7 +40,9 @@ namespace Content.Shared.Remotes
     {
         [Dependency] private readonly IAdminLogManager _adminLogger = default!;
         [Dependency] private readonly AirlockSystem _airlock = default!;
+        [Dependency] private readonly SharedAudioSystem _audio = default!;
         [Dependency] private readonly DoorSystem _doorSystem = default!;
+        [Dependency] private readonly SharedElectrocutionSystem _electrify = default!;
         [Dependency] private readonly ExamineSystemShared _examine = default!;
 
         public override void Initialize()
@@ -119,6 +123,20 @@ namespace Content.Shared.Remotes
                         _adminLogger.Add(LogType.Action,
                             LogImpact.Medium,
                             $"{ToPrettyString(args.User):player} used {ToPrettyString(args.Used)} on {ToPrettyString(args.Target.Value)} to set emergency access {(airlockComp.EmergencyAccess ? "on" : "off")}");
+                    }
+
+                    break;
+                case OperatingMode.ToggleOvercharge:
+                    if (TryComp<ElectrifiedComponent>(args.Target, out var electrified))
+                    {
+                        var enabled = !electrified.Enabled;
+                        _electrify.SetElectrified((args.Target.Value, electrified), enabled);
+                        _audio.PlayLocal(enabled
+                            ? electrified.AirlockElectrifyEnabled
+                            : electrified.AirlockElectrifyDisabled, args.Target.Value, args.User);
+                        _adminLogger.Add(LogType.Action,
+                            LogImpact.Medium,
+                            $"{ToPrettyString(args.User):player} used {ToPrettyString(args.Used)} on {ToPrettyString(args.Target.Value)} to {(enabled ? "" : "un")}electrify it");
                     }
 
                     break;

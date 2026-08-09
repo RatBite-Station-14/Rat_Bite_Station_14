@@ -43,6 +43,12 @@ public sealed partial class SurveillanceCameraComponent : Component
     [DataField("id")]
     public string CameraId { get; set;  } = "camera";
 
+    /// <summary>
+    /// If true, display the entity name instead of the configured camera ID.
+    /// </summary>
+    [DataField]
+    public bool UseEntityNameAsCameraId;
+
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("nameSet")]
     public bool NameSet { get; set; }
