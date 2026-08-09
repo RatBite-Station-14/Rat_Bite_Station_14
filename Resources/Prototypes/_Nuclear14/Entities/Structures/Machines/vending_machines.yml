@@ -1,0 +1,299 @@
+#MARK: Base
+- type: entity
+  id: N14VendingMachineStorageBase # This is for vending machines that are storage and not actual vending machines.
+  parent: BaseMachinePowered
+  name: vending machine
+  description: Just add capitalism!
+  abstract: true
+  components:
+  - type: AmbientOnPowered
+  - type: AmbientSound
+    volume: -9
+    range: 3
+    enabled: false
+    sound:
+      path: /Audio/Ambience/Objects/vending_machine_hum.ogg
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/empty.rsi
+    snapCardinals: false
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.45,0.25,0.45"
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+        density: 1000
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Breakage"]
+      - !type:EjectVendorItems
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 3
+            max: 5
+          N14ScrapElectronic1:
+           min: 1
+           max: 3
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+  - type: Repairable
+    doAfterDelay: 8
+  - type: Anchorable
+  - type: TypingIndicator
+    proto: robot
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Vending
+  - type: DoAfter
+  - type: Electrified
+    enabled: false
+    usesApcPower: true
+  - type: PointLight
+    radius: 2.5
+    energy: 1
+    color: "#b34747"
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+  - type: LitOnPowered
+  - type: ApcPowerReceiver
+    powerLoad: 200
+  - type: Actions
+  - type: StaticPrice
+    price: 100
+  - type: Appearance
+  - type: LanguageKnowledge
+    speaks:
+    - English
+    - Chinese
+    - RobotTalk
+    understands:
+    - English
+    - Chinese
+    - RobotTalk
+  - type: InteractionOutline
+
+#MARK: Nuka Vending
+- type: entity
+  parent: VendingMachine
+  id: N14VendingMachineNukaCola
+  name: Nuka-Cola machine
+  description: A Pre-War vending machine that dispenses Nuka-Cola Corporation branded beverages.
+  suffix: vendor, normal
+  components:
+  - type: VendingMachine
+    pack: NukaInventory
+    dispenseOnHitChance: 0.25
+    dispenseOnHitThreshold: 2
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    ejectState: eject-unshaded
+    denyState: deny-unshaded
+    ejectDelay: 1.9
+    initialStockQuality: 0.05
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Machines/VendingMachines/nukacola.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: WiresVisuals
+  - type: PointLight
+    radius: 2.5
+    energy: 1
+    color: "#b34747"
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+
+#MARK: Nuka Storage
+- type: entity
+  parent: N14VendingMachineStorageBase
+  id: N14VendingMachineNukaColaNew
+  suffix: storage, empty
+  name: Nuka-Cola machine
+  description: A Pre-War vending machine that dispenses Nuka-Cola Corporation branded beverages.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Machines/VendingMachines/nukacola.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "normal-unshaded"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: WiresVisuals
+  - type: Construction
+    graph: N14VendingMachineNukaRecipes
+    node: start
+  - type: Storage
+    grid:
+    - 0,0,3,3
+    maxItemSize: Small
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: Transform
+    anchored: true
+
+#MARK: Vim Storage
+- type: entity
+  parent: N14VendingMachineStorageBase
+  id: N14VendingMachineVim
+  suffix: storage, empty
+  name: Vim machine
+  description: A Pre-War vending machine that dispenses Vim branded beverages.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Machines/VendingMachines/vim.rsi
+    layers:
+    - state: vimmachine
+  - type: Storage
+    grid:
+    - 0,0,3,3
+    maxItemSize: Small
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: Transform
+    anchored: true
+    noRot: false
+
+#MARK: Cig vendors
+- type: entity
+  parent: BaseStructure
+  id: N14VendingMachineCigarette
+  suffix: storage, empty
+  name: cigarette vendor
+  description: A Pre-War vending machine that dispenses cigarettes.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Machines/VendingMachines/vendors.rsi
+    layers:
+    - state: cigarette
+  - type: Storage
+    grid:
+    - 0,0,3,3
+    maxItemSize: Normal
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: Transform
+    anchored: true
+  - type: InteractionOutline
+
+- type: entity
+  parent: BaseStructure
+  id: N14VendingMachineNewnuka
+  suffix: storage, empty
+  name: Nuka-Cola machine
+  description: A Pre-War Nukacola machine.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Machines/VendingMachines/vendors.rsi
+    layers:
+    - state: nuka_new
+  - type: Storage
+    grid:
+    - 0,0,3,3
+    maxItemSize: Normal
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: Transform
+    anchored: true
+  - type: InteractionOutline
+
+- type: entity
+  parent: BaseStructure
+  id: N14VendingMachineOldnuka
+  suffix: storage, empty
+  name: Old Nuka-Cola machine
+  description: An old Pre-War Nukacola machine.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Machines/VendingMachines/vendors.rsi
+    layers:
+    - state: nuka_old
+  - type: Storage
+    grid:
+    - 0,0,3,3
+    maxItemSize: Normal
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: Transform
+    anchored: true
+  - type: InteractionOutline
+
+- type: entity
+  parent: BaseStructure
+  id: N14VendingMachineSunsetsas
+  suffix: storage, empty
+  name: sunset sarsaparilla machine
+  description: An old Pre-War sarsaparilla machine.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Machines/VendingMachines/vendors.rsi
+    layers:
+    - state: sarsaparilla
+  - type: Storage
+    grid:
+    - 0,0,3,3
+    maxItemSize: Normal
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: Transform
+    anchored: true
+  - type: InteractionOutline

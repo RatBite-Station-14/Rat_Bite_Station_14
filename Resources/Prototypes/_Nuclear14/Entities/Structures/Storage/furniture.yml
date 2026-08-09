@@ -73,3 +73,95 @@
     stateBaseClosed: firstaid
     stateDoorOpen: firstaid_open
     stateDoorClosed: firstaid_door
+
+# Cash Registers 
+- type: entity
+  parent: [ BaseStructureDynamic, BaseBagOpenClose ]
+  id: Basecashregister
+  description: Cash Register, because you've got to have MONEY.
+  suffix: Empty
+  abstract: true
+  components:
+  - type: Storage
+    grid:
+    - 0,0,9,3
+    maxItemSize: Normal
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Storage/Furniture/cashregister.rsi
+    noRot: false
+  - type: Appearance
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: Transform
+    noRot: false
+  - type: Rotatable
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.18,-0.48,0.18,0.48"
+        density: 200
+        mask:
+        - TabletopMachineMask
+        layer:
+        - TabletopMachineLayer
+  - type: InteractionOutline
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger: # Excess damage, don't spawn entities
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 2
+
+- type: entity
+  name: Cash Register
+  parent: Basecashregister
+  id: Cashregister
+  components:
+  - type: Sprite
+    state: filingcabinet
+    layers:
+    - state: register_clean
+    - state: register_cleanopen
+      map: ["openLayer"]
+      
+- type: entity
+  name: Dirty Cash Register
+  parent: Basecashregister
+  id: BloodyCashregister
+  components:
+  - type: Sprite
+    state: filingcabinet
+    layers:
+    - state: register_blood
+    - state: register_bloodopen
+      map: ["openLayer"]

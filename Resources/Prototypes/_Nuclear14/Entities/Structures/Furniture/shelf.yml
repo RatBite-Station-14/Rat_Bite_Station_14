@@ -1,6 +1,102 @@
 # For directional 64x64 sprites below there is an entity for each main direction (south, east, west). 
 # If bounding boxes improve in future these can be simplified. For now this is required as rotating the sprite ruins the bounding box. - Peptide
 
+# Bookshelf bookshelves
+- type: entity
+  id: N14BookshelfDirty
+  parent: BaseStructure
+  name: "bookshelf"
+  description: A dusty old shelf.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/bookshelf.rsi
+    snapCardinals: true
+    netsync: false
+    layers:
+      - state: bookshelf_2
+  - type: Damageable
+    damageModifierSet: Wood
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 30
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Tag
+    tags:
+    - Wooden
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Physics
+    bodyType: Static
+  - type: Anchorable
+  - type: Pullable
+  - type: Storage
+    grid:
+    - 0,0,9,3
+    maxItemSize: Huge
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: InteractionOutline
+  - type: Construction
+    graph: N14BookshelfDirtyRecipes
+    node: start
+
+- type: entity
+  id: N14Bookshelf
+  parent: N14BookshelfDirty
+  name: "bookshelf"
+  description: Dusty old books.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/bookshelf.rsi
+    layers:
+      - state: bookshelf_1
+      - state: book-0
+        map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: RandomSprite
+    available:
+      - enum.DamageStateVisualLayers.Base:
+          book-0: ""
+      - enum.DamageStateVisualLayers.Base:
+          book-1: ""
+      - enum.DamageStateVisualLayers.Base:
+          book-2: ""
+      - enum.DamageStateVisualLayers.Base:
+          book-3: ""
+      - enum.DamageStateVisualLayers.Base:
+          book-4: ""
+      - enum.DamageStateVisualLayers.Base:
+          book-5: ""
+          
+- type: entity
+  id: N14BookshelfDestroyed
+  parent: N14BookshelfDirty
+  name: "bookshelf"
+  description: A broken old shelf.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/bookshelf.rsi
+    layers:
+      - state: bookshelf_3
+      
 # Normal Shelves
 - type: entity
   id: N14ShelfWood1
