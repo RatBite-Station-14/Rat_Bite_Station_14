@@ -179,7 +179,7 @@
     state: green
     
 - type: entity
-  parent: N14DecorFloorWorldBase
+  parent: N14BarricadeSandbagSingle
   id: N14DecorConcreteBarrier
   name: concrete barrier
   description: an old concrete barrier for stopping traffic.

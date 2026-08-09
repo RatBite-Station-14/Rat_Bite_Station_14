@@ -266,6 +266,18 @@
     node: N14ChairOfficeErgonomic
     
 - type: entity
+  parent: OfficeChairBase
+  id: N14ChairOfficeCaptain
+  suffix: captain
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/chairs.rsi
+    state: captain_chair
+  - type: Construction
+    graph: N14Seat
+    node: N14ChairOfficeCaptain
+    
+- type: entity
   parent: N14ChairMetalGreen
   id: N14ChairMetalFolding
   name: folding chair
