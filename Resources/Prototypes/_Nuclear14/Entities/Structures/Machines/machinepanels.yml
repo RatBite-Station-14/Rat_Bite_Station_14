@@ -10,7 +10,7 @@
   - type: Sprite
     sprite: _Nuclear14/Structures/Power/32x48_machines.rsi
     state: rackempty
-    offset: 0, 1
+    offset: "0.0,1"
     drawdepth: Overdoors
   - type: Transform
     anchored: true
@@ -56,7 +56,7 @@
     - type: Sprite
       sprite: _Nuclear14/Structures/Power/32x48_machines.rsi
       state: rackdestroyed
-      offset: 0, 1
+      offset: "0, 1"
     - type: Destructible
       thresholds:
       - trigger:
@@ -89,7 +89,7 @@
     - type: Sprite
       sprite: _Nuclear14/Structures/Power/32x48_machines.rsi
       state: rackparts
-      offset: 0, 1
+      offset: "0, 1"
     - type: Construction
       graph: N14TallMachineFrame
       node: machineFrame
@@ -233,7 +233,8 @@
   components:
   - type: Sprite
     sprite: _Nuclear14/Structures/Machines/mainframe.rsi
-    snapCardinals: true
+    offset: "0,0"
+    snapCardinals: false
     layers:
     - state: mainframe
     - state: mainframe_on
@@ -243,7 +244,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-1.1,-0.5,1.2,1"
+          bounds: "-1.1,-0.9,1.2,0.9"
         density: 190
         mask:
         - MachineMask
@@ -305,6 +306,7 @@
   components:
   - type: Sprite
     sprite: _Nuclear14/Structures/Machines/ms13_modulartall.rsi
+    offset: "0.0,-0.25"
 
 - type: entity
   parent: N14MachineModularMachineDialsTall

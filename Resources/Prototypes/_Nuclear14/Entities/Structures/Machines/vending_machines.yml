@@ -283,6 +283,7 @@
     sprite: _Nuclear14/Structures/Machines/VendingMachines/vendors.rsi
     layers:
     - state: sarsaparilla
+    offset: "0.0,0.2"
   - type: Storage
     grid:
     - 0,0,3,3

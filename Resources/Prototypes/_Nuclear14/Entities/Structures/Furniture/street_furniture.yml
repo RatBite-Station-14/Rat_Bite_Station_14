@@ -55,6 +55,7 @@
   - type: Sprite
     netsync: false
     state: mailbox_old
+    offset: "0.0,0.25"
   - type: Storage
     grid:
     - 0,0,3,3
