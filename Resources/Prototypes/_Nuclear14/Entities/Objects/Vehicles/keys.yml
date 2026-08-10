@@ -1,0 +1,12 @@
+- type: entity
+  parent: VehicleKeyATV
+  id: N14VehicleKeyflamyMotorcycle
+  name: Motorcycle keys
+  description: A set of keys used for a motorcycle.
+  components:
+    - type: Tag
+      tags:
+        - VehicleKey
+    - type: Sprite
+      sprite: Objects/Vehicles/atv.rsi
+      state: keys

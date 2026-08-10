@@ -136,6 +136,22 @@
       - N14MobRadroach
       
 - type: entity
+  name: Giant Rat Spawner
+  id: N14SpawnMobGiantRat
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Animals/giantrat.rsi
+        state: giantrat
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobGiantRat
+      - N14MobGiantSandRat
+      
+- type: entity
   name: Radscorpion Spawner
   id: N14SpawnMobRadscorpion
   parent: MarkerBase

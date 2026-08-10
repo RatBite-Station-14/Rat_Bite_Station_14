@@ -1,0 +1,155 @@
+- type: entity
+  parent: BaseVehicle
+  id: N14VehicleFlamyMotorcycle
+  name: Flaming Motorcycle
+  description: Bad Arse bro.
+  components:
+    - type: Vehicle
+      renderOver: North, NorthEast, East, SouthEast, South, SouthWest, West, NorthWest
+    - type: Sprite
+      sprite: _Nuclear14/Objects/Vehicles/bikesbuggy.rsi
+      state: bike_flamy2
+      scale: 0.65, 0.75
+      noRot: true
+    - type: MovementSpeedModifier
+    - type: MovementAlwaysTouching
+      acceleration: 2
+      friction: 1.5
+      baseWalkSpeed: 4.5
+      baseSprintSpeed: 7
+    - type: UnpoweredFlashlight
+    - type: PointLight
+      enabled: false
+      radius: 3.5
+      softness: 2
+      mask: /Textures/Effects/LightMasks/cone.png
+      autoRot: true
+    - type: ItemSlots
+      slots:
+        key_slot:
+          name: vehicle-slot-component-slot-name-keys
+          whitelist:
+            requireAll: true
+            tags:
+              - VehicleKey
+          insertSound:
+            path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+            params:
+              volume: -3
+              
+- type: entity
+  parent: BaseVehicle
+  id: N14VehicleGreenyMotorcycle
+  name: Green Motorcycle
+  description: Bad Arse bro.
+  components:
+    - type: Vehicle
+      renderOver: North, NorthEast, East, SouthEast, South, SouthWest, West, NorthWest
+    - type: Sprite
+      sprite: _Nuclear14/Objects/Vehicles/bikesbuggy.rsi
+      state: bike_green
+      scale: 0.65, 0.75
+      noRot: true
+    - type: MovementSpeedModifier
+    - type: MovementAlwaysTouching
+      acceleration: 2
+      friction: 1.5
+      baseWalkSpeed: 4.5
+      baseSprintSpeed: 7
+    - type: UnpoweredFlashlight
+    - type: PointLight
+      enabled: false
+      radius: 3.5
+      softness: 2
+      mask: /Textures/Effects/LightMasks/cone.png
+      autoRot: true
+    - type: ItemSlots
+      slots:
+        key_slot:
+          name: vehicle-slot-component-slot-name-keys
+          whitelist:
+            requireAll: true
+            tags:
+              - VehicleKey
+          insertSound:
+            path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+            params:
+              volume: -3
+              
+- type: entity
+  parent: BaseVehicle
+  id: N14VehicleScramblerMotorcycle
+  name: Scrambler Motorcycle
+  description: Bad Arse bro.
+  components:
+    - type: Vehicle
+      renderOver: North, NorthEast, East, SouthEast, South, SouthWest, West, NorthWest
+    - type: Sprite
+      sprite: _Nuclear14/Objects/Vehicles/bikesbuggy.rsi
+      state: bike_scrambler2
+      scale: 0.75, 0.75
+      noRot: true
+    - type: MovementSpeedModifier
+    - type: MovementAlwaysTouching
+      acceleration: 2
+      friction: 1.5
+      baseWalkSpeed: 4.5
+      baseSprintSpeed: 7
+    - type: UnpoweredFlashlight
+    - type: PointLight
+      enabled: false
+      radius: 3.5
+      softness: 2
+      mask: /Textures/Effects/LightMasks/cone.png
+      autoRot: true
+    - type: ItemSlots
+      slots:
+        key_slot:
+          name: vehicle-slot-component-slot-name-keys
+          whitelist:
+            requireAll: true
+            tags:
+              - VehicleKey
+          insertSound:
+            path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+            params:
+              volume: -3
+              
+- type: entity
+  parent: BaseVehicle
+  id: N14VehicleGreenMotorcycle
+  name: Green Motorcycle
+  description: Bad Arse bro.
+  components:
+    - type: Vehicle
+      renderOver: North, NorthEast, East, SouthEast, South, SouthWest, West, NorthWest
+    - type: Sprite
+      sprite: _Nuclear14/Objects/Vehicles/bikesbuggy.rsi
+      state: bike2
+      scale: 0.65, 0.85
+      noRot: true
+    - type: MovementSpeedModifier
+    - type: MovementAlwaysTouching
+      acceleration: 2
+      friction: 1.5
+      baseWalkSpeed: 4.5
+      baseSprintSpeed: 7
+    - type: UnpoweredFlashlight
+    - type: PointLight
+      enabled: false
+      radius: 3.5
+      softness: 2
+      mask: /Textures/Effects/LightMasks/cone.png
+      autoRot: true
+    - type: ItemSlots
+      slots:
+        key_slot:
+          name: vehicle-slot-component-slot-name-keys
+          whitelist:
+            requireAll: true
+            tags:
+              - VehicleKey
+          insertSound:
+            path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+            params:
+              volume: -3

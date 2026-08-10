@@ -30,6 +30,8 @@
     damage:
       types:
         Blunt: 5
+    soundHit:
+      collection: MetalThud
     angle: 0
     animation: WeaponArcThrust
   - type: Wieldable
@@ -37,6 +39,8 @@
     damage:
       types:
         Blunt: 10
+    soundHit:
+      collection: MetalThud
   - type: Item
     size: Large
   - type: Clothing
@@ -45,7 +49,7 @@
     - back
     - suitStorage
   - type: StaticPrice
-    price: 0
+    price: 1000
 
 - type: entity
   name: golf club
@@ -62,11 +66,15 @@
     damage:
       types:
         Blunt: 5
+    soundHit:
+      collection: MetalThud
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
         Blunt: 16
+    soundHit:
+      collection: MetalThud
   - type: Item
     size: Large
   - type: Clothing
@@ -75,4 +83,40 @@
     - back
     - suitStorage
   - type: StaticPrice
-    price: 0
+    price: 1500
+    
+- type: entity
+  name: Shovel
+  parent: [BaseItem, BaseMinorContraband]
+  id: N14Shovel
+  description: A large tool for digging and moving dirt.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Melee/shovel.rsi
+    state: icon
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    attackRate: 0.85
+    damage:
+      types:
+        Blunt: 5    
+    soundHit:
+      collection: MetalThud
+  - type: Wieldable
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 19    
+    soundHit:
+      collection: MetalThud
+  - type: Item
+    size: Large
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Melee/shovel.rsi
+    slots:
+    - back
+    - suitStorage
+  - type: Shovel
+  - type: StaticPrice
+    price: 800
+

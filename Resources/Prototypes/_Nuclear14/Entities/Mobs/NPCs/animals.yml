@@ -228,6 +228,8 @@
   - type: NpcFactionMember
     factions:
     - Mouse
+  - type: Item
+    size: Large
   - type: Fixtures
     fixtures:
       fix1:
@@ -300,6 +302,8 @@
   - type: NpcFactionMember
     factions:
     - Mouse
+  - type: Item
+    size: Large
   - type: Fixtures
     fixtures:
       fix1:
