@@ -182,7 +182,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Dead
+      50: Dead
   - type: DamageStateVisuals
     states:
       Alive:
@@ -239,7 +239,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Dead
+      50: Dead
   - type: DamageStateVisuals
     states:
       Alive:
@@ -448,3 +448,63 @@
     spawned:
     - id: FoodMeat
       amount: 1
+      
+# friendly Ant
+
+#MARK: Giant Ant
+- type: entity
+  name: giant ant
+  parent: N14MobBasepassiveInsect
+  suffix: Friendly
+  id: N14MobFriendlyGiantAnt
+  description: It's an ant...but giant. Watch for the nippers.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: giantant
+      sprite: _Nuclear14/Mobs/Insects/giantant.rsi
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.3
+        density: 400
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: giantant
+      Critical:
+        Base: giantant
+      Dead:
+        Base: dead
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+      amount: 2
+  - type: Bloodstream
+    bloodMaxVolume: 500
+  - type: Temperature
+    heatDamageThreshold: 500
+    coldDamageThreshold: 0
+  - type: MeleeWeapon
+    altDisarm: false
+    hidden: true
+    soundHit:
+        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 60
+    animation: WeaponArcClaw
+    wideAnimation: WeaponArcClaw
+    damage:
+      groups:
+        Brute: 5

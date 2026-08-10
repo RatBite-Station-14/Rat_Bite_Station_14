@@ -50,7 +50,7 @@
     wideAnimation: WeaponArcBite
     damage:
       groups:
-        Brute: 3
+        Brute: 10
  #- type: Reproductive
    #breedChance: 0.05
    #birthPopup: reproductive-birth-popup
@@ -124,7 +124,7 @@
     wideAnimation: WeaponArcBite
     damage:
       groups:
-        Brute: 3
+        Brute: 10
   - type: Butcherable
     spawned:
     - id: FoodMeat
@@ -263,7 +263,7 @@
     wideAnimation: WeaponArcBite
     damage:
       groups:
-        Brute: 3
+        Brute: 5
   - type: Butcherable
     spawned:
     - id: FoodMeat
@@ -276,7 +276,7 @@
   description: Damn, that's a big rat.
   components:
   - type: Sprite
-    drawdepth: Mobs
+    drawdepth: SmallMobs
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: giantrat
@@ -337,7 +337,7 @@
     wideAnimation: WeaponArcBite
     damage:
       groups:
-        Brute: 3
+        Brute: 5
   - type: Butcherable
     spawned:
     - id: FoodMeat
@@ -357,7 +357,7 @@
     understands:
     - Pig
   - type: Sprite
-    drawdepth: Mobs
+    drawdepth: SmallMobs
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: radhog
@@ -407,7 +407,7 @@
     wideAnimation: WeaponArcBite
     damage:
       groups:
-        Brute: 3
+        Brute: 15
   - type: Butcherable
     spawned:
     - id: FoodMeat

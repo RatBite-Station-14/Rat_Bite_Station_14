@@ -240,6 +240,7 @@
       map: ["light"]
       visible: false
   - type: Gun #Mobs currently cannot bolt a gun, so we have to simulate them firing it
+    projectileSpeed: 15
     minAngle: 9
     maxAngle: 18
     angleIncrease: 3
@@ -378,13 +379,13 @@
     fireCost: 50
   - type: BatterySelfRecharger
     autoRecharge: true
-    autoRechargeRate: 50
+    autoRechargeRate: 100
   - type: Battery
     maxCharge: 1000
     startingCharge: 1000
   - type: Gun
-    projectileSpeed: 10 # Goob - allows you to actually dodge the projectiles
-    fireRate: 0.4 # Goob - accounts for damage and also to be less annoying
+    projectileSpeed: 15 # Goob - allows you to actually dodge the projectiles
+    fireRate: 0.9 # Goob - accounts for damage and also to be less annoying
     useKey: false
     selectedMode: SemiAuto
     availableModes:
@@ -424,6 +425,7 @@
     # description: |
       # Protect your area and remove any trespassers.
   - type: Gun #Mobs currently cannot bolt a gun, so we have to simulate them firing it
+    projectileSpeed: 15
     minAngle: 9
     maxAngle: 18
     angleIncrease: 3
@@ -477,6 +479,7 @@
     # description: |
       # Protect your area and remove any trespassers.
   - type: Gun #Mobs currently cannot bolt a gun, so we have to simulate them firing it
+    projectileSpeed: 15
     minAngle: 6
     maxAngle: 12
     angleIncrease: 2
@@ -522,6 +525,7 @@
     # description: |
       # Protect your area and remove any trespassers.
   - type: Gun #Mobs currently cannot bolt a gun, so we have to simulate them firing it
+    projectileSpeed: 15
     minAngle: 12
     maxAngle: 24
     angleIncrease: 4
@@ -546,6 +550,6 @@
       task: SimpleRangedHostileCompound
   - type: AmbientSound
     range: 6
-    volume: -7
+    volume: -13
     sound:
       path: /Audio/Ambience/Objects/server_fans.ogg

@@ -132,7 +132,7 @@
   - type: SolutionAmmoProvider
     solutionId: chamber
     proto: ProjectileFireball
-    projectileSpeed: 0.5
+    projectileSpeed: 1
   - type: SolutionRegeneration
     solution: chamber
     generated:

@@ -250,3 +250,32 @@
   - type: StaticPrice
     price: 50
 
+# chinavend
+
+- type: entity
+  name: chinese sword
+  parent: [N14Machete, BaseMajorContraband]
+  id: N14ChineseVendSword
+  description: "it has a label on it, says 'made in china' figures."
+  components:
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Melee/chinesesword.rsi
+    slots:
+    - Belt
+    - suitStorage
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Melee/chinesesword.rsi
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Slash: 20
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 20
+    soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
+  - type: Item
+    sprite: _Nuclear14/Objects/Weapons/Melee/chinesesword.rsi
+  - type: StaticPrice
+    price: 70

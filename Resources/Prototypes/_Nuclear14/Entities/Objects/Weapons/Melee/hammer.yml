@@ -1,6 +1,6 @@
 - type: entity
   name: sledge hammer
-  parent: BaseItem
+  parent: [BaseItem, BaseMajorContraband]
   id: N14SledgeHammer
   description: A robust sledge hammer that requires considerable strength to be wielded.
   components:
@@ -19,7 +19,7 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 30
+        Blunt: 15
         Structural: 25
     soundHit:
       collection: MetalThud
@@ -51,7 +51,8 @@
   - type: MeleeWeapon
     damage:
       types:
-        Blunt: 5
+        Blunt: 46
+        Structural: 20
     soundHit:
       collection: MetalThud
   - type: Wieldable
@@ -67,7 +68,6 @@
     lifetime: 0.025
   - type: Item
     size: Ginormous
-  - type: MultiHandedItem
   - type: ClothingSpeedModifier
     walkModifier: 1.5
     sprintModifier: 1.5
