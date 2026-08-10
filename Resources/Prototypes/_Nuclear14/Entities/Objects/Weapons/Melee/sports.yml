@@ -2,7 +2,7 @@
   name: pool cue
   parent: BaseItem
   id: N14PoolCue
-  description: A pool cue used for hitting balls, usually the ones on pool tables, but also occasionally your enemy's.
+  description: Pool's closed.
   components:
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Melee/pool_cue.rsi
@@ -51,7 +51,7 @@
   name: golf club
   parent: [BaseItem, BaseMinorContraband]
   id: N14GolfClub
-  description: A tool used for a pointless old-world sport, now used as an instrument of destruction.
+  description: A tool used for a pointless sport, and it still is.
   components:
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Melee/golf_club.rsi

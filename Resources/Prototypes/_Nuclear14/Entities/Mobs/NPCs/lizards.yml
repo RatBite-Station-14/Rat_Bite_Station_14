@@ -1,0 +1,198 @@
+# Gecko variants
+- type: entity
+  name: gecko
+  id: N14MobGecko
+  parent: N14MobBaseHostileScaley
+  description: Looks like a dinosaur. The bite is worse than the claws.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: gecko
+      sprite: _Nuclear14/Mobs/Animals/gecko.rsi
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3
+    baseSprintSpeed : 4
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.3
+        density: 20
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: gecko
+      Critical:
+        Base: gecko
+      Dead:
+        Base: dead
+  - type: MeleeWeapon
+    altDisarm: false
+    hidden: true
+    soundHit:
+        path: /Audio/Effects/bite.ogg
+    angle: 60
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    damage:
+      types:
+        Slash: 5
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatLizard
+      amount: 3
+  #- type: Reproductive
+    #breedChance: 0.05
+    #birthPopup: reproductive-laid-egg-popup
+    #makeOffspringInfant: false
+    #partnerWhitelist:
+      #tags:
+      #- Gecko
+    #offspring:
+    # id: N14FoodEggGeckoFertilized
+     #maxAmount: 3
+ #- type: ReproductivePartner
+ #- type: EggLayer
+   #eggSpawn:
+   #- id: N14FoodEggGecko
+#- type: Tag
+   # tags:
+    #- Gecko
+
+- type: entity
+  parent: N14MobGecko
+  id: N14MobGeckoFire
+  name: fire gecko
+  description: A dangerous fire gecko. Don't let it get close!
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: gecko
+      sprite: _Nuclear14/Mobs/Animals/firegecko.rsi
+  - type: MeleeWeapon
+    altDisarm: false
+    hidden: true
+    soundHit:
+        path: /Audio/Effects/bite.ogg
+    angle: 60
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    damage:
+      types:
+        Slash: 5
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatLizard
+      amount: 3
+  # - type: Reproductive
+    # breedChance: 0.05
+    # birthPopup: reproductive-laid-egg-popup
+    # makeOffspringInfant: false
+    # partnerWhitelist:
+      # tags:
+      # - Gecko
+    # offspring:
+    # - id: N14FoodEggGeckoFertilized
+      # maxAmount: 3
+  # - type: ReproductivePartner
+  # - type: EggLayer
+    # eggSpawn:
+    # - id: N14FoodEggGecko
+  # - type: Tag
+    # tags:
+     #- Gecko
+  - type: Gun
+    cameraRecoilScalar: 0 #no recoil
+    fireRate: 3
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_Nuclear14/Weapons/Guns/Flames/flamer.ogg
+  - type: SolutionContainerManager
+    solutions:
+      chamber:
+        maxVol: 100
+        reagents:
+        - ReagentId: WeldingFuel
+          Quantity: 100
+  - type: SolutionAmmoProvider
+    solutionId: chamber
+    proto: ProjectileFireball
+    projectileSpeed: 0.5
+  - type: SolutionRegeneration
+    solution: chamber
+    generated:
+      reagents:
+      - ReagentId: WeldingFuel
+        Quantity: 1
+    duration: 0.1
+    nextChargeTime: 0.1
+  - type: HTN
+    rootTask:
+      task: SimpleRangedHostileCompound
+  - type: Flammable
+    fireSpread: false
+    canResistFire: true
+    firestackFade: -1
+  - type: Damageable
+    damageModifierSet: N14ScaleFireresist
+
+- type: entity
+  name: golden gecko
+  id: N14MobGeckoGolden
+  parent: N14MobGecko
+  description: A beautiful golden gecko. Don't let it scratch.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: gecko
+      sprite: _Nuclear14/Mobs/Animals/goldengecko.rsi
+  - type: MeleeWeapon
+    altDisarm: false
+    hidden: true
+    soundHit:
+        path: /Audio/Effects/bite.ogg
+    angle: 60
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    damage:
+      types:
+        Slash: 6
+        Radiation: 1
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatLizard
+      amount: 3
+  # - type: Reproductive
+    # breedChance: 0.05
+    # birthPopup: reproductive-laid-egg-popup
+    # makeOffspringInfant: false
+    # partnerWhitelist:
+      # tags:
+      # - Gecko
+    # offspring:
+    # - id: N14FoodEggGeckoFertilized
+      # maxAmount: 3
+  # - type: ReproductivePartner
+  # - type: EggLayer
+    # eggSpawn:
+    # - id: N14FoodEggGecko
+   #- type: Tag
+ # tags:
+   #  - Gecko
