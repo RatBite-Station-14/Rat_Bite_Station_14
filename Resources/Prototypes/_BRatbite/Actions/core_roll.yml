@@ -12,20 +12,3 @@
     checkCanAccess: false
   - type: WorldTargetAction
     event: !type:CoreRollActionEvent
-
-- type: entity
-  parent: BaseAction
-  id: ActionToggleAiCoreControl
-  name: Roll AI core
-  description: Take direct control of the AI core to roll it with movement keys. Press again to return to the AI eye.
-  components:
-  - type: Action
-    checkConsciousness: false
-    checkCanInteract: false
-    priority: -9
-    itemIconStyle: BigAction
-    icon:
-      sprite: Interface/Actions/actions_ai.rsi
-      state: ai_core
-  - type: InstantAction
-    event: !type:ToggleAiCoreControlActionEvent

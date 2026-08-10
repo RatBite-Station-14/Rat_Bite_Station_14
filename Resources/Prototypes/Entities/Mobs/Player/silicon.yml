@@ -155,7 +155,7 @@
   - type: ActionGrant
     actions:
     - ActionJumpToCore
-    - ActionToggleAiCoreControl
+    - ActionCoreRoll
     - ActionSurvCameraLights
     - ActionAIViewLaws
     - ActionOpenRemoteDevicesMenu # Corvax-Next-AiRemoteControl
@@ -330,8 +330,6 @@
     needsPower: false
   - type: StationAiCore
   - type: CoreRoller
-  - type: InputMover
-  - type: Actions
   - type: StationAiVision
   - type: TargetTracker # Ratbite
     channels: SILICON
