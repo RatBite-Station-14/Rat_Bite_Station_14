@@ -256,7 +256,7 @@
   name: chinese sword
   parent: [N14Machete, BaseMajorContraband]
   id: N14ChineseVendSword
-  description: "it has a label on it, says 'made in china' figures."
+  description: "it has a label on it, says 'made in space china' figures."
   components:
   - type: Clothing
     sprite: _Nuclear14/Objects/Weapons/Melee/chinesesword.rsi
