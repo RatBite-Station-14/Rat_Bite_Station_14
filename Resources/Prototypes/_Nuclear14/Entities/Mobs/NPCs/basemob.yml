@@ -59,7 +59,7 @@
     bloodReagent: Blood
   - type: Damageable
     damageContainer: Biological
-    damageModifierSet: SimpleHostile
+    damageModifierSet: WastelandAnimal
   - type: Puller
     needsHands: true
   - type: IgnitionSource
@@ -214,3 +214,54 @@
         - SmallMobMask
         layer:
         - SmallMobLayer
+
+- type: entity
+  name: feral ghoul
+  abstract: true
+  id: N14MobBaseHostileFeral
+  parent: N14MobBaseHostile
+  description: A mean looking ghoul.
+  components:
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: GhoulNPC
+  # - type: NoSlip
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: HTN
+    rootTask:
+      task: SimpleRangedHostileCompound
+    blackboard:
+      NavClimb: !type:Bool
+        true
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+      Critical:
+        Base: alive
+      Dead:
+        Base: dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 2.75
+    baseSprintSpeed : 5.5
+  - type: Hands
+  - type: Puller
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      60: 0.8
+      80: 0.6
+  - type: LanguageKnowledge
+    speaks:
+    - English
+    understands:
+    - English
+  - type: Appearance
+  - type: Clumsy
+    clumsySound:
+      collection: BodyFall

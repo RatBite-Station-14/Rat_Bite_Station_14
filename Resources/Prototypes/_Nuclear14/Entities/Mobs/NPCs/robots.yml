@@ -546,6 +546,6 @@
       task: SimpleRangedHostileCompound
   - type: AmbientSound
     range: 6
-    volume: -3
+    volume: -7
     sound:
       path: /Audio/Ambience/Objects/server_fans.ogg
