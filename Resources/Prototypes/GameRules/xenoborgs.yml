@@ -3,6 +3,7 @@
   id: Xenoborgs
   components:
   - type: XenoborgsRule
+    xenoborgShuttleCalled: true
   - type: RuleGrids
   - type: GameRule
     minPlayers: 30

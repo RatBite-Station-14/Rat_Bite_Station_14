@@ -2,10 +2,14 @@ using System.Numerics;
 using Content.Server.Popups;
 using Content.Server.Silicons.StationAi;
 using Content.Shared._BRatbite.Silicon;
+using Content.Shared.Actions;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.DoAfter;
 using Content.Shared.Maps;
+using Content.Shared.Mind;
+using Content.Shared.Mind.Components;
+using Content.Shared.Movement.Events;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Silicons.StationAi;
@@ -22,9 +26,11 @@ public sealed class CoreRollerSystem : EntitySystem
     private static readonly SoundSpecifier RollSound = new SoundPathSpecifier("/Audio/Effects/Footsteps/largethud.ogg");
 
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
     [Dependency] private readonly StationAiSystem _stationAi = default!;
@@ -36,7 +42,11 @@ public sealed class CoreRollerSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<CoreRollActionEvent>(OnRollAction);
+        SubscribeLocalEvent<ToggleAiCoreControlActionEvent>(OnToggleAiCoreControl);
         SubscribeLocalEvent<CoreRollerComponent, CoreRollDoAfterEvent>(OnRollDoAfter);
+        SubscribeLocalEvent<CoreRollerComponent, MoveInputEvent>(OnMoveInput);
+        SubscribeLocalEvent<CoreRollerComponent, MindUnvisitedMessage>(OnMindUnvisited);
+        SubscribeLocalEvent<CoreRollerComponent, ComponentShutdown>(OnShutdown);
     }
 
     private void OnRollAction(CoreRollActionEvent args)
@@ -56,12 +66,73 @@ public sealed class CoreRollerSystem : EntitySystem
         var direction = MathF.Abs(offset.X) > MathF.Abs(offset.Y)
             ? new Vector2(MathF.Sign(offset.X), 0f)
             : new Vector2(0f, MathF.Sign(offset.Y));
-        var mapDestination = new MapCoordinates(origin.Position + direction, origin.MapId);
+        StartRoll(core, args.Performer, direction);
+        args.Handled = true;
+    }
+
+    private void OnToggleAiCoreControl(ToggleAiCoreControlActionEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (TryComp(args.Performer, out VisitingMindComponent? visiting) &&
+            HasComp<CoreRollerComponent>(args.Performer) &&
+            visiting.MindId is { } visitingMind)
+        {
+            _mind.UnVisit(visitingMind);
+            args.Handled = true;
+            return;
+        }
+
+        if (!HasComp<StationAiHeldComponent>(args.Performer) ||
+            !_stationAi.TryGetCore(args.Performer, out var aiCore) ||
+            !HasComp<CoreRollerComponent>(aiCore.Owner) ||
+            !_mind.TryGetMind(args.Performer, out var mindId, out var mind) ||
+            mind.IsVisitingEntity)
+            return;
+
+        _mind.Visit(mindId, aiCore.Owner, mind);
+        if (TryComp(aiCore.Owner, out CoreRollerComponent? roller))
+            _actions.AddAction(aiCore.Owner, ref roller.ControlActionEntity, roller.ControlAction);
+
+        args.Handled = true;
+    }
+
+    private void OnMindUnvisited(Entity<CoreRollerComponent> core, ref MindUnvisitedMessage args)
+    {
+        _actions.RemoveAction(core.Owner, core.Comp.ControlActionEntity);
+        core.Comp.ControlActionEntity = null;
+    }
+
+    private void OnShutdown(Entity<CoreRollerComponent> core, ref ComponentShutdown args)
+    {
+        _actions.RemoveAction(core.Owner, core.Comp.ControlActionEntity);
+        core.Comp.ControlActionEntity = null;
+    }
+
+    private void OnMoveInput(Entity<CoreRollerComponent> core, ref MoveInputEvent args)
+    {
+        if (!args.State || !HasComp<VisitingMindComponent>(core.Owner))
+            return;
+
+        StartRoll(core, core.Owner, args.Dir.ToVec());
+    }
+
+    private void StartRoll(Entity<CoreRollerComponent> core, EntityUid performer, Vector2 direction)
+    {
+        if (direction.LengthSquared() < 0.01f)
+            return;
+
+        var origin = _transform.GetMapCoordinates(core.Owner);
+        var cardinal = MathF.Abs(direction.X) > MathF.Abs(direction.Y)
+            ? new Vector2(MathF.Sign(direction.X), 0f)
+            : new Vector2(0f, MathF.Sign(direction.Y));
+        var mapDestination = new MapCoordinates(origin.Position + cardinal, origin.MapId);
         var destination = _transform.ToCoordinates(mapDestination);
 
         if (IsBlocked(core.Owner, destination))
         {
-            _popup.PopupEntity(Loc.GetString("core-roll-blocked"), core.Owner, args.Performer);
+            _popup.PopupEntity(Loc.GetString("core-roll-blocked"), core.Owner, performer);
             return;
         }
 
@@ -69,7 +140,7 @@ public sealed class CoreRollerSystem : EntitySystem
 
         var doAfter = new DoAfterArgs(
             EntityManager,
-            args.Performer,
+            performer,
             core.Comp.RollDelay,
             new CoreRollDoAfterEvent(GetNetCoordinates(destination)),
             core.Owner)
@@ -81,7 +152,6 @@ public sealed class CoreRollerSystem : EntitySystem
         };
 
         _doAfter.TryStartDoAfter(doAfter);
-        args.Handled = true;
     }
 
     private void OnRollDoAfter(Entity<CoreRollerComponent> core, ref CoreRollDoAfterEvent args)
