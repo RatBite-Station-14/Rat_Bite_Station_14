@@ -1,0 +1,14 @@
+- type: entity
+  parent: BaseAction
+  id: ActionCoreRoll
+  name: Roll core
+  description: Warn nearby entities, then roll one tile with a heavy thud, crushing movable objects underneath.
+  components:
+  - type: Action
+    icon: { sprite: Interface/Actions/actions_mecha.rsi, state: mech_cycle_equip_on }
+    useDelay: 4
+  - type: TargetAction
+    range: 0
+    checkCanAccess: false
+  - type: WorldTargetAction
+    event: !type:CoreRollActionEvent

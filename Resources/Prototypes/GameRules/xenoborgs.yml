@@ -6,6 +6,7 @@
   - type: RuleGrids
   - type: GameRule
     minPlayers: 30
+    chaosScore: 200
   - type: LoadMapRule
     gridPath: /Maps/Shuttles/mothership.yml
   - type: AntagMultipleRoleSpawner
@@ -30,5 +31,3 @@
       min: 4
       max: 4
       chaosScore: 250 # Goobstation
-  - type: DynamicRuleCost
-    cost: 200

@@ -1318,33 +1318,12 @@
     - state: xenoborg_generic
     - state: icon-xenoborg-basic
   - type: ItemBorgModule
-    hands:
-    - item: DoorRemoteXenoborg
-    - hand:
-        emptyRepresentative: MMIFilled
-        emptyLabel: borg-slot-brains-empty
-        whitelist:
-          components:
-          - Brain
-          - BorgBrain
-    - hand:
-        emptyRepresentative: XenoborgModuleBasic
-        emptyLabel: borg-slot-modules-empty
-        whitelist:
-          components:
-          - BorgModule
-    - hand:
-        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
-        emptyLabel: borg-slot-construction-empty
-        whitelist:
-          tags:
-          - ConstructionMaterial
-    - hand:
-        emptyRepresentative: PowerCellHigh
-        emptyLabel: borg-slot-powercell-empty
-        whitelist:
-          components:
-          - PowerCell
+    moduleId: Mothership
+    items:
+    - DoorRemoteXenoborg
+    - MMIFilled
+    - XenoborgModuleBasic
+    - PowerCellHigh
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-module-module }
 
@@ -1360,16 +1339,11 @@
     - state: xenoborg_generic
     - state: icon-xenoborg-basic
   - type: ItemBorgModule
-    hands:
-    - hand:
-        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
-        emptyLabel: borg-slot-construction-empty
-        whitelist:
-          tags:
-          - ConstructionMaterial
-    - item: XenoborgMaterialBag
-    - item: PinpointerMothership
-    - item: HandheldGPSBasic
+    moduleId: XenoborgBasic
+    items:
+    - XenoborgMaterialBag
+    - PinpointerMothership
+    - HandheldGPSBasic
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-basic-module }
 
@@ -1440,10 +1414,11 @@
     - state: xenoborg_engi
     - state: icon-xenoborg-access-breaker
   - type: ItemBorgModule
-    hands:
-    - item: DoorRemoteXenoborg
-    - item: AccessBreaker
-    - item: AccessConfiguratorXenoborg
+    moduleId: XenoborgDoorControl
+    items:
+    - DoorRemoteXenoborg
+    - AccessBreaker
+    - AccessConfiguratorXenoborg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-door-remote-module }
 
@@ -1475,8 +1450,9 @@
     - state: xenoborg_heavy
     - state: icon-xenoborg-laser
   - type: ItemBorgModule
-    hands:
-    - item: WeaponLaserGunXenoborg
+    moduleId: XenoborgLaser
+    items:
+    - WeaponLaserGunXenoborg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-laser-module }
 
@@ -1491,8 +1467,9 @@
     - state: xenoborg_heavy
     - state: icon-xenoborg-laser2
   - type: ItemBorgModule
-    hands:
-    - item: WeaponLaserCannonXenoborg
+    moduleId: XenoborgHeavyLaser
+    items:
+    - WeaponLaserCannonXenoborg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-laser2-module }
 
@@ -1507,13 +1484,14 @@
     - state: xenoborg_scout
     - state: icon-xenoborg-space-movement
   - type: ItemBorgModule
-    hands:
-    - item: HandheldGPSBasic
-    - item: HandHeldMassScannerBorg
-    - item: PinpointerMothership
-    - item: HandheldStationMapUnpowered
-    - item: WeaponGrapplingGun
-    - item: JetpackXenoborg
+    moduleId: XenoborgSpaceMovement
+    items:
+    - HandheldGPSBasic
+    - HandHeldMassScannerBorg
+    - PinpointerMothership
+    - HandheldStationMapUnpowered
+    - WeaponGrapplingGun
+    - JetpackXenoborg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-space-movement-module }
 
@@ -1615,6 +1593,7 @@
     - state: xenoborg_stealth
     - state: icon-xenoborg-cloak2
   - type: ItemBorgModule
+    moduleId: XenoborgSuperCloakDevice
     items:
     - SuperCloakingDevice
   - type: BorgModuleIcon

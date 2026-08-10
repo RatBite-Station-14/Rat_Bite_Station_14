@@ -158,7 +158,7 @@
   - type: Pinpointer
     whitelist: # Goob edit: pinpointer whitelist
       components:
-      - XenoborgMothership
+      - MothershipCore
     targetName: the Mothership # Goob edit
 
 - type: entity

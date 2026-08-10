@@ -1,13 +1,13 @@
 - type: entity
-  parent: [ BaseControllable, BaseStructure ]
+  parent: BaseMob
   id: MothershipCore
   name: mothership core
   description: A sentient machine that can produce Xenoborgs. Without this the Xenoborgs are doomed.
   components:
-  - type: InputMover # needs this to pilot the mothership
   - type: MovementSpeedModifier
     baseWalkSpeed : 0 # shouldn't move
     baseSprintSpeed : 0 # shouldn't move
+  - type: CoreRoller
   - type: Appearance
   - type: WiresVisuals
   - type: Damageable
@@ -78,7 +78,9 @@
         gasMixture:
           volume: 1000
           moles:
-            CarbonDioxide: 340.5701689 # carbon dioxide
+          - 0 # oxygen
+          - 0 # nitrogen
+          - 340.5701689 # carbon dioxide
           temperature: 373.15
   - type: Repairable
     doAfterDelay: 30 # you can heal the mothership core, but it takes a while
@@ -210,6 +212,7 @@
   - type: ActionGrant
     actions:
     - ActionViewLaws
+    - ActionCoreRoll
   - type: SiliconLawProvider
     laws: MothershipCoreLawset # custom laws here
     subverted: true

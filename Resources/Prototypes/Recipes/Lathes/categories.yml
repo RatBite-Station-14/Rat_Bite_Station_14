@@ -23,6 +23,10 @@
   name: lathe-category-machines
 
 - type: latheCategory
+  id: Modules
+  name: lathe-category-modules
+
+- type: latheCategory
   id: Parts
   name: lathe-category-parts
 
