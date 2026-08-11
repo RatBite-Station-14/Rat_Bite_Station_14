@@ -1,6 +1,7 @@
 using Content.Server.Explosion.EntitySystems;
 using Content.Shared.Body.Systems;
 using Content.Shared.Examine;
+using Content.Shared.IdentityManagement;
 
 namespace Content.Server._BRatbite.Traits;
 
@@ -41,6 +42,7 @@ public sealed partial class TriggerSystem : EntitySystem
     {
         if (args.Examined == args.Examiner) return;
         if (!args.IsInDetailsRange) return;
+        if (Identity.Name(ent, EntityManager, args.Examiner) != Name(ent)) return;
         // Defer explosion to next frame otherwise we get weird errors
         queuedEntities.Add(ent.Owner);
     }
