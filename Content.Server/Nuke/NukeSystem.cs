@@ -124,6 +124,7 @@ using Content.Server.Kitchen.Components;
 using Content.Server.Pinpointer;
 using Content.Server.Popups;
 using Content.Server.Station.Systems;
+using Content.Shared._BRatbite.TrackingHud;
 using Content.Shared.Audio;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Coordinates.Helpers;
@@ -164,6 +165,7 @@ public sealed class NukeSystem : EntitySystem
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!; // Goobstation
     [Dependency] private readonly TurfSystem _turf = default!;
+    [Dependency] private readonly SharedTrackingTargetSystem _trackingTargetSystem = default!;
 
     /// <summary>
     ///     Used to calculate when the nuke song should start playing for maximum kino with the nuke sfx
@@ -656,6 +658,15 @@ public sealed class NukeSystem : EntitySystem
         var announcement = Loc.GetString("nuke-component-announcement-armed",
             ("time", (int) component.RemainingTime),
             ("location", FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString((uid, nukeXform)))));
+        // Ratbite start
+        var coordinates = _transform.GetMapCoordinates(nukeXform);
+        _trackingTargetSystem.AddTargetToAllEntities(new TrackingTarget
+        {
+            TargetLocation = coordinates.Position,
+            MapId = coordinates.MapId,
+            Sprite = new SpriteSpecifier.Rsi(new("/Textures/Objects/Devices/nuke.rsi"), "nuclearbomb_base"),
+        }, deleteAfter: TimeSpan.FromMinutes(10));
+        // Ratbite end
         var sender = Loc.GetString("nuke-component-announcement-sender");
         _chatSystem.DispatchStationAnnouncement(stationUid ?? uid, announcement, sender, false, null, Color.Red);
 

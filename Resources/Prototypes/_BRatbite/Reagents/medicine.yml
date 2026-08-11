@@ -118,7 +118,7 @@
         - !type:HealthChange
           damage:
             groups:
-              Brute: -2.5
+              Brute: -3 #changed from -2.5 to -3 so that it is faster healing than bic
         - !type:HealthChange
           conditions:
           - !type:ReagentThreshold
@@ -209,12 +209,12 @@
           conditions:
           - !type:ReagentThreshold
             max: 50
-          probability: 0.5 # this shit gonna be used as better ipecac for sure but whatever.. (ipecac has 30%, min 4u)
+          probability: 0.1 # changed from 0.5 to 0.1
         - !type:ChemVomit
           conditions:
           - !type:ReagentThreshold
             min: 50
-          probability: 0.02
+          probability: 0.2
         - !type:Drunk
 
 - type: reagent
@@ -446,3 +446,26 @@
           damage:
             types:
               Poison: 2
+
+- type: reagent
+  id: AllInOneGenderAffirmingHormone
+  name: reagent-name-aiogah
+  group: Medicine
+  desc: reagent-desc-aiogah
+  physicalDesc: reagent-physical-desc-viscous
+  flavor: medicine
+  color: "#ff919e"
+  metabolisms:
+    Narcotic:
+      metabolismRate: 1
+      effects:
+      - !type:SexChange
+        conditions:
+        - !type:ReagentThreshold
+          min: 20
+      - !type:AdjustReagent
+        reagent: AllInOneGenderAffirmingHormone
+        amount: -50.0
+        conditions:
+        - !type:ReagentThreshold
+          min: 20

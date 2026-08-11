@@ -75,3 +75,9 @@ gun-fail-shoot = Your hands tremble and you were unable to shoot.
 
 trait-stowaway-name = Stowaway
 trait-stowaway-desc = You weren't mean to be on this ship, but you are here anyways and have to survive.
+
+trait-nude-name = Vestiphobia
+trait-nude-description = You have an irrational fear of clothing, and are slower when wearing them
+
+trait-trigger-name = Trigger
+trait-trigger-desc = Careful examination of your internals may cause you to explode

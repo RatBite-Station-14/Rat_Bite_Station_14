@@ -29,6 +29,7 @@
   components:
   - type: Contraband
     allowedDepartments: [ Security, Engineering, Cargo ]
+    allowedJobs: [ BlueshieldOfficer ] # Ratbite
 
 - type: entity
   id: BaseSecurityZookeeperContraband # Tranq shells

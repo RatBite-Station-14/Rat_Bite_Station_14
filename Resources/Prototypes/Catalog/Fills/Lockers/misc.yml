@@ -300,6 +300,12 @@
     # Recursive
     - id: ClosetMaintenanceFilledRandom
       prob: 0.01
+    # Pump-Up!
+    - id: SyringePumpUp
+      prob: 0.15
+    # Trans pill!
+    - id: Pillaiogah
+      prob: 0.10
 
 - type: entity
   id: ClosetMaintenanceFilledRandom

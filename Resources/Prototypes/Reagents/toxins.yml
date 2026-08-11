@@ -574,6 +574,21 @@
           conditions:
             - !type:ReagentThreshold
               min: 5
+        - !type:ModifyBloodLevel
+          amount: 10
+        - !type:ModifyBleedAmount
+          amount: -2
+        - !type:ReduceRotting
+          seconds: 60
+          conditions:
+          - !type:MobStateCondition
+            mobstate: Dead
+        - !type:HealthChange
+          damage:
+            groups:
+              Brute: -65
+              Burn: -65
+              Airloss: -65
 
 - type: reagent
   id: UncookedAnimalProteins

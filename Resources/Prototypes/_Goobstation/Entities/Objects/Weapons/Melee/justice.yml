@@ -11,7 +11,7 @@
 
 - type: entity
   name: DT-2
-  parent: [BaseItem,]
+  parent: BaseItem
   id: Justice
   description: An expensive & self-recharging energy sword, designed for high ranking members of security. It deals more damage to unruly prisoners.
   components:
@@ -75,6 +75,9 @@
   - type: HosSaber
     # This is a 3% multiplicative buff per every hour of sentence.
     damageMultiplierPerMinute: 0.0005
+    # Ratbite: Contraband
+  - type: Contraband
+    allowedJobs: [Warden, HeadOfSecurity]
   - type: ItemSwitch
     needsPower: true
     defaultState: off

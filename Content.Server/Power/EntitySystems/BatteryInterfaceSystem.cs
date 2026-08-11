@@ -1,4 +1,6 @@
 ﻿using Content.Server.Power.Components;
+using Content.Shared.Administration.Logs;
+using Content.Shared.Database;
 using Content.Shared.Power;
 using Robust.Server.GameObjects;
 
@@ -20,6 +22,7 @@ namespace Content.Server.Power.EntitySystems;
 public sealed class BatteryInterfaceSystem : EntitySystem
 {
     [Dependency] private readonly UserInterfaceSystem _uiSystem = null!;
+    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
 
     public override void Initialize()
     {
@@ -53,14 +56,24 @@ public sealed class BatteryInterfaceSystem : EntitySystem
 
     private void HandleSetChargeRate(Entity<BatteryInterfaceComponent> ent, ref BatterySetChargeRateMessage args)
     {
+        if (!IsFiniteValueOrLog(args.Rate, args.Actor, args.Entity)) return; // Ratbite: check against malicious messages
         var netBattery = Comp<PowerNetworkBatteryComponent>(ent);
         netBattery.MaxChargeRate = Math.Clamp(args.Rate, ent.Comp.MinChargeRate, ent.Comp.MaxChargeRate);
     }
 
     private void HandleSetDischargeRate(Entity<BatteryInterfaceComponent> ent, ref BatterySetDischargeRateMessage args)
     {
+        if (!IsFiniteValueOrLog(args.Rate, args.Actor, args.Entity)) return; // Ratbite: check against malicious messages
         var netBattery = Comp<PowerNetworkBatteryComponent>(ent);
         netBattery.MaxSupply = Math.Clamp(args.Rate, ent.Comp.MinSupply, ent.Comp.MaxSupply);
+    }
+
+    // Ratbite
+    private bool IsFiniteValueOrLog(float value, EntityUid user, NetEntity battery)
+    {
+        if (float.IsFinite(value)) return true;
+        _adminLogger.Add(LogType.Action, LogImpact.Extreme, $"{ToPrettyString(user):player} sent a NaN input to {ToPrettyString(battery)}! It's very likely that they are using a modified client.");
+        return false;
     }
 
     public override void Update(float frameTime)

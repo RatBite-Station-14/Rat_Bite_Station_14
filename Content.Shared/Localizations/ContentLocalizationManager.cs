@@ -106,27 +106,27 @@ namespace Content.Shared.Localizations
         }
 
         private static readonly Regex PluralEsRule = new("^.*(s|sh|ch|x|z)$");
+        private static readonly Regex PluralOfRule = new("(.*) of (.*)");
 
+        // Ratbite: Plural fix
         private ILocValue FormatMakePlural(LocArgs args)
         {
             var text = ((LocValueString) args.Args[0]).Value;
-            var split = text.Split(" ", 1);
-            var firstWord = split[0];
-            if (PluralEsRule.IsMatch(firstWord))
+            var match = PluralOfRule.Match(text);
+            if (match.Success)
             {
-                if (split.Length == 1)
-                    return new LocValueString($"{firstWord}es");
-                else
-                    return new LocValueString($"{firstWord}es {split[1]}");
+                // E.g. Head of Security -> Heads of Security
+                return new LocValueString($"{PluralizeWord(match.Groups[1].Value)} of {match.Groups[2].Value}");
             }
-            else
-            {
-                if (split.Length == 1)
-                    return new LocValueString($"{firstWord}s");
-                else
-                    return new LocValueString($"{firstWord}s {split[1]}");
-            }
+            // e.g. Blueshield Officer -> Blueshield Officers
+            return new LocValueString(PluralizeWord(text));
         }
+
+        private string PluralizeWord(string word)
+        {
+            return PluralEsRule.IsMatch(word) ? $"{word}es" : $"{word}s";
+        }
+        // Ratbite end
 
         // TODO: allow fluent to take in lists of strings so this can be a format function like it should be.
         /// <summary>

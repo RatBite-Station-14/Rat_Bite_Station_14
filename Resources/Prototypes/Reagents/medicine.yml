@@ -332,10 +332,10 @@
             max: 213.0
             scale: 1.6
           damage:
-            groups: # Ratbite - Changed from -3 for all
-              Airloss: -4
-              Brute: -4
-              Burn: -4
+            groups: # Ratbite - Changed from -3 to these number below. Look, wow. Cryo is USELESS rn
+              Airloss: -6
+              Brute: -9
+              Burn: -12
 
 - type: reagent
   id: Doxarubixadone
@@ -738,7 +738,7 @@
       - !type:HealthChange
         damage:
           types:
-            Cold: -4
+            Cold: -5 #Ratbite, changed from -4, now it is better than oxan :godo: but only for cold
       - !type:AdjustTemperature
         conditions:
         - !type:Temperature
@@ -1484,7 +1484,7 @@
       - !type:HealthChange
         damage:
           types:
-            Heat: -1
+            Heat: -1.5 #Ratbite, make it slightly better
       # od causes massive bleeding
       - !type:HealthChange
         conditions:
@@ -1530,7 +1530,7 @@
       - !type:HealthChange
         damage:
           types:
-            Shock: -4
+            Shock: -5 #Ratbite, to be or not to be better than oxandrolone
       - !type:AdjustReagent
         reagent: Licoxide
         amount: -4
@@ -1562,7 +1562,7 @@
           min: 12
 
 - type: reagent
-  id: Opporozidone #Name based of an altered version of the startreck chem "Opporozine"
+  id: Opporozidone #Name based of an altered version of the startreck chem "Opporozine" yeah, that's clever shit right there
   name: reagent-name-opporozidone
   group: Medicine
   desc: reagent-desc-opporozidone

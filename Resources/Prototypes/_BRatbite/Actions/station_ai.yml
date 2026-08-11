@@ -1,0 +1,17 @@
+- type: entity
+  parent: BaseAction
+  id: ActionAlertSecurity
+  name: Alert Security
+  description: Add a marker on security HUDs
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    icon:
+      sprite: _BRatBites/Interface/Actions/actions_ai.rsi
+      state: alert_sec
+    useDelay: 2
+  - type: TargetAction
+    range: 200
+    checkCanAccess: false
+  - type: WorldTargetAction
+    event: !type:AlertSecurityActionEvent

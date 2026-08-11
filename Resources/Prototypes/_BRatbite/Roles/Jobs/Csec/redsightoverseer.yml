@@ -59,7 +59,7 @@
     pocket1: ClothingMaskGasSecurity
   storage:
     back:
-    - KravMagaImplant
+    - KravMagaImplanter
     - BookSpaceLaw
     - Flash
     - RSOUndeterminedWeapon

@@ -24,3 +24,5 @@ reagent-name-pumpup = pump-up
 reagent-desc-pumpup = A stimulant engineered by the United Tider's Association during the second tider war to combat the rising 'meta' of stun stun prods on the dwarf planet and phoron drilling outpost nicknamed 'Salt' after its unnaturally high amount of limestone on the surface.
 reagent-name-depleteduranium = depleted uranium
 reagent-desc-depleteduranium = Uranium with a smaller amount of U-235 than natural uranium, used in uranium bullets. Less radioactive than natural uranium and metabolizes slowly in bloodstream, causing minor radiation sickness.
+reagent-name-aiogah = All-in-One Gender Affirming Hormone
+reagent-desc-aiogah = A concoction of hormones and chemicals that miraculously rearrange the DNA of the metaboliser, completely switching their biological sex. Not really a horomone... but it gets the job done.

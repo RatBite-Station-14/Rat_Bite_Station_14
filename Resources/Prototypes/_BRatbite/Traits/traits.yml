@@ -195,7 +195,7 @@
   name: trait-atheist-name
   description: trait-atheist-desc
   category: Mental
-  cost: -2
+  cost: 0
   mutuallyExclusiveTraits:
   - Believer
   components:
@@ -206,7 +206,7 @@
   name: trait-believer-name
   description: trait-believer-desc
   category: Mental
-  cost: 8
+  cost: 2
   mutuallyExclusiveTraits:
   - Atheist
   components:
@@ -242,3 +242,41 @@
   cost: -1
   components:
   - type: Stowaway
+
+- type: trait
+  id: Nudist
+  name: trait-nude-name
+  description: trait-nude-description
+  category: Mental
+  cost: 5
+  components:
+  - type: Nudist
+    baseModifier:
+      speedModifier: 1.2
+      staminaModifier: 1.15
+    clothingModifier:
+      FEET:
+        speedModifier: .95
+        staminaModifier: .95
+      GLOVES:
+        speedModifier: .95
+        staminaModifier: .95
+      HEAD:
+        speedModifier: .95
+        staminaModifier: .95
+      INNERCLOTHING:
+        speedModifier: .80
+        staminaModifier: .85
+      OUTERCLOTHING:
+        speedModifier: .85
+        staminaModifier: .90
+
+- type: trait
+  id: Trigger
+  name: trait-trigger-name
+  description: trait-trigger-desc
+  category: Mental
+  cost: -2
+  components:
+  - type: Trigger
+

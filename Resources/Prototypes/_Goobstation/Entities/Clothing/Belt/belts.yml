@@ -212,6 +212,8 @@
           tags:
           - Justice
   - type: Appearance
+  - type: Contraband # Ratbite: contraband changes
+    allowedJobs: [ Warden, HeadOfSecurity ]
 
 - type: entity
   parent: [ ClothingBeltStorageBase, ContentsExplosionResistanceBase, BaseSyndicateContraband ]
