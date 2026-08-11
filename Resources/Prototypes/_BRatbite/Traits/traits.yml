@@ -56,7 +56,7 @@
   name: trait-loyalty-training-name
   description: trait-loyalty-training-desc
   category: Mental
-  cost: -6
+  cost: -8
   components:
   - type: LoyaltyTraining
 
