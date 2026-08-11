@@ -18,9 +18,12 @@
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Zachary Higgs <compgeek223@gmail.com>
+// SPDX-FileCopyrightText: 2025 TheSecondLord <88201625+TheSecondLord@users.noreply.github.com>
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared.Chemistry.Components.SolutionManager; // Funky
+using Content.Shared.Chemistry.EntitySystems; // Funky
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared.Administration.Components;
@@ -60,6 +63,7 @@ public abstract class SharedImplanterSystem : EntitySystem
     [Dependency] private readonly INetManager _netMan = default!; // Goobstation - Labeled implants
     [Dependency] private readonly LabelSystem _label = default!; // Goobstation - Labeled implants
     [Dependency] private readonly ISharedAdminLogManager _adminLog = default!; // Ratbite: add logs when drawing implants
+    [Dependency] private readonly SharedSolutionContainerSystem _solution = default!; // Funky
 
     public override void Initialize()
     {
@@ -174,6 +178,7 @@ public abstract class SharedImplanterSystem : EntitySystem
             _popup.PopupEntity(msg, target, user);
             return;
         }
+        TransferImplantSolution(implanter, implant.GetValueOrDefault()); // Funky edit - For reagent implanters
 
         //If the target doesn't have the implanted component, add it.
         var implantedComp = EnsureComp<ImplantedComponent>(target);
@@ -398,6 +403,31 @@ public abstract class SharedImplanterSystem : EntitySystem
 
         Dirty(uid, component);
     }
+    
+    // Funky edit - For reagent implanters
+    private void TransferImplantSolution(EntityUid implanter, EntityUid implant)
+    {
+
+        Log.Debug(Name(implanter));
+        Log.Debug(Name(implant));
+
+        // Get the solution on the implanter
+        if (!TryComp<SolutionContainerManagerComponent>(implanter, out var solutionComp) ||
+            !_solution.TryGetSolution(implanter, "drink", out var _, out var solution))
+            return;
+
+        // Ensure a new solution container on the implant, and add the implanter's solution to it
+        EnsureComp<SolutionContainerManagerComponent>(implant);
+        if (_solution.EnsureSolution(implant, "drink", out var newSolution))
+        {
+            newSolution.MaxVolume = 45.0f;
+            newSolution.AddSolution(solution, _proto);
+        }
+
+        // Remove solution container from the implanter
+        RemComp<SolutionContainerManagerComponent>(implanter);
+    }
+    // Funky edit end
 }
 
 [Serializable, NetSerializable]
