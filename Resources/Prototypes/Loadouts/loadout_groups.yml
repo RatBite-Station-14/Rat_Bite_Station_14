@@ -318,6 +318,7 @@
   name: loadout-group-captain-jumpsuit
   loadouts:
   - CaptainJumpsuit
+  - SternnJumpsuit
   - CaptainJumpskirt
   - CaptainFormalSuit
   - CaptainFormalSkirt
