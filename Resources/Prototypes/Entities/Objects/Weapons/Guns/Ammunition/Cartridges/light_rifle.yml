@@ -84,7 +84,7 @@
   id: CartridgeLightRifleUranium
   name: cartridge (.30 rifle uranium)
   parent: BaseCartridgeLightRifle
-  description: A classic intermediate cartridge used by many combat rifles and LMGs. Uranium ammunition replaces the lead core of the bullet with fissile material, irradiating the target from the inside.
+  description: A classic intermediate cartridge used by many combat rifles and LMGs. Depleted uranium ammunition pierces armor better and slighly irradiates the target, but is slighly less damaging overall.
   components:
   - type: CartridgeAmmo
     proto: BulletLightRifleUranium

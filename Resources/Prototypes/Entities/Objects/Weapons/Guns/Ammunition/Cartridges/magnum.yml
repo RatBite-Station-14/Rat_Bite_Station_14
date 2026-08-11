@@ -113,7 +113,7 @@
   id: CartridgeMagnumUranium
   name: cartridge (.45 magnum uranium)
   parent: BaseCartridgeMagnum
-  description: Heavy magnum cartridge mostly used by revolvers. Uranium ammunition replaces the lead core of the bullet with fissile material, irradiating the target from the inside.
+  description: Heavy magnum cartridge mostly used by revolvers. Depleted uranium ammunition pierces armor better and slighly irradiates the target, but is slighly less damaging overall.
   components:
   - type: CartridgeAmmo
     proto: BulletMagnumUranium

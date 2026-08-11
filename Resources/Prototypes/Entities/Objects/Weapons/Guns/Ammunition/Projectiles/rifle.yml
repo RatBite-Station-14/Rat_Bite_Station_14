@@ -41,7 +41,7 @@
     damage:
       types:
         Piercing: 25 #Ratbite balance
-      armorPenetration: 0.15 # Goobstation
+      armorPenetration: 0.10 # Ratbite
 
 - type: entity
   id: BulletRiflePractice
@@ -75,5 +75,26 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 10 #Ratbite balance
-        Piercing: 20 #Ratbite balance
+        Radiation: 1 #Ratbite balance
+        Piercing: 19 #Ratbite balance
+      armorPenetration: 0.25 # Ratbite - Uranium ammo rework
+  # <Ratbite> - uranium rounds arent INSTANT radiation (ignoring the fact that DU is significantly less radioactive than natural uranium..), duh.
+  - type: RefillableSolution
+    solution: ammo
+  - type: DrainableSolution
+    solution: ammo
+  - type: SolutionInjectOnProjectileHit
+    transferAmount: 2
+    solution: ammo
+  - type: InjectableSolution
+    solution: ammo
+  - type: SolutionContainerManager
+    solutions:
+      ammo:
+        reagents:
+        - ReagentId: DepletedUranium
+          Quantity: 1.5
+  # This does about 23 damage total, 4 rad 19 pierce. Worse against unarmored targets, better against armored ones.
+  # More precisely: 3 true radiation DOT (100% AP), 1 radiation damage (25% AP), 19 pierce damage (25% AP)
+  # not accounting for bleed which will lower the DOT's damage due to removing DU from the bloodstream
+  # </Ratbite>
