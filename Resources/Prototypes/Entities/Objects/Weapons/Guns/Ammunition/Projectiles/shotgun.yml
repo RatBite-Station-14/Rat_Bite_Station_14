@@ -349,7 +349,7 @@
       ammo:
         reagents:
         - ReagentId: DepletedUranium
-          Quantity: 0.80
+          Quantity: 0.8
   # </Ratbite>
   
 
