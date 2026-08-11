@@ -5,3 +5,4 @@
   - !type:AccessWireAction
   - !type:LogWireAction
   - !type:MachineBoltWireAction
+  - !type:SpeechWireAction
