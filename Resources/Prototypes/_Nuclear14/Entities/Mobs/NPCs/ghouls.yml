@@ -106,7 +106,7 @@
   name: Ice Feral Ghoul
   id: N14MobGhoulFrozen
   parent: N14MobBaseHostileFeral
-  description: Well let's see you come up with better ideas tough guy!.
+  description: Well let's see you come up with better ideas tough guy!
   components:
   - type: MovementSpeedModifier
     baseWalkSpeed : 2.5
@@ -114,7 +114,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      150: Dead
+      250: Dead
   - type: MeleeWeapon
     hidden: true
     soundHit:
@@ -123,7 +123,8 @@
     animation: WeaponArcFist
     damage:
       types:
-        Slash: 7
+        Slash: 2
+        Cold: 5
     range: 1
   - type: Sprite
     drawdepth: Mobs
@@ -195,4 +196,11 @@
       0: Alive
       1000: Dead
 
-#ghoul randomizer
+#ghoul sounds
+
+- type: soundCollection
+  id: Ghouling
+  files:
+  - "/Audio/Voice/Zombie/zombie-1.ogg"
+  - "/Audio/Voice/Zombie/zombie-2.ogg"
+  - "/Audio/Voice/Zombie/zombie-3.ogg"

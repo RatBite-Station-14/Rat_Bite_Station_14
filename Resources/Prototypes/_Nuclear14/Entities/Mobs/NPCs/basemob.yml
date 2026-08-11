@@ -265,3 +265,10 @@
   - type: Clumsy
     clumsySound:
       collection: BodyFall
+  - type: SpamEmitSound
+    minInterval: 20
+    maxInterval: 60
+    sound:
+      collection: Ghouling
+      params:
+        variation: 0.25
