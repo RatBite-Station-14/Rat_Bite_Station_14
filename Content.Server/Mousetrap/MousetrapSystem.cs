@@ -40,16 +40,22 @@ public sealed class MousetrapSystem : EntitySystem
         if (args.Handled)
             return;
 
-        component.IsActive = !component.IsActive;
-        _popupSystem.PopupEntity(component.IsActive
-            ? Loc.GetString("mousetrap-on-activate")
-            : Loc.GetString("mousetrap-on-deactivate"),
-            uid,
-            args.User);
-
-        UpdateVisuals(uid);
+        ToggleTrap((uid, component), args.User);
 
         args.Handled = true;
+    }
+
+    // Ratbite
+    public void ToggleTrap(Entity<MousetrapComponent> ent, EntityUid user)
+    {
+        ent.Comp.IsActive = !ent.Comp.IsActive;
+        _popupSystem.PopupEntity(ent.Comp.IsActive
+            ? Loc.GetString("mousetrap-on-activate")
+            : Loc.GetString("mousetrap-on-deactivate"),
+            ent,
+            user);
+
+        UpdateVisuals(ent);
     }
 
     private void OnStepTriggerAttempt(EntityUid uid, MousetrapComponent component, ref StepTriggerAttemptEvent args)
