@@ -133,11 +133,6 @@
   equipment:
     neck: ClothingNeckScarfStripedCentcom
 
-- type: loadout
-  id: ClothingNeckMantleCentcom
-  equipment:
-    neck: ClothingNeckPetalMantle
-
 # Backpacks
 - type: loadout
   id: NanotrasenRepresentativeBackpack

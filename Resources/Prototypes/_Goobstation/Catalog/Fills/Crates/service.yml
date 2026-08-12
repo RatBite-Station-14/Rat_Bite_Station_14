@@ -97,8 +97,6 @@
       weight: 1
     - id: CdDiskCloningPsa
       weight: 1
-    - id: CdDisksanic
-      weight: 1
     - id: CdDiskDansTickets
       weight: 1
     - id: CdDiskGrones
@@ -153,12 +151,6 @@
     - id: VinylDiskRed
       weight: 1
     - id: VinylDiskMoonchild
-      weight: 1
-    - id: VinylDiskSearchofdreams
-      weight: 1
-    - id: VinylDiskHumanshields
-      weight: 1
-    - id: VinylDiskcalldapolice
       weight: 1
     - id: VinylDiskLightBlue
       weight: 1
@@ -229,14 +221,6 @@
     - id: VinylDiskEgg
       weight: 1
     - id: VinylDiskWeAreNumberTwo
-      weight: 1
-    - id: VinylDiskparappastg3
-      weight: 1
-    - id: VinylDiskGiantme
-      weight: 1
-    - id: VinylDiskDelta
-      weight: 1
-    - id: VinylDiskPapapa
       weight: 1
 
 - type: entityTable
