@@ -207,3 +207,39 @@
   - type: Sprite
     sprite: _Nuclear14/Structures/Power/32x48_machines.rsi
     state: substation_rust_destroyed
+
+- type: entity
+  parent: N14SubstationDestroyed
+  id: N14GeneratorRustyDestroyed
+  name: destroyed Generator
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Power/32x48_machines.rsi
+    state: generator_rust_destroyed
+
+- type: entity
+  parent: N14SubstationDestroyed
+  id: N14GeneratorDestroyed
+  name: destroyed Generator
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Power/32x48_machines.rsi
+    state: generator_destroyed
+    
+- type: entity
+  parent: N14SubstationDestroyed
+  id: N14GeneratorRustyDamaged
+  name: Damaged Generator
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Power/32x48_machines.rsi
+    state: generator_rust_damaged
+
+- type: entity
+  parent: N14SubstationDestroyed
+  id: N14GeneratorDamaged
+  name: Damaged Generator
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Power/32x48_machines.rsi
+    state: generator_damaged

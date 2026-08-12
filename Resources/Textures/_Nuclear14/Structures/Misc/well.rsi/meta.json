@@ -11,33 +11,6 @@
       "name": "wellwheel"
     },
     {
-      "name": "wellwheel-bucket"
-    },
-    {
-      "name": "wellwheel-filling",
-      "delays": [
-        [
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          1.5,
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2
-        ]
-      ]
-    },
-    {
       "name": "well"
     }
   ]

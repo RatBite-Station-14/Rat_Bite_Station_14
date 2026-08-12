@@ -14,10 +14,7 @@
       "name": "shelf_wood"
     },
     {
-      "name": "shelf"
-    },
-    {
-      "name": "dresser"
+      "name": "metal_shelf"
     },
     {
       "name": "bookempty"
@@ -39,30 +36,6 @@
     },
     {
       "name": "book-5"
-    },
-    {
-      "name": "nboard00",
-      "directions": 4
-    },
-    {
-      "name": "nboard01",
-      "directions": 4
-    },
-    {
-      "name": "nboard02",
-      "directions": 4
-    },
-    {
-      "name": "nboard03",
-      "directions": 4
-    },
-    {
-      "name": "nboard04",
-      "directions": 4
-    },
-    {
-      "name": "nboard05",
-      "directions": 4
     },
     {
       "name": "grand_clock",
@@ -88,59 +61,6 @@
     },
     {
       "name": "punchingbag"
-    },
-    {
-      "name": "punchingbag2",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1
-        ]
-      ]
-    },
-    {
-      "name": "punchingbag_down",
-      "directions": 4
-    },
-    {
-      "name": "fitnesslifter"
-    },
-    {
-      "name": "fitnesslifter2",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1,
-          0.1
-        ]
-      ]
-    },
-    {
-      "name": "fitnessweight"
-    },
-    {
-      "name": "fitnessweight-c"
-    },
-    {
-      "name": "fitnessweight-w",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1,
-          0.1
-        ]
-      ]
     }
   ]
 }

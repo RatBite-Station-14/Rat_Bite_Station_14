@@ -1,16 +1,8 @@
 - type: entity
-  parent: Dresser
-  id: N14Dresser
-  components:
-  - type: Sprite
-    sprite: _Nuclear14/Structures/Furniture/np13_misc.rsi
-    state: dresser
-
-- type: entity
   parent: BaseStructure
   id: N14GrandfatherClock
   name: grandfather clock
-  description: An old pre-war clock. Looks grand.
+  description: An old clock. Looks grand.
   components:
   - type: Sprite
     sprite: _Nuclear14/Structures/Furniture/np13_misc.rsi
@@ -21,11 +13,22 @@
   parent: BaseStructure
   id: N14Television
   name: television
-  description: An old pre-war television.
+  description: An old television.
   components:
   - type: Sprite
     sprite: _Nuclear14/Structures/Furniture/televisions.rsi
     state: wood_tv
+    
+- type: entity
+  parent: BaseStructure
+  id: N14TelevisionCabinetClosed
+  name: television
+  description: An old television, this time it's closed.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/televisions.rsi
+    state: cabinet_tv1
+
 
 - type: entity
   parent: N14Television
@@ -53,7 +56,7 @@
 - type: entity
   parent: N14Television
   id: N14TelevisionTube
-  description: An old pre-war tube television.
+  description: An old tube television.
   components:
   - type: Sprite
     state: tube_tv

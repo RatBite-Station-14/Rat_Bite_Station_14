@@ -159,6 +159,66 @@
       storagebase: !type:Container
   - type: InteractionOutline
 
+- type: entity
+  id: N14ShelfMetal1
+  parent: BaseStructure
+  name: metal shelf
+  description: A rusty old shelf.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Furniture/np13_misc.rsi
+    netsync: false
+    state: metal_shelf
+  - type: Damageable
+    damageModifierSet: Wood
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Tag
+    tags:
+    - Wooden
+  - type: Transform
+    anchored: true
+  - type: Anchorable
+  - type: Pullable
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.3,-0.05,0.3,0.7"
+        density: 60
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+  - type: Storage
+    grid:
+    - 0,0,9,3
+    maxItemSize: Huge
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: InteractionOutline
 # Tall
 # Wood shelf
 - type: entity

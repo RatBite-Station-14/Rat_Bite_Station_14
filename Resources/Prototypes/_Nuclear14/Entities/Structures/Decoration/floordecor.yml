@@ -251,12 +251,13 @@
 
 - type: entity
   parent: N14DecorFloorBase
-  id: N14DecorStalagmite1
-  name: stalagmite
-  description: Pointy rocks! Mites go up, tites come...
+  id: N14DecorMinecart
+  name: minecart
+  description: but how can we mine now!? what can we craft without materials!?
   components:
   - type: Sprite
-    state: stalagmite
+    sprite: _Nuclear14/Structures/Decoration/cave_decor.rsi
+    state: minecart_fallen
   - type: Fixtures
     fixtures:
       fix1:
@@ -268,69 +269,10 @@
         - MachineMask
         layer:
         - MachineLayer
-
-- type: entity
-  parent: N14DecorStalagmite1
-  id: N14DecorStalagmite2
-  components:
-  - type: Sprite
-    state: stalagmite1
-
-- type: entity
-  parent: N14DecorStalagmite1
-  id: N14DecorStalagmite3
-  components:
-  - type: Sprite
-    state: stalagmite2
-
-- type: entity
-  parent: N14DecorStalagmite1
-  id: N14DecorStalagmite4
-  components:
-  - type: Sprite
-    state: stalagmite3
-
-- type: entity
-  parent: N14DecorStalagmite1
-  id: N14DecorStalagmite5
-  components:
-  - type: Sprite
-    state: stalagmite4
-
-- type: entity
-  parent: N14DecorStalagmite1
-  id: N14DecorStalagmite6
-  components:
-  - type: Sprite
-    state: stalagmite5
-
-- type: entity
-  parent: N14DecorStalagmite1
-  id: N14DecorMinecart
-  name: minecrart
-  description: It seems to have fallen over...
-  components:
-  - type: Sprite
-    state: minecart_fallen
-
-- type: entity
-  parent: N14DecorFloorBase
-  id: N14DecorSignLeftMine
-  name: sign
-  description: A sign, for a mine, pointing li...left
-  components:
-  - type: Sprite
-    state: sign_left
-
-- type: entity
-  parent: N14DecorFloorBase
-  id: N14DecorSignRightMine
-  name: sign
-  description: A sign, pointing right.
-  components:
-  - type: Sprite
-    state: sign_right
-
+  - type: Physics
+    bodyType: Static
+    canCollide: true
+    
 # World Decor
 - type: entity
   parent: N14DecorFloorBase
@@ -441,6 +383,9 @@
         - MachineMask
         layer:
         - MachineLayer
+  - type: Physics
+    bodyType: Static
+    canCollide: true
 
 - type: entity
   parent: N14DecorFloorPalletStack
@@ -450,6 +395,9 @@
   components:
   - type: Sprite
     state: brickpile
+  - type: Physics
+    bodyType: Static
+    canCollide: true    
 
 - type: entity
   parent: N14DecorFloorWorldBase
@@ -720,3 +668,101 @@
   components:
   - type: Sprite
     drawdepth: Mobs
+
+#flora
+
+- type: entity
+  parent: N14DecorFloorBase
+  id: N14DecorFloraBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/flora.rsi
+    snapCardinals: false
+  placement:
+    mode: PlaceFree
+
+- type: entity
+  parent: N14DecorFloraBase
+  id: N14DecorFloorDeadplant
+  name: Dead plant
+  description: Dead flora.
+  components:
+  - type: Sprite
+    layers:
+    - state: agave-dead
+      map: [ "body" ]
+  - type: RandomSprite
+    available:
+      - body:
+          agave-dead: ""
+          broc-dead: ""
+          ferocactus-dead: ""
+          xander-dead: ""
+
+- type: entity
+  parent: N14DecorFloraBase
+  id: N14DecorFloorbranchs
+  name: Twigs
+  description: just some branches.
+  components:
+  - type: Sprite
+    layers:
+    - state: branch
+      map: [ "body" ]
+  - type: RandomSprite
+    available:
+      - body:
+          branch: ""
+          branch_broken: ""
+          brushwood: ""
+          brushwood_alt: ""
+
+- type: entity
+  parent: N14DecorFloraBase
+  id: N14DecorFloorTreestump
+  name: Tree stump
+  description: this wood's rotted, no use to you.
+  components:
+  - type: Sprite
+    state: tree_stump
+
+- type: entity
+  parent: N14DecorFloraBase
+  id: N14DecorFloortimber
+  name: timber
+  description: this wood's rotted, no use to you.
+  components:
+  - type: Sprite
+    layers:
+    - state: timber
+      map: [ "body" ]
+  - type: RandomSprite
+    available:
+      - body:
+          timber: ""
+          tree_log: ""
+          tree_timber: ""
+  snapCardinals: true
+
+- type: entity
+  parent: N14DecorFloraBase
+  id: N14DecorFloorgrass
+  name: grass
+  description: look at the pretty grass.
+  components:
+  - type: Sprite
+    layers:
+    - state: tall_grass_1
+      map: [ "body" ]
+  - type: RandomSprite
+    available:
+      - body:
+          tall_grass_1: ""
+          tall_grass_2: ""
+          tall_grass_3: ""
+          tall_grass_4: ""
+          tall_grass_5: ""
+          tall_grass_6: ""
+          tall_grass_7: ""
+          tall_grass_8: ""

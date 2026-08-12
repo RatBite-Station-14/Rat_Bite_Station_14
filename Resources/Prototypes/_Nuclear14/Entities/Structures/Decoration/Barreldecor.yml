@@ -1,0 +1,226 @@
+# barrel Decor
+- type: entity
+  parent: N14DecorFloorBase
+  id: N14DecorFloorBarrelBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Decoration/barrels.rsi
+    snapCardinals: false
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.49,-0.49,0.49,-0.25"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+  - type: Climbable
+  - type: Physics
+    bodyType: Static
+    canCollide: true
+
+#grey
+- type: entity
+  parent: N14DecorFloorBarrelBase
+  id: N14DecorBarrelsgrey
+  name: grey barrels
+  description: a bunch of gray barrels.
+  components:
+  - type: Sprite
+    layers:
+    - state: grey_1
+      map: [ "body" ]
+  - type: RandomSprite
+    available:
+      - body:
+          grey_1: ""
+          grey_2: ""
+          grey_3: ""
+          double_grey_1: ""
+          double_grey_2: ""
+          flammable_1: ""
+          flammable_2: ""
+          flammable_3: ""
+          hazard_1: ""
+          hazard_2: ""
+          hazard_3: ""
+          label_1: ""
+          label_2: ""
+          label_3: ""
+          quad_grey_1: ""
+          triple_grey_1: ""
+          triple_grey_2: ""
+          triple_grey_3: ""
+          warning_1: ""           
+          warning_2: ""
+          warning_3: ""
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.3
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+
+#red
+- type: entity
+  parent: N14DecorFloorBarrelBase
+  id: N14DecorBarrelsred
+  name: red barrels
+  description: a bunch of red barrels.
+  components:
+  - type: Sprite
+    layers:
+    - state: red_1
+      map: [ "body" ]
+  - type: RandomSprite
+    available:
+      - body:
+          red_1: ""
+          red_2: ""
+          red_3: ""
+          red_alt_1: ""
+          red_alt_2: ""
+          red_alt_3: "" 
+          double_red_1: ""
+          double_red_2: ""
+          quad_red_1: ""
+          quad_red_2: ""
+          triple_red_1: ""
+          triple_red_2: ""
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.3
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+
+#valve       
+- type: entity
+  parent: N14DecorFloorBarrelBase
+  id: N14DecorBarrelsmissing
+  name: missing barrel
+  description: oh.
+  components:
+  - type: Sprite
+    layers:
+    - state: missing
+      map: [ "body" ]
+  - type: RandomSprite
+    available:
+      - body:
+          missing: ""
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.3
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+       
+#yellow
+- type: entity
+  parent: N14DecorFloorBarrelBase
+  id: N14DecorBarrelsyellow
+  name: yellow barrels
+  description: a bunch of yellow barrels.
+  components:
+  - type: Sprite
+    layers:
+    - state: yellow_1
+      map: [ "body" ]
+  - type: RandomSprite
+    available:
+      - body:
+          toxic_1: ""
+          yellow_3: ""
+          yellow_2: ""
+          yellow_1: ""
+          triple_yellow_1: ""
+          triple_yellow_2: "" 
+          triple_yellow_3: ""
+          triple_toxic_1: ""
+          triple_waste_1: ""
+          triple_waste_3: ""
+          quad_yellow_1: ""
+          quad_toxic_1: ""
+          quad_waste_1: ""
+          double_yellow_2: ""
+          double_yellow_1: ""
+          double_toxic_1: ""
+          double_waste_1: ""
+          double_waste_2: ""
+          waste_1: ""
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.3
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+        
+#toxic
+- type: entity
+  parent: N14DecorFloorBarrelBase
+  id: N14DecorBarrelstoxic
+  name: toxic barrels
+  description: a bunch of toxic barrels.
+  components:
+  - type: Sprite
+    layers:
+    - state: toxic_1
+      map: [ "body" ]
+  - type: RandomSprite
+    available:
+      - body:
+          toxic_1: ""
+          toxic_2: ""
+          toxic_3: ""
+          toxic_4: ""
+          triple_toxic_1: ""
+          triple_toxic_2: ""
+          triple_waste_1: ""
+          triple_waste_2: ""
+          triple_waste_3: ""
+          quad_toxic_1: ""
+          quad_waste_1: ""
+          double_toxic_1: ""
+          double_waste_1: ""
+          double_waste_2: ""
+          waste_1: ""
+          waste_2: ""
+          waste_3: ""
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.3
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: RadiationSource
+    intensity: 2
