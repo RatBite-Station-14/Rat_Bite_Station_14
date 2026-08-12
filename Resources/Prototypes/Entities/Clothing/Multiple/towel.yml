@@ -44,14 +44,6 @@
   - type: Fiber
     fiberColor: fibers-white
   - type: DnaSubstanceTrace
-  - type: MeleeWeapon
-    animationRotation: -45 # WWDP
-    wideAnimationRotation: -135
-    damage:
-      types:
-        Blunt: 5
-    soundHit:
-      collection: Punch
   - type: Item
     size: Small
 
@@ -94,26 +86,26 @@
   - type: Sprite
     layers:
     - state: icon
-      color: "#9c0dff"
+      color: "#9C0DE1"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#9c0dff"
+        color: "#9C0DE1"
       right:
       - state: inhand-right
-        color: "#9c0dff"
+        color: "#9C0DE1"
   - type: Clothing
     clothingVisuals:
       head:
       - state: equipped-HELMET
-        color: "#9c0dff"
+        color: "#9C0DE1"
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: "#9c0dff"
+        color: "#9C0DE1"
       belt:
       - state: equipped-BELT
-        color: "#9c0dff"
+        color: "#9C0DE1"
   - type: Fiber
     fiberColor: fibers-purple
 
@@ -156,26 +148,26 @@
   - type: Sprite
     layers:
     - state: icon
-      color: "#134fc1"
+      color: "#0089EF"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#134fc1"
+        color: "#0089EF"
       right:
       - state: inhand-right
-        color: "#134fc1"
+        color: "#0089EF"
   - type: Clothing
     clothingVisuals:
       head:
       - state: equipped-HELMET
-        color: "#134fc1"
+        color: "#0089EF"
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: "#134fc1"
+        color: "#0089EF"
       belt:
       - state: equipped-BELT
-        color: "#134fc1"
+        color: "#0089EF"
   - type: Fiber
     fiberColor: fibers-blue
     
@@ -187,26 +179,26 @@
   - type: Sprite
     layers:
     - state: icon
-      color: "#211fa3"
+      color: "#3285ba"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#211fa3"
+        color: "#3285ba"
       right:
       - state: inhand-right
-        color: "#211fa3"
+        color: "#3285ba"
   - type: Clothing
     clothingVisuals:
       head:
       - state: equipped-HELMET
-        color: "#211fa3"
+        color: "#3285ba"
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: "#211fa3"
+        color: "#3285ba"
       belt:
       - state: equipped-BELT
-        color: "#211fa3"
+        color: "#3285ba"
   - type: Fiber
     fiberColor: fibers-blue
 
@@ -468,26 +460,26 @@
   - type: Sprite
     layers:
     - state: icon
-      color: "#de5c16"
+      color: "#EF8100"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#de5c16"
+        color: "#EF8100"
       right:
       - state: inhand-right
-        color: "#de5c16"
+        color: "#EF8100"
   - type: Clothing
     clothingVisuals:
       head:
       - state: equipped-HELMET
-        color: "#de5c16"
+        color: "#EF8100"
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: "#de5c16"
+        color: "#EF8100"
       belt:
       - state: equipped-BELT
-        color: "#de5c16"
+        color: "#EF8100"
   - type: Fiber
     fiberColor: fibers-orange
 

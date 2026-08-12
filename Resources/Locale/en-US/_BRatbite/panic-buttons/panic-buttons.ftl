@@ -1,4 +1,4 @@
-panic-button-distress-cargo = Security requested by Cargo: {$position}
-panic-button-distress-engineering = Security requested by Engineering: {$position}
-panic-button-distress-science = Security requested by Science: {$position}
-panic-button-distress-medical = Security requested by Medical: {$position}
+panic-button-distress-cargo = Departmental guard requested by Cargo: {$position}
+panic-button-distress-engineering = Departmental guard requested by Engineering: {$position}
+panic-button-distress-science = Departmental guard requested by Science: {$position}
+panic-button-distress-medical = Departmental guard requested by Medical: {$position}
