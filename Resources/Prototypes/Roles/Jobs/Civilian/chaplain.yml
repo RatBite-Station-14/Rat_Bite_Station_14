@@ -75,7 +75,7 @@
   icon: "JobIconChaplain"
   supervisors: job-supervisors-hop
   guides: [ Chaplain ] # goobstation
-  goobcoins: 25 #Goob content
+  goobcoins: 20 #Goob content    # Ratbite - decreased a bit
   access:
   - Chapel
   - Maintenance
