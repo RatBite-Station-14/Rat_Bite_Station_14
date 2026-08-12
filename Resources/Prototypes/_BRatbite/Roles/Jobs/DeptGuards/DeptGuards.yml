@@ -39,7 +39,7 @@
 - type: startingGear
   id: MedicalOrderlyGear
   equipment:
-    eyes: ClothingEyesGlassesSunglasses
+    eyes: ClothingEyesGlassesMedical
     ears: ClothingHeadsetMedicalGuard # Their headsets have some seccomms now so they don't deal with shit alone.
     id: MedWatchPDA
   storage:
@@ -100,7 +100,7 @@
 - type: startingGear
   id: CargoInsuranceGear
   equipment:
-    eyes: ClothingEyesGlassesSunglasses
+    eyes: ClothingEyesGlassesCargo
     id: CargoWatchPDA
     ears: ClothingHeadsetCargoGuard
   storage:
@@ -159,7 +159,7 @@
 - type: startingGear
   id: ScicurityguardGear
   equipment:
-    eyes: ClothingEyesGlassesSunglasses
+    eyes: ClothingEyesGlassesScience
     ears: ClothingHeadsetScienceGuard
     id: SciWatchPDA
   storage:
@@ -225,7 +225,7 @@
 - type: startingGear
   id: EngiSentryGear
   equipment:
-    eyes: ClothingEyesGlassesSunglasses
+    eyes: ClothingEyesGlassesEngineering
     ears: ClothingHeadsetEngineeringGuard
     id: EngineerWatchPDA
   storage:
