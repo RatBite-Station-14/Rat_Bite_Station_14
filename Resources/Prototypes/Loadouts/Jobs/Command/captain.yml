@@ -97,6 +97,12 @@
 
 
 - type: loadout
+  id: SternnJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSternn
+
+
+- type: loadout
   id: CaptainJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtCaptain

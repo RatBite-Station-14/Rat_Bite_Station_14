@@ -216,7 +216,6 @@ public sealed partial class GunSystem : SharedGunSystem
         var fromMap = TransformSystem.ToMapCoordinates(fromCoordinates);
         var toMap = TransformSystem.ToMapCoordinates(toCoordinates).Position;
         var mapDirection = toMap - fromMap.Position;
-        var mapAngle = mapDirection.ToAngle();
         var angle = GetRecoilAngle(Timing.CurTime, gun, mapDirection.ToAngle(), user);  // Goobstation user
 
         // If applicable, this ensures the projectile is parented to grid on spawn, instead of the map.
@@ -427,8 +426,8 @@ public sealed partial class GunSystem : SharedGunSystem
                 var spreadEvent = new GunGetAmmoSpreadEvent(ammoSpreadComp.Spread);
                 RaiseLocalEvent(gunUid, ref spreadEvent);
 
-                var angles = LinearSpread(mapAngle - spreadEvent.Spread / 2,
-                    mapAngle + spreadEvent.Spread / 2, ammoSpreadComp.Count);
+                var angles = LinearSpread(angle - spreadEvent.Spread / 2,
+                    angle + spreadEvent.Spread / 2, ammoSpreadComp.Count);
 
                 ShootOrThrow(ammoEnt, angles[0].ToVec(), gunVelocity, gun, gunUid, user, targetCoordinates: toMapBeforeRecoil); // Goobstation
                 shotProjectiles.Add(ammoEnt);

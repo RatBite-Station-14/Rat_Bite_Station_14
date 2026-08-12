@@ -1,0 +1,21 @@
+- type: entity
+  name: Whitney Lodger
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  id: WeaponPistolWhitney
+  description: A widely produced luxury pistol, for those whom are rich and or untrained .
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Objects/Weapon/Guns/Pistols/Wolverine.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _BRatBites/Objects/Weapon/Guns/Pistols/Wolverine.rsi
+  - type: Gun
+    fireRate: 5
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/mk58.ogg

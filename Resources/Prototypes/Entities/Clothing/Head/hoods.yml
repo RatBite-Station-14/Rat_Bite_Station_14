@@ -708,14 +708,14 @@
     sprite: Clothing/Head/Hoods/Coat/hooddefault.rsi
     layers:
     - state: coatybits-icon
-      color: "#9C0DE1"
+      color: "#9c0dff"
     - state: winterbits-icon
   - type: Clothing
     sprite: Clothing/Head/Hoods/Coat/hooddefault.rsi
     clothingVisuals:
       head:
       - state: coatybits-equipped-HELMET
-        color: "#9C0DE1"
+        color: "#9c0dff"
       - state: winterbits-equipped-HELMET
 
 - type: entity
@@ -748,14 +748,14 @@
     sprite: Clothing/Head/Hoods/Coat/hooddefault.rsi
     layers:
     - state: coatybits-icon
-      color: "#0089EF"
+      color: "#134fc1"
     - state: winterbits-icon
   - type: Clothing
     sprite: Clothing/Head/Hoods/Coat/hooddefault.rsi
     clothingVisuals:
       head:
       - state: coatybits-equipped-HELMET
-        color: "#0089EF"
+        color: "#134fc1"
       - state: winterbits-equipped-HELMET
 
 - type: entity
@@ -848,14 +848,14 @@
     sprite: Clothing/Head/Hoods/Coat/hooddefault.rsi
     layers:
     - state: coatybits-icon
-      color: "#EF8100"
+      color: "#de5c16"
     - state: winterbits-icon
   - type: Clothing
     sprite: Clothing/Head/Hoods/Coat/hooddefault.rsi
     clothingVisuals:
       head:
       - state: coatybits-equipped-HELMET
-        color: "#EF8100"
+        color: "#de5c16"
       - state: winterbits-equipped-HELMET
 
 - type: entity

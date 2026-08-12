@@ -82,7 +82,7 @@
   guides: # goobstation
   - Salvage
   - Cargo
-  goobcoins: 20 #Goob content
+  goobcoins: 15 #Goob content    # Ratbite - decreased a bit
   supervisors: job-supervisors-qm
   access:
   - Cargo

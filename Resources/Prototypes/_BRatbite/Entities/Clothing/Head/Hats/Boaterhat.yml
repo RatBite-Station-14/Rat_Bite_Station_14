@@ -1,0 +1,14 @@
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadBoaterhat
+  name: Boater hat
+  description: A wonderful Boater's hat, perfect to make a outstanding song preformance.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Head/Hats/Boaterhat.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Head/Hats/Boaterhat.rsi
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon

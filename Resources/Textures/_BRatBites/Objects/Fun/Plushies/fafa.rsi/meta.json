@@ -1,0 +1,17 @@
+{
+    "version": 1,
+    "license": "",
+    "copyright": "Permission granted form WillyBillyGilly (Spriter) and Aisha (Founder of Crescent) to use this asset in RB. All other rights reserved.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "icon"
+        },
+        {
+            "name": "base"
+        }
+    ]
+}

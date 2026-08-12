@@ -99,6 +99,13 @@
       path: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/empty.ogg
+    angleIncrease: 30
+    angleDecay: 8
+    maxAngle: 60
+  - type: GunWieldBonus
+    angleDecay: 4
+    angleIncrease: 30
+    maxAngle: -50
   - type: BallisticAmmoProvider
     whitelist:
       tags:

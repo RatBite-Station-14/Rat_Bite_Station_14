@@ -87,6 +87,11 @@
     head: ClothingHeadHatBowlerHat
 
 
+- type: loadout
+  id: BartenderBoaterHat
+  equipment:
+    head: ClothingHeadBoaterhat
+
 # Jumpsuit
 - type: loadout
   id: BartenderJumpsuit
@@ -106,6 +111,11 @@
     jumpsuit: ClothingUniformJumpsuitBartenderPurple
 
 
+- type: loadout
+  id: BartenderJumpsuitBarber
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitbarber
+  
 # Outer clothing
 - type: loadout
   id: BartenderApron

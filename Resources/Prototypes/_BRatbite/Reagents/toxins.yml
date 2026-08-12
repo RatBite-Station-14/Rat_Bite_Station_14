@@ -47,3 +47,4 @@
             types:
              Poison: 0.2
              Asphyxiation: 0.4 # a bit more because asphyx heals back very fast
+            Radiation: 0.12
