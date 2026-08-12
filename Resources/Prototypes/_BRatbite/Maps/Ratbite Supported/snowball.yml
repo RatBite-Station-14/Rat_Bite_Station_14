@@ -2,8 +2,8 @@
   id: Snowball
   mapName: 'Snowball Station'
   mapPath: /Maps/_BRatbite/Ratbite_Supported/snowball.yml
-  minPlayers: 15
-  maxPlayers: 50
+  minPlayers: 0
+  maxPlayers: 30
   stations:
     Snowball:
       stationProto: StandardNanotrasenStation

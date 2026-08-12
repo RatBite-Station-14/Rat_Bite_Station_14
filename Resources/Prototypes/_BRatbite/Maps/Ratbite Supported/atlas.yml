@@ -40,8 +40,8 @@
   id: Atlas
   mapName: 'Atlas'
   mapPath: /Maps/_BRatbite/Ratbite_Supported/atlas.yml
-  minPlayers: 5
-  maxPlayers: 20
+  minPlayers: 15
+  maxPlayers: 30
   stations:
     Atlas:
       stationProto: StandardNanotrasenStation

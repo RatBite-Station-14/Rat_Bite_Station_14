@@ -94,8 +94,8 @@
   id: Loop
   mapName: 'Loop Station'
   mapPath: /Maps/_BRatbite/Ratbite_Supported/loop.yml
-  minPlayers: 35
-  maxPlayers: 75
+  minPlayers: 40
+  maxPlayers: 60
   stations:
     Loop:
       stationProto: StandardNanotrasenStation
