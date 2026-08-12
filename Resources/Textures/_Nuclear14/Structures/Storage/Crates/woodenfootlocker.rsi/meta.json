@@ -8,11 +8,23 @@
   },
   "states": [
     {
-      "name": "footlocker_wood",
+      "name": "base",
       "directions": 4
     },
     {
-      "name": "footlocker_woodopen",
+      "name": "closed",
+      "directions": 4
+    },
+    {
+      "name": "icon",
+      "directions": 4
+    },
+    {
+      "name": "welded",
+      "directions": 4
+    },
+    {
+      "name": "open",
       "directions": 4
     }
   ]

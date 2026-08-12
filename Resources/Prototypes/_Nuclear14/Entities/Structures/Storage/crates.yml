@@ -50,6 +50,18 @@
 
 - type: entity
   parent: N14CrateFootlocker
+  id: N14CrateWoodDirectional
+  suffix: directional
+  name: Wooden Footlocker
+  description: Made eh wood for ye feetsies.
+  components:
+  - type: Icon
+    sprite: _Nuclear14/Structures/Storage/Crates/woodenfootlocker.rsi
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Storage/Crates/woodenfootlocker.rsi
+
+- type: entity
+  parent: N14CrateFootlocker
   id: N14CrateEnclaveDirectional
   suffix: directional
   name: metal crate
