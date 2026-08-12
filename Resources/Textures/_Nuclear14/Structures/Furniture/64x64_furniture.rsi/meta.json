@@ -45,23 +45,6 @@
     {
       "name": "table_cards",
       "directions": 4
-    },
-    {
-      "name": "table_cards1",
-      "directions": 4
-    },
-    {
-      "name": "table_cards2",
-      "directions": 4
-    },
-    {
-      "name": "bigshelf1_openR"
-    },
-    {
-      "name": "bigshelf1_openL"
-    },
-    {
-      "name": "bigshelf2_open"
     }
   ]
 }

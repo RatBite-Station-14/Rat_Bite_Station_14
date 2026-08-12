@@ -8,10 +8,6 @@
   },
   "states": [
     {
-      "name": "bike1",
-      "directions": 4
-    },
-    {
       "name": "bike2",
       "directions": 4,
       "delays": [
@@ -36,26 +32,6 @@
           0.030000001
         ]
       ]
-    },
-    {
-      "name": "bike_no_wheels",
-      "directions": 4
-    },
-    {
-      "name": "bike_rust_light",
-      "directions": 4
-    },
-    {
-      "name": "rust_light_no_wheels",
-      "directions": 8
-    },
-    {
-      "name": "bike_rust_med",
-      "directions": 4
-    },
-    {
-      "name": "bike_rust_med_no_wheels",
-      "directions": 4
     },
     {
       "name": "bike_green",
@@ -84,10 +60,6 @@
       ]
     },
     {
-      "name": "bike_flamy1",
-      "directions": 4
-    },
-    {
       "name": "bike_flamy2",
       "directions": 4,
       "delays": [
@@ -114,10 +86,6 @@
       ]
     },
     {
-      "name": "bike_scrambler1",
-      "directions": 4
-    },
-    {
       "name": "bike_scrambler2",
       "directions": 4,
       "delays": [
@@ -142,42 +110,6 @@
           0.030000001
         ]
       ]
-    },
-    {
-      "name": "buggy_dune",
-      "directions": 4
-    },
-    {
-      "name": "buggy_dune_cover",
-      "directions": 4
-    },
-    {
-      "name": "buggy_olive",
-      "directions": 4
-    },
-    {
-      "name": "buggy_olive_cover",
-      "directions": 4
-    },
-    {
-      "name": "buggy_red",
-      "directions": 4
-    },
-    {
-      "name": "buggy_red_cover",
-      "directions": 4
-    },
-    {
-      "name": "buggy_hot",
-      "directions": 4
-    },
-    {
-      "name": "buggy_hot_cover",
-      "directions": 4
-    },
-    {
-      "name": "derelict",
-      "directions": 8
     }
   ]
 }

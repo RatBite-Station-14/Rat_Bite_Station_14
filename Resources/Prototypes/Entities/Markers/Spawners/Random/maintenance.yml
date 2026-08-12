@@ -487,6 +487,7 @@
       - id: CombatKnife
       - id: N14PoolCue
       - id: N14GolfClub
+      - id: N14ScrapMachete
       - id: N14BrokenPipe
       - id: N14Machete
       - id: Spear
@@ -519,8 +520,6 @@
       - id: SawImprov
       - id: HydroponicsToolMiniHoe
       - id: ClothingHandsKnuckleDusters
-      - id: N14TribalSword
-        weight: 0.1
       - id: N14PoliceBaton
         weight: 0.1
 
