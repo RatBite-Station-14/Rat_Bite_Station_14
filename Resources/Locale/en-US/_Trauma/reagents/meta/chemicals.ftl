@@ -2,7 +2,7 @@ reagent-name-potassium-sulfate = potassium sulfate
 reagent-desc-potassium-sulfate = Potassium in a water-soluble form, providing both potassium and sulfur. Used primarily as a fertilizer for plants.
 
 reagent-name-sodium-bicarbonate = sodium bicarbonate
-reagent-desc-sodium-bicarbonate = A white, odorless, water-soluble salt that has a wide range of uses.  Also known as baking soda. Commonly used in baking. And sodas too probably.
+reagent-desc-sodium-bicarbonate = A white, odorless, water-soluble salt that has a wide range of uses.  Also known as baking soda.
 
 reagent-name-sodium-acetate = sodium acetate
 reagent-desc-sodium-acetate = A white, odorless, water-soluble salt that results from mixing vinegar and baking soda.
