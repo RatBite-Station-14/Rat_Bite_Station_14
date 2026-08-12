@@ -12,6 +12,7 @@ using Content.Shared.Silicons.StationAi;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Prototypes;
 
@@ -25,6 +26,7 @@ public sealed class CoreRollerSystem : EntitySystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
     [Dependency] private readonly StationAiSystem _stationAi = default!;
@@ -44,35 +46,41 @@ public sealed class CoreRollerSystem : EntitySystem
         if (args.Handled || !TryGetCore(args.Performer, out var core))
             return;
 
+        var xform = Transform(core.Owner);
+        if (xform.GridUid is not { } gridUid || !TryComp(gridUid, out MapGridComponent? grid))
+            return;
+
         var origin = _transform.GetMapCoordinates(core.Owner);
         var clicked = _transform.ToMapCoordinates(args.Target);
         if (origin.MapId != clicked.MapId)
             return;
 
-        var offset = clicked.Position - origin.Position;
-        if (offset.LengthSquared() < 0.01f)
+        var originTile = _map.TileIndicesFor(gridUid, grid, xform.Coordinates);
+        var clickedTile = _map.TileIndicesFor(gridUid, grid, clicked);
+        var offset = clickedTile - originTile;
+        if (offset == Vector2i.Zero)
             return;
 
-        var direction = MathF.Abs(offset.X) > MathF.Abs(offset.Y)
-            ? new Vector2(MathF.Sign(offset.X), 0f)
-            : new Vector2(0f, MathF.Sign(offset.Y));
+        var direction = Math.Abs(offset.X) > Math.Abs(offset.Y)
+            ? new Vector2i(Math.Sign(offset.X), 0)
+            : new Vector2i(0, Math.Sign(offset.Y));
         StartRoll(core, args.Performer, direction);
         args.Handled = true;
     }
 
-    private void StartRoll(Entity<CoreRollerComponent> core, EntityUid performer, Vector2 direction)
+    private void StartRoll(Entity<CoreRollerComponent> core, EntityUid performer, Vector2i direction)
     {
-        if (direction.LengthSquared() < 0.01f)
+        if (direction == Vector2i.Zero)
             return;
 
-        var origin = _transform.GetMapCoordinates(core.Owner);
-        var cardinal = MathF.Abs(direction.X) > MathF.Abs(direction.Y)
-            ? new Vector2(MathF.Sign(direction.X), 0f)
-            : new Vector2(0f, MathF.Sign(direction.Y));
-        var mapDestination = new MapCoordinates(origin.Position + cardinal, origin.MapId);
-        var destination = _transform.ToCoordinates(mapDestination);
+        var xform = Transform(core.Owner);
+        if (xform.GridUid is not { } gridUid || !TryComp(gridUid, out MapGridComponent? grid))
+            return;
 
-        if (IsBlocked(core.Owner, destination))
+        var originTile = _map.TileIndicesFor(gridUid, grid, xform.Coordinates);
+        var destination = _map.GridTileToLocal(gridUid, grid, originTile + direction);
+
+        if (IsBlocked(destination))
         {
             _popup.PopupEntity(Loc.GetString("core-roll-blocked"), core.Owner, performer);
             return;
@@ -103,7 +111,7 @@ public sealed class CoreRollerSystem : EntitySystem
 
         var destination = GetCoordinates(args.Destination);
         var mapDestination = _transform.ToMapCoordinates(destination);
-        if (IsBlocked(core.Owner, destination))
+        if (IsBlocked(destination))
             return;
 
         foreach (var target in _lookup.GetEntitiesInRange(mapDestination, 0.45f, LookupFlags.Dynamic))
@@ -117,8 +125,7 @@ public sealed class CoreRollerSystem : EntitySystem
                 origin: core.Owner);
         }
 
-        _transform.SetMapCoordinates(core.Owner, mapDestination);
-        _transform.AttachToGridOrMap(core.Owner, Transform(core.Owner));
+        _transform.SetCoordinates(core.Owner, destination);
         _audio.PlayPvs(RollSound, core.Owner);
         _popup.PopupCoordinates(Loc.GetString("core-roll-thud"), Transform(core.Owner).Coordinates, PopupType.Large);
         args.Handled = true;
@@ -144,21 +151,11 @@ public sealed class CoreRollerSystem : EntitySystem
         return false;
     }
 
-    private bool IsBlocked(EntityUid core, EntityCoordinates destination)
+    private bool IsBlocked(EntityCoordinates destination)
     {
         var tile = _turf.GetTileRef(destination);
-        if (tile == null || tile.Value.Tile.IsEmpty || _turf.IsTileBlocked(tile.Value, CollisionGroup.MobMask))
-            return true;
-
-        foreach (var target in _lookup.GetEntitiesInRange(destination, 0.4f, LookupFlags.Static | LookupFlags.Dynamic))
-        {
-            if (target == core)
-                continue;
-
-            if (Transform(target).Anchored && HasComp<FixturesComponent>(target))
-                return true;
-        }
-
-        return false;
+        return tile == null ||
+               tile.Value.Tile.IsEmpty ||
+               _turf.IsTileBlocked(tile.Value, CollisionGroup.MobMask);
     }
 }
