@@ -47,8 +47,6 @@
     ClothingHeadHatCanadaBeanie: 4
     ClothingHeadHatSantahat: 2
     ClothingHeadHatXmasCrown: 2
-    ClothingOuterCoatVictorian: 2
-    ClothingOuterCoatVictorianRed: 2
   contrabandInventory:
     ClothingOuterDavidsJacket: 1 # Goobstation
     ClothingNeckScarfStripedSyndieGreen: 3
@@ -56,8 +54,3 @@
     ClothingNeckScarfStripedCentcom: 3 # Goobstation
     ClothingOuterCoatSpaceAsshole: 1 # Goobstation
     ClothingOuterWinterCosmic: 1 # Goobstation
-    ClothingOuterWinterSyndie: 3 # Ratbite
-    ClothingOuterWinterSyndieCap: 3 # Ratbite
-    ClothingOuterCoatcybersunovercoat: 2 # Ratbite
-  emaggedInventory:
-    ClothingOuterCoatDesignercoat: 1

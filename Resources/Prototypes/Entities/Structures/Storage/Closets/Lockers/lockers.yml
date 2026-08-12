@@ -651,17 +651,17 @@
     stateDoorOpen: mime_open
     stateDoorClosed: mime_door
 
-# Representative Ratbite change
-#- type: entity
-#  id: LockerRepresentative
-#  name: representative locker
-#  parent: LockerMindshielded
-#  components:
-#  - type: Appearance
-#  - type: AccessReader
-#    access: [["Command"]]
-#    needsMindshield: true
-#  - type: EntityStorageVisuals
-#    stateBaseClosed: hop
-#    stateDoorOpen: hop_open
-#    stateDoorClosed: representative_door
+# Representative
+- type: entity
+  id: LockerRepresentative
+  name: representative locker
+  parent: LockerMindshielded
+  components:
+  - type: Appearance
+  - type: AccessReader
+    access: [["Command"]]
+    needsMindshield: true
+  - type: EntityStorageVisuals
+    stateBaseClosed: hop
+    stateDoorOpen: hop_open
+    stateDoorClosed: representative_door
