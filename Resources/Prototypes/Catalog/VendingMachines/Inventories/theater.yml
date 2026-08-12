@@ -120,10 +120,9 @@
     ClothingOuterSuitHotDog: 1 # Goob
     ClothingOuterSuitPickle: 1
     ClothingHeadHatTinfoilHat: 2 # Goobstation
-    ClothingUniformJumpsuitbarber: 4 # Ratbite start
-    ClothingUniformJumpsuitBatter: 2
-    ClothingHeadBoaterhat: 4
-    ClothingUniformhelloneighbor: 1 # Ratbite end
+    ClothingUniformJumpsuitbarber: 4 # Ratbite
+    ClothingUniformJumpsuitBatter: 2 # Ratbite
+    ClothingHeadBoaterhat: 4 # Ratbite
   contrabandInventory:
     ClothingHeadHatRichard: 1
     ClothingShoesBling: 1
