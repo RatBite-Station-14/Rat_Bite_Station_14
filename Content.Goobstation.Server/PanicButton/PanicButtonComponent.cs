@@ -3,6 +3,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._BRatbite.TrackingHud;
 using Content.Shared.Radio;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
@@ -37,6 +38,9 @@ namespace Content.Goobstation.Server.PanicButton
 
         [DataField]
         public Color SecHudIconColor = Color.Red;
+
+        [DataField]
+        public ListeningChannels Channels = ListeningChannels.SECURITY;
 
         [DataField]
         public SoundSpecifier PlayedSound = new SoundPathSpecifier("/Audio/_BRatbite/SecHud/siren.ogg");

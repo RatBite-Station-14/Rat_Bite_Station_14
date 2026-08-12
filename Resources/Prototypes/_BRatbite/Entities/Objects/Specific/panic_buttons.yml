@@ -1,7 +1,7 @@
 - type: entity
   id: PanicButtonBase
   abstract: true
-  name: security request button
+  name: departmental guard request button
   description: A small device to alert security of any crimes happening in your department.
   parent: BaseItem
   components:
@@ -20,7 +20,7 @@
   id: PanicButtonMedical
   suffix: Medical
   parent: PanicButtonBase
-  name: security request button
+  name: departmental guard request button
   components:
   - type: Sprite
     layers:
@@ -30,12 +30,14 @@
   - type: PanicButton
     distressMessage: "panic-button-distress-medical"
     secHudIconColor: "#4B96FF80"
+    radioChannel: "Medical"
+    channels: MEDICAL
 
 - type: entity
   id: PanicButtonCargo
   suffix: Cargo
   parent: PanicButtonBase
-  name: security request button
+  name: departmental guard request button
   components:
   - type: Sprite
     layers:
@@ -45,12 +47,14 @@
   - type: PanicButton
     distressMessage: "panic-button-distress-cargo"
     secHudIconColor: "#FFA50080"
+    radioChannel: "Supply"
+    channels: CARGO
 
 - type: entity
   id: PanicButtonEngineering
   suffix: Engineering
   parent: PanicButtonBase
-  name: security request button
+  name: departmental guard request button
   components:
   - type: Sprite
     layers:
@@ -60,12 +64,14 @@
   - type: PanicButton
     distressMessage: "panic-button-distress-engineering"
     secHudIconColor: "#FFD70080"
+    radioChannel: "Engineering"
+    channels: ENGINEERING
 
 - type: entity
   id: PanicButtonScience
   suffix: Science
   parent: PanicButtonBase
-  name: security request button
+  name: departmental guard request button
   components:
   - type: Sprite
     layers:
@@ -75,5 +81,6 @@
   - type: PanicButton
     distressMessage: "panic-button-distress-science"
     secHudIconColor: "#FF00FF80"
-        
+    radioChannel: "Science"
+    channels: SCIENCE
 
