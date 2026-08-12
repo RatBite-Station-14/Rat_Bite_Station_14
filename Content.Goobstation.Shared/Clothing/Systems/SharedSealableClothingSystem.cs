@@ -123,7 +123,7 @@ public abstract class SharedSealableClothingSystem : EntitySystem
 
         var slot = control.Comp.RequiredControlSlot.ToString().ToLowerInvariant();
         var wearer = control.Comp.WearerEntity;
-        _inventorySystem.TryUnequip(wearer.Value, wearer.Value, slot, force:true);
+        _inventorySystem.TryUnequip(wearer.Value, wearer.Value, slot, force: true);
         _inventorySystem.TryEquip(wearer.Value, wearer.Value, control, slot, force: true);
         control.Comp.UnequipAfterUnseal = false;
     }
@@ -339,7 +339,8 @@ public abstract class SharedSealableClothingSystem : EntitySystem
         if (comp.IsInProcess)
         {
             _popupSystem.PopupClient(Loc.GetString(comp.UnsealedInProcessToggleFailPopup), uid, args.User);
-            _audioSystem.PlayPvs(comp.FailSound, uid);
+            // Ratbite: use playPredicted to prevent sound spam
+            _audioSystem.PlayPredicted(comp.FailSound, uid, args.User);
             args.Cancel();
             return;
         }
@@ -358,7 +359,8 @@ public abstract class SharedSealableClothingSystem : EntitySystem
         if (!args.Multiple)
         {
             _popupSystem.PopupClient(Loc.GetString(comp.CurrentlySealedToggleFailPopup), uid, args.User);
-            _audioSystem.PlayPvs(comp.FailSound, uid);
+            // Ratbite: use playPredicted to prevent sound spam
+            _audioSystem.PlayPredicted(comp.FailSound, uid, args.User);
             args.Cancel();
             return;
         }
@@ -498,7 +500,7 @@ public abstract class SharedSealableClothingSystem : EntitySystem
                 comp.IsCurrentlySealed ? sealableComponent.SealDownPopup : sealableComponent.SealUpPopup,
                 ("partName", Identity.Name(processingPart, EntityManager))
             );
-            var type = comp.IsCurrentlySealed ?  PopupType.SmallCaution :  PopupType.Small;
+            var type = comp.IsCurrentlySealed ? PopupType.SmallCaution : PopupType.Small;
             _popupSystem.PopupCoordinates(popupText, popupCoords, comp.WearerEntity.Value, type);
 
             break;
@@ -522,7 +524,7 @@ public abstract class SharedSealableClothingSystem : EntitySystem
         foreach (var part in attachedParts)
         {
             if (TryComp<SealableClothingComponent>(part, out var pSeal) && pSeal.IsSealed)
-                    continue;
+                continue;
             allpartsSealed = false;
             break;
         }
