@@ -761,7 +761,7 @@
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
-        color: "#3f3f3f"
+        color: "#1d1d1d"
       - state: winterbits-equipped-OUTERCLOTHING
   - type: ToggleableClothing # Goobstation - Modsuits change
     clothingPrototypes:
@@ -776,24 +776,24 @@
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     layers:
     - state: coatybits-icon
-      color: "#9c0dff"
+      color: "#9C0DE1"
     - state: winterbits-icon
   - type: Item
     inhandVisuals:
       left:
       - state: coatybits-inhand-left
-        color: "#9c0dff"
+        color: "#9C0DE1"
       - state: winterbits-inhand-left
       right:
       - state: coatybits-inhand-right
-        color: "#9c0dff"
+        color: "#9C0DE1"
       - state: winterbits-inhand-right
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
-        color: "#9c0dff"
+        color: "#9C0DE1"
       - state: winterbits-equipped-OUTERCLOTHING
   - type: ToggleableClothing # Goobstation - Modsuits change
     clothingPrototypes:
@@ -840,24 +840,24 @@
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     layers:
     - state: coatybits-icon
-      color: "#134fc1"
+      color: "#0089EF"
     - state: winterbits-icon
   - type: Item
     inhandVisuals:
       left:
       - state: coatybits-inhand-left
-        color: "#134fc1"
+        color: "#0089EF"
       - state: winterbits-inhand-left
       right:
       - state: coatybits-inhand-right
-        color: "#134fc1"
+        color: "#0089EF"
       - state: winterbits-inhand-right
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
-        color: "#134fc1"
+        color: "#0089EF"
       - state: winterbits-equipped-OUTERCLOTHING
   - type: ToggleableClothing # Goobstation - Modsuits change
     clothingPrototypes:
@@ -1000,24 +1000,24 @@
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     layers:
     - state: coatybits-icon
-      color: "#de5c16"
+      color: "#EF8100"
     - state: winterbits-icon
   - type: Item
     inhandVisuals:
       left:
       - state: coatybits-inhand-left
-        color: "#de5c16"
+        color: "#EF8100"
       - state: winterbits-inhand-left
       right:
       - state: coatybits-inhand-right
-        color: "#de5c16"
+        color: "#EF8100"
       - state: winterbits-inhand-right
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
-        color: "#de5c16"
+        color: "#EF8100"
       - state: winterbits-equipped-OUTERCLOTHING
   - type: ToggleableClothing # Goobstation - Modsuits change
     clothingPrototypes:

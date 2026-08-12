@@ -148,7 +148,7 @@
     - state: icon-base-top-jumpsuit
       color: "#3e3e48"
     - state: icon-decor-contractor
-      color: "#211fa3"
+      color: "#3285ba"
   - type: Item
     inhandVisuals:
       left:
@@ -157,14 +157,14 @@
       - state: inhand-left-base-top-jumpsuit
         color: "#3e3e48"
       - state: inhand-left-decor-contractor
-        color: "#211fa3"
+        color: "#3285ba"
       right:
       - state: inhand-right-base-bottom
         color: "#3e3e48"
       - state: inhand-right-base-top-jumpsuit
         color: "#3e3e48"
       - state: inhand-right-decor-contractor
-        color: "#211fa3"
+        color: "#3285ba"
   - type: Clothing
     sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
     clothingVisuals:
@@ -174,7 +174,7 @@
       - state: equipped-base-top-jumpsuit
         color: "#3e3e48"
       - state: equipped-decor-contractor
-        color: "#211fa3"
+        color: "#3285ba"
 
 - type: entity
   parent: ClothingUniformBase
@@ -320,7 +320,7 @@
     - state: icon-base-top-jumpsuit
       color: "#3e3e48"
     - state: icon-decor-contractor
-      color: "#de5c16"
+      color: "#ff8c19"
   - type: Item
     inhandVisuals:
       left:
@@ -329,14 +329,14 @@
       - state: inhand-left-base-top-jumpsuit
         color: "#3e3e48"
       - state: inhand-left-decor-contractor
-        color: "#de5c16"
+        color: "#ff8c19"
       right:
       - state: inhand-right-base-bottom
         color: "#3e3e48"
       - state: inhand-right-base-top-jumpsuit
         color: "#3e3e48"
       - state: inhand-right-decor-contractor
-        color: "#de5c16"
+        color: "#ff8c19"
   - type: Clothing
     sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
     clothingVisuals:
@@ -346,7 +346,7 @@
       - state: equipped-base-top-jumpsuit
         color: "#3e3e48"
       - state: equipped-decor-contractor
-        color: "#de5c16"
+        color: "#ff8c19"
 
 - type: entity
   parent: ClothingUniformBase
@@ -492,7 +492,7 @@
     - state: icon-base-top-jumpsuit
       color: "#3e3e48"
     - state: icon-decor-contractor
-      color: "#9c0dff"
+      color: "#9f70cc"
   - type: Item
     inhandVisuals:
       left:
@@ -501,14 +501,14 @@
       - state: inhand-left-base-top-jumpsuit
         color: "#3e3e48"
       - state: inhand-left-decor-contractor
-        color: "#9c0dff"
+        color: "#9f70cc"
       right:
       - state: inhand-right-base-bottom
         color: "#3e3e48"
       - state: inhand-right-base-top-jumpsuit
         color: "#3e3e48"
       - state: inhand-right-decor-contractor
-        color: "#9c0dff"
+        color: "#9f70cc"
   - type: Clothing
     sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
     clothingVisuals:
@@ -518,7 +518,7 @@
       - state: equipped-base-top-jumpsuit
         color: "#3e3e48"
       - state: equipped-decor-contractor
-        color: "#9c0dff"
+        color: "#9f70cc"
 
 - type: entity
   parent: ClothingUniformBase
@@ -1809,7 +1809,7 @@
     - state: icon-base-top-turtleneck
       color: "#496ea0"
     - state: icon-belt
-      color: "#134fc1"
+      color: "#3e3e48"
     - state: icon-belt-buckle
   - type: Item
     inhandVisuals:
@@ -1819,7 +1819,7 @@
       - state: inhand-left-base-top-turtleneck
         color: "#496ea0"
       - state: inhand-left-belt
-        color: "#134fc1"
+        color: "#3e3e48"
       - state: inhand-left-belt-buckle
       right:
       - state: inhand-right-base-bottom
@@ -1827,7 +1827,7 @@
       - state: inhand-right-base-top-turtleneck
         color: "#496ea0"
       - state: inhand-right-belt
-        color: "#134fc1"
+        color: "#3e3e48"
       - state: inhand-right-belt-buckle
   - type: Clothing
     sprite: _NF/Clothing/Uniforms/Jumpsuit/military.rsi
@@ -1838,7 +1838,7 @@
       - state: equipped-base-top-turtleneck-alt
         color: "#496ea0"
       - state: equipped-belt
-        color: "#134fc1"
+        color: "#3e3e48"
       - state: equipped-belt-buckle
 
 - type: entity
