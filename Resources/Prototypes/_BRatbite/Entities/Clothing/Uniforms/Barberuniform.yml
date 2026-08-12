@@ -1,0 +1,14 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitbarber
+  name: Barber Uniform
+  description: A nice set barbers clothes for either cutting hair or a quartet!
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Uniforms/Barber.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Uniforms/Barber.rsi
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon

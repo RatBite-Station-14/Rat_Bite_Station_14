@@ -1,0 +1,48 @@
+- type: entity
+  parent: BaseMobSlaughterDemon
+  id: MobLaughterFafa
+  name: Fafa
+  description: It reeks of decaying blood.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Mobs/fafawake.rsi
+    state: fafa
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      190: Dead
+  - type: SlaughterDevour
+    feastSound: /Audio/_Crescent/Fun/OrangePlushCollection/orange4.ogg
+  - type: SlaughterDemon
+    isLaughter: true
+  - type: Speech
+    speechVerb: Cluwne
+  - type: MeleeWeapon
+    soundHit:
+      collection: Annoyingfafa
+      params:
+        variation: 1
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Slash: 20
+        Structural: 50
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: ghost-role-information-Fafa-demon-name
+    description: ghost-role-information-Fafa-demon-description
+    rules: ghost-role-information-Fafa-demon-rules
+    mindRoles:
+    - MindRoleGhostRoleSoloAntagonist
+    raffle:
+      settings: default
+    requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 18000
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: Annoyingfafa
+      params:
+        variation: 1

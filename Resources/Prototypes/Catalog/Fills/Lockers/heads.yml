@@ -408,7 +408,7 @@
     - id: Multitool
     - id: MedTekCartridge
     - id: SyringeGun
- #  - id: BoxSyringePax
+    - id: BoxSyringePax
     - id: ClothingBeltMilitaryWebbingCMOFilled
     - id: ClothingBackpackDuffelSurgeryFilled
     # Shitmed

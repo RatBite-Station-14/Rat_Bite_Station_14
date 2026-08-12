@@ -1,0 +1,35 @@
+- type: entity
+  parent: [ ClothingOuterArmorCaptainCarapace, ClothingOuterWinterCoatToggleable ]
+  id: ClothingOuterWinterCentcomArmored
+  name: Fancy Centcomm winter coat
+  description: The expected centcomm varient of the captain's winter coat. often made to order.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/OuterClothing/Wintercoats/centcomm_armored_winter_coat.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/OuterClothing/Wintercoats/centcomm_armored_winter_coat.rsi
+  - type: Item
+    size: Normal
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.3
+        Slash: 0.3
+        Piercing: 0.3
+        Heat: 0.35
+        Caustic: 0.5
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: ClothingHeadHatHoodWinterCentcomFancy
+
+
+- type: entity
+  parent: [ ClothingHeadHatHoodWinterBase, BaseCentcommContraband ]
+  id: ClothingHeadHatHoodWinterCentcomFancy
+  categories: [ HideSpawnMenu ]
+  name: The hood of the lavish Central command winter coat.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Head/Hoods/centcomm_winter_hood.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Head/Hoods/centcomm_winter_hood.rsi

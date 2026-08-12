@@ -120,6 +120,9 @@
     ClothingOuterSuitHotDog: 1 # Goob
     ClothingOuterSuitPickle: 1
     ClothingHeadHatTinfoilHat: 2 # Goobstation
+    ClothingUniformJumpsuitbarber: 4 # Ratbite
+    ClothingUniformJumpsuitBatter: 2 # Ratbite
+    ClothingHeadBoaterhat: 4 # Ratbite
   contrabandInventory:
     ClothingHeadHatRichard: 1
     ClothingShoesBling: 1
@@ -140,4 +143,3 @@
   emaggedInventory: # goob
     ClothingOuterPonchoClassicRobust: 1
     ClothingHeadHatCowboyBrownRobust: 1
-    SyndieRapier: 1 #Omu
