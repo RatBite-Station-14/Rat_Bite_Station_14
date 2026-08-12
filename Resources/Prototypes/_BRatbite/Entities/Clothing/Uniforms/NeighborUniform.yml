@@ -1,0 +1,11 @@
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformhelloneighbor
+  name: fellowman uniform
+  description: "Haven't you heard? Be kind to your neighbour."
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Uniforms/neighbor.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Uniforms/neighbor.rsi
+
