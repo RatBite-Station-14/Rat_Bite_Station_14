@@ -6,7 +6,7 @@
 - type: species
   id: Monkey
   name: species-name-monkey
-  roundStart: true #Ratbite playable monkeys
+  roundStart: false # sad...
   prototype: MobMonkey
   sprites: MobMonkeySprites
   dollPrototype: MobMonkeyDummy

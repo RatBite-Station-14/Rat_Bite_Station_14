@@ -6,7 +6,7 @@
 - type: species
   id: Kobold
   name: species-name-kobold
-  roundStart: true #Ratbite playable kobolds
+  roundStart: false # sad...
   prototype: MobKobold
   sprites: MobKoboldSprites
   dollPrototype: MobKoboldDummy
