@@ -17,7 +17,7 @@
       species:
       - Felinid
       - Scurret
-  goobcoins: 30
+  goobcoins: 40
   weight: 20
   startingGear: MedicalOrderlyGear
   icon: "JobIconMedicalOrderly"
@@ -83,7 +83,7 @@
   icon: "JobIconCargoInsurance"
   supervisors: Quartermaster
   canBeAntag: false
-  goobcoins: 20 #Goob content
+  goobcoins: 40 #Goob content
   access:
   - Cargo
   - Maintenance
@@ -142,7 +142,7 @@
   icon: "JobIconScicurityGuard"
   supervisors: job-supervisors-rd
   canBeAntag: true # ourple guy
-  goobcoins: 20 #Goob content
+  goobcoins: 40 #Goob content
   access:
   - Research
   - Maintenance
@@ -202,7 +202,7 @@
   icon: "JobIconEngiSentry"
   supervisors: job-supervisors-ce
   canBeAntag: false
-  goobcoins: 20 #Goob content
+  goobcoins: 40 #Goob content
   access:
   - Maintenance
   - Engineering

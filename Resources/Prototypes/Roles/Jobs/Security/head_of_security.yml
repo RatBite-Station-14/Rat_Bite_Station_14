@@ -165,7 +165,7 @@
   - HeadOfSecurity SOP
   - Security SOP
   - Alert Levels
-  goobcoins: 45 #Goob content
+  goobcoins: 60 # Ratbite
   access:
   - HeadOfSecurity
   - Command

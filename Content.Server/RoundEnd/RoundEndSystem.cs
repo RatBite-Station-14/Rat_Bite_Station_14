@@ -107,25 +107,28 @@ namespace Content.Server.RoundEnd
         public TimeSpan? ExpectedShuttleLength => ExpectedCountdownEnd - LastCountdownStart;
         public TimeSpan? ShuttleTimeLeft => ExpectedCountdownEnd - _gameTiming.CurTime;
 
+
         /// <summary>
         /// If the shuttle can't be recalled. if set to true, the station wont be able to recall
         /// </summary>
         public bool CantRecall = false;
+        
+        // public TimeSpan AutoCallStartTime;  // Ratbite - removed autocall
 
-        public TimeSpan AutoCallStartTime;
         private bool _autoCalledBefore = false;
 
         public override void Initialize()
         {
             base.Initialize();
             SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Reset());
-            SetAutoCallTime();
+            // SetAutoCallTime(); // Ratbite - removed autocall
         }
 
-        private void SetAutoCallTime()
-        {
-            AutoCallStartTime = _gameTiming.CurTime;
-        }
+// Ratbite - removed autocall
+//        private void SetAutoCallTime()
+//        {
+//            AutoCallStartTime = _gameTiming.CurTime;
+//        }
 
         private void Reset()
         {
@@ -145,7 +148,7 @@ namespace Content.Server.RoundEnd
 
             LastCountdownStart = null;
             ExpectedCountdownEnd = null;
-            SetAutoCallTime();
+            // SetAutoCallTime(); // Ratbite - removed autocall
             _autoCalledBefore = false;
             RaiseLocalEvent(RoundEndSystemChangedEvent.Default);
         }
@@ -434,23 +437,25 @@ namespace Content.Server.RoundEnd
             }, _cooldownTokenSource.Token);
         }
 
-        public override void Update(float frameTime)
-        {
-            // Check if we should auto-call.
-            int mins = _autoCalledBefore ? _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallExtensionTime)
-                                        : _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallTime);
-            if (mins != 0 && _gameTiming.CurTime - AutoCallStartTime > TimeSpan.FromMinutes(mins))
-            {
-                if (!_shuttle.EmergencyShuttleArrived && ExpectedCountdownEnd is null)
-                {
-                    RequestRoundEnd(null, false, "round-end-system-shuttle-auto-called-announcement");
-                    _autoCalledBefore = true;
-                }
-
-                // Always reset auto-call in case of a recall.
-                SetAutoCallTime();
-            }
-        }
+// Ratbite - yeah bevv lets make rounds last 3 hours while automatically calling evac 1.5h in, slop
+//
+//        public override void Update(float frameTime)
+//        {
+//            // Check if we should auto-call.
+//            int mins = _autoCalledBefore ? _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallExtensionTime)
+//                                        : _cfg.GetCVar(CCVars.EmergencyShuttleAutoCallTime);
+//            if (mins != 0 && _gameTiming.CurTime - AutoCallStartTime > TimeSpan.FromMinutes(mins))
+//            {
+//                if (!_shuttle.EmergencyShuttleArrived && ExpectedCountdownEnd is null)
+//                {
+//                    RequestRoundEnd(null, false, "round-end-system-shuttle-auto-called-announcement");
+//                    _autoCalledBefore = true;
+//                }
+//
+//                // Always reset auto-call in case of a recall.
+//                SetAutoCallTime();
+//            }
+//        }
     }
 
     public sealed class RoundEndSystemChangedEvent : EntityEventArgs

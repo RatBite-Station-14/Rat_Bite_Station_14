@@ -80,24 +80,24 @@
     sprite: Clothing/Shoes/color.rsi
     layers:
     - state: icon
-      color: "#0089EF"    
+      color: "#134fc1"    
     - state: soles-icon
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#0089EF"
+        color: "#134fc1"
       - state: soles-inhand-left
       right:
       - state: inhand-right
-        color: "#0089EF"
+        color: "#134fc1"
       - state: soles-inhand-right
   - type: Clothing
     sprite: Clothing/Shoes/color.rsi
     clothingVisuals:
       shoes:
       - state: equipped-FEET
-        color: "#0089EF"
+        color: "#134fc1"
       - state: soles-equipped-FEET
 
 # Brown Shoes
@@ -173,24 +173,24 @@
     sprite: Clothing/Shoes/color.rsi
     layers:
     - state: icon
-      color: "#EF8100"    
+      color: "#de5c16"    
     - state: soles-icon
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#EF8100"
+        color: "#de5c16"
       - state: soles-inhand-left
       right:
       - state: inhand-right
-        color: "#EF8100"
+        color: "#de5c16"
       - state: soles-inhand-right
   - type: Clothing
     sprite: Clothing/Shoes/color.rsi
     clothingVisuals:
       shoes:
       - state: equipped-FEET
-        color: "#EF8100"
+        color: "#de5c16"
       - state: soles-equipped-FEET
 
 # Red Shoes
@@ -266,22 +266,22 @@
     sprite: Clothing/Shoes/color.rsi
     layers:
     - state: icon
-      color: "#9C0DE1"    
+      color: "#9c0dff"    
     - state: soles-icon
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#9C0DE1"
+        color: "#9c0dff"
       - state: soles-inhand-left
       right:
       - state: inhand-right
-        color: "#9C0DE1"
+        color: "#9c0dff"
       - state: soles-inhand-right
   - type: Clothing
     sprite: Clothing/Shoes/color.rsi
     clothingVisuals:
       shoes:
       - state: equipped-FEET
-        color: "#9C0DE1"
+        color: "#9c0dff"
       - state: soles-equipped-FEET

@@ -81,7 +81,7 @@
   supervisors: job-supervisors-qm
   guides: # goobstation
   - Cargo
-  goobcoins: 20 #Goob content
+  goobcoins: 15 #Goob content    # Ratbite - decreased a bit
   access:
   - Cargo
   - Maintenance

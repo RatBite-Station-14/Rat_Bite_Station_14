@@ -1,0 +1,21 @@
+# SPDX-FileCopyrightText: 2025 TheSecondLord <88201625+TheSecondLord@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later AND MIT
+
+- type: listing
+  id: UplinkReagentImplanter
+  name: uplink-reagent-implanter-name
+  description: uplink-reagent-implanter-desc
+  icon: { sprite: /Textures/Objects/Specific/Medical/medipen.rsi, state: stimpen }
+  productEntity: EmptyReagentImplanter
+  cost:
+    Telecrystal: 12   # Pretty cheap since it comes empty
+  categories:
+  - UplinkChemicals
+  - UplinkImplants
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink # I don't really wanna mess with nukie balancing
+  saleLimit: 1

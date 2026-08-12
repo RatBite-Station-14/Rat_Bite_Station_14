@@ -123,6 +123,12 @@
 
 
 - type: loadout
+  id: MimeJumpsuitBatter
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBatter
+    
+    
+- type: loadout
   id: MimeJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtMime

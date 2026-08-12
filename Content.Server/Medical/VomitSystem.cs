@@ -132,7 +132,7 @@ namespace Content.Server.Medical
         /// <summary>
         /// Make an entity vomit, if they have a stomach.
         /// </summary>
-        public void Vomit(EntityUid uid, float thirstAdded = -40f, float hungerAdded = -40f)
+        public void Vomit(EntityUid uid, float thirstToAdd = -40f, float hungerToAdd = -40f)
         {
             // Main requirement: You have a stomach
             var stomachList = _body.GetBodyOrganEntityComps<StomachComponent>(uid);
@@ -147,15 +147,29 @@ namespace Content.Server.Medical
                 return;
             // goob end
 
+            // Ratbite
+            float thirstAdded = 0f, hungerAdded = 0f;
             // Vomiting makes you hungrier and thirstier
             if (TryComp<HungerComponent>(uid, out var hunger))
-                _hunger.ModifyHunger(uid, hungerAdded, hunger);
+            {
+                // Ratbite: Compute actual hunger added
+                var oldHunger = _hunger.GetHunger(hunger);
+                _hunger.ModifyHunger(uid, hungerToAdd, hunger);
+                hungerAdded = _hunger.GetHunger(hunger) - oldHunger;
+
+            }
 
             if (TryComp<ThirstComponent>(uid, out var thirst))
-                _thirst.ModifyThirst(uid, thirst, thirstAdded);
+            {
+                // Ratbite: Compute actual thirst added
+                var oldThirst = thirst.CurrentThirst;
+                _thirst.ModifyThirst(uid, thirst, thirstToAdd);
+                thirstAdded = thirst.CurrentThirst - oldThirst;
+            }
 
             // It fully empties the stomach, this amount from the chem stream is relatively small
             var solutionSize = (MathF.Abs(thirstAdded) + MathF.Abs(hungerAdded)) / 6;
+            if (solutionSize == 0) return;
             // Apply a bit of slowdown
             if (TryComp<StatusEffectsComponent>(uid, out var status))
                 _stun.TrySlowdown(uid, TimeSpan.FromSeconds(solutionSize), true, 0.5f, 0.5f, status);

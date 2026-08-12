@@ -1,0 +1,10 @@
+- type: entity
+  parent: [ ClothingUniformBase, BaseCommandContraband ]
+  id: ClothingUniformJumpsuitSternn
+  name: Stern Uniform
+  description: A stern uniform for a stern captain.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Uniforms/Sternn.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Uniforms/Sternn.rsi

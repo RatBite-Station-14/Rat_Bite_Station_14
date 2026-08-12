@@ -111,6 +111,7 @@ using Content.Server.Roles;
 using Content.Server.Roles.Jobs;
 using Content.Server.Shuttles.Components;
 using Content.Server.Station.Events;
+using Content.Shared._BRatbite.Traits;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Antag;
 using Content.Shared.Clothing;
@@ -721,6 +722,9 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
 
         if (!def.AllowNonHumans && !HasComp<HumanoidAppearanceComponent>(entity))
             return false;
+
+        // Ratbite
+        if (HasComp<LoyaltyTrainingComponent>(entity)) return false;
 
         if (def.Whitelist != null)
         {

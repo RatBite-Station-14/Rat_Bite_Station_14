@@ -104,24 +104,24 @@
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     layers:
     - state: icon
-      color: "#52aecc"
+      color: "#134fc1"
     - state: trinkets-icon
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#52aecc"
+        color: "#134fc1"
       - state: trinkets-inhand-left
       right:
       - state: inhand-right
-        color: "#52aecc"
+        color: "#134fc1"
       - state: trinkets-inhand-right
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: "#52aecc"
+        color: "#134fc1"
       - state: trinkets-equipped-INNERCLOTHING
 
 # Dark Blue Jumpskirt
@@ -135,24 +135,24 @@
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     layers:
     - state: icon
-      color: "#3285ba"
+      color: "#211fa3"
     - state: trinkets-icon
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#3285ba"
+        color: "#211fa3"
       - state: trinkets-inhand-left
       right:
       - state: inhand-right
-        color: "#3285ba"
+        color: "#211fa3"
       - state: trinkets-inhand-right
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: "#3285ba"
+        color: "#211fa3"
       - state: trinkets-equipped-INNERCLOTHING
 
 # Teal Jumpskirt
@@ -259,24 +259,24 @@
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     layers:
     - state: icon
-      color: "#ff8c19"
+      color: "#de5c16"
     - state: trinkets-icon
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#ff8c19"
+        color: "#de5c16"
       - state: trinkets-inhand-left
       right:
       - state: inhand-right
-        color: "#ff8c19"
+        color: "#de5c16"
       - state: trinkets-inhand-right
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: "#ff8c19"
+        color: "#de5c16"
       - state: trinkets-equipped-INNERCLOTHING
 
 # Pink Jumpskirt
@@ -383,24 +383,24 @@
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     layers:
     - state: icon
-      color: "#9f70cc"
+      color: "#9c0dff"
     - state: trinkets-icon
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#9f70cc"
+        color: "#9c0dff"
       - state: trinkets-inhand-left
       right:
       - state: inhand-right
-        color: "#9f70cc"
+        color: "#9c0dff"
       - state: trinkets-inhand-right
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirt/color.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING
-        color: "#9f70cc"
+        color: "#9c0dff"
       - state: trinkets-equipped-INNERCLOTHING
 
 # Light Brown Jumpskirt

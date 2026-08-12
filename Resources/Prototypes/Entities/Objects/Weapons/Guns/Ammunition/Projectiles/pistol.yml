@@ -70,5 +70,23 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 10 #Ratbite balance
-        Piercing: 15 #Ratbite balance
+        Radiation: 2 #Ratbite balance
+        Piercing: 14 #Ratbite balance
+      armorPenetration: 0.20 # Ratbite - Uranium ammo rework
+  # <Ratbite> - uranium rounds arent INSTANT radiation (ignoring the fact that DU is significantly less radioactive than natural uranium..), duh.
+  - type: RefillableSolution
+    solution: ammo
+  - type: DrainableSolution
+    solution: ammo
+  - type: SolutionInjectOnProjectileHit
+    transferAmount: 2
+    solution: ammo
+  - type: InjectableSolution
+    solution: ammo
+  - type: SolutionContainerManager
+    solutions:
+      ammo:
+        reagents:
+        - ReagentId: DepletedUranium
+          Quantity: 1
+  # </Ratbite>

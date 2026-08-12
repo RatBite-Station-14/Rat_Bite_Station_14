@@ -1,0 +1,51 @@
+- type: entity
+  parent: [BasePlushie, BaseMagicalContraband]
+  id: PlushiaFafa
+  name: Orange? Plush
+  description: The Smell Of Rot and Decay Is unbearable.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Objects/Fun/Plushies/fafa.rsi
+    state: icon
+  - type: Item
+  - type: EmitSoundOnActivate
+    sound:
+      collection: Annoyingfafa
+      params:
+        variation: 0.25
+  - type: EmitSoundOnUse
+    sound:
+      collection: Annoyingfafa
+      params:
+        variation: 0.25
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: Annoyingfafa
+      params:
+        variation: 0.25
+  - type: MeleeWeapon
+    heavyStaminaCost: 10
+    damage:
+      types:
+        Blunt: 20
+    soundHit:
+      collection: Annoyingfafa
+      params:
+        variation: 0.25
+  - type: SpamEmitSound
+    minInterval: 20
+    maxInterval: 60
+    sound:
+      collection: Annoyingfafa
+      params:
+        variation: 0.25
+
+- type: soundCollection
+  id: Annoyingfafa
+  files:
+  - "/Audio/_Crescent/Fun/OrangePlushCollection/orange1.ogg"
+  - "/Audio/_Crescent/Fun/OrangePlushCollection/orange2.ogg"
+  - "/Audio/_Crescent/Fun/OrangePlushCollection/orange3.ogg"
+  - "/Audio/Voice/Human/malescream_2.ogg"
+  - "/Audio/_Crescent/Fun/OrangePlushCollection/orange4.ogg"
+  - "/Audio/_Crescent/Fun/OrangePlushCollection/orange5.ogg"

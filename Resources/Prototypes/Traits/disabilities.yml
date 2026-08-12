@@ -145,7 +145,7 @@
   name: trait-kleptomania-name
   description: trait-kleptomania-desc
   category: Mental
-  cost: -2 #ratbite
+  cost: -1 #ratbite
   mutuallyExclusiveTraits:
   - ChronicKleptomania
   components:
@@ -157,7 +157,7 @@
   name: trait-chronic-kleptomania-name
   description: trait-chronic-kleptomania-desc
   category: Mental
-  cost: -5 #ratbite
+  cost: -2 #ratbite
   mutuallyExclusiveTraits:
   - Kleptomania
   components:
