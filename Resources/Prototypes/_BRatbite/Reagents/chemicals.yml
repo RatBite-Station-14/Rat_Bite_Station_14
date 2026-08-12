@@ -1,7 +1,7 @@
-- type: reagent
-  id: SodiumBicarbonate
-  name: reagent-name-sodiumbicarbonate
-  desc: reagent-desc-sodiumbicarbonate
-  physicalDesc: reagent-physical-desc-powdery
-  flavor: chalky
-  color: "#e8e8e8"
+#- type: reagent
+#  id: SodiumBicarbonate
+#  name: reagent-name-sodiumbicarbonate
+#  desc: reagent-desc-sodiumbicarbonate
+#  physicalDesc: reagent-physical-desc-powdery
+#  flavor: chalky
+#  color: "#e8e8e8"
