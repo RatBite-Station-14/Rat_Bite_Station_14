@@ -1,12 +1,12 @@
-#- type: reaction   Other PR got merged that literally just added sodium bicarbonate
-#  id: SodiumBicarbonate 
-#  reactants:
-#    CarbonDioxide:
-#      amount: 1
-#    Ammonia:
-#      amount: 1
-#    TableSalt:
-#      amount: 1
-#  products:
-#    SodiumBicarbonate: 3
-#
+- type: reaction   Other PR got merged that literally just added sodium bicarbonate
+  id: SodiumBicarbonate 
+  reactants:
+    CarbonDioxide:
+      amount: 1
+    Ammonia:
+      amount: 1
+    TableSalt:
+      amount: 1
+  products:
+    SodiumBicarbonate: 3
+
