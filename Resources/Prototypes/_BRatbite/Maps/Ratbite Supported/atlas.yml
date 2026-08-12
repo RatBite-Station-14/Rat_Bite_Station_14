@@ -40,7 +40,7 @@
   id: Atlas
   mapName: 'Atlas'
   mapPath: /Maps/_BRatbite/Ratbite_Supported/atlas.yml
-  minPlayers: 15
+  minPlayers: 0
   maxPlayers: 30
   stations:
     Atlas:
