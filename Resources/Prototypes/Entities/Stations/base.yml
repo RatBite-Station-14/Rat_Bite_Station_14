@@ -179,17 +179,6 @@
           - ChunkDebrisSmall
           - ChunkDebris
         # goob - no vgroid
-        vgroid: !type:DungeonSpawnGroup
-          minimumDistance: 200
-          maximumDistance: 350
-          nameDataset: NamesBorer
-          stationGrid: false
-          addComponents:
-          - type: Gravity
-            enabled: true
-            inherent: true
-          protos:
-          - VGRoid
 
 - type: entity
   id: BaseStationCentcomm
