@@ -12,6 +12,7 @@ lathe-category-circuitry = Circuitry
 lathe-category-clothing = Clothing
 lathe-category-lights = Lights
 lathe-category-machines = Machines
+lathe-category-modules = Modules
 lathe-category-parts = Parts
 lathe-category-robotics = Robotics
 lathe-category-tiles = Tiles

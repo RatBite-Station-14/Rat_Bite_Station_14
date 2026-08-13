@@ -72,6 +72,7 @@ construction-graph-tag-apron = an apron
 construction-graph-tag-utility-belt = a utility belt
 soil-construction-graph-any-mushroom = any mushroom
 construction-graph-tag-mop-basic = mop
+construction-graph-tag-core-pinpointer-piece = piece of core pinpointer
 
 # toys
 construction-graph-tag-rubber-ducky = a rubber ducky
