@@ -572,10 +572,6 @@ namespace Content.Shared.Damage
                 damageCap = woundable.IntegrityCap;
             }
 
-            // Apply damage
-            var currentTotalDamage = damageable.TotalDamage.Float();
-            FixedPoint2? remainingCap = (damageCap.HasValue && !skipCap) ? damageCap.Value - currentTotalDamage : null;
-
             foreach (var (type, value) in damage.DamageDict)
             {
                 if (!dict.TryGetValue(type, out var oldValue))
@@ -588,23 +584,17 @@ namespace Content.Shared.Damage
                     delta.DamageDict[type] = value;
 
                     // If we're not a woundable or we don't have a cap, apply the damage normally
-                    if (!isWoundable
-                        || remainingCap is null)
+                    if (!isWoundable || damageCap is not { } cap)
                     {
                         dict[type] = oldValue + value;
                         continue;
                     }
 
-                    // If we've already hit the cap, skip this damage type
-                    if (remainingCap.Value <= 0)
-                        continue;
-
-                    // Calculate how much of this damage type we can apply
-                    var damageToApply = FixedPoint2.Min(value, remainingCap.Value);
-                    var newValue = FixedPoint2.Max(FixedPoint2.Zero, oldValue + damageToApply);
-
-                    // Update remaining cap
-                    remainingCap -= damageToApply;
+                    // Ratbite: Logarithmic damage
+                    var k = cap.Float();
+                    var total = damageable.Damage.GetTotal().Float();
+                    var raw = k * (MathF.Exp(total / k) - 1f);
+                    var newValue = oldValue + (k * MathF.Log(1f + (raw + value.Float()) / k) - total);
 
                     // Only update the dict if the value actually changed
                     if (newValue != oldValue)

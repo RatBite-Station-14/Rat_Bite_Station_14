@@ -13,7 +13,7 @@ public partial class WoundSystem
         { WoundSeverity.Moderate, 25 },
         { WoundSeverity.Severe, 50 },
         { WoundSeverity.Critical, 80 },
-        { WoundSeverity.Loss, 100 },
+        { WoundSeverity.Loss, 300 },
     };
 
     #endregion

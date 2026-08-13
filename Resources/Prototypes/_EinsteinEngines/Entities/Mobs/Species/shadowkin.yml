@@ -44,7 +44,7 @@
       - trigger:
           !type:DamageTypeTrigger
           damageType: Heat
-          damage: 1500
+          damage: 1000
         behaviors:
           - !type:SpawnEntitiesBehavior
             spawnInContainer: true
