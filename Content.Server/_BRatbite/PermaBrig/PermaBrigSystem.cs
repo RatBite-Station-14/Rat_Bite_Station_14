@@ -6,7 +6,6 @@ using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Systems;
 using Content.Server.StationRecords.Systems;
-using Content.Shared.Access;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared._Shitmed.Body.Organ;
@@ -93,7 +92,6 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
 
         SubscribeLocalEvent<RulePlayerSpawningEvent>(OnPlayerSpawning);
         SubscribeLocalEvent<PlayerBeforeSpawnEvent>(OnPlayerBeforeSpawning);
-        //SubscribeLocalEvent<RoundEndMessageEvent>(OnRoundEnd); Auto decreasing of
 
         _sawmill = Logger.GetSawmill("server_permabrig");
     }
@@ -440,12 +438,6 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
         DebugTools.AssertNotNull(mobMaybe);
         var mob = mobMaybe!.Value;
 
-        // Inpatients should always receive a straightjacket, regardless of spawn path.
-        if (inpatient)
-        {
-            CuffAndInjectWithKetamine(mob);
-        }
-
         var brigTime = _permaBrigManager.GetBrigTime(player.UserId);
         var expireTime = TimeSpan.FromMinutes(brigTime) + Timing.CurTime;
         if (_inventory.TryGetSlotEntity(mob, "id", out var idUid))
@@ -502,6 +494,13 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
         _stationRecords.OnPlayerSpawn(aev);
         _trait.ApplyTraits(mob, character);
         _cryoSicknessSystem.ApplyComponent(mob);
+
+        // Inpatients should always receive a straightjacket, regardless of spawn path.
+        // We need to do it after everything else, to prevent people taking traits and bypass this
+        if (inpatient)
+        {
+            CuffAndInjectWithKetamine(mob);
+        }
     }
 
     private void CuffAndInjectWithKetamine(EntityUid prisoner)
@@ -515,9 +514,4 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
 
         _solutionContainerSystem.TryAddReagent(bloodstream.BloodSolution.Value, new ReagentId(_ketamine, null), _amountToInject, out _);
     }
-
-    // private void OnRoundEnd(RoundEndMessageEvent ev) Auto decrease of perma sentence not yet implemented
-    // {
-    //
-    // }
 }
