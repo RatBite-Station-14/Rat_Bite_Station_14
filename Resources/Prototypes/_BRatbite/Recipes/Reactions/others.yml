@@ -1,4 +1,4 @@
-- type: reaction   Other PR got merged that literally just added sodium bicarbonate
+- type: reaction   # Other PR got merged that literally just added sodium bicarbonate
   id: SodiumBicarbonate 
   reactants:
     CarbonDioxide:
