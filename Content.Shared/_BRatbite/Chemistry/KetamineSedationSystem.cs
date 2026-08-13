@@ -25,6 +25,10 @@ public sealed class KetamineSedationSystem : EntitySystem
 
     private bool HasActiveKetamine(EntityUid uid)
     {
+        if (HasComp<KetamineVirusComponent>(uid))
+        {
+            return true;
+        }
         var charcoalAmount = _solutions.GetTotalPrototypeQuantity(uid, "Charcoal").Float();
         if (charcoalAmount >= 10f)
             return false;

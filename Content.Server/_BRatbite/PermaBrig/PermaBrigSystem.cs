@@ -39,6 +39,8 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared._BRatbite.Chemistry;
+using Robust.Shared.Timing;
 
 namespace Content.Server._BRatbite.PermaBrig;
 
@@ -72,8 +74,8 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
     private readonly ProtoId<ReagentPrototype> _ketamine = "Ketamine";
-    // This is the equivalent of 10 minutes of sedation
-    private readonly FixedPoint2 _amountToInject = 2f;
+    private static readonly TimeSpan _sedationDuration = TimeSpan.FromMinutes(10);
+    private static readonly FixedPoint2 _amountToInject = _sedationDuration.TotalMinutes / 5f;
 
     public HashSet<ICommonSession> PermaIndividuals = new();
     public Dictionary<ICommonSession, (TimeSpan, TimeSpan)> PermaIndividualJoinedTime = new();
@@ -508,7 +510,18 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
         var cuffs = _ent.SpawnEntity("ClothingOuterStraightjacket", Transform(prisoner).Coordinates);
         var cuffableComp = EnsureComp<CuffableComponent>(prisoner);
         _cuffableSystem.TryAddNewCuffs(prisoner, prisoner, cuffs, cuffableComp);
-        if (!TryComp<BloodstreamComponent>(prisoner, out var bloodstream)) return;
+
+        if (!TryComp<BloodstreamComponent>(prisoner, out var bloodstream))
+        {
+            // If the target deoesn't have a bloodstream, then add it as a computer virus
+            EnsureComp<KetamineVirusComponent>(prisoner);
+            Timer.Spawn(_sedationDuration, () =>
+            {
+                if (TerminatingOrDeleted(prisoner)) return;
+                RemComp<KetamineVirusComponent>(prisoner);
+            });
+            return;
+        }
         if (!_solutionContainerSystem.ResolveSolution(prisoner, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution))
             return;
 
