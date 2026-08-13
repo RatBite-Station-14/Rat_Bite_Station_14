@@ -54,10 +54,10 @@
   maps:
   - Atlas
   - Amber
-  - Bagel
+  # - Bagel # Ratbite - disable
 #  - Box - Ratbite - not supported
   - Cluster
-  - Core
+  # - Core
 #  - Fland
  # - Gate Goobstation - My name is Walter Hartwell White, I live at 2308 Negra alloya line albequrque new mexico.
   - Loop
@@ -68,11 +68,11 @@
 #  - Origin - Ratbite - not supported
   - Saltern
   - Packed
-  - Reach # Goobstation, removed from map pool
+  # - Reach # Goobstation, removed from map pool
   #- Train # Goobstation - all my friends hate train
   #- FlandHighPop # Ratbite - Unmaintained
   - OasisHighPop
-  - Barratry # Goobstation - Re-add barratry
+  # - Barratry # Goobstation - Re-add barratry
   - Kettle # Goobstation - Re-add kettle (before it was gemini!)
 #  - Submarine # goobstation - kill yourse
 #  - Leonid # Goobstation - for goob by goob
@@ -83,3 +83,4 @@
 #  - Prison # Goobstation Detroit
   - Elkridge # Ratbite - more more more mapssss
   - Snowball # Ratbite - more more more mapssss
+  - Opticon # Ratbite

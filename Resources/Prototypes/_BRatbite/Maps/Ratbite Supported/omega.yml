@@ -33,8 +33,8 @@
   id: Omega
   mapName: 'Omega'
   mapPath: /Maps/_BRatbite/Ratbite_Supported/omega.yml
-  minPlayers: 15
-  maxPlayers: 45
+  minPlayers: 20
+  maxPlayers: 40
   stations:
     Omega:
       stationProto: StandardNanotrasenStation
