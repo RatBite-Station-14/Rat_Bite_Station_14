@@ -83,6 +83,10 @@ namespace Content.Shared.Security.Components;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class CriminalRecordComponent : Component
 {
+    // Ratbite: SecurityStatus
+    [DataField, AutoNetworkedField]
+    public SecurityStatus SecurityStatus = SecurityStatus.Wanted;
+
     /// <summary>
     ///     The icon that should be displayed based on the criminal status of the entity.
     /// </summary>

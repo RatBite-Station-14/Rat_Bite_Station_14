@@ -1,0 +1,47 @@
+- type: entity
+  parent: [ MobSiliconBase, StripableInventoryBase ]
+  id: MobSecuritron
+  name: securitron
+  description: Stop breaking the law, asshole
+  components:
+  - type: Securitron
+  - type: Sprite
+    sprite: _BRatBites/Mobs/Silicon/Bots/securitron.rsi
+    state: securitron
+  - type: HTN
+    rootTask:
+      task: SecuritronCompound
+  - type: Anchorable
+  - type: InteractionPopup
+    interactSuccessString: petting-success-securitron
+    interactFailureString: petting-failure-securitron
+  - type: Advertise
+    pack: SecuritronAds
+  - type: Vocalizer
+  - type: CombatMode
+  - type: DatasetVocalizer
+    dataset: SecuritronAds
+  - type: Inventory
+    templateId: medibot
+  - type: DoAfter
+  - type: StationAiVision # Goobstation - AI can see through NT silicon
+    range: 1
+  - type: Puller
+    needsHands: false
+  - type: Access
+    tags:
+    - Security
+    - Brig
+    - Maintenance
+
+- type: entity
+  id: OfficerBeepsky
+  parent: MobSecuritron
+  name: Officer Beepsky # Just a reskin for now
+  description: Security's best robot
+
+- type: localizedDataset
+  id: SecuritronAds
+  values:
+    prefix: advertisement-securitron-
+    count: 4

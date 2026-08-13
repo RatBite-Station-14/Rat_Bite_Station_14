@@ -4,6 +4,8 @@
 //
 // SPDX-License-Identifier: MIT
 
+using Content.Shared.Access;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.NPC;
@@ -65,14 +67,18 @@ public struct PathfindingData : IEquatable<PathfindingData>
     public int CollisionMask;
     public float Damage;
 
-    public bool IsFreeSpace => (Flags == PathfindingBreadcrumbFlag.None && Damage.Equals(0f));
+    public bool IsFreeSpace => ((Flags == PathfindingBreadcrumbFlag.None && Damage.Equals(0f)) || (Flags & PathfindingBreadcrumbFlag.Door) != 0);
 
-    public PathfindingData(PathfindingBreadcrumbFlag flag, int layer, int mask, float damage)
+    // Ratbite, most relevant entity
+    public NetEntity? Entity;
+
+    public PathfindingData(PathfindingBreadcrumbFlag flag, int layer, int mask, float damage, NetEntity? entity = null)
     {
         Flags = flag;
         CollisionLayer = layer;
         CollisionMask = mask;
         Damage = damage;
+        Entity = entity;
     }
 
     public bool IsEquivalent(PathfindingData other)

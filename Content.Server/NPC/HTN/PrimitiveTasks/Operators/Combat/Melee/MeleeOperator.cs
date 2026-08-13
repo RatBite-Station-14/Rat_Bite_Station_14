@@ -13,6 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.NPC.Components;
 using Content.Shared.CombatMode;
+using Content.Shared.Damage.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 
@@ -43,6 +44,13 @@ public sealed partial class MeleeOperator : HTNOperator, IHtnConditionalShutdown
     [DataField("targetState")]
     public MobState TargetState = MobState.Alive;
 
+    // Ratbite, should we stop when stunned
+    [DataField]
+    public bool StopWhenStunned = false;
+
+    [DataField]
+    public bool RemoveTargetKeyOnShutdown = true;
+
     // Like movement we add a component and pass it off to the dedicated system.
 
     public override void Startup(NPCBlackboard blackboard)
@@ -67,7 +75,6 @@ public sealed partial class MeleeOperator : HTNOperator, IHtnConditionalShutdown
         {
             return (false, null);
         }
-
         return (true, null);
     }
 
@@ -76,7 +83,8 @@ public sealed partial class MeleeOperator : HTNOperator, IHtnConditionalShutdown
         var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
         _entManager.System<SharedCombatModeSystem>().SetInCombatMode(owner, false);
         _entManager.RemoveComponent<NPCMeleeCombatComponent>(owner);
-        blackboard.Remove<EntityUid>(TargetKey);
+        if (RemoveTargetKeyOnShutdown)
+            blackboard.Remove<EntityUid>(TargetKey);
     }
 
     public override void TaskShutdown(NPCBlackboard blackboard, HTNOperatorStatus status)
@@ -89,7 +97,7 @@ public sealed partial class MeleeOperator : HTNOperator, IHtnConditionalShutdown
     public override void PlanShutdown(NPCBlackboard blackboard)
     {
         base.PlanShutdown(blackboard);
-        
+
         ConditionalShutdown(blackboard);
     }
 
@@ -106,8 +114,9 @@ public sealed partial class MeleeOperator : HTNOperator, IHtnConditionalShutdown
             combat.Target = target;
 
             // Success
+            // Ratbite: Add stamina check for securitrons
             if (_entManager.TryGetComponent<MobStateComponent>(target, out var mobState) &&
-                mobState.CurrentState > TargetState)
+                mobState.CurrentState > TargetState || (StopWhenStunned && _entManager.TryGetComponent<StaminaComponent>(target, out var stamina) && stamina.Critical))
             {
                 status = HTNOperatorStatus.Finished;
             }

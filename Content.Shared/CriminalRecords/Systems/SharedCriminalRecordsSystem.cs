@@ -46,6 +46,8 @@ public abstract class SharedCriminalRecordsSystem : EntitySystem
         EnsureComp<CriminalRecordComponent>(characterUid, out var record);
 
         var previousIcon = record.StatusIcon;
+        record.SecurityStatus = status; // Ratbite
+
 
         record.StatusIcon = status switch
         {

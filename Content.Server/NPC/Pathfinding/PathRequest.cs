@@ -17,6 +17,7 @@ namespace Content.Server.NPC.Pathfinding;
 /// </summary>
 public abstract class PathRequest
 {
+    public EntityUid Owner;
     public EntityCoordinates Start;
 
     public Task<PathResult> Task => Tcs.Task;
@@ -43,8 +44,9 @@ public abstract class PathRequest
 
     #endregion
 
-    public PathRequest(EntityCoordinates start, PathFlags flags, int layer, int mask, CancellationToken cancelToken)
+    public PathRequest(EntityUid owner, EntityCoordinates start, PathFlags flags, int layer, int mask, CancellationToken cancelToken)
     {
+        Owner = owner;
         Start = start;
         Flags = flags;
         CollisionLayer = layer;
@@ -63,16 +65,19 @@ public sealed class AStarPathRequest : PathRequest
     public float Distance;
 
     public AStarPathRequest(
+        EntityUid owner,
         EntityCoordinates start,
         EntityCoordinates end,
         PathFlags flags,
         float distance,
         int layer,
         int mask,
-        CancellationToken cancelToken) : base(start, flags, layer, mask, cancelToken)
+        CancellationToken cancelToken
+    ) : base(owner, start, flags, layer, mask, cancelToken)
     {
         Distance = distance;
         End = end;
+        Owner = owner;
     }
 }
 
@@ -89,13 +94,14 @@ public sealed class BFSPathRequest : PathRequest
     public int ExpansionLimit;
 
     public BFSPathRequest(
+        EntityUid owner,
         float expansionRange,
         int expansionLimit,
         EntityCoordinates start,
         PathFlags flags,
         int layer,
         int mask,
-        CancellationToken cancelToken) : base(start, flags, layer, mask, cancelToken)
+        CancellationToken cancelToken) : base(owner, start, flags, layer, mask, cancelToken)
         {
             ExpansionRange = expansionRange;
             ExpansionLimit = expansionLimit;

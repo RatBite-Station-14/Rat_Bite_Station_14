@@ -6,12 +6,17 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared.Access.Systems;
+using Content.Shared.Doors.Systems;
 using Content.Shared.NPC;
+using Content.Shared.Tag;
 
 namespace Content.Server.NPC.Pathfinding;
 
 public sealed partial class PathfindingSystem
 {
+    [Dependency] private readonly AccessReaderSystem _accessReaderSystem = default!;
+    [Dependency] private readonly TagSystem _tagSystem = default!;
     /*
      * Code that is common to all pathfinding methods.
      */
@@ -62,10 +67,16 @@ public sealed partial class PathfindingSystem
             var isDoor = (end.Data.Flags & PathfindingBreadcrumbFlag.Door) != 0x0;
             var isAccess = (end.Data.Flags & PathfindingBreadcrumbFlag.Access) != 0x0;
             var isClimb = (end.Data.Flags & PathfindingBreadcrumbFlag.Climb) != 0x0;
+            var owner = request.Owner;
 
             // TODO: Handling power + door prying
-            // Door we should be able to open
-            if (isDoor && !isAccess && (request.Flags & PathFlags.Interact) != 0x0)
+            // Ratbite: If we can bump open the door, do it
+            if (_tagSystem.HasTag(owner, SharedDoorSystem.DoorBumpTag) && isDoor && end.Data.Entity is { } door && _accessReaderSystem.IsAllowed(owner, GetEntity(door)))
+            {
+                modifier += 0.5f;
+            }
+            // Ratbite end
+            else if (isDoor && !isAccess && (request.Flags & PathFlags.Interact) != 0x0)
             {
                 modifier += 0.5f;
             }
