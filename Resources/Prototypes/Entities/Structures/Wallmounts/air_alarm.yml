@@ -114,6 +114,7 @@
   - type: WiresVisuals
   - type: Sprite
     sprite: Structures/Wallmounts/air_monitors.rsi
+    offset: 0, -0.3
     layers:
     - state: alarmp
       map: ["airAlarmBase"]

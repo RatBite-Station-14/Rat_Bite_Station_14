@@ -81,6 +81,7 @@
     noRot: false
     drawdepth: SmallObjects
     sprite: Structures/Wallmounts/intercom.rsi
+    offset: 0, -0.3
     layers:
     - state: base
     - state: unshaded
