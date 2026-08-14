@@ -472,7 +472,7 @@
   group: Medicine
   desc: reagent-desc-biofoam
   physicalDesc: reagent-physical-desc-thick
-  flavor: powdery
+  flavor: medicine
   color: "#edd9c0"
   worksOnTheDead: true
   metabolisms:
@@ -538,7 +538,7 @@
   group: Medicine
   desc: reagent-desc-biofoamremnants
   physicalDesc: reagent-physical-desc-thick
-  flavor: powdery
+  flavor: medicine
   color: "#edd9c0"
   worksOnTheDead: true
   metabolisms:
