@@ -198,7 +198,7 @@
 # chinavend
 
 - type: entity
-  name: chinese sword
+  name: Mr. chang brand sword
   parent: [N14Machete, BaseMajorContraband]
   id: N14ChineseVendSword
   description: "it has a label on it, says 'made in space china' figures."
