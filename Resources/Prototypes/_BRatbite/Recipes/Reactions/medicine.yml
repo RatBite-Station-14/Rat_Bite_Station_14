@@ -225,7 +225,7 @@
 
 - type: reaction
   id: Metorapan
-  mintemp: 500
+  minTemp: 500
   reactants:
     PolytrinicAcid:
       amount: 1
@@ -262,7 +262,7 @@
 
 - type: reaction
   id: Dermarpan
-  mintemp: 500
+  minTemp: 500
   reactants:
     PolytrinicAcid:
       amount: 1
