@@ -2,28 +2,28 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._BRatbite.Revolutionary;
 using Content.Shared.Alert;
 using Content.Shared.Mindshield.Components;
 
 namespace Content.Shared._BRatbite.Alerts;
 
-public sealed class ShowMindShieldAlertSystem : EntitySystem {
+public sealed class ShowMindShieldAlertSystem : EntitySystem
+{
     [Dependency] private readonly AlertsSystem _alerts = default!;
-	public override void Initialize()
-	{
-	    base.Initialize();
+    public override void Initialize()
+    {
+        base.Initialize();
 
-	    SubscribeLocalEvent<MindShieldComponent, ComponentStartup>(OnMindShieldStartup);
-	    SubscribeLocalEvent<MindShieldComponent, ComponentShutdown>(OnMindShieldShutdown);
-	}
+        SubscribeLocalEvent<MindShieldComponent, MindShieldChangedEvent>(OnMindShieldStartup);
+    }
 
-	private void OnMindShieldStartup(Entity<MindShieldComponent> ent, ref ComponentStartup args)
-	{
-	    _alerts.ShowAlert(ent.Owner, ent.Comp.MindShieldAlert);
-	}
-
-	private void OnMindShieldShutdown(Entity<MindShieldComponent> ent, ref ComponentShutdown args)
-	{
-	    _alerts.ClearAlert(ent.Owner, ent.Comp.MindShieldAlert);
-	}
+    private void OnMindShieldStartup(Entity<MindShieldComponent> ent, ref MindShieldChangedEvent args)
+    {
+        if (args.Fake) return;
+        if (args.Active)
+            _alerts.ShowAlert(ent.Owner, ent.Comp.MindShieldAlert);
+        else
+            _alerts.ClearAlert(ent.Owner, ent.Comp.MindShieldAlert);
+    }
 }

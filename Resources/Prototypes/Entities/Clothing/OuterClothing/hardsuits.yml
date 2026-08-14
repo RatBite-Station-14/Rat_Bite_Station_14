@@ -455,6 +455,7 @@
         Piercing: 0.4 #Ratbite
         Heat: 0.7 #Ratbite
         Caustic: 0.7
+  - type: MindshieldArmor # Ratbite
   - type: ClothingSpeedModifier
     walkModifier: 0.75
     sprintModifier: 0.75
@@ -494,6 +495,7 @@
         Heat: 0.85
         Radiation: 0.4
         Caustic: 0.4
+  - type: MindshieldArmor # Ratbite
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
@@ -538,6 +540,7 @@
         Piercing: 0.4 #Ratbite
         Heat: 0.8
         Caustic: 0.7
+  - type: MindshieldArmor # Ratbite
   - type: ClothingSpeedModifier
     walkModifier: 0.8
     sprintModifier: 0.8
@@ -585,6 +588,7 @@
         Heat: 0.6 #Goob - Modsuit Rebalance end
         Radiation: 0.15
         Caustic: 0.6
+  - type: MindshieldArmor # Ratbite
   - type: ClothingSpeedModifier
     walkModifier: 0.9 #Goob - Modsuit Rebalance
     sprintModifier: 0.9 #Goob - Modsuit Rebalance
@@ -628,6 +632,7 @@
         Heat: 0.4
         Radiation: 0.0
         Caustic: 0.7
+  - type: MindshieldArmor
   - type: ClothingSpeedModifier
     walkModifier: 0.80 #Ratbite
     sprintModifier: 0.9 #Ratbite
@@ -1353,6 +1358,8 @@
         Cellular: 0.3 #Ratbite
         Radiation: 0.3 #Ratbite
         Caustic: 0.3 #Ratbite
+  - type: MindshieldArmor # Ratbite
+    slowdown: 0
   - type: ClothingSpeedModifier
     walkModifier: 1.0
     sprintModifier: 1.0

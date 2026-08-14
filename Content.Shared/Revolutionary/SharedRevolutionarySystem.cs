@@ -8,10 +8,11 @@ using Content.Shared.Stunnable;
 using Robust.Shared.GameStates;
 using Robust.Shared.Player;
 using Content.Shared.Antag;
+using Content.Shared._BRatbite.Revolutionary;
 
 namespace Content.Shared.Revolutionary;
 
-public abstract class SharedRevolutionarySystem : EntitySystem
+public abstract partial class SharedRevolutionarySystem : EntitySystem
 {
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
     [Dependency] private readonly SharedStunSystem _sharedStun = default!;
@@ -20,7 +21,6 @@ public abstract class SharedRevolutionarySystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<MindShieldComponent, MapInitEvent>(MindShieldImplanted);
         SubscribeLocalEvent<RevolutionaryComponent, ComponentGetStateAttemptEvent>(OnRevCompGetStateAttempt);
         SubscribeLocalEvent<HeadRevolutionaryComponent, ComponentGetStateAttemptEvent>(OnRevCompGetStateAttempt);
 
@@ -28,6 +28,8 @@ public abstract class SharedRevolutionarySystem : EntitySystem
         SubscribeLocalEvent<HeadRevolutionaryComponent, ComponentStartup>(OnRevolutionaryComponentStartup); // Goob Station - Revolutionary Language
 
         SubscribeLocalEvent<ShowAntagIconsComponent, ComponentStartup>(OnRevolutionaryComponentStartup);
+        // Ratbite
+        SubscribeMindshieldEvents();
     }
 
     /// <summary>
@@ -35,6 +37,9 @@ public abstract class SharedRevolutionarySystem : EntitySystem
     /// </summary>
     private void MindShieldImplanted(EntityUid uid, MindShieldComponent comp, MapInitEvent init)
     {
+        // Ratbite
+        var ev = new MindShieldChangedEvent(true, false);
+        RaiseLocalEvent(uid, ref ev);
         if (HasComp<HeadRevolutionaryComponent>(uid))
         {
             comp.Broken = true; // Goobstation - Broken mindshield implant instead of break it
