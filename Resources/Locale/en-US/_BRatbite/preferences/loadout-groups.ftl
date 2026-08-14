@@ -28,3 +28,6 @@ loadout-group-security-sidearms = Security Sidearm
 loadout-group-security-ammo = Sidearm Ammo
 loadout-group-security-longarm = Security Longarm
 loadout-group-security-gloves = Security Gloves
+
+# Medicines for like med and stuff
+loadout-group-medicines = Medicines
