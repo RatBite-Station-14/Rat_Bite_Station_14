@@ -214,7 +214,7 @@
 
 - type: reaction
   id: EphedrinePhoride
-  mintemp: 400
+  minTemp: 400
   reactants:
     Ephedrine:
       amount: 1
