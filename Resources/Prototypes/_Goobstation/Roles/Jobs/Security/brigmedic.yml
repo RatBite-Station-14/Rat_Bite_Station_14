@@ -44,6 +44,7 @@
     components:
     - type: SurgerySpeedModifier
       speedModifier: 1.5 # Ratbite - parity with medical doctor
+    - type: CPRTraining # Ratbite
 
 - type: chameleonOutfit
   id: BrigmedicChameleonOutfit
