@@ -21,6 +21,14 @@
   - Salvage
   - Maintenance
   - External
+  # Ratbite start
+  emergencyAccessRemoved:
+  - Maintenance
+  # Ratbite end
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: CombatTrained
 - type: startingGear
   id: SalvageSpecialistGear
   equipment:

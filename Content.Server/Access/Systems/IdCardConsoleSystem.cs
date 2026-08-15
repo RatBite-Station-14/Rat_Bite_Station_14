@@ -23,6 +23,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Content.Shared._BRatbite.Access;
 
 namespace Content.Server.Access.Systems;
 
@@ -63,7 +64,7 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
         if (args.Actor is not { Valid: true } player)
             return;
 
-        TryWriteToTargetId(uid, args.FullName, args.JobTitle, args.AccessList, args.JobPrototype, player, component);
+        TryWriteToTargetId(uid, args.FullName, args.JobTitle, args.AccessList, args.EmergencyAddedAccessList, args.EmergencyRemovedAccessList, args.JobPrototype, player, component);
 
         UpdateUserInterface(uid, component, args);
     }
@@ -95,12 +96,15 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
                 possibleAccess,
                 string.Empty,
                 privilegedIdName,
-                string.Empty);
+                string.Empty,
+                null,
+                null);
         }
         else
         {
             var targetIdComponent = Comp<IdCardComponent>(targetId);
             var targetAccessComponent = Comp<AccessComponent>(targetId);
+            var emergencyAccess = CompOrNull<EmergencyAccessComponent>(targetId); // Ratbite
 
             var jobProto = targetIdComponent.JobPrototype ?? new ProtoId<JobPrototype>(string.Empty);
             if (TryComp<StationRecordKeyStorageComponent>(targetId, out var keyStorage)
@@ -120,7 +124,10 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
                 possibleAccess,
                 jobProto,
                 privilegedIdName,
-                Name(targetId));
+                Name(targetId),
+                emergencyAccess?.AddedTags?.ToList(),
+                emergencyAccess?.RemovedTags?.ToList()
+            );
         }
 
         _userInterface.SetUiState(uid, IdCardConsoleUiKey.Key, newState);
@@ -134,6 +141,8 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
         string newFullName,
         string newJobTitle,
         List<ProtoId<AccessLevelPrototype>> newAccessList,
+        List<ProtoId<AccessLevelPrototype>> emergencyAddedList, // Ratbite
+        List<ProtoId<AccessLevelPrototype>> emergencyRemovedList, // Ratbite
         ProtoId<JobPrototype> newJobProto,
         EntityUid player,
         IdCardConsoleComponent? component = null)
@@ -163,7 +172,7 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
             Comp<IdCardComponent>(targetId).JobPrototype = newJobProto;
         }
 
-        if (!newAccessList.TrueForAll(x => component.AccessLevels.Contains(x)))
+        if (!newAccessList.TrueForAll(x => component.AccessLevels.Contains(x)) || !emergencyAddedList.TrueForAll(x => component.AccessLevels.Contains(x)) || !emergencyRemovedList.TrueForAll(x => component.AccessLevels.Contains(x)))
         {
             _sawmill.Warning($"User {ToPrettyString(uid)} tried to write unknown access tag.");
             return;
@@ -171,28 +180,51 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
 
         var oldTags = _access.TryGetTags(targetId)?.ToList() ?? new List<ProtoId<AccessLevelPrototype>>();
 
-        if (oldTags.SequenceEqual(newAccessList))
-            return;
-
-        // I hate that C# doesn't have an option for this and don't desire to write this out the hard way.
-        // var difference = newAccessList.Difference(oldTags);
-        var difference = newAccessList.Union(oldTags).Except(newAccessList.Intersect(oldTags)).ToHashSet();
-        var privilegedPerms = _accessReader.FindAccessTags(privilegedId.Value);
-        if (!difference.IsSubsetOf(privilegedPerms))
+        // NULL SAFETY: PrivilegedIdIsAuthorized checked this earlier.
+        var privilegedPerms = _accessReader.FindAccessTags(privilegedId!.Value).ToHashSet();
+        if (!oldTags.SequenceEqual(newAccessList))
         {
-            _sawmill.Warning($"User {ToPrettyString(uid)} tried to modify permissions they could not give/take!");
-            return;
+            if (!IsAllowedToGiveAccess(player, newAccessList, oldTags, privilegedPerms))
+            {
+                return;
+            }
+
+            var addedTags = newAccessList.Except(oldTags).Select(tag => "+" + tag).ToList();
+            var removedTags = oldTags.Except(newAccessList).Select(tag => "-" + tag).ToList();
+            _access.TrySetTags(targetId, newAccessList);
+
+            /*TODO: ECS SharedIdCardConsoleComponent and then log on card ejection, together with the save.
+            This current implementation is pretty shit as it logs 27 entries (27 lines) if someone decides to give themselves AA*/
+            _adminLogger.Add(LogType.Action,
+                             $"{player} has modified {targetId} with the following accesses: [{string.Join(", ", addedTags.Union(removedTags))}] [{string.Join(", ", newAccessList)}]");
         }
 
-        var addedTags = newAccessList.Except(oldTags).Select(tag => "+" + tag).ToList();
-        var removedTags = oldTags.Except(newAccessList).Select(tag => "-" + tag).ToList();
-        _access.TrySetTags(targetId, newAccessList);
-
-        /*TODO: ECS SharedIdCardConsoleComponent and then log on card ejection, together with the save.
-        This current implementation is pretty shit as it logs 27 entries (27 lines) if someone decides to give themselves AA*/
-        _adminLogger.Add(LogType.Action,
-            $"{player} has modified {targetId} with the following accesses: [{string.Join(", ", addedTags.Union(removedTags))}] [{string.Join(", ", newAccessList)}]");
+        // Ratbite start: Emergency access
+        if (TryComp<EmergencyAccessComponent>(targetId, out var emergencyAccess))
+        {
+            if (!IsAllowedToGiveAccess(player, emergencyAddedList, emergencyAccess.AddedTags, privilegedPerms) || !IsAllowedToGiveAccess(player, emergencyRemovedList, emergencyAccess.RemovedTags, privilegedPerms)) return;
+            emergencyAccess.AddedTags.Clear();
+            emergencyAccess.AddedTags.UnionWith(emergencyAddedList);
+            emergencyAccess.RemovedTags.Clear();
+            emergencyAccess.RemovedTags.UnionWith(emergencyRemovedList);
+        }
+        // Ratbite end
     }
+
+    // Ratbite start
+    private bool IsAllowedToGiveAccess(EntityUid uid, List<ProtoId<AccessLevelPrototype>> newAccess, IEnumerable<ProtoId<AccessLevelPrototype>> oldAccess, HashSet<ProtoId<AccessLevelPrototype>> privilegedAccess)
+    {
+        // I hate that C# doesn't have an option for this and don't desire to write this out the hard way.
+        // var difference = newAccessList.Difference(oldTags);
+        var difference = newAccess.Union(oldAccess).Except(newAccess.Intersect(oldAccess)).ToHashSet();
+        if (!difference.IsSubsetOf(privilegedAccess))
+        {
+            _adminLogger.Add(LogType.Action, LogImpact.Extreme, $"User {ToPrettyString(uid)} tried to modify permissions they could not give/take! Are they using a modified client?");
+            return false;
+        }
+        return true;
+    }
+    // Ratbite end
 
     /// <summary>
     /// Returns true if there is an ID in <see cref="IdCardConsoleComponent.PrivilegedIdSlot"/> and said ID satisfies the requirements of <see cref="AccessReaderComponent"/>.

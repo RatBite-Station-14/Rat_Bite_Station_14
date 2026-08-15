@@ -19,6 +19,10 @@
   - Maintenance
   - Bar
   - Kitchen
+  # Ratbite start
+  emergencyAccessRemoved:
+  - Maintenance
+  # Ratbite end
   extendedAccess:
   - Hydroponics
   special: # goob

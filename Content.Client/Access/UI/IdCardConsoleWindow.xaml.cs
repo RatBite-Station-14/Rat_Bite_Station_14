@@ -10,6 +10,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Configuration;
+using Robust.Shared.Input;
 using Robust.Shared.Prototypes;
 using static Content.Shared.Access.Components.IdCardConsoleComponent;
 
@@ -35,6 +36,13 @@ namespace Content.Client.Access.UI
         private string? _lastFullName;
         private string? _lastJobTitle;
         private string? _lastJobProto;
+
+        // Ratbite start
+        private Color InactiveModulation = Color.White;
+        private Color ActiveModulation = Color.LightGreen;
+        private Color EmergencyAddedModulation = Color.LightBlue;
+        private Color EmergencyRemovedModulation = Color.Orange;
+        // Ratbite end
 
         // The job that will be picked if the ID doesn't have a job on the station.
         private static ProtoId<JobPrototype> _defaultJob = "Passenger";
@@ -113,7 +121,24 @@ namespace Content.Client.Access.UI
             };
 
             JobPresetOptionButton.OnItemSelected += SelectJobPreset;
-            _accessButtons.Populate(accessLevels, prototypeManager);
+            _accessButtons.Populate(accessLevels, prototypeManager, false, true);
+            // Ratbite start
+            foreach (var (_, button) in _accessButtons.ButtonsList)
+            {
+                button.OnPressed += (args) =>
+                {
+                    if (args.Event.Function == EngineKeyFunctions.UIClick)
+                    {
+                        button.Modulate = button.Modulate == ActiveModulation ? InactiveModulation : ActiveModulation;
+                    }
+                    else if (args.Event.Function == EngineKeyFunctions.UIRightClick)
+                    {
+                        button.Modulate = button.Modulate == EmergencyAddedModulation ? EmergencyRemovedModulation : EmergencyAddedModulation;
+                    }
+                };
+            }
+            // Ratbite end
+
             AccessLevelControlContainer.AddChild(_accessButtons);
 
             foreach (var (id, button) in _accessButtons.ButtonsList)
@@ -127,8 +152,7 @@ namespace Content.Client.Access.UI
         {
             foreach (var button in _accessButtons.ButtonsList.Values)
             {
-                if (!button.Disabled && button.Pressed != enabled)
-                    button.Pressed = enabled;
+                button.Modulate = enabled ? ActiveModulation : InactiveModulation;
             }
         }
 
@@ -143,31 +167,38 @@ namespace Content.Client.Access.UI
             args.Button.SelectId(args.Id);
 
             SetAllAccess(false);
-
-            // this is a sussy way to do this
-            foreach (var access in job.Access)
-            {
-                if (_accessButtons.ButtonsList.TryGetValue(access, out var button) && !button.Disabled)
+            var setCorrectAccess = (IReadOnlyCollection<ProtoId<AccessLevelPrototype>> accessList, IReadOnlyCollection<ProtoId<AccessGroupPrototype>>? groupList, Color modulation) =>
                 {
-                    button.Pressed = true;
-                }
-            }
-
-            foreach (var group in job.AccessGroups)
-            {
-                if (!_prototypeManager.Resolve(group, out AccessGroupPrototype? groupPrototype))
-                {
-                    continue;
-                }
-
-                foreach (var access in groupPrototype.Tags)
-                {
-                    if (_accessButtons.ButtonsList.TryGetValue(access, out var button) && !button.Disabled)
+                    // this is a sussy way to do this
+                    foreach (var access in accessList)
                     {
-                        button.Pressed = true;
+                        if (_accessButtons.ButtonsList.TryGetValue(access, out var button) && !button.Disabled)
+                        {
+                            button.Modulate = modulation;
+                        }
                     }
-                }
-            }
+
+                    foreach (var group in groupList ?? [])
+                    {
+                        if (!_prototypeManager.TryIndex(group, out AccessGroupPrototype? groupPrototype))
+                        {
+                            continue;
+                        }
+
+                        foreach (var access in groupPrototype.Tags)
+                        {
+                            if (_accessButtons.ButtonsList.TryGetValue(access, out var button) && !button.Disabled)
+                            {
+                                button.Modulate = modulation;
+                            }
+                        }
+                    }
+                };
+            setCorrectAccess(job.Access, job.AccessGroups, ActiveModulation);
+            setCorrectAccess(job.EmergencyAccessAdded, null, EmergencyAddedModulation);
+            setCorrectAccess(job.EmergencyAccessRemoved, null, EmergencyRemovedModulation);
+
+
 
             SubmitData();
         }
@@ -212,10 +243,31 @@ namespace Content.Client.Access.UI
 
             JobPresetOptionButton.Disabled = !interfaceEnabled;
 
-            _accessButtons.UpdateState(state.TargetIdAccessList?.ToList() ??
-                                       new List<ProtoId<AccessLevelPrototype>>(),
-                                       state.AllowedModifyAccessList?.ToList() ??
-                                       new List<ProtoId<AccessLevelPrototype>>());
+            // Ratbite start
+            foreach (var (accessName, button) in _accessButtons.ButtonsList)
+            {
+                button.Disabled = !(state.AllowedModifyAccessList?.Contains(accessName)) ?? true;
+                button.Modulate = InactiveModulation;
+                if (state.TargetIdAccessList?.Contains(accessName) ?? false)
+                {
+                    button.Modulate = ActiveModulation;
+                }
+
+                if (state.EmergencyAddedAccessList?.Contains(accessName) ?? false)
+                {
+                    button.Modulate = EmergencyAddedModulation;
+                }
+
+                if (state.EmergencyRemovedAccessList?.Contains(accessName) ?? false)
+                {
+                    button.Modulate = EmergencyRemovedModulation;
+                }
+            }
+            // Ratbite end
+            // _accessButtons.UpdateState(state.TargetIdAccessList?.ToList() ??
+            //                            new List<ProtoId<AccessLevelPrototype>>(),
+            //                            state.AllowedModifyAccessList?.ToList() ??
+            //                            new List<ProtoId<AccessLevelPrototype>>());
 
             var jobIndex = _jobPrototypeIds.IndexOf(state.TargetIdJobPrototype);
             // If the job index is < 0 that means they don't have a job registered in the station records
@@ -239,12 +291,21 @@ namespace Content.Client.Access.UI
             var jobProtoDirty = _lastJobProto != null &&
                                 _jobPrototypeIds[JobPresetOptionButton.SelectedId] != _lastJobProto;
 
+            // Ratbite edit: emergency access
+            // all access including emergency ones
+            var allAccess = _accessButtons.ButtonsList.Where(x => x.Value.Modulate != InactiveModulation);
+            var regularAccess = allAccess.Where(x => x.Value.Modulate == ActiveModulation || x.Value.Modulate == EmergencyRemovedModulation);
+            var emergencyAddedAccess = allAccess.Where(x => x.Value.Modulate == EmergencyAddedModulation);
+            var emergencyRemovedAccess = allAccess.Where(x => x.Value.Modulate == EmergencyRemovedModulation);
             _owner.SubmitData(
                 FullNameLineEdit.Text,
                 JobTitleLineEdit.Text,
-                // Iterate over the buttons dictionary, filter by `Pressed`, only get key from the key/value pair
-                _accessButtons.ButtonsList.Where(x => x.Value.Pressed).Select(x => x.Key).ToList(),
-                jobProtoDirty ? _jobPrototypeIds[JobPresetOptionButton.SelectedId] : string.Empty);
+                // Iterate over the buttons dictionary, filter by `Modulate`, only get key from the key/value pair
+                regularAccess.Select(x => x.Key).ToList(),
+                jobProtoDirty ? _jobPrototypeIds[JobPresetOptionButton.SelectedId] : string.Empty,
+                emergencyAddedAccess.Select(x => x.Key).ToList(),
+                emergencyRemovedAccess.Select(x => x.Key).ToList()
+            );
         }
     }
 }

@@ -18,6 +18,8 @@
     heldPrefix: default
     storedRotation: -90
   - type: Access
+  - type: EmergencyAccess # Ratbite
+  - type: StationTracker # Ratbite
   - type: IdCard
   - type: StationRecordKeyStorage
   - type: Tag

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._BRatbite.Access;
 using Content.Shared.Access.Components;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
@@ -116,6 +117,13 @@ namespace Content.Shared.Access.Systems
                 access.Tags.UnionWith(prototype.ExtendedAccess);
                 TryAddGroups(uid, prototype.ExtendedAccessGroups, access);
             }
+            // Ratbite start
+            if (TryComp<EmergencyAccessComponent>(uid, out var emergencyAccess))
+            {
+                emergencyAccess.AddedTags.UnionWith(prototype.EmergencyAccessAdded);
+                emergencyAccess.RemovedTags.UnionWith(prototype.EmergencyAccessRemoved);
+            }
+            // Ratbite end
         }
     }
 }

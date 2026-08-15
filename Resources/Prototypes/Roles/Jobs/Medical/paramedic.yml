@@ -21,6 +21,11 @@
   - Medical
   - Maintenance
   - External # goobstation
+  # Ratbite start
+  emergencyAccessRemoved:
+  - Maintenance
+  - External
+  # Ratbite end
   extendedAccess:
   - Chemistry
   # Shitmed change

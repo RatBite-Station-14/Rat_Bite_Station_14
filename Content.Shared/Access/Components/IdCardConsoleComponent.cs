@@ -30,12 +30,19 @@ public sealed partial class IdCardConsoleComponent : Component
         public readonly List<ProtoId<AccessLevelPrototype>> AccessList;
         public readonly ProtoId<JobPrototype> JobPrototype;
 
-        public WriteToTargetIdMessage(string fullName, string jobTitle, List<ProtoId<AccessLevelPrototype>> accessList, ProtoId<JobPrototype> jobPrototype)
+        // Ratbite start
+        public readonly List<ProtoId<AccessLevelPrototype>> EmergencyAddedAccessList;
+        public readonly List<ProtoId<AccessLevelPrototype>> EmergencyRemovedAccessList;
+        // Ratbite end
+
+        public WriteToTargetIdMessage(string fullName, string jobTitle, List<ProtoId<AccessLevelPrototype>> accessList, ProtoId<JobPrototype> jobPrototype, List<ProtoId<AccessLevelPrototype>> emergencyAddedAccessList, List<ProtoId<AccessLevelPrototype>> emergencyRemovedAccessList)
         {
             FullName = fullName;
             JobTitle = jobTitle;
             AccessList = accessList;
             JobPrototype = jobPrototype;
+            EmergencyAddedAccessList = emergencyAddedAccessList;
+            EmergencyRemovedAccessList = emergencyRemovedAccessList;
         }
     }
 
@@ -93,6 +100,10 @@ public sealed partial class IdCardConsoleComponent : Component
         public readonly List<ProtoId<AccessLevelPrototype>>? TargetIdAccessList;
         public readonly List<ProtoId<AccessLevelPrototype>>? AllowedModifyAccessList;
         public readonly ProtoId<JobPrototype> TargetIdJobPrototype;
+        // Ratbite start
+        public readonly List<ProtoId<AccessLevelPrototype>>? EmergencyAddedAccessList;
+        public readonly List<ProtoId<AccessLevelPrototype>>? EmergencyRemovedAccessList;
+        // Ratbite end
 
         public IdCardConsoleBoundUserInterfaceState(bool isPrivilegedIdPresent,
             bool isPrivilegedIdAuthorized,
@@ -103,7 +114,9 @@ public sealed partial class IdCardConsoleComponent : Component
             List<ProtoId<AccessLevelPrototype>>? allowedModifyAccessList,
             ProtoId<JobPrototype> targetIdJobPrototype,
             string privilegedIdName,
-            string targetIdName)
+            string targetIdName,
+            List<ProtoId<AccessLevelPrototype>>? emergencyAddedAccessList,
+            List<ProtoId<AccessLevelPrototype>>? emergencyRemovedAccessList)
         {
             IsPrivilegedIdPresent = isPrivilegedIdPresent;
             IsPrivilegedIdAuthorized = isPrivilegedIdAuthorized;
@@ -115,6 +128,10 @@ public sealed partial class IdCardConsoleComponent : Component
             TargetIdJobPrototype = targetIdJobPrototype;
             PrivilegedIdName = privilegedIdName;
             TargetIdName = targetIdName;
+            // Ratbite
+            EmergencyAddedAccessList = emergencyAddedAccessList;
+            EmergencyRemovedAccessList = emergencyRemovedAccessList;
+            // Ratbite end
         }
     }
 

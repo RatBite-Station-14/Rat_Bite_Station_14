@@ -12,6 +12,10 @@
   access:
   - Theatre
   - Maintenance
+  # Ratbite start
+  emergencyAccessRemoved:
+  - Maintenance
+  # Ratbite end
   special:
   - !type:AddComponentSpecial
     components:

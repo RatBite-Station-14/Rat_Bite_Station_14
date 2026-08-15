@@ -17,6 +17,10 @@
   access:
   - Research
   - Maintenance
+  # Ratbite start
+  emergencyAccessRemoved:
+  - Maintenance
+  # Ratbite end
 
 - type: startingGear
   id: ScientistGear

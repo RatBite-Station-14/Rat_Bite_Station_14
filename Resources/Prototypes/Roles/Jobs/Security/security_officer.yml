@@ -26,6 +26,24 @@
   - Maintenance
   - External
   - Cryogenics
+  # Ratbite start
+  emergencyAccessAdded:
+  - Engineering
+  - Medical
+  - Atmospherics
+  - Bar
+  - Cargo
+  - Chapel
+  - Chemistry
+  - Hydroponics
+  - Janitor
+  - Kitchen
+  - Research
+  - Salvage
+  - Theatre
+  - Robotics
+  - Journalism
+  # ratbite end
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
