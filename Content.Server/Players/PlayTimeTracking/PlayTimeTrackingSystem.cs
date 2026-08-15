@@ -155,33 +155,46 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
 
     private void CalcTrackers(ICommonSession player, HashSet<string> trackers)
     {
-        if (!IsPlayerAlive(player))
-            return;
-
+        // Ratbite
+        if (GetPermaTracker(player) is { } permaTracker)
+        {
+            trackers.Add(permaTracker);
+        }
         if (_afk.IsAfk(player))
-        {
-            if (_permaBrigManager.ShouldPlayerBeBrigged(player))
-            {
-                trackers.Add(PlayTimeTrackingShared.TrackerPerma);
-            }
-
             return;
-        }
-
-        if (_permaBrigManager.ShouldPlayerBeBrigged(player))
-        {
-            trackers.Add(PlayTimeTrackingShared.TrackerPerma);
-        }
 
         if (_adminManager.IsAdmin(player))
         {
             trackers.Add(PlayTimeTrackingShared.TrackerAdmin);
             trackers.Add(PlayTimeTrackingShared.TrackerOverall);
-            return;
         }
+
+        if (!IsPlayerAlive(player))
+            return;
 
         trackers.Add(PlayTimeTrackingShared.TrackerOverall);
         trackers.UnionWith(GetTimedRoles(player));
+    }
+
+    // Ratbite
+    private string? GetPermaTracker(ICommonSession player)
+    {
+        // Sanitarium patient is never rolled, but I'm keeping it in
+        // case it's modified in the future
+        ProtoId<JobPrototype>[] allowedRoles = ["Prisoner", "SanitariumPatient"];
+        if (!IsPlayerAlive(player)) return null;
+        var contentData = _playerManager.GetPlayerData(player.UserId).ContentData();
+
+        if (contentData?.Mind is not { } mind)
+            return null;
+        foreach (var role in _roles.MindGetAllRoleInfo(mind))
+        {
+            if (allowedRoles.Contains(role.Prototype))
+            {
+                return PlayTimeTrackingShared.TrackerPerma;
+            }
+        }
+        return null;
     }
 
     private bool IsPlayerAlive(ICommonSession session)
