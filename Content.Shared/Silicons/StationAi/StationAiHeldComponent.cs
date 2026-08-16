@@ -29,11 +29,15 @@ namespace Content.Shared.Silicons.StationAi;
 /// <summary>
 /// Indicates this entity is currently held inside of a station AI core.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 // Corvax-Next-AiRemoteControl-Start
 public sealed partial class StationAiHeldComponent : Component
 {
     [DataField]
     public EntityUid? CurrentConnectedEntity;
+
+    // Ratbite
+    [DataField, AutoNetworkedField]
+    public EntityUid? OriginalStation = null;
 }
 // Corvax-Next-AiRemoteControl-End

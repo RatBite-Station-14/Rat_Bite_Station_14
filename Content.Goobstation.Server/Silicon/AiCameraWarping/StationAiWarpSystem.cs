@@ -33,7 +33,7 @@ public sealed class StationAiWarpSystem : SharedStationAiWarpSystem
         if (!_stationAiSystem.TryGetCore(ent.Owner, out var core))
             return;
 
-        var cameras = GetCameras(core.Owner);
+        var cameras = GetCameras(ent);
 
         var state = new CameraWarpBuiState(cameras);
         _userInterface.SetUiState(ent.Owner, CamWarpUiKey.Key, state);
@@ -43,26 +43,25 @@ public sealed class StationAiWarpSystem : SharedStationAiWarpSystem
     {
         if (args.Handled || !TryComp<ActorComponent>(ent.Owner, out var actor))
             return;
-        if (!_stationAiSystem.TryGetCore(ent.Owner, out var core))
-            return;
 
         args.Handled = true;
 
         _userInterface.TryToggleUi(ent.Owner, CamWarpUiKey.Key, actor.PlayerSession);
 
-        var cameras = GetCameras(core.Owner);
+        var cameras = GetCameras(ent);
 
         var state = new CameraWarpBuiState(cameras);
         _userInterface.SetUiState(ent.Owner, CamWarpUiKey.Key, state);
     }
 
-    private List<CameraWarpData> GetCameras(EntityUid coreUid)
+    private List<CameraWarpData> GetCameras(Entity<StationAiHeldComponent> ent)
     {
         List<CameraWarpData> cameras = new();
 
         var query = EntityManager.EntityQueryEnumerator<SurveillanceCameraComponent>();
 
-        var aiGrid = _xformSystem.GetGrid(coreUid);
+        // Ratbite
+        var aiGrid = ent.Comp.OriginalStation;
 
         while (query.MoveNext(out var queryUid, out var comp))
         {
@@ -98,7 +97,7 @@ public sealed class StationAiWarpSystem : SharedStationAiWarpSystem
             return;
 
         // The AI shouldn't be able to jump to cams on other stations/shuttles
-        if (_xformSystem.GetGrid(core.Owner) != _xformSystem.GetGrid(target))
+        if (ent.Comp.OriginalStation != _xformSystem.GetGrid(target))
             return;
 
         _xformSystem.SetWorldPosition(core.Comp.RemoteEntity.Value, _xformSystem.GetWorldPosition(target));

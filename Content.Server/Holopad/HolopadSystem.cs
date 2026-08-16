@@ -192,6 +192,11 @@ public sealed class HolopadSystem : SharedHolopadSystem
         // AI broadcasting
         if (TryComp<StationAiHeldComponent>(args.Actor, out var stationAiHeld))
         {
+            if (Transform(args.Actor).GridUid != Transform(source).GridUid)
+            {
+                _popupSystem.PopupEntity(Loc.GetString("holopad-ai-is-unable-to-activate-projector"), source, args.Actor);
+                return;
+            }
             // Link the AI to the holopad they are broadcasting from
             LinkHolopadToUser(source, args.Actor);
 

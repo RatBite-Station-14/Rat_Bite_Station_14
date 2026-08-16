@@ -81,6 +81,7 @@ public sealed class StationAiOverlay : Overlay
         var worldBounds = args.WorldBounds;
 
         var playerEnt = _player.LocalEntity;
+        var originalGridUid = _entManager.GetComponentOrNull<StationAiHeldComponent>(playerEnt)?.OriginalStation; // Ratbite
 
         // Shitmed - Starlight Abductors Change Start
         if (_entManager.TryGetComponent(playerEnt, out StationAiOverlayComponent? stationAiOverlay)
@@ -90,7 +91,7 @@ public sealed class StationAiOverlay : Overlay
         // Shitmed Change End
 
         _entManager.TryGetComponent(playerEnt, out TransformComponent? playerXform);
-        var gridUid = playerXform?.GridUid ?? EntityUid.Invalid;
+        var gridUid = originalGridUid ?? EntityUid.Invalid; // Ratbite: Change to original station uid
         _entManager.TryGetComponent(gridUid, out MapGridComponent? grid);
         _entManager.TryGetComponent(gridUid, out BroadphaseComponent? broadphase);
 

@@ -124,6 +124,8 @@ public abstract partial class SharedStationAiSystem : EntitySystem
 
         SubscribeLocalEvent<StationAiWhitelistComponent, BoundUserInterfaceCheckRangeEvent>(OnAiBuiCheck);
 
+
+        SubscribeLocalEvent<StationAiHeldComponent, MapInitEvent>(OnAiHeldInit);
         SubscribeLocalEvent<StationAiOverlayComponent, AccessibleOverrideEvent>(OnAiAccessible);
         SubscribeLocalEvent<StationAiOverlayComponent, InRangeOverrideEvent>(OnAiInRange);
         SubscribeLocalEvent<StationAiOverlayComponent, MenuVisibilityEvent>(OnAiMenu);
@@ -204,7 +206,7 @@ public abstract partial class SharedStationAiSystem : EntitySystem
 
     private void OnAiBuiCheck(Entity<StationAiWhitelistComponent> ent, ref BoundUserInterfaceCheckRangeEvent args)
     {
-        if (!HasComp<StationAiHeldComponent>(args.Actor))
+        if (!TryComp<StationAiHeldComponent>(args.Actor, out var stationAiHeld))
             return;
 
         args.Result = BoundUserInterfaceRangeResult.Fail;
@@ -213,7 +215,8 @@ public abstract partial class SharedStationAiSystem : EntitySystem
         var targetXform = Transform(args.Target);
 
         // No cross-grid
-        if (targetXform.GridUid != args.Actor.Comp.GridUid)
+        // Ratbite: use original station
+        if (targetXform.GridUid != stationAiHeld.OriginalStation)
         {
             return;
         }
@@ -236,6 +239,8 @@ public abstract partial class SharedStationAiSystem : EntitySystem
 
     private void OnAiInRange(Entity<StationAiOverlayComponent> ent, ref InRangeOverrideEvent args)
     {
+        // Ratbite
+        if (!TryComp<StationAiHeldComponent>(ent, out var stationAiHeld)) return;
         args.Handled = true;
 
         // Shitmed - Starlight Abductors Change Start
@@ -247,7 +252,8 @@ public abstract partial class SharedStationAiSystem : EntitySystem
         var targetXform = Transform(target);
 
         // No cross-grid
-        if (targetXform.GridUid != Transform(args.User).GridUid && !ent.Comp.AllowCrossGrid) // Shitmed Change
+        // Ratbite: use original station
+        if (targetXform.GridUid != stationAiHeld.OriginalStation && !ent.Comp.AllowCrossGrid) // Shitmed Change
         {
             return;
         }
@@ -619,6 +625,14 @@ public abstract partial class SharedStationAiSystem : EntitySystem
 
         return _blocker.CanComplexInteract(entity.Owner);
     }
+
+    // Ratbite
+    private void OnAiHeldInit(Entity<StationAiHeldComponent> ent, ref MapInitEvent args)
+    {
+        ent.Comp.OriginalStation = Transform(ent).GridUid;
+        Dirty(ent);
+    }
+
 }
 
 public sealed partial class JumpToCoreEvent : InstantActionEvent
