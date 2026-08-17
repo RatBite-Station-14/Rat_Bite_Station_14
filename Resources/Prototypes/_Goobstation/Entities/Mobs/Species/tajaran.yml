@@ -105,9 +105,10 @@
     damage:
       types:
         Blunt: 1
-  - type: Stamina
-    critThreshold: 75 # Goobstation - Siouxcide, felinids take 3 disabler shots to down
-    animationThreshold: 40 # Goob edit
+  #- type: Stamina
+   # critThreshold: 75 # Goobstation - Siouxcide, felinids take 3 disabler shots to down
+    #animationThreshold: 40 # Goob edit
+    #removed stamina becuase nyehehe >:3
   - type: TypingIndicator
     proto: felinid
   - type: PseudoItem
