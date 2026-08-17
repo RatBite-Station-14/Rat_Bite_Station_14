@@ -24,7 +24,7 @@
       connections:
       - legs
       organs:
-        stomach: OrganMothStomach
+        stomach: OrganMothroachStomach # Ratbite - increased moffroach stomach size
         liver: OrganAnimalLiver
         kidneys: OrganAnimalKidneys
     legs:

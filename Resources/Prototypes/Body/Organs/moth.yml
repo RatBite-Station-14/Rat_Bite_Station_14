@@ -42,3 +42,21 @@
     groups:
       - id: Food
       - id: Drink
+
+# <Ratbite> - let the moffroach FEAST
+- type: entity
+  id: OrganMothroachStomach
+  parent: OrganMothStomach
+  categories: [ HideSpawnMenu ]
+  name: mothroach stomach # Shitmed
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      stomach:
+        maxVol: 200 # literally the only difference between this and moff stomach :godo:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 5
+# </Ratbite>
