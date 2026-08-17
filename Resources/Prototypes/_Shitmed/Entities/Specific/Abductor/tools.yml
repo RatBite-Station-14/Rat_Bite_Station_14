@@ -235,6 +235,7 @@
   - type: Tool
     qualities:
       - Pulsing
+      - Unpacking # Ratbite
   - type: NetworkConfigurator
     showLabel: false
   - type: LimitedCharges
@@ -252,6 +253,7 @@
           - type: Tool
             qualities:
               - Pulsing
+              - Unpacking # Ratbite
           - type: NetworkConfigurator
             showLabel: false
         soundStateActivate:

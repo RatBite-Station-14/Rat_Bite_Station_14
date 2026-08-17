@@ -1,0 +1,7 @@
+- type: tool
+  id: Unpacking
+  name: tool-quality-unpacking-name
+  toolName: tool-quality-unpacking-tool-name
+  spawn: NetworkConfigurator
+  icon: { sprite: Objects/Tools/network_configurator.rsi, state: icon }
+
