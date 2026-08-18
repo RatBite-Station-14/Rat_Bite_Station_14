@@ -9,7 +9,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using System.Linq;
+using Robust.Shared.Utility;
 
 namespace Content.Client.Lobby.UI.Loadouts;
 
@@ -77,7 +77,8 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
         LoadoutsContainer.RemoveAllChildren();
 
         // Get all loadout prototypes for this group.
-        var validProtos = _groupProto.Loadouts.Select(id => protoMan.Index(id));
+        var validProtos = GetLoadoutPrototypes(protoMan)
+            .Where(proto => !loadout.IsHidden(profile, session, proto.ID, collection));
 
         /*
          * Group the prototypes based on their GroupBy field.
@@ -221,11 +222,12 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
 
         var pressed = selected.Any(e => e.Prototype == proto.ID);
 
-        var enabled = loadout.IsValid(profile, session, proto.ID, collection, out var reason);
+        FormattedMessage? reason = null;
+        var enabled = pressed || loadout.IsValid(profile, session, proto.ID, collection, out reason);
 
         var cont = new LoadoutContainer(proto, !enabled, reason);
 
-        cont.Text = loadoutSystem.GetName(proto);
+        cont.Text = string.IsNullOrEmpty(proto.Name) ? loadoutSystem.GetName(proto) : proto.Name;
 
         cont.Select.Pressed = pressed;
 
@@ -238,5 +240,26 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
         };
 
         return cont;
+    }
+
+    private IEnumerable<LoadoutPrototype> GetLoadoutPrototypes(IPrototypeManager protoMan)
+    {
+        foreach (var id in _groupProto.Loadouts)
+        {
+            if (protoMan.TryIndex(id, out var proto))
+                yield return proto;
+        }
+
+        foreach (var subgroup in _groupProto.Subgroups)
+        {
+            if (!protoMan.TryIndex(subgroup, out var groupProto))
+                continue;
+
+            foreach (var id in groupProto.Loadouts)
+            {
+                if (protoMan.TryIndex(id, out var proto))
+                    yield return proto;
+            }
+        }
     }
 }

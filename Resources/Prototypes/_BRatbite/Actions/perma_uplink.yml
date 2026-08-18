@@ -1,0 +1,17 @@
+# SPDX-FileCopyrightText: 2026 Sprinkle <40203084+lnn0q@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseAction
+  id: ActionOpenPermaUplink
+  name: action-name-open-perma-uplink
+  description: action-description-open-perma-uplink
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    icon:
+      sprite: Objects/Devices/communication.rsi
+      state: radio
+  - type: InstantAction
+    event: !type:OpenPermaUplinkEvent

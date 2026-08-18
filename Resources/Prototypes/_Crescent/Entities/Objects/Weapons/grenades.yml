@@ -1,0 +1,127 @@
+
+- type: entity
+  name: troll plushie
+  parent: BasePlushie
+  description: Feels mischevious.
+  suffix: FAKE PLUSH FAKE!!!
+  id: TrollNade
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Fun/Plushies/troll.rsi
+    layers:
+    - state: icon
+      map: ["enum.TriggerVisualLayers.Base"]
+  - type: Item
+    size: Normal
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/_Crescent/Weapons/Grenades/troll_nade/trigger.ogg
+      params:
+        variation: 0.25
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/_Crescent/Weapons/Grenades/troll_nade/trigger.ogg
+      params:
+        variation: 0.25
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_Crescent/Weapons/Grenades/troll_nade/trigger.ogg
+      params:
+        variation: 0.25
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/_Crescent/Weapons/Grenades/troll_nade/trigger.ogg
+      params:
+        variation: 0.25
+  - type: SpawnItemsOnUse
+    items:
+      - id: TrollNadeProjectile
+
+- type: entity
+  name: The concequences of your actions
+  parent: GrenadeBase
+  description: WHAT THE FUCK HAVE YOU DONE?????
+  suffix: DO NOT FUCKING MAP
+  id: TrollNadeProjectile
+  components:
+  - type: TriggerOnSpawn
+  - type: Sprite
+    sprite: _Crescent/Objects/Fun/Plushies/troll.rsi
+    scale: 0.5, 0.5
+    layers:
+    - state: icon
+      map: ["enum.TriggerVisualLayers.Base"]
+  - type: Item
+    size: Normal
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 15000
+        Structural: 15000
+  - type: ScatteringGrenade # Ratbite - we dont have ClusterGrenade
+    fillPrototype: TrollNadeProjectileCluster # Ratbite - works differently than in hullrot, shitcode limitations :happening1:
+    distance: 8
+  - type: TimerTrigger
+    delay: 0.5
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_Crescent/Weapons/Grenades/troll_nade/trigger.ogg
+      params:
+        variation: 0.25
+  - type: TimerTriggerVisuals
+    primingSound:
+      path: /Audio/_Crescent/Weapons/Grenades/troll_nade/trigger.ogg
+      params:
+        variation: 0.25
+
+# <Ratbite>
+
+- type: entity
+  name: The concequences of your actions
+  parent: ExGrenade
+  description: WHAT THE FUCK HAVE YOU DONE?????
+  id: TrollNadeProjectileCluster
+  components:
+  - type: Explosive
+    explosionType: HardBomb
+    maxIntensity: 150000
+    intensitySlope: 150
+    totalIntensity: 150000 # kaboom?
+    canCreateVacuum: true
+
+# </Ratbite>
+
+- type: entity
+  name: Chudjak
+  description: Billions must die!
+  parent: GrenadeBase
+  suffix: DO NOT FUCKING MAP
+  id: ChudjakNade
+  components:
+  - type: Sprite
+    sprite: _Crescent/Objects/Fun/Plushies/chudjak.rsi
+    layers:
+    - state: icon
+      map: ["enum.TriggerVisualLayers.Base"]
+  - type: Item
+    size: Normal
+  - type: TimerTrigger
+    delay: 13
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Minibomb
+    totalIntensity: 50000
+    intensitySlope: 50
+    maxIntensity: 250
+  - type: Appearance
+  - type: AnimationPlayer
+  - type: TimerTriggerVisuals
+    primingSound:
+      path: /Audio/_Crescent/Weapons/Grenades/chud_nade/trigger.ogg
+  - type: GenericVisualizer
+    visuals:
+      enum.Trigger.TriggerVisuals.VisualState:
+        enum.ConstructionVisuals.Layer:
+          Primed: { state: primed }
+          Unprimed: { state: icon }
+  - type: DeleteOnTrigger

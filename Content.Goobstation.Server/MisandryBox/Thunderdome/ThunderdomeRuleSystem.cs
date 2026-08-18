@@ -13,6 +13,7 @@ using Content.Server.Power.Components;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Systems;
 using Content.Server.Weapons.Ranged.Systems;
+using Content.Shared._BRatbite.FiringPin;
 using Content.Shared.GameTicking;
 using Content.Shared.Ghost;
 using Content.Shared.Fluids.Components;
@@ -263,6 +264,8 @@ public sealed class ThunderdomeRuleSystem : EntitySystem
         var tdPlayer = EnsureComp<ThunderdomePlayerComponent>(mob);
         tdPlayer.RuleEntity = ruleEntity;
         tdPlayer.WeaponSelection = weaponIdx;
+
+        EnsureComp<FiringPinExemptComponent>(mob); // BRatbite - let arena combatants use mindshield locked guns
 
         if (originalBody is { Valid: true } body && !HasComp<ThunderdomeOriginalBodyComponent>(body))
         {

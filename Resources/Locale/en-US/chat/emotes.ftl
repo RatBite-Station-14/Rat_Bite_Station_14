@@ -46,6 +46,7 @@ chat-emote-name-robotbeep = Robot
 chat-emote-name-yawn = Yawn
 chat-emote-name-snore = Snore
 
+
 # Message
 chat-emote-msg-scream = screams!
 chat-emote-msg-laugh = laughs.

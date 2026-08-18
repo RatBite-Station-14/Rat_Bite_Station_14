@@ -65,6 +65,7 @@
   - type: Clothing
     sprite: Clothing/Eyes/Glasses/meson.rsi
   - type: EyeProtection
+  - type: FlashImmunity
   - type: IdentityBlocker
     coverage: EYES
   - type: Tag

@@ -35,7 +35,7 @@ public sealed partial class CCVars
     ///     Controls the default game preset.
     /// </summary>
     public static readonly CVarDef<string>
-        GameLobbyDefaultPreset = CVarDef.Create("game.defaultpreset", "secret", CVar.ARCHIVE);
+        GameLobbyDefaultPreset = CVarDef.Create("game.defaultpreset", "SusRat", CVar.ARCHIVE);
 
     /// <summary>
     ///     Controls if the game can force a different preset if the current preset's criteria are not met.
@@ -133,7 +133,7 @@ public sealed partial class CCVars
     ///     Whether or not disconnecting inside of a cryopod should remove the character or just store them until they reconnect.
     /// </summary>
     public static readonly CVarDef<bool>
-        GameCryoSleepRejoining = CVarDef.Create("game.cryo_sleep_rejoining", false, CVar.SERVER | CVar.REPLICATED);
+        GameCryoSleepRejoining = CVarDef.Create("game.cryo_sleep_rejoining", true, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     ///     When enabled, guests will be assigned permanent UIDs and will have their preferences stored.
@@ -376,7 +376,7 @@ public sealed partial class CCVars
     ///     but may cause lag during round end with very high player counts.
     /// </summary>
     public static readonly CVarDef<bool> RoundEndPVSOverrides =
-        CVarDef.Create("game.round_end_pvs_overrides", true, CVar.SERVERONLY);
+        CVarDef.Create("game.round_end_pvs_overrides", false, CVar.SERVERONLY);
 
     /// <summary>
     ///     If true, players can place objects onto tabletop games like chess boards.

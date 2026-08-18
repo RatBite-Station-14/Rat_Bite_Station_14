@@ -1,0 +1,21 @@
+- type: entity
+  parent: ClothingUniformJumpsuitBlueshieldOfficer
+  id: ClothingUniformBlueShieldOfficerTurtleneck
+  name: blueshield officer turtleneck
+  description: A turtleneck worn by Blueshield Officers, CC tag removed because it was too itchy.
+  components:
+  - type: Sprite
+    sprite: _Omu/Clothing/Uniforms/Jumpsuit/blueshieldturtleneck.rsi
+  - type: Clothing
+    sprite: _Omu/Clothing/Uniforms/Jumpsuit/blueshieldturtleneck.rsi
+
+- type: entity
+  parent: ClothingUniformJumpsuitBlueshieldOfficer
+  id: ClothingUniformBlackBlueShieldOfficerTurtleneck
+  name: black blueshield officer turtleneck
+  description: A black turtleneck worn by Blueshield Officers, CC tag removed because it was too itchy.
+  components:
+  - type: Sprite
+    sprite: _Omu/Clothing/Uniforms/Jumpsuit/blackblueshieldturtleneck.rsi
+  - type: Clothing
+    sprite: _Omu/Clothing/Uniforms/Jumpsuit/blackblueshieldturtleneck.rsi

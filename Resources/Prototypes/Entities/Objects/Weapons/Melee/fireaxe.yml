@@ -66,6 +66,10 @@
   - type: SurgeryTool # Shitmed
     startSound:
       path: /Audio/_Shitmed/Medical/Surgery/saw.ogg
+  - type: Enchanter # Ratbite
+    maxLevel: 1 # low level rolling only :heart:
+    enchants:
+    - EnchantSharpness
 
 - type: entity
   id: FireAxeFlaming

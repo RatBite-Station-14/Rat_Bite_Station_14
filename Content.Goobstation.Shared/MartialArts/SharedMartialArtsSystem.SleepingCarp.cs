@@ -10,6 +10,7 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Popups;
 using Content.Shared.Weapons.Reflect;
+using Content.Shared._BRatbite.Weapons.Melee;
 using Robust.Shared.Audio;
 
 namespace Content.Goobstation.Shared.MartialArts;
@@ -40,7 +41,7 @@ public partial class SharedMartialArtsSystem
             return;
         }
 
-        if (HasComp<ChangelingComponent>(args.User))
+        if (HasComp<ChangelingIdentityComponent>(args.User))
         {
             _popupSystem.PopupEntity(Loc.GetString("cqc-fail-changeling"), args.User, args.User);
             return;
@@ -79,6 +80,8 @@ public partial class SharedMartialArtsSystem
                 userReflect.Examinable = false; // no doxxing scarp users by examining lmao
                 userReflect.ReflectProb = 1;
                 userReflect.Spread = 60;
+                // Ratbite nerf
+                userReflect.ReflectionOnStandingStill = true;
                 Dirty(args.User, userReflect);
                 _popupSystem.PopupEntity(
                     Loc.GetString("carp-scroll-complete"),

@@ -189,7 +189,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         bool forced = false // goobstation
         )
     {
-        TrySendInGameICMessage(source, message, desiredType, hideChat ? ChatTransmitRange.HideChat : ChatTransmitRange.Normal, hideLog, shell, player, nameOverride, checkRadioPrefix, ignoreActionBlocker, colorOverride, forced: forced); // Goob edit
+        TrySendInGameICMessage(source, message, desiredType, hideChat ? ChatTransmitRange.HideChat : ChatTransmitRange.Normal, hideLog, shell, player, nameOverride, checkRadioPrefix, ignoreActionBlocker, colorOverride); // Goob edit
     }
 
     /// <inheritdoc />
@@ -267,7 +267,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         // Was there an emote in the message? If so, send it.
         if (player != null && emoteStr != message && emoteStr != null)
         {
-            SendEntityEmote(source, emoteStr, range, nameOverride, language, ignoreActionBlocker, forced: forced); // Einstein Engines - Language
+            SendEntityEmote(source, emoteStr, range, nameOverride, language, ignoreActionBlocker); // Einstein Engines - Language
         }
 
         // This can happen if the entire string is sanitized out.
@@ -322,7 +322,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                 SendEntityWhisper(source, message, range, null, nameOverride, language, hideLog, ignoreActionBlocker, colorOverride); // Goob edit & Einstein Engines - Language
                 break;
             case InGameICChatType.Emote:
-                SendEntityEmote(source, message, range, nameOverride, language, hideLog: hideLog, ignoreActionBlocker: ignoreActionBlocker, forced: forced); // Einstein Engines - Language
+                SendEntityEmote(source, message, range, nameOverride, language, hideLog: hideLog, ignoreActionBlocker: ignoreActionBlocker); // Einstein Engines - Language
                 break;
             case InGameICChatType.Telepathic:
                 _telepath.SendTelepathicChat(source, message, range == ChatTransmitRange.HideChat);
@@ -788,7 +788,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         bool checkEmote = true,
         bool ignoreActionBlocker = false,
         NetUserId? author = null,
-        bool forced = false // goobstation
+        bool forced = false
         )
     {
         if (!_actionBlocker.CanEmote(source) && !ignoreActionBlocker)
@@ -804,7 +804,8 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("entity", ent),
             ("message", FormattedMessage.RemoveMarkupOrThrow(action)));
 
-        if (checkEmote && !TryEmoteChatInput(source, action, forced)) // goob edit
+        if (checkEmote &&
+            !TryEmoteChatInput(source, action))
             return;
 
         SendInVoiceRange(

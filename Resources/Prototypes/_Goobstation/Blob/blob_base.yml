@@ -37,7 +37,6 @@
     - type: Clickable
     - type: Transform
       anchored: true
-    - type: BlockTeleport
     - type: Fixtures
       fixtures:
         fix1:

@@ -245,7 +245,7 @@ public sealed partial class TeslaBlastEvent : InstantActionEvent
 public sealed partial class LightningBoltEvent : EntityTargetActionEvent
 {
     [DataField]
-    public float Damage = 50f;
+    public float Damage = 35f; // Ratbite, Dark Lord balance
 
     [DataField]
     public EntProtoId Proto = "ChargedLightning";

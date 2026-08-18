@@ -1,0 +1,16 @@
+- type: entity
+  id: RatCombatDynamic
+  parent: GameDirector
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: GameRule
+    minPlayers: 25
+  - type: GameDirector
+    dualAntags: true
+    stories:
+      - RelaxedAttack
+      - ScienceAttack
+      - MajorCombat
+  - type: SelectedGameRules
+    scheduledGameRules: !type:NestedSelector
+      tableId: RatHeavyMidrounds

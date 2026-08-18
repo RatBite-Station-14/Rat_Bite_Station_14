@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Goobstation.Common.Traitor;
 using Content.Server.Store.Systems;
+using Content.Goobstation.Common.Traitor;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Implants;
@@ -73,7 +73,11 @@ public sealed class UplinkSystem : EntitySystem
             return ImplantUplink(user, balance);
 
         EnsureComp<UplinkComponent>(uplinkEntity.Value);
+
         SetUplink(user, uplinkEntity.Value, balance);
+
+        // TODO add BUI. Currently can't be done outside of yaml -_-
+        // ^ What does this even mean?
 
         return true;
     }

@@ -898,9 +898,21 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("INTEGER")
                         .HasColumnName("player_id");
 
+                    b.Property<int>("BrigSentence")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("brig_sentence");
+
+                    b.Property<int>("BrigTime")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("brig_time");
+
                     b.Property<DateTime>("FirstSeenTime")
                         .HasColumnType("TEXT")
                         .HasColumnName("first_seen_time");
+
+                    b.Property<bool>("Inpatient")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("inpatient");
 
                     b.Property<DateTime?>("LastReadRules")
                         .HasColumnType("TEXT")
@@ -923,6 +935,10 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("last_seen_user_name");
+
+                    b.Property<int>("PPpoints")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("pppoints");
 
                     b.Property<int>("ServerCurrency")
                         .HasColumnType("INTEGER")

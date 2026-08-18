@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Linq;
 using Content.Goobstation.Server.StationEvents.Metric.Components;
 using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Shared.Chemistry.Components.SolutionManager;
@@ -33,19 +32,20 @@ public sealed class PuddleMetricSystem : ChaosMetricSystem<PuddleMetricComponent
         "Calculated chaos value contributed by puddles.");
 
 
-    protected override ChaosMetrics CalculateChaos(EntityUid uid, PuddleMetricComponent component, CalculateChaosEvent args)
+    public override ChaosMetrics CalculateChaos(EntityUid uid, PuddleMetricComponent component, CalculateChaosEvent args)
     {
         // Add up the pain of all the puddles
         var query = EntityQueryEnumerator<PuddleComponent, SolutionContainerManagerComponent>();
         double messChaos = 0;
-        var puddleCount = 0;
+
+        int puddleCount = 0;
         double totalPuddleVolume = 0;
 
         while (query.MoveNext(out var puddleUid, out var puddle, out var solutionMgr))
         {
             puddleCount++;
 
-            if (!_solutionContainerSystem.TryGetSolution(puddleUid, puddle.SolutionName, out var puddleSolution, out _))
+            if (!_solutionContainerSystem.TryGetSolution(puddleUid, puddle.SolutionName, out var puddleSolution, out var solution))
                 continue;
 
             double currentPuddleChaos = 0.0f;

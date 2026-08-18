@@ -26,7 +26,7 @@
     deleteOnCollide: false
     damage:
       types:
-        Piercing: 45
+        Piercing: 60 #Ratbite balance
   - type: TimedDespawn
     lifetime: 0.25
 
@@ -40,8 +40,8 @@
     deleteOnCollide: false
     damage:
       types:
-        Blunt: 1
-        Heat: 2
+        Blunt: 4 #Ratbite balance
+        Heat: 6 #Ratbite balance
   - type: IgniteOnCollide
     fireStacks: 1
     count: 10

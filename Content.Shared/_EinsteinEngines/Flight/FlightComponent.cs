@@ -32,7 +32,7 @@ public sealed partial class FlightComponent : Component
     ///     Stamina drain per second when flying
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float StaminaDrainRate = 13.0f;
+    public float StaminaDrainRate = 40.0f; //Ratbite actually balancing things
 
     /// <summary>
     ///     By how much do we multiply stamina recovery while flying?

@@ -29,6 +29,7 @@
   name: ancient goliath
   suffix: Lavaland
   components:
+  - type: WeatherImmune
   - type: Sprite
     sprite: _Lavaland/Mobs/goliath.rsi
     layers:
@@ -70,6 +71,4 @@
     - id: FoodMeatGoliath
       amount: 3
     - id: MaterialGoliathHide1
-      amount: 3
-    - id: MaterialBones1
       amount: 3

@@ -1,0 +1,7 @@
+- type: statusEffect
+  id: KetamineSedation
+  alwaysAllowed: true
+
+- type: statusEffect
+  id: KetamineSlurredSpeech
+  alwaysAllowed: true

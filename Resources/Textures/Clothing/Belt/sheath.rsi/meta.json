@@ -20,6 +20,14 @@
     },
     {
         "name": "sheath"
+    },
+
+    {
+        "name": "sheath-sabre-equipped-SUITSTORAGE"
+    },
+    {
+        "name": "equipped-SUITSTORAGE",
+        "directions": 4
     }
   ]
 }

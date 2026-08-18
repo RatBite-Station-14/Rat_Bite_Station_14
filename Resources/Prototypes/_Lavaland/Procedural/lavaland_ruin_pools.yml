@@ -13,21 +13,28 @@
     RougeAI: 1
     BiodomeBeach: 2
     BiodomeSnow: 2
-    GolemShuttle: 1
+    GolemShuttle: 2
     ToyShop: 1
-    Chemistry: 1
+    Chemistry: 2
+    LavaLake: 3
     Graveyard: 1
-    SeedVault: 1
-    Hermit: 2
-    WaffleCo: 1
+    SeedVault: 2
+    Hermit: 5
+    WaffleCo: 2
     ArrivalsBack: 1
     ArrivalsFront: 1
+    CargoDebris: 2
     VulpLab: 1
-    Shelter: 1
+    Shelter: 4
     Ratvar: 1
     MiningPost: 3
     AbductorDebris: 1
     CultBase: 1
+    FleshCave: 1
+    FloraCave: 1
+    IceCave: 1
+    RockCave: 1
+    SlimeCave: 1
     Hunter: 1
     XenoNest: 1
     Reclaimer: 1

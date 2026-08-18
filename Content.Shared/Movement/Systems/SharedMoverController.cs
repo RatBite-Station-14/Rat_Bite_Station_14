@@ -11,9 +11,11 @@ using Content.Shared.Maps;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
+using Content.Shared._DV.Abilities;
 using Content.Shared._DV.StepTrigger.Components; // DeltaV - NoShoesSilentFootstepsComponent
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Tag;
+using Content.Shared.Traits.Assorted.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
@@ -77,6 +79,7 @@ public abstract partial class SharedMoverController : VirtualController
     protected EntityQuery<RelayInputMoverComponent> RelayQuery;
     protected EntityQuery<PullableComponent> PullableQuery;
     protected EntityQuery<TransformComponent> XformQuery;
+    protected EntityQuery<CrawlUnderObjectsComponent> CrawlUnderObjectsQuery;
     protected EntityQuery<NoShoesSilentFootstepsComponent> NoShoesSilentQuery; // DeltaV - NoShoesSilentFootstepsComponent
 
     private static readonly ProtoId<TagPrototype> FootstepSoundTag = "FootstepSound";
@@ -117,6 +120,7 @@ public abstract partial class SharedMoverController : VirtualController
         MapGridQuery = GetEntityQuery<MapGridComponent>();
         FixturesQuery = GetEntityQuery<FixturesComponent>(); // Tile Movement Change
         TileMovementQuery = GetEntityQuery<TileMovementComponent>(); // Tile Movement Change
+        CrawlUnderObjectsQuery = GetEntityQuery<CrawlUnderObjectsComponent>();
         NoShoesSilentQuery = GetEntityQuery<NoShoesSilentFootstepsComponent>(); // DeltaV - NoShoesSilentFootstepsComponent
         MapQuery = GetEntityQuery<MapComponent>();
         FTLQuery = GetEntityQuery<FTLComponent>();
@@ -437,9 +441,10 @@ public abstract partial class SharedMoverController : VirtualController
                 TryGetSound(weightless, uid, mover, mobMover, xform, out var sound, tileDef: tileDef))
             {
                 var soundModifier = mover.Sprinting ? InputMoverComponent.SprintingSoundModifier : InputMoverComponent.WalkingSoundModifier;
+                var volume = sound.Params.Volume + soundModifier;
 
                 var audioParams = sound.Params
-                    .WithVolume(sound.Params.Volume + soundModifier)
+                    .WithVolume(volume)
                     .WithVariation(sound.Params.Variation ?? mobMover.FootstepVariation);
 
                 // If we're a relay target then predict the sound for all relays.
@@ -634,6 +639,9 @@ public abstract partial class SharedMoverController : VirtualController
 
         mobMover.StepSoundDistance -= distanceNeeded;
 
+        if (CrawlUnderObjectsQuery.TryComp(uid, out var crawlUnderObjects) && crawlUnderObjects.Enabled)
+            return false;
+
         // DeltaV - Don't play the sound if they have no shoes and the component
         if (NoShoesSilentQuery.HasComp(uid) &&
             !_inventory.TryGetSlotEntity(uid, "shoes", out var _))
@@ -823,6 +831,13 @@ public abstract partial class SharedMoverController : VirtualController
             {
                 var soundModifier = inputMover.Sprinting ? 3.5f : 1.5f;
                 var volume = sound.Params.Volume + soundModifier;
+
+                if (TryComp<FootstepVolumeModifierComponent>(uid, out var volumeModifier))
+                {
+                    volume += inputMover.Sprinting
+                        ? volumeModifier.SprintVolumeModifier
+                        : volumeModifier.WalkVolumeModifier;
+                }
 
                 var audioParams = sound.Params
                     .WithVolume(volume)

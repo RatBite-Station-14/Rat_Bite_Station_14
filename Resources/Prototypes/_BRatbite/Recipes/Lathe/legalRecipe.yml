@@ -1,0 +1,292 @@
+#First layer
+# 1 = 100
+# Research - Unnatural Entrapment Device
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: LegalRadioJammer
+  result: LegalRadioJammer
+  materials:
+    Steel: 500
+    Glass: 300
+    Plastic: 200
+    Gold: 100
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: LegalEMAG
+  result: Emag
+  materials:
+    Steel: 500
+    Glass: 300
+    Plastic: 200
+    Gold: 100
+    Diamond: 100
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: LegalLanternFlash
+  result: LegalLanternFlash
+  materials:
+    Steel: 1000
+    Plasma: 300
+    Plastic: 300
+    Glass: 1000
+    Gold: 500
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: ReverseBearTrap
+  result: ReverseBearTrap
+  materials:
+    Steel: 2000
+    Plastic: 500
+    Gold: 400
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: ReverseBearTrapKey
+  result: ReverseBearTrapKey
+  materials:
+    Steel: 500
+    Plastic: 500
+    Gold: 500
+    Silver: 500
+
+# Research - Advanced Chemical Manipulation
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: LegalHypoDart
+  result: LegalHypoDart
+  materials:
+    Steel: 500
+    Glass: 1000
+    Gold: 500
+    Silver: 500
+    Diamond: 100
+
+#- type: latheRecipe
+#  parent: BaseToolRecipe
+#  id: LegalHypospray
+#  result: LegalHypospray
+#  materials:
+#    Steel: 1000
+#    Glass: 1000
+#    Gold: 500
+#    Silver: 500
+#    Diamond: 300
+#    BSCrystal: 250 #wow it name were bscrystal for bluespace crystal
+
+# Research - Decoy Technologies
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: LegalSyndieTrickyBomb
+  result: LegalSyndieTrickyBomb
+  materials:
+    Steel: 800
+    Plasma: 1000
+    Plastic: 500
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: GrenadeDummy
+  result: GrenadeDummy
+  materials:
+    Steel: 800
+    Plasma: 1000
+    Plastic: 500
+
+- type: latheRecipe # go mass produce fuckery go brr
+  parent: BaseToolRecipe
+  id: LegalFakeNukeDisk
+  result: LegalFakeNukeDisk
+  materials:
+    Steel: 300
+    Plastic: 500
+
+# Research - Phantom Hand Research
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: LegalThievingGloves
+  result: LegalThievingGloves
+  materials:
+    Steel: 200
+    Plasma: 100
+    Plastic: 200
+    Durathread: 500
+    Cloth: 1000
+    BSCrystal: 300
+
+# Research - Identity Distruption Technologies
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: ClothingUniformJumpsuitChameleon
+  result: ClothingUniformJumpsuitChameleon
+  materials:
+    Durathread: 1000
+    Cloth: 1500
+    BSCrystal: 200
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: ClothingHeadHatChameleon
+  result: ClothingHeadHatChameleon
+  materials:
+    Durathread: 1000
+    Cloth: 1000
+    Steel: 200
+    Plastic: 200
+    BSCrystal: 200
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: ClothingMaskGasVoiceChameleon
+  result: ClothingMaskGasVoiceChameleon
+  materials:
+    Durathread: 1000
+    Cloth: 1500
+    BSCrystal: 200
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: LegalAgentIDCard
+  result: LegalAgentIDCard
+  materials:
+    Steel: 1000
+    Gold: 250
+    Silver: 250
+    Plastic: 500
+    BSCrystal: 500
+    Diamond: 250
+
+#Second Layer
+#Research - Freedom Technologies
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: LegalFreedomImplanter
+  result: LegalFreedomImplanter
+  materials:
+    Steel: 600
+    Gold: 500
+    Silver: 500
+    Plastic: 500
+    Glass: 600
+    BSCrystal: 1000
+    Diamond: 300
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: DimensionPot
+  result: DimensionPot
+  materials:
+    Steel: 30000
+    Gold: 1500
+    Silver: 1500
+    Plastic: 30000
+    Glass: 10000
+    Uranium: 5000
+    BSCrystal: 2500
+    Diamond: 1500
+
+# Advanced Melee Weaponaries
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: LegalHighFrequencyBlade
+  result: LegalHighFrequencyBlade
+  materials:
+    Steel: 2500
+    Gold: 100
+    Silver: 100
+    Plastic: 1000
+    Uranium: 2500
+    BSCrystal: 2500
+    Diamond: 1000
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: LegalEnergySword
+  result: LegalEnergySword
+  materials:
+    Steel: 1500
+    Gold: 1000
+    Silver: 1000
+    Plastic: 5000
+    Uranium: 1500
+    Plasma: 2500
+    BSCrystal: 2500
+    Diamond: 500
+
+# Advanced explosive technologies
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: LegalC4
+  result: LegalC4
+  materials:
+    Steel: 500
+    Gold: 100
+    Silver: 100
+    Plastic: 1000
+    Uranium: 550
+    Plasma: 1000
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: LegalEmpGrenade
+  result: LegalEmpGrenade
+  materials:
+    Steel: 500
+    Gold: 250
+    Silver: 500
+    Plastic: 1000
+    Plasma: 250
+
+#Vestine synthesis
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: LegalVestineChemistryVial
+  result: LegalVestineChemistryVial
+  materials:
+    Glass: 500
+    Gold: 500
+    Silver: 500
+    Plastic: 500
+    Plasma: 750
+    BSCrystal: 100
+
+# cyborg combat module
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: LegalBorgModuleSyndicateWeaponAdvanced
+  result: LegalBorgModuleSyndicateWeaponAdvanced
+  materials:
+    Steel: 500
+    Gold: 100
+    Silver: 500
+    Plastic: 100
+    Uranium: 100
+    Plasma: 2500
+    BSCrystal: 2500
+    Diamond: 1000
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: LegalBorgModuleMartyr
+  result: LegalBorgModuleMartyr
+  materials:
+    Steel: 500
+    Gold: 1000
+    Silver: 500
+    Plastic: 1000
+    Uranium: 1000
+    Plasma: 2500
+    BSCrystal: 400
+    Diamond: 400

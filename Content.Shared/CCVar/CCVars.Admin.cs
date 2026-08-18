@@ -68,6 +68,13 @@ public sealed partial class CCVars
         CVarDef.Create("admin.server_ban_default_severity", "High", CVar.ARCHIVE | CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
+    ///     Default severity for imprisonment
+    /// </summary>
+    public static readonly CVarDef<string> ImprisonmentDefaultSeverity =
+        CVarDef.Create("admin.imprisonment_default_severity", "medium", CVar.ARCHIVE | CVar.SERVER | CVar.REPLICATED);
+
+
+    /// <summary>
     ///     Whether a server ban will ban the player's ip by default.
     /// </summary>
     public static readonly CVarDef<bool> ServerBanIpBanDefault =

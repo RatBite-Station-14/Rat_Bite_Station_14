@@ -44,19 +44,19 @@ public sealed partial class AbductorSystem : SharedAbductorSystem
     private void OnReturn(AbductorReturnToShipEvent ev)
     {
         EnsureComp<AbductorScientistComponent>(ev.Performer, out var abductorScientistComponent);
-        AddTeleportationEffect(ev.Performer, 3.0f, TeleportationEffectEntity, out var effectEnt, true, true);
+        AddTeleportationEffect(ev.Performer, 6.0f, TeleportationEffectEntity, out var effectEnt, true, true);
 
         if (abductorScientistComponent.SpawnPosition.HasValue)
         {
             var effect = _entityManager.SpawnEntity(TeleportationEffect, abductorScientistComponent.SpawnPosition.Value);
             EnsureComp<TimedDespawnComponent>(effect, out var despawnComp);
-            despawnComp.Lifetime = 3.0f;
+            despawnComp.Lifetime = 24.0f;
             _audioSystem.PlayPvs("/Audio/_Shitmed/Misc/alien_teleport.ogg", effect);
         }
 
-        var doAfter = new DoAfterArgs(EntityManager, ev.Performer, TimeSpan.FromSeconds(3), new AbductorReturnDoAfterEvent(), ev.Performer)
+        var doAfter = new DoAfterArgs(EntityManager, ev.Performer, TimeSpan.FromSeconds(24), new AbductorReturnDoAfterEvent(), ev.Performer)
         {
-            MultiplyDelay = false,
+            MultiplyDelay = true,
         };
         _doAfter.TryStartDoAfter(doAfter);
         ev.Handled = true;
@@ -75,12 +75,12 @@ public sealed partial class AbductorSystem : SharedAbductorSystem
 
     private void OnSendYourself(SendYourselfEvent ev)
     {
-        AddTeleportationEffect(ev.Performer, 5.0f, TeleportationEffectEntity, out var effectEnt, true, false);
+        AddTeleportationEffect(ev.Performer, 6.0f, TeleportationEffectEntity, out var effectEnt, true, false);
         var effect = _entityManager.SpawnEntity(TeleportationEffect, ev.Target);
         EnsureComp<TimedDespawnComponent>(effect, out var _);
 
         var @event = new AbductorSendYourselfDoAfterEvent(GetNetCoordinates(ev.Target));
-        var doAfter = new DoAfterArgs(EntityManager, ev.Performer, TimeSpan.FromSeconds(5), @event, ev.Performer);
+        var doAfter = new DoAfterArgs(EntityManager, ev.Performer, TimeSpan.FromSeconds(26), @event, ev.Performer);
         _doAfter.TryStartDoAfter(doAfter);
         ev.Handled = true;
     }

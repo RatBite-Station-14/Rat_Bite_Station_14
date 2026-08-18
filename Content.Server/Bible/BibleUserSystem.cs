@@ -20,6 +20,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Timing;
 using Content.Shared.Verbs;
+using Content.Shared._BRatbite.Traits;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
@@ -108,7 +109,7 @@ namespace Content.Server.Bible
             if (args.Target == null || args.Target == args.User || !_mobStateSystem.IsAlive(args.Target.Value))
                 return; // STOP WITH USELESS BRACES!! - Goobstation
 
-            if (!HasComp<BibleUserComponent>(args.User))
+            if (!HasComp<BibleUserComponent>(args.User) || HasComp<AtheistComponent>(args.User))
             {
                 _popupSystem.PopupEntity(Loc.GetString("bible-sizzle"), args.User, args.User);
 
@@ -127,10 +128,13 @@ namespace Content.Server.Bible
             RaiseLocalEvent(args.Target.Value, ref ev);
             // Goobstation - Wraith - End
 
+            // Ratbite: force fail if the player is atheist
+            var forceFail = HasComp<AtheistComponent>(args.Target.Value);
+
             // This only has a chance to fail if the target is not wearing anything on their head and is not a familiar.
             if (!_invSystem.TryGetSlotEntity(args.Target.Value, "head", out _) && !HasComp<FamiliarComponent>(args.Target.Value))
             {
-                if (_random.Prob(component.FailChance))
+                if (forceFail || _random.Prob(component.FailChance))
                 {
                     var othersFailMessage = Loc.GetString(component.LocPrefix + "-heal-fail-others", ("user", userEnt), ("target", targetEnt), ("bible", uid));
                     _popupSystem.PopupEntity(othersFailMessage, args.User, Filter.PvsExcept(args.User), true, PopupType.SmallCaution);

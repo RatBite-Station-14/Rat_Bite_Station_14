@@ -212,10 +212,13 @@
     - Pinpointers
     - Genetics
     - XenobioPack
-    - XenobagHoldingPack
     # Einstein Engines Packs
     - Translators
     - TranslatorImplanters
+    # Ratbite
+    - LegalTechSciOnly
+    - LegalTechSciMed
+    - LegalTechSciSec
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - MechBoardsSecurity

@@ -4,32 +4,32 @@
   id: BasicCalmEventsTable
   table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
     children:
-    - id: AnomalySpawn
+ #   - id: AnomalySpawn
     - id: BluespaceArtifact
     - id: BluespaceLocker
-    - id: BreakerFlip
+ #   - id: BreakerFlip
     - id: BureaucraticError
     - id: ClericalError
     - id: CockroachMigration
     - id: GasLeak
-    - id: GreytideVirus
+ #   - id: GreytideVirus
     - id: IonStorm # its calm like 90% of the time smh
     - id: JobDistributionError
-    - id: KudzuGrowth
+ #   - id: KudzuGrowth
     - id: MassHallucinations
     - id: MimicVendorRule
     - id: MouseMigration
-    - id: PowerGridCheck
+ #   - id: PowerGridCheck Ratbite, This shit sucks and encourages lazy engi
     - id: RandomSentience
     - id: SlimesSpawn
-    - id: SolarFlare
+ #   - id: SolarFlare Ratbite, This shit also sucks
     - id: SnakeSpawn
-    - id: SpiderClownSpawn
+#    - id: SpiderClownSpawn
     - id: SpiderSpawn
     - id: VentClog
-    - id: TidemindDevelop # Goobstation - Tidemind
+#   - id: TidemindDevelop # Goobstation - Tidemind
     - id: MothroachSpawn # DeltaV
-    - id: DerelictCyborgSyndicateSpawn # Goobstation - usually calm
+ #   - id: DerelictCyborgSyndicateSpawn # Goobstation - usually calm
     - id: MalignRiftSpawn # DeltaV
     - id: FloorGoblinMidRound # Goobstation
     - id: ClownGoblinMigration # Goobstation - New Midrounds
@@ -299,7 +299,7 @@
     earliestStart: 30 # Goobstation - was 45
     #reoccurrenceDelay: 20 # Goobstation - no longer needed
     maxOccurrences: 1 # Goobstation
-    minimumPlayers: 30
+    minimumPlayers: 35
     chaos: # Goobstation
       Hostile: 20
       Friend: 20
@@ -309,19 +309,9 @@
     eventType: HostilesSpawn # Goobstation
   # Goobstation
   - type: GameRule
-    chaosScore: 300
+    chaosScore: 900 # Ratbite antag cut
   - type: SpaceSpawnRule
-  - type: AntagLoadProfileRule
-    # Goobstation start
-    speciesOverride: Human
-    speciesOverrideBlacklist:
-    - Yowie
-    - IPC
-    - Diona
-    - Abductor
-    - Harpy
-    - Plasmaman # EE
-    # Goobstation end
+  - type: AntagGhostCharacterRule # Trauma - use ghost character instead of AntagLoadProfileRule
   - type: AntagObjectives
     objectives:
     - StealResearchObjective

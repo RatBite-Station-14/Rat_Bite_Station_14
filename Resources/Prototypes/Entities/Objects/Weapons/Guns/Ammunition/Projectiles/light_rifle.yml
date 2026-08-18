@@ -9,8 +9,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 19
-      armorPenetration: 0.4 # Goobstation
+        Piercing: 30 #Ratbite balance
+      armorPenetration: 0.2 # Ratbite - 0.4 is a BIT extreme, also it made L6 the meta for loneops, BOOORING!
 
 - type: entity
   parent: BaseBulletPractice

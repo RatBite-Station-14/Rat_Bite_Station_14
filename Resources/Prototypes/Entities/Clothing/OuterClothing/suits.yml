@@ -164,6 +164,10 @@
     tags:
     - CorgiWearable
     - WhitelistChameleon
+  - type: Enchanter # Ratbite
+    maxLevel: 2
+    enchants:
+    - EnchantProtFire
 
 - type: entity
   parent: [ ClothingOuterBaseLarge, GeigerCounterClothing, AllowSuitStorageClothing, ClothingOuterBaseToggleable ]

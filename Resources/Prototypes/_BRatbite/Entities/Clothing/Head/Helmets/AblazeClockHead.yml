@@ -1,0 +1,14 @@
+- type: entity
+  parent: [ClothingHeadBase]
+  id: ClothingHeadHatDanteAblazeClock
+  name: Ablaze Clock
+  description: For those who decided to mess with the Timey-Whimey a little too much.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Head/Helmets/AblazeClock.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Head/Helmets/AblazeClock.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  

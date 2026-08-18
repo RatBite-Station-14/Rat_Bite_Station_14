@@ -679,6 +679,7 @@
     components:
     - type: RadiationSource
       intensity: 1
+      slope: 0.3
 
 - type: entity
   id: XenoArtifactChargeBattery
@@ -1162,6 +1163,7 @@
     components:
     - type: RadiationSource
       intensity: 2
+      slope: 0.3
 
 - type: entity
   id: XenoArtifactMaterialSpawnGlass

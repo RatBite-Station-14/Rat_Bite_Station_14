@@ -11,7 +11,6 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Tools.Components;
 using Content.Shared.Tools.Systems;
 using Content.Shared.ActionBlocker;
-using Robust.Server.Containers;
 
 namespace Content.Server.Resist;
 
@@ -23,7 +22,6 @@ public sealed class ResistLockerSystem : EntitySystem
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly WeldableSystem _weldable = default!;
     [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
-    [Dependency] private readonly ContainerSystem _container = default!; // good edit
 
     public override void Initialize()
     {
@@ -32,21 +30,26 @@ public sealed class ResistLockerSystem : EntitySystem
         SubscribeLocalEvent<ResistLockerComponent, ResistLockerDoAfterEvent>(OnDoAfter);
     }
 
-    // goob edit - made it support more than just entity storage
     private void OnRelayMovement(EntityUid uid, ResistLockerComponent component, ref ContainerRelayMovementEntityEvent args)
     {
-        if (component.IsResisting // already resisting
-        || !_actionBlocker.CanMove(args.Entity) // can move
-        || TryComp<LockComponent>(uid, out var @lock) && !@lock.Locked // has a lock and is unlocked
-        || !_weldable.IsWelded(uid)) // not welded
+        if (component.IsResisting)
             return;
 
-        AttemptResist(args.Entity, uid, component);
+        if (!TryComp(uid, out EntityStorageComponent? storageComponent))
+            return;
+
+        if (!_actionBlocker.CanMove(args.Entity))
+            return;
+
+        if (TryComp<LockComponent>(uid, out var lockComponent) && lockComponent.Locked || _weldable.IsWelded(uid))
+        {
+            AttemptResist(args.Entity, uid, storageComponent, component);
+        }
     }
 
-    private void AttemptResist(EntityUid user, EntityUid target, ResistLockerComponent? resistLockerComponent = null)
+    private void AttemptResist(EntityUid user, EntityUid target, EntityStorageComponent? storageComponent = null, ResistLockerComponent? resistLockerComponent = null)
     {
-        if (!Resolve(target, ref resistLockerComponent))
+        if (!Resolve(target, ref storageComponent, ref resistLockerComponent))
             return;
 
         var doAfterEventArgs = new DoAfterArgs(EntityManager, user, resistLockerComponent.ResistTime, new ResistLockerDoAfterEvent(), target, target: target)
@@ -88,12 +91,8 @@ public sealed class ResistLockerSystem : EntitySystem
                 _lockSystem.Unlock(uid, args.Args.User, lockComponent);
 
             _entityStorage.TryOpenStorage(args.Args.User, uid);
-
-            args.Handled = true; // goob edit
-            return;
         }
 
-        _container.TryRemoveFromContainer(args.Args.User, true); // goob edit
         args.Handled = true;
     }
 }

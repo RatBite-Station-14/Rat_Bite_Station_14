@@ -11,11 +11,11 @@ using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
+using Content.Server.Shuttles.Systems;
 using Content.Server.Mind;
 using Content.Server.Nuke;
 using Content.Server.Objectives;
 using Content.Server.RoundEnd;
-using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared.GameTicking.Components;
@@ -117,8 +117,7 @@ public sealed class BlobRuleSystem : GameRuleSystem<BlobRuleComponent>
         var stationName = Name(stationUid);
 
         if (blobTilesCount >= (stationUid.Comp?.StageBegin ?? StationBlobConfigComponent.DefaultStageBegin)
-            && _roundEndSystem.ExpectedCountdownEnd != null
-            && !_emergency.EmergencyShuttleArrived)
+            && _roundEndSystem.ExpectedCountdownEnd != null)
         {
             _roundEndSystem.CancelRoundEndCountdown(forceRecall: true);
             _chatSystem.DispatchStationAnnouncement(stationUid,

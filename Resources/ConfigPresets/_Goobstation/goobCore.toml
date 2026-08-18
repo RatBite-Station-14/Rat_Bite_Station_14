@@ -21,7 +21,7 @@ privacy_policy_version = "2025-12-25"
 soft_max_players = 85
 maxcharacterslots = 25
 round_end_pvs_overrides = false
-defaultpreset = "CombatDynamic"
+defaultpreset = "SusRat"
 ipintel_enabled = true
 ipintel_contact_email = "administrator@goobstation.com"
 

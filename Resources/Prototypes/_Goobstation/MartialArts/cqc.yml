@@ -23,7 +23,7 @@
   - Harm
   event: !type:CqcSlamPerformedEvent { }
   extraDamage: 10 #
-  paralyzeTime: 12 # in seconds
+  paralyzeTime: 4 # ratbite
 
 
 - type: combo
@@ -56,7 +56,6 @@
   - Disarm
   - Grab
   event: !type:CqcPressurePerformedEvent
-  staminaDamage: 65
 
 - type: combo
   id: CQCConsecutive

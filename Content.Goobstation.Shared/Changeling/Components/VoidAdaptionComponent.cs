@@ -8,10 +8,9 @@ namespace Content.Goobstation.Shared.Changeling.Components;
 /// <summary>
 /// Marks a changeling that has evolved Void Adaption.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class VoidAdaptionComponent : Component
 {
-    [DataField]
     public ProtoId<AlertPrototype> Alert = "VoidAdaption";
 
     [DataField]
@@ -19,21 +18,14 @@ public sealed partial class VoidAdaptionComponent : Component
 
     [DataField, AutoNetworkedField]
     public bool FirePopupSent;
-    [DataField]
     public LocId FirePopup = "changeling-voidadapt-onfire";
 
-    [DataField, AutoNetworkedField]
     public bool AdaptingLowPressure;
-    [DataField]
     public LocId EnterLowPressurePopup = "changeling-voidadapt-lowpressure-start";
-    [DataField]
     public LocId LeaveLowPressurePopup = "changeling-voidadapt-lowpressure-end";
 
-    [DataField, AutoNetworkedField]
     public bool AdaptingLowTemp;
-    [DataField]
     public LocId EnterLowTempPopup = "changeling-voidadapt-lowtemperature-start";
-    [DataField]
     public LocId LeaveLowTempPopup = "changeling-voidadapt-lowtemperature-end";
 
     [DataField, AutoNetworkedField]

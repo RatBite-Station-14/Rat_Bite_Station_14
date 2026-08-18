@@ -28,7 +28,7 @@ public sealed class WeldingSparksSystem : EntitySystem
     {
         if (TryComp<ToolComponent>(ent, out var toolComp))
         {
-            _toolSystem.PlayToolSound(ent, toolComp, null, AudioParams.Default.AddVolume(-2f));
+            _toolSystem.PlayToolSound(ent, toolComp, null);
         }
 
         // Get the actual `DoAfterID` using its index, for use as a dictionary key.
@@ -37,7 +37,7 @@ public sealed class WeldingSparksSystem : EntitySystem
         var spawnLoc = GetSpawnLoc(ent, args.Target);
         if (spawnLoc is not { } loc)
             return;
-            
+
         SpawnEffect(ent, ref args, doAfterId, loc);
     }
 

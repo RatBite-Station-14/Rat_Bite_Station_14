@@ -200,7 +200,7 @@
   - type: EntityTableContainerFill
     containers:
       entity_storage:
-        id: WeaponCrusherGlaive
+        id: WeaponCrusher
 
 - type: entity
   parent: CrateGenericSteel

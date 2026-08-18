@@ -12,24 +12,16 @@ public sealed class LinkAccountManager : IPostInjectInit
     private readonly List<SharedRMCPatron> _allPatrons = [];
 
     public SharedRMCPatronTier? Tier { get; private set; }
-    public bool Linked { get; private set; }
     public Color? GhostColor { get; private set; }
     public SharedRMCGhostCosmetics? GhostCosmetics { get; private set; } // Goob - ghost cosmetics
     public SharedRMCLobbyMessage? LobbyMessage { get; private set; }
     public SharedRMCRoundEndShoutouts? RoundEndShoutout { get; private set; }
 
-    public event Action<Guid>? CodeReceived;
     public event Action? Updated;
-
-    private void OnCode(LinkAccountCodeMsg message)
-    {
-        CodeReceived?.Invoke(message.Code);
-    }
 
     private void OnStatus(LinkAccountStatusMsg ev)
     {
         Tier = ev.Patron?.Tier;
-        Linked = ev.Patron?.Linked ?? false;
         GhostColor = ev.Patron?.GhostColor;
         GhostCosmetics = ev.Patron?.GhostCosmetics; // Goob - ghost cosmetics
         LobbyMessage = ev.Patron?.LobbyMessage;
@@ -60,8 +52,6 @@ public sealed class LinkAccountManager : IPostInjectInit
 
     void IPostInjectInit.PostInject()
     {
-        _net.RegisterNetMessage<LinkAccountCodeMsg>(OnCode);
-        _net.RegisterNetMessage<LinkAccountRequestMsg>();
         _net.RegisterNetMessage<LinkAccountStatusMsg>(OnStatus);
         _net.RegisterNetMessage<RMCPatronListMsg>(OnPatronList);
         _net.RegisterNetMessage<RMCClearGhostColorMsg>();

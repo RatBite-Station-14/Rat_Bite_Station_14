@@ -26,9 +26,9 @@
   - Vulpkanin
   - Rodentia
   - SlimePerson
-  - Dwarf
-  - Feroxi
-  - Chitinid
+  - Scurret # Ratbite
+  - PermaAscended # Ratbite
+#  - Dwarf , Ratbite- they are similar to humans
   components:
   - type: RandomHumanoidAppearance
     randomizeName: false

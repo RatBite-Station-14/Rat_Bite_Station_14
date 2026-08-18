@@ -1,0 +1,82 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: gameMap
+  id: Saltern
+  mapName: 'Saltern'
+  mapPath: /Maps/_BRatbite/Ratbite_Supported/saltern.yml
+  minPlayers: 10
+  maxPlayers: 45
+  fallback: true
+  stations:
+    Saltern:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Saltern {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            #service
+            # Goobstation - TODO: add bso and ntr
+            # Goobstation - Me did it, Icepick - Erm, if you did it, it isn't a todo!!!!
+            StationAi: [ 1, 1 ]
+            NanotrasenRepresentative: [ 1, 1 ] # Goobstation
+            BlueshieldOfficer: [ 1, 1 ] # Goobstation
+            Captain: [ 1, 1 ]
+            HeadOfPersonnel: [ 1, 1 ]
+            Bartender: [ 1, 1 ]
+            Botanist: [ 1, 2 ]
+            Chef: [ 1, 1 ]
+            Janitor: [ 1, 1 ]
+            Chaplain: [ 1, 1 ]
+            Librarian: [ 1, 1 ]
+            ServiceWorker: [ 2, 2 ]
+            RadioHost: [ 1, 1 ] # Ratbite
+            #engineering
+            ChiefEngineer: [ 1, 1 ]
+            EngiSentry: [ 1, 1 ] #ratbite
+            AtmosphericTechnician: [ 2, 2 ]
+            StationEngineer: [ 4, 4 ]
+            TechnicalAssistant: [ 4, 4 ]
+            #medical
+            ChiefMedicalOfficer: [ 1, 1 ]
+            MedOrderly: [ 1, 1 ] #ratbite
+            Chemist: [ 2, 2 ]
+            Psychologist: [ 1, 1 ] #ratbite
+            MedicalDoctor: [ 3, 3 ]
+            MedicalIntern: [ 4, 4 ]
+            Paramedic: [ 1, 1 ]
+            #science
+            ResearchDirector: [ 1, 1 ]
+            ScicurityGuard: [ 1, 1 ] #ratbite
+            Scientist: [ 4, 4 ]
+            ResearchAssistant: [ 2, 2 ]
+            Borg: [ 2, 2 ]
+            #security
+            HeadOfSecurity: [ 1, 1 ]
+            RedsightOverseer: [ 1, 1 ] #Ratbite
+            Warden: [ 2, 2 ] #Ratbite de protaganist-ify him!!!
+            Detective: [ 2, 2 ] #Ratbite disco elysium/sherlock larp
+            SecurityOfficer: [ 4, 4 ]
+            SecurityCadet: [ 4, 4 ]
+            Brigmedic: [ 1, 1 ]
+            #supply
+            Quartermaster: [ 1, 1 ]
+            CargoInsurance: [ 1, 1 ] #ratbite
+            SalvageSpecialist: [ 1, 3 ]
+            CargoTechnician: [ 2, 2 ]
+            #civillian
+            Passenger: [ -1, -1 ]
+            Clown: [ 1, 1 ]
+            Mime: [ 1, 1 ]
+            Musician: [ 1, 1 ]
+            Prisoner: [ -1, -1 ] #Ratbite
+
+        # Goobstation blob-config-start SMALL+
+        - type: StationBlobConfig
+          stageBegin: 25
+          stageCritical: 350
+          stageTheEnd: 700
+        # Goobstation blob-config-end

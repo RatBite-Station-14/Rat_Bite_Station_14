@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "Created by CreatorBot01",
+  "size": {
+    "x": 8,
+    "y": 8
+  },
+  "states": [
+    {
+      "name": "legal"
+    }
+  ]
+}

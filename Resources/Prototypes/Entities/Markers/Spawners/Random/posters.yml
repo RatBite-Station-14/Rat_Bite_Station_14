@@ -97,9 +97,6 @@
       - PosterContrabandExoAcid
       - PosterContrabandExoRun
       - PosterContrabandExoChomp
-      - PosterContrabandGoobChuckler # Goobstation
-      - PosterContrabandGoobYakub # Goobstation
-      - PosterContrabandGoobRedFOSS # Goobstation
     chance: 1
 
 - type: entity
@@ -181,6 +178,8 @@
       - PosterLegitGoobLouieVote # Goobstation
       - PosterLegitGoobSlowDownClown # Goobstation
       - PosterLegitGoobNTRAdvert # Goobstation
+      - PosterContrabandGoobChuckler # Goobstation
+      - PosterContrabandGoobYakub # Goobstation
       - PosterLegitOppenhopper
       - PosterLegitTyrone
       - PosterLegitHelio

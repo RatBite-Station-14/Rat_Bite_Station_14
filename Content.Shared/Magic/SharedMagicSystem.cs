@@ -3,7 +3,7 @@
 using System.Linq;
 using System.Numerics;
 using Content.Goobstation.Common.BlockTeleport;
-using Content.Goobstation.Common.Magic;
+using Content.Goobstation.Common.Changeling;
 using Content.Goobstation.Common.Religion;
 using Content.Shared._Goobstation.Wizard;
 using Content.Shared._Goobstation.Wizard.BindSoul;
@@ -295,7 +295,7 @@ public abstract class SharedMagicSystem : EntitySystem
     ///     Gets spawn positions listed on <see cref="InstantSpawnSpellEvent"/>
     /// </summary>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
-    public List<EntityCoordinates> GetInstantSpawnPositions(TransformComponent casterXform, MagicInstantSpawnData data) // Goob edit - made public
+    public List<EntityCoordinates> GetInstantSpawnPositions(TransformComponent casterXform, MagicInstantSpawnData data)
     {
         switch (data)
         {
@@ -410,7 +410,7 @@ public abstract class SharedMagicSystem : EntitySystem
     // End World Spawn Spells
     #endregion
     #region Projectile Spells
-    public void OnProjectileSpell(ProjectileSpellEvent ev) // Goob edit - made public
+    public void OnProjectileSpell(ProjectileSpellEvent ev)
     {
         if (ev.Handled || !PassesSpellPrerequisites(ev.Action, ev.Performer)) // Goob edit
             return;
@@ -696,10 +696,6 @@ public abstract class SharedMagicSystem : EntitySystem
             return;
         }
 
-        // raise blocker event (why the fuck was this done as a list lol)
-        var blockEv = new BeforeMindSwappedEvent();
-        RaiseLocalEvent(ev.Target, ref blockEv);
-
         List<(Type, string)> blockers = new()
         {
             (typeof(GhoulComponent), "ghoul"),
@@ -709,13 +705,6 @@ public abstract class SharedMagicSystem : EntitySystem
             (typeof(TimedDespawnComponent), "temporary"),
             (typeof(FadingTimedDespawnComponent), "temporary"),
         };
-
-        // someone should nuke the list and make all of the components use the event. that someone is not me.
-        if (blockEv.Cancelled)
-        {
-            _popup.PopupClient(Loc.GetString($"spell-fail-mindswap-{blockEv.Message}"), ev.Performer, ev.Performer);
-            return;
-        }
 
         if (blockers.Any(x => CheckMindswapBlocker(x.Item1, x.Item2)))
             return;

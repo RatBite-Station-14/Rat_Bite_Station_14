@@ -1,0 +1,45 @@
+- type: entity
+  parent: [ClothingUniformBase, BaseSecurityContraband]
+  id: ClothingUniformJumpsuitMedGuard
+  name: Medical Watch jumpsuit
+  description: A jumpsuit made of strong material, providing robust protection.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Uniforms/DeptGuards/Medward.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Uniforms/DeptGuards/Medward.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseSecurityContraband]
+  id: ClothingUniformJumpsuitCargoGuard
+  name: Cargo Watch jumpsuit
+  description: A jumpsuit made of strong material, providing robust protection.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Uniforms/DeptGuards/Cargowatch.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Uniforms/DeptGuards/Cargowatch.rsi
+
+
+- type: entity
+  parent: [ClothingUniformBase, BaseSecurityContraband]
+  id: ClothingUniformJumpsuitSciGuard
+  name: Science Watch jumpsuit
+  description: A jumpsuit made of strong material, providing robust protection.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Uniforms/DeptGuards/Scicurity.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Uniforms/DeptGuards/Scicurity.rsi
+
+
+- type: entity
+  parent: [ClothingUniformBase, BaseSecurityContraband]
+  id: ClothingUniformJumpsuitEngiGuard
+  name: Engineering Watch jumpsuit
+  description: A jumpsuit made of strong material, providing robust protection.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Uniforms/DeptGuards/Engisentry.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Uniforms/DeptGuards/Engisentry.rsi

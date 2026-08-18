@@ -8,7 +8,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Server.Ghost.Roles.Components;
 
 [RegisterComponent]
-[Access(typeof(GhostRoleSystem))]
+//[Access(typeof(GhostRoleSystem))] // Trauma - free AA
 public sealed partial class GhostRoleComponent : Component
 {
     [DataField("name")] private string _roleName = "Unknown";
@@ -29,6 +29,9 @@ public sealed partial class GhostRoleComponent : Component
     /// </summary>
     [DataField("prob")]
     public float Probability = 1f;
+
+    [DataField("allowPerma")]
+    public bool AllowPerma = false;
 
     // We do this so updating RoleName and RoleDescription in VV updates the open EUIs.
 

@@ -1,0 +1,26 @@
+# SPDX-FileCopyrightText: 2024 miapyxel <retromannnnn@gmail.com>
+# SPDX-FileCopyrightText: 2025 corresp0nd <46357632+corresp0nd@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 taydeo <td12233a@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later AND MIT
+
+- type: entity
+  id: ActionActivateReagentImplant
+  name: Inject Reagents
+  description: Inject up to 15u of the contained chemicals directly into your bloodstream.
+  categories: [ HideSpawnMenu ]
+  components:
+  # <Ratbite> - changed how this was defined, funky seems to allow for everything to be in InstantAction
+  - type: LimitedCharges
+    maxCharges: 3
+  - type: Action
+    checkCanInteract: false
+    useDelay: 10 
+    itemIconStyle: BigAction
+    priority: -20
+    icon:
+      sprite: Objects/Specific/Medical/medipen.rsi
+      state: stimpen
+  # </Ratbite>
+  - type: InstantAction
+    event: !type:UseReagentImplantEvent {}

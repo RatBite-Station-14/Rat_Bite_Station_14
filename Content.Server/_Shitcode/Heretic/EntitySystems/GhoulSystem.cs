@@ -78,6 +78,7 @@ public sealed class GhoulSystem : EntitySystem
     [Dependency] private readonly HTNSystem _htn = default!;
     [Dependency] private readonly SharedRoleSystem _role = default!;
     [Dependency] private readonly HereticSystem _heretic = default!;
+    [Dependency] private readonly PolymorphSystem _polymorph = default!;
 
     public override void Initialize()
     {
@@ -87,6 +88,7 @@ public sealed class GhoulSystem : EntitySystem
         SubscribeLocalEvent<GhoulComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<GhoulComponent, ExaminedEvent>(OnExamine);
         SubscribeLocalEvent<GhoulComponent, MobStateChangedEvent>(OnMobStateChange);
+        SubscribeLocalEvent<GhoulComponent, PolymorphedEvent>(OnPolymorphed);
 
         SubscribeLocalEvent<GhoulRoleComponent, GetBriefingEvent>(OnGetBriefing);
 
@@ -94,6 +96,11 @@ public sealed class GhoulSystem : EntitySystem
 
         SubscribeLocalEvent<HereticMinionComponent, AttackAttemptEvent>(OnTryAttack);
         SubscribeLocalEvent<HereticMinionComponent, TakeGhostRoleEvent>(OnTakeGhostRole);
+    }
+
+    private void OnPolymorphed(Entity<GhoulComponent> ent, ref PolymorphedEvent args)
+    {
+        _polymorph.CopyPolymorphComponent<GhoulComponent>(ent, args.NewEntity, !args.IsRevert);
     }
 
     private void OnGetBriefing(Entity<GhoulRoleComponent> ent, ref GetBriefingEvent args)

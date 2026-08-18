@@ -12,6 +12,8 @@ using Content.Server.Power.EntitySystems;
 using Content.Server.Radio.EntitySystems;
 using Content.Server.Stack;
 using Content.Shared.Atmos;
+using Content.Shared.Access.Components;
+using Content.Shared.Access.Systems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
@@ -40,6 +42,7 @@ namespace Content.Server.Lathe
     public sealed partial class LatheSystem : SharedLatheSystem
     {
         [Dependency] private readonly IGameTiming _timing = default!;
+        [Dependency] private readonly AccessReaderSystem _accessReader = default!;
         [Dependency] private readonly IPrototypeManager _proto = default!;
         [Dependency] private readonly IAdminLogManager _adminLogger = default!;
         [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
@@ -515,10 +518,21 @@ namespace Content.Server.Lathe
 
         private void OnLatheQueueRecipeMessage(EntityUid uid, LatheComponent component, LatheQueueRecipeMessage args)
         {
+            // Ratbite
+            if (!_accessReader.IsAllowed(args.Actor, uid))
+            {
+                _popup.PopupEntity("lathe-no-access", args.Actor, args.Actor);
+                return;
+            }
             if (_proto.TryIndex(args.ID, out LatheRecipePrototype? recipe))
             {
                 if (TryAddToQueue(uid, recipe, args.Quantity, component))
                 {
+                    // Ratbite: add logs
+                    if (TryComp<AccessReaderComponent>(uid, out var accessReaderComp))
+                    {
+                        _accessReader.LogAccess((uid, accessReaderComp), $"{args.Quantity} {GetRecipeName(recipe)} queued.");
+                    }
                     _adminLogger.Add(LogType.Action,
                         LogImpact.Low,
                         $"{ToPrettyString(args.Actor):player} queued {args.Quantity} {GetRecipeName(recipe)} at {ToPrettyString(uid):lathe}");

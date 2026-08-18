@@ -1,11 +1,14 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Heretic;
+using Content.Shared._Shitcode.Heretic.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Atmos.Components;
 using Robust.Shared.Map.Components;
 using Robust.Server.GameObjects;
+using Robust.Shared.Physics;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,6 +22,8 @@ public sealed partial class HereticAbilitySystem
 {
     [Dependency] private readonly MapSystem _map = default!;
     [Dependency] private readonly TransformSystem _xform = default!;
+
+    private EntityQuery<PhysicsComponent> _physicsQuery;
 
     protected override void SubscribeAsh()
     {
@@ -65,11 +70,7 @@ public sealed partial class HereticAbilitySystem
             toHeal += args.HealAmount;
 
             _flammable.AdjustFireStacks(look, args.FireStacks, flam, true, args.FireProtectionPenetration);
-            _dmg.TryChangeDamage(look,
-                args.Damage * _body.GetVitalBodyPartRatio(look),
-                true,
-                targetPart: TargetBodyPart.All,
-                splitDamage: SplitDamageBehavior.SplitEnsureAll);
+            _dmg.TryChangeDamage(look, args.Damage, true, targetPart: TargetBodyPart.All, splitDamage: SplitDamageBehavior.SplitEnsureAll);
         }
 
         if (toHeal >= 0)

@@ -52,6 +52,7 @@ public sealed class ThermalVisionSystem : EquipmentHudSystem<ThermalVisionCompon
         base.UpdateInternal(args);
         ThermalVisionComponent? tvComp = null;
         var lightRadius = 0f;
+        var visionRadius = -1f;
         foreach (var comp in args.Components)
         {
             if (!comp.IsActive && (comp.PulseTime <= 0f || comp.PulseAccumulator >= comp.PulseTime))
@@ -65,9 +66,18 @@ public sealed class ThermalVisionSystem : EquipmentHudSystem<ThermalVisionCompon
                 tvComp = comp;
 
             lightRadius = MathF.Max(lightRadius, comp.LightRadius);
+            if (comp.VisionRadius <= 0f)
+                visionRadius = 0f;
+            else if (visionRadius < 0f)
+                visionRadius = comp.VisionRadius;
+            else if (visionRadius > 0f)
+                visionRadius = MathF.Max(visionRadius, comp.VisionRadius);
         }
 
-        UpdateThermalOverlay(tvComp, lightRadius);
+        if (visionRadius < 0f)
+            visionRadius = 0f;
+
+        UpdateThermalOverlay(tvComp, lightRadius, visionRadius);
         UpdateOverlay(tvComp);
     }
 
@@ -77,12 +87,13 @@ public sealed class ThermalVisionSystem : EquipmentHudSystem<ThermalVisionCompon
 
         _thermalOverlay.ResetLight(false);
         UpdateOverlay(null);
-        UpdateThermalOverlay(null, 0f);
+        UpdateThermalOverlay(null, 0f, 0f);
     }
 
-    private void UpdateThermalOverlay(ThermalVisionComponent? comp, float lightRadius)
+    private void UpdateThermalOverlay(ThermalVisionComponent? comp, float lightRadius, float visionRadius)
     {
         _thermalOverlay.LightRadius = lightRadius;
+        _thermalOverlay.VisionRadius = visionRadius;
         _thermalOverlay.Comp = comp;
 
         switch (comp)

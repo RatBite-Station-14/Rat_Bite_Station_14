@@ -59,6 +59,7 @@
       nameSet: True
       mobile: True  # Goobstation - mobile cameras fix
       id: NoPro Camera
+    - type: BodyCam
     - type: Eye
     - type: WirelessNetworkConnection
       range: 200
@@ -125,18 +126,6 @@
     - Hair
     - HeadTop
     - HeadSide
-
-- type: entity
-  parent: ClothingOuterBase
-  id: ClothingOuterSuitTutu
-  name: tutu
-  description: Why?..
-  components:
-  - type: Sprite
-    sprite: _Goobstation/Clothing/OuterClothing/Misc/tutu.rsi
-  - type: Clothing
-    sprite: _Goobstation/Clothing/OuterClothing/Misc/tutu.rsi
-    quickEquip: true
 
 - type: entity
   parent: ClothingOuterBaseToggleable

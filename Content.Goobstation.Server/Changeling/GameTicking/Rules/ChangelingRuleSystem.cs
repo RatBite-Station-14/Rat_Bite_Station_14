@@ -79,7 +79,8 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
         _npcFaction.RemoveFaction(target, NanotrasenFactionId, false);
         _npcFaction.AddFaction(target, ChangelingFactionId);
 
-        // make them a changeling
+        // make sure it's initial chems are set to max
+        EnsureComp<ChangelingIdentityComponent>(target);
         EnsureComp<ChangelingComponent>(target);
 
         // add store
@@ -101,7 +102,7 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
         var mostAbsorbed = 0f;
         var mostStolen = 0f;
 
-        foreach (var ling in EntityQuery<ChangelingIdentityComponent>()) // TODO make a ChangelingAbsorbComponent to store data about absorbed DNA and entities
+        foreach (var ling in EntityQuery<ChangelingIdentityComponent>())
         {
             if (!_mind.TryGetMind(ling.Owner, out var mindId, out var mind))
                 continue;

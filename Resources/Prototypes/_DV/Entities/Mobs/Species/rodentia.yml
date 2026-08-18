@@ -38,7 +38,7 @@
         shape:
           !type:PhysShapeCircle
           radius: 0.35
-        density: 140
+        density: 180 # Ratbite density normalization, making size sliders more important for weight contests.
         restitution: 0.0
         mask:
         - MobMask
@@ -91,16 +91,6 @@
         sprite: "_DV/Effects/creampie.rsi"
         state: "creampie_rodentia"
         visible: false
-  # Goobstation
-  - type: ActionGrant
-    actions:
-    - ActionMouseCall
-  # Goobstation
-  - type: MobCallSource
-    range: 25 # slightly raised
-    whitelist:
-      tags:
-      - Mouse
   - type: MeleeWeapon
     soundHit:
       path: /Audio/Weapons/pierce.ogg

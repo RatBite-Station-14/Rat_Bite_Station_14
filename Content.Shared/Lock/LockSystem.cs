@@ -17,6 +17,7 @@ using Content.Shared.UserInterface;
 using Content.Shared.Verbs;
 using Content.Shared.Wires;
 using Content.Shared.Item.ItemToggle.Components;
+using Content.Shared.Mindshield.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Serialization;

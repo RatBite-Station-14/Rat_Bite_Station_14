@@ -1,7 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Goobstation.Common.Tools; // Goob (obviously)
-using Robust.Shared.Audio; // goob
 using Content.Shared.Administration.Logs;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.DoAfter;
@@ -98,12 +96,12 @@ public abstract partial class SharedToolSystem : EntitySystem
         args.PushMessage(message);
     }
 
-    public void PlayToolSound(EntityUid uid, ToolComponent tool, EntityUid? user, AudioParams? audioParams = null) // Goob - audioParams
+    public void PlayToolSound(EntityUid uid, ToolComponent tool, EntityUid? user)
     {
         if (tool.UseSound == null)
             return;
 
-        _audioSystem.PlayPredicted(tool.UseSound, uid, user, audioParams); // also goob - audioParams
+        _audioSystem.PlayPredicted(tool.UseSound, uid, user);
     }
 
     /// <summary>
@@ -178,8 +176,7 @@ public abstract partial class SharedToolSystem : EntitySystem
             return false;
 
         var toolEvent = new ToolDoAfterEvent(fuel, doAfterEv, GetNetEntity(target));
-        var doAfterLength = delay / toolComponent.SpeedModifier; // Goob - doAfterLength var
-        var doAfterArgs = new DoAfterArgs(EntityManager, user, doAfterLength, toolEvent, tool, target: target, used: tool)
+        var doAfterArgs = new DoAfterArgs(EntityManager, user, delay / toolComponent.SpeedModifier, toolEvent, tool, target: target, used: tool)
         {
             BreakOnDamage = true,
             BreakOnMove = true,
@@ -188,11 +185,7 @@ public abstract partial class SharedToolSystem : EntitySystem
             AttemptFrequency = fuel > 0 || toolComponent.AlwaysCheckDoAfter ? AttemptFrequency.EveryTick : AttemptFrequency.Never
         };
 
-        // Goobstation - Moved `TryStartDoAfter` into a check and added `UseToolEvent`.
-        if (_doAfterSystem.TryStartDoAfter(doAfterArgs, out id))
-        {
-            RaiseLocalEvent(tool, new UseToolEvent(user, target, id.Value.Index, doAfterLength));
-        }
+        _doAfterSystem.TryStartDoAfter(doAfterArgs, out id);
         return true;
     }
 
@@ -289,7 +282,7 @@ public abstract partial class SharedToolSystem : EntitySystem
     #region DoAfterEvents
 
     [Serializable, NetSerializable]
-    public sealed partial class ToolDoAfterEvent : DoAfterEvent // Goob - Protected -> Public
+    public sealed partial class ToolDoAfterEvent : DoAfterEvent
     {
         [DataField]
         public float Fuel;

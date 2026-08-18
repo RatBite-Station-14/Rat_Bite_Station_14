@@ -12,11 +12,11 @@
   - type: MeleeWeapon
     angle: 0
     wideAnimationRotation: 75
-    attackRate: 1.5
+    attackRate: 1
     damage:
       types:
         Slash: 15
-        Structural: 10
+        Structural: 20
       woundSeverityMultipliers:
         Slash: 1.5
     soundHit:

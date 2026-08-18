@@ -1,15 +1,18 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared._BRatbite.Traits;
 using Content.Shared.Actions;
 using Content.Shared.Alert;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared.Throwing;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
+using Robust.Shared.Network;
 using Robust.Shared.Timing;
 
 namespace Content.Shared.CombatMode.Pacification;
@@ -20,7 +23,9 @@ public sealed class PacificationSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
     [Dependency] private readonly SharedCombatModeSystem _combatSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly PaciFistSystem _paciFist = default!;
 
     public override void Initialize()
     {
@@ -102,8 +107,20 @@ public sealed class PacificationSystem : EntitySystem
         if (args.Weapon != null && args.Weapon.Value.Comp.Damage.GetTotal() == FixedPoint2.Zero)
             return;
 
+        if (_paciFist.IsBarehandWeapon(uid, args.Weapon?.Owner) &&
+            _paciFist.IsMobTarget(args.Target.Value) &&
+            (_net.IsClient && HasComp<PaciFistComponent>(uid) ||
+             _net.IsServer && _paciFist.CanPaciFistAttackMob(uid, args.Weapon?.Owner, args.Target.Value, out _)))
+            return;
+
         if (PacifiedCanAttack(uid, args.Target.Value, out var reason))
             return;
+
+        // Ratbite start
+        var ev = new BeforePacifiedAttackEvent(args.Target, args.Weapon, args.Disarm);
+        RaiseLocalEvent(uid, ref ev);
+        if (ev.Cancelled) return;
+        // Ratbite end
 
         ShowPopup((uid, component), args.Target.Value, reason);
         args.Cancel();
@@ -178,7 +195,7 @@ public struct AttemptPacifiedThrowEvent
     public EntityUid ItemUid;
     public EntityUid PlayerUid;
 
-    public AttemptPacifiedThrowEvent(EntityUid itemUid,  EntityUid playerUid)
+    public AttemptPacifiedThrowEvent(EntityUid itemUid, EntityUid playerUid)
     {
         ItemUid = itemUid;
         PlayerUid = playerUid;

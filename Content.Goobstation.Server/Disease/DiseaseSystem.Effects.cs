@@ -49,9 +49,9 @@ public sealed partial class DiseaseSystem
     {
         var emote = _proto.Index(ent.Comp.Emote);
         if (ent.Comp.WithChat)
-            _chat.TryEmoteWithChat(args.Ent, emote, forceEmote: true);
+            _chat.TryEmoteWithChat(args.Ent, emote);
         else
-            _chat.TryEmoteWithoutChat(args.Ent, emote, voluntary: false);
+            _chat.TryEmoteWithoutChat(args.Ent, emote);
     }
 
     private void OnGenericEffect(Entity<DiseaseGenericEffectComponent> ent, ref DiseaseEffectEvent args)

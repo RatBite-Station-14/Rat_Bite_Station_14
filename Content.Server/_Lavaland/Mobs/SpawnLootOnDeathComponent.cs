@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
 
@@ -12,11 +11,17 @@ namespace Content.Server._Lavaland.Mobs;
 [RegisterComponent]
 public sealed partial class SpawnLootOnDeathComponent : Component
 {
+    /// <summary>
+    /// Should it drop guaranteed loot when dead? If so what exactly?
+    /// </summary>
     [DataField]
-    public EntityTableSelector? Table;
+    public EntProtoId? Loot;
 
+    /// <summary>
+    /// Should it drop something besides the main loot as a crusher only reward?
+    /// </summary>
     [DataField]
-    public EntityTableSelector? SpecialTable;
+    public EntProtoId? SpecialLoot;
 
     /// <summary>
     /// Whitelist for a weapon that is always checked when hitting the target.
@@ -24,8 +29,11 @@ public sealed partial class SpawnLootOnDeathComponent : Component
     /// the mob doesn't drop special loot and fallbacks to normal loot instead.
     /// </summary>
     [DataField("weaponWhitelist")]
-    public EntityWhitelist? SpecialWeaponWhitelist;
+    public EntityWhitelist? SpecialWeaponWhitelist; // MegafaunaWeaponLooter
 
+    /// <summary>
+    /// Should it delete itself after being killed?
+    /// </summary>
     [DataField]
     public bool DeleteOnDeath;
 

@@ -1,0 +1,27 @@
+# Med Guard
+
+- type: loadout
+  id: MedGuardInsideJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMedGuard
+
+# Cargo Guard
+
+- type: loadout
+  id: CargoGuardInsideJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCargoGuard
+
+# Sci Guard
+
+- type: loadout
+  id: SciGuardInsideJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSciGuard
+
+# Engi Guard
+
+- type: loadout
+  id: EngiGuardInsideJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitEngiGuard

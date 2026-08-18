@@ -23,7 +23,7 @@
   - type: UseDelay
     delay: 3.0
   - type: MeleeWeapon
-    attackRate: 0.333
+    attackRate: 2.0
     wideAnimationRotation: 180
     soundHit: *BasePlushieSound
     damage:

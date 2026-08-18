@@ -66,6 +66,13 @@
   equipment:
     jumpsuit: ClothingUniformJumpskirtSec
 
+#Ratbite
+- type: loadout
+  id: SecurityJumpsuitClassic
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitClassicSecurity
+#Ratbite
+
 
 - type: loadout
   id: SecurityJumpsuitGrey

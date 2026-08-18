@@ -32,7 +32,6 @@
         - MedicalPatch # Goobstation
         - AutoinjectorCartridge # Goobstation
         - HandheldCrewMonitor # Goobstation
-        - SyringeCase # Goobstation
       components:
         - Injector
         - Pill
@@ -42,6 +41,9 @@
         - GunApplySolution # Goobstation - Syndicate dart gun
   - type: ExplosionResistance
     damageCoefficient: 0.25
+  - type: Tag
+    tags:
+    - ScurretWearable # Ratbite
 
 - type: entity
   parent: [ ClothingBeltStorageBase, ContentsExplosionResistanceBase, BaseCentcommContraband ]
@@ -56,6 +58,9 @@
     sprite: _Goobstation/Clothing/Belt/deathsquadwebbing.rsi
   - type: ExplosionResistance
     damageCoefficient: 0.01
+  - type: Tag
+    tags:
+    - ScurretWearable # Ratbite because funny goidaaa and if somehow a scurret is a DS/ERT its not Completely fucked
 
 
 - type: entity
@@ -74,6 +79,10 @@
     - 0,0,6,2
   - type: ExplosionResistance
     damageCoefficient: 0.05
+  - type: Tag
+    tags:
+    - ScurretWearable # Ratbite because funny goidaaa and if somehow a scurret is a DS/ERT its not Completely fucked
+
 
 - type: entity
   parent: ClothingBeltSecurity
@@ -87,8 +96,6 @@
     sprite: _Goobstation/Clothing/Belt/judobelt.rsi
   - type: GrantCorporateJudo
   - type: Storage
-    grid:
-    - 0,0,5,1 #you're not carrying a batong, if you want pure storage go with secbelt
     whitelist:
       tags:
       - CigPack
@@ -158,8 +165,8 @@
 - type: entity
   parent: ClothingBeltSheath
   id: ClothingBeltSheathHeadOfSecurity
-  name: head of security's sheath
-  description: A rugged sheath, designed to hold the Head of Security's custom energy sword.
+  name: security sheath
+  description: A rugged sheath, designed to hold a DT-2 for high ranking security staff.
   components:
   - type: Sprite
     sprite: _Goobstation/Clothing/Belt/hossheath.rsi
@@ -186,6 +193,8 @@
           tags:
           - Justice
   - type: Appearance
+  - type: Contraband # Ratbite: contraband changes
+    allowedJobs: [ Warden, HeadOfSecurity ]
 
 - type: entity
   parent: [ ClothingBeltStorageBase, ContentsExplosionResistanceBase, BaseSyndicateContraband ]
@@ -245,20 +254,9 @@
       - SurgeryTool
       - SolutionTransfer
       - SlimeExtract
-
-- type: entity
-  parent: ClothingBeltChemBagXenobiology
-  id: ClothingBeltChemBagXenobiologyHolding
-  name: xenobiology pouch of holding
-  description: A larger slime-resistant pouch intended for use by Xenobiologists. Smells of bluespace extract and monkey hair.
-  components:
-  - type: Sprite
-    sprite: _Goobstation/Clothing/Belt/xenobag_holding.rsi
-  - type: Clothing
-    sprite: _Goobstation/Clothing/Belt/xenobag_holding.rsi
-  - type: Storage
-    grid:
-    - 0,0,19,9
+  - type: Tag
+    tags:
+    - ScurretWearable # Ratbite because funny goidaaa and if somehow a scurret is a DS/ERT its not Completely fucked
 
 - type: entity
   parent: [ClothingBeltStorageBase, ContentsExplosionResistanceBase, BaseCentcommContraband]

@@ -16,12 +16,11 @@ public sealed class CatEmoteSpamCountermeasureSystem : EntitySystem
     [Dependency] private readonly ThunderstrikeSystem _thunderstrike = default!;
     [Dependency] private readonly IRobustRandom _rand = default!;
 
-    private const float ClearInterval = 20.0f;
-    private const float PitchModulo = 0.08f;
-    private const int LowerBound = 2; // Shoo away any shits with server vv from killing everyone on 1 emote
+    private const float ClearInterval = 2.0f;
+    private const int LowerBound = 15; // Shoo away any shits with server vv from killing everyone on 1 emote
 
     [ViewVariables(VVAccess.ReadWrite)]
-    private int _hardEmoteThreshold = 20;
+    private int _hardEmoteThreshold = 100;
 
     [ViewVariables(VVAccess.ReadWrite)]
     private int _softThresholdVariance = 10;
@@ -55,13 +54,6 @@ public sealed class CatEmoteSpamCountermeasureSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<SpeechComponent, EmoteEvent>(OnEmoteEvent);
-        SubscribeLocalEvent<SpeechComponent, EmoteSoundPitchShiftEvent>(OnGetPitchShiftEvent);
-    }
-
-    private void OnGetPitchShiftEvent(Entity<SpeechComponent> ent, ref EmoteSoundPitchShiftEvent ev)
-    {
-        var shift = GetCount(ent.Owner);
-        ev.Pitch = shift * PitchModulo;
     }
 
     private int GetCount(EntityUid entity)

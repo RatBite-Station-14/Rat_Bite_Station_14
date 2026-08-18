@@ -46,7 +46,7 @@ public sealed class EmoteOnDamageSystem : EntitySystem
         }
         else
         {
-            _chatSystem.TryEmoteWithoutChat(uid, emote, voluntary: false);
+            _chatSystem.TryEmoteWithoutChat(uid,emote);
         }
 
         emoteOnDamage.LastEmoteTime = _gameTiming.CurTime;

@@ -88,6 +88,7 @@ public sealed class ChasmSystem : EntitySystem
         }
 
         args.Continue = true;
+        args.Cancelled = false;
     }
 
     private void OnUpdateCanMove(EntityUid uid, ChasmFallingComponent component, UpdateCanMoveEvent args)

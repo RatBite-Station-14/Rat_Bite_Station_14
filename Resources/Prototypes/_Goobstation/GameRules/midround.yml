@@ -20,7 +20,7 @@
       Death: 100
     eventType: HostilesSpawn
   - type: GameRule
-    chaosScore: 400
+    chaosScore: 1000 # Ratbite antag cut
   - type: AlertLevelInterceptionRule
   - type: AntagSelection
     selectionTime: PostPlayerSpawn
@@ -28,7 +28,7 @@
     - prefRoles: [ Traitor ]
       min: 1
       max: 2
-      playerRatio: 10
+      playerRatio: 15
       blacklist:
         components:
         - AntagImmune
@@ -36,10 +36,145 @@
       lateJoinAdditional: true
       mindRoles:
       - MindRoleTraitor
+      components:
+      - type: CombatTrained
   - type: Tag
     tags:
       - MidroundAntag
 
+# Midround Changelings
+- type: entity
+  parent: Changeling
+  id: ChangelingMidround
+  components:
+  - type: StationEvent
+    earliestStart: 20
+    weight: 4
+    minimumPlayers: 30 # Ratbite antag cut
+    maxOccurrences: 1
+    startAnnouncement: station-event-communication-interception
+    startAudio:
+      path: /Audio/Announcements/intercept.ogg
+    duration: null
+    occursDuringRoundEnd: false
+    chaos:
+      Hostile: 150
+      Medical: 150
+      Death: 150
+    eventType: HostilesSpawn
+  - type: GameRule
+    chaosScore: 1800 # Ratbite antag cut
+  - type: AlertLevelInterceptionRule
+  - type: AntagSelection
+    selectionTime: PostPlayerSpawn
+    agentName: changeling-roundend-name
+    definitions:
+    - prefRoles: [ Changeling ]
+      min: 0
+      max: 2
+      playerRatio: 20
+      blacklist:
+        components:
+        - CommandStaff
+        - AntagImmune
+        - BibleUser
+      lateJoinAdditional: true
+      mindRoles:
+      - MindRoleChangeling
+  - type: Tag
+    tags:
+      - MidroundAntag
+
+# Midround Heretics
+- type: entity
+  parent: Heretic
+  id: HereticMidround
+  components:
+  - type: StationEvent
+    earliestStart: 20
+    weight: 3
+    minimumPlayers: 30
+    maxOccurrences: 1
+    startAnnouncement: station-event-communication-interception
+    startAudio:
+      path: /Audio/Announcements/intercept.ogg
+    duration: null
+    occursDuringRoundEnd: false
+    chaos:
+      Hostile: 200
+      Medical: 150
+      Death: 200
+    eventType: HostilesSpawn
+  - type: GameRule
+    chaosScore: 1500 # Ratbite antag cut
+  - type: AlertLevelInterceptionRule
+  - type: AntagSelection
+    selectionTime: PostPlayerSpawn
+    agentName: heretic-roundend-name
+    definitions:
+    - prefRoles: [ Heretic ]
+      max: 2
+      min: 0
+      playerRatio: 15
+      blacklist:
+        components:
+        - CommandStaff
+        - AntagImmune
+        - BibleUser
+      startingGear: HereticMidround
+      lateJoinAdditional: true
+      jobBlacklist: [ Chaplain ] # GOOBSTATION
+      mindRoles:
+      - MindRoleHeretic
+      components: # Ratbite - Why the fuck didn't midround heretics have WeakToHoly and CanEnchant?
+      - type: WeakToHoly
+      - type: CanEnchant
+  - type: Tag
+    tags:
+      - MidroundAntag
+
+# Midround Revolutionaries
+- type: entity
+  parent: Revolutionary
+  id: RevolutionaryMidround
+  components:
+  - type: StationEvent
+    earliestStart: 20
+    weight: 3
+    minimumPlayers: 30
+    maxOccurrences: 1
+    duration: null
+    occursDuringRoundEnd: false
+    chaos:
+      Hostile: 250
+      Medical: 250
+      Death: 250
+    eventType: HostilesSpawn
+  - type: GameRule
+    chaosScore: 900
+  - type: AntagSelection
+    selectionTime: PostPlayerSpawn
+    definitions:
+    - prefRoles: [ HeadRev ]
+      max: 3
+      playerRatio: 15
+      blacklist:
+        components:
+        - AntagImmune
+        - CommandStaff
+      briefing:
+        text: head-rev-role-greeting
+        color: CornflowerBlue
+        sound: "/Audio/Ambience/Antag/headrev_start.ogg"
+      startingGear: HeadRevGear
+      components:
+      - type: Revolutionary
+      - type: HeadRevolutionary
+      mindRoles:
+      - MindRoleHeadRevolutionary
+  - type: Tag
+    tags:
+      - MidroundAntag
 
 # Skeleton Spawn
 - type: entity
@@ -50,7 +185,6 @@
     weight: 5
     duration: 1
     minimumPlayers: 15
-    maxOccurrences: 2
     chaos:
       Hostile: 40
       Medical: 40
@@ -615,7 +749,7 @@
   parent: BaseGameRule
   components:
   - type: StationEvent
-    weight: 1
+    weight: 25 # Tune down after Christmas
     earliestStart: 3
     minimumPlayers: 10
     maxOccurrences: 1
@@ -626,64 +760,3 @@
     max: 1
     table:
       id: SantaClaus
-
-#Contractor
-- type: entity
-  parent: ContractorSpawn
-  id: ContractorSpawnMidround
-  components:
-  - type: GameRule
-    chaosScore: 400
-  - type: RuleGrids
-  - type: LoadMapRule
-    gridPath: /Maps/_Goobstation/Shuttles/ShuttleEvent/Legionnaire.yml
-  - type: StationEvent
-    startAnnouncement: null
-    weight: 1
-    duration: null
-    earliestStart: 30
-    minimumPlayers: 30
-    chaos:
-      Hostile: 40
-      Combat: 40
-      Death: 40
-    eventType: HostilesSpawn
-  - type: AntagLoadProfileRule
-    speciesOverrideBlacklist:
-    - Yowie
-    - IPC
-    - Diona
-    - Harpy
-    - Plasmaman
-  - type: AntagObjectives
-    objectives:
-    - ContractorRansomObjective
-  - type: AntagSelection
-    selectionTime: PostPlayerSpawn
-    agentName: ghost-role-information-contractor-name
-    definitions:
-    - spawnerPrototype: ContractorSpawner
-      min: 1
-      max: 1
-      pickPlayer: false
-      startingGear: ContractorGear
-      roleLoadout:
-      - RoleSurvivalNukie
-      mindRoles:
-      - MindRoleContractor
-      briefing:
-        text: contractor-role-greeting
-        color: Red
-        sound: /Audio/Ambience/Antag/traitor_wawa.ogg
-      components:
-      - type: RandomMetadata
-        nameSegments:
-        - NamesContractorPrefix
-        - NamesSyndicateElite
-        nameFormat: name-format-standard
-      - type: NpcFactionMember
-        factions:
-        - Syndicate
-  - type: Tag
-    tags:
-    - MidroundAntag

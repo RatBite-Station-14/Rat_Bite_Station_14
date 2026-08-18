@@ -1,0 +1,170 @@
+- type: technology
+  id: DecoyTechnologies
+  name: research-legal-decoy-technology
+  icon:
+    sprite: Objects/Misc/nukedisk.rsi
+    state: icon
+  discipline: LEGAL
+  tier: 1
+  cost: 25000
+  recipeUnlocks:
+  - GrenadeDummy
+  - LegalFakeNukeDisk
+  - LegalSyndieTrickyBomb
+  position: -6,-6 # Goobstation R&D Console rework
+  technologyPrerequisites:
+  - AlternativeResearch
+
+- type: technology
+  id: UnnaturalEntrapmentTechnologies
+  name: research-legal-unnatural-entrapment-technology
+  icon:
+    sprite: _Goobstation/Clothing/Head/Helmets/reverse_bear_trap.rsi
+    state: icon
+  discipline: LEGAL
+  tier: 1
+  cost: 50000
+  recipeUnlocks:
+  - ReverseBearTrap
+  - ReverseBearTrapKey
+  position: -6,-9 # Goobstation R&D Console rework
+  technologyPrerequisites:
+  - MechanicalCompression
+  - DecoyTechnologies
+
+- type: technology
+  id: PhantomThiefTechnologies
+  name: research-legal-phantom-hand-technology
+  icon:
+    sprite: Clothing/Hands/Gloves/Color/black.rsi
+    state: icon
+  discipline: LEGAL
+  tier: 1
+  cost: 100000
+  recipeUnlocks:
+  - LegalThievingGloves
+  - DimensionPot
+  position: -6,-8 # Goobstation R&D Console rework
+  technologyPrerequisites:
+  - BluespaceTheory
+  - DecoyTechnologies
+
+- type: technology
+  id: IDDistruptionTechnologies
+  name: research-legal-identity-distruption-technology
+  icon:
+    sprite: Clothing/Mask/gas.rsi
+    state: icon
+  discipline: LEGAL
+  tier: 1
+  cost: 100000
+  recipeUnlocks:
+  - ClothingUniformJumpsuitChameleon
+  - ClothingHeadHatChameleon
+  - ClothingMaskGasVoiceChameleon
+  - LegalAgentIDCard
+  position: -6,-7 # Goobstation R&D Console rework
+  technologyPrerequisites:
+  - AdvancedTranslation
+  - DecoyTechnologies
+
+- type: technology
+  id: AdvChemManipulationTechnologies
+  name: research-legal-adv-chem-manipulation-technology
+  icon:
+    sprite: Objects/Specific/Medical/syndihypo.rsi
+    state: hypo
+  discipline: LEGAL
+  tier: 1
+  cost: 75000
+  recipeUnlocks:
+  - LegalHypoDart
+  - LegalVestineChemistryVial
+#  - LegalHypospray
+  position: -6,-10 # Goobstation R&D Console rework
+  technologyPrerequisites:
+  - BluespaceChemistry
+  - DecoyTechnologies
+
+- type: technology
+  id: FreedomTechnologies
+  name: research-legal-freedom-technology
+  icon:
+    sprite: /Textures/Actions/Implants/implants.rsi
+    state: freedom
+  discipline: LEGAL
+  tier: 2
+  cost: 150000
+  recipeUnlocks:
+  - LegalEMAG
+  - LegalFreedomImplanter
+  - LegalRadioJammer
+
+  position: -7,-8 # Goobstation R&D Console rework
+  technologyPrerequisites:
+  - IDDistruptionTechnologies
+  - PhantomThiefTechnologies
+  - UnnaturalEntrapmentTechnologies
+  - DecoyTechnologies
+  - AdvChemManipulationTechnologies
+
+- type: technology
+  id: AdvMeleeTechnologies
+  name: research-legal-adv-melee-technology
+  icon:
+    sprite: _Goobstation/Wizard/Objects/Weapons/hfrequency.rsi
+    state: icon
+  discipline: LEGAL
+  tier: 3
+  cost: 200000
+  recipeUnlocks:
+  - LegalHighFrequencyBlade
+  - LegalEnergySword
+  position: -8,-10 # Goobstation R&D Console rework
+  technologyPrerequisites:
+  - FreedomTechnologies
+  - HighEndSurgery
+  - OptimizedMicrogalvanism
+  - PortableMicrofusionWeaponry
+
+- type: technology
+  id: BreacherTechnologies
+  name: research-legal-breacher-technology
+  icon:
+    sprite: Objects/Weapons/Bombs/c4.rsi
+    state: icon
+  discipline: LEGAL
+  tier: 3
+  cost: 200000
+  recipeUnlocks:
+  - LegalC4
+  - SeismicCharge
+  - LegalEmpGrenade
+  position: -8,-9 # Goobstation R&D Console rework
+  technologyPrerequisites:
+  - FreedomTechnologies
+  - KineticModifications
+  - ExplosiveMechAmmunition
+  - OptimizedMicrogalvanism
+  - MassExcavation
+  - AdvancedShuttleWeapon
+
+- type: technology
+  id: BorgWeaponTechnologies
+  name: research-legal-borg-weapon-technology
+  icon:
+    sprite: _Goobstation/Objects/Weapons/Guns/Pistols/anaconda.rsi
+    state: icon
+  discipline: LEGAL
+  tier: 3
+  cost: 100000
+  recipeUnlocks:
+  - LegalBorgModuleSyndicateWeaponAdvanced
+  - LegalBorgModuleMartyr
+  position: -8,-8 # Goobstation R&D Console rework
+  technologyPrerequisites:
+  - FreedomTechnologies
+  - PortableMicrofusionWeaponry
+  - BasicRobotics
+  - Durand
+

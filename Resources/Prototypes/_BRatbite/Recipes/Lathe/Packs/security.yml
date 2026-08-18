@@ -1,0 +1,18 @@
+- type: latheRecipePack
+  id: SecurityAmmoRatbiteDynamic
+  recipes:
+  - EnergyMagPistolIon
+  - EnergyMagPistolOverchargeLethal
+
+- type: latheRecipePack
+  id: SecurityAmmoRatbiteStatic
+  recipes:
+  - EnergyMagPistolLethal
+  - SpeedLoaderSpecial
+  - MagazineBoxSpecial
+ # - EnergyMagPistolDisabler - Kill double disabler
+
+- type: latheRecipePack
+  id: SecurityMiscRatbiteStatic
+  recipes:
+  - ClothingOuterStraightjacket

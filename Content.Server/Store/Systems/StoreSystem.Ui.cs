@@ -3,21 +3,25 @@
 using System.Linq;
 using Content.Goobstation.Shared.NTR;
 using Content.Goobstation.Shared.NTR.Events;
+using Content.Goobstation.Shared.ManifestListings;
 using Content.Server._Goobstation.Wizard.Store;
-using Content.Server.Actions;
-using Content.Server.Administration.Logs;
 using Content.Server.Heretic.EntitySystems;
 using Content.Server.PDA.Ringer;
+using Content.Shared._Goobstation.Wizard.Refund;
+using Content.Shared.GameTicking;
+using Content.Shared.Heretic;
+using Content.Shared.Heretic.Prototypes;
+using Robust.Shared.Timing;
+// </Trauma>
+using System.Linq;
+using Content.Server.Actions;
+using Content.Server.Administration.Logs;
 using Content.Server.Stack;
 using Content.Server.Store.Components;
-using Content.Shared._Goobstation.Wizard.Refund; // Goob
 using Content.Shared.Actions;
 using Content.Shared.Database;
 using Content.Goobstation.Maths.FixedPoint;
-using Content.Goobstation.Shared.ManifestListings;
 using Content.Shared.Hands.EntitySystems;
-using Content.Shared.Heretic; // Goob
-using Content.Shared.Heretic.Prototypes; // Goob
 using Content.Shared.Mind;
 using Content.Shared.PDA.Ringer;
 using Content.Shared.Store;
@@ -27,7 +31,6 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing; // Goob
 
 namespace Content.Server.Store.Systems;
 
@@ -35,6 +38,10 @@ namespace Content.Server.Store.Systems;
 // do not touch unless you want to shoot yourself in the leg
 public sealed partial class StoreSystem
 {
+    [Dependency] private readonly IGameTiming _timing = default!;
+    // <Trauma>
+    [Dependency] private readonly SharedGameTicker _ticker = default!;
+    // </Trauma>
     [Dependency] private readonly IAdminLogManager _admin = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly ActionsSystem _actions = default!;
@@ -45,7 +52,6 @@ public sealed partial class StoreSystem
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly HereticSystem _heretic = default!; // goobstation - heretics
-    [Dependency] private readonly IGameTiming _timing = default!; // goobstation - ntr update
 
     private void InitializeUi()
     {
@@ -111,7 +117,8 @@ public sealed partial class StoreSystem
         //this is the person who will be passed into logic for all listing filtering.
         if (user != null) //if we have no "buyer" for this update, then don't update the listings
         {
-            component.LastAvailableListings = GetAvailableListings(component.AccountOwner ?? user.Value, store, component).ToHashSet();
+            component.LastAvailableListings = GetAvailableListings(component.AccountOwner ?? user.Value, store, component)
+                .ToHashSet();
         }
 
         //dictionary for all currencies, including 0 values for currencies on the whitelist
@@ -198,13 +205,13 @@ public sealed partial class StoreSystem
         //     component.RefundAllowed = false;
 
         //subtract the cash
-        foreach (var (currency, value) in listing.Cost)
+        foreach (var (currency, amount) in listing.Cost)
         {
-            component.Balance[currency] -= value;
+            component.Balance[currency] -= amount;
 
             component.BalanceSpent.TryAdd(currency, FixedPoint2.Zero);
 
-            component.BalanceSpent[currency] += value;
+            component.BalanceSpent[currency] += amount;
         }
 
         // goobstation - heretics
@@ -348,8 +355,8 @@ public sealed partial class StoreSystem
         if (listing.ResetRestockOnPurchase) // goobstation edit start
         {
             // making sure that you cant buy some stuff endlessly if they are not meant to
-            var restockDuration = listing.RestockAfterPurchase ?? listing.RestockDuration; // Просто используем значение напрямую
-            listing.RestockTime = _timing.CurTime + restockDuration;
+            var restockDuration = listing.RestockAfterPurchase ?? listing.RestockDuration; // Just use the value directly.
+            listing.RestockTime = _timing.CurTime.Subtract(_ticker.RoundStartTimeSpan) + restockDuration;
         } // goob edit end
 
     }

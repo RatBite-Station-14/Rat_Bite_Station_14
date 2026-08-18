@@ -90,7 +90,6 @@ public sealed partial class GunSystem : SharedGunSystem
         var fromMap = TransformSystem.ToMapCoordinates(fromCoordinates);
         var toMap = TransformSystem.ToMapCoordinates(toCoordinates).Position;
         var mapDirection = toMap - fromMap.Position;
-        var mapAngle = mapDirection.ToAngle();
         var angle = GetRecoilAngle(Timing.CurTime, gun, mapDirection.ToAngle(), user);  // Goobstation user
 
         // If applicable, this ensures the projectile is parented to grid on spawn, instead of the map.
@@ -203,8 +202,8 @@ public sealed partial class GunSystem : SharedGunSystem
                 var spreadEvent = new GunGetAmmoSpreadEvent(ammoSpreadComp.Spread);
                 RaiseLocalEvent(gun, ref spreadEvent);
 
-                var angles = LinearSpread(mapAngle - spreadEvent.Spread / 2,
-                    mapAngle + spreadEvent.Spread / 2, ammoSpreadComp.Count);
+                var angles = LinearSpread(angle - spreadEvent.Spread / 2,
+                    angle + spreadEvent.Spread / 2, ammoSpreadComp.Count);
 
                 ShootOrThrow(ammoEnt, angles[0].ToVec(), gunVelocity, gun, user,
                     targetCoordinates: toMapBeforeRecoil); // Goobstation
@@ -329,9 +328,7 @@ public sealed partial class GunSystem : SharedGunSystem
     private Angle GetRecoilAngle(TimeSpan curTime, GunComponent component, Angle direction, EntityUid? user = null) // Goobstation user
     {
         var timeSinceLastFire = (curTime - component.LastFire).TotalSeconds;
-        var minTheta = Math.Min(component.MinAngleModified.Theta, component.MaxAngleModified.Theta); // goob edit make min max work properly
-        var maxTheta = Math.Max(component.MinAngleModified.Theta, component.MaxAngleModified.Theta); // goob edit reverse recoil direction for funny mechanics
-        var newTheta = MathHelper.Clamp(component.CurrentAngle.Theta + component.AngleIncreaseModified.Theta - component.AngleDecayModified.Theta * timeSinceLastFire, minTheta, maxTheta); // goob edit
+        var newTheta = MathHelper.Clamp(component.CurrentAngle.Theta + component.AngleIncreaseModified.Theta - component.AngleDecayModified.Theta * timeSinceLastFire, component.MinAngleModified.Theta, component.MaxAngleModified.Theta);
         component.CurrentAngle = new Angle(newTheta);
         component.LastFire = component.NextFire;
 
@@ -352,7 +349,8 @@ public sealed partial class GunSystem : SharedGunSystem
 
         var spread = component.CurrentAngle.Theta * random;
         var angle = new Angle(direction.Theta + component.CurrentAngle.Theta * random);
-        DebugTools.Assert(Math.Abs(spread) <= maxTheta); // goob edit
+        // Ratbite: There are debuffs to spread now, remove the assert
+        // DebugTools.Assert(spread <= component.MaxAngleModified.Theta);
         return angle;
     }
 

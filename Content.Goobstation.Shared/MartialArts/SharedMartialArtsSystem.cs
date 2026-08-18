@@ -445,7 +445,7 @@ public abstract partial class SharedMartialArtsSystem : EntitySystem
         if (!_netManager.IsServer || MetaData(user).EntityLifeStage >= EntityLifeStage.Terminating)
             return false;
 
-        if (HasComp<ChangelingComponent>(user))
+        if (HasComp<ChangelingIdentityComponent>(user))
         {
             _popupSystem.PopupEntity(Loc.GetString("cqc-fail-changeling"), user, user);
             return false;

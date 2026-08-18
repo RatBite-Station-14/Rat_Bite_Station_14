@@ -723,7 +723,6 @@
       - Dog
       understands:
       - Dog
-      - TauCetiBasic
 
 - type: entity
   name: horse

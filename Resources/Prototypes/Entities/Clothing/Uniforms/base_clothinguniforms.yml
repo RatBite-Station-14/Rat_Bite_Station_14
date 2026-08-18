@@ -45,6 +45,10 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 30
+  - type: AppendageToggleClothing
+    layers:
+    - Tail
+    - Wings
   - type: Tag
     tags:
     - ClothMade
@@ -78,7 +82,6 @@
   - type: PhysicalComposition #Goobstation - Recycle update
     materialComposition:
       Cloth: 75
-  - type: SuitSensorShockable # Goobstation
 
 - type: entity
   abstract: true

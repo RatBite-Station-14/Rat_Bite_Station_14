@@ -38,10 +38,19 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
                 </PanelContainer>
             </ScrollContainer>
+		<paper:DrawWindow Name="DrawWindow" VerticalExpand="True" HorizontalExpand="True" MaxWidth="600"/>
         </PanelContainer>
+
         <!-- Bottom buttons for editing -->
-        <BoxContainer Name="EditButtons" Orientation="Horizontal" HorizontalAlignment="Right" Margin="6">
+	<BoxContainer Name="EditButtons" Orientation="Vertical">
+          <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" Margin="3">
+	    <Button Name="DrawButton" ToggleMode="True" />
             <Button Name="SaveButton" />
-        </BoxContainer>
+          </BoxContainer>
+	  <BoxContainer Name="DrawingButtons" Orientation="Horizontal" HorizontalAlignment="Right" Margin="6">
+	    <Button Name="ClearDrawing" />
+	    <Button Name="UndoDrawing" />
+          </BoxContainer>
+	</BoxContainer>
     </BoxContainer>
 </paper:PaperWindow>

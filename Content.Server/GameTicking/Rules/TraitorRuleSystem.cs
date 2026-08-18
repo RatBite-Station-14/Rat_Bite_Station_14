@@ -1,6 +1,8 @@
+using Content.Goobstation.Common.Traitor;
+
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Goobstation.Common.Traitor;
+using Content.Server.Administration.Logs;
 using Content.Server.Antag;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Mind;

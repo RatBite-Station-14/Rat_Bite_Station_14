@@ -180,6 +180,7 @@
   components:
   - type: Contraband
     allowedDepartments: [ Security, Cargo ]
+    allowedJobs: [ BlueshieldOfficer ] # Ratbite
 
 - type: entity
   id: BaseMedicalScienceContraband

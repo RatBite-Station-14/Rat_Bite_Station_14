@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Goobstation.Common.Magic;
 using Content.Goobstation.Common.Religion;
-using Content.Goobstation.Shared.Changeling.Components;
 using Content.Goobstation.Shared.Devil;
 using Content.Goobstation.Shared.Possession;
 using Content.Goobstation.Shared.Religion;
@@ -17,8 +15,6 @@ using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Coordinates;
 using Content.Shared.Database;
 using Content.Shared.Examine;
-using Content.Shared.Follower;
-using Content.Shared.Follower.Components;
 using Content.Shared.Ghost;
 using Content.Shared.Heretic;
 using Content.Shared.Mind;
@@ -33,7 +29,9 @@ using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Spawners;
 using Robust.Shared.Timing;
-using static Content.Shared.Administration.Notes.AdminMessageEuiState;
+using Content.Shared.Follower;
+using Content.Shared.Follower.Components;
+using Content.Goobstation.Shared.Changeling.Components;
 
 namespace Content.Goobstation.Server.Possession;
 
@@ -215,12 +213,9 @@ public sealed partial class PossessionSystem : EntitySystem
             return false;
         }
 
-        var swapEv = new BeforeMindSwappedEvent();
-        RaiseLocalEvent(possessed, ref swapEv);
-
-        // have fun moving all these to the event
         List<(Type, string)> blockers =
         [
+            (typeof(ChangelingIdentityComponent), "changeling"),
             (typeof(DevilComponent), "devil"),
             (typeof(GhoulComponent), "ghoul"),
             (typeof(GhostComponent), "ghost"),
@@ -229,12 +224,6 @@ public sealed partial class PossessionSystem : EntitySystem
             (typeof(FadingTimedDespawnComponent), "temporary"),
             (typeof(ShadowlingComponent), "shadowling"),
         ];
-
-        if (swapEv.Cancelled)
-        {
-            _popup.PopupEntity(Loc.GetString($"possession-fail-{swapEv.Message}"), possessor, possessor);
-            return false;
-        }
 
         foreach (var (item1, item2) in blockers)
         {

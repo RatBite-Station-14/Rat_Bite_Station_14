@@ -60,8 +60,6 @@
           shader: unshaded
         gloves-vox:
         - state: equipped-HAND-sealed-vox
-        - state: equipped-HAND-sealed-unshaded-vox
-          shader: unshaded
     - type: Insulated # Goob Edit (WHY IS IT NOT INSULATED??)
 
 - type: entity

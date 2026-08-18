@@ -10,6 +10,16 @@
     sprite: _Lavaland/Objects/Weapons/Guns/Basic/kinetic_shotgun.rsi
     layers:
     - state: icon
+      map: [ "enum.WeaponVisualLayers.Base" ]
+    - state: bayonet
+      map: [ "enum.WeaponVisualLayers.Bayonet" ]
+      visible: false
+    - state: flight
+      map: [ "enum.WeaponVisualLayers.FlightOff" ]
+      visible: false
+    - state: flight-on
+      map: [ "enum.WeaponVisualLayers.FlightOn" ]
+      visible: false
     - state: animation-icon
       visible: false
       map: [ "empty-icon" ]
@@ -17,6 +27,13 @@
     sprite: _Lavaland/Objects/Weapons/Guns/Basic/kinetic_shotgun.rsi
   - type: BasicEntityAmmoProvider
     proto: PelletKineticSpread
+    capacity: 1
+    count: 1
+  - type: ItemUpgradeable
+    maxUpgradeCapacity: 70
+    whitelist:
+      tags:
+      - PKAUpgrade
   - type: GunRequiresWield
   - type: Item
     sprite: _Lavaland/Objects/Weapons/Guns/Basic/kinetic_shotgun.rsi
@@ -33,6 +50,19 @@
     sprite: _Lavaland/Objects/Weapons/Guns/Basic/kinetic_repeater.rsi
     layers:
     - state: icon
+      map: [ "enum.WeaponVisualLayers.Base" ]
+    - state: bayonet
+      map: [ "enum.WeaponVisualLayers.Bayonet" ]
+      visible: false
+    - state: flight
+      map: [ "enum.WeaponVisualLayers.FlightOff" ]
+      visible: false
+    - state: flight-on
+      map: [ "enum.WeaponVisualLayers.FlightOn" ]
+      visible: false
+    - state: animation-icon
+      visible: false
+      map: [ "empty-icon" ]
   - type: Clothing
     sprite: _Lavaland/Objects/Weapons/Guns/Basic/kinetic_repeater.rsi
   - type: Gun
@@ -45,6 +75,11 @@
     proto: RapidBulletKinetic
     capacity: 3
     count: 3
+  - type: ItemUpgradeable
+    maxUpgradeCapacity: 70
+    whitelist:
+      tags:
+      - PKAUpgrade
   - type: Item
     sprite: _Lavaland/Objects/Weapons/Guns/Basic/kinetic_repeater.rsi
     shape:
@@ -60,80 +95,37 @@
     sprite: _Lavaland/Objects/Weapons/Guns/Basic/kinetic_pistol.rsi
     layers:
     - state: icon
+      map: [ "enum.WeaponVisualLayers.Base" ]
+    - state: bayonet
+      map: [ "enum.WeaponVisualLayers.Bayonet" ]
+      visible: false
+    - state: flight
+      map: [ "enum.WeaponVisualLayers.FlightOff" ]
+      visible: false
+    - state: flight-on
+      map: [ "enum.WeaponVisualLayers.FlightOn" ]
+      visible: false
+    - state: animation-icon
+      visible: false
+      map: [ "empty-icon" ]
   - type: Clothing
     sprite: _Lavaland/Objects/Weapons/Guns/Basic/kinetic_pistol.rsi
   - type: BasicEntityAmmoProvider
-    proto: RapidBulletKinetic
+    proto: WeakBulletKinetic
+    capacity: 1
+    count: 1
+  - type: ItemUpgradeable
+    maxUpgradeCapacity: 200
+    whitelist:
+      tags:
+      - PKAUpgrade
   - type: Gun
     availableModes:
     - FullAuto
     - SemiAuto
-  - type: Multishot # Only a pistol should support that for balancing reasons
-    missChance: 0
-    spreadAddition: 5
   - type: Item
     sprite: _Lavaland/Objects/Weapons/Guns/Basic/kinetic_pistol.rsi
     size: Small
     shape:
     - 0,0,1,0
     - 0,1,0,1
-
-# Space versions of all PKAs
-- type: entity
-  id: WeaponProtoKineticAcceleratorSpace
-  parent: WeaponProtoKineticAccelerator
-  suffix: Space upgrade
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      upgrade_slot_1:
-        id: PKAUpgradeSpace
-
-- type: entity
-  id: WeaponProtoKineticShotgunSpace
-  parent: WeaponProtoKineticShotgun
-  suffix: Space upgrade
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      upgrade_slot_1:
-        id: PKAUpgradeSpace
-
-- type: entity
-  id: WeaponProtoKineticRepeaterSpace
-  parent: WeaponProtoKineticRepeater
-  suffix: Space upgrade
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      upgrade_slot_1:
-        id: PKAUpgradeSpace
-
-- type: entity
-  id: WeaponProtoKineticPistolSpace
-  parent: WeaponProtoKineticPistol
-  suffix: Space upgrade
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      upgrade_slot_1:
-        id: PKAUpgradeSpace
-
-# Entity tables
-- type: entityTable
-  id: ProtoKineticWeapons
-  table: !type:GroupSelector
-    children:
-    - id: WeaponProtoKineticAccelerator
-    - id: WeaponProtoKineticShotgun
-    - id: WeaponProtoKineticRepeater
-    - id: WeaponProtoKineticPistol
-
-- type: entityTable
-  id: ProtoKineticWeaponsSpace
-  table: !type:GroupSelector
-    children:
-    - id: WeaponProtoKineticAcceleratorSpace
-    - id: WeaponProtoKineticShotgunSpace
-    - id: WeaponProtoKineticRepeaterSpace
-    - id: WeaponProtoKineticPistolSpace

@@ -57,7 +57,7 @@ namespace Content.Server.Medical.BiomassReclaimer
         /// How many seconds to take to insert an entity per unit of its mass.
         /// </summary>
         [DataField, ViewVariables(VVAccess.ReadWrite)]
-        public float BaseInsertionDelay = 0.05f; // GoobStation
+        public float BaseInsertionDelay = 0.1f;
 
         /// <summary>
         /// How much to multiply biomass yield from botany produce.
@@ -69,7 +69,7 @@ namespace Content.Server.Medical.BiomassReclaimer
         /// The time it takes to process a mob, per mass.
         /// </summary>
         [DataField, ViewVariables(VVAccess.ReadWrite)]
-        public float ProcessingTimePerUnitMass = 0.25f; // GoobStation
+        public float ProcessingTimePerUnitMass = 0.5f;
 
         /// <summary>
         /// Will this refuse to gib a living mob?

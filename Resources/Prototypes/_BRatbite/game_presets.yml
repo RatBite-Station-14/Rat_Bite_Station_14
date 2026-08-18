@@ -1,0 +1,36 @@
+# SPDX-FileCopyrightText: 2025 FloraMillhouse <no email, contact on discord.>
+- type: gamePreset
+  id: SqueakRat
+  name: squeakrat-title
+  showInVote: true
+  description: squeakrat-description
+  rules:
+    - PermaBrig # Needed
+    - RatbiteBasicEventsScheduler
+    - LowImpactAntagStationScheduler
+    - HeavierAntagStationScheduler
+
+- type: gamePreset
+  id: SusRat
+  name: SusRat
+  showInVote: true
+  description: The antag could be any one of us...He could be you!
+  rules:
+    - PermaBrig # Needed
+    - SusRatRoundstartAntag
+    - RatbiteBasicEventsScheduler
+
+- type: gamePreset
+  id: RatGuide
+  alias:
+  - ratcombat
+  - ratcombatdynamic
+  name: ratguide-title
+  showInVote: false #Pending rework
+  description: ratguide-description
+  minPlayers: 25
+  rules:
+  - PermaBrig
+  - RatCombatDynamic
+  - SubGamemodesRule
+  - IonStormScheduler

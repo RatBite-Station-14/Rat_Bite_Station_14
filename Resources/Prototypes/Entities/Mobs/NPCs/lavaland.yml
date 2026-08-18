@@ -7,7 +7,7 @@
   abstract: true
   description: It's like it's staring right through you.
   components:
-  - type: WeatherImmune # Lavaland change
+  - type: WeatherImmune
   - type: NpcFactionMember
     factions:
     - Lavafauna
@@ -45,12 +45,11 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      140: Dead
+      140: Dead # Goob - 4 PKA shots, 2 crusher destabilised hits
   - type: Butcherable
     spawned:
-    - id: DiamondOre1
-    - id: MaterialWatcherWing1
-      maxAmount: 2
+    - id: DiamondOre1 # not unprocessed
+      amount: 1
   - type: MovementSpeedModifier
     baseWalkSpeed: 1.65 # Lavaland change // Slightly slower than regular walkspeed, makes it not annoying as fuck to catch
     baseSprintSpeed: 1.65 # Lavaland change
@@ -95,11 +94,6 @@
     radius: 1
     energy: 3
     color: red
-  - type: Butcherable # Lavaland Change
-    spawned:
-    - id: DiamondOre1 # not unprocessed
-    - id: MaterialWatcherWing1
-      maxAmount: 2
 
 - type: entity
   id: MobWatcherIcewing
@@ -121,11 +115,10 @@
   - type: BatteryAmmoProvider
     proto: WatcherBoltIcewing
     fireCost: 50
-  - type: Butcherable # Lavaland Change
-    spawned:
-    - id: DiamondOre1 # not unprocessed
-    - id: MaterialWatcherIceWing1
-      maxAmount: 2
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead # Goob - 6 PKA shots, 3 crusher destabilised hits
 
 - type: entity
   id: MobWatcherMagmawing
@@ -147,11 +140,10 @@
   - type: BatteryAmmoProvider
     proto: WatcherBoltMagmawing
     fireCost: 50
-  - type: Butcherable # Lavaland Change
-    spawned:
-    - id: DiamondOre1 # not unprocessed
-    - id: MaterialWatcherMagmaWing1
-      maxAmount: 2
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead # Goob - 6 PKA shots, 3 crusher destabilised hits
 
 - type: entity
   id: MobWatcherPride

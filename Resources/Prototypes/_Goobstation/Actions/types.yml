@@ -42,6 +42,19 @@
     event: !type:SirenActionEvent
 
 - type: entity
+  parent: BaseAction
+  id: ActionMouseCall
+  name: Call mice
+  description: Call nearby mice to you.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 10
+    icon: Interface/Actions/scream.png
+  - type: InstantAction
+    event: !type:MobCallActionEvent
+
+- type: entity
   parent: BaseImplantAction
   id: ActivateSmokeImplant
   name: Release a cloud of smoke

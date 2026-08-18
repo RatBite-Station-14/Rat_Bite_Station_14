@@ -19,7 +19,7 @@
     - prefRoles: [ Heretic ]
       max: 3
       playerRatio: 15
-      chaosScore: 250
+      chaosScore: 500 # ratbite antag cut
       lateJoinAdditional: true
       jobBlacklist: [ Chaplain, ] # GOOBSTATION
       blacklist:

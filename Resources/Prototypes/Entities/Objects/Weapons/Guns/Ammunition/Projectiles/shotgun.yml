@@ -12,8 +12,9 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 40
+        Piercing: 60 #Ratbite balance
         Structural: 15
+      armorPenetration: 0.10 # Ratbite - Did you know? Slug pen armor plate yes? Woooow. -Ducks
 
 
 - type: entity
@@ -29,7 +30,7 @@
   - type: Projectile
     damage:
       types:
-        Blunt: 10
+        Blunt: 7.5
   - type: StaminaDamageOnCollide
     damage: 60 # Goob edit
 
@@ -54,8 +55,8 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgun
-    count: 6
-    spread: 15
+    count: 9 # Ratbite - 10*9=90 + bloodloss DOT it's FINEEE
+    spread: 10 # Ratbite - tighten up the spread doe
 
 - type: entity
   parent: BaseBulletIncendiary
@@ -116,8 +117,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 3
-        Slash: 3
+        Piercing: 5 #Ratbite balance
+        Slash: 5 #Ratbite balance
 
 - type: entity
   parent: PelletShotgunImprovised
@@ -203,8 +204,27 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 5
-        Piercing: 5
+        Radiation: 1 # Ratbite - Lingering radiation from DU fragments
+        Piercing: 14 # Ratbite
+      armorPenetration: 0.25 # Ratbite - Who knew depleted uranium was good at piercing armor?
+  # <Ratbite> - uranium rounds arent INSTANT radiation (ignoring the fact that DU is significantly less radioactive than natural uranium..), duh.
+  - type: RefillableSolution
+    solution: ammo
+  - type: DrainableSolution
+    solution: ammo
+  - type: SolutionInjectOnProjectileHit
+    transferAmount: 2
+    solution: ammo
+  - type: InjectableSolution
+    solution: ammo
+  - type: SolutionContainerManager
+    solutions:
+      ammo:
+        reagents:
+        - ReagentId: DepletedUranium
+          Quantity: 0.8
+  # </Ratbite>
+  
 
 - type: entity
   parent: PelletShotgunUranium
@@ -213,7 +233,7 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgunUranium
-    count: 5
+    count: 5 # 15*5=75 with tight spread and okay AP (and some DOT)
     spread: 6
 
 - type: entity
@@ -231,7 +251,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 25
+        Piercing: 35 #Ratbite balance
         Structural: 5
       woundSeverityMultipliers:
         Piercing: 3 # holy peak

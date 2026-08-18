@@ -1,0 +1,1 @@
+locker-mindshield-destroy = The {$entityName} has been destroyed!

@@ -1,0 +1,189 @@
+# SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 DarkenedSynergy <70016079+DarkenedSynergy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Theapug <159912420+Teapug@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Weide <64257676+Lyacs@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
+# SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
+# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+# SPDX-FileCopyrightText: 2025 Jarl <140098675+JarlElbowses@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Jarl <elliotacline@gmail.com>
+# SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
+# SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
+# SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 grub <unalterableness@gmail.com>
+# SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
+# SPDX-FileCopyrightText: 2025 shityaml <unalterableness@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+#region Weapon Loadouts
+- type: loadoutGroup
+  id: SecuritySidearm
+  name: loadout-group-security-sidearms
+  minLimit: 0
+  maxLimit: 1
+  loadouts:
+  - SecurityMK58
+  - SecurityK38
+  - SecurityEP12
+  - SecurityPEW01
+
+- type: loadoutGroup
+  id: SecurityAmmo
+  name: loadout-group-security-ammo
+  minLimit: 0
+  maxLimit: 1
+  loadouts:
+  - SecurityMK58Ammo
+  - SecurityK38Ammo
+  - SecurityEP12Ammo
+
+- type: loadoutGroup
+  id: SecuritySpecialLongarm
+  name: loadout-group-security-longarm
+  minLimit: 0
+  maxLimit: 1
+  loadouts:
+  - SecurityERifle
+  - SecurityEShottie
+  - SecurityJustice
+  - ParryRapier #Rapier from omu
+
+- type: loadoutGroup
+  id: SecuritySpecialGloves
+  name: loadout-group-security-gloves
+  minLimit: 0
+  maxLimit: 1
+  loadouts:
+  - SecurityCombatGloves
+  - SecurityKravGloves
+#endregion
+
+#region RSO
+
+- type: loadoutGroup
+  id: RedsightOverseerHead
+  name: loadout-group-rso-head
+  minLimit: 0
+  loadouts:
+  - RedsightOverseerLawHelm
+  - RedsightOverseerCap
+  - SecurityHelmet
+  - SecurityHelmetAlt # Goobstation
+  - SecurityBeret
+  - SecurityHat
+  - TrooperHat
+
+- type: loadoutGroup
+  id: RedsightOverseerJumpsuit
+  name: loadout-group-rso-jumpsuit
+  minLimit: 1
+  loadouts:
+  - RedsightOverseerInsideJumpsuit
+
+- type: loadoutGroup
+  id: RedsightOverseerOuter
+  name: loadout-group-rso-outerclothing
+  minLimit: 1
+  loadouts:
+  - RedsightOverseerArmoredJack
+
+- type: loadoutGroup
+  id: RedsightOverseerEyes
+  name: loadout-group-rso-eyes
+  minLimit: 1
+  loadouts:
+  - EyesGlassesRedsights
+
+- type: loadoutGroup
+  id: RedsightOverseerBack
+  name: loadout-group-rso-back
+  minLimit: 1
+  loadouts:
+  - RSOBackpack
+  - RSOSatchel
+  - RSODuffel
+  - RSOMessenger
+
+#endregion
+
+#region Captain
+
+- type: loadoutGroup
+  id: CaptainBelt #Ratbite - Captain Powergaming
+  name: loadout-group-captain-belt
+  loadouts:
+  - UtilityBelt
+  - SecurityBelt
+  - SecurityWebbing
+  - SecurityJudoBelt
+  - MedicalBelt
+
+#endregion
+
+#region Department Guards
+
+#region Dept Guard General
+
+- type: loadoutGroup
+  id: DeptGuardHead
+  name: loadout-group-deptguard-head
+  maxLimit: 1
+  loadouts:
+  - SecurityHelmet
+  - SecurityHelmetAlt
+
+- type: loadoutGroup
+  id: DeptGuardOuterClothing
+  name: loadout-group-deptguard-outer
+  minLimit: 1
+  loadouts:
+  - ArmorVest
+  - ArmorVestSlim
+#endregion
+
+#region Medical Orderly
+
+- type: loadoutGroup
+  id: MedOrderlyJumpsuit
+  name: loadout-group-medguard-jumpsuit
+  minLimit: 1
+  loadouts:
+  - MedGuardInsideJumpsuit
+#endregion
+
+#region SciGuard
+
+- type: loadoutGroup
+  id: SciguardJumpsuit
+  name: loadout-group-sciguard-jumpsuit
+  minLimit: 1
+  loadouts:
+  - SciGuardInsideJumpsuit
+#endregion
+
+#region Cargo Insurance
+
+- type: loadoutGroup
+  id: CargoInsuranceJumpsuit
+  name: loadout-group-cargoguard-jumpsuit
+  minLimit: 1
+  loadouts:
+  - CargoGuardInsideJumpsuit
+#endregion
+
+#region EngiGuard
+
+- type: loadoutGroup
+  id: EngiguardJumpsuit
+  name: loadout-group-engiguard-jumpsuit
+  minLimit: 1
+  loadouts:
+  - EngiGuardInsideJumpsuit
+#endregion
+
+#endregion

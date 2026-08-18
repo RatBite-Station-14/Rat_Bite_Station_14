@@ -95,7 +95,7 @@ public abstract partial class SharedMartialArtsSystem
 
     private void OnMapInit(Entity<KravMagaComponent> ent, ref MapInitEvent args)
     {
-        if (HasComp<MartialArtsKnowledgeComponent>(ent) || HasComp<ChangelingComponent>(ent))
+        if (HasComp<MartialArtsKnowledgeComponent>(ent) || HasComp<ChangelingIdentityComponent>(ent))
             return;
 
         foreach (var actionId in ent.Comp.BaseKravMagaMoves)

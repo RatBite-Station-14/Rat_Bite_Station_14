@@ -128,7 +128,6 @@
     - Bubblish
     understands:
     - Bubblish
-    - TauCetiBasic
   - type: GhostTakeoverAvailable
   - type: GhostRole
     makeSentient: true

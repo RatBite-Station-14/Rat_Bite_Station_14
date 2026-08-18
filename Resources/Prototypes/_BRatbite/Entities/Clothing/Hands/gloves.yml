@@ -1,0 +1,46 @@
+# EMP Gloves
+- type: entity
+  parent: [ClothingHandsGlovesColorBlack, BaseSecurityEngineeringContraband]
+  id: ClothingHandsGlovesRSOShock
+  name: redsight "Scumgrip" EMP combat gloves
+  description: A pair of combat gloves outfitted to deliver a highly localized EMP on contact
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Hands/Gloves/RSOShockGloves.rsi
+  - type: Clothing
+    sprite: Clothing/Hands/Gloves/combat.rsi
+  - type: Insulated
+  - type: Fiber
+    fiberMaterial: fibers-insulative
+  - type: Armor # Goob
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Shock: 0.75
+  - type: ItemSummoningWearable
+    summonEntity: TouchEmp
+    action: ActionEmpSpawn
+    cooldownAfterUse: 30
+
+# EMP Gloves effect. Bundled here for conveniences sake.
+- type: entity
+  id: TouchEmp
+  name: EMP Glove
+  description: Your hand sparks with electromagnetic energy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Unremoveable
+  - type: Item
+  - type: SummonedItemDespawn
+  - type: EmpOnUse
+  - type: Sprite
+    sprite: _BRatBites/CharEffects/shock_glove.rsi
+    state: icon
+  - type: Appearance
+  - type: PointLight
+    enabled: true
+    radius: 2
+    energy: 1
+    color: "#00dcff"

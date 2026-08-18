@@ -18,3 +18,5 @@
     interfaces:
       enum.HumanoidMarkingModifierKey.Key:
         type: HumanoidMarkingModifierBoundUserInterface
+  - type: Inventory
+    templateId: scurret

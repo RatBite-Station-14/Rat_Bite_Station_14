@@ -6,6 +6,7 @@
   minLimit: 0
   maxLimit: 3
   loadouts:
+  - PlushieCarmella
   - FlowerWreath
   - Hairflower
   - Headphones
@@ -159,7 +160,6 @@
   loadouts:
   - CaptainHead
   - CaptainCap
-  - CaptainCapcapSenior # goob
 
 - type: loadoutGroup
   id: CaptainJumpsuit
@@ -181,7 +181,6 @@
   - CaptainCloakFormal
   - CaptainMantle
   - VeteranCaptainCloak # goob
-  - CaptainEnsemble # goob
 
 - type: loadoutGroup
   id: CaptainBackpack
@@ -231,7 +230,6 @@
   loadouts:
   - HoPCloak
   - HoPMantle
-  - HeadOfPersonnelEnsemble # goob
 
 - type: loadoutGroup
   id: HoPBackpack
@@ -266,6 +264,15 @@
   - GreyJumpsuit
   - GreyJumpskirt
   - AncientJumpsuit
+  - TacticoolJumpsuit
+  - TacticoolJumpskirt
+# ratbite adds
+  - MercJumpsuit
+  - MercGreenJumpsuit
+  - MercBlueJumpsuit
+  - FreakPants
+
+#ratbite end
   - RainbowJumpsuit
   - RainbowJumpskirt
  # goob changes start
@@ -293,11 +300,27 @@
  # goob changes end
 
 - type: loadoutGroup
+  id: PassengerHead
+  name: loadout-group-passenger-head
+  minLimit: 0
+  loadouts:
+  - MercBeret
+
+
+- type: loadoutGroup
   id: PassengerFace
   name: loadout-group-passenger-mask
   minLimit: 0
   loadouts:
   - PassengerFace
+  - MercBandana
+
+- type: loadoutGroup
+  id: CivilianTacticoolMask
+  name: loadout-group-civilian-tacticool-mask
+  minLimit: 0
+  loadouts:
+  - NeckGaiter
 
 - type: loadoutGroup
   id: PassengerGloves
@@ -305,6 +328,7 @@
   minLimit: 0
   loadouts:
   - PassengerGloves
+  - FingerlessMercGloves
 
 - type: loadoutGroup
   id: CommonBackpack
@@ -360,6 +384,17 @@
   - BartenderJumpskirt
   - BartenderJumpsuitPurple
   - ServiceMJ # goob
+
+- type: loadoutGroup
+  id: ServiceWorkerJumpsuit
+  name: loadout-group-service-worker-jumpsuit
+  loadouts:
+  - BartenderJumpsuit
+  - BartenderJumpskirt
+  - BartenderJumpsuitPurple
+  - ServiceMJ
+  - TacticoolJumpsuit
+  - TacticoolJumpskirt
 
 - type: loadoutGroup
   id: BartenderOuterClothing
@@ -432,6 +467,8 @@
   - CuratorJumpsuit
   - CuratorJumpskirt
   - ServiceMJ # goob
+  - TacticoolJumpsuit
+  - TacticoolJumpskirt
 
 - type: loadoutGroup
   id: LibrarianJobTrinkets
@@ -455,6 +492,8 @@
   - LawyerJumpsuitGood
   - LawyerJumpskirtGood
   - ServiceMJ # goob
+  - TacticoolJumpsuit
+  - TacticoolJumpskirt
 
 - type: loadoutGroup
   id: LawyerNeck
@@ -759,6 +798,8 @@
   - MusicianJumpsuit
   - MusicianJumpskirt
   - ServiceMJ # goob
+  - TacticoolJumpsuit
+  - TacticoolJumpskirt
 
 - type: loadoutGroup
   id: MusicianOuterClothing
@@ -837,7 +878,6 @@
   loadouts:
   - QuartermasterCloak
   - QuartermasterMantle
-  - QuartermasterEnsemble # goob
 
 - type: loadoutGroup
   id: QuartermasterOuterClothing
@@ -1153,7 +1193,6 @@
   loadouts:
   - ResearchDirectorMantle
   - ResearchDirectorCloak
-  - ResearchDirectorEnsemble # goob
 
 - type: loadoutGroup
   id: ResearchDirectorJumpsuit
@@ -1295,6 +1334,11 @@
   - HeadofSecurityHead
   - HeadofSecurityBeret
   - HeadofSecuritySpecialBeret # Goobstation
+  - SecurityHelmet
+  - SecurityHelmetAlt # Goobstation
+  - SecurityBeret
+  - SecurityHat
+  - TrooperHat
 
 - type: loadoutGroup
   id: HeadofSecurityJumpsuit
@@ -1317,7 +1361,7 @@
   - HeadofSecurityCloak
   - HeadofSecurityMantle
   - Bodycam # Goobstation - Body cameras
-  - HeadOfSecurityEnsemble # goob
+  - ParryCloak #ratbite
 
 - type: loadoutGroup
   id: HeadofSecurityOuterClothing
@@ -1341,8 +1385,14 @@
   name: loadout-group-warden-head
   minLimit: 0
   loadouts:
+  - WardenHelmet #Ratbite
   - WardenHead
   - WardenBeret
+  - SecurityHelmet
+  - SecurityHelmetAlt # Goobstation
+  - SecurityBeret
+  - SecurityHat
+  - TrooperHat
 
 - type: loadoutGroup
   id: WardenJumpsuit
@@ -1356,6 +1406,7 @@
   id: WardenOuterClothing
   name: loadout-group-warden-outerclothing
   loadouts:
+  - WardenArmor #Ratbite
   - WardenCoat
   - WardenArmoredWinterCoat
   - WardenCoatBlue #goob
@@ -1385,6 +1436,7 @@
   loadouts:
   - SecurityJumpsuit
   - SecurityJumpskirt
+  - SecurityJumpsuitClassic # Ratbite
   - SecurityJumpsuitGrey
   - SecurityJumpskirtGrey
   - SeniorOfficerJumpsuit
@@ -1451,6 +1503,11 @@
   loadouts:
   - DetectiveFedora
   - DetectiveFedoraGrey
+  - SecurityHelmet
+  - SecurityHelmetAlt # Goobstation
+  - SecurityBeret
+  - SecurityHat
+  - TrooperHat
 
 - type: loadoutGroup
   id: DetectiveNeck
@@ -1549,7 +1606,6 @@
   loadouts:
   - ChiefMedicalOfficerCloak
   - ChiefMedicalOfficerMantle
-  - ChiefMedicalOfficerEnsemble # goob
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerShoes

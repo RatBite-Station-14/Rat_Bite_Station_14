@@ -1,6 +1,7 @@
 using Content.Shared.Clothing.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
+using Content.Shared.Verbs;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
@@ -16,6 +17,7 @@ public sealed class HideLayerClothingSystem : EntitySystem
         SubscribeLocalEvent<HideLayerClothingComponent, ClothingGotUnequippedEvent>(OnHideGotUnequipped);
         SubscribeLocalEvent<HideLayerClothingComponent, ClothingGotEquippedEvent>(OnHideGotEquipped);
         SubscribeLocalEvent<HideLayerClothingComponent, ItemMaskToggledEvent>(OnHideToggled);
+        SubscribeLocalEvent<ClothingComponent, GetVerbsEvent<AlternativeVerb>>(OnClothingVerb);
     }
 
     private void OnHideToggled(Entity<HideLayerClothingComponent> ent, ref ItemMaskToggledEvent args)
@@ -26,12 +28,50 @@ public sealed class HideLayerClothingSystem : EntitySystem
 
     private void OnHideGotEquipped(Entity<HideLayerClothingComponent> ent, ref ClothingGotEquippedEvent args)
     {
-        SetLayerVisibility(ent!, args.Wearer, hideLayers: true);
+        SetLayerVisibility(ent!, args.Wearer, hideLayers: ent.Comp.HideLayers);
     }
 
     private void OnHideGotUnequipped(Entity<HideLayerClothingComponent> ent, ref ClothingGotUnequippedEvent args)
     {
         SetLayerVisibility(ent!, args.Wearer, hideLayers: false);
+    }
+
+    private void OnClothingVerb(Entity<ClothingComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract || args.Hands == null)
+            return;
+
+        if (ent.Comp.InSlot == null ||
+            ent.Comp.InSlotFlag is not { } slot ||
+            slot != SlotFlags.HEAD)
+        {
+            return;
+        }
+
+        var wearer = Transform(ent).ParentUid;
+        if (!HasComp<HumanoidAppearanceComponent>(wearer))
+            return;
+
+        var hideLayers = TryComp(ent, out HideLayerClothingComponent? hideLayer) && hideLayer.HideLayers;
+
+        args.Verbs.Add(new AlternativeVerb
+        {
+            Act = () =>
+            {
+                var hideLayer = EnsureComp<HideLayerClothingComponent>(ent);
+
+                if (!hideLayer.Layers.ContainsKey(HumanoidVisualLayers.Hair))
+                    hideLayer.Layers[HumanoidVisualLayers.Hair] = SlotFlags.HEAD;
+
+                hideLayer.HideLayers = !hideLayer.HideLayers;
+                Dirty(ent, hideLayer);
+
+                SetLayerVisibility((ent.Owner, hideLayer, ent.Comp), wearer, hideLayer.HideLayers);
+            },
+            Text = Loc.GetString(hideLayers ? "hair-toggle-show" : "hair-toggle-hide"),
+            Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/flip.svg.192dpi.png")),
+            Priority = 1,
+        });
     }
 
     private void SetLayerVisibility(
@@ -49,7 +89,7 @@ public sealed class HideLayerClothingSystem : EntitySystem
         if (!Resolve(user.Owner, ref user.Comp, false))
             return;
 
-        hideLayers &= IsEnabled(clothing!);
+        hideLayers &= clothing.Comp1.HideLayers && IsEnabled(clothing!);
 
         var hideable = user.Comp.HideLayersOnEquip;
         var inSlot = clothing.Comp2.InSlotFlag ?? SlotFlags.NONE;

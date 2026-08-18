@@ -19,6 +19,11 @@
       inverted: true
       species:
       - Felinid
+    - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
+      inverted: true
+      species:
+      - Felinid
+      - Scurret
   weight: 10
   startingGear: QuartermasterGear
   icon: "JobIconQuarterMaster"

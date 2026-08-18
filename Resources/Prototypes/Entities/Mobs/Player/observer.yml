@@ -95,6 +95,10 @@
   parent: MobObserverBase
   id: MobObserver
   components:
+  - type: WarpPoint
+    follow: true
+    mob: true
+    ghost: true
   - type: Spectral
   - type: Tag
     tags: # BAD: Intentional removal of inherited tag

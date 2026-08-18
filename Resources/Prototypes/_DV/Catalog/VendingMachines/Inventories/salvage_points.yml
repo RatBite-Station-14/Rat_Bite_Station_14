@@ -3,6 +3,7 @@
 - type: shopInventory
   id: SalvageVendorInventory
   listings:
+  # TODO: marker beacons 1/10/30 for 10 each
   - id: DrinkWhiskeyBottleFull
     cost: 100
   - id: DrinkAbsintheBottleFull
@@ -76,8 +77,23 @@
     cost: 1150
   - id: PKAUpgradeDamage
     cost: 1200
+  # TODO: lazarus injector for 1k
+  - id: LavalandWeaponKineticHammer
+    cost: 1250
+  - id: LavalandWeaponKineticMachete
+    cost: 1250
+  - id: LavalandWeaponKineticSpear
+    cost: 1250
+  - id: LavalandWeaponKineticClaws
+    cost: 1250
+  - id: WeaponProtoKineticRepeater
+    cost: 1250
+  - id: WeaponProtoKineticPistol
+    cost: 1250
   - id: ClothingBackpackDuffelSalvageConscription
     cost: 1250
+  - id: WeaponProtoKineticShotgun
+    cost: 1500
   - id: LuxuryMedipen
     cost: 1500
   - id: WeaponPlasmaCutter

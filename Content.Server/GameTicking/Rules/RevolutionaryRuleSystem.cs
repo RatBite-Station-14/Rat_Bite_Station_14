@@ -221,16 +221,6 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
             return;
         }
 
-        // goob - event start
-        if (convEv.Blocked)
-        {
-            if (ev.User != null)
-                _popup.PopupEntity("The conversion failed!", ev.User.Value, ev.User.Value);
-
-            return;
-        }
-        // goob - event end
-
         if (HasComp<RevolutionEnemyComponent>(ev.Target))
             RemComp<RevolutionEnemyComponent>(ev.Target);
 

@@ -306,12 +306,6 @@ namespace Content.Server.Database
 
         #region RMC14
 
-        Task<Guid?> GetLinkingCode(Guid player);
-
-        Task SetLinkingCode(Guid player, Guid code);
-
-        Task<bool> HasLinkedAccount(Guid player, CancellationToken cancel);
-
         Task<RMCPatron?> GetPatron(Guid player, CancellationToken cancel);
 
         Task<List<RMCPatron>> GetAllPatrons();
@@ -391,6 +385,23 @@ namespace Content.Server.Database
         Task SendNotification(DatabaseNotification notification);
 
         #endregion
+
+        #region Perma Brig
+
+        Task<int> GetPermaRoundsLeft(NetUserId userId); // Ratbite
+        Task SetPermaRoundsLeft(NetUserId userId, int BrigSentence); // Ratbite
+        Task<int> ModifyPermaRoundsLeft(NetUserId userId, int BrigSentence); // Ratbite
+        Task<int> GetPermaTimeLeft(NetUserId userId); // Ratbite
+        Task<bool> GetPermaInpatient(NetUserId userId); // Ratbite
+        Task SetPermaInpatient(NetUserId userId, bool status); // Ratbite
+        Task SetPermaTimeLeft(NetUserId userId, int minutes); // Ratbite
+        Task<int> ModifyPermaTimeLeft(NetUserId userId, int minutes); // Ratbite
+        Task<int> GetPPpoints(NetUserId userId); // Ratbite
+        Task SetPPpoints(NetUserId userId, int BrigSentence); // Ratbite
+        Task<int> ModifyPPpoints(NetUserId userId, int BrigSentence); // Ratbite
+
+        #endregion
+
     }
 
     /// <summary>
@@ -668,6 +679,70 @@ namespace Content.Server.Database
         {
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.SetLastRolledAntag(userId, to));
+        }
+
+        [Obsolete]
+        public Task<int> GetPermaRoundsLeft(NetUserId userId) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetPermaRoundsLeft(userId));
+        }
+        [Obsolete]
+        public Task SetPermaRoundsLeft(NetUserId userId, int permaSentence) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetPermaRoundsLeft(userId, permaSentence));
+        }
+
+        [Obsolete]
+        public Task<int> ModifyPermaRoundsLeft(NetUserId userId, int permaSentence) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.ModifyPermaRoundsLeft(userId, permaSentence));
+        }
+
+        public Task<int> GetPermaTimeLeft(NetUserId userId) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetPermaTimeLeft(userId));
+        }
+
+        public Task<bool> GetPermaInpatient(NetUserId userId) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetPermaInpatient(userId));
+        }
+        public Task SetPermaInpatient(NetUserId userId, bool status) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetPermaInpatient(userId, status));
+        }
+        public Task SetPermaTimeLeft(NetUserId userId, int minutes) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetPermaTimeLeft(userId, minutes));
+        }
+
+        public Task<int> ModifyPermaTimeLeft(NetUserId userId, int minutes) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.ModifyPermaTimeLeft(userId, minutes));
+        }
+        public Task<int> GetPPpoints(NetUserId userId) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetPPpoints(userId));
+        }
+        public Task SetPPpoints(NetUserId userId, int permaSentence) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetPPpoints(userId, permaSentence));
+        }
+
+        public Task<int> ModifyPPpoints(NetUserId userId, int permaSentence) // Ratbite
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.ModifyPPpoints(userId, permaSentence));
         }
 
         public Task<int> AddConnectionLogAsync(
@@ -1046,24 +1121,6 @@ namespace Content.Server.Database
         }
 
         #region RMC
-
-        public Task<Guid?> GetLinkingCode(Guid player)
-        {
-            DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetLinkingCode(player));
-        }
-
-        public Task SetLinkingCode(Guid player, Guid code)
-        {
-            DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.SetLinkingCode(player, code));
-        }
-
-        public Task<bool> HasLinkedAccount(Guid player, CancellationToken cancel)
-        {
-            DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.HasLinkedAccount(player, cancel));
-        }
 
         public Task<RMCPatron?> GetPatron(Guid player, CancellationToken cancel)
         {

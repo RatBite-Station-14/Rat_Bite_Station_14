@@ -17,6 +17,7 @@
       - state: icon_pentagramm
         color: "#f7e19f"
     - type: Spellbook
+    - type: EnchantingTool # Goobstation
     - type: Tag
       tags:
       - Spellbook

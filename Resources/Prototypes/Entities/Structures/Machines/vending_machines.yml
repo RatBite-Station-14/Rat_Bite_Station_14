@@ -1593,6 +1593,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AccessReader
+    access: [["Security"], ["Command"], ["Engineering"], ["Research"], ["Medical"], ["Service"], ["Cargo",]]
   - type: PointLight
     radius: 1.5
     energy: 3.0
@@ -1735,11 +1737,12 @@
         type: MiningVoucherBoundUserInterface
   - type: MiningVendor # Lavaland Change
     kits:
-    - MiningCombat
+    - MiningCrusher
     - MiningExtraction
+    #- MiningResonator
     - MiningSurvival
-    - MiningMedical
     #- MiningDrone
+    - MiningConscription
   - type: Wires # DeltaV: Use shop vendor wires layout
     layoutId: ShopVendor
   - type: AccessReader

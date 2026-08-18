@@ -2,6 +2,7 @@
 using Content.Shared._Lavaland.Weapons.Ranged;
 using Content.Shared._Lavaland.Weapons.Ranged.Components;
 using Content.Shared._Lavaland.Weapons.Ranged.Events;
+using Content.Shared.Damage;
 using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Containers;
@@ -26,9 +27,6 @@ public sealed class GunUpgradesSystem : SharedGunUpgradesSystem
     {
         foreach (var (ammo, _) in args.Ammo)
         {
-            if (!TryComp<ProjectileComponent>(ammo, out var projectile))
-                continue;
-
             var multiplier = 1f;
 
             if (TryComp<PressureDamageChangeComponent>(Transform(ent).ParentUid, out var pressure)
@@ -36,9 +34,8 @@ public sealed class GunUpgradesSystem : SharedGunUpgradesSystem
                 && pressure.ApplyToProjectiles)
                 multiplier = pressure.AppliedModifier;
 
-            if (ent.Comp.BonusDamage != null)
-                projectile.Damage += ent.Comp.BonusDamage * multiplier;
-            projectile.Damage *= ent.Comp.Modifier;
+            if (TryComp<ProjectileComponent>(ammo, out var proj))
+                proj.Damage += (ent.Comp.BonusDamage ?? new DamageSpecifier()) * multiplier;
         }
     }
 
@@ -54,9 +51,7 @@ public sealed class GunUpgradesSystem : SharedGunUpgradesSystem
             && pressure.ApplyToProjectiles)
             multiplier = pressure.AppliedModifier;
 
-        if (ent.Comp.BonusDamage != null)
-            projectile.Damage += ent.Comp.BonusDamage * multiplier;
-        projectile.Damage *= ent.Comp.Modifier;
+        projectile.Damage += (ent.Comp.BonusDamage ?? new DamageSpecifier()) * multiplier * ent.Comp.Modifier;
     }
 
     private void OnPressureUpgradeInserted(Entity<GunUpgradePressureComponent> ent, ref EntGotInsertedIntoContainerMessage args)

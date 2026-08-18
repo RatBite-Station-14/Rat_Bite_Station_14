@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.Grab;
+using Content.Shared._BRatbite.Traits;
 using Content.Shared._Shitcode.Heretic.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
@@ -49,6 +50,7 @@ namespace Content.Shared.Movement.Pulling.Systems;
 public sealed class PullingSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly UnarmedCombatSkillSystem _unarmedCombat = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;

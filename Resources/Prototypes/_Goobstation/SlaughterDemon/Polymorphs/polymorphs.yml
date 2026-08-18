@@ -8,7 +8,4 @@
     attachToGridOrMap: true
     showPopup: false
     componentsToTransfer:
-    - component: LanguageKnowledge
-    - component: LanguageSpeaker
-    - component: Grammar
     - component: SlaughterDevour

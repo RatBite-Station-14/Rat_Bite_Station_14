@@ -8,7 +8,6 @@ using Content.Shared._RMC14.LinkAccount;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
-using Robust.Shared.Timing;
 using Color = System.Drawing.Color;
 
 namespace Content.Server._RMC14.LinkAccount;
@@ -17,12 +16,9 @@ public sealed class LinkAccountManager : IPostInjectInit
 {
     [Dependency] private readonly IServerDbManager _db = default!;
     [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly UserDbDataManager _userDb = default!;
 
-    private readonly Dictionary<NetUserId, TimeSpan> _lastRequest = new();
-    private readonly TimeSpan _minimumWait = TimeSpan.FromSeconds(0.5);
     private readonly Dictionary<NetUserId, SharedRMCPatronFull> _connected = new();
     private readonly Dictionary<string, SharedRMCPatronTier> _fauxTiers = new();
     private readonly Dictionary<NetUserId, string> _fauxPatronAssignments = new();
@@ -36,7 +32,6 @@ public sealed class LinkAccountManager : IPostInjectInit
     private async Task LoadData(ICommonSession player, CancellationToken cancel)
     {
         var patron = await _db.GetPatron(player.UserId, cancel);
-        var linked = await _db.HasLinkedAccount(player.UserId, cancel);
         cancel.ThrowIfCancellationRequested();
 
         var tier = patron?.Tier;
@@ -76,7 +71,7 @@ public sealed class LinkAccountManager : IPostInjectInit
             ghostCosmetics = new SharedRMCGhostCosmetics(p.GhostParticles, p.GhostHat, p.GhostMask);
         // Goob end
 
-        _connected[player.UserId] = new SharedRMCPatronFull(sharedTier, linked, ghostColor, ghostCosmetics, lobbyMessage, shoutouts); // Goob - ghost cosmetics
+        _connected[player.UserId] = new SharedRMCPatronFull(sharedTier, ghostColor, ghostCosmetics, lobbyMessage, shoutouts); // Goob - ghost cosmetics
     }
 
     private void FinishLoad(ICommonSession player)
@@ -95,25 +90,6 @@ public sealed class LinkAccountManager : IPostInjectInit
         var msg = new LinkAccountStatusMsg { Patron = connected, };
         _net.ServerSendMessage(msg, player.Channel);
         SendPatrons(player);
-    }
-
-    private void OnRequest(LinkAccountRequestMsg message)
-    {
-        var user = message.MsgChannel.UserId;
-        var time = _timing.RealTime;
-        if (_lastRequest.TryGetValue(user, out var last) &&
-            last + _minimumWait > time)
-        {
-            return;
-        }
-
-        _lastRequest[user] = time;
-
-        var code = Guid.NewGuid();
-        _db.SetLinkingCode(user, code);
-
-        var response = new LinkAccountCodeMsg { Code = code };
-        _net.ServerSendMessage(response, message.MsgChannel);
     }
 
     private void OnClearGhostColor(RMCClearGhostColorMsg message)
@@ -280,7 +256,6 @@ public sealed class LinkAccountManager : IPostInjectInit
             var connected = _connected.GetValueOrDefault(userId);
             return new SharedRMCPatronFull(
                 Tier: tier,
-                Linked: true,
                 GhostColor: connected?.GhostColor,
                 GhostCosmetics: connected?.GhostCosmetics,
                 LobbyMessage: connected?.LobbyMessage,
@@ -322,8 +297,6 @@ public sealed class LinkAccountManager : IPostInjectInit
 
     void IPostInjectInit.PostInject()
     {
-        _net.RegisterNetMessage<LinkAccountRequestMsg>(OnRequest);
-        _net.RegisterNetMessage<LinkAccountCodeMsg>();
         _net.RegisterNetMessage<LinkAccountStatusMsg>();
         _net.RegisterNetMessage<RMCPatronListMsg>();
         _net.RegisterNetMessage<RMCClearGhostColorMsg>(OnClearGhostColor);

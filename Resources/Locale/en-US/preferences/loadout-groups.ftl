@@ -62,6 +62,7 @@ loadout-group-passenger-gloves = Passenger gloves
 loadout-group-passenger-outerclothing = Passenger outer clothing
 loadout-group-passenger-shoes = Passenger shoes
 loadout-group-passenger-neck = Passenger neck
+loadout-group-civilian-tacticool-mask = Neck gaiter
 
 loadout-group-bartender-head = Bartender head
 loadout-group-bartender-jumpsuit = Bartender jumpsuit

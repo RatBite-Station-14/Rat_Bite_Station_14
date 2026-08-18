@@ -28,6 +28,6 @@
   position: -6,-1
   recipeUnlocks:
   - ClothingEyesThermalVisionGoggles
-  - ClothingEyesGlassesSecurityContraDetect
+ #  - ClothingEyesGlassesSecurityContraDetect me when im dumb and want to automate secs job DURRR RDURR DURR -Eirins mald change, Ratbite
   technologyPrerequisites:
   - ModsuitsTech

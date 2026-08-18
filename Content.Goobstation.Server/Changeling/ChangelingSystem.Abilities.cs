@@ -38,12 +38,12 @@ using Content.Shared.Rejuvenate;
 using Content.Shared.Stealth.Components;
 using Content.Shared.Store.Components;
 using Content.Shared.StatusEffect;
+using Content.Shared.Tools.Components;
+using Content.Shared.Tools.Systems;
 using Content.Shared.Traits.Assorted;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Content.Shared.Actions.Components;
-using Content.Shared.Tools.Components;
-using Content.Shared.Tools.Systems;
 using Content.Goobstation.Shared.Devour.Events;
 using Content.Shared.Nutrition.Components;
 using Content.Goobstation.Shared.InternalResources.Components;
@@ -55,7 +55,6 @@ public sealed partial class ChangelingSystem
 {
     #region Dependencies
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
-    [Dependency] private readonly WeldableSystem _weldable = default!; //for biodegrade unweld
     #endregion
 
     public void SubscribeAbilities()
@@ -135,6 +134,9 @@ public sealed partial class ChangelingSystem
             return;
         }
 
+        if (!TryUseAbility(uid, comp, args))
+            return;
+
         var popupOthers = Loc.GetString("changeling-absorb-start", ("user", Identity.Entity(uid, EntityManager)), ("target", Identity.Entity(target, EntityManager)));
         _popup.PopupEntity(popupOthers, uid, PopupType.LargeCaution);
         PlayMeatySound(uid, comp);
@@ -152,7 +154,7 @@ public sealed partial class ChangelingSystem
 
         args.Handled = true;
     }
-    public ProtoId<DamageGroupPrototype> AbsorbedDamageGroup = "Genetic";
+    public ProtoId<DamageGroupPrototype> AbsorbedDamageGroup = "Airloss";
     private void OnAbsorbDoAfter(EntityUid uid, ChangelingIdentityComponent comp, ref AbsorbDNADoAfterEvent args)
     {
         if (args.Args.Target == null)
@@ -172,7 +174,9 @@ public sealed partial class ChangelingSystem
         _blood.ChangeBloodReagent(target, "FerrochromicAcid");
         _blood.SpillAllSolutions(target);
 
-        EnsureComp<AbsorbedComponent>(target);
+	// Ratbite: don't let already unrevived entities be dehusked
+        var absorbedComponent = EnsureComp<AbsorbedComponent>(target);
+	absorbedComponent.CanDehusk = !HasComp<UnrevivableComponent>(target);
         EnsureComp<UnrevivableComponent>(target);
 
         TryComp<ChangelingChemicalComponent>(uid, out var chemComp); // user's chemical component
@@ -430,6 +434,9 @@ public sealed partial class ChangelingSystem
 
         var chemCostOverride = GetEquipmentChemCostOverride(comp, DartGunPrototype);
 
+        if (!TryUseAbility(uid, comp, args, chemCostOverride))
+            return;
+
         if (!TryToggleItem(uid, DartGunPrototype, comp, out var dartgun))
             return;
 
@@ -490,6 +497,9 @@ public sealed partial class ChangelingSystem
             return;
 
         float? chemCostOverride = comp.ActiveArmor == null ? null : 0f;
+
+        if (!TryUseAbility(uid, comp, args, chemCostOverride))
+            return;
 
         if (!TryToggleArmor(uid, comp, [(ArmorHelmetPrototype, "head"), (ArmorPrototype, "outerClothing")]))
         {

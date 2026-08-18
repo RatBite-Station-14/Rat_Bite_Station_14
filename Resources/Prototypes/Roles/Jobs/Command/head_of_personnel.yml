@@ -25,6 +25,7 @@
       inverted: true
       species:
       - Felinid
+      - Scurret
   guides: # goobstation
   - Command
   - Succession

@@ -7,6 +7,7 @@ using Content.Shared.Materials;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
 using Robust.Shared.Utility;
+using Content.Shared.Radio;
 
 namespace Content.Shared.Research.Prototypes
 {
@@ -77,5 +78,13 @@ namespace Content.Shared.Research.Prototypes
         /// </summary>
         [DataField]
         public List<ProtoId<LatheCategoryPrototype>> Categories = new();
+
+        // Ratbite
+        [DataField]
+        public string? PrintMessageLocId = "lathe-print-alert";
+
+        [DataField]
+        public ProtoId<RadioChannelPrototype>? RadioChannel;
+        // End Ratbite
     }
 }

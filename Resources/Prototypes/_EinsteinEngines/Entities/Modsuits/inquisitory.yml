@@ -46,8 +46,7 @@
       clothingVisuals:
         gloves:
         - state: equipped-HAND-sealed
-        gloves-vox:
-        - state: equipped-HAND-sealed-vox
+
 - type: entity
   parent: [ClothingModsuitHelmetStandard, ShowSecurityIcons]
   id: ClothingModsuitHelmetInquisitory
@@ -90,10 +89,7 @@
         - state: equipped-HEAD-sealed
         - state: equipped-HEAD-sealed-unshaded
           shader: unshaded
-        head-vox:
-        - state: equipped-HEAD-sealed-vox
-        - state: equipped-HEAD-sealed-unshaded-vox
-          shader: unshaded
+
 - type: entity
   parent: ClothingModsuitChestplateStandard
   id: ClothingModsuitChestplateInquisitory
@@ -126,10 +122,6 @@
       clothingVisuals:
         outerClothing:
         - state: equipped-OUTERCLOTHING-sealed
-        outerClothing-vox:
-        - state: equipped-OUTERCLOTHING-sealed-vox
-    - type: StaminaResistance
-      damageCoefficient: 0.5 # 50%
     - type: FireProtection
       reduction: 0.9
 
@@ -151,8 +143,6 @@
       clothingVisuals:
         shoes:
         - state: equipped-FEET-sealed
-        shoes-vox:
-        - state: equipped-FEET-sealed-vox
     - type: ItemToggle
     - type: ToggleClothing
       action: ActionToggleMagboots

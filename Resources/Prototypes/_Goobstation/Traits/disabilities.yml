@@ -6,7 +6,8 @@
   id: WheelchairBound
   name: trait-wheelchair-bound-name
   description: trait-wheelchair-bound-desc
-  category: Disabilities
+  category: Physical
+  cost: -6
   blacklist:
     components:
       - BorgChassis
@@ -20,7 +21,8 @@
   id: ByondYourPrime
   name: trait-tile-movement-name
   description: trait-tile-movement-desc
-  category: Disabilities
+  category: Physical
+  cost: -1
   components:
   - type: TileMovement
 
@@ -29,7 +31,8 @@
   name: trait-movement-impaired-name
   description: trait-movement-impaired-desc
   traitGear: Cane
-  category: Disabilities
+  category: Physical
+  cost: -5
   blacklist:
     components:
     - BorgChassis
@@ -41,7 +44,8 @@
   id: SocialAnxietyTrait
   name: trait-social-anxiety-name
   description: trait-social-anxiety-disc
-  category: Disabilities
+  category: Mental
+  cost: -3 #Ratbite
   components:
     - type: SocialAnxiety
 
@@ -49,7 +53,8 @@
   id: DeafTrait
   name: trait-deaf-name
   description: trait-deaf-disc
-  category: Disabilities
+  category: Physical
+  cost: -4
   blacklist:
     components:
     - BorgChassis

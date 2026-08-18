@@ -9,7 +9,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 16
+        Piercing: 20 #Ratbite balance
 
 - type: entity
   parent: BaseBulletPractice

@@ -1699,35 +1699,6 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
 
         #region RMC14
 
-        public async Task<Guid?> GetLinkingCode(Guid player)
-        {
-            await using var db = await GetDb();
-            var linking = await db.DbContext.RMCLinkingCodes.FirstOrDefaultAsync(l => l.PlayerId == player);
-            return linking?.Code;
-        }
-
-        public async Task SetLinkingCode(Guid player, Guid code)
-        {
-            await using var db = await GetDb();
-            var linking = await db.DbContext.RMCLinkingCodes.FirstOrDefaultAsync(l => l.PlayerId == player);
-            if (linking == null)
-            {
-                linking = new RMCLinkingCodes { PlayerId = player };
-                db.DbContext.RMCLinkingCodes.Add(linking);
-            }
-
-            linking.Code = code;
-            linking.CreationTime = DateTime.UtcNow;
-            await db.DbContext.SaveChangesAsync();
-        }
-
-        public async Task<bool> HasLinkedAccount(Guid player, CancellationToken cancel)
-        {
-            await using var db = await GetDb(cancel);
-            return await db.DbContext.RMCLinkedAccounts.AnyAsync(l => l.PlayerId == player, cancel);
-
-        }
-
         public async Task<RMCPatron?> GetPatron(Guid player, CancellationToken cancel)
         {
             await using var db = await GetDb(cancel);
@@ -1988,6 +1959,145 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
         }
 
         #endregion
+
+
+
+
+        #region Perma Brig
+        /*
+         * PERMA TIME
+         */
+        [Obsolete]
+        public async Task<int> GetPermaRoundsLeft(NetUserId userId) // Ratbite
+        {
+            await using var db = await GetDb();
+
+            return await db.DbContext.Player
+                .Where(dbPlayer => dbPlayer.UserId == userId)
+                .Select(dbPlayer => dbPlayer.BrigSentence)
+                .SingleOrDefaultAsync();
+        }
+
+        [Obsolete]
+        public async Task SetPermaRoundsLeft(NetUserId userId, int brigSentence) // Ratbite
+        {
+            await using var db = await GetDb();
+
+            var dbPlayer = await db.DbContext.Player.Where(dbPlayer => dbPlayer.UserId == userId).SingleOrDefaultAsync();
+            if (dbPlayer == null)
+                return;
+
+            dbPlayer.BrigSentence = brigSentence;
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        [Obsolete]
+        public async Task<int> ModifyPermaRoundsLeft(NetUserId userId, int brigSentence) // Goobstation
+        {
+            await using var db = await GetDb();
+
+            var dbPlayer = await db.DbContext.Player.Where(dbPlayer => dbPlayer.UserId == userId).SingleOrDefaultAsync();
+            if (dbPlayer == null)
+                return brigSentence;
+
+            dbPlayer.BrigSentence += brigSentence;
+            await db.DbContext.SaveChangesAsync();
+            return dbPlayer.BrigSentence;
+        }
+
+        public async Task<int> GetPermaTimeLeft(NetUserId userId) // Ratbite
+        {
+            await using var db = await GetDb();
+
+            return await db.DbContext.Player
+                .Where(dbPlayer => dbPlayer.UserId == userId)
+                .Select(dbPlayer => dbPlayer.BrigTime)
+                .SingleOrDefaultAsync();
+        }
+
+        public async Task<bool> GetPermaInpatient(NetUserId userId) // Ratbite
+        {
+            await using var db = await GetDb();
+
+            return await db.DbContext.Player
+                .Where(dbPlayer => dbPlayer.UserId == userId)
+                .Select(dbPlayer => dbPlayer.Inpatient)
+                .SingleOrDefaultAsync();
+        }
+
+        public async Task SetPermaInpatient(NetUserId userId, bool status) // Ratbite
+        {
+            await using var db = await GetDb();
+
+            var dbPlayer = await db.DbContext.Player.Where(dbPlayer => dbPlayer.UserId == userId).SingleOrDefaultAsync();
+            if (dbPlayer == null)
+                return;
+
+            dbPlayer.Inpatient = status;
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task SetPermaTimeLeft(NetUserId userId, int minutes) // Ratbite
+        {
+            await using var db = await GetDb();
+
+            var dbPlayer = await db.DbContext.Player.Where(dbPlayer => dbPlayer.UserId == userId).SingleOrDefaultAsync();
+            if (dbPlayer == null)
+                return;
+
+            dbPlayer.BrigTime = minutes;
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task<int> ModifyPermaTimeLeft(NetUserId userId, int minutes) // Goobstation
+        {
+            await using var db = await GetDb();
+
+            var dbPlayer = await db.DbContext.Player.Where(dbPlayer => dbPlayer.UserId == userId).SingleOrDefaultAsync();
+            if (dbPlayer == null)
+                return minutes;
+
+            dbPlayer.BrigTime += minutes;
+            await db.DbContext.SaveChangesAsync();
+            return dbPlayer.BrigTime;
+        }
+        public async Task<int> GetPPpoints(NetUserId userId) // Ratbite
+        {
+            await using var db = await GetDb();
+
+            return await db.DbContext.Player
+                .Where(dbPlayer => dbPlayer.UserId == userId)
+                .Select(dbPlayer => dbPlayer.PPpoints)
+                .SingleOrDefaultAsync();
+        }
+
+        public async Task SetPPpoints(NetUserId userId, int pppoints) // Ratbite
+        {
+            await using var db = await GetDb();
+
+            var dbPlayer = await db.DbContext.Player.Where(dbPlayer => dbPlayer.UserId == userId).SingleOrDefaultAsync();
+            if (dbPlayer == null)
+                return;
+
+            dbPlayer.PPpoints = pppoints;
+            await db.DbContext.SaveChangesAsync();
+        }
+
+        public async Task<int> ModifyPPpoints(NetUserId userId, int pppoints) // Goobstation
+        {
+            await using var db = await GetDb();
+
+            var dbPlayer = await db.DbContext.Player.Where(dbPlayer => dbPlayer.UserId == userId).SingleOrDefaultAsync();
+            if (dbPlayer == null)
+                return pppoints;
+
+            dbPlayer.PPpoints += pppoints;
+            await db.DbContext.SaveChangesAsync();
+            return dbPlayer.PPpoints;
+        }
+
+        #endregion
+
 
         #region Goob Polls
 

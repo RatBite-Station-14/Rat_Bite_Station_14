@@ -15,8 +15,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 15
-        Structural: 20
+        Piercing: 22 # Ratbite balance
 
 - type: entity
   id: HighCaliberPelletShotgunSpread
@@ -42,8 +41,8 @@
     - type: Projectile
       damage:
         types:
-          Blunt: 6
-          Heat: 6
+          Blunt: 12 # Ratbite balance
+          Heat: 12 # Ratbite balance
     - type: IgnitionSource
       ignited: true
 
@@ -97,8 +96,8 @@
     - type: Projectile
       damage:
         types:
-          Radiation: 8
-          Piercing: 8
+          Radiation: 10 # Ratbite balance
+          Piercing: 15 # Ratbite balance
 
 - type: entity
   id: HighCaliberPelletShotgunUraniumSpread
@@ -124,7 +123,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 65
+        Piercing: 80 # Ratbite balance
 
 - type: entity
   id: BulletSlugEnsnaring
@@ -140,7 +139,7 @@
     deleteOnCollide: false
     damage:
       types:
-        Piercing: 16 #Low damage, but ensnaring
+        Piercing: 25 # Ratbite balance
   - type: Ensnaring
     canThrowTrigger: true
     destroyOnRemove: true
@@ -240,7 +239,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 15
+        Piercing: 20 # Ratbite balance
 
 # Heavy shotgun
 

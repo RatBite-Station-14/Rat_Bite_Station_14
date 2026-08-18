@@ -60,9 +60,6 @@
         layer:
         - WallLayer
         density: 2000
-  - type: Gatherable # Lavaland Change
-    toolWhitelist:
-      tags: []
 
 - type: entity
   abstract: true
@@ -1134,7 +1131,7 @@
 - type: entity
   id: WallRockArtifactFragment
   parent: WallRock
-  #description: A rock wall. What's that sticking out of it? # Lavaland Change
+  description: A rock wall. What's that sticking out of it?
   suffix: Artifact Fragment
   components:
   - type: EntityRemap

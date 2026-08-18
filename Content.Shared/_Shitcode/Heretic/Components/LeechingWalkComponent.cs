@@ -40,7 +40,7 @@ public sealed partial class LeechingWalkComponent : Component
     public float StaminaHeal = 5f;
 
     [DataField]
-    public float ChemPurgeRate = 3f;
+    public float ChemPurgeRate = 2f;
 
     [DataField]
     public ProtoId<ReagentPrototype> ExcludedReagent = "EldritchEssence";

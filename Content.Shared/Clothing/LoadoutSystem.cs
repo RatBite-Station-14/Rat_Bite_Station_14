@@ -42,16 +42,6 @@ public sealed class LoadoutSystem : EntitySystem
         return "Job" + loadout;
     }
 
-    // goob
-    public static string GetAntagPrototype(string? antagId)
-    {
-        if (string.IsNullOrEmpty(antagId))
-            return string.Empty;
-
-        return "Antag" + antagId;
-    }
-    // goob end
-
     public EntProtoId? GetFirstOrNull(LoadoutPrototype loadout)
     {
         EntProtoId? proto = null;

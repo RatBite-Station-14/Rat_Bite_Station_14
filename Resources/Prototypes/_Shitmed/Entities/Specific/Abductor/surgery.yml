@@ -52,6 +52,8 @@
     interfaces:
       enum.MagicMirrorUiKey.Key:
         type: MagicMirrorBoundUserInterface
+  - type: Contraband # Ratbite: manual component because basesurgerytools derives from medical contraband
+    severity: Major
 
 - type: entity
   name: high-tech searing tool
@@ -87,6 +89,8 @@
   - type: GuideHelp
     guides:
     - Abductors
+  - type: Contraband # Ratbite: manual component because basesurgerytools derives from medical contraband
+    severity: Major
 
 - type: entity
   name: high-tech energy scalpel
@@ -124,6 +128,8 @@
   - type: GuideHelp
     guides:
     - Abductors
+  - type: Contraband # Ratbite: manual component because basesurgerytools derives from medical contraband
+    severity: Major
 
 - type: entity
   name: high-tech bone manipulator
@@ -152,3 +158,5 @@
     - type: GuideHelp
       guides:
       - Abductors
+    - type: Contraband # Ratbite: manual component because basesurgerytools derives from medical contraband
+      severity: Major

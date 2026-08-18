@@ -54,9 +54,6 @@
       prototypes:
       - WeaponCrusher
       - WeaponCrusherDagger
-      - WeaponCrusherGlaive
-      - WeaponCrusherHalberd #Goob station
-      - WeaponCrusherHammer #Goob station
       - CrateSalvageHardsuit #Goob station
       - CrateSalvageHardsuitLuxury #Goob station
       - MiningDrill

@@ -2,6 +2,11 @@
 
 # Head
 - type: loadout
+  id: WardenHelmet
+  equipment:
+    head: ClothingHeadHelmetWarden #Ratbite
+
+- type: loadout
   id: WardenHead
   equipment:
     head: ClothingHeadHatWarden
@@ -27,6 +32,11 @@
 
 
 # OuterClothing
+- type: loadout
+  id: WardenArmor
+  equipment:
+    outerClothing: ClothingOuterArmorBasicWarden #Ratbite
+
 - type: loadout
   id: WardenCoat
   equipment:

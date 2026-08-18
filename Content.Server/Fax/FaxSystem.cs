@@ -26,6 +26,7 @@ using Content.Shared.Labels.EntitySystems;
 using Content.Shared.Mobs.Components;
 using Content.Shared.NameModifier.Components;
 using Content.Shared.Paper;
+using Content.Shared._BRatbite.Paper;
 using Content.Shared.Power;
 using Content.Shared.Tools;
 using Content.Shared.UserInterface;
@@ -308,13 +309,15 @@ public sealed class FaxSystem : EntitySystem
                         !args.Data.TryGetValue(FaxConstants.FaxPaperContentData, out string? content))
                         return;
 
+                    // Ratbite: drawable papers
+                    args.Data.TryGetValue(FaxConstants.FaxPaperStrokesData, out List<PaperStroke>? strokes);
                     args.Data.TryGetValue(FaxConstants.FaxPaperLabelData, out string? label);
                     args.Data.TryGetValue(FaxConstants.FaxPaperStampStateData, out string? stampState);
                     args.Data.TryGetValue(FaxConstants.FaxPaperStampedByData, out List<StampDisplayInfo>? stampedBy);
                     args.Data.TryGetValue(FaxConstants.FaxPaperPrototypeData, out string? prototypeId);
                     args.Data.TryGetValue(FaxConstants.FaxPaperLockedData, out bool? locked);
 
-                    var printout = new FaxPrintout(content, name, label, prototypeId, stampState, stampedBy, locked ?? false);
+                    var printout = new FaxPrintout(content, strokes ?? new(), name, label, prototypeId, stampState, stampedBy, locked ?? false);
                     Receive(uid, printout, args.SenderAddress);
 
                     break;
@@ -471,7 +474,7 @@ public sealed class FaxSystem : EntitySystem
 
         var name = Loc.GetString("fax-machine-printed-paper-name");
 
-        var printout = new FaxPrintout(args.Content, name, args.Label, prototype);
+        var printout = new FaxPrintout(args.Content, new(), name, args.Label, prototype);
         component.PrintingQueue.Enqueue(printout);
         component.SendTimeoutRemaining += component.SendTimeout;
 
@@ -511,6 +514,7 @@ public sealed class FaxSystem : EntitySystem
 
         // TODO: See comment in 'Send()' about not being able to copy whole entities
         var printout = new FaxPrintout(paper.Content,
+                       paper.Strokes,
                                        nameMod?.BaseName ?? metadata.EntityName,
                                        labelComponent?.CurrentLabel,
                                        metadata.EntityPrototype?.ID ?? component.PrintPaperId,
@@ -574,6 +578,7 @@ public sealed class FaxSystem : EntitySystem
             { FaxConstants.FaxPaperLabelData, labelComponent?.CurrentLabel },
             { FaxConstants.FaxPaperContentData, paper.Content },
             { FaxConstants.FaxPaperLockedData, paper.EditingDisabled },
+        { FaxConstants.FaxPaperStrokesData, paper.Strokes },
         };
 
         if (metadata.EntityPrototype != null)
@@ -646,7 +651,7 @@ public sealed class FaxSystem : EntitySystem
 
         if (TryComp<PaperComponent>(printed, out var paper))
         {
-            _paperSystem.SetContent((printed, paper), printout.Content);
+            _paperSystem.SetContent((printed, paper), printout.Content, printout.Strokes);
 
             // Apply stamps
             if (printout.StampState != null)

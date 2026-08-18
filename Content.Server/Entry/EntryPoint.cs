@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server._BRatbite.Ghost;
+using Content.Server._BRatbite.PermaBrig;
 using Content.Server._Goobstation.Antag;
 using Content.Server.Acz;
 using Content.Server.Administration;
@@ -20,6 +22,7 @@ using Content.Server.Maps;
 using Content.Server.NodeContainer.NodeGroups;
 using Content.Server.Players.JobWhitelist;
 using Content.Server.Players.PlayTimeTracking;
+using Content.Server._BRatbite.Ghost;
 using Content.Server.Players.RateLimiting;
 using Content.Server.Preferences.Managers;
 using Content.Server.ServerInfo;
@@ -50,6 +53,7 @@ namespace Content.Server.Entry
         [Dependency] private readonly DiscordLink _discordLink = default!;
         [Dependency] private readonly EuiManager _euiManager = default!;
         [Dependency] private readonly GhostKickManager _ghostKick = default!;
+        [Dependency] private readonly AltServerPopCountManager _altServerPopCountManager = default!;
         [Dependency] private readonly IAdminManager _admin = default!;
         [Dependency] private readonly IAdminLogManager _adminLog = default!;
         [Dependency] private readonly IAfkManager _afk = default!;
@@ -180,11 +184,13 @@ namespace Content.Server.Entry
             switch (level)
             {
                 case ModUpdateLevel.PostEngine:
-                {
-                    _euiManager.SendUpdates();
-                    _voteManager.Update();
-                    break;
-                }
+                    {
+                        _euiManager.SendUpdates();
+                        _voteManager.Update();
+                        // Ratbite
+                        _altServerPopCountManager?.Update();
+                        break;
+                    }
 
                 case ModUpdateLevel.FramePostEngine:
                     _updateManager.Update();

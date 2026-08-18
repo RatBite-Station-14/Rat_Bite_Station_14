@@ -74,7 +74,11 @@ public sealed class DrunkOverlay : Overlay
         if (args.Viewport.Eye != eyeComp.Eye)
             return false;
 
-        _visualScale = BoozePowerToVisual(CurrentBoozePower);
+        var visualPower = CurrentBoozePower;
+        if (_entityManager.TryGetComponent(_playerManager.LocalEntity, out Content.Shared.Traits.Assorted.AlcoholToleranceComponent? tolerance))
+            visualPower *= tolerance.VisualScaleMultiplier;
+
+        _visualScale = BoozePowerToVisual(visualPower);
         return _visualScale > 0;
     }
 

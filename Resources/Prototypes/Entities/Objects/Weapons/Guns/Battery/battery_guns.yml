@@ -207,10 +207,10 @@
     spreadAddition: 40
 
 - type: entity
-  name: Svalinn # Goobstation
+  name: svalinn laser pistol
   parent: [BaseWeaponCustomCellSmall, BaseSecurityContraband] # goob edit - svalinn buff fix
   id: WeaponLaserSvalinn
-  description: A cheap and modular laser pistol often carried by civilians. Takes standard power cells, with higher capacity ones amplifying the capacity and power of the resulting beam. # Goobstation
+  description: A cheap and widely used laser pistol.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/svalinn.rsi
@@ -262,7 +262,7 @@
   name: retro laser blaster
   parent: [BaseWeaponBatterySmall, BaseMajorContraband]
   id: WeaponLaserGun
-  description: A laser pistol from another time. Its design is pretty rare in the current era, but it's compatible with modern rechargers. # Goobstation
+  description: A weapon using light amplified by the stimulated emission of radiation.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/laser_retro.rsi
@@ -400,7 +400,7 @@
   name: pulse pistol
   parent: [BaseWeaponBatterySmall, BaseCentcommContraband]
   id: WeaponPulsePistol
-  description: A state-of-the-art laser pistol that fires a rapidly pulsing beam. It's favored as a sidearm for the Emergency Response corps due to its self-recharging design. # Goobstation
+  description: A state-of-the-art pulse based weapon. It's smaller frame allows it to passively regenerate charge. # Goobstation
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/pulse_pistol.rsi
@@ -437,12 +437,17 @@
     - LaserWeapon
   - type: BatterySelfRecharger # Goobstation - CentComm Job Revamp
     autoRechargeRate: 40
+  - type: FiringPin #Ratbite, mindshield restriction system
+  - type: Lock #Ratbite
+    locked: true
+  - type: AccessReader #Ratbite
+    access: [ [ "CentralCommand" ] ]
 
 - type: entity
   name: pulse carbine
   parent: [BaseWeaponBattery, BaseGunWieldable, BaseCentcommContraband]
   id: WeaponPulseCarbine
-  description: A state-of-the-art laser carbine that fires a rapidly pulsing beam. Cheaper than its advanced counterpart, though lacks the ability to self-recharge. # Goobstation
+  description: A state-of-the-art pulse carbine, typically used by Nanotrasen militia. # Goobstation
   components:
 #  - type: Item #Goob
 #    size: Large
@@ -496,6 +501,11 @@
     size: Huge
     shape:
     - 0,0,4,1
+  - type: FiringPin #Ratbite, mindshield restriction system
+  - type: Lock #Ratbite
+    locked: true
+  - type: AccessReader #Ratbite
+    access: [ [ "CentralCommand" ] ]
 
 - type: entity
   name: pulse rifle
@@ -555,7 +565,7 @@
   name: laser cannon
   parent: [BaseWeaponBattery, BaseGunWieldable, BaseSecurityContraband]
   id: WeaponLaserCannon
-  description: A heavy and advanced laser weapon that trades out the capacity of a carbine for greatly increased power. Known to inflict third-degree burns straight through bulletproof armor.
+  description: A heavy duty, high powered laser weapon.
   components:
   - type: Item
     size: Huge
@@ -631,7 +641,7 @@
   name: x-ray cannon
   parent: [BaseWeaponBattery, BaseGunWieldable, BaseSecurityContraband]
   id: WeaponXrayCannon
-  description: An experimental laser weapon that fires a dense x-ray beam. Leaves intense radiation burns.
+  description: An experimental weapon that uses concentrated x-ray energy against its target.
   components:
   - type: Item
     size: Huge
@@ -674,7 +684,7 @@
   name: practice disabler
   parent: BaseWeaponBatterySmall
   id: WeaponDisablerPractice
-  description: A self-defense weapon that exhausts organic targets, weakening them until they collapse. This one has been undertuned for use in training scenarios or target practice.
+  description: A self-defense weapon that exhausts organic targets, weakening them until they collapse. This one has been undertuned for cadets making it mostly harmless.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/practice_disabler.rsi
@@ -754,7 +764,7 @@
   name: disabler SMG
   parent: [BaseWeaponBattery, BaseSecurityContraband]
   id: WeaponDisablerSMG
-  description: An iteration of the disabler, reducing the power of each shot for a massive increase in firerate. Though a lot bulkier, the lightweight frame and lack of recoil make it fully usable one-handed. # Goobstation
+  description: Advanced weapon that exhausts organic targets, weakening them until they collapse.
   components:
   - type: Item
     size: Large
@@ -793,10 +803,10 @@
   - type: GunExecutionBlacklist # Goobstation
 
 - type: entity
-  name: Taser # Goobstation
+  name: taser
   parent: [BaseWeaponBatterySmall, BaseSecurityContraband]
   id: WeaponTaser
-  description: A handheld stun weapon that fires two electrified darts at the target. Formerly used by NanoTrasen security, though it's mostly been phased out. # Goobstation
+  description: A low-capacity, energy-based stun gun used by security teams to subdue targets at range.
   components:
   - type: Tag
     tags:
@@ -853,7 +863,7 @@
   name: antique laser pistol
   parent: [BaseWeaponBatterySmall, BaseGrandTheftContraband]
   id: WeaponAntiqueLaser
-  description: A premium laser pistol from another age, customised with a mahogany grip and sleek chrome filigree. The chamber glows with menacing spikes of energy. There are clown and captain stick figures scratched into the side plate. The clown is dead. The captain is striking a heroic pose. # Goobstation
+  description: This is an antique laser pistol. All craftsmanship is of the highest quality. It is decorated with a mahogany grip and chrome filigree. The object menaces with spikes of energy. On the item is an image of a captain and a clown. The clown is dead. The captain is striking a heroic pose.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/antiquelasergun.rsi
@@ -894,10 +904,10 @@
     # not putting a BlockMovement component here cause that's funny.
 
 - type: entity
-  name: advanced laser pistol # Goobstation
+  name: advanced laser pistol
   parent: [BaseWeaponBatterySmall, BaseSecurityContraband]
   id: WeaponAdvancedLaser
-  description: An experimental laser pistol fitted with a self-charging nuclear battery. # Goobstation
+  description: An experimental high-energy laser pistol with a self-charging nuclear battery.
   components:
   - type: Item
     #size: Normal # Goob we want the L shaped size
@@ -1044,7 +1054,7 @@
   name: Energy Shotgun # Goobstation
   parent: [BaseWeaponBattery, BaseGunWieldable, BaseGrandTheftContraband] # Goobstation
   id: WeaponEnergyShotgun
-  description: A one-of-a-kind energy weapon that fires a barrage of red-hot plasma rather than a laser beam. Comes with a fire selector between narrow, wide, and disabling, making it a diverse weapon in the right hands. # Goobstation
+  description: A one-of-a-kind prototype energy weapon that uses various shotgun configurations. It offers the possibility of both lethal and non-lethal shots, making it a versatile weapon.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/energy_shotgun.rsi
@@ -1150,10 +1160,10 @@
     autoRechargePauseTime: 10
 
 - type: entity
-  name: temperature gun # Goobstation
+  name: temperature gun
   parent: [BaseWeaponBattery, BaseGunWieldable, BaseSecurityContraband]
   id: WeaponTemperatureGun
-  description: A versatile energy gun that fires projectiles that modify internal body temperature, originally designed for use against opponents in armored hardsuits. Probably constitutes some kind of war crime in corporate space. # Goobstation
+  description: An advanced gun that shoots body-temperature-changing beams. This probably constitutes as some kind of war crime.
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Battery/tempgun.rsi # Goobstation

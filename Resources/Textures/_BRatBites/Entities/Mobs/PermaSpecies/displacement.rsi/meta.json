@@ -1,0 +1,23 @@
+﻿{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made by ColonelNothing(disc)/eirinn-n(git)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "load": {
+        "srgb": false
+    },
+    "states": [
+        {
+            "name": "jumpsuit",
+            "directions": 4
+        },
+        {
+            "name": "jumpsuit-female",
+            "directions": 4
+        }
+
+    ]
+}

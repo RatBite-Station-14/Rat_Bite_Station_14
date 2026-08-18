@@ -1,47 +1,16 @@
-<controls:FancyWindow xmlns="https://spacestation14.io"
-                      xmlns:controls="using:Content.Client.UserInterface.Controls"
-                      Title="{Loc 'pen-spin-ui-title'}"
-                      MinSize="200 120"
-                      SetSize="200 120">
-    <BoxContainer Orientation="Vertical"
-                  VerticalExpand="True"
-                  HorizontalExpand="True"
-                  HorizontalAlignment="Center"
-                  Margin="8">
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
 
-        <PanelContainer>
-            <BoxContainer Orientation="Horizontal"
-                          HorizontalAlignment="Center"
-                          HorizontalExpand="True">
-                <Label HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       Text="°" />
-                <LineEdit Name="DegreeInput"
-                          Access="Public"
-                          MinSize="80 0"
-                          HorizontalAlignment="Center"
-                          VerticalAlignment="Center"
-                          PlaceHolder="0-359" />
-            </BoxContainer>
-        </PanelContainer>
-
-        <PanelContainer>
-            <BoxContainer Orientation="Horizontal"
-                          HorizontalAlignment="Center"
-                          HorizontalExpand="True">
-                <Button Name="ResetButton"
-                        Access="Public"
-                        Text="{Loc 'pen-spin-ui-reset'}"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        StyleClasses="OpenRight" />
-                <Button Name="SubmitButton"
-                        Access="Public"
-                        Text="{Loc 'pen-spin-ui-submit'}"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        StyleClasses="OpenLeft" />
-            </BoxContainer>
-        </PanelContainer>
+<ui:FancyWindow xmlns="https://spacestation14.io"
+             xmlns:ui="using:Content.Client.UserInterface.Controls"
+             Title="{Loc 'pen-spin-window-title'}"
+             MinSize="260 140"
+             SetSize="320 180">
+    <BoxContainer Orientation="Vertical" Margin="8">
+        <Label Text="{Loc 'pen-spin-degree-label'}" />
+        <LineEdit Name="DegreeInput" Text="0" />
+        <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 8 0 0">
+            <Button Name="ResetButton" Text="{Loc 'pen-spin-reset-button'}" />
+            <Button Name="SubmitButton" Text="{Loc 'pen-spin-submit-button'}" />
+        </BoxContainer>
     </BoxContainer>
-</controls:FancyWindow>
+</ui:FancyWindow>

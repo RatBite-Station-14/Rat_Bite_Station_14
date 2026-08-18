@@ -7,9 +7,9 @@
   color: "#A46106"
   roles:
   - CargoTechnician
+  - CargoInsurance #Ratbite
   - Quartermaster
   - SalvageSpecialist
-  - ShaftMiner # Lavaland Change
 
 - type: department
   id: Civilian
@@ -51,6 +51,7 @@
   - ERTEngineer
   - DeathSquad
   - HecuOperative
+  - RedsightOverseer # Ratbite
   - BlueshieldOfficer # Goobstation - Start
   - NanotrasenRepresentative
   - NanotrasenCareerTrainer
@@ -76,6 +77,7 @@
   - HeadOfSecurity
   - ResearchDirector
   - Quartermaster
+  - RedsightOverseer # Ratbite
   - BlueshieldOfficer # Goobstation
   - NanotrasenRepresentative # Goobstation
   - NanotrasenCareerTrainer # Goobstation
@@ -102,6 +104,7 @@
   - AtmosphericTechnician
   - ChiefEngineer
   - StationEngineer
+  - EngiSentry #Ratbite
   - TechnicalAssistant
 
 - type: department
@@ -113,6 +116,7 @@
   - Chemist
   - ChiefMedicalOfficer
   - MedicalDoctor
+  - MedOrderly #Ratbite
   - MedicalIntern
   - Psychologist
   - Paramedic
@@ -126,12 +130,14 @@
   weight: 20
   roles:
   - HeadOfSecurity
+  - RedsightOverseer # Ratbite
   - SecurityCadet
   - SecurityOfficer
   - Detective
   - Warden
   - Brigmedic # Goob
   - SecurityClown # event-restricted, Goob
+  - Prisoner # Ratbite
 
 - type: department
   id: Science
@@ -141,6 +147,7 @@
   roles:
   - ResearchDirector
   - Scientist
+  - ScicurityGuard # Ratbite
   - ResearchAssistant
   - Roboticist #Goob
 

@@ -327,7 +327,6 @@
     containers:
       machine_board: !type:Container
       machine_parts: !type:Container
-      upgrade_slot_1: !type:ContainerSlot # Lavaland Change
   - type: Destructible
     thresholds:
     - trigger:

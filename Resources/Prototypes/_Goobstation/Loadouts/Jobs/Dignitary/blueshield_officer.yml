@@ -9,16 +9,6 @@
       role: JobBlueshieldOfficer
       time: 187200
 
-# Goobstation - For Ensembles
-- type: loadoutEffectGroup
-  id: GrandMasterBSO
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobBlueshieldOfficer
-      time: 360000 # 100 hrs
-
 # Hats
 - type: loadout
   id: BlueshieldOfficerHeadSwatHelmet
@@ -127,14 +117,6 @@
   equipment:
     neck: ClothingNeckMantleBlueshield
 
-- type: loadout
-  id: BlueshieldOfficerEnsemble
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: GrandMasterBSO
-  equipment:
-    neck: ClothingNeckEnsembleBlueshield
-
 # Mask
 - type: loadout
   id: BlueshieldOfficerMaskLollypop
@@ -143,6 +125,12 @@
     proto: SeniorBlueshieldOfficer
   equipment:
     mask: FoodSnackLollypopBlueshield
+
+# Ratbite: BSO mask
+- type: loadout
+  id: BlushieldOfficerMaskGasSwat
+  equipment:
+    mask: ClothingBSOMaskGasSwat
 
 # Back
 - type: loadout

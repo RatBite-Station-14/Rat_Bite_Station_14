@@ -13,7 +13,7 @@
   icon: "JobIconStationEngineer"
   supervisors: job-supervisors-ce
   guides: [ Engineering ] # goobstation
-  goobcoins: 20 #Goob content
+  goobcoins: 15 #Goob content    # Ratbite - decreased a bit
   access:
   - Maintenance
   - Engineering

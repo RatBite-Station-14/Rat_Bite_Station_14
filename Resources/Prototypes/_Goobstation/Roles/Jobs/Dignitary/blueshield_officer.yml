@@ -8,24 +8,25 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Command
-      time: 90000 # 25 hours
+      time: 36000 # 10 hours
     - !type:DepartmentTimeRequirement
       department: Medical
-      time: 54000 # 15 hours
+      time: 18000 # 5 hours
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 90000 # 25 hours
+      time: 36000 # 10
     - !type:AgeRequirement
       requiredAge: 21
-    - !type:SpeciesRequirement # Goob - None Felinid
+    - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
       inverted: true
       species:
       - Felinid
+      - Scurret
   guides:
   - BlueshieldOfficerSOP
   - Command
   - Succession
-  goobcoins: 45
+  goobcoins: 50 # Ratbite - increased a bit
   weight: 20
   startingGear: BlueshieldOfficerGear
   icon: "JobIconBlueshield"
@@ -55,6 +56,7 @@
       - type: CommandStaff
       - type: Condemned
         soulOwnedNotDevil: true
+      - type: CombatTrained # ratbite
 
 - type: startingGear
   id: BlueshieldOfficerGear
@@ -70,6 +72,8 @@
     - Flash
     - ClothingBSOMaskGasSwat
     - CombatKnife
+    - BlueshieldUndeterminedHardsuit
+    - BlueshieldUndeterminedWeapon
 
 - type: chameleonOutfit
   id: BlueshieldOfficerChameleonOutfit

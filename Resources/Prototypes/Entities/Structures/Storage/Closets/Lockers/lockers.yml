@@ -55,25 +55,8 @@
 - type: entity
   id: LockerSalvageSpecialist
   parent: LockerBase
-  name: salvage specialist's locker # Lavaland Change
-  description: Contains equipment useful for space exploration. # Lavaland Change
-  components:
-  - type: Appearance
-  - type: EntityStorageVisuals
-    # Lavaland Change start - new sprite for the locker
-    stateBaseClosed: cargo
-    stateDoorOpen: cargo_open
-    stateDoorClosed: salvage_door
-    # Lavaland Change end
-  - type: AccessReader
-    access: [["Salvage"]]
-
-# Lavaland Change start - Shaft miner role
-- type: entity
-  id: LockerShaftMiner
-  parent: LockerBase
-  name: shaft miner's locker
-  description: Contains equipment useful for planet exploration.
+  name: salvage specialist's equipment
+  description: Nevermind the pickaxe.
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -82,12 +65,11 @@
     stateDoorClosed: mining_door
   - type: AccessReader
     access: [["Salvage"]]
-# Lavaland Change end
 
 # Command
 - type: entity
   id: LockerCaptain
-  parent: LockerBaseSecure
+  parent: LockerMindshielded
   name: captain's locker
   components:
   - type: Appearance
@@ -97,10 +79,11 @@
     stateDoorClosed: cap_door
   - type: AccessReader
     access: [["Captain"]]
+    needsMindshield: true
 
 - type: entity
   id: LockerHeadOfPersonnel
-  parent: LockerBaseSecure
+  parent: LockerMindshielded
   name: head of personnel's locker
   components:
   - type: Appearance
@@ -110,11 +93,12 @@
     stateDoorClosed: hop_door
   - type: AccessReader
     access: [["HeadOfPersonnel"]]
+    needsMindshield: true
 
 # CE
 - type: entity
   id: LockerChiefEngineer
-  parent: LockerBaseSecure
+  parent: LockerMindshielded
   name: chief engineer's locker
   components:
   - type: Appearance
@@ -124,6 +108,7 @@
     stateDoorClosed: ce_door
   - type: AccessReader
     access: [ [ "ChiefEngineer" ] ]
+    needsMindshield: true
 
 # Electrical supplies
 - type: entity
@@ -303,7 +288,7 @@
 # CMO
 - type: entity
   id: LockerChiefMedicalOfficer
-  parent: LockerBaseSecure
+  parent: LockerMindshielded
   name: chief medical officer's locker
   components:
   - type: Appearance
@@ -313,6 +298,7 @@
     stateDoorClosed: cmo_door
   - type: AccessReader
     access: [ [ "ChiefMedicalOfficer" ] ]
+    needsMindshield: true
 
 # Science
 - type: entity
@@ -344,7 +330,7 @@
 # HoS
 - type: entity
   id: LockerHeadOfSecurity
-  parent: LockerBaseSecure
+  parent: LockerMindshielded
   name: head of security's locker
   components:
   - type: Appearance
@@ -354,11 +340,12 @@
     stateDoorClosed: hos_door
   - type: AccessReader
     access: [["HeadOfSecurity"]]
+    needsMindshield: true
 
 # Warden
 - type: entity
   id: LockerWarden
-  parent: LockerBaseSecure
+  parent: LockerMindshielded
   name: warden's locker
   components:
   - type: Appearance
@@ -368,6 +355,7 @@
     stateDoorClosed: warden_door
   - type: AccessReader
     access: [["Armory"]]
+    needsMindshield: true
 
 # Brigmedic
 - type: entity
@@ -633,11 +621,12 @@
 - type: entity
   id: LockerRepresentative
   name: representative locker
-  parent: LockerBaseSecure
+  parent: LockerMindshielded
   components:
   - type: Appearance
   - type: AccessReader
     access: [["Command"]]
+    needsMindshield: true
   - type: EntityStorageVisuals
     stateBaseClosed: hop
     stateDoorOpen: hop_open

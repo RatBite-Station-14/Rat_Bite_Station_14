@@ -150,6 +150,7 @@
   equipment:
     back: ClothingBackpackSatchelAdmin
     id: AdminPDA
+    eyes: ClothingEyesHudMedSec
   storage:
     back:
     - GasAnalyzer

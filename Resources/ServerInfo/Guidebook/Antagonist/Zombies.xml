@@ -4,7 +4,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 <Document>
   # Zombies
-
+  
   <Box>
     [color=#999999][italic]"They're coming to get you, Barbara!"[/italic][/color]
   </Box>
@@ -15,10 +15,10 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   Zombies are conversion antagonists that infect all beings that they bite with [color=#7e916e]Romerol[/color], a deadly, contagious virus that can easily spread if not contained.
 
   <Box>
-    <GuideReagentEmbed Reagent="Romerol"/>
+    <GuideReagentEmbed Reagent="Romerol"></GuideReagentEmbed>
   </Box>
 
-  ## Initial Infected
+  ## Inital Infected
   You are patient zero. You have [color=#7e916e]Romerol[/color] coursing through your veins and you have a grand desire to share it with every single flesh being you see.
 
   Upon learning of your infection, [italic]all bets are off[/italic]. You have only so much time before you turn, and you want to [bold]maximize your chances of taking over the station.[/bold]
@@ -47,10 +47,10 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   If someone is infected but has not yet turned into a zombie, [color=#86caf7]Ambuzol[/color] can be used to cure the active infection. [color=#1274b5]Ambuzol Plus[/color] can be used to both cure and completely protect you from re-infection!
 
   <Box>
-    <GuideReagentEmbed Reagent="Ambuzol"/>
+    <GuideReagentEmbed Reagent="Ambuzol"></GuideReagentEmbed>
   </Box>
   <Box>
-    <GuideReagentEmbed Reagent="AmbuzolPlus"/>
+    <GuideReagentEmbed Reagent="AmbuzolPlus"></GuideReagentEmbed>
   </Box>
 
 </Document>

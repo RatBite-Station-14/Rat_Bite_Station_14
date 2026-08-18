@@ -60,11 +60,17 @@
     deleteOnCollide: false
     damage:
       types:
-        Heat: 5
-  - type: StaminaDamageOnCollide
-    damage: 20
+        Heat: 5 # Ratbite - Made plasmacutter deal damage instead of stam damage
+        Slash: 20 # Ratbite - 4 shot to crit, causes quite a bit of bleeding
+        # 14 shots kills a goliath, should be good enough for salv
+        Structural: 15
+      armorPenetration: -0.65 # Ratbite - fuck tiders/fauna specifically :godo:
+      woundSeverityMultipliers:
+        Slash: 1.25 # Ratbite - tider delimbing
+#  - type: StaminaDamageOnCollide
+#    damage: 20            # Ratbite - removed
   - type: TimedDespawn
-    lifetime: 0.2
+    lifetime: 0.20
   - type: PointLight
     radius: 2
     color: purple
@@ -420,13 +426,14 @@
       shader: unshaded
   - type: GatheringProjectile
   - type: DamageMarkerOnCollide
+    onlyWorkOnFauna: false
     whitelist:
       components:
       - MobState
     damage:
       types:
         Burn: 3
-        Holy: 20
+        Holy: 5
     effect: { sprite: /Textures/_ShitChap/Effects/holy_beam.rsi, state: beam }
     sound: /Audio/Effects/holy.ogg
   - type: Projectile
@@ -509,22 +516,3 @@
     - state: icon
   - type: Ammo
     muzzleFlash: null
-
-- type: entity
-  categories: [ HideSpawnMenu ]
-  parent: BaseBullet
-  id: BulletMime
-  name: bullet (silent)
-  components:
-  - type: Projectile
-    damage:
-      types:
-        Piercing: 40
-  - type: EntityEffectOnProjectileHit
-    effects:
-    - !type:GenericStatusEffect
-      key: Muted
-      component: Muted
-      type: Add
-      time: 20
-      refresh: true

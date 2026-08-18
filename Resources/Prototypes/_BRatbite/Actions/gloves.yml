@@ -1,0 +1,15 @@
+- type: entity
+  parent: BaseToggleAction
+  id: ActionEmpSpawn
+  name: EMP Touch
+  description: Shock the target with an EMP, disabling their electronics.
+  components:
+  - type: Action
+    icon:
+      sprite: _BRatBites/Actions/emp.rsi
+      state: shock-off
+    iconOn:
+      sprite: _BRatBites/Actions/emp.rsi
+      state: shock-on
+  - type: InstantAction
+    event: !type:ItemSummonActionEvent

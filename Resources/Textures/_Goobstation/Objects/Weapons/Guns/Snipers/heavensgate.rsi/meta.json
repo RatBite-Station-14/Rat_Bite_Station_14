@@ -1,12 +1,18 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "sprites by nepoznato, Resprite by RedTerror",
+    "copyright": "sprites by nepoznato",
     "size": {
         "x": 32,
         "y": 32
     },
     "states": [
+        {
+            "name": "base"
+        },
+        {
+            "name": "bolt-open"
+        },
         {
             "name": "inhand-left",
             "directions": 4

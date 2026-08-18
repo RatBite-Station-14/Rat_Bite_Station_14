@@ -20,11 +20,13 @@
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
-        Blunt: 10
-        Structural: 15
+        Blunt: 15 # Ratbite - bevv the base PKA is NOT meta, stop nerfing it for fucks sake..
+        Structural: 20 # Ratbite re add
+      armorPenetration: -0.5 # Ratbite, balance against antags/sec still a murder weapon keep away from tidas
   # Short lifespan
   - type: TimedDespawn
-    lifetime: 0.14 # roughly 3.5 tiles
+    lifetime: 0.22 # Ratbite - roughly 5.5 tiles
+  - type: GatheringProjectile # Ratbite
 
 - type: entity
   id: BulletKineticShuttle
@@ -41,8 +43,7 @@
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
-        Blunt: 40
-        Structural: 35
+        Blunt: 80 # Ratbite - 40 > 80
   - type: Ammo
     muzzleFlash: HitscanEffect
   - type: TimedDespawn
@@ -51,6 +52,7 @@
     radius: 2.5
     color: white
     energy: 0.5
+  - type: GatheringProjectile # Ratbite
 
 - type: entity
   id: RapidBulletKinetic # Used for PK repeater and pistol
@@ -59,17 +61,19 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
+    impactEffect: BulletImpactEffectKinetic
     damage:
       types:
         Blunt: 6.5
         Structural: 8
 
 - type: entity
-  id: WeakBulletKinetic # Used for PK shotgun
+  id: WeakBulletKinetic
   categories: [ HideSpawnMenu ]
-  parent: RapidBulletKinetic
+  parent: BulletKinetic
   components:
   - type: Projectile
+    impactEffect: BulletImpactEffectKinetic
     damage:
       types:
         Blunt: 3
@@ -87,41 +91,5 @@
   components:
   - type: ProjectileSpread
     proto: PelletKinetic
-    count: 4
-    spread: 20
-
-- type: entity
-  id: BulletCharge
-  name: charge bolt
-  parent: BaseBullet
-  categories: [ HideSpawnMenu ]
-  description: Marks a target for additional damage.
-  components:
-  - type: Reflective
-    reflective:
-    - NonEnergy
-  - type: Sprite
-    noRot: false
-    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
-    layers:
-    - state: chronobolt
-      shader: unshaded
-  - type: GatheringProjectile
-  - type: DamageMarkerOnCollide
-    whitelist:
-      components:
-      - MobState
-    damage:
-      types:
-        Blunt: 15
-        Slash: 5
-    effect: { sprite: /Textures/Objects/Weapons/effects.rsi, state: shield2 }
-    sound: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg
-  - type: Projectile
-    impactEffect: BulletImpactEffectKinetic
-    damage:
-      types:
-        Blunt: 0
-  # Short lifespan
-  - type: TimedDespawn
-    lifetime: 0.4
+    count: 6
+    spread: 30

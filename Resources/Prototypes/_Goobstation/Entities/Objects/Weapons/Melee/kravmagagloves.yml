@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  parent: [ ClothingHandsBase , BaseWardenContraband ]
+  parent: ClothingHandsBase
   id: ClothingHandsGlovesKravMaga
   name: Krav Maga gloves
   description: These gloves can teach you to perform Krav Maga using nanochips for as long as you're wearing them.
@@ -16,6 +16,9 @@
   - type: ClothingGrantComponent
     component:
     - type: KravMaga
+  - type: UnarmedCombatSkillBlocker
   - type: GuideHelp
     guides:
     - KravMaga
+  - type: Contraband # Ratbite: contraband changes
+    allowedJobs: [ Warden, HeadOfSecurity ]

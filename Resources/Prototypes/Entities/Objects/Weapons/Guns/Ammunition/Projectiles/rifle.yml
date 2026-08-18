@@ -9,8 +9,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 17
-      armorPenetration: 0.15 # Goobstation
+        Piercing: 25 #Ratbite balance
+      armorPenetration: 0.10 # Ratbite
 
 - type: entity
   parent: BaseBulletPractice

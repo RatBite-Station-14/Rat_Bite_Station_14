@@ -21,7 +21,7 @@
   - type: EntityTableContainerFill
     containers:
       entity_storage:
-        id: WeaponCrusherHammer
+        id: WeaponCrusher
 
 - type: entity
   parent: CrateGenericSteel
@@ -32,4 +32,4 @@
   - type: EntityTableContainerFill
     containers:
       entity_storage:
-        id: WeaponCrusherHalberd
+        id: WeaponCrusher

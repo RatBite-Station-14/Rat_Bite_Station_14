@@ -26,6 +26,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 <ui:OptionColorSlider Name="HighlightsColorSlider"
                     Title="{Loc 'ui-options-highlights-color'}"
                     Example="{Loc 'ui-options-highlights-color-example'}"/>
+                <ui:OptionSlider Name="PointerScaleSlider" Title="Pointer scale" />
+                <CheckBox Name="PointerOutlineCheckBox" Text="Pointer outline" />
             </BoxContainer>
         </ScrollContainer>
         <ui:OptionsTabControlRow Name="Control" Access="Public" />

@@ -9,7 +9,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 12
+        Piercing: 20 # Ratbite balance
       armorPenetration: 0.25 # It's "semi armor piercing" after all
   - type: ExplodeOnTrigger
   - type: Explosive

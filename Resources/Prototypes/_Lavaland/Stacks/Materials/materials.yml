@@ -28,7 +28,7 @@
   name: stack-unprocessed-steel-ore
   icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: iron }
   spawn: SteelOre1Unprocessed
-  maxCount: 90 # Goobstation
+  maxCount: 30
 
 - type: stack
   id: PlasmaOreUnprocessed
@@ -49,7 +49,7 @@
   name: stack-unprocessed-quartz-ore
   icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: spacequartz }
   spawn: SpaceQuartz1Unprocessed
-  maxCount: 90 # Goobstation
+  maxCount: 30
 
 - type: stack
   id: UraniumOreUnprocessed
@@ -71,7 +71,7 @@
   name: stack-unprocessed-coal
   icon: { sprite: /Textures/Objects/Materials/ore.rsi, state: coal }
   spawn: Coal1Unprocessed
-  maxCount: 90 # Goobstation
+  maxCount: 30
 
 - type: stack
   id: ArtifactFragmentOreUnprocessed

@@ -1,0 +1,83 @@
+- type: job
+  id: RedsightOverseer
+  name: Redsight Overseer
+  description: "Ensure security's compliance with spacelaw, act as the judge in legal disputes"
+  playTimeTracker: JobRedsightOverseer
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 7200 # 2 hours
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 36000 # 10 hours
+    - !type:RoleTimeRequirement
+      role: JobLawyer
+      time: 1800 # 30 mins
+    - !type:AgeRequirement
+      requiredAge: 21
+    - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
+      inverted: true
+      species:
+      - Felinid
+      - Scurret
+  goobcoins: 60
+  weight: 20
+  startingGear: RSOGear
+  icon: "JobIconRSO"
+  supervisors: job-supervisors-centcom job-supervisors-hos
+  canBeAntag: false
+  access:
+  - CentralCommand
+  - Maintenance
+  - External
+  - Command
+  - Brig
+  - Security
+  - Armory
+  - Maintenance
+  - Service
+  - Detective
+  - Cryogenics
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, BluespaceLifelineImplant ] # CC gets bluespace
+  - !type:AddComponentSpecial
+    components:
+      - type: CommandStaff
+      - type: Condemned
+        soulOwnedNotDevil: true
+      - type: CombatTrained # ratbite
+
+- type: startingGear
+  id: RSOGear
+  equipment:
+    #suitstorage: WeaponSubMachineSmart
+    gloves: ClothingHandsGlovesRSOShock
+    id: RSOPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltSecurityFilled
+    pocket1: ClothingMaskGasSecurity
+  storage:
+    back:
+    - KravMagaImplanter
+    - BookSpaceLaw
+    - Flash
+    - RSOUndeterminedWeapon
+#    - UndeterminedRSOHardsuit  Removed until rework
+
+- type: chameleonOutfit
+  id: RedsightOverseerChameleonOutfit
+  job: RedsightOverseer
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetRSOLaw
+    eyes: ClothingEyesGlassesRSO
+    ears: ClothingHeadsetAltCentCom
+    mask: ClothingMaskGasSecurity
+    neck: SurveillanceWirelessCameraBodySecurity
+    jumpsuit: ClothingUniformJumpsuitRedsightOverseer
+    belt: ClothingBeltSecurity
+    outerClothing: RSOJack
+    gloves: ClothingHandsGlovesRSOShock
+    shoes: ClothingShoesBootsJack
+

@@ -89,6 +89,12 @@ public sealed partial class AccessReaderComponent : Component
     public bool BreakOnAccessBreaker = true;
 
     /// <summary>
+    /// Whether access requires the user to have a mindshield.
+    /// </summary>
+    [DataField]
+    public bool NeedsMindshield;
+
+    /// <summary>
     /// The examination text associated with this component.
     /// </summary>
     /// <remarks>

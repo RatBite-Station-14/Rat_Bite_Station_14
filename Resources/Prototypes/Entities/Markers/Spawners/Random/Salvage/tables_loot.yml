@@ -283,9 +283,8 @@
     - id: AdvancedMineralScanner
     # - id: BlueprintFulton # Goobstation - roundstart
     # - id: BlueprintSeismicCharge # Goobstation - emag locked
-    - id: WeaponCrusherGlaive
-    - id: WeaponCrusherHammer #Goobstation
-    - id: WeaponCrusherHalberd #Goobstation
+    - id: WeaponCrusher
+    - id: WeaponCrusherDagger
     - !type:GroupSelector #Goobstation
       children:
       - id: ClothingOuterHardsuitSalvage

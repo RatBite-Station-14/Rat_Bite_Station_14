@@ -1,0 +1,29 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Ratbite Station People",
+    "size": {
+        "x": 8,
+        "y": 8
+    },
+    "states": [
+	 {
+      "name": "ScicurityGuard"
+     },
+    {
+      "name": "MedicalOrderly"
+     },
+     {
+      "name": "EngiSentry"
+      },
+     {
+      "name": "CargoInsurance"
+     },
+      {
+       "name": "RedsightOverseer"
+      },
+      {
+      "name": "ntrintern"
+     }
+    ]
+}

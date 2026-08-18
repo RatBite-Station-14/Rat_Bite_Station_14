@@ -1,0 +1,7 @@
+- type: entity
+  id: WawaTranslatorImplanter
+  parent: [ BaseTranslatorImplanter ]
+  suffix: Wawa
+  components:
+  - type: Implanter
+    implant: WawaTranslatorImplant

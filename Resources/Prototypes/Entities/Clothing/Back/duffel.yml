@@ -250,7 +250,7 @@
   - type: Storage
     maxItemSize: Huge
     grid:
-    - 0,0,14,5 #Goob
+    - 0,0,19,9
   - type: ClothingSpeedModifier
     sprintModifier: 1 # makes its stats identical to other variants of bag of holding
   - type: HeldSpeedModifier

@@ -1,13 +1,25 @@
 - type: species
   id: Scurret
-  name: species-name-scurret
-  roundStart: false
+  name: Scurret
+  roundStart: true #Ratbite playable scurrets
   prototype: MobScurret
   sprites: MobScurretSprites
+  defaultSkinTone: "#747474"
+  markingLimits: MobScurretMarkingLimits
   dollPrototype: MobScurretDummy
   skinColoration: Hues
-  defaultSkinTone: "#ffffff"
-  markingLimits: MobScurretMarkingLimits
+  maleFirstNames: NamesFirstScurret
+  femaleFirstNames: NamesFirstScurret
+  lastNames: NamesLastScurret
+  naming: FirstLast
+  # size
+  sizeRatio: 1.0
+  minHeight: 1
+  defaultHeight: 1
+  maxHeight: 1.3
+  minWidth: 1
+  defaultWidth: 1
+  maxWidth: 1.10
 
 - type: speciesBaseSprites
   id: MobScurretSprites

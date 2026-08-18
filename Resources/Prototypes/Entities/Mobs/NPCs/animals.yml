@@ -6,6 +6,11 @@
   id: MobBat
   description: Some cultures find them terrifying, others crunchy on the teeth.
   components:
+  # Ratbite: allow critters to pull stuff
+  - type: Puller
+    needsHands: false
+  - type: WeakPuller
+  # End ratbite
   - type: MovementSpeedModifier
     baseWalkSpeed : 3
     baseSprintSpeed : 6
@@ -63,7 +68,6 @@
     - Mouse
     understands:
     - Mouse
-    - TauCetiBasic
   - type: MeleeWeapon
     soundHit:
         path: /Audio/Effects/bite.ogg
@@ -294,7 +298,6 @@
     - Chicken
     understands:
     - Chicken
-    - TauCetiBasic
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-organic
   - type: NpcFactionMember
@@ -374,6 +377,11 @@
   id: MobCockroach
   description: This station is just crawling with bugs.
   components:
+  # Ratbite: allow critters to pull stuff
+  - type: Puller
+    needsHands: false
+  - type: WeakPuller
+  # End ratbite
   - type: Sprite
     drawdepth: SmallMobs
     sprite: Mobs/Animals/cockroach.rsi
@@ -523,11 +531,12 @@
     makeSentient: true
     allowSpeech: true
     allowMovement: true
+    allowPerma: true
     name: ghost-role-information-mothroach-name
     description: ghost-role-information-mothroach-description
-    rules: ghost-role-information-sentientanimal-rules # Goobstation Sentient Animal PR
+    rules: ghost-role-information-freeagent-rules
     mindRoles:
-    - MindRoleGhostRoleSentientAnimal # Goobstation Sentient Animal PR
+    - MindRoleGhostRoleFreeAgentHarmless
   - type: Fixtures
     fixtures:
       fix1:
@@ -618,7 +627,6 @@
     - Moffic
     understands:
     - Moffic
-    - TauCetiBasic
   - type: ZombieAccentOverride
     accent: zombieMoth
   - type: Vocal
@@ -770,7 +778,6 @@
     - Duck
     understands:
     - Duck
-    - TauCetiBasic
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-organic
   - type: NpcFactionMember
@@ -1054,7 +1061,6 @@
     - Crab
     understands:
     - Crab
-    - TauCetiBasic
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
@@ -1346,7 +1352,6 @@
     - Kangaroo
     understands:
     - Kangaroo
-    - TauCetiBasic
   - type: Butcherable
     spawned:
     - id: FoodMeat
@@ -1367,7 +1372,7 @@
     prob: 0.25
     name: ghost-role-information-kangaroo-name
     description: ghost-role-information-kangaroo-description
-    rules: ghost-role-information-sentientanimal-rules # Goobstation Sentient Animal PR
+    rules: ghost-role-information-nonantagonist-rules
   - type: GhostTakeoverAvailable
   - type: Vocal
     sounds:
@@ -1580,6 +1585,9 @@
   - type: Crawler
   - type: StatusIcon
   - type: DiseaseCarrier # Goobstation
+  - type: Emoting
+  - type: BodyEmotes
+    soundsId: GeneralBodyEmotes
 
 - type: entity
   name: monkey
@@ -1598,8 +1606,6 @@
     understands:
     - Monkey
     - Kobold
-  #- type: SentienceTarget   # Goobstation - monkeys no longer randomly sentient outside of events
-  #  - TauCetiBasic
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-primate
   - type: AlwaysRevolutionaryConvertible
@@ -1608,9 +1614,9 @@
     makeSentient: true
     name: ghost-role-information-monkey-name
     description: ghost-role-information-monkey-description
-    rules: ghost-role-information-sentientanimal-rules # Goobstation Sentient Animal PR
+    rules: ghost-role-information-freeagent-rules # Goobstation - - remove: 1984
     mindRoles:
-    - MindRoleGhostRoleSentientAnimal # Goobstation Sentient Animal PR
+    - MindRoleGhostRoleFreeAgent
   - type: GhostTakeoverAvailable
   - type: Skinnable # Goobstation - Fuck pun-pun
   - type: Clumsy
@@ -1698,7 +1704,6 @@
     understands:
     - Kobold
     - Monkey
-    - TauCetiBasic
   # Shitmed Change Start
   - type: HumanoidAppearance
     species: Kobold
@@ -1806,7 +1811,7 @@
     makeSentient: true
     name: ghost-role-information-kobold-name
     description: ghost-role-information-kobold-description
-    rules: ghost-role-information-sentientanimal-rules # Goobstation Sentient Animal PR
+    rules: ghost-role-information-nonantagonist-rules
 
 - type: entity
   name: kobold
@@ -1873,19 +1878,25 @@
   id: MobMouse
   description: Squeak!
   components:
+  # Ratbite: allow critters to pull stuff
+  - type: Puller
+    needsHands: false
+  - type: WeakPuller
+  # End ratbite
   - type: VentCrawler # goobstation - Ventcrawl
     enterDelay: 0.5
   - type: Body
     prototype: Mouse
   - type: GhostRole
     makeSentient: true
+    allowPerma: true
     allowSpeech: true
     allowMovement: true
     name: ghost-role-information-mouse-name
     description: ghost-role-information-mouse-description
-    rules: ghost-role-information-sentientanimal-rules # Goobstation Sentient Animal PR
+    rules: ghost-role-information-freeagent-rules
     mindRoles:
-    - MindRoleGhostRoleSentientAnimal # Goobstation Sentient Animal PR
+    - MindRoleGhostRoleFreeAgentHarmless
   - type: GhostTakeoverAvailable
   - type: Speech
     speechSounds: Squeak
@@ -2001,7 +2012,6 @@
     - Mouse
     understands:
     - Mouse
-    - TauCetiBasic
   - type: Tag
     tags:
     - Trash
@@ -2061,6 +2071,12 @@
     color: "#808080"
     activateSound: null
     deactivateSound: null
+  - type: EggLayer
+    eggSpawn:
+    - id: SpawnMobMouse
+    hungerUsage: 20
+    eggLayAction: MouseMultiply
+    hungerRequired: true
   - type: SolutionRegeneration
     solution: melee
     generated:
@@ -2606,11 +2622,8 @@
       types:
         Heat : 0.2 #per second, scales with temperature & other constants
   - type: LanguageKnowledge # Einstein Engines - Language
-    speaks:
-    - Penguin
-    understands:
-    - Penguin
-    - TauCetiBasic
+    speaks: [Penguin]
+    understands: [Penguin]
 
 # TODO: Make grenade penguin voice activated like the rest of the stealth items.
 - type: entity
@@ -2740,11 +2753,8 @@
     damageContainer: Biological
     damageModifierSet: Scale
   - type: LanguageKnowledge # Einstein Engines - Language
-    speaks:
-    - Hissing
-    understands:
-    - Hissing
-    - TauCetiBasic
+    speaks: [Hissing]
+    understands: [Hissing]
 
 # Code unique spider prototypes or combine them all into one spider and get a
 # random sprite state when you spawn it.
@@ -2795,7 +2805,6 @@
     - Xeno
     understands:
     - Xeno
-    - TauCetiBasic
   - type: InteractionPopup
     successChance: 0.5
     interactSuccessString: petting-success-tarantula
@@ -2866,6 +2875,7 @@
       task: SimpleHostileCompound
   - type: GhostRole
     makeSentient: true
+    allowPerma: true
     name: ghost-role-information-giant-spider-name
     description: ghost-role-information-giant-spider-description
     rules: ghost-role-information-giant-spider-rules
@@ -3036,7 +3046,6 @@
     - Hissing
     understands:
     - Hissing
-    - TauCetiBasic
 
 - type: entity
   name: possum
@@ -3116,7 +3125,6 @@
     - Hissing
     understands:
     - Hissing
-    - TauCetiBasic
 
 - type: entity
   name: fox
@@ -3204,7 +3212,6 @@
     - Fox
     understands:
     - Fox
-    - TauCetiBasic
 
 - type: entity
   abstract: true
@@ -3272,7 +3279,6 @@
     - Dog
     understands:
     - Dog
-    - TauCetiBasic
   - type: InteractionPopup
     interactSuccessString: petting-success-dog
     interactFailureString: petting-failure-generic
@@ -3429,7 +3435,6 @@
     - Cat
     understands:
     - Cat
-    - TauCetiBasic
   - type: InteractionPopup
     successChance: 0.7
     interactSuccessString: petting-success-cat
@@ -3690,7 +3695,6 @@
     - Hissing
     understands:
     - Hissing
-    - TauCetiBasic
 
 - type: entity
   name: ferret
@@ -3750,7 +3754,6 @@
     - Hissing
     understands:
     - Hissing
-    - TauCetiBasic
 
 - type: entity
   name: hamster
@@ -3759,13 +3762,19 @@
   description: A cute, fluffy, robust hamster.
   components:
   - type: VentCrawler # goobstation - Ventcrawl
+  # Ratbite: allow critters to pull stuff
+  - type: Puller
+    needsHands: false
+  - type: WeakPuller
+  # End ratbite
   - type: GhostRole
     makeSentient: true
     allowSpeech: true
     allowMovement: true
+    allowPerma: true
     name: ghost-role-information-hamster-name
     description: ghost-role-information-hamster-description
-    rules: ghost-role-information-sentientanimal-rules # Goobstation Sentient Animal PR
+    rules: ghost-role-information-nonantagonist-rules
   - type: GhostTakeoverAvailable
   - type: Speech
     speechVerb: SmallMob
@@ -3857,7 +3866,6 @@
     - Mouse
     understands:
     - Mouse
-    - TauCetiBasic
   - type: Tag
     tags:
     - VimPilot
@@ -3980,7 +3988,6 @@
     - Pig
     understands:
     - Pig
-    - TauCetiBasic
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-organic
   - type: NpcFactionMember
@@ -4160,7 +4167,6 @@
     - Deer
     understands:
     - Deer
-    - TauCetiBasic
 
 - type: entity
   name: reindeer doe

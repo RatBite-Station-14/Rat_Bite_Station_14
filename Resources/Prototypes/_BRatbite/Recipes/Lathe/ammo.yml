@@ -1,0 +1,42 @@
+# energy pistol magazine
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: EnergyMagPistolLethal
+  result: EnergyMagPistolLethal
+  materials:
+    Steel: 500
+    Glass: 300
+    Plastic: 200
+    Gold: 100
+# Dual disabler is not allowed
+#- type: latheRecipe
+#  parent: BaseAmmoRecipe
+#  id: EnergyMagPistolDisabler
+#  result: EnergyMagPistolDisabler
+#  materials:
+#    Steel: 500
+#    Glass: 300
+#    Plastic: 200
+#    Gold: 100
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: EnergyMagPistolIon
+  result: EnergyMagPistolIon
+  materials:
+    Steel: 500
+    Glass: 300
+    Plastic: 200
+    Gold: 100
+
+- type: latheRecipe
+  parent: BaseAmmoRecipe
+  id: EnergyMagPistolOverchargeLethal
+  result: EnergyMagPistolOverchargeLethal
+  materials:
+    Steel: 500
+    Glass: 300
+    Plastic: 200
+    Plasma: 100
+    Gold: 200

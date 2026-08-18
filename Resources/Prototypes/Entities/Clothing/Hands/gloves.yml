@@ -23,6 +23,7 @@
       collection: BoxingHit
     animation: WeaponArcFist
     mustBeEquippedToUse: true
+  - type: UnarmedCombatSkillBlocker
   - type: Fiber
     fiberMaterial: fibers-leather
     fiberColor: fibers-red
@@ -412,10 +413,10 @@
   - type: Unremoveable
 
 - type: entity
-  parent: [ ClothingHandsButcherable, BaseMagicalContraband ] # goob edit - it's now magical contra
+  parent: [ClothingHandsButcherable, BaseSyndicateContraband]
   id: ClothingHandsGlovesNorthStar
   name: gloves of the north star
-  description: Just looking at these fills you with an urge to beat the shit out of people.
+  description: These gloves allow you to punch incredibly fast.
   components:
   - type: Sprite
     sprite: Clothing/Hands/Gloves/northstar.rsi

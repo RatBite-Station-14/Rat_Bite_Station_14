@@ -148,7 +148,7 @@
       group: Canisters
 
 - type: entity
-  parent: GasCanister
+  parent: [GasCanister, BaseScienceEngContraband] # Ratbite: contraband changes
   id: StorageCanister
   name: storage canister
   components:
@@ -390,7 +390,7 @@
     access: [["Atmospherics"]]
 
 - type: entity
-  parent: GasCanister
+  parent: [GasCanister, BaseScienceEngContraband] # Ratbite: contraband changes
   id: PlasmaCanister
   name: plasma canister
   description: A canister that can contain any type of gas. This one is supposed to contain plasma. It can be attached to connector ports using a wrench.
@@ -431,7 +431,7 @@
       locked: true
 
 - type: entity
-  parent: GasCanister
+  parent: [GasCanister, BaseScienceEngContraband] # Ratbite: contraband changes
   id: TritiumCanister
   name: tritium canister
   description: A canister that can contain any type of gas. This one is supposed to contain tritium. It can be attached to connector ports using a wrench.
@@ -511,7 +511,7 @@
         - !type:DumpCanisterBehavior
 
 - type: entity
-  parent: GasCanister
+  parent: [GasCanister, BaseScienceEngContraband] # Ratbite: contraband changes
   id: AmmoniaCanister
   name: ammonia canister
   description: A canister that can contain any type of gas. This one is supposed to contain ammonia. It can be attached to connector ports using a wrench.
@@ -552,7 +552,7 @@
       locked: true
 
 - type: entity
-  parent: GasCanister
+  parent: [GasCanister, BaseScienceEngContraband] # Ratbite: contraband changes
   id: NitrousOxideCanister
   name: nitrous oxide canister
   description: A canister that can contain any type of gas. This one is supposed to contain nitrous oxide. It can be attached to connector ports using a wrench.
@@ -593,7 +593,7 @@
       locked: true
 
 - type: entity
-  parent: GasCanister
+  parent: [GasCanister, BaseScienceEngContraband] # Ratbite: contraband changes
   id: FrezonCanister
   name: frezon canister
   description: A canister that can contain any type of gas. This one is supposed to contain frezon. It can be attached to connector ports using a wrench.

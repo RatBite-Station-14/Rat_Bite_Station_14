@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTiderPants
+  name: Freak Pants
+  description: These pants gives you the urge to robusting everyone.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Uniforms/tiderpants.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Uniforms/tiderpants.rsi

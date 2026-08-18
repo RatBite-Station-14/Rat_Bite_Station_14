@@ -97,7 +97,7 @@
   name: Atreides
   parent: [BaseWeaponSubMachineGun, BaseSecurityContraband]
   id: WeaponSubMachineGunAtreides
-  description: A rare, compact machine pistol not often found in the Spinward sector. Being produced during the Corporate Wars and the design specs being long since lost to time, the Atreides excels at CQB due to its overwhelming firerate. Feeds from .35 Auto SMG magazines. # Goobstation
+  description: A rare machine pistol hailing from the Corporate Wars. Its extremely high fire rate and compact profile make it useful in close quarters combat. Despite its age, it is in remarkably good condition. Feeds from .35 SMG magazines.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/SMGs/atreides.rsi
@@ -117,10 +117,10 @@
   - type: Appearance
 
 - type: entity
-  name: C-20R
+  name: C-20r submachine gun
   parent: [BaseWeaponSubMachineGun, BaseSyndicateContraband]
   id: WeaponSubMachineGunC20r
-  description: The right hand of those who fight under the three serpents. A one-handed, bullpup SMG from the Waffle Corporation that sacrifices accuracy for pure firerate. Feeds from .35 Auto SMG magazines.
+  description: A classic and widespread submachine gun, infamous for its use by the Gorlex Marauders. One of the first homegrown Waffle Corp. designs, it remains in service today. Feeds from .35 SMG magazines.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
@@ -137,8 +137,8 @@
 #    minAngle: -19
 #    maxAngle: -16
   - type: Gun
-#    minAngle: 21 # Base SMG already has minAngle: 2 maxAngle: 16
-#    maxAngle: 32 # Goob - one-handed C20R - end
+    minAngle: 2 # Ratbite - C20 Unshitting
+    maxAngle: 10 # Ratbite - Make SMGs Great Again
     shotsPerBurst: 5
     availableModes:
     - Burst
@@ -205,7 +205,7 @@
   name: Drozd
   parent: [BaseWeaponSubMachineGun, BaseSecurityContraband]
   id: WeaponSubMachineGunDrozd
-  description: A bullpup SMG designed for the narrow and tight corridors common in station warfare. This law-enforcement model is select fire, but the Drozd's burst focused design throttles its full-auto performance massively. Feeds from .35 Auto SMG magazines.
+  description: A modern SMG manufactured by Nanotrasen’s Small Arms Division. It features an exceptional rate of fire in burst mode, useful for holding defensive angles or engaging hostiles at longer ranges. Feeds from .35 SMG magazines.
   components:
     - type: Sprite
       sprite: Objects/Weapons/Guns/SMGs/drozd.rsi
@@ -258,12 +258,18 @@
       steps: 1
       zeroVisible: true
     - type: Appearance
+    - type: FiringPin #Ratbite, mindshield restriction system
+    - type: Lock #Ratbite
+      locked: true
+    - type: AccessReader #Ratbite
+      access: [ [ "Security" ] ]
+
 
 - type: entity
-  name: WT550 # Goobstation
+  name: WT550 autorifle # Goobstation
   parent: [BaseWeaponSubMachineGun, BaseSecurityContraband]
   id: WeaponSubMachineGunWt550
-  description: A truly unique firearm, the WT550 loads from a proprietary top-mounted magazine parallel to the barrel. While the RPM isn't great, the small package and steady recoil make it fully usable one-handed. Feeds from top-mounted .35 Auto SMG magazines. # Goobstation
+  description: A truly unique firearm, the WT550 was designed by Nanotrasen's Small Arms Division as a compact, cheap, and mass produced submachine gun fully controllable with one hand. It contains an exotic internal recoil buffer and feeds from special top-mounted .35 magazines.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/SMGs/wt550.rsi
@@ -284,7 +290,7 @@
     boltClosed: null
   - type: Gun # Goobstation - I am the one who nerfs the WT.
     minAngle: 2
-    maxAngle: 16
+    maxAngle: 10 # C-20 parity
     fireRate: 5
     burstFireRate: 8
     angleIncrease: 3
@@ -316,6 +322,11 @@
     steps: 6
     zeroVisible: true
   - type: Appearance
+  - type: FiringPin #Ratbite, mindshield restriction system
+  - type: Lock #Ratbite
+    locked: true
+  - type: AccessReader #Ratbite
+    access: [ [ "Security" ] ]
   # Goobstation
   - type: Multishot
     missChance: 0.3

@@ -1,0 +1,29 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-4.0",
+    "copyright": "https://github.com/ResomiDumbass",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "iv"
+        },
+        {
+            "name": "iv-fill1"
+        },
+        {
+            "name": "iv-fill2"
+        },
+	{
+            "name": "iv-fill3"
+        },
+	{
+            "name": "iv-fill4"
+        },
+	{
+	    "name": "line"
+	}
+    ]
+}

@@ -454,7 +454,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         {
             // Lavaland Change start: optimization real
             var ev = new _Lavaland.Procedural.BeforeLoadChunkEvent(chunk);
-            RaiseLocalEvent(gridUid, ref ev);
+            RaiseLocalEvent(gridUid, ev);
 
             if (ev.Cancelled)
                 continue;
@@ -900,7 +900,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         {
             // Lavaland Change start: optimization real
             var ev = new _Lavaland.Procedural.UnLoadChunkEvent(chunk);
-            RaiseLocalEvent(gridUid, ref ev);
+            RaiseLocalEvent(gridUid, ev);
 
             if (ev.Cancelled)
                 continue;

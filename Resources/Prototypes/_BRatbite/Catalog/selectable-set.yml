@@ -1,0 +1,35 @@
+# RSO Hardsuit selector
+
+- type: selectableSet
+  id: HardsuitSelectorRSOGoliath
+  name: selectable-set-rso-hardsuit-name
+  description: selectable-set-rso-hardsuit-desc
+  sprite:
+    sprite: _BRatBites/Clothing/OuterClothing/Hardsuit/rsohardsuit.rsi
+    state: icon
+  content:
+  - ClothingOuterHardsuitRSOGoliath
+
+- type: selectableSet
+  id: VoidsuitSelectorRSOMagistrate
+  name: selectable-set-rso-voidsuit-name
+  description: selectable-set-rso-voidsuit-desc
+  sprite:
+    sprite: _BRatBites/Clothing/OuterClothing/Hardsuit/rsovoidsuit.rsi
+    state: icon
+  content:
+  - ClothingOuterVoidsuitRSOmagistrate
+
+# RSO weapon selector
+
+- type: selectableSet
+  id: WeaponSelectorRSOSmartgun
+  name: selectable-set-rso-weaponkit-smartgun-name
+  description: selectable-set-rso-weaponkit-smartgun-desc
+  sprite:
+    sprite: _Goobstation/Objects/Weapons/Guns/SMGs/smartgun.rsi
+    state: icon
+  content:
+  - WeaponSubMachineSmart
+  - MagazineSmart
+  - MagazineSmart

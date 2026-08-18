@@ -20,7 +20,6 @@
         Security: [ ]
         Service: [ ]
     - type: StationCargoBountyDatabase
-    - type: StationXenobiologyBountyDatabase # Goobstaton
 
 - type: entity
   id: BaseStationJobsSpawning
@@ -70,12 +69,16 @@
           paths:
             - /Maps/_Goobstation/Shuttles/trading_outpost.yml #Goobstation
           nameDataset: TradeStationNames
+        mining: !type:GridSpawnGroup
+          paths:
+          - /Maps/Shuttles/mining.yml
+          nameDataset: MiningShuttleNames
         # Spawn last
         ruins: !type:GridSpawnGroup
           hide: true
           nameGrid: true
-          minCount: 2
-          maxCount: 2
+          minCount: 3 #Ratbite
+          maxCount: 5 #Ratbite
           stationGrid: false
           paths:
           - /Maps/Ruins/abandoned_outpost.yml
@@ -83,19 +86,21 @@
           - /Maps/Ruins/chunked_tcomms.yml
           - /Maps/Ruins/biodome_satellite.yml
           - /Maps/Ruins/derelict.yml
-          - /Maps/_Goobstation/Ruins/goobdjstation.yml # goob - this was so fucking bad
+          - /Maps/Ruins/djstation.yml
           - /Maps/Ruins/empty_flagship.yml
           - /Maps/Ruins/hydro_outpost.yml
           - /Maps/Ruins/old_ai_sat.yml
           - /Maps/Ruins/ruined_prison_ship.yml
           - /Maps/Ruins/syndicate_dropship.yml
+          - /Maps/_BRatbite/Ratbite_Original/Ruins/syndicateoutpost.yml #Ratbite, TODO: fix that annoying ass file directory
           - /Maps/Ruins/whiteship_ancient.yml
           - /Maps/Ruins/whiteship_bluespacejumper.yml
           - /Maps/Ruins/wrecklaimer.yml
           - /Maps/Ruins/displaced_telescience.yml
+          - /Maps/Shuttles/mining.yml #Ratbite
         wrecks: !type:DungeonSpawnGroup
           minimumDistance: 150
-          maximumDistance: 300
+          maximumDistance: 450 #Ratbite
           stationGrid: false
           minCount: 12
           maxCount: 16
@@ -113,20 +118,6 @@
           - ChunkDebrisSmall
           - ChunkDebris
         # goob - no vgroid
-        #vgroid: !type:DungeonSpawnGroup
-        #  minimumDistance: 300
-        #  maximumDistance: 350
-        #  nameDataset: NamesBorer
-        #  stationGrid: false
-        #  addComponents:
-        # - type: Gravity
-        #    enabled: true
-        #    inherent: true
-        #  - type: IFF
-        #    flags: HideLabel
-        #    color: "#d67e27"
-        #  protos:
-        #  - VGRoid
 
 - type: entity
   id: BaseStationCentcomm

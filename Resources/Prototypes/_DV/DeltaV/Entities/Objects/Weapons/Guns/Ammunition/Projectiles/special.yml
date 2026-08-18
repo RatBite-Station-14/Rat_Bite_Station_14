@@ -1,0 +1,17 @@
+- type: entity
+  id: BulletSpecial
+  name: bullet (.38 special)
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 35
+
+- type: entity
+  id: BulletSpecialPractice
+  name: bullet (.38 special practice)
+  parent: BaseBulletPractice
+  categories: [ HideSpawnMenu ]
+

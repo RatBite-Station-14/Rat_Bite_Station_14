@@ -1,0 +1,58 @@
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# DIE SNAKE CASE
+- type: body
+  id: PermaAscended
+  name: "perma ascended"
+  root: chest
+  slots:
+    head:
+      part: HeadPermaAscended
+      connections:
+      - chest
+      organs:
+        brain: OrganHumanBrain
+        eyes: OrganHumanEyes
+    chest:
+      part: ChestPermaAscended
+      connections:
+      - groin
+      - right arm
+      - left arm
+      - head # Shitmed
+      organs:
+        heart: OrganHumanHeart
+        lungs: OrganHumanLungs
+    groin:
+      part: GroinPermaAscended
+      connections:
+      - right leg
+      - left leg
+      organs:
+        stomach: OrganHumanStomach
+        liver: OrganHumanLiver
+        kidneys: OrganHumanKidneys
+    right arm:
+      part: RightArmPermaAscended
+      connections:
+      - right hand
+    left arm:
+      part: LeftArmPermaAscended
+      connections:
+      - left hand
+    right hand:
+      part: RightHandPermaAscended
+    left hand:
+      part: LeftHandPermaAscended
+    right leg:
+      part: RightLegPermaAscended
+      connections:
+      - right foot
+    left leg:
+      part: LeftLegPermaAscended
+      connections:
+      - left foot
+    right foot:
+      part: RightFootPermaAscended
+    left foot:
+      part: LeftFootPermaAscended

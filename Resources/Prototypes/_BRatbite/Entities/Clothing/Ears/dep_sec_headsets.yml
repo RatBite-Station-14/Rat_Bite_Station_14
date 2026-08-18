@@ -1,0 +1,68 @@
+
+- type: entity # Scicurity
+  parent: ClothingHeadsetScience
+  id: ClothingHeadsetScienceGuard
+  name: scicurity headset
+  description: A single red stripe has been added as a warning that trespassers will be used to further artifact progression.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySecurity
+      - EncryptionKeyScience
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Ears/Headsets/scicurity.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Ears/Headsets/scicurity.rsi
+
+- type: entity # Cargo Insurance
+  parent: ClothingHeadsetCargo
+  id: ClothingHeadsetCargoGuard
+  name: cargo insurance headset
+  description: A single red stripe has been added to let you know this person will kill you and sell your organs.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySecurity
+      - EncryptionKeyCargo
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Ears/Headsets/cargoinsurance.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Ears/Headsets/cargoinsurance.rsi
+
+- type: entity # Engi Sentry
+  parent: ClothingHeadsetEngineering
+  id: ClothingHeadsetEngineeringGuard
+  name: engi sentry's headset
+  description: A single red stripe has been added to let you know that you'll have to go get a permit for your insuls.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySecurity
+      - EncryptionKeyEngineering
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Ears/Headsets/engisentry.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Ears/Headsets/engisentry.rsi
+
+- type: entity # Medical Orderly
+  parent: ClothingHeadsetMedical
+  id: ClothingHeadsetMedicalGuard
+  name: medical orderly's headset
+  description: A single red stripe has been added to warn you that any roughhousing in the Medbay will immediately register you as an organ donor and corpse.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySecurity
+      - EncryptionKeyMedical
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Ears/Headsets/medicalorderly.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Ears/Headsets/medicalorderly.rsi

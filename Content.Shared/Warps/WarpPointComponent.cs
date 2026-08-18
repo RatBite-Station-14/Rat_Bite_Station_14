@@ -24,4 +24,13 @@ public sealed partial class WarpPointComponent : Component
     /// </summary>
     [DataField]
     public EntityWhitelist? Blacklist;
+
+    [DataField]
+    public bool Mob;
+
+    [DataField]
+    public bool Ghost;
+
+    [DataField]
+    public bool Antagonist;
 }

@@ -107,7 +107,7 @@ public sealed class MimePowersSystem : EntitySystem
         _popupSystem.PopupPredicted(messageSelf, messageOthers, ent, ent);
 
         // Make sure we set the invisible wall to despawn properly
-        PredictedSpawnAttachedTo(ent.Comp.WallPrototype, _turf.GetTileCenter(tile.Value)); // Goob edit
+        PredictedSpawnAtPosition(ent.Comp.WallPrototype, _turf.GetTileCenter(tile.Value));
         // Handle args so cooldown works
         args.Handled = true;
     }

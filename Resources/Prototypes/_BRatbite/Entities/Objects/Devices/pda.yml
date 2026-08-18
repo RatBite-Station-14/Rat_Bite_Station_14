@@ -1,0 +1,120 @@
+- type: entity
+  parent: BaseSecurityPDA
+  id: RSOPDA
+  name: redsight overseer PDA
+  description: Whosoever bears this PDA is the law, squared.
+  components:
+  - type: Pda
+    id: RedsightOverseerIDcard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-hos
+  - type: PdaBorderColor
+    borderColor: "#A32D26"
+    accentHColor: "#447987"
+  - type: Icon
+    state: pda-hos
+  - type: CartridgeLoader
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - WantedListCartridge
+    - LogProbeCartridge
+    - NanoChatCartridge # DeltaV
+
+- type: entity
+  parent: BaseMedicalPDA
+  id: MedWatchPDA
+  name: medical guard PDA
+  description: Shiny and sterile.
+  components:
+  - type: Pda
+    id: MedicalWatchIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-medical
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentVColor: "#447987"
+  - type: Icon
+    state: pda-medical
+
+- type: entity
+  parent: BasePDA
+  id: SciWatchPDA
+  name: scicurity guard PDA
+  description: It's covered with an unknown gooey substance.
+  components:
+  - type: Pda
+    id: SciWatchIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-science
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentVColor: "#8900c9"
+  - type: Icon
+    state: pda-science
+
+- type: entity
+  parent: BasePDA
+  id: CargoWatchPDA
+  name: cargo guard PDA
+  description: PDA for the guys that guard the guys that order the pizzas.
+  components:
+  - type: Pda
+    id: CargoWatchIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-cargo
+  - type: PdaBorderColor
+    borderColor: "#e39751"
+  - type: Icon
+    state: pda-cargo
+
+- type: entity
+  parent: BasePDA
+  id: EngineerWatchPDA
+  name: engi sentry PDA
+  description: Rugged and well-worn.
+  components:
+  - type: Pda
+    id: EngineeringWatchIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-engineer
+  - type: PdaBorderColor
+    borderColor: "#949137"
+    accentVColor: "#A32D26"
+  - type: Icon
+    state: pda-engineer
+
+- type: entity
+  parent: CentcomPDA
+  id: NTRInternPDA
+  name: nanotrasen intern PDA
+  description: A company-issued PDA given to an unpaid intern.
+  components:
+  - type: Pda
+    id: NTRInternIDCard
+
+- type: entity
+  parent: CentcomPDA
+  id: NTRLeadInternPDA
+  name: nanotrasen lead intern PDA
+  description: A company-issued PDA given to an intern union leader.
+  components:
+  - type: Pda
+    id: NTRLeadInternIDCard

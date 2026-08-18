@@ -16,7 +16,7 @@
         shape:
           !type:PhysShapeCircle
           radius: 0.35
-        density: 140
+        density: 180 # Ratbite density normalization, making size sliders more important for weight contests.
         restitution: 0.0
         mask:
         - MobMask
@@ -121,6 +121,16 @@
     - DoorBumpOpener
     - FelinidEmotes # Since we need to add this, we also need to rewrite all others
     - AnomalyHost
+  - type: Sprinter
+    staminaDrainRate: 12 # Ratbite
+  - type: ThermalVision
+    thermalShader: null
+    color: "#ABCDEF"
+    drawOverlay: false
+    activateSound: null
+    deactivateSound: null
+    lightRadius: 25
+    visionRadius: 1
 
 - type: entity
   save: false

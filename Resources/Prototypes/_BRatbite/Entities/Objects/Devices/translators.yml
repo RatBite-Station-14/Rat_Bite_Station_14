@@ -1,0 +1,16 @@
+- type: entity
+  id: ScurretTranslator
+  parent: [ TranslatorPoweredBase ]
+  name: Scurret translator
+  description: Translates speech between Scurret and Basic. You've wa'd your last wa!
+  components:
+  - type: HandheldTranslator
+    spoken:
+    - TauCetiBasic
+    - Wawa
+    understood:
+    - Wawa
+    - TauCetiBasic
+    requires:
+    - TauCetiBasic
+    - Wawa

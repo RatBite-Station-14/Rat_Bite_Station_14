@@ -1,4 +1,3 @@
-using Content.Goobstation.Common.Conversion;
 using Content.Goobstation.Shared.Changeling.Components;
 using Content.Goobstation.Shared.LightDetection.Components;
 using Content.Goobstation.Shared.LightDetection.Systems;
@@ -13,6 +12,7 @@ using Content.Shared.Humanoid;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Goobstation.Common.Conversion;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;

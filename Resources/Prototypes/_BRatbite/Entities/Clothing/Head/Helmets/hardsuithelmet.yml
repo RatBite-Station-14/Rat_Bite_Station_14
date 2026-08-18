@@ -1,0 +1,70 @@
+- type: entity
+  parent: ClothingHeadHardsuitWithLightBase
+  id: ClothingHeadHelmetHardsuitRSO
+  name: RSO hardsuit helmet
+  description: A thick, reinforced helmet built for maximum protection and life support in heavy combat.
+  components:
+  - type: BreathMask
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Head/Helmets/rsosuithelmet.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Head/Helmets/rsosuithelmet.rsi
+  - type: PointLight
+    color: "#FF1F2EFF"
+    rotation: 40
+    energy: 15
+    radius: 6
+  - type: PressureProtection
+    highPressureMultiplier: 0.525
+    lowPressureMultiplier: 1000
+  - type: Armor
+    traumaDeductions:
+      Dismemberment: 0.3
+      OrganDamage: 0.3
+      BoneDamage: 0.3
+      VeinsDamage: 0
+      NerveDamage: 0
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.6
+        Heat: 0.6
+        Radiation: 0.6
+        Caustic: 0.6
+  - type: FlashImmunity
+  - type: FlashSoundSuppression
+
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ClothingHeadHelmetVoidsuitRSO
+  name: RSO voidsuit helmet
+  description: A lightweight helmet with night vision, designed for visibility and speed in dark environments.
+  components:
+  - type: BreathMask
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Head/Helmets/rsovoidsuithelmet.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Head/Helmets/rsovoidsuithelmet.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.525
+    lowPressureMultiplier: 1000
+  - type: Armor
+    traumaDeductions:
+      Dismemberment: 0.3
+      OrganDamage: 0.3
+      BoneDamage: 0.3
+      VeinsDamage: 0
+      NerveDamage: 0
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.7
+        Radiation: 0.7
+  - type: FlashImmunity
+  - type: FlashSoundSuppression
+  - type: NightVision
+    flashDurationMultiplier: 2
+    isEquipment: true

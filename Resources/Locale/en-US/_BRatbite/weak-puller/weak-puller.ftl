@@ -1,0 +1,1 @@
+weak-puller-too-big = You try pulling at the enormous item, but it doesn't budge. You aren't strong enough.

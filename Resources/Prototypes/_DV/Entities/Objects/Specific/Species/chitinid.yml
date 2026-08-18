@@ -10,7 +10,7 @@
       - state: chitzite
       - state: chitzite_glow
   - type: RadiationSource
-    intensity: 0.5
+    intensity: 0.03 #Ratbite, this was absurdly overpowered damage for something a tider can produce without access. Imagine if like 5 chitin tiders got together for ts. Durk be ashamed.
   - type: Extractable
     grindableSolutionName: chitzite
   - type: SolutionContainerManager

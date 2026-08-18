@@ -22,23 +22,24 @@
   - type: Tag
     tags:
     - Nozzle
-
   - type: Spray
-    transferAmount: 15
+    transferAmount: 10
     pushbackAmount: 60
     spraySound:
       path: /Audio/Effects/extinguish.ogg
     sprayedPrototype: ExtinguisherSpray
-    vaporAmount: 5
-    vaporSpread: 120
-    sprayDistance: 5
+    vaporAmount: 2 # Ratbite nerfs because this shit could instakill all of sec or a nukie team. Whoever thought this was okay must be put into furnace.
+    vaporSpread: 70
     sprayVelocity: 2.0
+    sprayDistance: 5
     externalContainer: true
     targetSlot: BACK
     providerWhitelist:
       tags:
       - NozzleBackTank
       - AtmosBackTank
+  - type: UseDelay # Ratbite nerfs because this shit could instakill all of sec or a nukie team. Whoever thought this was okay must be put into furnace.
+    delay: 0.5
 
   - type: PacifismAllowedGun
   - type: Gun
@@ -60,8 +61,6 @@
     containerWhitelist:
       tags:
       - AtmosBackTank
-  - type: UseDelay
-    delay: 0.5
 
 - type: entity
   parent: [ BaseCivilianContraband, SmokeGrenade ]

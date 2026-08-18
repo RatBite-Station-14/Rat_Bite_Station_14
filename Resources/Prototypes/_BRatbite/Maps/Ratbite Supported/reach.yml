@@ -1,0 +1,46 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: gameMap
+  id: Reach
+  mapName: 'Reach'
+  mapPath: /Maps/_BRatbite/Ratbite_Supported/reach.yml
+  minPlayers: 0
+  maxPlayers: 10
+  stations:
+    Reach:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Reach Transport {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'SC'
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/Shuttles/emergency_cluster.yml
+        - type: StationJobs
+          availableJobs:
+            NanotrasenRepresentative: [ 1, 1 ] # Goobstation
+            BlueshieldOfficer: [ 1, 1 ] # Goobstation
+            Captain: [ 1, 1 ]
+            HeadOfSecurity: [ 1, 1 ]
+            SecurityOfficer: [ 1, 2 ]
+            CargoTechnician: [ 1, 1 ]
+            SalvageSpecialist: [ 1, 2 ]
+            Bartender: [ 1, 1 ]
+            Botanist: [ 1, 1 ]
+            Chef: [ 1, 1 ]
+            MedicalDoctor: [ 1, 2 ]
+            Chemist: [ 1, 1 ]
+            Janitor: [ 1, 1 ]
+            Musician: [ 1, 1 ]
+            AtmosphericTechnician: [ 1, 1 ]
+            StationEngineer: [ 1, 2 ]
+            Scientist: [ 1, 1 ]
+            Passenger: [ -1, -1 ]
+
+        # Goobstation blob-config-start LOW
+        - type: StationBlobConfig
+          stageBegin: 15
+          stageCritical: 200
+          stageTheEnd: 400
+        # Goobstation blob-config-end

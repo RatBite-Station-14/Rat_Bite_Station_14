@@ -8,10 +8,15 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: Medical
-    time: 18000 # 5 hrs
+    time: 3600 # 1 hrs
   - !type:DepartmentTimeRequirement
     department: Security
-    time: 18000 # 5 hrs
+    time: 3600 # 1 hrs
+  - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
+      inverted: true
+      species:
+      - Felinid
+      - Scurret
   startingGear: BrigmedicGear
   icon: "JobIconBrigmedic"
   supervisors: job-supervisors-hos
@@ -20,7 +25,7 @@
   - MedicalDoctor
   - BrigmedicSOP
   - Medicine
-  goobcoins: 35
+  goobcoins: 45 # Ratbite - increased
   access: # EE parity, make corpsman able function.
   - Security
   - Brig
@@ -38,7 +43,7 @@
   - !type:AddComponentSpecial
     components:
     - type: SurgerySpeedModifier
-      speedModifier: 1.25 # Same as Paramedic
+      speedModifier: 1.5 # Ratbite - parity with medical doctor
 
 - type: chameleonOutfit
   id: BrigmedicChameleonOutfit

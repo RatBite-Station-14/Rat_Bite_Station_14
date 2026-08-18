@@ -32,15 +32,6 @@ namespace Content.Shared.Body.Systems
                 || TerminatingOrDeleted(args.OldBody))
                 return;
 
-            // goob start
-            var remEv = new BeforeBrainRemovedEvent();
-            RaiseLocalEvent(args.OldBody, ref remEv);
-
-            if (remEv.Blocked)
-                return;
-
-            // goob end
-
             brain.Active = false;
             if (!CheckOtherBrains(args.OldBody))
             {
@@ -55,15 +46,6 @@ namespace Content.Shared.Body.Systems
             if (TerminatingOrDeleted(uid)
                 || TerminatingOrDeleted(args.Body))
                 return;
-
-            // goob start
-            var addEv = new BeforeBrainAddedEvent();
-            RaiseLocalEvent(args.Body, ref addEv);
-
-            if (addEv.Blocked)
-                return;
-
-            // goob end
 
             if (!CheckOtherBrains(args.Body))
             {

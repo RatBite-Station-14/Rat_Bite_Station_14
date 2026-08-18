@@ -74,7 +74,7 @@
   minTemp: 374
   reactants:
     Oil:
-      amount: 10 # Goob edit - revert that once we get energy chem
+      amount: 10 # Goob edit - revert that once we get energy chem. HAHAHAHA!! NO!! NO WAY!!
     Ash:
       amount: 6 # Goob edit - revert that once we get energy chem
     SulfuricAcid:

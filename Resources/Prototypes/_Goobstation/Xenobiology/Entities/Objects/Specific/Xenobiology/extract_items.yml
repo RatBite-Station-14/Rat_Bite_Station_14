@@ -49,6 +49,7 @@
       Normal: 32
       Damaged: 9
       Destroyed: 0
+    slotId: heart
   - type: Metabolizer
     metabolizerTypes: [ Cybernetic ]
   - type: Tag
@@ -198,5 +199,9 @@
     state: icon
   - type: StaticPrice
     price: 10000 # goida
+  - type: Enchanter # Ratbite
+    maxLevel: 2
+    enchants:
+    - EnchantFortune # more slop for fun!
 
 # todo mind transfer potion

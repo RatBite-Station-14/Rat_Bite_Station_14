@@ -5,6 +5,12 @@ namespace Content.Goobstation.Common.CCVar;
 [CVarDefs]
 public sealed partial class GoobCVars
 {
+    public static readonly CVarDef<bool> SpaceWhaleSpawn =
+        CVarDef.Create("spacewhale.spawn", false, CVar.SERVERONLY);
+
+    public static readonly CVarDef<float> SpaceWhaleSpawnDistance =
+        CVarDef.Create("spacewhale.spawn_distance", 1000f, CVar.SERVERONLY);
+
     /// <summary>
     ///     Whether pipes will unanchor on ANY conflicting connection. May break maps.
     ///     If false, allows you to stack pipes as long as new directions are added (i.e. in a new pipe rotation, layer or multi-Z link), otherwise unanchoring them.
@@ -169,13 +175,13 @@ public sealed partial class GoobCVars
     ///     Default is 5f.
     /// </summary>
     public static readonly CVarDef<float> PlayerRageQuitTimeThreshold =
-        CVarDef.Create("ragequit.threshold", 30f, CVar.SERVERONLY);
+        CVarDef.Create("ragequit.threshold", 5f, CVar.SERVERONLY);
 
     /// <summary>
     ///     Log ragequits to a discord webhook, set to empty to disable.
     /// </summary>
     public static readonly CVarDef<string> PlayerRageQuitDiscordWebhook =
-        CVarDef.Create("ragequit.discord_webhook", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+        CVarDef.Create("ragequit.discord_webhook", string.Empty, CVar.SERVERONLY | CVar.CONFIDENTIAL);
 
     #endregion PlayerListener
 
@@ -224,7 +230,7 @@ public sealed partial class GoobCVars
     ///     Discord Webhook for the station report
     /// </summary>
     public static readonly CVarDef<string> StationReportDiscordWebHook =
-        CVarDef.Create("stationreport.discord_webhook", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+        CVarDef.Create("stationreport.discord_webhook", string.Empty, CVar.SERVERONLY | CVar.CONFIDENTIAL);
 
     #endregion
 
@@ -269,9 +275,6 @@ public sealed partial class GoobCVars
 
     public static readonly CVarDef<int> RMCPatronLobbyMessageInitialDelaySeconds =
         CVarDef.Create("rmc.patron_lobby_message_initial_delay_seconds", 5, CVar.REPLICATED | CVar.SERVER);
-
-    public static readonly CVarDef<string> RMCDiscordAccountLinkingMessageLink =
-        CVarDef.Create("rmc.discord_account_linking_message_link", "", CVar.REPLICATED | CVar.SERVER);
 
     #endregion
 
@@ -394,7 +397,7 @@ public sealed partial class GoobCVars
     ///     Default of 0.25f outputs between * 0.75f and 1.25f
     /// </summary>
     public static readonly CVarDef<float> MassContestsMaxPercentage =
-        CVarDef.Create("contests.max_percentage", 1f, CVar.REPLICATED | CVar.SERVER);
+        CVarDef.Create("contests.max_percentage", 0.5f, CVar.REPLICATED | CVar.SERVER);
 
     #endregion
 
@@ -403,7 +406,7 @@ public sealed partial class GoobCVars
     /// Shove range multiplier.
     /// </summary>
     public static readonly CVarDef<float> ShoveRange =
-        CVarDef.Create("game.shove_range", 0.6f, CVar.SERVER | CVar.ARCHIVE);
+        CVarDef.Create("game.shove_range", 2.5f, CVar.SERVER | CVar.ARCHIVE);
 
     /// <summary>
     /// Shove speed multiplier, does not affect range.
@@ -415,7 +418,7 @@ public sealed partial class GoobCVars
     /// How much should the mass difference affect shove range & speed.
     /// </summary>
     public static readonly CVarDef<float> ShoveMassFactor =
-        CVarDef.Create("game.shove_mass_factor", 3f, CVar.SERVER | CVar.ARCHIVE);
+        CVarDef.Create("game.shove_mass_factor", 0.2f, CVar.SERVER | CVar.ARCHIVE);
     #endregion
 
     #region Chat
@@ -436,7 +439,7 @@ public sealed partial class GoobCVars
     /// Set to true to enable voice barks and disable default speech sounds.
     /// </summary>
     public static readonly CVarDef<bool> BarksEnabled =
-        CVarDef.Create("voice.barks_enabled", false, CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE);
+        CVarDef.Create("voice.barks_enabled", true, CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE);
 
     /// <summary>
     /// Client volume setting for barks.
@@ -584,7 +587,7 @@ public sealed partial class GoobCVars
     /// 0 means no variation - all limbs are damaged the same
     /// </summary>
     public static readonly CVarDef<float> ExplosionLimbDamageVariation =
-        CVarDef.Create("explosion.damage_variation", 2f, CVar.SERVERONLY);
+        CVarDef.Create("explosion.damage_variation", 0.2f, CVar.SERVERONLY);
 
     /// <summary>
     /// Multiplier to wounds caused by explosion damage
@@ -631,7 +634,7 @@ public sealed partial class GoobCVars
     /// Determines minimum amount of solution you have to step into for footprints to be created.
     /// </summary>
     public static readonly CVarDef<float> MinimumPuddleSizeForFootprints =
-        CVarDef.Create("footprints.minimum_puddle_size", 6f, CVar.SERVERONLY);
+        CVarDef.Create("footprints.minimum_puddle_size", 3f, CVar.SERVERONLY);
 
     /// <summary>
     /// Should heretic ascension ritual be cancelled if heretic hasn't completed their objectives.
@@ -650,18 +653,6 @@ public sealed partial class GoobCVars
     /// </summary>
     public static readonly CVarDef<float> AdminNotificationVolume =
         CVarDef.Create("admin.notification_volume", 1f, CVar.CLIENT | CVar.CLIENTONLY | CVar.ARCHIVE);
-
-    /// <summary>
-    /// Whether or not to spawn space whales if the entity is too far away from the station
-    /// </summary>
-    public static readonly CVarDef<bool> SpaceWhaleSpawn =
-        CVarDef.Create("misc.space_whale_spawn", true, CVar.SERVER);
-
-    /// <summary>
-    /// The distance to spawn a space whale from the station
-    /// </summary>
-    public static readonly CVarDef<int> SpaceWhaleSpawnDistance =
-        CVarDef.Create("misc.space_whale_spawn_distance", 1965, CVar.SERVER);
 
     #endregion
     /// <summary>

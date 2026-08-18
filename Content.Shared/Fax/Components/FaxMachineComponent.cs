@@ -2,6 +2,7 @@
 
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Paper;
+using Content.Shared._BRatbite.Paper;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -151,6 +152,9 @@ public sealed partial class FaxPrintout
     [DataField(required: true)]
     public string Content { get; private set; } = default!;
 
+    [DataField()]
+    public List<PaperStroke> Strokes { get; private set; } = new(); // Ratbite
+
     [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>), required: true)]
     public string PrototypeId { get; private set; } = default!;
 
@@ -167,9 +171,10 @@ public sealed partial class FaxPrintout
     {
     }
 
-    public FaxPrintout(string content, string name, string? label = null, string? prototypeId = null, string? stampState = null, List<StampDisplayInfo>? stampedBy = null, bool locked = false)
+    public FaxPrintout(string content, List<PaperStroke> strokes, string name, string? label = null, string? prototypeId = null, string? stampState = null, List<StampDisplayInfo>? stampedBy = null, bool locked = false)
     {
         Content = content;
+        Strokes = strokes;
         Name = name;
         Label = label;
         PrototypeId = prototypeId ?? "";

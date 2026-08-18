@@ -9,6 +9,9 @@
   - type: ShowMindShieldIcons
   - type: ShowCriminalRecordIcons
   - type: ShowContrabandDetails
+  - type: ClothingGrantComponent
+    component:
+    - type: TargetTracker
 
 - type: entity
   id: ShowMedicalIcons

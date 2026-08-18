@@ -75,9 +75,6 @@
       path: /Audio/Effects/bite.ogg
     angle: 0
     animation: WeaponArcBite
-    damage:
-      types:
-        Piercing: 3
   - type: CrawlUnderFloor
     actionProto: ActionToggleFloorBoardsMode
   - type: StealShoes
@@ -102,4 +99,5 @@
         Blunt: 0.1
   - type: Puller
     needsHands: false
+  - type: WeakPuller
   - type: Stealth # Hijacking this to prevent huds from showing, tell me if you got a better solution.

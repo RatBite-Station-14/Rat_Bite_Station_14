@@ -140,15 +140,6 @@ public sealed partial class ItemSlotsSystem
         return false;
     }
 
-    private void OnReclaimed(EntityUid uid, ItemSlotsComponent component, GotReclaimedEvent args)
-    {
-        foreach (var slot in component.Slots.Values)
-        {
-            if (slot.ContainerSlot != null)
-                _containers.EmptyContainer(slot.ContainerSlot, destination: args.ReclaimerCoordinates);
-        }
-    }
-
     private void HandleDoAfter(EntityUid uid, ItemSlotsComponent component, ItemSlotInteractionDoAfterEvent args)
     {
         if (args.Handled
@@ -157,7 +148,7 @@ public sealed partial class ItemSlotsSystem
             return;
 
         if (args.TryEject && slot.HasItem)
-            TryEjectToHands(uid, slot, args.User, true, false);
+            TryEjectToHands(uid, slot, args.User, true);
         else if (args.TryInsert && !slot.HasItem && args.Used != null)
             TryInsertWithConditions(uid, component, args.User, args.Used.Value, false);
     }

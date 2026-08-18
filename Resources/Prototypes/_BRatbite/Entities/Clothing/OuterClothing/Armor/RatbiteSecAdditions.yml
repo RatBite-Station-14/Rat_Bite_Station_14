@@ -1,0 +1,14 @@
+
+
+
+
+- type: entity
+  parent: ClothingOuterArmorBasic
+  id: ClothingOuterArmorBasicWarden
+  name: warden armor vest
+  description: A Type I armored vest that provides decent protection against most types of damage. This one is ornamented for use by NT security department wardens.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/OuterClothing/Armor/wardenvest.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/OuterClothing/Armor/wardenvest.rsi

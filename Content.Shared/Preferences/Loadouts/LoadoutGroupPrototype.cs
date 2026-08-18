@@ -56,4 +56,16 @@ public sealed partial class LoadoutGroupPrototype : IPrototype, IInheritingProto
     [AlwaysPushInheritance]
     [DataField(required: true)]
     public List<ProtoId<LoadoutPrototype>> Loadouts = new();
+
+    /// <summary>
+    /// Additional loadout groups that are displayed and validated as part of this group.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<LoadoutGroupPrototype>> Subgroups = new();
+
+    /// <summary>
+    /// Preferred default loadouts for this group.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<LoadoutPrototype>> Fallbacks = new();
 }

@@ -3,12 +3,12 @@
 - type: vendingMachineInventory
   id: YouToolInventory
   startingInventory:
-    CableApcStack: 5
-    Crowbar: 5
-    Welder: 4
-    Wirecutter: 4
-    Wrench: 4
-    Screwdriver: 4
+    CableApcStack: 8
+    Crowbar: 8
+    Welder: 8
+    Wirecutter: 8
+    Wrench: 8
+    Screwdriver: 8
     trayScanner: 4
     NetworkConfigurator: 3
     GasAnalyzer: 3

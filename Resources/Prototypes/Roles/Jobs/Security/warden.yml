@@ -19,6 +19,7 @@
       inverted: true
       species:
       - Felinid
+      - Scurret
   weight: 5
   startingGear: WardenGear
   icon: "JobIconWarden"
@@ -30,7 +31,7 @@
   - Security
   - WardenSOP
   - KravMaga
-  goobcoins: 35 #Goob content
+  goobcoins: 50 #Ratbite
   access:
   - Security
   - Brig
@@ -47,14 +48,15 @@
   - !type:AddComponentSpecial # goobstation
     components:
       - type: SecurityStaff
+      - type: CombatTrained
 
 - type: startingGear
   id: WardenGear
   equipment:
-    eyes: ClothingEyesGlassesSecurityContraDetect # Goobstation
+    eyes: ClothingEyesGlassesSecurity
     id: WardenPDA
     ears: ClothingHeadsetAltWarden # Goobstation
-    pocket1: WeaponPistolMk58
+#    pocket1: WeaponPistolMk58 - Ratbite. Moved to loadouts.
   storage:
     back:
     - Flash

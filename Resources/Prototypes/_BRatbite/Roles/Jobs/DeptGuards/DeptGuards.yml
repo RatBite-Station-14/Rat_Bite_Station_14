@@ -1,0 +1,245 @@
+
+#region Medical Orderly
+- type: job
+  id: MedOrderly
+  name: Medical Orderly
+  description: "Protect the medical department, its staff, its patients and above all else, the CMO"
+  playTimeTracker: JobMedOrderly
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 3600 # 1 hour
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 3600 # 1 hour
+    - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
+      inverted: true
+      species:
+      - Felinid
+      - Scurret
+  goobcoins: 40
+  weight: 20
+  startingGear: MedicalOrderlyGear
+  icon: "JobIconMedicalOrderly"
+  supervisors: ChiefMedicalOfficer
+  canBeAntag: false
+  access:
+  - Maintenance
+  - Medical
+
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: Condemned
+        soulOwnedNotDevil: true # Bootlicker for NT
+      - type: CombatTrained # ratbite
+
+- type: startingGear
+  id: MedicalOrderlyGear
+  equipment:
+    eyes: ClothingEyesGlassesMedical
+    ears: ClothingHeadsetMedicalGuard # Their headsets have some seccomms now so they don't deal with shit alone.
+    id: MedWatchPDA
+  storage:
+    back:
+    - Flash
+
+- type: chameleonOutfit
+  id: MedOrderlyChameleonOutfit
+  job: MedOrderly
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetBasic
+    mask: ClothingMaskGasSecurity
+    neck: SurveillanceWirelessCameraBodySecurity
+    jumpsuit: ClothingUniformJumpsuitMedGuard
+    gloves: ClothingHandsGlovesNitrile
+
+#endregion
+
+#region Cargo Insurance
+- type: job
+  id: CargoInsurance
+  name: Cargo Insurance
+  description: "Protect the cargo department, its assets, its employees, and above all else, protect the quartermaster"
+  playTimeTracker: JobCargoInsurance
+
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Cargo
+      time: 3600 # 1 hour
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 3600 # 1 hour
+    - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
+      inverted: true
+      species:
+      - Felinid
+      - Scurret
+
+  startingGear: CargoInsuranceGear
+  icon: "JobIconCargoInsurance"
+  supervisors: Quartermaster
+  canBeAntag: false
+  goobcoins: 40 #Goob content
+  access:
+  - Cargo
+  - Maintenance
+
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: Condemned
+        soulOwnedNotDevil: true
+      - type: CombatTrained # ratbite
+
+- type: startingGear
+  id: CargoInsuranceGear
+  equipment:
+    eyes: ClothingEyesGlassesCargo
+    id: CargoWatchPDA
+    ears: ClothingHeadsetCargoGuard
+  storage:
+    back:
+    - Flash
+
+
+- type: chameleonOutfit
+  id: CargoInsuranceChameleonOutfit
+  job: CargoInsurance
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetBasic
+    mask: ClothingMaskGasSecurity
+    neck: SurveillanceWirelessCameraBodySecurity
+    jumpsuit: ClothingUniformJumpsuitCargoGuard
+    gloves: ClothingHandsGlovesFingerless
+#endregion
+
+#region SciGuard
+- type: job
+  id: ScicurityGuard
+  name: Sci-Curity Guard
+  description: "Protect the science department, the scientists, its research, and above all else, the Research Director"
+  playTimeTracker: JobScicurityGuard
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Science
+      time: 3600 #1 hour
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 3600 # 1 hour
+    - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
+      inverted: true
+      species:
+      - Felinid
+      - Scurret
+  startingGear: ScicurityguardGear
+  icon: "JobIconScicurityGuard"
+  supervisors: job-supervisors-rd
+  canBeAntag: true # ourple guy
+  goobcoins: 40 #Goob content
+  access:
+  - Research
+  - Maintenance
+
+  special: # Sci guard has mindshield because fuck you.
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: Condemned
+        soulOwnedNotDevil: true
+      - type: CombatTrained # ratbite
+
+- type: startingGear
+  id: ScicurityguardGear
+  equipment:
+    eyes: ClothingEyesGlassesScience
+    ears: ClothingHeadsetScienceGuard
+    id: SciWatchPDA
+  storage:
+    back:
+    - Flash
+
+
+- type: chameleonOutfit
+  id: SciGuardChameleonOutfit
+  job: ScicurityGuard
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetBasic
+    mask: ClothingMaskGasSecurity
+    neck: SurveillanceWirelessCameraBodySecurity
+    jumpsuit: ClothingUniformJumpsuitSciGuard
+    gloves: ClothingHandsGlovesColorPurple
+#endregion
+
+#region Engi Sentry
+- type: job
+  id: EngiSentry
+  name: Engi Sentry
+  description: "Protect engineering, its workers, its infrastructure, and above all else, the Chief Engineer"
+  playTimeTracker: JobEngiSentry
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Engineering
+      time: 3600 #1 hour
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 3600 # 1 hour
+    - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
+      inverted: true
+      species:
+      - Felinid
+      - Scurret
+
+  startingGear: EngiSentryGear
+  icon: "JobIconEngiSentry"
+  supervisors: job-supervisors-ce
+  canBeAntag: false
+  goobcoins: 40 #Goob content
+  access:
+  - Maintenance
+  - Engineering
+  - External
+  extendedAccess:
+  - Atmospherics
+
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: Condemned
+        soulOwnedNotDevil: true
+      - type: CombatTrained # ratbite
+  - !type:AddComponentSpecial
+    components:
+    - type: EngineeringStaff
+
+- type: startingGear
+  id: EngiSentryGear
+  equipment:
+    eyes: ClothingEyesGlassesEngineering
+    ears: ClothingHeadsetEngineeringGuard
+    id: EngineerWatchPDA
+  storage:
+    back:
+    - Flash
+
+- type: chameleonOutfit
+  id: EngiSentryChameleonOutfit
+  job: EngiSentry
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetBasic
+    mask: ClothingMaskGasSecurity
+    neck: SurveillanceWirelessCameraBodySecurity
+    jumpsuit: ClothingUniformJumpsuitEngiGuard
+    gloves: ClothingHandsGlovesFingerless
+#endregion

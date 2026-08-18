@@ -25,7 +25,7 @@ selectable-set-thief-syndie-description =
     Trinkets from a disavowed past, or stolen from a careless agent?
     You've made some connections. Whiskey, echo...
     Includes: An Emag, Access Breaker, Interdyne cigs, a Syndicate codeword,
-    a Radio Jammer, a novelty lighter box and some strange red crystals.
+    a Radio Jammer, a lighter and some strange red crystals.
 
 selectable-set-thief-sleeper-name = Sleeper Kit
 selectable-set-thief-sleeper-description =
@@ -134,7 +134,7 @@ selectable-set-syndicate-builder-description =
 selectable-set-blueshield-shield-name = blueshield set
 selectable-set-blueshield-shield-description =
     The iconic namesake of these soldiers.
-    Includes: The greatshield, and the DT-4 Atrocity customized stun baton.
+    Includes: The greatshield, and the DT-4 Atrocity customized stun baton. Now include new and improved disabler.
 
 selectable-set-blueshield-revolver-name = revolver set
 selectable-set-blueshield-revolver-description =

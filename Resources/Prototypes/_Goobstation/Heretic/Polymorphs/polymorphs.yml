@@ -52,9 +52,6 @@
     revertOnDeath: true
     skipRevertConfirmation: true
     componentsToTransfer:
-    - component: LanguageKnowledge
-    - component: LanguageSpeaker
-    - component: Grammar
     - component: Ghoul
 
 - type: polymorph
@@ -66,9 +63,6 @@
     revertOnDeath: true
     skipRevertConfirmation: true
     componentsToTransfer:
-    - component: LanguageKnowledge
-    - component: LanguageSpeaker
-    - component: Grammar
     - component: Ghoul
 
 - type: polymorph
@@ -80,9 +74,6 @@
     revertOnDeath: true
     skipRevertConfirmation: true
     componentsToTransfer:
-    - component: LanguageKnowledge
-    - component: LanguageSpeaker
-    - component: Grammar
     - component: Ghoul
 
 - type: polymorph
@@ -94,9 +85,6 @@
     revertOnDeath: true
     skipRevertConfirmation: true
     componentsToTransfer:
-    - component: LanguageKnowledge
-    - component: LanguageSpeaker
-    - component: Grammar
     - component: Ghoul
 
 - type: polymorph
@@ -108,9 +96,6 @@
     revertOnDeath: true
     skipRevertConfirmation: true
     componentsToTransfer:
-    - component: LanguageKnowledge
-    - component: LanguageSpeaker
-    - component: Grammar
     - component: Ghoul
 
 - type: polymorph
@@ -122,9 +107,6 @@
     revertOnDeath: true
     skipRevertConfirmation: true
     componentsToTransfer:
-    - component: LanguageKnowledge
-    - component: LanguageSpeaker
-    - component: Grammar
     - component: Ghoul
 
 - type: polymorph
@@ -136,9 +118,6 @@
     revertOnDeath: true
     skipRevertConfirmation: true
     componentsToTransfer:
-    - component: LanguageKnowledge
-    - component: LanguageSpeaker
-    - component: Grammar
     - component: Ghoul
 
 - type: polymorph
@@ -150,9 +129,6 @@
     revertOnDeath: true
     skipRevertConfirmation: true
     componentsToTransfer:
-    - component: LanguageKnowledge
-    - component: LanguageSpeaker
-    - component: Grammar
     - component: Ghoul
 
 - type: polymorph
@@ -164,9 +140,6 @@
     revertOnDeath: true
     skipRevertConfirmation: true
     componentsToTransfer:
-    - component: LanguageKnowledge
-    - component: LanguageSpeaker
-    - component: Grammar
     - component: Ghoul
 
 - type: polymorph
@@ -178,9 +151,6 @@
     revertOnDeath: true
     skipRevertConfirmation: true
     componentsToTransfer:
-    - component: LanguageKnowledge
-    - component: LanguageSpeaker
-    - component: Grammar
     - component: Ghoul
 
 - type: polymorph
@@ -192,9 +162,6 @@
     revertOnDeath: true
     skipRevertConfirmation: true
     componentsToTransfer:
-    - component: LanguageKnowledge
-    - component: LanguageSpeaker
-    - component: Grammar
     - component: Ghoul
 
 - type: polymorph
@@ -206,9 +173,6 @@
     revertOnDeath: true
     skipRevertConfirmation: true
     componentsToTransfer:
-    - component: LanguageKnowledge
-    - component: LanguageSpeaker
-    - component: Grammar
     - component: Ghoul
 
 - type: polymorph
@@ -220,9 +184,6 @@
     revertOnDeath: true
     skipRevertConfirmation: true
     componentsToTransfer:
-    - component: LanguageKnowledge
-    - component: LanguageSpeaker
-    - component: Grammar
     - component: Ghoul
 
 - type: polymorph
@@ -234,9 +195,6 @@
     revertOnDeath: true
     skipRevertConfirmation: true
     componentsToTransfer:
-    - component: LanguageKnowledge
-    - component: LanguageSpeaker
-    - component: Grammar
     - component: Ghoul
 
 - type: polymorph
@@ -248,9 +206,6 @@
     revertOnDeath: true
     skipRevertConfirmation: true
     componentsToTransfer:
-    - component: LanguageKnowledge
-    - component: LanguageSpeaker
-    - component: Grammar
     - component: Ghoul
 
 - type: polymorph
@@ -262,9 +217,6 @@
     revertOnDeath: true
     skipRevertConfirmation: true
     componentsToTransfer:
-    - component: LanguageKnowledge
-    - component: LanguageSpeaker
-    - component: Grammar
     - component: Ghoul
 
 - type: polymorph
@@ -276,7 +228,4 @@
     revertOnDeath: true
     skipRevertConfirmation: true
     componentsToTransfer:
-    - component: LanguageKnowledge
-    - component: LanguageSpeaker
-    - component: Grammar
     - component: Ghoul

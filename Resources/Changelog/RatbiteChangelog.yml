@@ -1,0 +1,7 @@
+Name: Ratlog
+Order: -1
+Entries:
+- author: Ducks
+  changes:
+  - type: Add
+    message: The entire changelog

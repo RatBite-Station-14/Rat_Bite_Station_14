@@ -1,7 +1,14 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using Content.Server._BRatbite.PermaBrig;
+using Content.Server._BRatbite.Spawners;
 using Content.Server.Access.Systems;
+using Content.Server.Administration;
+using Content.Server.Administration.Managers;
+using Content.Server.CriminalRecords.Systems;
+using Content.Server.Database;
 using Content.Shared.Access.Components;
 using Content.Shared.Forensics.Components;
 using Content.Shared.GameTicking;
@@ -9,8 +16,10 @@ using Content.Shared.Inventory;
 using Content.Shared.PDA;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
+using Content.Shared.Security;
 using Content.Shared.StationRecords;
 using Robust.Shared.Enums;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -37,11 +46,16 @@ namespace Content.Server.StationRecords.Systems;
 /// </summary>
 public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
 {
+    [Dependency] private readonly IBanManager _banManager = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly StationRecordKeyStorageSystem _keyStorage = default!;
+    [Dependency] private readonly CriminalRecordsSystem _criminalRecords = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IdCardSystem _idCard = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IServerDbManager _dbManager = default!;
+    [Dependency] private readonly IPlayerLocator _locator = default!;
+    [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
 
     public override void Initialize()
     {
@@ -51,13 +65,57 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
         SubscribeLocalEvent<EntityRenamedEvent>(OnRename);
     }
 
-    private void OnPlayerSpawn(PlayerSpawnCompleteEvent args)
+    public void OnPlayerSpawn(PlayerSpawnCompleteEvent args)
     {
         if (!TryComp<StationRecordsComponent>(args.Station, out var stationRecords))
             return;
-
-        CreateGeneralRecord(args.Station, args.Mob, args.Profile, args.JobId, stationRecords);
+        // Ratbite: skip stowaway records
+        if (HasComp<StowawayComponent>(args.Mob)) return;
+        CreateGeneralRecord(args.Station, args.Mob, args.Profile, args.JobId, stationRecords, args.Player);
     }
+
+    private async void FillPlayerDefaultCriminalRecord(EntityUid station,
+        String name,
+        StationRecordsComponent records,
+        ICommonSession session)
+    {
+        var recordByName = GetRecordByName(station, name, records);
+        if (recordByName is not { } uid)
+        {
+            return;
+        }
+
+        var stationRecordKey = new StationRecordKey(uid, station);
+
+        var data = await _locator.LookupIdByNameOrIdAsync(session.Name);
+
+        if (data == null)
+        {
+            return;
+        }
+
+        var roleBans = _banManager.GetJobBans(data.UserId)?.Select(job => job.ToString()).ToList() ?? [];
+
+        if (roleBans.Count > 0)
+        {
+            _criminalRecords.TryAddHistory(stationRecordKey, "Banned from job " + string.Join(", ", roleBans));
+        }
+        else
+        {
+            _criminalRecords.TryAddHistory(stationRecordKey, "Is not banned from any roles.");
+        }
+
+        var brigTime = _permaBrigManager.GetBrigTime(session.UserId);
+        if (brigTime > 0)
+        {
+            var reason = "Sentenced to perma for " + _permaBrigManager.GetTimeLabel(brigTime);
+            _criminalRecords.TryChangeStatus(stationRecordKey,
+                SecurityStatus.Perma,
+                reason);
+        }
+    }
+
+
 
     private void OnRename(ref EntityRenamedEvent ev)
     {
@@ -71,7 +129,7 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
         if (_idCard.TryFindIdCard(ev.Uid, out var idCard))
         {
             if (TryComp(idCard, out StationRecordKeyStorageComponent? keyStorage)
-                && keyStorage.Key is {} key)
+                && keyStorage.Key is { } key)
             {
                 if (TryGetRecord<GeneralStationRecord>(key, out var generalRecord))
                 {
@@ -83,8 +141,12 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
         }
     }
 
-    private void CreateGeneralRecord(EntityUid station, EntityUid player, HumanoidCharacterProfile profile,
-        string? jobId, StationRecordsComponent records)
+    private void CreateGeneralRecord(EntityUid station,
+        EntityUid player,
+        HumanoidCharacterProfile profile,
+        string? jobId,
+        StationRecordsComponent records,
+        ICommonSession session)
     {
         // TODO make PlayerSpawnCompleteEvent.JobId a ProtoId
         if (string.IsNullOrEmpty(jobId)
@@ -97,7 +159,22 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
         TryComp<FingerprintComponent>(player, out var fingerprintComponent);
         TryComp<DnaComponent>(player, out var dnaComponent);
 
-        CreateGeneralRecord(station, idUid.Value, profile.Name, profile.Age, profile.Species, profile.Gender, jobId, fingerprintComponent?.Fingerprint, dnaComponent?.DNA, profile, records);
+        CreateGeneralRecord(station,
+            idUid.Value,
+            profile.Name,
+            profile.Age,
+            profile.Species,
+            profile.Gender,
+            jobId,
+            fingerprintComponent?.Fingerprint,
+            dnaComponent?.DNA,
+            profile,
+            records);
+
+        FillPlayerDefaultCriminalRecord(station,
+            profile.Name,
+            records,
+            session);
     }
 
 
@@ -146,7 +223,7 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
 
         // when adding a record that already exists use the old one
         // this happens when respawning as the same character
-        if (GetRecordByName(station, name, records) is {} id)
+        if (GetRecordByName(station, name, records) is { } id)
         {
             SetIdKey(idUid, new StationRecordKey(id, station));
             return;
@@ -183,11 +260,11 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
     /// </summary>
     public void SetIdKey(EntityUid? uid, StationRecordKey key)
     {
-        if (uid is not {} idUid)
+        if (uid is not { } idUid)
             return;
 
         var keyStorageEntity = idUid;
-        if (TryComp<PdaComponent>(idUid, out var pda) && pda.ContainedId is {} id)
+        if (TryComp<PdaComponent>(idUid, out var pda) && pda.ContainedId is { } id)
         {
             keyStorageEntity = id;
         }
@@ -243,7 +320,7 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
     public string RecordName(StationRecordKey key)
     {
         if (!TryGetRecord<GeneralStationRecord>(key, out var record))
-           return string.Empty;
+            return string.Empty;
 
         return record.Name;
     }
@@ -274,7 +351,8 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
     /// <param name="record">The record to add.</param>
     /// <param name="records">Station records component.</param>
     /// <typeparam name="T">The type of record to add.</typeparam>
-    public void AddRecordEntry<T>(StationRecordKey key, T record,
+    public void AddRecordEntry<T>(StationRecordKey key,
+        T record,
         StationRecordsComponent? records = null)
     {
         if (!Resolve(key.OriginStation, ref records))
@@ -348,9 +426,10 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
             StationRecordFilterType.Species =>
                 !someRecord.Species.ToLower().Contains(filterLowerCaseValue),
             StationRecordFilterType.Prints => someRecord.Fingerprint != null
-                && IsFilterWithSomeCodeValue(someRecord.Fingerprint, filterLowerCaseValue),
+                                              && IsFilterWithSomeCodeValue(someRecord.Fingerprint,
+                                                  filterLowerCaseValue),
             StationRecordFilterType.DNA => someRecord.DNA != null
-                && IsFilterWithSomeCodeValue(someRecord.DNA, filterLowerCaseValue),
+                                           && IsFilterWithSomeCodeValue(someRecord.DNA, filterLowerCaseValue),
             _ => throw new IndexOutOfRangeException(nameof(filter.Type)),
         };
     }
@@ -408,6 +487,7 @@ public abstract class StationRecordEvent : EntityEventArgs
 public sealed class AfterGeneralRecordCreatedEvent : StationRecordEvent
 {
     public readonly GeneralStationRecord Record;
+
     /// <summary>
     /// Profile for the related player. This is so that other systems can get further information
     ///     about the player character.
@@ -415,7 +495,8 @@ public sealed class AfterGeneralRecordCreatedEvent : StationRecordEvent
     /// </summary>
     public readonly HumanoidCharacterProfile Profile;
 
-    public AfterGeneralRecordCreatedEvent(StationRecordKey key, GeneralStationRecord record,
+    public AfterGeneralRecordCreatedEvent(StationRecordKey key,
+        GeneralStationRecord record,
         HumanoidCharacterProfile profile) : base(key)
     {
         Record = record;

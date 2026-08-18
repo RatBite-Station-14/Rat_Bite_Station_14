@@ -10,7 +10,6 @@ using Content.Shared.Radio;
 using Content.Shared.Salvage.Magnet;
 using Robust.Shared.Exceptions;
 using Robust.Shared.Map;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.Salvage;
 
@@ -18,7 +17,8 @@ public sealed partial class SalvageSystem
 {
     [Dependency] private readonly IRuntimeLog _runtimeLog = default!;
 
-    private static readonly ProtoId<RadioChannelPrototype> MagnetChannel = "Supply";
+    [ValidatePrototypeId<RadioChannelPrototype>]
+    private const string MagnetChannel = "Supply";
 
     private EntityQuery<SalvageMobRestrictionsComponent> _salvMobQuery;
     private EntityQuery<MobStateComponent> _mobStateQuery;
@@ -286,10 +286,6 @@ public sealed partial class SalvageSystem
         var seed = data.Comp.Offered[index];
 
         var offering = GetSalvageOffering(seed);
-        // Begin DeltaV Addition: make wrecks cost mining points to pull
-        if (offering.Cost > 0 && !(_points.TryFindIdCard(user) is {} idCard && _points.RemovePoints(idCard, offering.Cost)))
-            return;
-        // End DeltaV Addition
         var salvMap = _mapSystem.CreateMap();
         var salvMapXform = Transform(salvMap);
 

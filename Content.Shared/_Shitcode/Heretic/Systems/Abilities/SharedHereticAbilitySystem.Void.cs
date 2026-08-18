@@ -62,7 +62,7 @@ public abstract partial class SharedHereticAbilitySystem
             if (condition)
                 Voidcurse.DoCurse(pookie, 2);
             _dmg.TryChangeDamage(pookie,
-                args.Damage * _body.GetVitalBodyPartRatio(pookie),
+                args.Damage,
                 true,
                 origin: ent,
                 targetPart: TargetBodyPart.All,
@@ -89,7 +89,7 @@ public abstract partial class SharedHereticAbilitySystem
         foreach (var pookie in pookies)
         {
             _dmg.TryChangeDamage(pookie,
-                args.Damage * _body.GetVitalBodyPartRatio(pookie),
+                args.Damage,
                 true,
                 origin: ent,
                 targetPart: TargetBodyPart.All,

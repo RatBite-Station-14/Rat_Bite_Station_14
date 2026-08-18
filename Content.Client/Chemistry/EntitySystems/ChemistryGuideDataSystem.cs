@@ -70,7 +70,8 @@ public sealed class ChemistryGuideDataSystem : SharedChemistryGuideDataSystem
                 reaction);
             foreach (var product in reaction.Products.Keys)
             {
-                _reagentSources[product].Add(data);
+                if (_reagentSources.TryGetValue(product, out var sources))
+                    sources.Add(data);
             }
         }
 

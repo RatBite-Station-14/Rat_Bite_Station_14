@@ -250,6 +250,9 @@
     - WirePanels
     - Airlocks
     - InspectingPower
+  - type: Contraband  # Ratbite: contraband changes. Command and warden spawn with one, science need it for artifacts
+    allowedDepartments: [ Engineering, Command, Science ]
+    allowedJobs: [ Warden ]
 
 - type: entity
   name: network configurator

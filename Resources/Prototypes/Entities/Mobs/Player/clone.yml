@@ -24,11 +24,44 @@
   - LightweightDrunk
   - Muted # Goobstation?
   - Narcolepsy
+  - NeurogenesisImperfecta
+  - NeurogenesisImperfectaBrain
+  - InstantChokeholdOnStaminaCrit
+  - PaciFist
+  - PacifismAllowedGrab
+  - PacifismAllowedUnarmedCombat
   - Pacified
   - Paracusia
+  - PctTraining
   - PermanentBlindness
+  - PlateletFactories
+  - PrybarProsthetics
+  - SelfAware
+  - Sericulture
+  - SmallTrait
+  - SlowOnDamage
   - Snoring
+  - SocialAnxiety
+  - SlippableModifier
+  - SpeedModifiedByContactModifier
+  - StrikingCalluses
+  - SurgerySpeedModifier
+  - SwappableInstrument
+  - Tenacity
+  - TemperatureProtection
+  - TileMovement
+  - TrapAvoider
+  - UltraVision
   - Unrevivable
+  - Vigor
+  - Voracious
+  - WillToDie
+  - WillToLive
+  - JumpAbility
+  - CrawlUnderObjects
+  - Juggernaut
+  - Kleptomania
+  - ScentTracker
   # job specific
   - BibleUser
   - CommandStaff
@@ -47,6 +80,7 @@
   - FrontalLisp # Goobstation?
   - GermanAccent
   - LizardAccent
+  - MedievalAccent
   - MobsterAccent
   - MonkeyAccent
   - MothAccent
@@ -78,6 +112,20 @@
   - LanguageKnowledge
   - ForeignerTrait
   # Einstein Engines - Language end
+
+  # Ratbite
+  - CaptainSaberWeakness
+  - Prisoner
+  - Atheist
+  - CombatTrained
+  - CombatUntrained
+  - MindShield # Prevent people from acting violent after cloning
+  - FakeMindShield # Just to prevent metagaming
+  - ScaredOfGuns
+  - Nudist
+  - Trigger
+  # End ratbite
+
   blacklist:
     components:
     - AttachedClothing # helmets, which are part of the suit

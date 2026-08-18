@@ -33,7 +33,7 @@
     - id: ClothingBeltSecurityFilled
     - id: Flash
     - id: ClothingEyesGlassesSecurity
-    - id: ClothingHandsGlovesCombat
+  # - id: ClothingHandsGlovesCombat #Ratbite, moved to loadout
     - id: ClothingShoesBootsJack
     - id: ClothingOuterCoatWarden
     - id: ClothingOuterWinterWarden
@@ -109,6 +109,9 @@
       - id: ClothingBeltCorporateJudoFilled
         weight: 0.5
     # Goobstation - Martial Arts - end
+    # Ratbite: robust 101
+    - id: BookCombatTraining
+      prob: 0.25
 
 - type: entity
   id: LockerBrigmedicFilled

@@ -317,7 +317,7 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
             }
         }
 
-        if (blobTile == null || !HasComp<BlobNodeComponent>(blobTile) || HasComp<BlobCoreComponent>(blobTile))
+        if (blobTile == null || !HasComp<BlobNodeComponent>(blobTile))
         {
             _popup.PopupEntity(Loc.GetString("blob-target-node-blob-invalid"), args.Performer, args.Performer, PopupType.Large);
             args.Handled = true;

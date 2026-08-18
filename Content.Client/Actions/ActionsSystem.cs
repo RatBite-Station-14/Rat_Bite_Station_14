@@ -176,7 +176,7 @@ namespace Content.Client.Actions
         }
 
         // Goobstation start
-        public override void SaveActions(EntityUid performer)
+        protected override void SaveActions(EntityUid performer)
         {
             if (_playerManager.LocalEntity != performer)
                 return;
@@ -184,7 +184,7 @@ namespace Content.Client.Actions
             ActionsSaved?.Invoke(performer);
         }
 
-        public override void LoadActions(EntityUid performer)
+        protected override void LoadActions(EntityUid performer)
         {
             if (_playerManager.LocalEntity != performer)
                 return;

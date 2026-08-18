@@ -1,0 +1,44 @@
+#Uniforms
+
+- type: loadout
+  id: EliteBlueShieldJumpskirt
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorBlueshieldOfficer
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtEliteBlueShield
+
+- type: loadout
+  id: EliteBlueShieldJumpsuit
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorBlueshieldOfficer
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitEliteBlueShield
+
+- type: loadout
+  id: FormalBlueShieldJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitFormalBlueShield
+
+# Neck
+
+- type: loadout
+  id: BlueShieldEliteCloak
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorBlueshieldOfficer
+  equipment:
+    neck: ClothingNeckCloakBsoElite
+
+# Head
+
+- type: loadout
+  id: BlueshieldOfficerBeretElite # Starlight
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorBlueshieldOfficer
+  equipment:
+    head: ClothingHeadHatBeretBlueShieldElite
+
+

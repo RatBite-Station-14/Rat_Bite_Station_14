@@ -1,0 +1,19 @@
+
+- type: marking
+  id: FloralEyeRight
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Human, SlimePerson, Reptilian, Dwarf, Felinid, Harpy, Rodentia, Tajaran, Oni, Shadowkin, Plasmaman]
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/floraleyes.rsi
+            state: right
+
+- type: marking
+  id: FloralEyeLeft
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Human, SlimePerson, Reptilian, Dwarf, Felinid, Harpy, Rodentia, Tajaran, Oni, Shadowkin, Plasmaman]
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/floraleyes.rsi
+            state: left
+

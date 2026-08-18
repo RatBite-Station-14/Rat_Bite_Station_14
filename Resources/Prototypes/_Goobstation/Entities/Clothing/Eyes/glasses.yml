@@ -201,6 +201,10 @@
     sprite: _Goobstation/Clothing/Eyes/Glasses/bsoglasses.rsi
   - type: ShowJobIcons
   - type: ShowMindShieldIcons
+  - type: ClothingGrantComponent # Ratbite, target tracker
+    component:
+    - type: TargetTracker
+      channels: BSO
 
 
 - type: entity

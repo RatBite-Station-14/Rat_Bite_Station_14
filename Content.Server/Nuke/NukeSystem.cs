@@ -10,6 +10,7 @@ using Content.Server.Kitchen.Components;
 using Content.Server.Pinpointer;
 using Content.Server.Popups;
 using Content.Server.Station.Systems;
+using Content.Shared._BRatbite.TrackingHud;
 using Content.Shared.Audio;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Coordinates.Helpers;
@@ -33,6 +34,7 @@ namespace Content.Server.Nuke;
 
 public sealed class NukeSystem : EntitySystem
 {
+    [Dependency] private readonly SharedTrackingTargetSystem _trackingTargetSystem = default!;
     [Dependency] private readonly AlertLevelSystem _alertLevel = default!;
     [Dependency] private readonly ChatSystem _chatSystem = default!;
     [Dependency] private readonly ExplosionSystem _explosions = default!;
@@ -556,6 +558,15 @@ public sealed class NukeSystem : EntitySystem
         var announcement = Loc.GetString("nuke-component-announcement-armed",
             ("time", (int) component.RemainingTime),
             ("location", FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString((uid, nukeXform)))));
+        // Ratbite start
+        var coordinates = _transform.GetMapCoordinates(nukeXform);
+        _trackingTargetSystem.AddTargetToAllEntities(new TrackingTarget
+        {
+            TargetLocation = coordinates.Position,
+            MapId = coordinates.MapId,
+            Sprite = new SpriteSpecifier.Rsi(new("/Textures/Objects/Devices/nuke.rsi"), "nuclearbomb_base"),
+        }, deleteAfter: TimeSpan.FromMinutes(10));
+        // Ratbite end
         var sender = Loc.GetString("nuke-component-announcement-sender");
         _chatSystem.DispatchStationAnnouncement(stationUid ?? uid, announcement, sender, false, null, Color.Red);
 

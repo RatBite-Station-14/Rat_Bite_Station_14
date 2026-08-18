@@ -1,0 +1,21 @@
+
+# SPDX-FileCopyrightText: 2026 Sprinkle <40203084+lnn0q@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: alert
+  id: PctFumble
+  icons:
+  - sprite: /Textures/Objects/Weapons/Melee/stunbaton.rsi
+    state: stunbaton_off
+  name: alerts-pct-fumble-name
+  description: alerts-pct-fumble-desc
+
+- type: alert
+  id: MindShielded
+  icons:
+    - sprite: /Textures/Interface/Actions/actions_fakemindshield.rsi
+      state: icon-on
+  name: alerts-mindshielded-name
+  description: alerts-mindshielded-desc
+

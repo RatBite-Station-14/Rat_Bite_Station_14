@@ -7,41 +7,40 @@ namespace Content.Goobstation.Server.StationEvents.Metric.Components;
 [RegisterComponent, Access(typeof(CombatMetricSystem))]
 public sealed partial class CombatMetricComponent : Component
 {
-    [DataField]
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
     public double HostileScore = 10.0f;
 
-    [DataField]
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
     public double FriendlyScore = 10.0f;
 
     /// <summary>
     ///   Cost per point of medical damage for friendly entities
     /// </summary>
-    [DataField]
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
     public double MedicalMultiplier = 0.05f;
 
     /// <summary>
     ///   Cost for friendlies who are in crit
     /// </summary>
-    [DataField]
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
     public double CritScore = 10.0f;
 
     /// <summary>
     ///   Cost for friendlies who are dead
     /// </summary>
-    [DataField]
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
     public double DeadScore = 20.0f;
 
-    [DataField]
-    public double MaxItemThreat = 15.0f;
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public double maxItemThreat = 15.0f;
 
     /// <summary>
     ///   ItemThreat - evaluate based on item tags how powerful a player is
     /// </summary>
-    [DataField]
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
     public Dictionary<string, double> ItemThreat =
         new()
         {
-            // TODO: PROTOTYPE
             { "Taser", 2.0f },
             { "Sidearm", 2.0f },
             { "Rifle", 5.0f },
@@ -54,4 +53,5 @@ public sealed partial class CombatMetricComponent : Component
             { "Hacking", 1.0f },
             { "Jetpack", 1.0f },
         };
+
 }

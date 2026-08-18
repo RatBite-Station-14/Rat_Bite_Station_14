@@ -113,6 +113,14 @@
     state: cuff
 
 - type: entity
+  id: CablecuffsTemporary
+  parent: Cablecuffs
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TemporaryCuffs
+    lifetime: 30
+
+- type: entity
   id: BaseHandcuffsBroken
   parent: BaseItem
   abstract: true
@@ -165,7 +173,7 @@
     size: Normal
   - type: Handcuff
     cuffedRSI: Clothing/OuterClothing/Misc/straight_jacket.rsi
-    breakoutTime: 100
+    breakoutTime: 120
     cuffTime: 10
     uncuffTime: 10
     stunBonus: 4

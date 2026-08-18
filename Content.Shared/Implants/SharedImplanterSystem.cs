@@ -1,7 +1,11 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared.Chemistry.Components.SolutionManager; // Funky
+using Content.Shared.Chemistry.EntitySystems; // Funky
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Shared.Administration.Components;
+using Content.Shared.Administration.Logs;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
@@ -19,6 +23,8 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using Content.Shared.Mindshield.Components;
+using Content.Shared.Database;
 
 namespace Content.Shared.Implants;
 
@@ -34,6 +40,8 @@ public abstract class SharedImplanterSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly INetManager _netMan = default!; // Goobstation - Labeled implants
     [Dependency] private readonly LabelSystem _label = default!; // Goobstation - Labeled implants
+    [Dependency] private readonly ISharedAdminLogManager _adminLog = default!; // Ratbite: add logs when drawing implants
+    [Dependency] private readonly SharedSolutionContainerSystem _solution = default!; // Funky
 
     public override void Initialize()
     {
@@ -148,6 +156,7 @@ public abstract class SharedImplanterSystem : EntitySystem
             _popup.PopupEntity(msg, target, user);
             return;
         }
+        TransferImplantSolution(implanter, implant.GetValueOrDefault()); // Funky edit - For reagent implanters
 
         //If the target doesn't have the implanted component, add it.
         var implantedComp = EnsureComp<ImplantedComponent>(target);
@@ -268,6 +277,11 @@ public abstract class SharedImplanterSystem : EntitySystem
                     }
                     else
                     {
+                        // Ratbite: add logs when removing mindshield implants
+                        if (HasComp<MindShieldImplantComponent>(implant))
+                        {
+                            _adminLog.Add(LogType.Action, LogImpact.Extreme, $"{ToPrettyString(user):player} removed mindshield implant from {(user == target ? "themselves" : $"{ToPrettyString(target):player}")}");
+                        }
                         DrawImplantIntoImplanter(implanter, target, implant.Value, implantContainer, implanterContainer, implantComp);
                         permanentFound = implantComp.Permanent;
                     }
@@ -365,6 +379,31 @@ public abstract class SharedImplanterSystem : EntitySystem
 
         Dirty(uid, component);
     }
+    
+    // Funky edit - For reagent implanters
+    private void TransferImplantSolution(EntityUid implanter, EntityUid implant)
+    {
+
+        Log.Debug(Name(implanter));
+        Log.Debug(Name(implant));
+
+        // Get the solution on the implanter
+        if (!TryComp<SolutionContainerManagerComponent>(implanter, out var solutionComp) ||
+            !_solution.TryGetSolution(implanter, "drink", out var _, out var solution))
+            return;
+
+        // Ensure a new solution container on the implant, and add the implanter's solution to it
+        EnsureComp<SolutionContainerManagerComponent>(implant);
+        if (_solution.EnsureSolution(implant, "drink", out var newSolution))
+        {
+            newSolution.MaxVolume = 45.0f;
+            newSolution.AddSolution(solution, _proto);
+        }
+
+        // Remove solution container from the implanter
+        RemComp<SolutionContainerManagerComponent>(implanter);
+    }
+    // Funky edit end
 }
 
 [Serializable, NetSerializable]

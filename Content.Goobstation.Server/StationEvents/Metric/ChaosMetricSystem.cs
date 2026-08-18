@@ -12,7 +12,8 @@ namespace Content.Goobstation.Server.StationEvents.Metric;
 /// </summary>
 public abstract class ChaosMetricSystem<T> : EntitySystem where T : Component
 {
-    protected abstract ChaosMetrics CalculateChaos(EntityUid uid, T component, CalculateChaosEvent args);
+    [Dependency] private readonly GameTicker _gameTicker = default!;
+    public abstract ChaosMetrics CalculateChaos(EntityUid uid, T component, CalculateChaosEvent args);
 
     public override void Initialize()
     {

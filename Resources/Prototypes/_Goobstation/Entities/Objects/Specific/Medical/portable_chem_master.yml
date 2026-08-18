@@ -2,7 +2,7 @@
 
 - type: entity
   id: portableChemicalMixer
-  parent: BaseItem
+  parent: [BaseItem, BaseMedicalContraband] # Ratbite: contraband changes
   name: portable chemical mixer
   description: A "Tider" grade chemical manipulator
   components:

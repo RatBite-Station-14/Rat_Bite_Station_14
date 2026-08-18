@@ -163,9 +163,8 @@ public sealed partial class ZombieComponent : Component
     {
         DamageDict = new()
         {
-            { "Slash", 13 },
-            { "Piercing", 7 },
-            { "Structural", 10 }
+            { "Slash", 19 },
+            { "Piercing", 1 }, // Ratbite edit, zombies do no strut. Strongholds against the dead.
         }
     };
 

@@ -64,7 +64,7 @@
   - type: BatteryAmmoProvider
     examinable: false
     proto: PTL
-    fireCost: 1000
+    fireCost: 50000
   - type: Physics
     bodyType: Static
   - type: Rotatable # or people end up trying to rotate it by edging on solid ents in space, which never works

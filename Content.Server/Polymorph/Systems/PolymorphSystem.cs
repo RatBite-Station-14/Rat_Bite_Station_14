@@ -257,6 +257,14 @@ public sealed partial class PolymorphSystem : EntitySystem
         _mindSystem.MakeSentient(child, configuration.AllowMovement);
         // Goob edit end
 
+        // Einstein Engines - Language begin
+
+        // Copy specified components over
+        foreach (var compName in configuration.CopiedComponents)
+            CopyPolymorphComponent(uid, child, compName, transfer: false);
+
+        // Einstein Engines - Language end
+
         var polymorphedComp = Factory.GetComponent<PolymorphedEntityComponent>();
         polymorphedComp.Parent = uid;
         polymorphedComp.Configuration = configuration;
@@ -372,10 +380,16 @@ public sealed partial class PolymorphSystem : EntitySystem
         {
             foreach (var data in configuration.ComponentsToTransfer)
             {
-                if (!_compFact.TryGetRegistration(data.Component, out var registration))
+                Type type;
+                try
+                {
+                    type = _compFact.GetRegistration(data.Component).Type;
+                }
+                catch (UnknownComponentException e)
+                {
+                    Log.Error(e.Message);
                     continue;
-
-                var type = registration.Type;
+                }
 
                 if (!EntityManager.TryGetComponent(uid, type, out var component))
                     continue;
@@ -627,7 +641,7 @@ public sealed partial class PolymorphSystem : EntitySystem
             var newComp = (Component) _compFact.GetComponent(compType);
             var temp = (object) newComp;
             _serialization.CopyTo(comp, ref temp, notNullableOverride: true);
-            EntityManager.AddComponent(@new, (Component) temp!, true);
+            EntityManager.AddComponent(@new, (Component) temp!);
             return temp as IComponent;
         }
 

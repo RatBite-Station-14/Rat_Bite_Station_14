@@ -7,13 +7,27 @@
 namespace Content.Server._Lavaland.Procedural;
 
 /// <summary>
-/// Raised when biome chunk is about to unload.
+/// Lavaland: Raised when biome chunk is about to unload.
 /// </summary>
-[ByRefEvent]
-public record struct UnLoadChunkEvent(Vector2i Chunk, bool Cancelled = false);
+public sealed class UnLoadChunkEvent : CancellableEntityEventArgs
+{
+    public Vector2i Chunk { get; set; }
+
+    public UnLoadChunkEvent(Vector2i chunk)
+    {
+        Chunk = chunk;
+    }
+}
 
 /// <summary>
-/// Raised when biome chunk is about to load.
+/// Lavaland: Raised when biome chunk is about to load.
 /// </summary>
-[ByRefEvent]
-public record struct BeforeLoadChunkEvent(Vector2i Chunk, bool Cancelled = false);
+public sealed class BeforeLoadChunkEvent : CancellableEntityEventArgs
+{
+    public Vector2i Chunk { get; set; }
+
+    public BeforeLoadChunkEvent(Vector2i chunk)
+    {
+        Chunk = chunk;
+    }
+}

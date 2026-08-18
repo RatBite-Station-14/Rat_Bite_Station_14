@@ -35,15 +35,22 @@
       - !type:DoActsBehavior
         acts: ["Destruction"]
   - type: WiresPanel
+  - type: Wires # Ratbite, make them hackable
+    boardName: wires-board-name-lathe
+    layoutId: Lathe
+  - type: BoltableMachine # Ratbite
   - type: ActivatableUI
     key: enum.LatheUiKey.Key
   - type: ActivatableUIRequiresPower
+  - type: ActivatableUIRequiresAccess # Ratbite
   - type: UserInterface
     interfaces:
       enum.LatheUiKey.Key:
         type: LatheBoundUserInterface
       enum.ResearchClientUiKey.Key:
         type: ResearchClientBoundUserInterface
+      enum.WiresUiKey.Key: # Ratbite
+        type: WiresBoundUserInterface
   - type: Transform
     anchored: true
   - type: Pullable
@@ -406,6 +413,8 @@
   - type: GuideHelp
     guides:
     - Robotics
+  - type: AccessReader # Ratbite: Add access reader to fabs
+    access: [["Research"]]
 
 - type: entity
   id: Biofabricator
@@ -450,6 +459,8 @@
     - HostileCubesStatic
     # Goobstation Packs
     - EmagCubesStatic
+  - type: AccessReader # Ratbite: Add access reader to fabs
+    access: [["Medical"]]
 
 - type: entity
   id: SecurityTechFab
@@ -491,6 +502,9 @@
     - ScienceExplosives
     - GrenadeTriggersStatic
     - SecurityWeaponsStaticGoob
+    # Ratbite
+    - SecurityAmmoRatbiteStatic
+    - SecurityMiscRatbiteStatic
     dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons
@@ -615,6 +629,8 @@
     # Einstein Engines Packs
     - Translators # Language
     - TranslatorImplanters # Language
+    # Ratbite
+    - LegalTechSciMed
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: EmagLatheRecipes # Goobstation Packs

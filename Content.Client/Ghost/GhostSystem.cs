@@ -57,6 +57,7 @@ namespace Content.Client.Ghost
         public event Action? PlayerDetached;
         public event Action<GhostWarpsResponseEvent>? GhostWarpsResponse;
         public event Action<GhostUpdateGhostRoleCountEvent>? GhostRoleCountUpdated;
+        public event Action<AltServerPopUpdatedEvent>? AltServerPopUpdated;
 
         public override void Initialize()
         {
@@ -71,6 +72,7 @@ namespace Content.Client.Ghost
 
             SubscribeNetworkEvent<GhostWarpsResponseEvent>(OnGhostWarpsResponse);
             SubscribeNetworkEvent<GhostUpdateGhostRoleCountEvent>(OnUpdateGhostRoleCount);
+            SubscribeNetworkEvent<AltServerPopUpdatedEvent>(OnUpdateAltServerPopCount);
 
             SubscribeLocalEvent<EyeComponent, ToggleLightingActionEvent>(OnToggleLighting);
             SubscribeLocalEvent<EyeComponent, ToggleFoVActionEvent>(OnToggleFoV);
@@ -186,6 +188,11 @@ namespace Content.Client.Ghost
         {
             AvailableGhostRoleCount = msg.AvailableGhostRoles;
             GhostRoleCountUpdated?.Invoke(msg);
+        }
+
+        private void OnUpdateAltServerPopCount(AltServerPopUpdatedEvent msg)
+        {
+            AltServerPopUpdated?.Invoke(msg);
         }
 
         public void RequestWarps()

@@ -70,6 +70,17 @@ public sealed class MeleeHitEvent : HandledEntityEventArgs
     public bool IsHit = true;
 
     /// <summary>
+    ///     Plays the miss swing sound and lunge when a handled hit wants to suppress
+    ///     normal hit feedback.
+    /// </summary>
+    public bool PlayMissFeedback;
+
+    /// <summary>
+    ///     Plays normal hit feedback for a handled hit that intentionally suppresses damage.
+    /// </summary>
+    public bool PlayHitFeedback;
+
+    /// <summary>
     /// Goobstation
     /// The coordinates of an attack.
     /// </summary>

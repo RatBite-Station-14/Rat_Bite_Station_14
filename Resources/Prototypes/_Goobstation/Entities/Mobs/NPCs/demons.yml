@@ -78,8 +78,7 @@
     energy: 12.5
     color: "#793a80"
   - type: SpawnLootOnDeath
-    table:
-      id: AnomalyCoreShadow
+    loot: AnomalyCoreShadow
 
 - type: entity
   name: ???
@@ -114,8 +113,7 @@
     damageContainer: ManifestedSpirit
     damageModifierSet: ManifestedSpirit
   - type: SpawnLootOnDeath
-    table:
-      id: DiamondOre1Unprocessed
+    loot: DiamondOre1Unprocessed
 
 - type: entity
   name: glutton

@@ -9,4 +9,9 @@ namespace Content.Shared.Weapons.Melee.Components;
 /// Indicates that this meleeweapon requires wielding to be useable.
 /// </summary>
 [RegisterComponent, NetworkedComponent, Access(typeof(SharedWieldableSystem))]
-public sealed partial class MeleeRequiresWieldComponent : Component;
+public sealed partial class MeleeRequiresWieldComponent : Component
+{
+    // Lavaland Change: The player will slip if they try to use the weapon without wielding it.
+    [DataField]
+    public bool FumbleOnAttempt = false;
+}

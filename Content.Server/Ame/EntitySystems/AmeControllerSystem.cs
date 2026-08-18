@@ -124,8 +124,8 @@ public sealed class AmeControllerSystem : EntitySystem
         group.UpdateCoreVisuals();
         UpdateDisplay(uid, controller.Stability, controller);
 
-        if (controller.Stability <= 0)
-            group.ExplodeCores();
+//        if (controller.Stability <= 0) RATBITE DISABLED THIS
+//            group.ExplodeCores();
     }
 
     public void UpdateUi(EntityUid uid, AmeControllerComponent? controller = null)

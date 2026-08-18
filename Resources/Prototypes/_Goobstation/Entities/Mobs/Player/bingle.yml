@@ -51,7 +51,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Dead # by request
+      70: Dead # Ratbite, more common bingles.
   - type: MobState
     allowedStates:
       - Alive
@@ -79,7 +79,7 @@
         Blunt: 7
         Structural: 14 # breaks down the walls and airlocks in 10 hits
         Ion: 5
-    bluntStaminaDamageFactor: 2.0
+    bluntStaminaDamageFactor: 1.5 # Ratbite, more common bingles.
   - type: MovementSpeedModifier
     baseWalkSpeed : 2 # same as slime
     baseSprintSpeed : 4
@@ -107,8 +107,7 @@
   - type: LanguageKnowledge
     speaks:
     - Bingle
-    understands:
-    - TauCetiBasic
+    understands: []
   - type: CollectiveMind
     defaultChannel: Binglemind
     respectAccents: true
@@ -140,6 +139,7 @@
   components:
   - type: Bingle
     prime: true
+  - type: ScannableForPoints # NTR update, 5 points is the default.
 
 - type: entity
   id: MobBingleUpgraded

@@ -104,7 +104,6 @@
     - Welding
     - Axing # Goobstation
     - Ignition
-  - type: WeldingSparks # Goobstation
   - type: ToolTileCompatible # Goobstation
     delay: 2
   - type: Welder
@@ -208,8 +207,6 @@
       Plasma: 50
   - type: StaticPrice #Goobstation - Recycle update
     price: 50
-  - type: WeldingSparks # Goobstation
-    effect: EffectWeldingSparksExp
 
 - type: entity
   name: emergency welding tool

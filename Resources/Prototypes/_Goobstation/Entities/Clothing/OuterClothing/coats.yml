@@ -72,8 +72,7 @@
   - type: ModifyDelayedKnockdown
     delayDelta: 1.5
     knockdownTimeDelta: -1.5
-  - type: StaminaResistance
-    damageCoefficient: 0.7
+# Ratbite removes stam resist 0.7
 
 #blue ward coat
 - type: entity
@@ -98,17 +97,6 @@
     sprite: _Goobstation/Clothing/OuterClothing/Coats/rdaltcoat.rsi
   - type: Clothing
     sprite: _Goobstation/Clothing/OuterClothing/Coats/rdaltcoat.rsi
-  - type: Armor
-    coverage:
-    - Chest
-    - Groin
-    - Tail
-    - Arm
-    - Leg
-    modifiers:
-      coefficients:
-        Caustic: 0.6
-        Radiation: 0.6
 
 
 - type: entity

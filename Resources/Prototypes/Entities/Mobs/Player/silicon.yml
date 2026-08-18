@@ -44,6 +44,7 @@
     - ActionAIViewLaws
     - ActionOpenRemoteDevicesMenu # Corvax-Next-AiRemoteControl
     - ActionOpenCameraWarpMenu # Goobstation-Ai-Camera-Jumping
+    - ActionAlertSecurity # Ratbite
   - type: UserInterface
     interfaces:
       enum.RadarConsoleUiKey.Key:
@@ -157,6 +158,7 @@
   parent:
   - BaseItem
   - AiHolder
+  - BaseScienceContraband # Ratbite: contraband changes
   suffix: Empty
   components:
   - type: ContainerComp
@@ -535,6 +537,8 @@
     - NewKinPidgin
   - type: SpeechSynthesis # Corvax-Frontier-Barks
     voice: Borg
+  - type: TargetTracker # Ratbite
+    channels: SILICON
 
 # Hologram projection that the AI's eye tracks.
 - type: entity
@@ -593,6 +597,8 @@
   - type: Alerts
   - type: FTLSmashImmune
   - type: CargoSellBlacklist
+  - type: TargetTracker # Ratbite
+    channels: SILICON
   - type: StationAiVision
     range: 20
 

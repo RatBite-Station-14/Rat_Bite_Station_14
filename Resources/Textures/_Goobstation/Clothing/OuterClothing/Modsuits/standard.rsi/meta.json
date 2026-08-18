@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "From tgstation - https://github.com/tgstation/tgstation/pull/59109 - resomi shittypatchup by Marty",
+  "copyright": "From tgstation - https://github.com/tgstation/tgstation/pull/59109 - resomi shittypatchup by Marty, scurret sprites by eirin-n",
   "size": {
     "x": 32,
     "y": 32
@@ -32,6 +32,14 @@
 		{
 			"name": "equipped-OUTERCLOTHING-vox",
 			"directions": 4
-		}
+		},
+        {
+            "name": "equipped-OUTERCLOTHING-sealed-scurret",
+            "directions": 4
+        },
+                {
+            "name": "equipped-OUTERCLOTHING-scurret",
+            "directions": 4
+        }
   ]
 }

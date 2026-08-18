@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Shared._BRatbite.Paper;
 using Content.Shared.Administration.Logs;
 using Content.Shared.UserInterface;
 using Content.Shared.Database;
@@ -57,7 +58,7 @@ public sealed class PaperSystem : EntitySystem
     {
         if (!string.IsNullOrEmpty(entity.Comp.Content))
         {
-            SetContent(entity, Loc.GetString(entity.Comp.Content));
+            SetContent(entity, Loc.GetString(entity.Comp.Content), entity.Comp.Strokes);
         }
     }
 
@@ -186,6 +187,30 @@ public sealed class PaperSystem : EntitySystem
         };
     }
 
+    // Ratbite drawing on paper
+    private bool SanitizeDrawing(List<PaperStroke> strokes, int maxPoints)
+    {
+        int pointCount = 0;
+        for (int i = 0; i < strokes.Count; i++)
+        {
+            var stroke = strokes[i];
+            // There should be at least 2 points per stroke
+            if (stroke.Points.Count <= 1)
+            {
+                return false;
+            }
+            pointCount += stroke.Points.Count;
+            // If we reached past the max point count, remove everything past the limit
+            // including this stroke
+            if (pointCount > maxPoints)
+            {
+                strokes.RemoveRange(i, strokes.Count - i);
+                return true;
+            }
+        }
+        return true;
+    }
+
     private void OnInputTextMessage(Entity<PaperComponent> entity, ref PaperInputTextMessage args)
     {
         var ev = new PaperWriteAttemptEvent(entity.Owner);
@@ -193,9 +218,9 @@ public sealed class PaperSystem : EntitySystem
         if (ev.Cancelled)
             return;
 
-        if (args.Text.Length <= entity.Comp.ContentSize)
+        if (args.Text.Length <= entity.Comp.ContentSize && SanitizeDrawing(args.Strokes, entity.Comp.MaxDrawingPoints))
         {
-            SetContent(entity, args.Text);
+            SetContent(entity, args.Text, args.Strokes);
 
             var paperStatus = string.IsNullOrWhiteSpace(args.Text) ? PaperStatus.Blank : PaperStatus.Written;
 
@@ -267,16 +292,18 @@ public sealed class PaperSystem : EntitySystem
         }
     }
 
-    public void SetContent(EntityUid entity, string content)
+    public void SetContent(EntityUid entity, string content, List<PaperStroke>? strokes = null)
     {
         if (!TryComp<PaperComponent>(entity, out var paper))
             return;
-        SetContent((entity, paper), content);
+        SetContent((entity, paper), content, strokes);
     }
 
-    public void SetContent(Entity<PaperComponent> entity, string content)
+    public void SetContent(Entity<PaperComponent> entity, string content, List<PaperStroke>? strokes = null)
     {
+        strokes ??= new();
         entity.Comp.Content = content;
+        entity.Comp.Strokes = strokes;
         Dirty(entity);
         UpdateUserInterface(entity);
 
@@ -292,7 +319,7 @@ public sealed class PaperSystem : EntitySystem
 
     public void UpdateUserInterface(Entity<PaperComponent> entity)
     {
-        _uiSystem.SetUiState(entity.Owner, PaperUiKey.Key, new PaperBoundUserInterfaceState(entity.Comp.Content, entity.Comp.StampedBy, entity.Comp.Mode));
+        _uiSystem.SetUiState(entity.Owner, PaperUiKey.Key, new PaperBoundUserInterfaceState(entity.Comp.Content, entity.Comp.StampedBy, entity.Comp.Strokes, entity.Comp.Mode));
     }
 
     private void OnUseInHand(Entity<PaperComponent> entity, ref UseInHandEvent args)

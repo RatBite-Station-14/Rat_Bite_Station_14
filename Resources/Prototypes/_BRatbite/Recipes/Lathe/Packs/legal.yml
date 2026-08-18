@@ -1,0 +1,36 @@
+- type: latheRecipePack #only on sci fab
+  id: LegalTechSciOnly
+  recipes:
+  - LegalRadioJammer
+  - LegalLanternFlash
+  - ReverseBearTrap
+  - ReverseBearTrapKey
+  - LegalSyndieTrickyBomb
+  - GrenadeDummy
+  - LegalFakeNukeDisk
+  - LegalThievingGloves
+  - ClothingUniformJumpsuitChameleon
+  - ClothingHeadHatChameleon
+  - ClothingMaskGasVoiceChameleon
+  - LegalAgentIDCard
+  - LegalFreedomImplanter
+  - DimensionPot
+  - LegalEMAG
+
+- type: latheRecipePack #both sci fab and secfab
+  id: LegalTechSciSec
+  recipes:
+  - LegalHighFrequencyBlade
+  - LegalEnergySword
+  - LegalC4
+  - LegalEmpGrenade
+  - SeismicCharge
+  - LegalBorgModuleSyndicateWeaponAdvanced
+  - LegalBorgModuleMartyr
+
+- type: latheRecipePack #both sci fab and medfab
+  id: LegalTechSciMed
+  recipes:
+  - LegalHypoDart
+  #- LegalHypospray
+  - LegalVestineChemistryVial

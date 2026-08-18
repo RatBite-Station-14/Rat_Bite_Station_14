@@ -82,10 +82,6 @@
   - PowerCellXraySniper
   - PowerCellOverchargedSniper
   - MilitaryPowerCellLMG
-  - PowerCellBluespaceRevolver
-  - PowerCellBluespaceSMG
-  - PowerCellBluespaceSniper
-  - MilitaryPowerCellBluespaceLMG
 
 - type: latheRecipePack
   id: SecurityEquipmentDynamicGoob

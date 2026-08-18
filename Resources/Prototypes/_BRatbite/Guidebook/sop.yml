@@ -1,0 +1,59 @@
+# Perma Brig SOP
+- type: guideEntry
+  id: Multi Round Perma SOP
+  name: guide-entry-sop-multiround-brig
+  text: "/ServerInfo/_BRatbite/Guidebook/SoP/Legal/MultiRoundPermaSOP.xml"
+  priority: 0
+  children:
+  - Multi Round Perma Convictions SOP
+  - Multi Round Perma Pardons SOP
+
+- type: guideEntry
+  id: Multi Round Perma Convictions SOP
+  name: guide-entry-sop-multiround-brig-convictions
+  text: "/ServerInfo/_BRatbite/Guidebook/SoP/Legal/MultiRoundPerma/PermaBrigConvictionsSOP.xml"
+  priority: 0
+
+- type: guideEntry
+  id: Multi Round Perma Pardons SOP
+  name: guide-entry-sop-multiround-brig-pardons
+  text: "/ServerInfo/_BRatbite/Guidebook/SoP/Legal/MultiRoundPerma/PermaBrigPardonsSOP.xml"
+  priority: 0
+
+# Central Command SOP
+- type: guideEntry
+  id: HighCommand SOP
+  name: High Command SOP
+  text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/HighCommandSOP.xml"
+  priority: 0
+
+- type: guideEntry
+  id: RedsightOverseer SOP
+  name: guide-entry-sop-central-command-rso
+  text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/CentralCommand/RedsightOverseerSOP.xml"
+  priority: 0
+
+- type: guideEntry
+  id: Central Command SOP
+  name: guide-entry-sop-central-command-general
+  text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/CentralCommandSOP.xml"
+  priority: 0
+  children:
+  - HighCommand SOP
+  - NanotrasenRepSOP
+  - BlueshieldOfficerSOP
+  - RedsightOverseer SOP
+
+# Security Additions SOP
+
+- type: guideEntry
+  id: DepartmentalGuard SOP
+  name: Departmental Security SOP
+  text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/StationJobs/DepartmentalGuardSOP.xml"
+  priority: 1
+
+- type: guideEntry
+  id: Psychologist SOP
+  name: Psychologist/PsychWard SOP
+  text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/StationJobs/PsychologistSOP.xml"
+  priority: 1

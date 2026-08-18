@@ -19,6 +19,7 @@
       inverted: true
       species:
       - Felinid
+      - Scurret
   weight: 10
   startingGear: ChiefEngineerGear
   icon: "JobIconChiefEngineer"

@@ -44,7 +44,7 @@ public sealed partial class LoadoutContainer : BoxContainer
 
         if (_protoManager.Resolve(proto, out var loadProto))
         {
-            var ent = loadProto.DummyEntity ?? _entManager.System<LoadoutSystem>().GetFirstOrNull(loadProto);
+            var ent = loadProto.PreviewEntity ?? loadProto.DummyEntity ?? _entManager.System<LoadoutSystem>().GetFirstOrNull(loadProto);
 
             if (ent == null)
                 return;
@@ -53,7 +53,11 @@ public sealed partial class LoadoutContainer : BoxContainer
             Sprite.SetEntity(_entity);
 
             var spriteTooltip = new Tooltip();
-            spriteTooltip.SetMessage(FormattedMessage.FromUnformatted(_entManager.GetComponent<MetaDataComponent>(_entity.Value).EntityDescription));
+            var description = string.IsNullOrEmpty(loadProto.Description)
+                ? _entManager.GetComponent<MetaDataComponent>(_entity.Value).EntityDescription
+                : loadProto.Description;
+
+            spriteTooltip.SetMessage(FormattedMessage.FromUnformatted(description));
 
             TooltipSupplier = _ => spriteTooltip;
         }

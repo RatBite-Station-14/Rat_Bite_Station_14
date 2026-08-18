@@ -119,7 +119,7 @@
     - SubGamemodesRule
     - BasicStationEventScheduler
     - MeteorSwarmScheduler
-    - SpaceTrafficControlEventScheduler
+  #  - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
 
 - type: gamePreset
@@ -129,7 +129,7 @@
     - calmdynamic
   name: sleeper-title
   description: sleeper-description
-  showInVote: true
+  showInVote: false
   minPlayers: 5
   rules:
     - CalmDynamic
@@ -150,7 +150,7 @@
     - CombatDynamic
     - SubGamemodesRule
     - IonStormScheduler
-    - SpaceTrafficControlEventScheduler
+   # - SpaceTrafficControlEventScheduler
 
 - type: gamePreset
   id: SecretPlusLow
@@ -160,7 +160,7 @@
     - turbulence
   name: secretplus-low-title
   description: secretplus-low-description
-  showInVote: true
+  showInVote: false
   rules:
     - SecretPlusLow
 
@@ -172,7 +172,7 @@
     - entropy
   name: secretplus-mid-title
   description: secretplus-mid-description
-  showInVote: true
+  showInVote: false
   rules:
     - SecretPlusMid
 
@@ -197,7 +197,7 @@
     - survivalnew
   name: survivalplus-title
   description: survivalplus-description
-  showInVote: true
+  showInVote: false
   rules:
     - SecretPlusRampingMid
 
@@ -228,7 +228,7 @@
   - TraitorSubGamemodesRule
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
-  - SpaceTrafficControlEventScheduler
+#  - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
 
 - type: gamePreset

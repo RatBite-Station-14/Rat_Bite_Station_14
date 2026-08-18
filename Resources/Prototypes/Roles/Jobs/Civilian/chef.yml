@@ -15,7 +15,6 @@
   guides: # goobstation
   - Chef
   - FoodRecipes
-  - CQC
   goobcoins: 15 #Goob content
   access:
   - Service
@@ -24,12 +23,7 @@
   extendedAccess:
   - Hydroponics
   - Bar
-  special: # Goobstation - Martial Arts
-  - !type:AddComponentSpecial
-    components:
-      - type: GrantCqc
-        startingStage: Hard
-        isBlocked: true
+  special:
   - !type:AddImplantSpecial # Chefs speak space italian
     implants: [ SpaceItalianTranslatorImplant ]
 

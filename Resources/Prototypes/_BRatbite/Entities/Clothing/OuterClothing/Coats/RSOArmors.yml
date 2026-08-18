@@ -1,0 +1,20 @@
+- type: entity
+  parent: [ ClothingOuterArmorCaptainCarapace, ClothingOuterStorageBase ]
+  id: RSOJack
+  name: RSO Armored Jack
+  description: A stylish but cutthroat durathread lined bulletproof jack made to resist station armories
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/OuterClothing/Coats/RSOJack.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/OuterClothing/Coats/RSOJack.rsi
+  - type: Item
+    size: Normal
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.35
+        Slash: 0.35
+        Piercing: 0.35
+        Heat: 0.35
+        Caustic: 0.6

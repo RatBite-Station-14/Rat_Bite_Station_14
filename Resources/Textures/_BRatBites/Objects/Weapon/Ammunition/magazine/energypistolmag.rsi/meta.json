@@ -1,0 +1,41 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made By CreatorBot01",
+    "states": [
+        {
+            "name": "base"
+        },
+        {
+            "name": "disabler"
+        },
+        {
+            "name": "ion"
+        },
+        {
+            "name": "lethal"
+        },
+        {
+            "name": "overcharge"
+        },
+        {
+            "name": "mag-1"
+        },
+        {
+            "name": "mag-2"
+        },
+        {
+            "name": "mag-0"
+        },
+        {
+            "name": "o2"
+        },
+        {
+            "name": "o1"
+        }
+    ]
+}

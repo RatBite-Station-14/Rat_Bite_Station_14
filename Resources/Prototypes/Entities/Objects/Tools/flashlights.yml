@@ -140,6 +140,7 @@
     quickEquip: false
     slots:
       - Belt
+  - type: GunUpgradeFlashlight # Lavaland Change
 
 - type: entity
   parent: FlashlightLantern

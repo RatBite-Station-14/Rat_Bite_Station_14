@@ -1,0 +1,83 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: gameMap
+  id: Omega
+  mapName: 'Omega'
+  mapPath: /Maps/_BRatbite/Ratbite_Supported/omega.yml
+  minPlayers: 15
+  maxPlayers: 45
+  stations:
+    Omega:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Omega Station {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'TG'
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/Shuttles/emergency_omega.yml
+        - type: StationJobs
+          availableJobs:
+            #service
+            Captain: [ 1, 1 ]
+            NanotrasenRepresentative: [ 1, 1 ] # Goobstation
+            BlueshieldOfficer: [ 1, 1 ] # Goobstation
+            HeadOfPersonnel: [ 1, 1 ]
+            Bartender: [ 1, 1 ]
+            Botanist: [ 2, 2 ]
+            Chef: [ 1, 1 ]
+            Janitor: [ 1, 2 ]
+            Chaplain: [ 1, 1 ]
+            Librarian: [ 1, 1 ]
+            ServiceWorker: [ 2, 2 ]
+            RadioHost: [ 1, 1 ] # Ratbite
+            #engineering
+            ChiefEngineer: [ 1, 1 ]
+            EngiSentry: [ 1, 1 ] #ratbite
+            AtmosphericTechnician: [ 2, 2 ]
+            StationEngineer: [ 3, 3 ]
+            TechnicalAssistant: [ 2, 2 ]
+            #medical
+            ChiefMedicalOfficer: [ 1, 1 ]
+            MedOrderly: [ 1, 1 ] #ratbite
+            Chemist: [ 2, 2 ]
+            MedicalDoctor: [ 3, 3 ]
+            Paramedic: [ 1, 1 ]
+            Psychologist: [ 1, 1 ] #ratbite
+            MedicalIntern: [ 2, 2 ]
+            #science
+            ResearchDirector: [ 1, 1 ]
+            ScicurityGuard: [ 1, 1 ] #ratbite
+            Scientist: [ 4, 4 ]
+            ResearchAssistant: [ 2, 2 ]
+            #security
+            HeadOfSecurity: [ 1, 1 ]
+            RedsightOverseer: [ 1, 1 ] #Ratbite
+            Warden: [ 2, 2 ] #Ratbite de protaganist-ify him!!!
+            Detective: [ 2, 2 ] #Ratbite disco elysium/sherlock larp
+            SecurityOfficer: [ 4, 4 ]
+            SecurityCadet: [ 2, 2 ]
+            Lawyer: [ 1, 1 ]
+            Brigmedic: [ 1, 1 ]
+            #supply
+            Quartermaster: [ 1, 1 ]
+            CargoInsurance: [ 1, 1 ] #ratbite
+            SalvageSpecialist: [ 2, 2 ]
+            CargoTechnician: [ 2, 2 ]
+            #civilian
+            Passenger: [ -1, -1 ]
+            Clown: [ 1, 1 ]
+            Mime: [ 1, 1 ]
+            Musician: [ 1, 1 ]
+            Prisoner: [ -1, -1 ] #Ratbite
+            #silicon
+            StationAi: [ 1, 1 ]
+            Borg: [ 2, 2 ]
+
+        # Goobstation blob-config-start SMALL+
+        - type: StationBlobConfig
+          stageBegin: 25
+          stageCritical: 350
+          stageTheEnd: 700
+        # Goobstation blob-config-end

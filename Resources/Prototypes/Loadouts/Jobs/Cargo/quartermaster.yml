@@ -9,16 +9,6 @@
       role: JobQuartermaster
       time: 20h
 
-# Goobstation - For Ensembles
-- type: loadoutEffectGroup
-  id: GrandMasterQM
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobQuartermaster
-      time: 360000 # 100 hrs
-
 # Jumpsuit
 - type: loadout
   id: QuartermasterJumpsuit
@@ -88,13 +78,6 @@
   equipment:
     neck: ClothingNeckMantleQM
 
-- type: loadout # Goobstation - Ensembles
-  id: QuartermasterEnsemble
-  equipment:
-    neck: ClothingNeckEnsembleQuarterMaster
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: GrandMasterQM
 # OuterClothing
 - type: loadout
   id: QuartermasterWintercoat

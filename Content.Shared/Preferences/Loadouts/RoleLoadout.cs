@@ -53,6 +53,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
         }
 
         weh.EntityName = EntityName;
+        weh.Points = Points;
 
         return weh;
     }
@@ -141,7 +142,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
                 }
 
                 // Malicious client maybe, check the group even has it.
-                if (!groupProto.Loadouts.Contains(loadout.Prototype))
+                if (!GroupContainsLoadout(groupProto, loadout.Prototype, protoManager))
                 {
                     loadouts.RemoveAt(i);
                     continue;
@@ -162,7 +163,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
             // If you put invalid ones first but that's your fault for not using sensible defaults
             if (loadouts.Count < groupProto.MinLimit)
             {
-                foreach (var protoId in groupProto.Loadouts)
+                foreach (var protoId in GetDefaultLoadouts(groupProto, protoManager))
                 {
                     if (loadouts.Count >= groupProto.MinLimit)
                         break;
@@ -198,6 +199,9 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
 
     private void Apply(LoadoutPrototype loadoutProto)
     {
+        if (Points != null)
+            Points -= Math.Max(0, loadoutProto.Price);
+
         foreach (var effect in loadoutProto.Effects)
         {
             effect.Apply(this);
@@ -217,6 +221,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
 
         var collection = IoCManager.Instance!;
         var roleProto = protoManager.Index(Role);
+        Points = roleProto.Points;
 
         for (var i = roleProto.Groups.Count - 1; i >= 0; i--)
         {
@@ -234,7 +239,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
             if (groupProto.MinLimit > 0 || loadouts.Count < groupProto.DefaultSelected)
             {
                 // Apply any loadouts we can.
-                foreach (var protoId in groupProto.Loadouts)
+                foreach (var protoId in GetDefaultLoadouts(groupProto, protoManager))
                 {
                     // Reached the limit, time to stop
                     if (loadouts.Count >= Math.Max(groupProto.MinLimit, groupProto.DefaultSelected))
@@ -281,6 +286,15 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
             return false;
         }
 
+        if (protoManager.TryIndex(Role, out var roleProto) &&
+            roleProto.Points != null &&
+            loadoutProto.Price > 0 &&
+            Points < loadoutProto.Price)
+        {
+            reason = FormattedMessage.FromUnformatted("loadout-group-points-insufficient");
+            return false;
+        }
+
         var valid = true;
 
         foreach (var effect in loadoutProto.Effects)
@@ -289,6 +303,63 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
         }
 
         return valid;
+    }
+
+    /// <summary>
+    /// Returns whether a loadout should be hidden from the menu.
+    /// </summary>
+    public bool IsHidden(HumanoidCharacterProfile profile, ICommonSession? session, ProtoId<LoadoutPrototype> loadout, IDependencyCollection collection)
+    {
+        var protoManager = collection.Resolve<IPrototypeManager>();
+
+        if (!protoManager.TryIndex(loadout, out var loadoutProto) ||
+            !protoManager.HasIndex(Role))
+        {
+            return true;
+        }
+
+        foreach (var effect in loadoutProto.HideEffects)
+        {
+            if (!effect.Validate(profile, this, session, collection, out _))
+                return true;
+        }
+
+        return false;
+    }
+
+    private static bool GroupContainsLoadout(LoadoutGroupPrototype groupProto, ProtoId<LoadoutPrototype> loadout, IPrototypeManager protoManager)
+    {
+        if (groupProto.Loadouts.Contains(loadout))
+            return true;
+
+        foreach (var subgroup in groupProto.Subgroups)
+        {
+            if (protoManager.TryIndex(subgroup, out var subgroupProto) &&
+                subgroupProto.Loadouts.Contains(loadout))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static IEnumerable<ProtoId<LoadoutPrototype>> GetDefaultLoadouts(LoadoutGroupPrototype groupProto, IPrototypeManager protoManager)
+    {
+        foreach (var fallback in groupProto.Fallbacks)
+            yield return fallback;
+
+        foreach (var loadout in groupProto.Loadouts)
+            yield return loadout;
+
+        foreach (var subgroup in groupProto.Subgroups)
+        {
+            if (!protoManager.TryIndex(subgroup, out var subgroupProto))
+                continue;
+
+            foreach (var loadout in subgroupProto.Loadouts)
+                yield return loadout;
+        }
     }
 
     /// <summary>

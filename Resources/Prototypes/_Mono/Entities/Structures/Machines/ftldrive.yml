@@ -128,11 +128,11 @@
     priority: 1
     data:
       ftlToSameMap: false
-      cooldownTime: 10
+      cooldownTime: 20
       startupTime: 5
       knockdownTime: 2
-      travelTime: 10
-      arrivalTime: 4
+      travelTime: 15
+      arrivalTime: 5
 
 # Debug drives
 - type: entity

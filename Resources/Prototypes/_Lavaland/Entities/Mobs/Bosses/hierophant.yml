@@ -80,10 +80,7 @@
   - type: TileMovement
   - type: DamageSquareImmunity
   - type: SpawnLootOnDeath
-    table: !type:AllSelector
-      children:
-      - id: LavalandHierophantClub
-      - id: CrusherUpgradeMainMarker
+    loot: LavalandHierophantClub
     deleteOnDeath: true
   - type: MegafaunaAi
     actionDelay: 0.5

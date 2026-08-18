@@ -1,13 +1,14 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Server.StationEvents.Metric;
+using Content.Goobstation.Server.StationEvents.GameDirector;
 using Content.Shared.Random;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Goobstation.Server.StationEvents.Components;
 
-[RegisterComponent, Access(typeof(GameDirector.GameDirectorSystem))]
+[RegisterComponent, Access(typeof(GameDirectorSystem), Other = AccessPermissions.ReadWriteExecute)]
 public sealed partial class GameDirectorComponent : Component
 {
 

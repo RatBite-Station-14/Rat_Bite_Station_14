@@ -1,11 +1,12 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entityTable
-  id: LavalandHeavyMobs
+  id: LavalandMobs
   table: !type:GroupSelector
     children:
     - id: MobLegion
     - !type:GroupSelector
+      weight: 50
       children:
       - id: MobLavalandGoliath
         weight: 99
@@ -18,13 +19,15 @@
     children:
     - id: MobCarpDungeon
     - !type:GroupSelector
+      weight: 15
       children:
-      - id: MobWatcherLavaland
-      - id: MobWatcherMagmawing
       - id: MobWatcherIcewing
+      - id: MobWatcherLavaland
+      #- id: LavalandTendrilLegion
+
 
 - type: entity
-  name: lavaland heavy mob spawner
+  name: lavaland mob spawner
   id: SpawnerRandomMobLavaland
   parent: ProximitySpawnerBase
   suffix: Lavaland, Proximity
@@ -36,7 +39,10 @@
       state: goliath
   - type: SpawnTableOnTrigger
     table: !type:NestedSelector
-      tableId: LavalandHeavyMobs
+      tableId: LavalandMobs
+  placement:
+    mode: AlignTileAny
+
 
 - type: entity
   name: lavaland light mob spawner

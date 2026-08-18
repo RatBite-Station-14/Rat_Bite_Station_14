@@ -8,13 +8,14 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Command
-      time: 180000  #50 hours
+      time: 36000  #10 hours
     - !type:AgeRequirement
       requiredAge: 21
-    - !type:SpeciesRequirement # Goob - None Felinid
+    - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
       inverted: true
       species:
       - Felinid
+      - Scurret
   weight: 20
   startingGear: NanotrasenRepresentativeGear
   icon: "JobIconNanotrasenRepresentative"
@@ -47,7 +48,7 @@
   - NanotrasenRepresentative
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
+    implants: [ MindShieldImplant, BluespaceLifelineImplant ]
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff

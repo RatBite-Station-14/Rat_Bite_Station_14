@@ -4,11 +4,10 @@
   name: crusader armour
   parent: SpawnSupplyEmpty
   components:
-  - type: SpawnTableOnDespawn
-    table: !type:AllSelector
-      children:
-      - id: ClothingOuterArmorTemplar
-      - id: ClothingHeadHatHelmetTemplar
+  - type: SpawnOnDespawn
+    prototypes:
+    - ClothingOuterArmorTemplar
+    - ClothingHeadHatHelmetTemplar
 
 - type: entity
   id: SpawnArmamentsStudent
@@ -16,11 +15,10 @@
   name: student robe
   parent: SpawnSupplyEmpty
   components:
-  - type: SpawnTableOnDespawn
-    table: !type:AllSelector
-      children:
-      - id: ClothingOuterArmorStudent
-      - id: ClothingHeadHatHelmetCage
+  - type: SpawnOnDespawn
+    prototypes:
+    - ClothingOuterArmorStudent
+    - ClothingHeadHatHelmetCage
 
 - type: entity
   id: SpawnArmamentsAncient
@@ -28,11 +26,10 @@
   name: ancient armour
   parent: SpawnSupplyEmpty
   components:
-  - type: SpawnTableOnDespawn
-    table: !type:AllSelector
-      children:
-      - id: ClothingOuterArmorAncient
-      - id: ClothingHeadHatHelmetAncient
+  - type: SpawnOnDespawn
+    prototypes:
+    - ClothingOuterArmorAncient
+    - ClothingHeadHatHelmetAncient
 
 - type: entity
   id: SpawnArmamentsWitchhunter
@@ -40,11 +37,10 @@
   name: witch hunter garb
   parent: SpawnSupplyEmpty
   components:
-  - type: SpawnTableOnDespawn
-    table: !type:AllSelector
-      children:
-      - id: ClothingOuterArmorWitchhunter
-      - id: ClothingHeadHatHelmetWitchhunter
+  - type: SpawnOnDespawn
+    prototypes:
+    - ClothingOuterArmorWitchhunter
+    - ClothingHeadHatHelmetWitchhunter
 
 - type: entity
   id: SpawnArmamentsAdept
@@ -52,9 +48,9 @@
   name: adept robes
   parent: SpawnSupplyEmpty
   components:
-  - type: SpawnTableOnDespawn
-    table:
-      id: ClothingOuterArmorAdept
+  - type: SpawnOnDespawn
+    prototypes:
+    - ClothingOuterArmorAdept
 
 - type: entity
   id: SpawnArmamentsClock
@@ -62,11 +58,10 @@
   name: forgotten armour
   parent: SpawnSupplyEmpty
   components:
-  - type: SpawnTableOnDespawn
-    table: !type:AllSelector
-      children:
-      - id: ClothingOuterArmorClock
-      - id: ClothingHeadHatHelmetClock
+  - type: SpawnOnDespawn
+    prototypes:
+    - ClothingOuterArmorClock
+    - ClothingHeadHatHelmetClock
 
 - type: entity
   id: SpawnArmamentsMonk

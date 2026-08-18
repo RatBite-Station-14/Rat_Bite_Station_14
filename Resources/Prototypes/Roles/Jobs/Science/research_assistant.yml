@@ -14,7 +14,7 @@
   icon: "JobIconResearchAssistant"
   supervisors: job-supervisors-science
   guides: [ Science ] # goobstation
-  goobcoins: 20 #Goob content
+  goobcoins: 15 #Goob content    # Ratbite - decreased a bit
   access:
   - Research
   - Maintenance

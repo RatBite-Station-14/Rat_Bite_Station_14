@@ -1,0 +1,24 @@
+plushies-carmelladot-1 = I am a harvard dropout.
+plushies-carmelladot-2 = Squeak...
+plushies-carmelladot-3 = I'M NOT FAT!!
+plushies-carmelladot-4 = Cheesed to meet you!
+plushies-carmelladot-5 = You’re going to perma for the rest of your life.
+plushies-carmelladot-6 = I am not appealing your permas.
+plushies-carmelladot-7 = You’re getting an Incomp perma charge for that!
+plushies-carmelladot-8 = I could go for a cheese wheel right now..
+plushies-carmelladot-9 = Holy squeak!
+plushies-carmelladot-10 = Please don’t throw me into the burn chamber!
+plushies-carmelladot-11 = They say carmelly , can you help drop my permas.
+plushies-carmelladot-12 = The chemist got incomp for not making derma , feeling like a clown call it jerma.
+plushies-carmelladot-13 = I circle round the station, cargo doin’ tax evasion and I just hit on the slots, I made a lots.
+
+plushies-batch-1 = Woof
+plushies-batch-2 = Fuck you!
+plushies-batch-3 = Enjoy your time in the Sanitarium c:
+plushies-batch-4 = Fun fact: I can gib people if you hit them hard enough!
+plushies-batch-5 = Why work hard when you can fard hard instead
+plushies-batch-6 = No chat, I am NOT sending death squad!
+plushies-batch-7 = I'm not responsible for your chudouts, moron
+plushies-batch-8 = Oh twatting hell
+plushies-batch-9 = Why do we have to call ERT for this one fucking Heretic I swear to fuck
+plushies-batch-10 = I'm watching you.

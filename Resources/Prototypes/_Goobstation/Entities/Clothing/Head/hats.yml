@@ -94,8 +94,8 @@
 - type: entity
   parent: [ClothingHeadHatArmoredCC, ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatBeretBlueshield
-  name: blueshield's armored beret
-  description: A durable beret woven out of durathread. Provides protection, too.
+  name: blueshield's beret
+  description: A beret worn by Blushield bodyguards.
   components:
   - type: Sprite
     sprite: _Goobstation/Clothing/Head/Hats/blueshield_beret.rsi
@@ -109,7 +109,7 @@
 - type: entity
   parent: [ClothingHeadHatArmoredCC, ClothingHeadBase, BaseCentcommContraband]
   id: ClothingHeadHatCowboyBlueshield
-  name: blueshield's armored cowboy hat
+  name: blueshield's cowboy hat
   description: Sheriff's back in town, kids.
   components:
   - type: Sprite
@@ -124,7 +124,7 @@
 - type: entity
   parent: [ClothingHeadHatArmoredCC, ClothingHeadBase, BaseFoldable, BaseCentcommContraband]
   id: ClothingHeadHatUshankaBlueshield
-  name: blueshield's armored ushanka
+  name: blueshield's ushanka
   description: Perfect for saving heads in Siberia, da?
   components:
   - type: Clothing

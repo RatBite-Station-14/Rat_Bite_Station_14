@@ -5,7 +5,7 @@
   name: Urist McHands
   parent: BaseMobHuman
   id: MobHuman
-  
+
 #Syndie
 - type: entity
   parent: MobHuman
@@ -74,6 +74,10 @@
     nameFormat: name-format-nukie-operator
   - type: Loadout
     prototypes: [SyndicateOperativeReinforcementGear] # goobstation - duke nukies
+  - type: WarpPoint
+    follow: true
+    mob: true
+    antagonist: true
 
 # Nuclear Operative
 - type: entity
@@ -84,6 +88,10 @@
   components:
   - type: NukeOperative
   - type: RandomHumanoidAppearance
+  - type: WarpPoint
+    follow: true
+    mob: true
+    antagonist: true
 
 - type: entity
   categories: [ HideSpawnMenu ]
@@ -105,3 +113,8 @@
   - type: NpcFactionMember
     factions:
     - Syndicate
+  - type: WarpPoint
+    follow: true
+    mob: true
+    antagonist: true
+  - type: CombatTrained

@@ -8,6 +8,7 @@
   - CaptainJumpsuit
   - CaptainMask # Goobstation - Lollypops!
   - CaptainBackpack
+  - CaptainBelt # Ratbite - Captain Powergaming
   - CaptainOuterClothing
   - CaptainShoes # Goobstation
   - Survival
@@ -59,8 +60,10 @@
   - GroupTankHarness
   - PassengerJumpsuit
   - CommonBackpack
+  - PassengerHead
   - PassengerNeck
   - PassengerFace
+  - CivilianTacticoolMask
   - PassengerGloves
   - PassengerOuterClothing
   - PassengerShoes
@@ -98,8 +101,9 @@
   id: JobServiceWorker
   groups:
   - GroupTankHarness
-  - BartenderJumpsuit
+  - ServiceWorkerJumpsuit
   - CommonBackpack
+  - CivilianTacticoolMask
   - Glasses
   - Survival
   - Trinkets
@@ -137,6 +141,7 @@
   - GroupTankHarness
   - LibrarianJumpsuit
   - CommonBackpack
+  - CivilianTacticoolMask
   - Glasses
   - Survival
   - Trinkets
@@ -155,6 +160,7 @@
   - LawyerNeck
   - LawyerJumpsuit
   - CommonBackpack
+  - CivilianTacticoolMask
   - Glasses
   - Survival
   - Trinkets
@@ -279,6 +285,7 @@
   - MusicianJumpsuit
   - CommonBackpack
   - MusicianOuterClothing
+  - CivilianTacticoolMask
   - Glasses
   - Survival
   - Trinkets
@@ -501,8 +508,12 @@
   - HeadofSecurityNeck
   - HeadofSecurityJumpsuit
   - SecurityBackpack
+  - SecuritySpecialLongarm #Ratbite
+  - SecuritySidearm #Ratbite
+  - SecurityAmmo #Ratbite
   - SecurityMelee # Goobstation
   - SecurityBelt
+  - SecuritySpecialGloves #Ratbite
   - HeadofSecurityOuterClothing
   - HeadofSecurityShoes # Goobstation edit
   - SecurityGloves #goob
@@ -515,7 +526,6 @@
   - HeadofSecurityEnvirohelm
   - HeadofSecurityEnvirosuit
   - HeadofSecurityEnvirogloves
-  - HeadofSecurityGloves
 
 - type: roleLoadout
   id: JobWarden
@@ -523,9 +533,13 @@
   - WardenHead
   - WardenJumpsuit
   - SecurityBackpack
+  - SecuritySpecialLongarm #Ratbite
+  - SecuritySidearm #Ratbite
+  - SecurityAmmo #Ratbite
   - SecurityMelee # Goobstation
   - SecurityNeck
   - SecurityBelt
+  - SecuritySpecialGloves #Ratbite
   - WardenOuterClothing
   - SecurityShoes
   - SecurityGloves #goob
@@ -545,6 +559,8 @@
   - SecurityHead
   - SecurityJumpsuit
   - SecurityBackpack
+  - SecuritySidearm #Ratbite
+  - SecurityAmmo #Ratbite
   - SecurityMelee # Goobstation
   - SecurityOuterClothing
   - SecurityShoes

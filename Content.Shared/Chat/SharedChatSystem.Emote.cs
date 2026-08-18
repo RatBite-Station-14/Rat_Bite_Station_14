@@ -58,7 +58,8 @@ public abstract partial class SharedChatSystem
         bool hideLog = false,
         string? nameOverride = null,
         bool ignoreActionBlocker = false,
-        bool forceEmote = false
+        bool forceEmote = false,
+        bool voluntary = false
     )
     {
         if (!_prototypeManager.Resolve<EmotePrototype>(emoteId, out var proto))
@@ -94,13 +95,14 @@ public abstract partial class SharedChatSystem
         bool hideLog = false,
         string? nameOverride = null,
         bool ignoreActionBlocker = false,
-        bool forceEmote = false
+        bool forceEmote = false,
+        bool voluntary = false
     )
     {
         if (!forceEmote && !AllowedToUseEmote(source, emote))
             return false;
 
-        var didEmote = TryEmoteWithoutChat(source, emote, ignoreActionBlocker, voluntary: !forceEmote);
+        var didEmote = TryEmoteWithoutChat(source, emote, ignoreActionBlocker, voluntary: voluntary); // Goob - emotespam
 
         // check if proto has valid message for chat
         if (didEmote && emote.ChatMessages.Count != 0)

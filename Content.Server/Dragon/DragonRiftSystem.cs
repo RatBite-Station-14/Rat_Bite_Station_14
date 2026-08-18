@@ -16,6 +16,8 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.GameStates;
 using Robust.Shared.Random; // Goobstation - Buff carp rift
 using Robust.Shared.Utility;
+using Robust.Server.GameObjects;
+using Content.Shared._BRatbite.TrackingHud;
 
 namespace Content.Server.Dragon;
 
@@ -31,6 +33,8 @@ public sealed class DragonRiftSystem : EntitySystem
     [Dependency] private readonly NavMapSystem _navMap = default!;
     [Dependency] private readonly NPCSystem _npc = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SharedTrackingTargetSystem _trackingTargetSystem = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
 
     public override void Initialize()
     {
@@ -84,6 +88,15 @@ public sealed class DragonRiftSystem : EntitySystem
 
                 var msg = Loc.GetString("carp-rift-warning",
                     ("location", FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString((uid, xform)))));
+                // Ratbite start
+                var coordinates = _transform.GetMapCoordinates(xform);
+                _trackingTargetSystem.AddTargetToAllEntities(new TrackingTarget
+                {
+                    TargetLocation = coordinates.Position,
+                    PinColor = Color.Red,
+                    MapId = coordinates.MapId,
+                }, deleteAfter: TimeSpan.FromMinutes(10));
+                // Ratbite end
                 _chat.DispatchGlobalAnnouncement(msg, playSound: false, colorOverride: Color.Red);
                 _audio.PlayGlobal("/Audio/Misc/notice1.ogg", Filter.Broadcast(), true);
                 _navMap.SetBeaconEnabled(uid, true);

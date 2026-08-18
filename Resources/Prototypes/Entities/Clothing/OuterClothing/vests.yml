@@ -36,6 +36,9 @@
     knockdownTimeDelta: -2.5
   - type: StaminaResistance # Goobstation
     damageCoefficient: 0.6
+  - type: Tag
+    tags:
+    - ScurretWearable #Ratbite
 
 #Elite web vest
 - type: entity
@@ -78,6 +81,9 @@
     knockdownTimeDelta: -3
   - type: StaminaResistance # Goobstation
     damageCoefficient: 0.4
+  - type: Tag
+    tags:
+    - ScurretWearable #Ratbite
 
 #Mercenary web vest
 - type: entity
@@ -112,6 +118,9 @@
     knockdownTimeDelta: -2.25
   - type: StaminaResistance # Goobstation
     damageCoefficient: 0.65
+  - type: Tag
+    tags:
+    - ScurretWearable #Ratbite
 
 #Detective's vest
 - type: entity
@@ -124,6 +133,9 @@
     sprite: Clothing/OuterClothing/Vests/detvest.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Vests/detvest.rsi
+  - type: Tag
+    tags:
+    - ScurretWearable #Ratbite
 
 #Hazard vest
 - type: entity
@@ -162,6 +174,7 @@
     tags:
     - HiViz
     - WhitelistChameleon
+    - ScurretWearable #Ratbite
 
 #(Bartender) vest
 - type: entity
@@ -190,3 +203,6 @@
     size: Normal # Make smaller than typical outer clothing
     shape:
     - 0, 0, 0, 1
+  - type: Tag
+    tags:
+    - ScurretWearable #Ratbite

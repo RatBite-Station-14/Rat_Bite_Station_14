@@ -45,21 +45,13 @@ public sealed partial class ItemUpgradesSystem
     {
         foreach (var upgrade in GetCurrentUpgrades(ent))
         {
-            var ev = new GetItemActionsEvent(_actionContainer, args.User, upgrade.Owner, isEquipping: args.IsEquipping);
+            var ev = new GetItemActionsEvent(_actionContainer, args.User, upgrade.Owner, args.SlotFlags);
             RaiseLocalEvent(upgrade.Owner, ev);
 
             if (ev.Actions.Count == 0)
                 continue;
 
-            if (!args.IsEquipping)
-            {
-                _actions.RemoveProvidedActions(args.User, upgrade.Owner);
-                _actions.SaveActions(args.User);
-                continue;
-            }
-
             _actions.GrantActions(args.User, ev.Actions, upgrade.Owner);
-            _actions.LoadActions(args.User);
         }
     }
 }

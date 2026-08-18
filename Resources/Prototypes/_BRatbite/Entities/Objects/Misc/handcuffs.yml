@@ -1,0 +1,22 @@
+- type: entity
+  name: hard zipties
+  description: Tough single-use plastic zipties, ideal for restraining rowdy prisoners. These seem reinforced with plastitanium.
+  id: HardZipties
+  parent: Zipties
+  components:
+  - type: Handcuff
+    breakoutTime: 60
+    cuffedRSI: Objects/Misc/cablecuffs.rsi  # cablecuffs will look fine
+    bodyIconState: body-overlay
+    breakOnRemove: true
+    brokenPrototype: ZiptiesBroken
+    startCuffSound:
+      path: /Audio/Items/Handcuffs/ziptie_start.ogg
+    endCuffSound:
+      path: /Audio/Items/Handcuffs/ziptie_end.ogg
+    startUncuffSound:
+      path: /Audio/Items/Handcuffs/rope_start.ogg
+    endUncuffSound:
+      path: /Audio/Items/Handcuffs/rope_breakout.ogg
+    startBreakoutSound:
+      path: /Audio/Items/Handcuffs/rope_takeoff.ogg

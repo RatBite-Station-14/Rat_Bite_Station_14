@@ -9,6 +9,7 @@ using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
 using Content.Server.GameTicking.Rules;
 using Content.Goobstation.Shared.MisandryBox.Thunderdome;
+using Content.Shared._BRatbite.Traits;
 using Content.Server.Ghost.Roles;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Mind;
@@ -651,6 +652,9 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
 
         if (!def.AllowNonHumans && !HasComp<HumanoidAppearanceComponent>(entity))
             return false;
+
+        // Ratbite
+        if (HasComp<LoyaltyTrainingComponent>(entity)) return false;
 
         if (def.Whitelist != null)
         {

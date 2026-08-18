@@ -9,7 +9,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 25 # Goobstation edit
+        Piercing: 40 #Ratbite balance
       armorPenetration: -0.3 # Goobstation
 
 - type: entity

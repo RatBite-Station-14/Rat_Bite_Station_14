@@ -26,10 +26,16 @@ public sealed partial class ThievingSystem : EntitySystem
     private void OnBeforeStrip(EntityUid uid, ThievingComponent component, BeforeStripEvent args)
     {
         args.Stealth |= component.Stealthy;
+        args.Subtle |= component.Subtle;
         if (args.Stealth)
         {
             args.Additive -= component.StripTimeReduction;
         }
+
+        args.Multiplier *= component.TimeMultiplier;
+
+        if (!component.TraitGranted && HasComp<ThievingTraitComponent>(uid))
+            args.Multiplier *= ThievingTraitComponent.StripTimeMultiplier;
     }
 
     private void OnCompInit(Entity<ThievingComponent> entity, ref ComponentInit args)
@@ -47,10 +53,25 @@ public sealed partial class ThievingSystem : EntitySystem
         if (args.Handled)
             return;
 
-        ent.Comp.Stealthy = !ent.Comp.Stealthy;
-        _alertsSystem.ShowAlert(ent.Owner, ent.Comp.StealthyAlertProtoId, (short)(ent.Comp.Stealthy ? 1 : 0));
-        DirtyField(ent.AsNullable(), nameof(ent.Comp.Stealthy), null);
+        if (ent.Comp.ToggleSubtle)
+        {
+            ent.Comp.Subtle = !ent.Comp.Subtle;
+            DirtyField(ent.AsNullable(), nameof(ent.Comp.Subtle), null);
+        }
+        else
+        {
+            ent.Comp.Stealthy = !ent.Comp.Stealthy;
+            DirtyField(ent.AsNullable(), nameof(ent.Comp.Stealthy), null);
+        }
+
+        _alertsSystem.ShowAlert(ent.Owner, ent.Comp.StealthyAlertProtoId, GetAlertState(ent.Comp));
 
         args.Handled = true;
+    }
+
+    private static short GetAlertState(ThievingComponent component)
+    {
+        var enabled = component.ToggleSubtle ? component.Subtle : component.Stealthy;
+        return (short)(enabled ? 1 : 0);
     }
 }

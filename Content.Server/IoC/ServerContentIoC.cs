@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server._BRatbite.Ghost;
+using Content.Server._BRatbite.PermaBrig;
 using Content.Server._Goobstation.Antag;
 using Content.Server._RMC14.LinkAccount; // RMC - Patreon
 using Content.Server.Administration;
@@ -34,6 +36,7 @@ using Content.Shared.IoC;
 using Content.Shared.Kitchen;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Players.RateLimiting;
+using Robust.Shared.Network;
 
 namespace Content.Server.IoC;
 
@@ -86,5 +89,7 @@ internal static class ServerContentIoC
         deps.Register<DiscordChatLink>();
         deps.Register<LastRolledAntagManager>(); // Goobstation - antag pity
         deps.Register<LinkAccountManager>(); // RMC - Patreon
+        deps.Register<PermaBrigManager>(); // RatBite
+        deps.Register<AltServerPopCountManager>(); // RatBite
     }
 }

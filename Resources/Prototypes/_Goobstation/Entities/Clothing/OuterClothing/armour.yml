@@ -18,15 +18,14 @@
       coefficients:
         Blunt: 0.5
         Slash: 0.5
-        Piercing: 0.3
+        Piercing: 0.4
         Heat: 0.3
   - type: ExplosionResistance
     damageCoefficient: 0.9
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: 2
     knockdownTimeDelta: -2
-  - type: StaminaResistance # Goobstation
-    damageCoefficient: 0.7
+# Ratbite removes stam resist 0.7
 
 # Durathread plated vest
 - type: entity
@@ -47,15 +46,13 @@
       coefficients:
         Blunt: 0.5
         Slash: 0.5
-        Piercing: 0.3
+        Piercing: 0.4
         Heat: 0.3
   - type: ExplosionResistance
     damageCoefficient: 0.9
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: 2
     knockdownTimeDelta: -2
-  - type: StaminaResistance # Goobstation
-    damageCoefficient: 0.7
 
 # Helldiver
 - type: entity
@@ -136,7 +133,7 @@
       coefficients:
         Blunt: 0.4
         Slash: 0.4
-        Piercing: 0.5
+        Piercing: 0.4 # Ratbite balance
         Heat: 0.4
         Caustic: 0.65
   - type: ToggleableClothing
@@ -219,8 +216,7 @@
   - type: ModifyDelayedKnockdown
     delayDelta: 3
     knockdownTimeDelta: -3
-  - type: StaminaResistance
-    damageCoefficient: 0.5
+# Ratbite removes stam resist 0.5
   - type: StripMenuInvisible # No peeking!
   - type: TemperatureProtection
     heatingCoefficient: 0.8 # Blame it on bluespace.
@@ -283,8 +279,7 @@
   - type: ModifyDelayedKnockdown
     delayDelta: 3
     knockdownTimeDelta: -3
-  - type: StaminaResistance
-    damageCoefficient: 0.5
+# Ratbite removes stam resist 0.5
   - type: PressureProtection
     lowPressureMultiplier: 1000
   # Intentionally no temperature or high pressure protection
@@ -342,8 +337,6 @@
   - type: ModifyDelayedKnockdown # Goobstation
     delayDelta: 2.5
     knockdownTimeDelta: -2.5
-  - type: StaminaResistance # Goobstation
-    damageCoefficient: 0.6
   - type: StaticPrice # Goob
     price: 30000
 
@@ -375,8 +368,7 @@
   - type: ModifyDelayedKnockdown
     delayDelta: 2
     knockdownTimeDelta: -2
-  - type: StaminaResistance
-    damageCoefficient: 0.7
+# Ratbite removes stam resist 0.7
 
 #  Shitchap
 - type: entity

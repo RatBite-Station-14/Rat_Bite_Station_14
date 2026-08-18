@@ -1,0 +1,196 @@
+#because im a lazy guy im putting all tech that is printable thru legal tech tree here.
+#this exist to avoid ntr cheesing with loyalty point. so everything here is major contraband.
+#with exception of the second part of the thing
+#first remove the syndie contra label as that allowed ntrep to cheese it or make it worthless on ntrep briefcase.
+#second remove stealth capabilities to allowed sec to find it better as all this can be mass produces.
+#third balance this shit
+
+- type: entity
+  parent: [RadioJammer, BaseMajorContraband]
+  id: LegalRadioJammer
+  name: radio jammer
+  suffix: legalTech
+
+- type: entity
+  parent: [HypoDart, BaseMajorContraband]
+  id: LegalHypoDart
+  name: HypoDart
+  suffix: legalTech
+  description: A way to remotely inject chemicals into someone. This does not follow the Geneva “suggestions”.
+
+- type: entity
+  parent: [SyndiHypo, BaseMajorContraband]
+  id: LegalHypospray
+  name: Hypospray
+  suffix: legalTech
+  description: A lesser version of NT hypospray.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      hypospray:
+        maxVol: 10
+  - type: UseDelay
+    delay: 0.50
+
+- type: entity
+  parent: [SyndieTrickyBomb, BaseMajorContraband]
+  id: LegalSyndieTrickyBomb
+  name: trick minibomb
+  suffix: legalTech
+  description: Giving heart-attacks to security since 2025!
+  components:
+  - type: Contraband
+    severity: Major
+  - type: ScannableForPoints # Goobstation - NTR update
+    points: 0
+
+- type: entity
+  parent: [ClothingHandsGlovesColorBlack, BaseMajorContraband]
+  id: LegalThievingGloves
+  name: thieving gloves
+  suffix: legalTech
+  description: these gloves that makes the user exceptionally skilled at stealing off people undetected.
+  components:
+  - type: Thieving
+    stripTimeReduction: 1
+    stealthy: true
+
+- type: entity
+  parent: [LanternFlash, BaseMajorContraband]
+  id: LegalLanternFlash
+  name: Ultrabright Lantern
+  suffix: legalTech
+  description: A modified lantern that’s so bright, it might as well be a flash.
+
+- type: entity # good lord if someone spam this and throw a real disk in it. good fuckin luck.
+  parent: NukeDiskFake # hehe fuckin evil
+  id: LegalFakeNukeDisk
+  name: nuclear authentication disk
+  suffix: legalTech
+  description: A nuclear authentication disk, capable of arming a nuke if used along with a code- Wait a minute, there’s a small defect on the disk due to a misprint…
+
+- type: entity
+  parent: [AgentIDCard, BaseMajorContraband]
+  id: LegalAgentIDCard
+  name: passenger ID card
+  suffix: legalTech
+  components:
+  - type: Access # remove syndie access
+    tags:
+    - Maintenance
+
+- type: entity #Good lord this one is op
+  parent: BaseSubdermalImplant
+  id: LegalFreedomImplant
+  name: restricted freedom implant
+  description: This implant lets the user break out of hand restraints up to three times before ceasing to function anymore.
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: SubdermalImplant
+      implantAction: ActionActivateLegalFreedomImplant #increase delay than the traitor uplink version
+      whitelist:
+        components:
+        - Cuffable # useless if you cant be cuffed
+
+- type: entity
+  id: LegalFreedomImplanter
+  name: restricted freedom implanter
+  parent: [BaseImplantOnlyImplanter, BaseMajorContraband]
+  components:
+    - type: Implanter
+      implant: LegalFreedomImplant
+
+- type: entity
+  parent: [HighFrequencyBlade, BaseMajorContraband]
+  id: LegalHighFrequencyBlade
+  name: high frequency blade
+  description: A highly reinforced blade that vibrates at high frequencies allowing it to cut in fast pace. Unfortunately, imperfections during fabrication prevent it from achieving true sharpness.
+  suffix: legalTech
+  components:
+  - type: Contraband
+    severity: Major
+  - type: ScannableForPoints # Goobstation - NTR update
+    points: 0
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    attackRate: 8
+    autoAttack: true
+    heavyStaminaCost: 0
+    damage:
+      types:
+        Slash: 3
+        Structural: 5
+    soundHit:
+      path: "/Audio/Weapons/bladeslice.ogg"
+    animation: WeaponArcHighFreq
+
+- type: entity
+  name: energy sword
+  parent: [EnergySword, BaseMajorContraband]
+  id: LegalEnergySword
+  suffix: legalTech
+  components:
+  - type: Contraband
+    severity: Major
+  - type: ScannableForPoints # Goobstation - NTR update
+    points: 0
+  - type: ItemToggleMeleeWeapon
+    activatedSoundOnSwing:
+      path: /Audio/Weapons/eblademiss.ogg
+      params:
+        volume: -3
+        variation: 0.250
+    activatedDamage:
+        types:
+            Slash: 10
+            Heat: 15
+
+- type: entity
+  name: composition C-4
+  parent: [C4, BaseMajorContraband]
+  id: LegalC4
+  suffix: legalTech
+  components:
+  - type: Contraband
+    severity: Major
+  - type: ScannableForPoints # Goobstation - NTR update
+    points: 0
+
+- type: entity
+  name: cyborg weapon module
+  parent: [BorgModuleSyndicateWeaponAdvanced, BaseMajorContraband]
+  id: LegalBorgModuleSyndicateWeaponAdvanced
+  suffix: legalTech
+  components:
+  - type: Contraband
+    severity: Major
+  - type: ScannableForPoints # Goobstation - NTR update
+    points: 0
+
+- type: entity
+  name: cyborg self detonation module
+  parent: [BorgModuleMartyr, BaseMajorContraband]
+  id: LegalBorgModuleMartyr
+  suffix: legalTech
+  components:
+  - type: Contraband
+    severity: Major
+  - type: ScannableForPoints # Goobstation - NTR update
+    points: 0
+
+- type: entity
+  parent: [EmpGrenade, BaseMajorContraband]
+  id: LegalEmpGrenade
+  name: EMP grenade
+  suffix: legalTech
+  components:
+  - type: Contraband
+    severity: Major
+  - type: ScannableForPoints # Goobstation - NTR update
+    points: 0
+
+- type: entity
+  parent: [VestineChemistryVial, BaseMajorContraband]
+  id: LegalVestineChemistryVial
+  name: Vestine vial
+  suffix: legalTech

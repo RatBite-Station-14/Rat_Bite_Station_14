@@ -6,6 +6,9 @@ namespace Content.Goobstation.Shared.Changeling.Components;
 public sealed partial class ChangelingActionComponent : Component
 {
     [DataField]
+    public float ChemicalCost;
+
+    [DataField]
     public LocId OnFirePopup = "changeling-action-fail-onfire";
 
     [DataField]

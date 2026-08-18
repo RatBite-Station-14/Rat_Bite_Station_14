@@ -96,6 +96,8 @@
     damage:
       types:
         Slash: 10
+  - type: Contraband # Ratbite contraband tweaks
+    allowedJobs: [ Chef, ServiceWorker ]
 
 - type: entity
   name: butcher's cleaver
@@ -141,6 +143,8 @@
     speed: 0.3
   - type: BoneSaw # Shitmed: Better than tg 25% because its a cleaver its meant to hack off limbs
     speed: 0.5
+  - type: Contraband # Ratbite, service workers shouldn't use cleavers, only chefs
+    allowedJobs: [ Chef ]
 
 - type: entity
   name: combat knife

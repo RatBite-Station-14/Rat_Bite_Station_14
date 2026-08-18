@@ -65,7 +65,6 @@ ClothingUniformMartialGi: null
 ClothingUniformTShirtKhakiPants: null
 ComputerShipyard: null
 CourierBag: null
-CryogenicSleepUnitSpawnerPrisoner: null
 DefaultStationBeaconBoxing: null
 DefaultStationBeaconCameraServerRoom: null
 DefaultStationBeaconConferenceRoom: null
@@ -156,7 +155,7 @@ SpawnPointForensicMantis: null
 SpawnPointLocationMidRoundAntag: null
 SpawnPointMartialArtist: null
 SpawnPointMedicalBorg: null
-SpawnPointPrisoner: null
+#SpawnPointPrisoner: Ratbite, chuds must go to jail
 SpawnPointPrisonGuard: null
 SpeedLoaderSpecialPractice: null
 SuitStorageCorpsman: null
@@ -731,8 +730,8 @@ LightTree06: LightTree
 
 # 2024-12-22 # Lavaland Change: Migrations
 VendingMachineRestockSalvageEquipment: null
-ComputerSalvageExpedition: ComputerShuttleMiningLavaland
-SalvageExpeditionsComputerCircuitboard: LavalandShuttleConsoleCircuitboard
+# ComputerSalvageExpedition: ComputerShuttleMiningLavaland
+# SalvageExpeditionsComputerCircuitboard: LavalandShuttleConsoleCircuitboard - RATBITE - WE DONT WANT TO GO TO LAVALAND EVERY SHIFT!
 
 # 2025-01-06
 BorgModuleRadiationDetection: null

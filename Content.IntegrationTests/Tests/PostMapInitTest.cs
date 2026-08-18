@@ -97,7 +97,8 @@ namespace Content.IntegrationTests.Tests
             "/Maps/_Goobstation/Shuttles/retort_medical.yml",
             "/Maps/_Goobstation/Shuttles/retort_engineering.yml",
             "/Maps/_Goobstation/Shuttles/retort_janitorial.yml",
-            "/Maps/_Goobstation/Shuttles/retort_cburn.yml"
+            "/Maps/_Goobstation/Shuttles/retort_cburn.yml",
+            "/Maps/_Goobstation/prison.yml"
         };
 
         /// <summary>
@@ -118,11 +119,11 @@ namespace Content.IntegrationTests.Tests
             "Barratry",
             "Box",            // Not in pool
             "CentComm",       // CentComm
-            "Chloris",
+            "Chloris",        // Not in pool
             "Cluster",
-            "Cog",
-            "Core",           // Not in pool.
-            "Delta",
+            "Cog",            // Not in pool
+            "Core",
+            "Delta",          // Not in pool
             "Dev",            // Dev map
             "dm01-entryway",  // Deathmatch
             "Europa",         // Not in pool.
@@ -132,17 +133,19 @@ namespace Content.IntegrationTests.Tests
             "Kettle",
             "Lambda",         // Not in pool
             "Lavatest",       // Dev map
-            "Leonid",
+            "Leonid",         // Not in pool
             "Loop",
             "Marathon",
-            "Meta",
+            "Meta",           // Not in pool
             "MeteorArena",    // Deathmatch
             "Oasis",
             "OasisHighPop",
             "Omega",
-            "Origin",
+            "Opticon", // Ratbite original work
+            "Origin",         // Not in pool
             "OriginHighPop",  // Not in pool
             "Packed",
+            "Prison",         // Not in pool
             "Reach",
             "Saltern",
             "Serpentcrest",
@@ -161,11 +164,11 @@ namespace Content.IntegrationTests.Tests
              //  "Barratry", kill memory concerns
             //"Box",            // Not in pool
               "CentComm",      // CentComm
-              "Chloris",
+            //"Chloris",
               "Cluster",
-              "Cog",
-            //"Core",           // Not in pool.
-              "Delta",
+            //"Cog",
+              "Core",
+            //"Delta",
               "Dev",            // Dev map
             //"dm01-entryway",  // Deathmatch
             //"Europa",         // Not in pool.
@@ -174,20 +177,22 @@ namespace Content.IntegrationTests.Tests
               "FlandHighPop",
               "Kettle",
             //"Lambda",         // Not in pool
-              "Lavatest",       //Dev map
-              "Leonid",
+              "Lavatest",       // Dev map
+            //"Leonid",         // Not in pool
               "Loop",
               "Marathon",
-              "Meta",
+            //"Meta",           // Not in pool
             //"MeteorArena",    // Deathmatch
             //  "Oasis",        // kill due to memory
               "OasisHighPop",
               "Omega",
-              "Origin",
-            //"OriginHighPop",  //Not in pool
-              "TestTeg",        //Dev map
-            //"Train",          //Not in pool
+              "Opticon",
+            //"Origin",         // Not in pool
+            //"OriginHighPop",  // Not in pool
+              "TestTeg",        // Dev map
+            //"Train",          // Not in pool
               "Packed",
+            //"Prison",         // Not in pool
               "Reach",
               "Saltern",
               "Serpentcrest",

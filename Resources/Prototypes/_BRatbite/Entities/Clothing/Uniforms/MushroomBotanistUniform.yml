@@ -1,0 +1,11 @@
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformBotanyCasualMushroom
+  name: Casual Botany Outfit
+  description: A casual outfit for the mushroom loving botanists.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Uniforms/CasualMushroom.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Uniforms/CasualMushroom.rsi
+
