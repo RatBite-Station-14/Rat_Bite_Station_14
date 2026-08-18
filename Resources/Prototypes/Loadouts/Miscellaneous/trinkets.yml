@@ -38,7 +38,13 @@
   storage:
     back:
     - PlushieCarmella
-    
+
+- type: loadout
+  id: PlushieBatch
+  storage:
+    back:
+    - PlushieBatch
+
 - type: loadout
   id: PlushieLizard
   storage:

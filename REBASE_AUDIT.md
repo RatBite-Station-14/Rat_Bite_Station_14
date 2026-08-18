@@ -168,7 +168,8 @@ This is the running ledger of foundation work completed during the modern Goob r
 | resolved | Default map was Saltern, which fucking sucks | Switched default to Opticon if no map selected. | `Content.Server` and `Content.Client` builds successfully, and works in-game |
 | resolved | I lied and the above did not work. Turns out some shits missing. | Fixed missing prototype `SyringeCognizine`. | `Content.Server` and `Content.Client` builds successfully, and works in-game |
 | resolved | Stale device network configurators | Removed invalid `configurators` entries from device network components in various maps. Turns out Opticon had 22 such non-entries. | `Content.Server` and `Content.Client` builds successfully, and works in-game |
-
+| resolved | CE Loadout brokey | Readded missing CE loadout, as well as two scarfs that were causing errors. | `Content.Server` and `Content.Client` builds successfully, and works in-game |
+| resolved | Ghost UI wouldnt show shit | Fixed the Ghost UI so it displays correctly by changing `Populate()` to clear the grids instead of destroying `ButtonContainer`. | `Content.Server` and `Content.Client` builds successfully, and works in-game |
 
 ## Stuff to fix
 
@@ -182,7 +183,5 @@ This is the running ledger of foundation work completed during the modern Goob r
 - heretic polymorph dependency
 - perma-brig, EMP, trait, storage, chemistry API ports
 - Slasher machete hit sfx no work
-- Ghost TP UI just dont work <<<< CRITICAL
-- Customise on some roles dont work <<<< CRITICAL
 - Xenobio console UI dont work
-- Fix the 3 new maps being in _Goobstation folder (couldnt be arsed to add to Ratbite_Supported)
+- Some music displays as "Unknown title by Unknown artist"

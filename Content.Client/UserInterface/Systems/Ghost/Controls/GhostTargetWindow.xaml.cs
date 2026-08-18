@@ -64,7 +64,12 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
 
         public void Populate()
         {
-            ButtonContainer.RemoveAllChildren();
+            // Clear the category grids only. ButtonContainer holds the Collapsible layout itself.
+            AntagonistContainer.RemoveAllChildren();
+            LivingContainer.RemoveAllChildren();
+            DeadContainer.RemoveAllChildren();
+            GhostContainer.RemoveAllChildren();
+            MiscContainer.RemoveAllChildren();
             AddButtons();
         }
 
@@ -139,6 +144,11 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
                 if (child is Button button)
                     button.Visible = ButtonIsVisible(button);
             }
+            foreach (var child in DeadContainer.Children)
+            {
+                if (child is Button button)
+                    button.Visible = ButtonIsVisible(button);
+            }
             foreach (var child in GhostContainer.Children)
             {
                 if (child is Button button)
@@ -156,6 +166,7 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
             var x = GhostScroll.Size.X - 10;
             AntagonistContainer.MaxGridWidth = x;
             LivingContainer.MaxGridWidth = x;
+            DeadContainer.MaxGridWidth = x;
             GhostContainer.MaxGridWidth = x;
             MiscContainer.MaxGridWidth = x;
         }

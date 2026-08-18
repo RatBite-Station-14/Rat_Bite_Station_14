@@ -57,6 +57,32 @@
 
 - type: entity
   parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckEnsembleChiefEngineerWhite
+  name: chief engineer's white ensemble
+  description: A polished white ensemble with orange trim, worn by chief engineers who have mastered both design and discipline.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Neck/Ensembles/ChiefEngineer/whitece.rsi # Goob Station - ensemble resprite
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Neck/Ensembles/ChiefEngineer/whitece.rsi # Goob Station - ensemble resprite
+  - type: StealTarget
+    stealGroup: HeadCloak
+
+- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckEnsembleChiefEngineerGreen
+  name: chief engineer's green ensemble
+  description: A vibrant green ensemble with yellow and blue accents, signifying a chief engineer who has earned the highest respect.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Neck/Cloaks/ChiefEngineer/greence.rsi # Goob Station - ensemble fallback to green cloak resprite
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Neck/Cloaks/ChiefEngineer/greence.rsi # Goob Station - ensemble fallback to green cloak resprite
+  - type: StealTarget
+    stealGroup: HeadCloak
+
+- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
   id: ClothingCloakCmo
   name: chief medical officer's cloak
   description: A sterile blue cloak with a green cross, radiating with a sense of duty and willingness to help others.

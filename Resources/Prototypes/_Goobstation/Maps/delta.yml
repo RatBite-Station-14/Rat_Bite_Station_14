@@ -3,7 +3,7 @@
 - type: gameMap
   id: Delta
   mapName: 'Delta Station'
-  mapPath: /Maps/_Goobstation/delta.yml
+  mapPath: /Maps/_BRatbite/Ratbite_Supported/delta.yml
   minPlayers: 55
   stations:
     Delta:

@@ -9,6 +9,16 @@
       role: JobChiefEngineer
       time: 20h
 
+# Goobstation - For Ensembles
+- type: loadoutEffectGroup
+  id: GrandMasterCE
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobChiefEngineer
+      time: 100h
+
 # Jumpsuit
 - type: loadout
   id: ChiefEngineerJumpsuit

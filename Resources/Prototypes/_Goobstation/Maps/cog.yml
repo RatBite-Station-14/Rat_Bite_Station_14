@@ -3,7 +3,7 @@
 - type: gameMap
   id: Cog
   mapName: 'Cog'
-  mapPath: /Maps/_Goobstation/cog.yml
+  mapPath: /Maps/_BRatbite/Ratbite_Supported/cog.yml
   minPlayers: 40
   stations:
     Cog:
