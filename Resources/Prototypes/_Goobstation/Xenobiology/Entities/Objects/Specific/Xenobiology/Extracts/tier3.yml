@@ -20,9 +20,10 @@
         messages: [ "xeno-extract-reaction" ]
       - !type:PlaySoundEffect
         sound: /Audio/Effects/Chemistry/bubbles.ogg
-      - !type:CreateEntityReactionEffect
+      - !type:SpawnEntity
         entity: XenobioVolatileRedExtractJelly
         number: 1
+        shouldScale: false
     - reagents: [ Plasma ]
       methods: [ Touch, Injection ]
       effects:
@@ -183,9 +184,10 @@
       - !type:Jitter
         time: 3
         frequency: 20
-      - !type:CreateEntityReactionEffect
+      - !type:SpawnEntity
         entity: RPassiveMobSpawner
         number: 5
+        shouldScale: false
         delay: 3
     - reagents: [ Plasma ]
       methods: [ Touch, Injection ]
@@ -199,9 +201,10 @@
       - !type:Jitter
         time: 3
         frequency: 20
-      - !type:CreateEntityReactionEffect
+      - !type:SpawnEntity
         entity: RHostileMobSpawner
         number: 5
+        shouldScale: false
         delay: 3
     - reagents: [ Blood ]
       methods: [ Touch, Injection ]
@@ -215,9 +218,10 @@
       - !type:Jitter
         time: 3
         frequency: 20
-      - !type:CreateEntityReactionEffect
+      - !type:SpawnEntity
         entity: RNeutralMobSpawner
         number: 5
+        shouldScale: false
         delay: 3
   - type: Tag
     tags:

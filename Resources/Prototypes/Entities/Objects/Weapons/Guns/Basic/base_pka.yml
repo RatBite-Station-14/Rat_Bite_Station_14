@@ -59,9 +59,9 @@
     spreadMultiplier: 3
     spreadAddition: 20
   - type: ItemUpgradeable
-    whitelist:
-      tags:
-      - PKAUpgrade
+#    whitelist: # Ratbite: The field doesn't exist anymore
+#      tags:
+#      - PKAUpgrade
   #- type: GunWieldBonus
   #  minAngle: -43
   #  maxAngle: -43

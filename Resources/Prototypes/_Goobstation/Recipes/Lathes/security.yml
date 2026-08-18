@@ -652,17 +652,18 @@
   materials:
     Steel: 285
 
-- type: latheRecipe
-  parent: BaseAmmoRecipe
-  id: PowerCellBluespaceRevolver
-  result: PowerCellBluespaceRevolver
-  materials:
-    Steel: 300
-    Gold: 200
-    Glass: 300
-    Plasma: 500
-    Uranium: 400
-    BSCrystal: 100
+# Ratbite: The item doesn't exist
+#- type: latheRecipe
+#  parent: BaseAmmoRecipe
+#  id: PowerCellBluespaceRevolver
+#  result: PowerCellBluespaceRevolver
+#  materials:
+#    Steel: 300
+#    Gold: 200
+#    Glass: 300
+#    Plasma: 500
+#    Uranium: 400
+#    BSCrystal: 100
 
 - type: latheRecipe
   parent: BaseAmmoRecipe

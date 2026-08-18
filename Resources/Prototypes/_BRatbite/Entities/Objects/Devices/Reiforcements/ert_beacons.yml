@@ -11,13 +11,6 @@
     rules: ghost-role-information-nonantagonist-rules
     raffle:
       settings: short
-    requirements:
-    - !type:DepartmentTimeRequirement
-       department: Security
-       time: 36000 # ten hours
-    - !type:DepartmentTimeRequirement
-      department: Command
-      time: 18000 # five hours
   - type: GhostCharacterSpawner
     components:
     - type: IdBind
@@ -202,13 +195,6 @@
     rules: ghost-role-information-nonantagonist-rules
     raffle:
       settings: short
-    requirements:
-    - !type:DepartmentTimeRequirement
-       department: Medical
-       time: 36000 # ten hours
-    - !type:DepartmentTimeRequirement
-      department: Security
-      time: 18000 # five hours
   - type: GhostCharacterSpawner
     components:
     - type: CombatTrained
@@ -239,13 +225,6 @@
     rules: ghost-role-information-nonantagonist-rules
     raffle:
       settings: short
-    requirements:
-    - !type:DepartmentTimeRequirement
-      department: Security
-      time: 36000 # ten hours
-    - !type:DepartmentTimeRequirement
-      department: Command
-      time: 18000 # five hours
   - type: GhostCharacterSpawner
     components:
     - type: Loadout

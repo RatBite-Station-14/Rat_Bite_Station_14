@@ -1,59 +1,59 @@
 # Perma Brig SOP
 - type: guideEntry
-  id: Multi Round Perma SOP
+  id: MultiRoundPermaSOP
   name: guide-entry-sop-multiround-brig
   text: "/ServerInfo/_BRatbite/Guidebook/SoP/Legal/MultiRoundPermaSOP.xml"
   priority: 0
   children:
-  - Multi Round Perma Convictions SOP
-  - Multi Round Perma Pardons SOP
+  - MultiRoundPermaConvictionsSOP
+  - MultiRoundPermaPardonsSOP
 
 - type: guideEntry
-  id: Multi Round Perma Convictions SOP
+  id: MultiRoundPermaConvictionsSOP
   name: guide-entry-sop-multiround-brig-convictions
   text: "/ServerInfo/_BRatbite/Guidebook/SoP/Legal/MultiRoundPerma/PermaBrigConvictionsSOP.xml"
   priority: 0
 
 - type: guideEntry
-  id: Multi Round Perma Pardons SOP
+  id: MultiRoundPermaPardonsSOP
   name: guide-entry-sop-multiround-brig-pardons
   text: "/ServerInfo/_BRatbite/Guidebook/SoP/Legal/MultiRoundPerma/PermaBrigPardonsSOP.xml"
   priority: 0
 
 # Central Command SOP
 - type: guideEntry
-  id: HighCommand SOP
+  id: HighCommandSOP
   name: High Command SOP
   text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/HighCommandSOP.xml"
   priority: 0
 
 - type: guideEntry
-  id: RedsightOverseer SOP
+  id: RedsightOverseerSOP
   name: guide-entry-sop-central-command-rso
   text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/CentralCommand/RedsightOverseerSOP.xml"
   priority: 0
 
 - type: guideEntry
-  id: Central Command SOP
+  id: CentralCommandSOP
   name: guide-entry-sop-central-command-general
   text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/CentralCommandSOP.xml"
   priority: 0
   children:
-  - HighCommand SOP
+  - HighCommandSOP
   - NanotrasenRepSOP
   - BlueshieldOfficerSOP
-  - RedsightOverseer SOP
+  - RedsightOverseerSOP
 
 # Security Additions SOP
 
 - type: guideEntry
-  id: DepartmentalGuard SOP
+  id: DepartmentalGuardSOP
   name: Departmental Security SOP
   text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/StationJobs/DepartmentalGuardSOP.xml"
   priority: 1
 
 - type: guideEntry
-  id: Psychologist SOP
+  id: PsychologistSOP
   name: Psychologist/PsychWard SOP
   text: "/ServerInfo/_BRatbite/Guidebook/SoP/Jobs/StationJobs/PsychologistSOP.xml"
   priority: 1

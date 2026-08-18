@@ -1,0 +1,17 @@
+ghost-role-information-reinforcement-sec-name = Security reinforcement
+ghost-role-information-reinforcement-description = Reinforce security
+ghost-role-information-reinforcement-fast-sec-name = Security reinforcement (fast)
+ghost-role-information-reinforcement-specialist-sec-name = Salvage specialist reinforcement
+ghost-role-information-reinforcement-bartender-name = Bartender reinforcement
+ghost-role-information-reinforcement-chef-name = Chef reinforcement
+ghost-role-information-reinforcement-botanist-name = Botanist reinforcement
+ghost-role-information-reinforcement-engi-name = Engineer reinforcement
+ghost-role-information-reinforcement-atmos-name = Atmospheric technician reinforcement
+ghost-role-information-reinforcement-sci-name = Scientist reinforcement
+ghost-role-information-reinforcement-assistant-name = Passenger reinforcement
+ghost-role-information-reinforcement-DClass-name = DClass
+ghost-role-information-DClass-description = You are a DClass. Aid science with experiments.
+ghost-role-information-reinforcement-doctor-name = Medical Doctor reinforcement
+ghost-role-information-reinforcement-chemist-name = Chemist reinforcement
+ghost-role-information-reinforcement-cargo-name = Cargo Technician reinforcement
+ghost-role-information-reinforcement-salv-name = Salvanger reinforcement

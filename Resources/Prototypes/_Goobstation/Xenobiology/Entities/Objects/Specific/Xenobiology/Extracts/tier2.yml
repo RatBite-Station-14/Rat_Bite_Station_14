@@ -29,9 +29,10 @@
         messages: [ "xeno-extract-reaction" ]
       - !type:PlaySoundEffect
         sound: /Audio/Effects/Chemistry/bubbles.ogg
-      - !type:CreateEntityReactionEffect
+      - !type:SpawnEntity
         entity: XenobioVolatileOrgan
         number: 1
+        shouldScale: false
     - reagents: [ Blood ]
       methods: [ Touch, Injection ]
       effects:
@@ -68,9 +69,10 @@
         messages: [ "xeno-extract-reaction" ]
       - !type:PlaySoundEffect
         sound: /Audio/Effects/Chemistry/bubbles.ogg
-      - !type:CreateEntityReactionEffect
+      - !type:SpawnEntity
         entity: SheetPlastic10
         number: 3
+        shouldScale: false
     - reagents: [ Plasma ]
       methods: [ Touch, Injection ]
       effects:
@@ -80,9 +82,10 @@
         messages: [ "xeno-extract-reaction" ]
       - !type:PlaySoundEffect
         sound: /Audio/Effects/Chemistry/bubbles.ogg
-      - !type:CreateEntityReactionEffect
+      - !type:SpawnEntity
         entity: SheetPlasma1
         number: 3
+        shouldScale: false
     - reagents: [ Blood ]
       methods: [ Touch, Injection ]
       effects:
@@ -190,9 +193,10 @@
         messages: [ "xeno-extract-reaction" ]
       - !type:PlaySoundEffect
         sound: /Audio/Effects/Chemistry/bubbles.ogg
-      - !type:CreateEntityReactionEffect
+      - !type:SpawnEntity
         entity: IngotSilver1
         number: 2
+        shouldScale: false
     - reagents: [ Blood ]
       methods: [ Touch, Injection ]
       effects:
@@ -202,9 +206,10 @@
         messages: [ "xeno-extract-reaction" ]
       - !type:PlaySoundEffect
         sound: /Audio/Effects/Chemistry/bubbles.ogg
-      - !type:CreateEntityReactionEffect
+      - !type:SpawnEntity
         entity: XenobioGoopBall
         number: 3
+        shouldScale: false
   - type: Tag
     tags:
     - XenobiologySilverExtract
@@ -232,9 +237,10 @@
         messages: [ "xeno-extract-reaction" ]
       - !type:PlaySoundEffect
         sound: /Audio/Effects/Chemistry/bubbles.ogg
-      - !type:CreateEntityReactionEffect
+      - !type:SpawnEntity
         entity: FloorTileItemBluespace
         number: 30
+        shouldScale: false
     - reagents: [ Plasma ]
       methods: [ Touch, Injection ]
       effects:
@@ -244,9 +250,10 @@
         messages: [ "xeno-extract-reaction" ]
       - !type:PlaySoundEffect
         sound: /Audio/Effects/Chemistry/bubbles.ogg
-      - !type:CreateEntityReactionEffect
+      - !type:SpawnEntity
         entity: MaterialBSCrystal1
         number: 5
+        shouldScale: false
     - reagents: [ Blood ]
       methods: [ Touch, Injection ]
       effects:
@@ -299,9 +306,10 @@
       - !type:Jitter
         time: 5
         frequency: 20
-      - !type:CreateEntityReactionEffect
+      - !type:SpawnEntity
         delay: 5
         entity: XenoExtractChronofield
+        shouldScale: false
         number: 1
     - reagents: [ Blood ]
       methods: [ Touch, Injection ]
@@ -312,9 +320,10 @@
         messages: [ "xeno-extract-reaction" ]
       - !type:PlaySoundEffect
         sound: /Audio/Effects/Chemistry/bubbles.ogg
-      - !type:CreateEntityReactionEffect
+      - !type:SpawnEntity
         entity: FloorTileItemSepia
         number: 30
+        shouldScale: false
   - type: Tag
     tags:
     - XenobiologySepiaExtract

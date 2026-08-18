@@ -52,9 +52,10 @@
           - id: WallRockBSCrystal # Goobstation
             prob: 0.05
             orGroup: rock
-          - id: WallRockGibtonite # Goobstation
-            prob: 0.005
-            orGroup: rock
+# Ratbite: Gibtonite doesn't exist
+#          - id: WallRockGibtonite # Goobstation
+#            prob: 0.005
+#            orGroup: rock
     - type: IFF
       flags: HideLabel
       color: "#d67e27"
