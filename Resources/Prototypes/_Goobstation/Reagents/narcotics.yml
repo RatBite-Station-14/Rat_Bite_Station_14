@@ -307,14 +307,12 @@
           types:
             Asphyxiation: 0.5
         conditions:
-        - !type:OrganType
-          type: Yowie
-          shouldHave: false
+        - !type:MetabolizerTypeCondition
+          type: [ Yowie ]
       - !type:HealthChange
         conditions:
-        - !type:OrganType
-          type: Yowie
-          shouldHave: false
+        - !type:MetabolizerTypeCondition
+          type: [ Yowie ]
         - !type:ReagentThreshold
           min: 50
         damage:
@@ -324,8 +322,8 @@
         emote: Gasp
         probability: 0.1
         conditions:
-        - !type:OrganType
-          type: Yowie
+        - !type:MetabolizerTypeCondition
+          type: [ Yowie ]
 
 - type: reagent
   id: MouseBites
