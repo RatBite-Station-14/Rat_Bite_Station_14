@@ -21,4 +21,133 @@
   - type: Vinyl
     song:
       path: /Audio/_BRatbite/Radiostation/music/Moonchild.ogg
-      
+
+# "something squishy this way comes" - squishytaur
+
+- type: entity
+  abstract: true
+  id: BaseVinylDiskSquishy
+  parent: BaseVinylDisk
+  description: A gold vinyl disk from the album "something squishy this way comes".
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Misc/RadioStation/vinyls.rsi
+    state: white-vinyl-disk
+    color: "#FFD700"
+
+- type: entity
+  name: "vinyl disk: ALT F4"
+  id: VinylDiskSquishyAltF4
+  parent: BaseVinylDiskSquishy
+  components:
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/squishytaur/ALT F4 ALT F4 ALT F4.ogg
+
+- type: entity
+  name: "vinyl disk: french cat café"
+  id: VinylDiskSquishyFrenchCatCafe
+  parent: BaseVinylDiskSquishy
+  components:
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/squishytaur/Battle With the Barista in a French Cat Cafe to Finally Get a Good Coffee for Once.ogg
+
+- type: entity
+  name: "vinyl disk: blizzard"
+  id: VinylDiskSquishyBlizzard
+  parent: BaseVinylDiskSquishy
+  components:
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/squishytaur/Blizzard.ogg
+
+- type: entity
+  name: "vinyl disk: murder"
+  id: VinylDiskSquishyMurder
+  parent: BaseVinylDiskSquishy
+  components:
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/squishytaur/FIRST DEGREE MURDER.ogg
+
+- type: entity
+  name: "vinyl disk: adventure"
+  id: VinylDiskSquishyAdventure
+  parent: BaseVinylDiskSquishy
+  components:
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/squishytaur/Found.ogg
+
+- type: entity
+  name: "vinyl disk: glup"
+  id: VinylDiskSquishyGlup
+  parent: BaseVinylDiskSquishy
+  components:
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/squishytaur/Reigns.ogg
+
+- type: entity
+  name: "vinyl disk: colour"
+  id: VinylDiskSquishyColour
+  parent: BaseVinylDiskSquishy
+  components:
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/squishytaur/Spectre12.ogg
+
+- type: entity
+  name: "vinyl disk: salmon"
+  id: VinylDiskSquishySalmon
+  parent: BaseVinylDiskSquishy
+  components:
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/squishytaur/Salmon.ogg
+
+- type: entity
+  name: "vinyl disk: last stand"
+  id: VinylDiskSquishyLastStand
+  parent: BaseVinylDiskSquishy
+  components:
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/squishytaur/THUNDERDOME II Last Stand.ogg
+
+- type: entityTable
+  id: RandomSquishyVinylDisk
+  table: !type:GroupSelector
+    children:
+    - id: VinylDiskSquishyAltF4
+      weight: 1
+    - id: VinylDiskSquishyFrenchCatCafe
+      weight: 1
+    - id: VinylDiskSquishyBlizzard
+      weight: 1
+    - id: VinylDiskSquishyMurder
+      weight: 1
+    - id: VinylDiskSquishyAdventure
+      weight: 1
+    - id: VinylDiskSquishyGlup
+      weight: 1
+    - id: VinylDiskSquishyColour
+      weight: 1
+    - id: VinylDiskSquishySalmon
+      weight: 1
+    - id: VinylDiskSquishyLastStand
+      weight: 1
+
+- type: entity
+  name: "album: something squishy this way comes"
+  description: A vinyl sleeve holding a gold disk from squishytaur's debut album.
+  id: VinylSleeveSquishy
+  parent: BaseVinylSleeve
+  components:
+  - type: Sprite
+    state: plainwhite-vinyl-sleeve # TODO: replace with the dedicated album RSI state
+  - type: EntityTableContainerFill
+    containers:
+      vinyl: !type:NestedSelector
+        tableId: RandomSquishyVinylDisk

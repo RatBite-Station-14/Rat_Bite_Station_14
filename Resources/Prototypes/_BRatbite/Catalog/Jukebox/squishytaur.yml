@@ -1,0 +1,89 @@
+- type: jukebox
+  id: BRatbiteSquishyAltF4
+  name: squishytaur - ALT F4 ALT F4 ALT F4
+  path:
+    path: /Audio/_BRatbite/squishytaur/ALT F4 ALT F4 ALT F4.ogg
+
+- type: jukebox
+  id: BRatbiteSquishyAssaultThe
+  name: squishytaur - ASSAULT THE ASSAULT THE ASSAULT THE
+  path:
+    path: /Audio/_BRatbite/squishytaur/ASSAULT THE ASSAULT THE ASSAULT THE.ogg
+
+- type: jukebox
+  id: BRatbiteSquishyFrenchCatCafe
+  name: squishytaur - Battle With the Barista in a French Cat Cafe to Finally Get a Good Coffee for Once
+  path:
+    path: /Audio/_BRatbite/squishytaur/Battle With the Barista in a French Cat Cafe to Finally Get a Good Coffee for Once.ogg
+
+- type: jukebox
+  id: BRatbiteSquishyBlizzard
+  name: squishytaur - Blizzard
+  path:
+    path: /Audio/_BRatbite/squishytaur/Blizzard.ogg
+
+- type: jukebox
+  id: BRatbiteSquishyDemo
+  name: squishytaur - Demo
+  path:
+    path: /Audio/_BRatbite/squishytaur/Demo.ogg
+
+- type: jukebox
+  id: BRatbiteSquishyFightTheBadFight
+  name: squishytaur - FIGHT THE BAD FIGHT
+  path:
+    path: /Audio/_BRatbite/squishytaur/FIGHT THE BAD FIGHT.ogg
+
+- type: jukebox
+  id: BRatbiteSquishyFirstDegreeMurder
+  name: squishytaur - FIRST DEGREE MURDER
+  path:
+    path: /Audio/_BRatbite/squishytaur/FIRST DEGREE MURDER.ogg
+
+- type: jukebox
+  id: BRatbiteSquishyFound
+  name: squishytaur - Found
+  path:
+    path: /Audio/_BRatbite/squishytaur/Found.ogg
+
+- type: jukebox
+  id: BRatbiteSquishyNewStart
+  name: squishytaur - New Start
+  path:
+    path: /Audio/_BRatbite/squishytaur/New Start.ogg
+
+- type: jukebox
+  id: BRatbiteSquishyReigns
+  name: squishytaur - Reigns
+  path:
+    path: /Audio/_BRatbite/squishytaur/Reigns.ogg
+
+- type: jukebox
+  id: BRatbiteSquishySalmon
+  name: squishytaur - Salmon
+  path:
+    path: /Audio/_BRatbite/squishytaur/Salmon.ogg
+
+- type: jukebox
+  id: BRatbiteSquishySpectre12
+  name: squishytaur - Spectre12
+  path:
+    path: /Audio/_BRatbite/squishytaur/Spectre12.ogg
+
+- type: jukebox
+  id: BRatbiteSquishyTest5
+  name: squishytaur - Test 5
+  path:
+    path: /Audio/_BRatbite/squishytaur/Test 5.ogg
+
+- type: jukebox
+  id: BRatbiteSquishyThunderdomeIntro
+  name: squishytaur - THUNDERDOME II Introduction Theme
+  path:
+    path: /Audio/_BRatbite/squishytaur/THUNDERDOME II Introduction Theme.ogg
+
+- type: jukebox
+  id: BRatbiteSquishyThunderdomeLastStand
+  name: squishytaur - THUNDERDOME II Last Stand
+  path:
+    path: /Audio/_BRatbite/squishytaur/THUNDERDOME II Last Stand.ogg
