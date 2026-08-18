@@ -197,3 +197,45 @@
   background: /Textures/LobbyScreens/nukies_bridge.webp
   name: Nukies Bridge!!
   artist: seyriix
+
+- type: lobbyBackground
+  id: amos
+  background: /Textures/LobbyScreens/amos.webp
+  name: Amos
+  artist: asardonicsailor
+
+- type: lobbyBackground
+  id: headmin-vangelion
+  background: /Textures/LobbyScreens/headminVangelion.webp
+  name: Headmin Vangelion
+  artist: squishytaur
+
+- type: lobbyBackground
+  id: jani-shootout
+  background: /Textures/LobbyScreens/janishootout.webp
+  name: Jani Shootout
+  artist: psychpsyo
+
+- type: lobbyBackground
+  id: just-a-week-away
+  background: /Textures/LobbyScreens/justaweekaway.webp
+  name: Just a Week Away...
+  artist: plantyfern
+
+- type: lobbyBackground
+  id: lost-pai
+  background: /Textures/LobbyScreens/lostpai.webp
+  name: Lost pAI
+  artist: Cattom
+
+- type: lobbyBackground
+  id: reclaimer-nuke
+  background: /Textures/LobbyScreens/reclaimer-nuke.webp
+  name: Reclaimer Nuke
+  artist: GetOutMarutak
+
+- type: lobbyBackground
+  id: shitters
+  background: /Textures/LobbyScreens/shitters.webp
+  name: Shitters
+  artist: squishytaur

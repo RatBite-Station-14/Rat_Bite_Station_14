@@ -173,7 +173,7 @@ This is the running ledger of foundation work completed during the modern Goob r
 
 ## Stuff to fix
 
-- modern ghost-role requirements and warp-point fields
+- modern ghost-role requirements
 - lathe access-reader merge damage
 - database role-ban API changes
 - uplink command naming

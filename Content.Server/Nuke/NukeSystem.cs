@@ -674,6 +674,7 @@ public sealed class NukeSystem : EntitySystem
         RaiseLocalEvent(new NukeExplodedEvent()
         {
             OwningStation = transform.GridUid,
+            Nuke = uid, // _BRatbite - lets other systems (e.g. the annihilation bubble) find the epicenter
         });
 
         _sound.StopStationEventMusic(uid, StationEventMusicType.Nuke);
@@ -747,6 +748,9 @@ public sealed class NukeSystem : EntitySystem
 public sealed class NukeExplodedEvent : EntityEventArgs
 {
     public EntityUid? OwningStation;
+
+    /// <summary>Entity of the nuke that exploded, still valid when this event is raised. _BRatbite</summary>
+    public EntityUid Nuke;
 }
 
 /// <summary>

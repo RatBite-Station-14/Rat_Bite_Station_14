@@ -31,9 +31,8 @@
   description: A gold vinyl disk from the album "something squishy this way comes".
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Misc/RadioStation/vinyls.rsi
-    state: white-vinyl-disk
-    color: "#FFD700"
+    sprite: _BRatbite/Objects/Fun/squishytaurvinyl.rsi
+    state: vinyl
 
 - type: entity
   name: "vinyl disk: ALT F4"

@@ -268,6 +268,8 @@
       weight: 1
     - id: VinylSleeveBlockyCraft
       weight: 1
+    - id: VinylSleeveSquishy
+      weight: 1
     - id: VinylSleeveEye
       weight: 1
     - id: VinylSleeveTh
