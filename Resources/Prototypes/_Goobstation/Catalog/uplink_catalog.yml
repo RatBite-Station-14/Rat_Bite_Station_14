@@ -809,7 +809,7 @@
   - !type:BuyerJobCondition
     whitelist:
     - SalvageSpecialist
-    - ShaftMiner
+    # - ShaftMiner # Ratbite: We don't have shaft miner
 
 - type: listing
   id: UplinkGreyTide
@@ -1903,22 +1903,23 @@
       tags:
       - ContractorUplink
 
-- type: listing
-  id: UplinkModsuitContractor
-  name: uplink-moduist-contractor-name
-  description: uplink-moduist-contractor-desc
-  icon: { sprite: /Textures/_Goobstation/Clothing/OuterClothing/Modsuits/contractor.rsi, state: control }
-  productEntity: ClothingModsuitContractor
-  cost:
-    Telecrystal: 50
-  categories:
-  - UplinkWearables
-  - UplinkContractor
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - ContractorUplink
+# Ratbite: we don't have this
+# - type: listing
+#   id: UplinkModsuitContractor
+#   name: uplink-moduist-contractor-name
+#   description: uplink-moduist-contractor-desc
+#   icon: { sprite: /Textures/_Goobstation/Clothing/OuterClothing/Modsuits/contractor.rsi, state: control }
+#   productEntity: ClothingModsuitContractor
+#   cost:
+#     Telecrystal: 50
+#   categories:
+#   - UplinkWearables
+#   - UplinkContractor
+#   conditions:
+#   - !type:StoreWhitelistCondition
+#     whitelist:
+#       tags:
+#       - ContractorUplink
 
 - type: listing
   id: UplinkHardsuitContractor
@@ -1954,22 +1955,23 @@
       tags:
       - ContractorUplink
 
-- type: listing
-  id: UplinkContractorJetpack
-  name: uplink-jetpack-contractor-name
-  description: uplink-jetpack-contractor-desc
-  icon: { sprite: /Textures/_Goobstation/Objects/Tanks/contractorpack.rsi, state: icon }
-  productEntity: JetpackContractorFilled
-  cost:
-    Telecrystal: 15
-  categories:
-  - UplinkWearables
-  - UplinkContractor
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - ContractorUplink
+# Ratbite: We don't have it
+# - type: listing
+#   id: UplinkContractorJetpack
+#   name: uplink-jetpack-contractor-name
+#   description: uplink-jetpack-contractor-desc
+#   icon: { sprite: /Textures/_Goobstation/Objects/Tanks/contractorpack.rsi, state: icon }
+#   productEntity: JetpackContractorFilled
+#   cost:
+#     Telecrystal: 15
+#   categories:
+#   - UplinkWearables
+#   - UplinkContractor
+#   conditions:
+#   - !type:StoreWhitelistCondition
+#     whitelist:
+#       tags:
+#       - ContractorUplink
 
 - type: listing
   id: UplinkContractorCuffs

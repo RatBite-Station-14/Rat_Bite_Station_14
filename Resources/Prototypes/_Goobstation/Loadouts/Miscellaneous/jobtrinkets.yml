@@ -10,17 +10,17 @@
     back:
     - PlushieLizardJobBrigmedic
 
-- type: loadout
-  id: LizardPlushieShaftMiner
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobShaftMiner
-      time: 72000 # 20hr
-  storage:
-    back:
-    - PlushieLizardJobShaftMiner
+# - type: loadout
+#   id: LizardPlushieShaftMiner
+#   effects:
+#   - !type:JobRequirementLoadoutEffect
+#     requirement:
+#       !type:RoleTimeRequirement
+#       role: JobShaftMiner
+#       time: 72000 # 20hr
+#   storage:
+#     back:
+#     - PlushieLizardJobShaftMiner
 
 - type: loadout
   id: LizardPlushieNTR

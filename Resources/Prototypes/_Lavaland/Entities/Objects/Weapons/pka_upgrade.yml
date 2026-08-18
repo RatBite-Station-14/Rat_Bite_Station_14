@@ -35,7 +35,7 @@
   - type: ItemUpgrade
     name: gun-upgrade-damage-name
   - type: GunUpgradeDamage
-    damage:
+    bonusDamage:
       types:
         Blunt: 4 # Ratbite - balance
 
@@ -131,5 +131,5 @@
     - id: PKAUpgradeDamage
     - id: PKAUpgradeRange
     - id: PKAUpgradeFireRate
-    - id: PKAUpgradeSpace
-      weight: 0.6 # Not that useful
+    # - id: PKAUpgradeSpace # Ratbite: We don't have this
+    #  weight: 0.6 # Not that useful

@@ -44,12 +44,12 @@
           reagent: Charcoal
           max: 9.99
         time: 60
-        refresh: false
+        # refresh: false
       - !type:ModifyStatusEffect
         effectProto: StatusEffectSeeingRainbow
         time: 16
         type: Add
-        refresh: true
+        # refresh: true
         conditions:
         - !type:ReagentCondition
           reagent: Charcoal
@@ -86,7 +86,7 @@
           reagent: Charcoal
           max: 9.99
         time: 60
-        refresh: false
+        # refresh: false
       - !type:GenericStatusEffect
         key: KetamineSedation
         conditions:
@@ -280,7 +280,7 @@
           effectProto: StatusEffectDrowsiness
           time: 1.5
           type: Add
-          refresh: false
+          # refresh: false
         - !type:AdjustBoneDamage
           conditions:
           - !type:ReagentCondition
@@ -350,7 +350,6 @@
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        scaleByQuantity: true
         ignoreResistances: false
         ignoreBlockers: false
         damage:

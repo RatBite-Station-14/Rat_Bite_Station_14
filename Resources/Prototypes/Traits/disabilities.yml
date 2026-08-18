@@ -91,7 +91,7 @@
   id: PainNumbness
   name: trait-painnumbness-name
   description: trait-painnumbness-desc
-  category: Disabilities
+  category: Mental # Ratbite: Changed to mental
   specials:
   - !type:ApplyStatusEffectSpecial
     statusEffects:
@@ -101,17 +101,18 @@
   id: Hemophilia
   name: trait-hemophilia-name
   description: trait-hemophilia-desc
-  category: Disabilities
+  category: Mental # Ratbite: Changed to mental
   specials:
   - !type:ApplyStatusEffectSpecial
     statusEffects:
     - StatusEffectHemophiliaTrait
 
-- type: trait
-  id: ImpairedMobility
-  name: trait-impaired-mobility-name
-  description: trait-impaired-mobility-desc
-  traitGear: OffsetCane
-  category: Disabilities
-  components:
-    - type: ImpairedMobility
+# Ratbite: We already have this
+# - type: trait
+#   id: ImpairedMobility
+#   name: trait-impaired-mobility-name
+#   description: trait-impaired-mobility-desc
+#   traitGear: OffsetCane
+#   category: Disabilities
+#   components:
+#     - type: ImpairedMobility

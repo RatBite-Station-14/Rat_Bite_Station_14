@@ -91,7 +91,8 @@ public sealed partial class FelinidSystem : EntitySystem
         component.EatActionTarget = args.Equipped;
 
         //component.EatAction = Spawn("ActionEatMouse");
-        _actionsSystem.AddAction(uid, ref component.EatAction, component.EatActionId);
+        if (component.EnableEatAction)
+            _actionsSystem.AddAction(uid, ref component.EatAction, component.EatActionId);
     }
 
     private void OnUnequipped(EntityUid uid, FelinidComponent component, DidUnequipHandEvent args)

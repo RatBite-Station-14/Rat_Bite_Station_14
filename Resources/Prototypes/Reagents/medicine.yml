@@ -1457,7 +1457,7 @@
         - !type:HasComponentCondition
           components:
           - type: Atheist
-          invert: true
+          inverted: true
         damage:
           types:
             Blunt: -0.2
