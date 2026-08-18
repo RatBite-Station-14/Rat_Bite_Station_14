@@ -18,7 +18,6 @@
 using Content.Server.Chat.Systems;
 using Content.Server.Medical.CrewMonitoring;
 using Content.Server.Pinpointer;
-using Content.Shared._BRatbite.TrackingHud;
 using Content.Shared.Chat;
 using Content.Shared.Mobs;
 using Robust.Server.GameObjects;
@@ -30,7 +29,6 @@ public sealed class RelayedDeathrattleSystem : EntitySystem
 {
     [Dependency] private readonly NavMapSystem _navMap = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly SharedTrackingTargetSystem _trackingTargetSystem = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
 
     public override void Initialize()
@@ -53,14 +51,6 @@ public sealed class RelayedDeathrattleSystem : EntitySystem
             dead = true;
         else
             return;
-        // Ratbite start
-        var coordinates = _transform.GetMapCoordinates(Transform(uid));
-        _trackingTargetSystem.AddTargetToAllEntities(new TrackingTarget
-        {
-            TargetLocation = coordinates.Position,
-            MapId = coordinates.MapId,
-        }, deleteAfter: TimeSpan.FromSeconds(30));
-        // Ratbite end
         _chat.TrySendInGameICMessage(comp.Target.Value, Loc.GetString(dead ? comp.DeathMessage : comp.CritMessage, ("user", uid), ("position", posText)), InGameICChatType.Speak, hideChat: false);
     }
 }
