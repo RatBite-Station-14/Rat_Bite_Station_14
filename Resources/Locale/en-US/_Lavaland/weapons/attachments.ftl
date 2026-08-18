@@ -7,3 +7,4 @@
 attachment-bayonet-slot-name = Bayonet
 attachment-light-slot-name = Flashlight
 
+gun-upgrade-vampirism-name = Vampirism

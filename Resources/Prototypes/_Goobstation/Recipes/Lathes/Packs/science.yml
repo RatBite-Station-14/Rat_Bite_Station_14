@@ -22,7 +22,8 @@
   - SlimeGrinderMachineCircuitboard
   - XenobiologyBountyComputerCircuitboard
 
-- type: latheRecipePack
-  id: XenobagHoldingPack
-  recipes:
-  - ClothingBeltChemBagXenobiologyHolding
+# Ratbite: This doesn't exist
+# - type: latheRecipePack
+#   id: XenobagHoldingPack
+#   recipes:
+#   - ClothingBeltChemBagXenobiologyHolding

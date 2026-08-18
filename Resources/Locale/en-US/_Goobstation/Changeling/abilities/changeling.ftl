@@ -19,6 +19,8 @@ changeling-biomass-warn-third = Our hunger is taking a toll on our form...
 changeling-biomass-warn-death = Our cells begin to consume themselves. There is no return.
 
 changeling-action-fail-absorbed = Need to absorb {$number} more organisms to use it!
+changeling-action-fail-not-changeling = You are not a changeling
+changeling-action-fail-onfire = The entity must be on fire to use this
 changeling-absorb-start = {CAPITALIZE(THE($user))} starts absorbing {CAPITALIZE(THE($target))}'s DNA!
 changeling-absorb-fail-incapacitated = We can't absorb them until they're incapacitated.
 changeling-absorb-fail-absorbed = They've already been absorbed.

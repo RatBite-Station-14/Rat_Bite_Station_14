@@ -21,7 +21,7 @@
       amount:
         10
   - type: Bloodstream
-    bloodMaxVolume: 600
+    # bloodMaxVolume: 600 # This doesn't exist anymore
     # if you fuck with the gorilla he will harambe you
   - type: LanguageKnowledge # Einstein Engines - Languages
     speaks:

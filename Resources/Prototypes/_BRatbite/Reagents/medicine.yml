@@ -364,14 +364,14 @@
         - !type:HasComponentOnEquipmentCondition
           components:
           - type: PressureProtection # can't get through this to reach the bodyparts!
-          invert: true
+          inverted: true
       - !type:ModifyBleed
         amount: -2
         conditions:
         - !type:HasComponentOnEquipmentCondition
           components:
           - type: PressureProtection
-          invert: true
+          inverted: true
   metabolisms:
     Poison:
       metabolismRate: 3

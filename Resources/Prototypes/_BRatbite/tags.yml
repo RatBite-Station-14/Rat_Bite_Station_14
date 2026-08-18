@@ -3,3 +3,10 @@
 
 - type: Tag
   id: PermaAscended
+
+- type: Tag
+  id: DuelingRapier
+
+- type: Tag
+  id: BypassMindshieldAccessRequirement
+

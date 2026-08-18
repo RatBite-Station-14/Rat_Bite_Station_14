@@ -21,7 +21,7 @@
   weight: 20
   startingGear: MedicalOrderlyGear
   icon: "JobIconMedicalOrderly"
-  supervisors: ChiefMedicalOfficer
+  supervisors: job-supervisors-cmo
   canBeAntag: false
   access:
   - Maintenance
@@ -81,7 +81,7 @@
 
   startingGear: CargoInsuranceGear
   icon: "JobIconCargoInsurance"
-  supervisors: Quartermaster
+  supervisors: job-supervisors-qm
   canBeAntag: false
   goobcoins: 40 #Goob content
   access:
