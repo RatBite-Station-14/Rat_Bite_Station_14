@@ -115,6 +115,24 @@
     song:
       path: /Audio/_BRatbite/squishytaur/THUNDERDOME II Last Stand.ogg
 
+- type: entity
+  name: "vinyl disk: introduction"
+  id: VinylDiskSquishyIntroduction
+  parent: BaseVinylDiskSquishy
+  components:
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/squishytaur/THUNDERDOME II Introduction Theme.ogg
+
+- type: entity
+  name: "vinyl disk: test"
+  id: VinylDiskSquishyTest
+  parent: BaseVinylDiskSquishy
+  components:
+  - type: Vinyl
+    song:
+      path: /Audio/_BRatbite/squishytaur/Test 5.ogg
+
 - type: entityTable
   id: RandomSquishyVinylDisk
   table: !type:GroupSelector
@@ -136,6 +154,10 @@
     - id: VinylDiskSquishySalmon
       weight: 1
     - id: VinylDiskSquishyLastStand
+      weight: 1
+    - id: VinylDiskSquishyIntroduction
+      weight: 1
+    - id: VinylDiskSquishyTest
       weight: 1
 
 - type: entity
