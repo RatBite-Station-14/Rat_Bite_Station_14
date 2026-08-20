@@ -56,6 +56,14 @@
     {
       "name": "equipped-HEAD-sealed-hydrakin",
       "directions": 4
+    },
+    {
+      "name": "equipped-HEAD-scurret",
+      "directions": 4
+    },
+    {
+      "name": "equipped-HEAD-sealed-scurret",
+      "directions": 4
     }
   ]
 }
