@@ -27,7 +27,7 @@ public class StaticSpriteView : Control
     /// The fake entity with a sprite copied from the original.
     /// </summary>
     [ViewVariables]
-    public Entity<SpriteComponent>? Entity { get; private set; }
+    public Entity<SpriteComponent?>? Entity { get; private set; }
 
     /// <summary>
     /// The original netentity which we are copying.
