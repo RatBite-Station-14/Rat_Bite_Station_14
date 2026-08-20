@@ -4,9 +4,6 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-upgradeable-gun-popup-upgrade-limit = Maximum capacity for upgrades exceeded!
-upgradeable-gun-slot-name = Attachment slot {$value}
-upgradeable-gun-total-remaining-capacity = Total remaining capacity: {$value}
 gun-upgrade-capacity-cost = Requires {$value} capacity.
 
 # Text that is shown when examining a gun with inserted upgrades

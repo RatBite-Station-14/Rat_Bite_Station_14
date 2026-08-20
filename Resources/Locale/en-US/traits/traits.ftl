@@ -116,8 +116,8 @@ trait-kleptomania-desc = ..Y'know it's just... it's not like I can help it. I se
 trait-chronic-kleptomania-name = Chronic Kleptomania
 trait-chronic-kleptomania-desc = Basically makes you attempt to steal stuff from nearby people every 3 seconds.
 
-trait-hemophilia-name = Hemophilia
-trait-hemophilia-desc = Your body fails to make blood clots.
+#trait-hemophilia-name = Hemophilia
+#trait-hemophilia-desc = Your body fails to make blood clots.
 
 trait-impaired-mobility-name = Impaired Mobility
 trait-impaired-mobility-desc = You have difficulty moving without a mobility aid.
