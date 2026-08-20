@@ -53,3 +53,47 @@
   - type: Clothing
     sprite: _Goobstation/Heretic/Clothing/Head/toy_hood.rsi
 
+- type: entity
+  parent: ClothingHeadHatHoodHereticCostume
+  id: ClothingHeadHatHoodHereticVoidCostume
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Heretic/Clothing/Head/void_hood.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Goobstation/Heretic/Clothing/Head/void_hood.rsi
+
+- type: entity
+  parent: ClothingHeadHatHoodHereticCostume
+  id: ClothingHeadHatHoodHereticAshCostume
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Heretic/Clothing/Head/ashen_hood.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Goobstation/Heretic/Clothing/Head/ashen_hood.rsi
+
+- type: entity
+  parent: ClothingHeadHatHoodHereticCostume
+  id: ClothingHeadHatHoodHereticFleshCostume
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Heretic/Clothing/Head/flesh_hood.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Goobstation/Heretic/Clothing/Head/flesh_hood.rsi
+
+- type: entity
+  parent: ClothingHeadHatHoodHereticCostume
+  id: ClothingHeadHatHoodHereticBladeCostume
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Heretic/Clothing/Head/blade_hood.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Goobstation/Heretic/Clothing/Head/blade_hood.rsi
+

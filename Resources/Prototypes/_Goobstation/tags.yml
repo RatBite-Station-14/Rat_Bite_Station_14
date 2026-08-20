@@ -260,6 +260,18 @@
   id: HereticBladeBlade
 
 - type: Tag
+  id: HereticCostume
+
+- type: Tag
+  id: WaterBottle
+
+- type: Tag
+  id: IceBucket
+
+- type: Tag
+  id: GreenGloves
+
+- type: Tag
   id: HereticItem
 
 - type: Tag
