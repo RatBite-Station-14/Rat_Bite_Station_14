@@ -6,13 +6,3 @@
 
 attachment-bayonet-slot-name = Bayonet
 attachment-light-slot-name = Flashlight
-
-gun-upgrade-vampirism-name = Vampirism
-gun-upgrade-inserted-examine-type-contains = This gun contains {$name} upgrade
-gun-upgrade-examine-type-upgrade = Upgrade {$name}
-
-gun-upgrade-damage-name = damage upgrade
-gun-upgrade-range-name = range upgrade
-gun-upgrade-reload-name = reload upgrade
-gun-upgrade-pressure-name = pressure upgrade
-gun-upgrade-space-name = space upgrade

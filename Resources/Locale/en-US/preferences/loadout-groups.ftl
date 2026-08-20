@@ -76,7 +76,7 @@ loadout-group-chef-outerclothing = Chef outer clothing
 
 loadout-group-librarian-jumpsuit = Librarian jumpsuit
 
-loadout-group-bartender-jumpsuit = Service worker jumpsuit
+loadout-group-service-worker-jumpsuit = Service worker jumpsuit
 
 loadout-group-lawyer-jumpsuit = Lawyer jumpsuit
 loadout-group-lawyer-neck = Lawyer neck

@@ -309,12 +309,14 @@
         conditions:
         - !type:MetabolizerTypeCondition
           type: [ Yowie ]
+          inverted: true
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
           type: [ Yowie ]
+          inverted: true
         - !type:ReagentCondition
-          reagent: MouseBites
+          reagent: Aranesp
           min: 50
         damage:
           types:

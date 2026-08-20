@@ -4,7 +4,7 @@
   id: LavalandMobs
   table: !type:GroupSelector
     children:
-    - id: MobLegion
+    # - id: MobLegion # Ratbite: We don't have this
     - !type:GroupSelector
       weight: 50
       children:

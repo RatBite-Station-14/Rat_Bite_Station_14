@@ -87,19 +87,6 @@
 
 - type: entity
   parent: LavalandTendrilBase
-  id: LavalandTendrilLegion
-  suffix: Legion
-  components:
-  - type: SpawnTableOnTrigger
-    table:
-      id: MobLegion
-  - type: TriggerCounterLimit
-    maxCount: 3
-  - type: TriggerOnProximity
-    cooldown: 15.0
-
-- type: entity
-  parent: LavalandTendrilBase
   id: LavalandTendrilLavaWatcher
   suffix: Watcher
   components:

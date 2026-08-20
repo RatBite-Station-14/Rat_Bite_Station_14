@@ -1731,8 +1731,8 @@
   - ShaftMinerOveralls
   - ShaftMinerMJ
 
-- type: loadoutGroup
-  id: ShaftMinerJobTrinkets
-  name: loadout-group-jobtrinkets
-  loadouts:
-  - LizardPlushieShaftMiner
+# - type: loadoutGroup
+#   id: ShaftMinerJobTrinkets
+#   name: loadout-group-jobtrinkets
+#   loadouts:
+#   - LizardPlushieShaftMiner

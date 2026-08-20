@@ -30,10 +30,11 @@
     capacity: 1
     count: 1
   - type: ItemUpgradeable
-    maxUpgradeCapacity: 70
-    whitelist:
-      tags:
-      - PKAUpgrade
+# Ratbite: we don't have this
+#    maxUpgradeCapacity: 70
+#    whitelist:
+#      tags:
+#      - PKAUpgrade
   - type: GunRequiresWield
   - type: Item
     sprite: _Lavaland/Objects/Weapons/Guns/Basic/kinetic_shotgun.rsi
@@ -76,10 +77,11 @@
     capacity: 3
     count: 3
   - type: ItemUpgradeable
-    maxUpgradeCapacity: 70
-    whitelist:
-      tags:
-      - PKAUpgrade
+# Ratbite: We don't have this
+#    maxUpgradeCapacity: 70
+#    whitelist:
+#      tags:
+#      - PKAUpgrade
   - type: Item
     sprite: _Lavaland/Objects/Weapons/Guns/Basic/kinetic_repeater.rsi
     shape:
@@ -115,10 +117,11 @@
     capacity: 1
     count: 1
   - type: ItemUpgradeable
-    maxUpgradeCapacity: 200
-    whitelist:
-      tags:
-      - PKAUpgrade
+# Ratbite: we don't have this
+#    maxUpgradeCapacity: 200
+#    whitelist:
+#      tags:
+#      - PKAUpgrade
   - type: Gun
     availableModes:
     - FullAuto

@@ -45,3 +45,10 @@ construction-graph-tag-ushanka = ushanka
 construction-graph-tag-baseball-bat = baseball bat
 construction-graph-tag-heart = heart
 construction-graph-tag-camera-electronics = surveillance camera electronics
+
+construction-graph-tag-green-crayon = green crayon
+construction-graph-tag-green-gloves = green gloves
+construction-graph-tag-ash = ash
+construction-graph-tag-shiv = shiv
+construction-graph-tag-ice-bucket = ice bucket
+construction-graph-tag-water-bottle = water bottle
