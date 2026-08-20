@@ -72,6 +72,16 @@
   description: A state-of-the-art helmet designed by NanoTrasen for the Corporate modsuit. It includes a built-in HUD.
   categories: [HideSpawnMenu]
   components:
+    - type: Clothing
+      clothingVisuals:
+        head:
+        - state: equipped-HEAD
+        head-vox:
+        - state: equipped-HEAD-vox
+        head-vulpkanin:
+        - state: equipped-HEAD
+        head-hydrakin:
+        - state: equipped-HEAD
     - type: Sprite
       sprite: _Goobstation/Clothing/OuterClothing/Modsuits/corporate.rsi
     - type: PressureProtection
@@ -110,6 +120,10 @@
       spriteLayer: sealed
       clothingVisuals:
         head:
+        - state: equipped-HEAD-sealed
+        head-vulpkanin:
+        - state: equipped-HEAD-sealed
+        head-hydrakin:
         - state: equipped-HEAD-sealed
         - state: equipped-HEAD-sealed-unshaded
           shader: unshaded

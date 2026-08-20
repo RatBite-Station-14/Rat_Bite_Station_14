@@ -1,8 +1,6 @@
 using Content.Server.Antag;
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking.Rules.Components;
-using Content.Server.RoundEnd;
-using Content.Server.Station.Systems;
 using Content.Shared.Destructible;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Mind;
@@ -18,8 +16,6 @@ public sealed class XenoborgsRuleSystem : GameRuleSystem<XenoborgsRuleComponent>
     [Dependency] private readonly ChatSystem _chatSystem = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
-    [Dependency] private readonly RoundEndSystem _roundEnd = default!;
-    [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private static readonly Color AnnouncmentColor = Color.Gold;
@@ -93,24 +89,11 @@ public sealed class XenoborgsRuleSystem : GameRuleSystem<XenoborgsRuleComponent>
         args.AddLine("");
     }
 
+    // Xenoborgs is admin-spawned only, so the shuttle is no longer auto-called; this just tracks the peak count for round end text. # RatBite
     private void CheckRoundEnd(XenoborgsRuleComponent xenoborgsRuleComponent)
     {
         var numXenoborgs = GetNumberXenoborgs();
-        var numHumans = _mindSystem.GetAliveHumans().Count;
-
         xenoborgsRuleComponent.MaxNumberXenoborgs = Math.Max(xenoborgsRuleComponent.MaxNumberXenoborgs, numXenoborgs);
-
-        if (xenoborgsRuleComponent.XenoborgShuttleCalled
-            || (float)numXenoborgs / (numHumans + numXenoborgs) <= xenoborgsRuleComponent.XenoborgShuttleCallPercentage
-            || _roundEnd.IsRoundEndRequested())
-            return;
-
-        foreach (var station in _station.GetStations())
-        {
-            _chatSystem.DispatchStationAnnouncement(station, Loc.GetString("xenoborg-shuttle-call"), colorOverride: Color.BlueViolet);
-        }
-        _roundEnd.RequestRoundEnd(null, false, cantRecall: true);
-        xenoborgsRuleComponent.XenoborgShuttleCalled = true;
     }
 
     protected override void Started(EntityUid uid, XenoborgsRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
