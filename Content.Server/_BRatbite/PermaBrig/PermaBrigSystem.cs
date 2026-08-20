@@ -119,6 +119,65 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
         ProcessPermaSentenceTick();
     }
 
+    public List<string> GetPrisonerQueueSnapshot()
+    {
+        var activeMindMap = new Dictionary<EntityUid, EntityUid>();
+        var prisonerQuery = EntityQueryEnumerator<PrisonerComponent>();
+        while (prisonerQuery.MoveNext(out var prisonerBodyUid, out var prisoner))
+        {
+            if (prisoner.OriginalMindId is not { } mindId)
+                continue;
+
+            if (TerminatingOrDeleted(mindId))
+                continue;
+
+            activeMindMap[mindId] = prisonerBodyUid;
+        }
+
+        var lines = new List<string>();
+        var seen = new HashSet<EntityUid>();
+        var position = 1;
+
+        foreach (var mindId in _prisonerQueue)
+        {
+            if (!seen.Add(mindId))
+                continue;
+
+            lines.Add(FormatQueueEntry(position, mindId, activeMindMap.ContainsKey(mindId)));
+            position++;
+        }
+
+        foreach (var (mindId, _) in activeMindMap)
+        {
+            if (!seen.Add(mindId))
+                continue;
+
+            lines.Add(FormatQueueEntry(position, mindId, true));
+            position++;
+        }
+
+        return lines;
+    }
+
+    private string FormatQueueEntry(int position, EntityUid mindId, bool active)
+    {
+        if (!TryComp<MindComponent>(mindId, out var mindComp))
+            return $"{position}. mind={mindId} active={active} status=missing-mind-component";
+
+        var userIdText = mindComp.UserId?.ToString() ?? "soulless";
+        var name = "<offline>";
+        if (mindComp.UserId is { } userId && _player.TryGetSessionById(userId, out var session))
+            name = session.Name;
+        else if (!string.IsNullOrWhiteSpace(mindComp.CharacterName))
+            name = mindComp.CharacterName!;
+
+        var sentenceText = "n/a";
+        if (mindComp.UserId is { } sentenceUserId)
+            sentenceText = _permaBrigManager.GetBrigTime(sentenceUserId).ToString();
+
+        return $"{position}. {name} user={userIdText} sentence={sentenceText}m active={active}";
+    }
+
     private void ProcessPermaSentenceTick()
     {
         var currentRoundMinute = (int) _ticker.RoundDuration().TotalMinutes;

@@ -8,6 +8,7 @@ using Content.Shared.Administration;
 using Content.Shared.Chat;
 using Robust.Server.Player;
 using Robust.Shared.Console;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Player;
 
 namespace Content.Server._BRatbite.PermaBrig.Commands
@@ -372,6 +373,45 @@ public sealed class PermaSentenceInpatientCommand : IConsoleCommand
                 value = false;
                 return false;
         }
+    }
+}
+
+[AdminCommand(AdminFlags.Ban)]
+public sealed class PermaQueueCommand : IConsoleCommand
+{
+    [Dependency] private readonly IEntitySystemManager _systems = default!;
+
+    public string Command => "perma:queue";
+    public string Description => "Print the current in-round perma prisoner queue order.";
+    public string Help => "Usage: perma:queue";
+
+    public void Execute(IConsoleShell shell, string argStr, string[] args)
+    {
+        if (args.Length != 0)
+        {
+            shell.WriteError(Help);
+            return;
+        }
+
+        var permaSystem = _systems.GetEntitySystem<PermaBrigSystem>();
+        var lines = permaSystem.GetPrisonerQueueSnapshot();
+
+        if (lines.Count == 0)
+        {
+            shell.WriteLine("Perma queue is currently empty.");
+            return;
+        }
+
+        shell.WriteLine($"Perma queue entries: {lines.Count}");
+        foreach (var line in lines)
+        {
+            shell.WriteLine(line);
+        }
+    }
+
+    public CompletionResult GetCompletion(IConsoleShell shell, string[] args)
+    {
+        return CompletionResult.Empty;
     }
 }
 
