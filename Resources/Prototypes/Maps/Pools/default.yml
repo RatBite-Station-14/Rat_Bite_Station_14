@@ -4,25 +4,18 @@
   id: DefaultMapPool
   maps:
   - Atlas
-  #- Amber kil by upstream we still have ours but it testfails oh well.
-  - Bagel
-#  - Box - Ratbite - not supported
+  - Amber
   - Cluster
-  #- Core
-  #- Loop Goobstation - I love maintenance!!!
+  - Cog
+  - Delta
+  - Elkridge
+  - Kettle
+  - Leonid
+  - Loop
   - Marathon
-#  - Meta
- # - Oasis
-  - Omega
-#  - Origin - Ratbite - not supported
-  - Saltern
-  - Packed
-  #- Train # Goobstation - all my friends hate train
-  #- FlandHighPop # Ratbite - Unmaintained
   - OasisHighPop
-  - Barratry # Goobstation - Re-add barratry
-  - Kettle # Goobstation - Re-add kettle (before it was gemini!)
-  #- Plasma # Goob - No. Leave it to the mappers.
-  #- Reach
-  #- Exo # Goobstation - Just no
+  - Omega
+  - Packed
+  - Saltern
   - Snowball
+  - Opticon

@@ -189,14 +189,8 @@ public sealed class PlayTimeTrackingManager : ISharedPlaytimeManager, IPostInjec
 
     public void FlushPermaTime(ICommonSession session)
     {
-        var data = _playTimeData[session];
-        if (data.ActiveTrackers.Contains(PlayTimeTrackingShared.TrackerPerma))
-        {
-            var time = _timing.RealTime;
-            var delta = time - data.LastUpdate;
-
-            _permaBrigManager.UpdateTimeServed(delta, session);
-        }
+        // Perma sentence time is now decremented in PermaBrigSystem using in-round minute ticks.
+        // Keep this method for last-seen updates and compatibility with existing call sites.
         _permaBrigManager.UpdateTimeLastSeen(session);
     }
 

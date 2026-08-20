@@ -5,7 +5,7 @@
   mapName: 'Packed'
   mapPath: /Maps/_BRatbite/Ratbite_Supported/packed.yml
   minPlayers: 20
-  maxPlayers: 45
+  maxPlayers: 40
   stations:
     Packed:
       stationProto: StandardNanotrasenStation

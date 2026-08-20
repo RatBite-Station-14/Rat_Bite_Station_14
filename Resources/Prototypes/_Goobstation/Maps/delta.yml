@@ -4,7 +4,7 @@
   id: Delta
   mapName: 'Delta Station'
   mapPath: /Maps/_BRatbite/Ratbite_Supported/delta.yml
-  minPlayers: 55
+  minPlayers: 70
   stations:
     Delta:
       stationProto: StandardNanotrasenStation

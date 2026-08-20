@@ -4,8 +4,7 @@
   id: Marathon
   mapName: 'Marathon Station'
   mapPath: /Maps/_BRatbite/Ratbite_Supported/marathon.yml
-  minPlayers: 45
-  maxPlayers: 75
+  minPlayers: 35
   stations:
     Marathon:
       stationProto: StandardNanotrasenStation

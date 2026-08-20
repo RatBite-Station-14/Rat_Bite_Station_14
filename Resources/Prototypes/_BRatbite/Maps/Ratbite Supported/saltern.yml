@@ -4,8 +4,8 @@
   id: Saltern
   mapName: 'Saltern'
   mapPath: /Maps/_BRatbite/Ratbite_Supported/saltern.yml
-  minPlayers: 10
-  maxPlayers: 45
+  minPlayers: 20
+  maxPlayers: 40
   fallback: true
   stations:
     Saltern:

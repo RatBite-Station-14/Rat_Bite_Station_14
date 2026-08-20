@@ -4,7 +4,7 @@
   id: Leonid
   mapName: 'Leonid Station'
   mapPath: /Maps/_BRatbite/Ratbite_Supported/leonid.yml
-  minPlayers: 50
+  minPlayers: 70
   stations:
     Leonid:
       stationProto: StandardNanotrasenStation

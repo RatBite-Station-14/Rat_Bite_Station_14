@@ -4,7 +4,7 @@
   id: Kettle
   mapName: 'Kettle'
   mapPath: /Maps/_BRatbite/Ratbite_Supported/kettle.yml
-  minPlayers: 40
+  minPlayers: 45
   stations:
     Kettle:
       stationProto: StandardNanotrasenStation
