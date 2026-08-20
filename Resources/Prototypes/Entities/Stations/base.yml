@@ -20,6 +20,7 @@
         Security: [ ]
         Service: [ ]
     - type: StationCargoBountyDatabase
+    - type: StationXenobiologyBountyDatabase # Goobstation
 
 - type: entity
   id: BaseStationJobsSpawning

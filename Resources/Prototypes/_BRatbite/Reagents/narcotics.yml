@@ -28,6 +28,7 @@
             type: [Yowie]
             inverted: true
           - !type:ReagentCondition
+            reagent: Pump-up
             min: 20 #lowered from 30
         damage:
           types:
@@ -57,6 +58,7 @@
       - !type:TakeStaminaDamage
         conditions:
           - !type:ReagentCondition
+            reagent: Pump-up
             min: 20 #lowered from 30
         amount: 8
         immediate: true

@@ -167,7 +167,8 @@
   parent: BaseVinylSleeve
   components:
   - type: Sprite
-    state: plainwhite-vinyl-sleeve # TODO: replace with the dedicated album RSI state
+    sprite: _BRatbite/Objects/Fun/somethingsquishythiswaycomes.rsi
+    state: somethingsquishythiswaycomes-vinyl-sleeve
   - type: EntityTableContainerFill
     containers:
       vinyl: !type:NestedSelector

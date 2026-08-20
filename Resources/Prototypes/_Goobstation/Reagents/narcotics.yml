@@ -314,6 +314,7 @@
         - !type:MetabolizerTypeCondition
           type: [ Yowie ]
         - !type:ReagentCondition
+          reagent: MouseBites
           min: 50
         damage:
           types:

@@ -122,6 +122,7 @@
         - !type:HealthChange
           conditions:
           - !type:ReagentCondition
+            reagent: Libital
             min: 20
           damage:
             types:
@@ -129,6 +130,7 @@
         - !type:Jitter
           conditions:
           - !type:ReagentCondition
+            reagent: Libital
             min: 20
 
 - type: reagent
@@ -145,6 +147,7 @@
         - !type:HealthChange
           conditions: # yes i know i can just make it do more for OD, but this makes it more understandable in the guidebook
           - !type:ReagentCondition
+            reagent: Lenturi
             max: 20
           damage:
             types:
@@ -154,6 +157,7 @@
         - !type:HealthChange
           conditions:
           - !type:ReagentCondition
+            reagent: Lenturi
             min: 20
           damage:
             types:
@@ -163,11 +167,13 @@
         - !type:SatiateThirst
           conditions:
           - !type:ReagentCondition
+            reagent: Lenturi
             min: 20
           factor: -4
         - !type:Jitter
           conditions:
           - !type:ReagentCondition
+            reagent: Lenturi
             min: 20
 
 - type: reagent
@@ -208,11 +214,13 @@
         - !type:Vomit
           conditions:
           - !type:ReagentCondition
+            reagent: Caridine
             max: 50
           probability: 0.1 # changed from 0.5 to 0.1
         - !type:Vomit
           conditions:
           - !type:ReagentCondition
+            reagent: Caridine
             min: 50
           probability: 0.2
         - !type:Drunk
@@ -270,6 +278,7 @@
         - !type:HealthChange
           conditions:
           - !type:ReagentCondition
+            reagent: Lectrazine
             min: 35
           damage:
             types:
@@ -284,6 +293,7 @@
         - !type:AdjustBoneDamage
           conditions:
           - !type:ReagentCondition
+            reagent: Lectrazine
             min: 35
           amount: 1 # this displays wrong in guidebook AND in medtek AND in surgery UI, blame shitmed, too lazy to fix
 
@@ -308,6 +318,7 @@
         - !type:HealthChange
           conditions:
           - !type:ReagentCondition
+            reagent: Chornexalinn
             min: 4
           damage:
             types:
@@ -411,6 +422,7 @@
         - !type:HealthChange
           conditions:
             - !type:ReagentCondition
+              reagent: Granitbitulari
               min: 15
             - !type:MetabolizerTypeCondition
               type: [Yowie]
@@ -438,6 +450,7 @@
         - !type:HealthChange
           conditions:
             - !type:ReagentCondition
+              reagent: Revivopine
               min: 15
             - !type:MetabolizerTypeCondition
               type: [Yowie]
@@ -461,10 +474,12 @@
       - !type:SexChange
         conditions:
         - !type:ReagentCondition
+          reagent: AllInOneGenderAffirmingHormone
           min: 20
       - !type:AdjustReagent
         reagent: AllInOneGenderAffirmingHormone
         amount: -50.0
         conditions:
         - !type:ReagentCondition
+          reagent: AllInOneGenderAffirmingHormone
           min: 20

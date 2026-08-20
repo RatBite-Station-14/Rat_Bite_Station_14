@@ -42,7 +42,7 @@
         messages: [ "xeno-extract-reaction" ]
       - !type:PlaySoundEffect
         sound: /Audio/Effects/Chemistry/bubbles.ogg
-      - !type:EmpReactionEffect
+      - !type:Emp
   - type: Tag
     tags:
     - XenobiologyYellowExtract
@@ -135,7 +135,7 @@
         sound: /Audio/Effects/Chemistry/bubbles.ogg
       - !type:CreateGas
         gas: Frezon
-        multiplier: 35
+        moles: 35
     - reagents: [ Blood ]
       methods: [ Touch, Injection ]
       effects:
@@ -180,7 +180,6 @@
         frequency: 20
       - !type:AreaReactionEffect
         duration: 10
-        delay: 5
         prototypeId: AluminiumMetalFoam
         sound:
           path: /Audio/Effects/extinguish.ogg
@@ -307,7 +306,6 @@
         time: 5
         frequency: 20
       - !type:SpawnEntity
-        delay: 5
         entity: XenoExtractChronofield
         shouldScale: false
         number: 1

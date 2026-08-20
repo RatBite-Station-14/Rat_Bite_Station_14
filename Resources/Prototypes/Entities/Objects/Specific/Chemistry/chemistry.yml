@@ -704,6 +704,7 @@
       Silver: 12
   - type: CombatDoAfter # Goobstation
     delay: 5 # Longer than a regular syringe
+    trigger: !type:CombatSyringeTriggerEvent
 
 - type: entity
   id: SyringeCryostasis
