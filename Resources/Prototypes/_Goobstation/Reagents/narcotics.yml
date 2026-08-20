@@ -313,7 +313,7 @@
         conditions:
         - !type:MetabolizerTypeCondition
           type: [ Yowie ]
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           min: 50
         damage:
           types:

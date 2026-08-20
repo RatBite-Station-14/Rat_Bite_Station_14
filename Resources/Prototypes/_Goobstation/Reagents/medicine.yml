@@ -474,9 +474,9 @@
           types:
             Radiation: 0.05 # very slight side effect
         conditions:
-        - !type:OrganType
-          type: Yowie
-          shouldHave: false
+        - !type:MetabolizerTypeCondition # Ratbite
+          type: [ Yowie ]
+          inverted: true
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
