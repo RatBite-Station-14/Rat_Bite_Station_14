@@ -339,6 +339,7 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - NanoChatCartridge # DeltaV
+    - LogProbeCartridge # Ratbite
 
 - type: entity
   parent: BasePDA

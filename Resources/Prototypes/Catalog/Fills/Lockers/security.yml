@@ -187,6 +187,8 @@
     # Ratbite: robust 101
     - id: BookCombatTraining
       prob: 0.25
+    - id: ForensicScanner # Ratbite
+      prob: 0.25
 
 - type: entity
   id: LockerBrigmedicFilled
