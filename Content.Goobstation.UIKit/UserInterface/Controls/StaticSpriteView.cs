@@ -27,7 +27,7 @@ public class StaticSpriteView : Control
     /// The fake entity with a sprite copied from the original.
     /// </summary>
     [ViewVariables]
-    public Entity<SpriteComponent?>? Entity { get; private set; }
+    public Entity<SpriteComponent>? Entity { get; private set; }
 
     /// <summary>
     /// The original netentity which we are copying.
@@ -204,7 +204,7 @@ public class StaticSpriteView : Control
         var fake = Entity?.Owner ?? EntMan.Spawn();
         var fakeSprite = EntMan.EnsureComponent<SpriteComponent>(fake);
         Entity = (fake, fakeSprite);
-        SpriteSystem.CopySprite((uid.Value, sprite), Entity.Value);
+        SpriteSystem.CopySprite((uid.Value, sprite), (fake, fakeSprite));
 
         NetEnt = EntMan.GetNetEntity(uid);
         RealEntity = uid;
@@ -279,7 +279,7 @@ public class StaticSpriteView : Control
 
         var offset = SpriteOffset
             ? Vector2.Zero
-            : - (-_eyeRotation).RotateVec(_cachedSprite.Offset * _scale) * new Vector2(1, -1) * EyeManager.PixelsPerMeter;
+            : - (-_eyeRotation).RotateVec(_cachedSprite!.Offset * _scale) * new Vector2(1, -1) * EyeManager.PixelsPerMeter;
 
         var position = PixelSize / 2 + offset * stretch * UIScale;
         var scale = Scale * UIScale * stretch;
