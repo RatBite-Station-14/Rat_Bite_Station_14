@@ -197,6 +197,7 @@
   reactants:
     PolytrinicAcid:
       amount: 1
+      catalyst: true
     Iron:
       amount: 1
     Copper:
