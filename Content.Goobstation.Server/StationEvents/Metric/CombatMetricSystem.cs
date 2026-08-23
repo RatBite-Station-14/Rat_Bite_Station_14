@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Server.StationEvents.Metric.Components;
@@ -13,6 +8,9 @@ using Content.Shared.Inventory;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.NPC.Systems;
+using Content.Shared.NPC.Components;
+using Content.Shared.NPC.Systems;
 using Content.Shared.Roles;
 using Content.Shared.Tag;
 using Robust.Shared.Prototypes;
@@ -130,8 +128,7 @@ public sealed class CombatMetricSystem : ChaosMetricSystem<CombatMetricComponent
         var powerQ = GetEntityQuery<CombatPowerComponent>();
 
         // var humanoidQ = GetEntityQuery<HumanoidAppearanceComponent>();
-        var stationGrids = _stationSystem.GetAllStationGrids();
-
+        var stationGrids = _stationSystem.GoobGetAllStationGrids();
         while (query.MoveNext(out var uid, out var mind, out var mobState, out var damage, out var transform))
         {
             // Don't count anything that is mindless

@@ -6,7 +6,7 @@
   - type: Sprite
     sprite: _White/Mobs/Species/Xenomorph/organs.rsi
   - type: Organ
-  - type: Food
+  - type: Edible
   - type: Extractable
     grindableSolutionName: organ
   - type: SolutionContainerManager
@@ -184,6 +184,12 @@
     state: hive_node
   - type: Organ
     slotId: hive_node
+    onAdd: # Omu start
+      - type: FacehuggerImmune
+      - type: Access # Goobstation - xeno doors
+        enabled: true
+        groups:
+          - XenomorphAccess # Omu end
   - type: HiveNode
     # TODO: Organ should give XenoHivemind language and Xeno faction
 

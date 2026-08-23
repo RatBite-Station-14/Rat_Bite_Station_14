@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
@@ -84,7 +79,7 @@ public sealed class DoorMetricSystem : ChaosMetricSystem<DoorMetricComponent>
 
         // Add up the pain of all the doors
         // Restrict to just doors on the main station
-        var stationGrids = _stationSystem.GetAllStationGrids();
+        var stationGrids = _stationSystem.GoobGetAllStationGrids();
 
         var queryFirelock = EntityQueryEnumerator<DoorComponent, ApcPowerReceiverComponent, TransformComponent>();
         while (queryFirelock.MoveNext(out var uid, out var door, out var power, out var transform))
@@ -117,7 +112,7 @@ public sealed class DoorMetricSystem : ChaosMetricSystem<DoorMetricComponent>
                 airlockCounter += 1;
             }
 
-            if (power.Recalculate || !power.NeedsPower)
+            if (power.Powered || !power.NeedsPower)
             {
                 powerCount += 1;
             }

@@ -1,5 +1,5 @@
-using System.Linq;
-using Content.Client.Computer;
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.CCVar;
@@ -74,12 +74,12 @@ public sealed partial class OfferingWindowOption : PanelContainer
 
             if (_claimed)
             {
-                ClaimButton.AddStyleClass(StyleBase.ButtonCaution);
+                ClaimButton.AddStyleClass(StyleClass.Negative);
                 ClaimButton.Text = Loc.GetString("offering-window-claimed");
             }
             else
             {
-                ClaimButton.RemoveStyleClass(StyleBase.ButtonCaution);
+                ClaimButton.RemoveStyleClass(StyleClass.Negative);
                 ClaimButton.Text = Loc.GetString("offering-window-claim");
             }
         }

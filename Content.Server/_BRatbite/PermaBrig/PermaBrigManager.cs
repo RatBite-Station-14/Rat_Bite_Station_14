@@ -1,3 +1,4 @@
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
@@ -35,11 +36,10 @@ namespace Content.Server._BRatbite.PermaBrig
             _task.BlockWaitOnTask(Task.WhenAll(_pendingSaveTasks));
         }
 
-        private ISawmill _sawmill = default!;
+        private readonly ISawmill _sawmill = Logger.GetSawmill("server_permabrig");
 
         public void Initialize()
         {
-            _sawmill = Logger.GetSawmill("server_permabrig");
         }
 
         /// <summary>
@@ -113,25 +113,30 @@ namespace Content.Server._BRatbite.PermaBrig
             return label;
         }
 
-        public async void UpdatePlayerOnJoin(NetUserId userId, string name)
+        public async Task UpdatePlayerOnJoin(NetUserId userId, string name)
         {
-            var brigSentence = GetBrigSentence(userId); // Transfer old brig time
+            var brigSentence = await GetBrigSentenceAsync(userId); // Transfer old brig time
             if (brigSentence != 0)
             {
-                AddBrigTime(userId, brigSentence * 60);
-                SetBrigSentence(userId, 0);
+                var newTotal = await _db.ModifyPermaTimeLeft(userId, brigSentence * 60);
+                _sawmill.Info($"Added {brigSentence * 60} minutes to {userId} sentence. Current sentence: {newTotal}");
+                await _db.SetPermaRoundsLeft(userId, 0);
             }
 
             var record = await _db.GetPlayerRecordByUserId(userId, CancellationToken.None);
-            if (record is not null)
-            {
-                var timeSpan = DateTime.UtcNow.Subtract(record.LastSeenTime.DateTime);
-                var time = (int) timeSpan.TotalMinutes / 24;
-                RemoveBrigTime(userId, time);
-                _adminLogger.Add(LogType.Perma,
-                    LogImpact.High,
-                    $"{name} served {time} minutes of perma after being offline.");
-            }
+            if (record is null)
+                return;
+
+            var timeSpan = DateTime.UtcNow.Subtract(record.LastSeenTime.DateTime);
+            var time = (int) timeSpan.TotalMinutes / 24;
+            var remaining = await _db.ModifyPermaTimeLeft(userId, -time);
+            if (remaining < 0)
+                await _db.SetPermaTimeLeft(userId, 0);
+
+            _sawmill.Info($"Removed {time} minutes from {userId} sentence. Current sentence: {Math.Max(remaining, 0)}");
+            _adminLogger.Add(LogType.Action,
+                LogImpact.High,
+                $"{name} served {time} minutes of perma after being offline.");
         }
 
         /// <summary>
@@ -209,7 +214,7 @@ namespace Content.Server._BRatbite.PermaBrig
             {
                 await _db.UpdatePlayerRecordAsync(record.UserId,
                     record.LastSeenUserName,
-                    record.LastSeenAddress,
+                    record.LastSeenAddress ?? IPAddress.None,
                     record.HWId);
             }
         }

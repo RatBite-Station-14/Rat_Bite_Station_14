@@ -363,7 +363,7 @@ entities:
     - type: Transform
       pos: 4.5,-3.5
       parent: 1
-- proto: WeaponCrusherGlaive
+- proto: WeaponCrusher
   entities:
   - uid: 38
     components:

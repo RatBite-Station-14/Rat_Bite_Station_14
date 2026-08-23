@@ -49,8 +49,9 @@
     damageContainer: Biological
     damageModifierSet: Allulalo #stops them from being oppressive hopefully
   - type: Bloodstream
-    bloodReagent: BloodAllulalo
-    bloodMaxVolume: 250 # small
+    # Ratbite: This doens't exist
+    #bloodReagent: BloodAllulalo
+    #bloodMaxVolume: 250 # small
     # bloodReferenceSolution:
     #   reagents:
     #   - ReagentId: BloodAllulalo

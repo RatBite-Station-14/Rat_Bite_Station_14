@@ -1,2 +1,8 @@
 - type: Tag
-  id: DuelingRapier
+  id: AdvancedEnergyMagAmmo
+
+- type: Tag
+  id: HudChemistry
+
+- type: Tag
+  id: HudMedichem

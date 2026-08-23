@@ -19,6 +19,8 @@ changeling-biomass-warn-third = Our hunger is taking a toll on our form...
 changeling-biomass-warn-death = Our cells begin to consume themselves. There is no return.
 
 changeling-action-fail-absorbed = Need to absorb {$number} more organisms to use it!
+changeling-action-fail-not-changeling = You are not a changeling
+changeling-action-fail-onfire = The entity must be on fire to use this
 changeling-absorb-start = {CAPITALIZE(THE($user))} starts absorbing {CAPITALIZE(THE($target))}'s DNA!
 changeling-absorb-fail-incapacitated = We can't absorb them until they're incapacitated.
 changeling-absorb-fail-absorbed = They've already been absorbed.
@@ -57,13 +59,13 @@ changeling-dartgun-no-stings = We don't have any reagent stings evolved!
 
 changeling-stasis-enter = We enter regenerative stasis...
 changeling-stasis-enter-damaged = We enter regenerative stasis. Our sustained injuries will prove troublesome to heal...
-changeling-stasis-enter-catastrophic = We enter regenerative stasis. Our catastrophic injuries will take extreme time to heal...
-changeling-stasis-enter-fail = Can't enter stasis!
+changeling-stasis-enter-dead = We enter regenerative stasis. Our catastrophic injuries will take extreme time to heal...
 changeling-stasis-exit = We exit regenerative stasis, clear of wounds and injuries...
-changeling-stasis-exit-fail = We're not in stasis!
-changeling-stasis-exit-fail-dead = We feel... hollow. It is over.
-changeling-stasis-exit-fail-time = Our body is still recovering!
-changeling-stasis-exit-defib = A shock pulses through us. Our stasis has been interrupted!
+changeling-stasis-absorbed = We have no control over our cells. Our body is silent. It is over.
+changeling-stasis-defib = A shock pulses through us. Our stasis has been interrupted!
+
+changeling-regenerate = Our body is instantly cleared of any wounds and broken bones.
+changeling-regenerate-limbs = Our body emits a loud crack as missing limbs, wounds and broken bones are instantly regenerated!
 
 changeling-fail-hands = Need to drop something beforehand
 
@@ -83,8 +85,12 @@ changeling-fleshmend = We begin to seal our wounds and regenerate dead cells.
 changeling-panacea = We begin to reconstruct our cellular structure and immune system.
 changeling-adrenaline = We inject highly potent adrenaline into our body.
 
-changeling-chameleon-start = We adapt our skin to the environment
-changeling-chameleon-end = Our skin is losing its translucency
+changeling-chameleon-start = Our body starts to become translucent.
+changeling-chameleon-end = Our body loses its translucency.
+changeling-chameleon-fire = Our translucency is lost as the flames burn us!
+
+changeling-darkadapt-active = We prepare to adjust to the dark.
+changeling-darkadapt-inactive = We stop preparing for the dark.
 
 changeling-voidadapt-lowpressure-start = We adapt to the surrounding low pressure.
 changeling-voidadapt-lowpressure-end = The surrounding pressure is no longer low. We cast off our adaption.

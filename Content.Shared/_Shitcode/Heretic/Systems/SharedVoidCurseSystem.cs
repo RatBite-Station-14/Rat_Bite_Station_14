@@ -1,15 +1,8 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 username <113782077+whateverusername0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 whateverusername0 <whateveremail>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.Religion;
 using Content.Shared._Goobstation.Heretic.Components;
+using Content.Shared._Shitcode.Heretic.Systems;
 using Content.Shared.Heretic;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Systems;
@@ -21,6 +14,7 @@ namespace Content.Shared._Goobstation.Heretic.Systems;
 public abstract class SharedVoidCurseSystem : EntitySystem
 {
     [Dependency] private readonly MovementSpeedModifierSystem _modifier = default!;
+    [Dependency] private readonly SharedHereticSystem _heretic = default!;
 
     public override void Initialize()
     {
@@ -62,15 +56,14 @@ public abstract class SharedVoidCurseSystem : EntitySystem
         comp.Lifetime = comp.MaxLifetime + comp.LifetimeIncreasePerLevel * comp.Stacks;
     }
 
-    public bool DoCurse(EntityUid uid, int stacks = 1, int max = 0)
+    public bool DoCurse(EntityUid uid, float stacks = 1, float max = 0)
     {
-        if (stacks < 1)
-            return false;
 
         if (!HasComp<MobStateComponent>(uid))
             return false; // ignore non mobs because holy shit
 
-        if (TryComp<HereticComponent>(uid, out var h) && h.CurrentPath == "Void" || HasComp<GhoulComponent>(uid))
+        if (_heretic.TryGetHereticComponent(uid, out var h, out _) && h.CurrentPath == "Void" ||
+            HasComp<GhoulComponent>(uid))
             return false;
 
         var ev = new BeforeCastTouchSpellEvent(uid, false);
@@ -84,7 +77,7 @@ public abstract class SharedVoidCurseSystem : EntitySystem
             return false;
 
         if (max > 0 && curse.Stacks + stacks > max)
-            stacks = Math.Max(0, max - (int) curse.Stacks);
+            stacks = Math.Max(0, max - curse.Stacks);
 
         curse.Stacks = Math.Clamp(curse.Stacks + stacks, 0, curse.MaxStacks);
         RefreshLifetime(curse);

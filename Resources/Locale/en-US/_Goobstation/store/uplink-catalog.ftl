@@ -114,7 +114,7 @@ uplink-l6-saw-name = L6 Saw
 uplink-l6-saw-desc = More dakka: The iconic L6 light machine gun.
 
 uplink-m90-name = M-90
-uplink-m90-desc = An M-90 combat rifle.
+uplink-m90-desc = A rugged assault rifle that maintains its accuracy across extreme distances. Feeds from .20 Rifle magazines.
 
 uplink-estoc-name = Estoc
 uplink-estoc-desc = A designated assault rifle, fitted with a mid-range optic for longer-range combat.
@@ -153,9 +153,6 @@ uplink-frag-grenade-desc = Lower damage, bigger radius. Compatible with the Chin
 
 uplink-mpapers-grenade-name = MP-APERS shell (40mm)
 uplink-mpapers-grenade-desc = Fires out 20 small pellets to turn your grenade launcher into a shotgun. Compatible with the China-Lake.
-
-uplink-rifle-mag-name = Rifle Magazine (.20)
-uplink-rifle-mag-desc = A 25 round magazine containing .20 rifle bullets. Supports the Lecter and M-90.
 
 uplink-rifle-caseless-mag-name = Rifle Magazine (9.5mm HP)
 uplink-rifle-caseless-mag-desc = A 30 round rifle magazine filled with 9.5mm caseless magnum hollow-point bullets. Compatible with the WSPR.
@@ -211,8 +208,11 @@ uplink-high-caliber-shotgun-box-flash-slug-desc = 16 shells of 8 Gauge flashbang
 uplink-high-caliber-shotgun-box-sarin-name = 8 Gauge sarin gas shell box
 uplink-high-caliber-shotgun-box-sarin-desc = 16 shells of 8 Gauge sarin shells for the combat shotgun, which release a small plus-shaped cloud of sarin gas.
 
-uplink-estoc-ammo-name = Rifle Magazine (.20 rifle)
-uplink-estoc-ammo-desc = Rifle magazine with 25 rounds. Compatable with the Estoc.
+uplink-estoc-ammo-name = Rifle Magazine (.30 rifle)
+uplink-estoc-ammo-desc = Rifle magazine with 30 rounds. Compatible with the Estoc.
+
+uplink-m90-ammo-name = Rifle Magazine (.20 rifle)
+uplink-m90-ammo-desc = Rifle magazine with 25 rounds. Compatible with the M-90 and Lecter.
 
 # Grenades
 
@@ -279,6 +279,9 @@ uplink-autosurgeon-mantis-blade-desc = Modifies the user's arm to include the Ma
 
 uplink-autosurgeon-sandevistan-name = Sandevistan Autosurgeon
 uplink-autosurgeon-sandevistan-desc = Replaces the user's heart with Sandevistan, a synthetic organ that drastically increases the user's speed at the cost of their endurance. Requires too much fine tuning for a human to provide, comes with a one-use autosurgeon for installation.
+
+uplink-autosurgeon-statveka-sandevistan-name = Statveka Sandevistan Autosurgeon
+uplink-autosurgeon-statveka-sandevistan-desc = Replaces the user's heart with a statveka Sandevistan, a synthetic organ that drastically increases the user's speed and reflex at the cost of their endurance. Unlike their normal counterpart, this one seemingly slows down time near the user. comes with a one-use autosurgeon for installation.
 
 uplink-davids-jacket-name = Edgerunner Jacket
 uplink-davids-jacket-desc = A jacket for those particularly interested in improving their bodies, just like you.
@@ -365,3 +368,23 @@ uplink-cddisksyndicate-desc = 102.9 Syndicate radio
 
 uplink-cddisknumber-name = Number Station CD
 uplink-cddisknumber-desc = Call in a threat to distract the station... good luck playing the whole thing.
+
+uplink-box-xenobio-name = Xenobiology slimes box
+uplink-box-xenobio-desc = Slimes for your xenobiology needs. Contains 9 random T1 slimes.
+
+#Contractor
+
+uplink-moduist-contractor-name = Contractor Modsuit
+uplink-moduist-contractor-desc = This lightweight modsuit was made specifically for The Guild! Made using plastitanium for extreme durability but light-weight, comes packed with servos to to help you grab harder, critical damage detecting injectors, and a built in chameleon tech! To keep it ultra light-weight this modsuit has no storage capabilities.
+
+uplink-hardsuit-contractor-name = Contractor Hardsuit Bundle
+uplink-hardsuit-contractor-desc = This lightweight hardsuit was made specifically for The Guild! Can easily be folded up into backpacks.
+
+uplink-webbing-contractor-name = Contractor Webbing
+uplink-webbing-contractor-desc = A chest rig with deep pockets and explosion resistance, often used by contractors and bounty hunters.
+
+uplink-jetpack-contractor-name = Contractor Jetpack
+uplink-jetpack-contractor-desc = This Jetpack was made specifically for The Guild! Boasts high maneuverability and a decent fuel capacity, perfect for quick getaways. Has built-in straps for suit storage compatibility.
+
+uplink-cuffs-contractor-name = Handcuffs
+uplink-cuffs-contractor-desc = Used to detain criminals and other assholes.

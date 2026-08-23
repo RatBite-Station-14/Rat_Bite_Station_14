@@ -34,8 +34,8 @@
     FacialHair: MobHumanoidAnyMarking
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
-    Underwear: MobHumanoidAnyMarking
-    Undershirt: MobHumanoidAnyMarking
+    UndergarmentBottom: MobHumanoidAnyMarking
+    UndergarmentTop: MobHumanoidAnyMarking
     Chest: MobUnguTorso
     Eyes: MobUnguEyes
     LArm: MobUnguLArm
@@ -66,10 +66,10 @@
     HeadTop:
       points: 2
       required: false
-    Undershirt:
+    UndergarmentTop:
       points: 1
       required: false
-    Underwear:
+    UndergarmentBottom:
       points: 1
       required: false
     Chest:

@@ -1,21 +1,23 @@
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entityTable
   id: LavalandMobs
   table: !type:GroupSelector
     children:
+    # - id: MobLegion # Ratbite: We don't have this
     - !type:GroupSelector
       weight: 50
       children:
-      - id: MobGoliathRandom
-      - id: MobHivelord
-    - !type:GroupSelector
-        weight: 35
-        children:
-        - id: MobCarpDungeon
+      - id: MobLavalandGoliath
+        weight: 99
+      - id: MobLavalandGoliathAncient
+        weight: 1
+
+- type: entityTable
+  id: LavalandLightMobs
+  table: !type:GroupSelector
+    children:
+    - id: MobCarpDungeon
     - !type:GroupSelector
       weight: 15
       children:
@@ -27,15 +29,15 @@
 - type: entity
   name: lavaland mob spawner
   id: SpawnerRandomMobLavaland
-  parent: MarkerBase
-  suffix: Lavaland
+  parent: ProximitySpawnerBase
+  suffix: Lavaland, Proximity
   components:
   - type: Sprite
     layers:
     - state: red
     - sprite: Mobs/Aliens/Asteroid/goliath.rsi
       state: goliath
-  - type: EntityTableSpawner
+  - type: SpawnTableOnTrigger
     table: !type:NestedSelector
       tableId: LavalandMobs
   placement:
@@ -43,18 +45,16 @@
 
 
 - type: entity
-  id: MobGoliathRandom
-  parent: MarkerBase
-  name: Goliath
-  suffix: Random
+  name: lavaland light mob spawner
+  id: SpawnerRandomLightMobLavaland
+  parent: ProximitySpawnerBase
+  suffix: Lavaland, Proximity
   components:
   - type: Sprite
-    sprite: Mobs/Aliens/Asteroid/goliath.rsi
-    state: goliath
-  - type: EntityTableSpawner
-    table: !type:GroupSelector
-      children:
-      - id: MobLavalandGoliath
-        weight: 99
-      - id: MobLavalandGoliathAncient
-        weight: 1
+    layers:
+    - state: red
+    - sprite: Mobs/Aliens/Asteroid/goliath.rsi
+      state: goliath
+  - type: SpawnTableOnTrigger
+    table: !type:NestedSelector
+      tableId: LavalandLightMobs

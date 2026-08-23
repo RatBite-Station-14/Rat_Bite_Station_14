@@ -12,7 +12,7 @@
       map: ["enum.TriggerVisualLayers.Base"]
   - type: Item
     sprite: _Crescent/Objects/Fun/Plushies/chudjak.rsi
-  - type: OnUseTimerTrigger
+  - type: TimerTrigger
     delay: 13
   - type: EmitSoundOnUse
     sound:

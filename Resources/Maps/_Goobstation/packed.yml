@@ -44274,7 +44274,7 @@ entities:
     - type: Transform
       pos: 57.63163,-13.7188425
       parent: 2
-- proto: DVSmartFridgeMedical
+- proto: SmartFridgeMedical
   entities:
   - uid: 11800
     components:
@@ -69870,7 +69870,7 @@ entities:
     - type: Transform
       pos: 18.624886,-3.516942
       parent: 2
-- proto: MaterialSilo
+- proto: MachineMaterialSilo
   entities:
   - uid: 15273
     components:

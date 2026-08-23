@@ -1,7 +1,4 @@
 <!--
-SPDX-FileCopyrightText: 2024 John Willis <143434770+CerberusWolfie@users.noreply.github.com>
-SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-
 SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
@@ -14,9 +11,9 @@ These are the list of SOPs that Science Personnel should follow. These are, as s
 It is expected that [color=#cc74fc]Research Assistant[/color] and [color=#cc74fc]Scientist[/color] coincide in the same SOP guidelines.
 
 The following jobs have entries in this Department, the [color=#1b67a5][bold]Research Director[/bold][/color] being the Head of Staff:
-- [textlink="Research Director" link="ResearchDirector SOP"]
-- [textlink="Roboticist" link="Roboticist SOP"]
-- [textlink="Scientist" link="Scientist SOP"]
-- [textlink="Research Assistant" link="Scientist SOP"]
+- [textlink="Research Director" link="ResearchDirectorSOP"]
+- [textlink="Roboticist" link="RoboticistSOP"]
+- [textlink="Scientist" link="ScientistSOP"]
+- [textlink="Research Assistant" link="ScientistSOP"]
 
 </Document>

@@ -1,8 +1,3 @@
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 ImHoks <142083149+ImHoks@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-# SPDX-FileCopyrightText: 2025 TheBorzoiMustConsume <197824988+TheBorzoiMustConsume@users.noreply.github.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 #MISSING SATANA
@@ -138,6 +133,23 @@
       - tag: PowerCellSmall
         name: construction-graph-tag-power-cell-small
         doAfter: 3
+    - to: DragonAltarNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - tag: PlushieCarp
+        name: construction-graph-tag-plushie-carp
+        doAfter: 3
+    - to: EmpireAltarNode
+      completed:
+      - !type:SnapToGrid
+        southRotation: true
+      steps:
+      - tag: Book
+        name: construction-graph-tag-book
+        doAfter: 3
+
   #Nullrod Altars
   - node: BananiumAltarNode
     entity: AltarBananium
@@ -278,6 +290,30 @@
       completed:
       - !type:SpawnPrototype
         prototype: PowerCellSmallPrinted
+        amount: 1
+      steps:
+      - tool: Prying
+        doAfter: 1
+
+  - node: DragonAltarNode
+    entity: AltarDragon
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:SpawnPrototype
+        prototype: PlushieCarp
+        amount: 1
+      steps:
+      - tool: Prying
+        doAfter: 1
+
+  - node: EmpireAltarNode
+    entity: AltarEmpire
+    edges:
+    - to: AltarConvertNode
+      completed:
+      - !type:SpawnPrototype
+        prototype: BookRandom
         amount: 1
       steps:
       - tool: Prying

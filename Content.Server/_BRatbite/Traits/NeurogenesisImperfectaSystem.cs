@@ -4,6 +4,7 @@
 
 using Content.Server.Body.Components;
 using Content.Shared._BRatbite.Traits;
+using Content.Shared.Body.Components;
 using Content.Shared._Shitmed.Body.Organ;
 using Content.Shared.Body.Events;
 using Content.Shared.Body.Organ;

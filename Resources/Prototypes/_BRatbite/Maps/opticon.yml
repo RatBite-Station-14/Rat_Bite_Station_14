@@ -4,8 +4,9 @@
   id: Opticon
   mapName: 'Opticon'
   mapPath: /Maps/_BRatbite/Ratbite_Original/opticon.yml
-  minPlayers: 1
-  maxPlayers: 35
+  fallback: true
+  minPlayers: 0
+  maxPlayers: 25
   stations:
     Opticon:
       stationProto: StandardNanotrasenStation

@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 BramvanZijp <56019239+BramvanZijp@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.Stunnable;
@@ -37,7 +32,7 @@ public abstract partial class SharedHereticAbilitySystem
         // SubscribeLocalEvent<SilverMaelstromComponent, BeforeHarmfulActionEvent>(OnBladeHarmfulAction);
 
         SubscribeLocalEvent<RealignmentComponent, BeforeStaminaDamageEvent>(OnBeforeBladeStaminaDamage);
-        SubscribeLocalEvent<RealignmentComponent, OldBeforeStatusEffectAddedEvent>(OnBeforeBladeStatusEffect);
+        SubscribeLocalEvent<RealignmentComponent, BeforeOldStatusEffectAddedEvent>(OnBeforeBladeStatusEffect);
         SubscribeLocalEvent<RealignmentComponent, SlipAttemptEvent>(OnBladeSlipAttempt);
         SubscribeLocalEvent<RealignmentComponent, BeforeHarmfulActionEvent>(OnBladeHarmfulAction);
         SubscribeLocalEvent<RealignmentComponent, StatusEffectEndedEvent>(OnStatusEnded);
@@ -79,9 +74,9 @@ public abstract partial class SharedHereticAbilitySystem
         args.NoSlip = true;
     }
 
-    private void OnBeforeBladeStatusEffect(EntityUid uid, Component component, ref OldBeforeStatusEffectAddedEvent args)
+    private void OnBeforeBladeStatusEffect(EntityUid uid, Component component, ref BeforeOldStatusEffectAddedEvent args)
     {
-        if (args.Key is not ("KnockedDown" or "Stun"))
+        if (args.EffectKey is not ("KnockedDown" or "Stun"))
             return;
 
         args.Cancelled = true;

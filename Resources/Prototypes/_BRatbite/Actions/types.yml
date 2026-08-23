@@ -13,7 +13,7 @@
     event: !type:GravityJumpEvent {}
 
 - type: entity
-  parent: BaseAction
+  parent: BaseImplantAction
   id: ActionActivateLegalFreedomImplant
   name: Break Free
   description: Activating this implant will free you from any hand restraints.
@@ -26,8 +26,6 @@
     icon:
       sprite: Actions/Implants/implants.rsi
       state: freedom
-  - type: InstantAction
-    event: !type:UseFreedomImplantEvent
 
 - type: entity
   parent: BaseAction

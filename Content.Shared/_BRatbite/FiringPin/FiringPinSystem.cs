@@ -29,6 +29,9 @@ public sealed class FiringPinSystem : EntitySystem
         if (HasComp<MindShieldComponent>(args.User))
             return;
 
+        if (HasComp<FiringPinExemptComponent>(args.User))
+            return;
+
         Popup.PopupClient(Loc.GetString("firing-pin-cant-fire"), ent, args.User);
         args.Cancel();
     }

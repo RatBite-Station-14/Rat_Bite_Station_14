@@ -7,6 +7,7 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Silicons.StationAi;
 using Content.Shared.StationAi;
+using Content.Shared.SurveillanceCamera.Components;
 using Content.Shared.Verbs;
 
 namespace Content.Server._BRatbite.SurveillanceCamera.Components;

@@ -9,10 +9,13 @@ using Content.Server.StationRecords.Systems;
 using Content.Shared.Access;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
+using Content.Shared._Shitmed.Body.Organ;
 using Content.Shared.Chat;
 using Content.Shared.GameTicking;
 using Content.Shared.Inventory;
 using Content.Shared.Mind;
+using Content.Shared.Mind.Components;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Preferences;
 using Content.Shared.Players;
 using Content.Shared.Roles;
@@ -27,6 +30,7 @@ using Robust.Server.Audio;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
+using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -44,6 +48,8 @@ namespace Content.Server._BRatbite.PermaBrig;
 /// </summary>
 public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
 {
+    private static readonly TimeSpan PrisonerQueueTickInterval = TimeSpan.FromSeconds(10);
+
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IChatManager _chat = default!;
@@ -72,6 +78,10 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
 
     public HashSet<ICommonSession> PermaIndividuals = new();
     public Dictionary<ICommonSession, (TimeSpan, TimeSpan)> PermaIndividualJoinedTime = new();
+    private readonly Queue<EntityUid> _prisonerQueue = new();
+    private readonly HashSet<EntityUid> _queuedPrisoners = new();
+    private readonly Dictionary<EntityUid, int> _lastProcessedRoundMinuteByMind = new();
+    private TimeSpan _nextPrisonerQueueTickAt;
     private ISawmill _sawmill = default!;
 
     private SoundSpecifier? _lockUpSound = new SoundPathSpecifier("/Audio/_BRatbite/PermaBrig/locked_up.ogg");
@@ -86,6 +96,227 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
         //SubscribeLocalEvent<RoundEndMessageEvent>(OnRoundEnd); Auto decreasing of
 
         _sawmill = Logger.GetSawmill("server_permabrig");
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (!_ticker.IsGameRuleActive<PermaBrigComponent>() || _ticker.RunLevel != GameRunLevel.InRound)
+        {
+            _prisonerQueue.Clear();
+            _queuedPrisoners.Clear();
+            _lastProcessedRoundMinuteByMind.Clear();
+            _nextPrisonerQueueTickAt = TimeSpan.Zero;
+            return;
+        }
+
+        if (Timing.CurTime < _nextPrisonerQueueTickAt)
+            return;
+
+        _nextPrisonerQueueTickAt = Timing.CurTime + PrisonerQueueTickInterval;
+
+        ProcessPermaSentenceTick();
+    }
+
+    public List<string> GetPrisonerQueueSnapshot()
+    {
+        var activeMindMap = new Dictionary<EntityUid, EntityUid>();
+        var prisonerQuery = EntityQueryEnumerator<PrisonerComponent>();
+        while (prisonerQuery.MoveNext(out var prisonerBodyUid, out var prisoner))
+        {
+            if (prisoner.OriginalMindId is not { } mindId)
+                continue;
+
+            if (TerminatingOrDeleted(mindId))
+                continue;
+
+            activeMindMap[mindId] = prisonerBodyUid;
+        }
+
+        var lines = new List<string>();
+        var seen = new HashSet<EntityUid>();
+        var position = 1;
+
+        foreach (var mindId in _prisonerQueue)
+        {
+            if (!seen.Add(mindId))
+                continue;
+
+            lines.Add(FormatQueueEntry(position, mindId, activeMindMap.ContainsKey(mindId)));
+            position++;
+        }
+
+        foreach (var (mindId, _) in activeMindMap)
+        {
+            if (!seen.Add(mindId))
+                continue;
+
+            lines.Add(FormatQueueEntry(position, mindId, true));
+            position++;
+        }
+
+        return lines;
+    }
+
+    private string FormatQueueEntry(int position, EntityUid mindId, bool active)
+    {
+        if (!TryComp<MindComponent>(mindId, out var mindComp))
+            return $"{position}. mind={mindId} active={active} status=missing-mind-component";
+
+        var userIdText = mindComp.UserId?.ToString() ?? "soulless";
+        var name = "<offline>";
+        if (mindComp.UserId is { } userId && _player.TryGetSessionById(userId, out var session))
+            name = session.Name;
+        else if (!string.IsNullOrWhiteSpace(mindComp.CharacterName))
+            name = mindComp.CharacterName!;
+
+        var sentenceText = "n/a";
+        if (mindComp.UserId is { } sentenceUserId)
+            sentenceText = _permaBrigManager.GetBrigTime(sentenceUserId).ToString();
+
+        return $"{position}. {name} user={userIdText} sentence={sentenceText}m active={active}";
+    }
+
+    private void ProcessPermaSentenceTick()
+    {
+        var currentRoundMinute = (int) _ticker.RoundDuration().TotalMinutes;
+        var activeMinds = new HashSet<EntityUid>();
+        var prisonerBodyByMind = new Dictionary<EntityUid, EntityUid>();
+
+        var prisonerQuery = EntityQueryEnumerator<PrisonerComponent>();
+        while (prisonerQuery.MoveNext(out var prisonerBodyUid, out var prisoner))
+        {
+            if (prisoner.OriginalMindId is not { } mindId)
+                continue;
+
+            if (TerminatingOrDeleted(mindId))
+                continue;
+
+            if (!activeMinds.Add(mindId))
+                continue;
+
+            prisonerBodyByMind[mindId] = prisonerBodyUid;
+
+            if (_queuedPrisoners.Add(mindId))
+                _prisonerQueue.Enqueue(mindId);
+        }
+
+        var staleMinds = new List<EntityUid>();
+        foreach (var mindId in _queuedPrisoners)
+        {
+            if (!activeMinds.Contains(mindId))
+                staleMinds.Add(mindId);
+        }
+
+        foreach (var mindId in staleMinds)
+        {
+            _queuedPrisoners.Remove(mindId);
+            _lastProcessedRoundMinuteByMind.Remove(mindId);
+        }
+
+        if (_prisonerQueue.Count == 0)
+            return;
+
+        var nextMindId = _prisonerQueue.Dequeue();
+        if (!_queuedPrisoners.Contains(nextMindId))
+            return;
+
+        if (!prisonerBodyByMind.TryGetValue(nextMindId, out var prisonerBody) ||
+            !TryComp<MindComponent>(nextMindId, out var mindComp))
+        {
+            _queuedPrisoners.Remove(nextMindId);
+            _lastProcessedRoundMinuteByMind.Remove(nextMindId);
+            return;
+        }
+
+        if (ShouldStopServingTime(prisonerBody, mindComp))
+        {
+            _queuedPrisoners.Remove(nextMindId);
+            _lastProcessedRoundMinuteByMind.Remove(nextMindId);
+            return;
+        }
+
+        if (!ShouldTickByBodyOrBrain(prisonerBody, mindComp))
+        {
+            _prisonerQueue.Enqueue(nextMindId);
+            return;
+        }
+
+        UpdateQueuedPrisoner(nextMindId, mindComp.UserId!.Value, prisonerBody, currentRoundMinute);
+        _prisonerQueue.Enqueue(nextMindId);
+    }
+
+    private bool ShouldStopServingTime(EntityUid prisonerBody, MindComponent mind)
+    {
+        if (mind.UserId == null)
+            return true;
+
+        if (mind.OwnedEntity is not { Valid: true } ownedEntity)
+            return true;
+
+        if (TerminatingOrDeleted(ownedEntity))
+            return true;
+
+        if (HasComp<DebrainedComponent>(ownedEntity))
+            return true;
+
+        return false;
+    }
+
+    private bool ShouldTickByBodyOrBrain(EntityUid prisonerBody, MindComponent mind)
+    {
+        if (mind.CurrentEntity == prisonerBody)
+            return true;
+
+        if (mind.OwnedEntity is not { Valid: true } ownedEntity)
+            return false;
+
+        if (HasComp<DebrainedComponent>(ownedEntity))
+            return false;
+
+        if (HasComp<BrainComponent>(ownedEntity))
+            return true;
+
+        return HasComp<MobStateComponent>(ownedEntity);
+    }
+
+    private void UpdateQueuedPrisoner(EntityUid mindId, NetUserId userId, EntityUid prisonerBody, int currentRoundMinute)
+    {
+        if (!_lastProcessedRoundMinuteByMind.TryGetValue(mindId, out var lastProcessedRoundMinute))
+        {
+            _lastProcessedRoundMinuteByMind[mindId] = currentRoundMinute;
+            return;
+        }
+
+        var elapsedMinutes = currentRoundMinute - lastProcessedRoundMinute;
+        if (elapsedMinutes <= 0)
+            return;
+
+        var currentTime = _permaBrigManager.GetBrigTime(userId);
+        if (currentTime <= 0)
+        {
+            _lastProcessedRoundMinuteByMind[mindId] = currentRoundMinute;
+            return;
+        }
+
+        var remainingMinutes = Math.Max(0, _permaBrigManager.RemoveBrigTime(userId, elapsedMinutes));
+        var newExpireTime = Timing.CurTime + TimeSpan.FromMinutes(remainingMinutes);
+        _lastProcessedRoundMinuteByMind[mindId] = currentRoundMinute;
+
+        if (TryComp<PrisonerComponent>(prisonerBody, out var prisonerComp))
+        {
+            prisonerComp.PermaBrigSentenceExpireTime = newExpireTime;
+            Dirty(prisonerBody, prisonerComp);
+        }
+
+        if (!_inventory.TryGetSlotEntity(prisonerBody, "id", out var idUid))
+            return;
+
+        if (!HasComp<GenpopIdCardComponent>(idUid.Value))
+            return;
+
+        _idCard.SetExpireTime(idUid.Value, newExpireTime);
     }
 
     private void OnPlayerSpawning(RulePlayerSpawningEvent args)
@@ -233,7 +464,11 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
             }
             _idCard.SetExpireTime(cardId, expireTime);
         }
-        AddComp(mob, new PrisonerComponent { PermaBrigSentenceExpireTime = expireTime });
+        AddComp(mob, new PrisonerComponent
+        {
+            PermaBrigSentenceExpireTime = expireTime,
+            OriginalMindId = newMind,
+        });
 
         _mind.TransferTo(newMind, mob);
         _admin.UpdatePlayerList(player);
@@ -275,10 +510,10 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
         var cuffableComp = EnsureComp<CuffableComponent>(prisoner);
         _cuffableSystem.TryAddNewCuffs(prisoner, prisoner, cuffs, cuffableComp);
         if (!TryComp<BloodstreamComponent>(prisoner, out var bloodstream)) return;
-        if (!_solutionContainerSystem.ResolveSolution(prisoner, bloodstream.ChemicalSolutionName, ref bloodstream.ChemicalSolution))
+        if (!_solutionContainerSystem.ResolveSolution(prisoner, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution))
             return;
 
-        _solutionContainerSystem.TryAddReagent(bloodstream.ChemicalSolution.Value, new ReagentId(_ketamine, null), _amountToInject, out _);
+        _solutionContainerSystem.TryAddReagent(bloodstream.BloodSolution.Value, new ReagentId(_ketamine, null), _amountToInject, out _);
     }
 
     // private void OnRoundEnd(RoundEndMessageEvent ev) Auto decrease of perma sentence not yet implemented

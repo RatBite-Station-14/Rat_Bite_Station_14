@@ -3,12 +3,14 @@ using Content.Server.Speech.Components;
 using Content.Shared._BRatbite.Chemistry;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Drunk;
+using Content.Shared.StatusEffect;
 
 namespace Content.Server._BRatbite.Chemistry;
 
 public sealed class CharcoalKetamineCleanupSystem : EntitySystem
 {
     [Dependency] private readonly SharedSolutionContainerSystem _solutions = default!;
+    [Dependency] private readonly SharedDrunkSystem _drunk = default!;
 
     private const float CharcoalClearThreshold = 10f;
 
@@ -24,12 +26,6 @@ public sealed class CharcoalKetamineCleanupSystem : EntitySystem
 
         var ketamineSlurQuery = EntityQueryEnumerator<KetamineSlurredAccentComponent>();
         while (ketamineSlurQuery.MoveNext(out var uid, out _))
-        {
-            TryClearEffects(uid);
-        }
-
-        var drunkQuery = EntityQueryEnumerator<DrunkComponent>();
-        while (drunkQuery.MoveNext(out var uid, out _))
         {
             TryClearEffects(uid);
         }
@@ -52,8 +48,7 @@ public sealed class CharcoalKetamineCleanupSystem : EntitySystem
         if (HasComp<KetamineSlurredAccentComponent>(uid))
             RemCompDeferred<KetamineSlurredAccentComponent>(uid);
 
-        if (HasComp<DrunkComponent>(uid))
-            RemCompDeferred<DrunkComponent>(uid);
+        _drunk.TryRemoveDrunkenness(uid);
 
         if (HasComp<SlurredAccentComponent>(uid))
             RemCompDeferred<SlurredAccentComponent>(uid);

@@ -26,6 +26,7 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Hands.Components;
 using Content.Shared.Light.Components;
+using Content.Shared._Lavaland.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
@@ -57,14 +58,14 @@ public abstract partial class SharedWeaponAttachmentSystem : EntitySystem
         var itemSlots = EnsureComp<ItemSlotsComponent>(uid);
         var bayonetSlot = new ItemSlot
         {
-            Whitelist = new EntityWhitelist { Components = ["AttachmentBayonet"] },
+            Whitelist = new EntityWhitelist { Components = ["GunUpgradeBayonet"] },
             Swap = false,
             EjectOnBreak = true,
             Name = Loc.GetString("attachment-bayonet-slot-name")
         };
         var lightSlot = new ItemSlot
         {
-            Whitelist = new EntityWhitelist { Components = ["AttachmentFlashlight"] },
+            Whitelist = new EntityWhitelist { Components = ["GunUpgradeFlashlight"] },
             Swap = false,
             EjectOnBreak = true,
             Name = Loc.GetString("attachment-light-slot-name"),
@@ -105,20 +106,20 @@ public abstract partial class SharedWeaponAttachmentSystem : EntitySystem
     private void OnEntInsertedIntoContainer(EntityUid uid, WeaponAttachmentComponent component, EntInsertedIntoContainerMessage args)
     {
         if (args.Container.ID == WeaponAttachmentComponent.BayonetSlotId
-            && HasComp<AttachmentBayonetComponent>(args.Entity))
+            && HasComp<GunUpgradeBayonetComponent>(args.Entity))
             BayonetChanged(uid, true, component);
         else if (args.Container.ID == WeaponAttachmentComponent.LightSlotId
-            && HasComp<AttachmentFlashlightComponent>(args.Entity))
+            && HasComp<GunUpgradeFlashlightComponent>(args.Entity))
             AttachLight(uid, args.Entity, component);
     }
 
     private void OnEntRemovedFromContainer(EntityUid uid, WeaponAttachmentComponent component, EntRemovedFromContainerMessage args)
     {
         if (args.Container.ID == WeaponAttachmentComponent.BayonetSlotId
-            && HasComp<AttachmentBayonetComponent>(args.Entity))
+            && HasComp<GunUpgradeBayonetComponent>(args.Entity))
             BayonetChanged(uid, false, component);
         else if (args.Container.ID == WeaponAttachmentComponent.LightSlotId
-            && HasComp<AttachmentFlashlightComponent>(args.Entity))
+            && HasComp<GunUpgradeFlashlightComponent>(args.Entity))
             RemoveLight(uid, component);
     }
 

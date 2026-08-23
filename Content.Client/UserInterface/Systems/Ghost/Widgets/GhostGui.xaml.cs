@@ -1,20 +1,3 @@
-// SPDX-FileCopyrightText: 2022 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Jacob Tong <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr.@gmail.com>
-// SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2022 Jezithyr <jmaster9999@gmail.com>
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <wrexbe@protonmail.com>
-// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Rank #1 Jonestown partygoer <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Client._BRatbite.UserInterface.Systems.Ghost;
@@ -35,6 +18,7 @@ public sealed partial class GhostGui : UIWidget
     public event Action? RequestWarpsPressed;
     public event Action? ReturnToBodyPressed;
     public event Action? GhostRolesPressed;
+    public event Action? ThunderdomePressed; // Goobstation - Thunderdome
     public event Action? AltServerConnectPressed;
     private int _prevNumberRoles;
 
@@ -50,9 +34,9 @@ public sealed partial class GhostGui : UIWidget
         GhostWarpButton.OnPressed += _ => RequestWarpsPressed?.Invoke();
         ReturnToBodyButton.OnPressed += _ => ReturnToBodyPressed?.Invoke();
         GhostRolesButton.OnPressed += _ => GhostRolesPressed?.Invoke();
-        GhostRolesButton.OnPressed += _ => GhostRolesButton.StyleClasses.Remove(StyleBase.ButtonCaution);
-        AltServerConnectButton.OnPressed += _ => AltServerConfirmWindow.OpenCentered();
-        AltServerConfirmWindow.OnConfirmPressed += () => AltServerConnectPressed?.Invoke();
+        GhostRolesButton.OnPressed += _ => GhostRolesButton.StyleClasses.Remove(StyleClass.Negative);
+        ThunderdomeButton.OnPressed += _ => ThunderdomePressed?.Invoke(); // Goobstation - Thunderdome
+        AltServerConnectButton.OnPressed += _ => AltServerConnectPressed?.Invoke();
     }
 
     public void Hide()
@@ -75,7 +59,7 @@ public sealed partial class GhostGui : UIWidget
 
             if (roles > _prevNumberRoles)
             {
-                GhostRolesButton.StyleClasses.Add(StyleBase.ButtonCaution);
+                GhostRolesButton.StyleClasses.Add(StyleClass.Negative);
             }
 
             _prevNumberRoles = (int) roles;
@@ -86,6 +70,12 @@ public sealed partial class GhostGui : UIWidget
             AltServerConnectButton.Text = Loc.GetString("ghost-gui-connect-alt-server", ("count", altServerPopCount), ("serverName", altServerName));
 
         TargetWindow.Populate();
+    }
+
+    // Goobstation - Thunderdome
+    public void UpdateThunderdome(int playerCount)
+    {
+        ThunderdomeButton.Text = Loc.GetString("thunderdome-ghost-button", ("count", playerCount));
     }
 
     protected override void Dispose(bool disposing)

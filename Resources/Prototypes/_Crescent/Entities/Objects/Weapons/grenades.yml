@@ -61,9 +61,9 @@
   - type: ScatteringGrenade # Ratbite - we dont have ClusterGrenade
     fillPrototype: TrollNadeProjectileCluster # Ratbite - works differently than in hullrot, shitcode limitations :happening1:
     distance: 8
-  - type: OnUseTimerTrigger
+  - type: TimerTrigger
     delay: 0.5
-  - type: SoundOnTrigger
+  - type: EmitSoundOnTrigger
     sound:
       path: /Audio/_Crescent/Weapons/Grenades/troll_nade/trigger.ogg
       params:
@@ -105,7 +105,7 @@
       map: ["enum.TriggerVisualLayers.Base"]
   - type: Item
     size: Normal
-  - type: OnUseTimerTrigger
+  - type: TimerTrigger
     delay: 13
   - type: ExplodeOnTrigger
   - type: Explosive
