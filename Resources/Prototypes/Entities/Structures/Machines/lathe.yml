@@ -535,6 +535,8 @@
   - type: OreSiloClient
   - type: LatheAnnouncing
     channels: [Security]
+  - type: AccessReader # Ratbite: Add access reader to fabs
+    access: [["Security"]]
 
 - type: entity
   id: AmmoTechFab
@@ -571,6 +573,8 @@
     - type: MaterialStorage
       whitelist: *StandardMaterialWhitelist
     - type: OreSiloClient
+    - type: AccessReader # Ratbite: Add access reader to fabs
+      access: [["Security"]]
 
 - type: entity
   id: MedicalTechFab
@@ -643,6 +647,8 @@
   - type: OreSiloClient
   - type: LatheAnnouncing
     channels: [Medical]
+  - type: AccessReader # Ratbite: Add access reader to fabs
+    access: [["Medical"]]
 
 - type: entity
   parent: [BaseLatheLube]
@@ -788,6 +794,8 @@
     - type: MiningPointsLathe # DeltaV
     - type: MaterialStorageMagnetPickup # Frontier
     - type: OreSiloClient
+    - type: AccessReader # Ratbite: Add access reader to fabs
+      access: [["Cargo"]]
 
 - type: entity
   parent: OreProcessor
@@ -806,6 +814,8 @@
     - OreSmelting
     - RGlassSmelting
     - AdvancedSmelting
+  - type: AccessReader # Ratbite: Add access reader to fabs
+    access: [["Cargo"]]
 
 - type: entity
   parent: BaseLathe

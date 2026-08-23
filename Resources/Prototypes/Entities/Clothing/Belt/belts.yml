@@ -13,6 +13,7 @@
     state: sheath
   - type: Clothing
     sprite: Clothing/Belt/sheath.rsi
+    slots: [belt, suitstorage]
   - type: Item
     size: Ginormous
   - type: ItemSlots
