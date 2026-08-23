@@ -424,6 +424,7 @@
   id: LockerFillVault
   table: !type:AllSelector
     children:
+    - id: CaptainIDCard # Ratbite
     - id: WeaponRevolverDeckard
     - id: JetpackBlue
     - id: SpaceCash1000

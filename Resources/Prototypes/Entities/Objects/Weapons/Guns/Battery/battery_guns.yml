@@ -1078,6 +1078,7 @@
   - type: BatteryAmmoProvider
     proto: BulletLaserSpreadNarrow
     fireCost: 80
+  - type: FiringPin # Ratbite, mindshield restriction system
   # Goob edit start
   #  - type: BatteryWeaponFireModes
   #    fireModes:

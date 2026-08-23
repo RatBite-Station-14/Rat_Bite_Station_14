@@ -54,6 +54,8 @@ BoxColoredLighttube: BoxLighttube
 BoxEncryptionKeyPrisoner: BoxEncryptionKeyPassenger
 BoxMaintenanceLightbulb: BoxLightMixed
 BoxPDAPrisoner: BoxPDA
+ChemDispenser: EnergyChemDispenser // RatBite
+ChemDispenserEmpty: EnergyChemDispenser // RatBite
 ClothingBeltMartialBlack: null
 ClothingCostumeArcDress: null
 ClothingHeadCourier: null

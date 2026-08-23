@@ -1,0 +1,95 @@
+# Ratbite - alternate loadout entries for the classic (pre-resprite) mantles
+
+# Captain
+- type: loadout
+  id: CaptainMantleOld
+  equipment:
+    neck: ClothingNeckMantleCapOld
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterCap
+
+- type: startingGear
+  id: CaptainMantleOld
+  equipment:
+    neck: ClothingNeckMantleCapOld
+
+# Chief Engineer
+- type: loadout
+  id: ClothingNeckMantleCEOld
+  equipment:
+    neck: ClothingNeckMantleCEOld
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterCE
+  groupBy: "cemantle"
+
+# Chief Medical Officer
+- type: loadout
+  id: ChiefMedicalOfficerMantleOld
+  equipment:
+    neck: ClothingNeckMantleCMOOld
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterCMO
+
+- type: startingGear
+  id: ChiefMedicalOfficerMantleOld
+  equipment:
+    neck: ClothingNeckMantleCMOOld
+
+# Head of Personnel
+- type: loadout
+  id: HoPMantleOld
+  equipment:
+    neck: ClothingNeckMantleHOPOld
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterHoP
+
+- type: startingGear
+  id: HoPMantleOld
+  equipment:
+    neck: ClothingNeckMantleHOPOld
+
+# Head of Security
+- type: loadout
+  id: HeadofSecurityMantleOld
+  equipment:
+    neck: ClothingNeckMantleHOSOld
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterHoS
+
+- type: startingGear
+  id: HeadofSecurityMantleOld
+  equipment:
+    neck: ClothingNeckMantleHOSOld
+
+# Quartermaster
+- type: loadout
+  id: QuartermasterMantleOld
+  equipment:
+    neck: ClothingNeckMantleQMOld
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterQM
+
+- type: startingGear
+  id: QuartermasterMantleOld
+  equipment:
+    neck: ClothingNeckMantleQMOld
+
+# Research Director
+- type: loadout
+  id: ResearchDirectorMantleOld
+  equipment:
+    neck: ClothingNeckMantleRDOld
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterRD
+
+- type: startingGear
+  id: ResearchDirectorMantleOld
+  equipment:
+    neck: ClothingNeckMantleRDOld

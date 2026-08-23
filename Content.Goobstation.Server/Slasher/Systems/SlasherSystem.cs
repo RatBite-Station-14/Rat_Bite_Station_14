@@ -33,10 +33,17 @@ public sealed class SlasherSystem : EntitySystem
     private void MoveBrainToChest(Entity<SlasherComponent> ent)
     {
         if (!TryComp<BodyComponent>(ent, out var bodyComp)
-            || !_body.TryGetBodyOrganEntityComps<BrainComponent>((ent.Owner, bodyComp), out var brains))
+            || !_body.TryGetBodyOrganEntityComps<BrainComponent>((ent.Owner, bodyComp), out var brains)
+            || brains.Count == 0)
             return;
 
         var brain = brains[0];
+        var slotId = brain.Comp2.SlotId;
+
+        // Some species (e.g. slimes) don't use a standard "brain" organ slot.
+        // Trying to force those organs into a brain slot asserts in debug.
+        if (slotId != "brain")
+            return;
 
         EntityUid? chestPart = null;
         foreach (var (partId, part) in _body.GetBodyChildrenOfType(ent.Owner, BodyPartType.Chest, bodyComp))
@@ -49,8 +56,8 @@ public sealed class SlasherSystem : EntitySystem
             return;
 
         _body.RemoveOrgan(brain.Owner, brain.Comp2);
-        _body.TryCreateOrganSlot(chestPart, "brain", out _, null);
-        _body.InsertOrgan(chestPart.Value, brain.Owner, "brain");
+        _body.TryCreateOrganSlot(chestPart, slotId, out _, null);
+        _body.InsertOrgan(chestPart.Value, brain.Owner, slotId);
         _standing.Stand(ent.Owner, force: true);
     }
 }

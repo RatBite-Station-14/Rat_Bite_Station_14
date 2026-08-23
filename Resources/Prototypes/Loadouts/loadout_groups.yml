@@ -181,6 +181,7 @@
   - CaptainCloak
   - CaptainCloakFormal
   - CaptainMantle
+  - CaptainMantleOld # Ratbite
   - VeteranCaptainCloak # goob
 
 - type: loadoutGroup
@@ -231,6 +232,7 @@
   loadouts:
   - HoPCloak
   - HoPMantle
+  - HoPMantleOld # Ratbite
 
 - type: loadoutGroup
   id: HoPBackpack
@@ -879,6 +881,7 @@
   loadouts:
   - QuartermasterCloak
   - QuartermasterMantle
+  - QuartermasterMantleOld # Ratbite
 
 - type: loadoutGroup
   id: QuartermasterOuterClothing
@@ -1018,6 +1021,7 @@
   - ClothingNeckCloakGreenCe # goob
   - ClothingNeckMantleWhiteCE # goob
   - ClothingNeckMantleOrangeCE # goob
+  - ClothingNeckMantleCEOld # Ratbite
   - ClothingNeckEnsembleChiefEngineerWhite # goob
   - ClothingNeckEnsembleChiefEngineerGreen # goob
 
@@ -1193,6 +1197,7 @@
   minLimit: 0
   loadouts:
   - ResearchDirectorMantle
+  - ResearchDirectorMantleOld # Ratbite
   - ResearchDirectorCloak
 
 - type: loadoutGroup
@@ -1361,6 +1366,7 @@
   loadouts:
   - HeadofSecurityCloak
   - HeadofSecurityMantle
+  - HeadofSecurityMantleOld # Ratbite
   - Bodycam # Goobstation - Body cameras
   - ParryCloak #ratbite
 
@@ -1607,6 +1613,7 @@
   loadouts:
   - ChiefMedicalOfficerCloak
   - ChiefMedicalOfficerMantle
+  - ChiefMedicalOfficerMantleOld # Ratbite
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerShoes
