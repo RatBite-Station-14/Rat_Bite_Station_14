@@ -75,6 +75,7 @@
   - type: WiresVisuals
   - type: Sprite
     sprite: Structures/Wallmounts/air_monitors.rsi
+    offset: 0, -0.3
     layers:
     - state: alarmp
       map: ["airAlarmBase"]
@@ -120,6 +121,7 @@
   components:
   - type: Sprite
     sprite: Structures/Wallmounts/air_monitors.rsi
+    offset: 0, -0.3
     layers:
     - state: alarm_b1
       map: [ "enum.ConstructionVisuals.Layer" ]
