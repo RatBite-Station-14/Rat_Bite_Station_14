@@ -10,6 +10,7 @@ using Content.Server.GameTicking;
 using Content.Server.GameTicking.Presets;
 using Content.Server.Roles;
 using Content.Server.RoundEnd;
+using Content.Shared._BRatbite.CCVar;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Database;
@@ -40,7 +41,8 @@ namespace Content.Server.Voting.Managers
             {StandardVoteType.Restart, CCVars.VoteRestartEnabled},
             {StandardVoteType.Preset, CCVars.VotePresetEnabled},
             {StandardVoteType.Map, CCVars.VoteMapEnabled},
-            {StandardVoteType.Votekick, CCVars.VotekickEnabled}
+            {StandardVoteType.Votekick, CCVars.VotekickEnabled},
+            {StandardVoteType.ShuttleCall, RatbiteCVars.VoteShuttleCallEnabled} // Ratbite
         };
 
         public void CreateStandardVote(ICommonSession? initiator, StandardVoteType voteType, string[]? args = null)
@@ -70,6 +72,10 @@ namespace Content.Server.Voting.Managers
                 case StandardVoteType.Votekick:
                     timeoutVote = false; // Allows the timeout to be updated manually in the create method
                     CreateVotekickVote(initiator, args);
+                    break;
+                case StandardVoteType.ShuttleCall: // Ratbite
+                    timeoutVote = false;
+                    CreateShuttleCallVote(initiator);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(voteType), voteType, null);

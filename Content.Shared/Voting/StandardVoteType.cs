@@ -25,7 +25,10 @@ public enum StandardVoteType : byte
     /// <summary>
     /// Vote to kick a player.
     /// </summary>
-    Votekick
+    Votekick,
+
+    // Ratbite
+    ShuttleCall,
 }
 
 /// <summary>

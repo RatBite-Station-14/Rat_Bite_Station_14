@@ -43,7 +43,8 @@ namespace Content.Client.Voting.UI
             { StandardVoteType.Restart, new CreateVoteOption("ui-vote-type-restart", new(), false, null) },
             { StandardVoteType.Preset, new CreateVoteOption("ui-vote-type-gamemode", new(), false, null) },
             { StandardVoteType.Map, new CreateVoteOption("ui-vote-type-map", new(), false, null) },
-            { StandardVoteType.Votekick, new CreateVoteOption("ui-vote-type-votekick", new(), true, 0) }
+            { StandardVoteType.Votekick, new CreateVoteOption("ui-vote-type-votekick", new(), true, 0) },
+            { StandardVoteType.ShuttleCall, new CreateVoteOption("ui-vote-type-shuttle", new(), false, null) } // Ratbite
         };
 
         public Dictionary<string, string> VotekickReasons = new Dictionary<string, string>()

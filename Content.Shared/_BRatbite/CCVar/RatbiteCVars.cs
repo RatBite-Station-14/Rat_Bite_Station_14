@@ -29,4 +29,11 @@ public sealed partial class RatbiteCVars
     public static readonly CVarDef<float> PointerScale = CVarDef.Create("accessibility.pointer_scale", 1f, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     public static readonly CVarDef<bool> PointerOutline = CVarDef.Create("accessibility.pointer_outline", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    public static readonly CVarDef<bool> VoteShuttleCallEnabled =
+        CVarDef.Create("vote.shuttle_call_enabled", true, CVar.SERVERONLY);
+    public static readonly CVarDef<float> VoteShuttleRequiredRatio =
+        CVarDef.Create("vote.shuttle_call_required_ratio", 0.7f, CVar.SERVERONLY);
+    public static readonly CVarDef<float> VoteShuttleCooldownMinutes =
+        CVarDef.Create("vote.shuttle_call_cooldown_minutes", 10f, CVar.SERVERONLY);
 }
