@@ -71,6 +71,7 @@
     layoutId: FireAlarm
   - type: Sprite
     sprite: Structures/Wallmounts/air_monitors.rsi
+    offset: 0, -0.10
     layers:
     - state: fire0
       map: ["fireAlarmBase"]
@@ -118,6 +119,7 @@
   components:
   - type: Sprite
     sprite: Structures/Wallmounts/air_monitors.rsi
+    offset: 0, -0.10
     layers:
     - state: fire_b1
       map: [ "enum.ConstructionVisuals.Layer" ]
