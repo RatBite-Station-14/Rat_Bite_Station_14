@@ -1,0 +1,7 @@
+- type: entity
+  id: HopUniformPrinter
+  parent: UniformPrinter
+  suffix: Hop Access
+  components:
+  - type: AccessReader # Ratbite: Add access reader to fabs
+    access: [["HeadOfPersonnel"]]

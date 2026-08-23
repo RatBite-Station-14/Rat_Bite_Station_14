@@ -1012,3 +1012,6 @@ HandheldHealthAnalyzerEmpty: HandheldHealthAnalyzer
 
 #2026-01-09
 BorgModuleAdvancedChemical: BorgModuleAdvancedTopical
+
+#2026-08-23 Ratbite: Make all mapped uniform printers start with hop access
+UniformPrinter: HopUniformPrinter

@@ -70,6 +70,8 @@
         - RawMaterial
         - Ingot
         - SheetPlasma
+  - type: AccessReader # Ratbite: Add access reader to fabs
+    access: [["Engineering"]]
 
 - type: entity
   id: CargoTechFab
@@ -137,6 +139,8 @@
         - RawMaterial
         - Ingot
         - SheetPlasma
+  - type: AccessReader # Ratbite: Add access reader to fabs
+    access: [["Cargo"]]
 
 - type: entity
   id: ScienceTechFab
@@ -231,6 +235,8 @@
         - RawMaterial
         - Ingot
         - SheetPlasma
+  - type: AccessReader # Ratbite: Add access reader to fabs
+    access: [["Research"]]
 
 - type: entity
   id: ServiceTechFab
@@ -295,6 +301,8 @@
         - RawMaterial
         - Ingot
         - SheetPlasma
+  - type: AccessReader # Ratbite: Add access reader to fabs
+    access: [["Service"]]
 
 - type: entity
   id: ERTTechFab
@@ -333,3 +341,5 @@
           - RawMaterial
           - Ingot
           - SheetPlasma
+    - type: AccessReader # Ratbite: Add access reader to fabs
+      access: [["CentralCommand"]]
