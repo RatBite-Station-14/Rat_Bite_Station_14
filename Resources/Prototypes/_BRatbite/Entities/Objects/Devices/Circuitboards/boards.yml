@@ -1,0 +1,53 @@
+- type: entity
+  id: EnergySodaDispenserMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: energy soda dispenser machine board
+  description: A machine printed circuit board for an energy chem dispenser.
+  components:
+    - type: Sprite
+      state: service
+    - type: MachineBoard
+      prototype: EnergySodaDispenser
+      stackRequirements:
+        Manipulator: 1
+        Glass: 1
+        Steel: 3
+      tagRequirements:
+        GlassBeaker:
+          amount: 2
+          defaultPrototype: Beaker
+
+- type: entity
+  id: EnergyBoozeDispenserMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: energy booze dispenser machine board
+  description: A machine printed circuit board for an energy chem dispenser.
+  components:
+    - type: Sprite
+      state: service
+    - type: MachineBoard
+      prototype: EnergyBoozeDispenser
+      stackRequirements:
+        Manipulator: 1
+        Glass: 1
+        Steel: 3
+      tagRequirements:
+        GlassBeaker:
+          amount: 2
+          defaultPrototype: Beaker
+
+- type: latheRecipe
+  id: EnergySodaDispenserMachineCircuitboard
+  parent: BaseGoldCircuitboardRecipe
+  result: EnergySodaDispenserMachineCircuitboard
+  icon:
+    sprite: Structures/smalldispensers.rsi
+    state: soda
+
+- type: latheRecipe
+  id: EnergyBoozeDispenserMachineCircuitboard
+  parent: BaseGoldCircuitboardRecipe
+  result: EnergyBoozeDispenserMachineCircuitboard
+  icon:
+    sprite: Structures/smalldispensers.rsi
+    state: booze

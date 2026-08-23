@@ -1,0 +1,144 @@
+- type: entity
+  id: BaseEnergyDispenser
+  abstract: true
+  parent: SmallConstructibleMachine
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25, -0.4, 0.25, 0.4"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Battery
+    netsync: false
+    maxCharge: 1500
+    startingCharge: 0
+  - type: ApcPowerReceiverBattery
+    idleLoad: 65
+    batteryRechargeRate: 30
+    batteryRechargeEfficiency: 1.0
+  - type: ApcPowerReceiver
+    powerLoad: 65
+  - type: ExtensionCableReceiver
+  - type: Anchorable
+  - type: Pullable
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:ChangeConstructionNodeBehavior
+        node: machineFrame
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      energyBeakerSlot: !type:ContainerSlot
+      storagebase: !type:Container
+  - type: StaticPrice
+    price: 1000
+  - type: WiresPanel
+  - type: ActivatableUI
+    key: enum.EnergyReagentDispenserUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.EnergyReagentDispenserUiKey.Key:
+        type: EnergyReagentDispenserBoundUserInterface
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: EnergyReagentDispenser
+    energyBeakerSlot:
+      whitelistFailPopup: reagent-dispenser-component-cannot-put-entity-message
+      whitelist:
+        components:
+        - FitsInDispenser
+
+- type: entity
+  id: EnergyBoozeDispenser
+  parent: [BaseBoozeDispenser, BaseEnergyDispenser]
+  name: energy booze dispenser
+  suffix: ""
+  description: A bluespace booze dispenser that uses station energy to synthesize alcohol.
+  components:
+  - type: Machine
+    board: EnergyBoozeDispenserMachineCircuitboard
+  - type: EnergyReagentDispenser
+    energyBeakerSlot:
+      whitelistFailPopup: reagent-dispenser-component-cannot-put-entity-message
+      whitelist:
+        components:
+        - FitsInDispenser
+    reagents:
+      Ale: 10
+      Beer: 10
+      CoffeeLiqueur: 15
+      Cognac: 15
+      Gin: 9
+      Mead: 15
+      Rum: 5
+      Tequila: 20
+      Vermouth: 20
+      Vodka: 5
+      Whiskey: 5
+      Wine: 25
+
+- type: entity
+  id: EnergySodaDispenser
+  parent: [BaseSodaDispenser, BaseEnergyDispenser]
+  name: energy soda dispenser
+  suffix: ""
+  description: A bluespace soda dispenser that uses staiton energy to synthesize drinks.
+  components:
+  - type: Machine
+    board: EnergySodaDispenserMachineCircuitboard
+  - type: EnergyReagentDispenser
+    energyBeakerSlot:
+      whitelistFailPopup: reagent-dispenser-component-cannot-put-entity-message
+      whitelist:
+        components:
+        - FitsInDispenser
+    reagents:
+      CoconutWater: 5
+      Coffee: 10
+      Cola: 10
+      Cream: 20
+      DrGibb: 20
+      EnergyDrink: 15
+      GreenTea: 7
+      Ice: 40
+      JuiceLime: 10
+      JuiceOrange: 10
+      LemonLime: 5
+      RootBeer: 5
+      SodaWater: 20
+      SpaceMountainWind: 20
+      SpaceUp: 10
+      Sugar: 5
+      Tea: 30
+      TonicWater: 10
+      WaterMelon: 5
+      Blood: 80
+      Slime: 80

@@ -1012,3 +1012,10 @@ HandheldHealthAnalyzerEmpty: HandheldHealthAnalyzer
 
 #2026-01-09
 BorgModuleAdvancedChemical: BorgModuleAdvancedTopical
+
+# 2026-01-10 Goobstation Change Mapped Chem to Energy Chem by default
+ChemDispenser: EnergyChemDispenser
+
+# 2026-08-12 Ratbite: Booze and soda dispensers
+BoozeDispenser: EnergyBoozeDispenser
+SodaDispenser: EnergySodaDispenser

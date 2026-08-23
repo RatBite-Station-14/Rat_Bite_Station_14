@@ -1,22 +1,17 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
+# Ratbite: split yaml
 - type: entity
-  parent: ReagentDispenserBase
-  id: SodaDispenserEmpty
+  abstract: true
+  id: BaseSodaDispenser
   name: soda dispenser
   description: A beverage dispenser with a selection of soda and several other common beverages. Has a single fill slot for containers.
-  suffix: Empty
   components:
   - type: Rotatable
   - type: Sprite
     sprite: Structures/smalldispensers.rsi
     drawdepth: SmallObjects
     state: soda
-  - type: Storage
-    openOnActivate: false
-    whitelist:
-      tags:
-      - DrinkBottle
   - type: Transform
     noRot: false
   - type: Machine
@@ -25,6 +20,11 @@
     guides:
     - Bartender
     - Drinks
+
+- type: entity
+  id: SodaDispenserEmpty
+  parent: [BaseSodaDispenser, ReagentDispenserBase]
+  suffix: Empty
 
 - type: entity
   parent: SodaDispenserEmpty
