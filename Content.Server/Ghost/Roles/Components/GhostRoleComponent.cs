@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Server.Ghost.Roles.Raffles;
 using Content.Server.Mind.Commands;
 using Content.Shared.Roles;
@@ -14,12 +16,6 @@ public sealed partial class GhostRoleComponent : Component
     [DataField("description")] private string _roleDescription = "Unknown";
 
     [DataField("rules")] private string _roleRules = "ghost-role-component-default-rules";
-
-    // Actually make use of / enforce this requirement?
-    // Why is this even here.
-    // Move to ghost role prototype & respect CCvars.GameRoleTimerOverride
-    [DataField("requirements")]
-    public HashSet<JobRequirement>? Requirements;
 
     /// <summary>
     /// Whether the <see cref="MakeSentientCommand"/> should run on the mob.

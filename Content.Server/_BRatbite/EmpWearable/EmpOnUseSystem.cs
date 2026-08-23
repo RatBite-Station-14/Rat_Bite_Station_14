@@ -32,7 +32,7 @@ public sealed class EmpOnUseSystem : EntitySystem
 
         EmpAllItemsInEntsContainers(ent, target);
 
-        _empSystem.TryEmpEffects(target, ent.Comp.EmpDrain, ent.Comp.EmpDuration);
+        _empSystem.TryEmpEffects(target, ent.Comp.EmpDrain, TimeSpan.FromSeconds(ent.Comp.EmpDuration));
 
         Spawn(EmpSystem.EmpPulseEffectPrototype, Transform(target).Coordinates);
         _audioSystem.PlayPvs(ent.Comp.EmpSound, ent);
@@ -48,7 +48,7 @@ public sealed class EmpOnUseSystem : EntitySystem
         foreach (var container in containers)
             foreach (var entity in container.ContainedEntities)
             {
-                _empSystem.TryEmpEffects(entity, ent.Comp.EmpDrain, ent.Comp.EmpDuration);
+                _empSystem.TryEmpEffects(entity, ent.Comp.EmpDrain, TimeSpan.FromSeconds(ent.Comp.EmpDuration));
                 EmpAllItemsInEntsContainers(ent, entity);
             }
     }

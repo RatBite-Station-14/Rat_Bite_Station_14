@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
@@ -38,6 +31,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using Content.Goobstation.Shared.Changeling.Components;
+using Content.Goobstation.Shared.Slasher.Components;
 
 namespace Content.Goobstation.Server.Devil.Contract;
 
@@ -68,7 +62,7 @@ public sealed partial class DevilContractSystem : EntitySystem
         SubscribeLocalEvent<DevilContractComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<DevilContractComponent, GetVerbsEvent<AlternativeVerb>>(OnGetVerbs);
         SubscribeLocalEvent<DevilContractComponent, SignSuccessfulEvent>(OnSignStep);
-        SubscribeLocalEvent<DevilContractComponent, AfterFullyEatenEvent>(OnEaten);
+        SubscribeLocalEvent<DevilContractComponent, FullyEatenEvent>(OnEaten);
 
         _sawmill = Logger.GetSawmill("devil-contract");
     }
@@ -133,7 +127,7 @@ public sealed partial class DevilContractSystem : EntitySystem
         args.PushMarkup(Loc.GetString("devil-contract-examined", ("weight", contract.Comp.ContractWeight)));
     }
 
-    private void OnEaten(Entity<DevilContractComponent> contract, ref AfterFullyEatenEvent args)
+    private void OnEaten(Entity<DevilContractComponent> contract, ref FullyEatenEvent args)
     {
         _explosion.QueueExplosion(
             args.User,
@@ -246,8 +240,9 @@ public sealed partial class DevilContractSystem : EntitySystem
         if (HasComp<CondemnedComponent>(user)
             || HasComp<SiliconComponent>(user)
             || HasComp<DroneComponent>(user)
-            || HasComp<ChangelingIdentityComponent>(user)
-            || HasComp<BorgChassisComponent>(user))
+            || HasComp<ChangelingComponent>(user)
+            || HasComp<BorgChassisComponent>(user)
+            || HasComp<SoullessComponent>(user))
         {
             failReason = Loc.GetString("devil-contract-no-soul-sign-failed");
             return false;
@@ -271,8 +266,12 @@ public sealed partial class DevilContractSystem : EntitySystem
     }
     public bool TryTransferSouls(EntityUid devil, EntityUid contractee, int added)
     {
+        if (TerminatingOrDeleted(contractee))
+            return false;
+
         // Can't sell what doesn't exist.
         if (HasComp<CondemnedComponent>(contractee)
+            || HasComp<SoullessComponent>(contractee)
             || devil == contractee)
             return false;
 
@@ -365,6 +364,9 @@ public sealed partial class DevilContractSystem : EntitySystem
     private void ApplyEffectToTarget(EntityUid target, DevilClausePrototype clause, Entity<DevilContractComponent>? contract)
     {
         //_sawmill.Debug($"Applying {clause.ID} effect to {ToPrettyString(target)}");
+
+        if (TerminatingOrDeleted(target))
+            return;
 
         DoPolymorphs(target, clause);
 

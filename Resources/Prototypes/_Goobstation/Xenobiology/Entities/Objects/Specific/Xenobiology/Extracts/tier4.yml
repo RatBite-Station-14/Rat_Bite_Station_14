@@ -36,8 +36,7 @@
       - !type:Jitter
         time: 5
         frequency: 20
-      - !type:ExplosionReactionEffect
-        delay: 5
+      - !type:Explosion
         explosionType: FireBomb # bomboclat
         maxIntensity: 1050
         intensitySlope: 4
@@ -111,7 +110,7 @@
         frequency: 20
       - !type:ScrambleNearbyEffect
         radius: 3
-        delay: 3
+        # delay: 3 # Ratbite: this doesn't exist
   - type: Tag
     tags:
     - XenobiologyLightPinkExtract
@@ -183,7 +182,7 @@
       - !type:MakeUnreactiveEntityEffect
       - !type:CreateGas
         gas: Healium
-        multiplier: 55
+        moles: 55
       - !type:PlaySoundEffect
         sound: /Audio/Effects/Chemistry/bubbles.ogg
     - reagents: [ Plasma ]
@@ -195,9 +194,10 @@
         messages: [ "xeno-extract-reaction" ]
       - !type:PlaySoundEffect
         sound: /Audio/Effects/Chemistry/bubbles.ogg
-      - !type:CreateEntityReactionEffect
+      - !type:SpawnEntity
         entity: XenobioAdamantineBar
         number: 1
+        shouldScale: false
     - reagents: [ Blood ]
       methods: [ Touch, Injection ]
       effects:

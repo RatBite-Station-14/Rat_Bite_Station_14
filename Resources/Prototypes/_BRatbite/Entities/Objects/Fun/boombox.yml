@@ -13,7 +13,7 @@
     selectState: select
   - type: Item
     size: Normal
-    sprite: _BRatBites/Objects/Fun/moblilespeaker.rsi
+    sprite: _BRatBites/Objects/Fun/mobilespeaker.rsi
   - type: ActivatableUI
     key: enum.JukeboxUiKey.Key
   - type: UserInterface

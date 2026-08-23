@@ -1,23 +1,3 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 Ygg01 <y.laughing.man.y@gmail.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Krunklehorn <42424291+Krunklehorn@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 to4no_fix <156101927+chavonadelal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Marty <martynashagriefer@gmail.com>
-// SPDX-FileCopyrightText: 2025 Martynas6ha4 <martynashagriefer@gmail.com>
-// SPDX-FileCopyrightText: 2025 NotActuallyMarty <martynashagriefer@gmail.com>
-// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 // SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
@@ -194,7 +174,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
 
         if (comp.StripDelay == null)
             return;
-        var (time, stealth, _) = _strippable.GetStripTimeModifiers(user, wearer, acomp.AttachedUid, comp.StripDelay.Value*3/4); // 3/4's of toggleable
+        var (time, stealth, _) = _strippable.GetStripTimeModifiers(user, wearer, acomp.AttachedUid, comp.StripDelay.Value * 3 / 4); // 3/4's of toggleable
 
         var args = new DoAfterArgs(EntityManager, user, time, new AttachClothingDoAfterEvent(), attached, wearer, attached)
         {
@@ -246,7 +226,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
     }
 
     public bool IsToggled(Entity<ToggleableClothingComponent> ent, EntityUid clothing) // Goobstation
-///
+    ///
     {
         return !ent.Comp.Container.Contains(clothing);
     }
@@ -308,6 +288,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
 
         var parts = comp.ClothingUids;
         var affectedParts = new List<(EntityUid, string)>();
+        var suitStorageItem = FindSuitStorage(args.Equipee);
 
         // if your toggleable clothing is a backslot and gets forcefully removed i.e. gibbing, Robust likes to forcefully eject the container(s)
         // you can try this by making a regular outerclothing item a back item with VV and equipping the toggle, then smiting yourself
@@ -340,8 +321,10 @@ public sealed class ToggleableClothingSystem : EntitySystem
                 var ev = new ToggledBackClothingFullUnequipAndInsertedEvent(toggleable.Owner, args.Equipee, affectedParts);
                 RaiseLocalEvent(toggleable.Owner, ref ev);
             }
+            ForceSuitStorage(args.Equipee, suitStorageItem);
             return;
         }
+
 
         foreach (var (partUid, slot) in parts)
         {
@@ -350,6 +333,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
 
             _inventorySystem.TryUnequip(args.Equipee, slot, force: true, triggerHandContact: true);
         }
+        ForceSuitStorage(args.Equipee, suitStorageItem);
     }
 
     private void OnRemoveToggleable(Entity<ToggleableClothingComponent> toggleable, ref ComponentRemove args)
@@ -447,7 +431,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
         if (!TryComp(comp.AttachedUid, out ToggleableClothingComponent? toggleableComp))
             return;
 
-        if (toggleableComp.LifeStage > ComponentLifeStage.Running)
+        if (LifeStage(attached.Comp.AttachedUid) > EntityLifeStage.MapInitialized) // Goobstation
             return;
 
         // As unequipped gets called in the middle of container removal, we cannot call a container-insert without causing issues.
@@ -530,13 +514,14 @@ public sealed class ToggleableClothingSystem : EntitySystem
     /// </summary>
     private void ToggleClothing(EntityUid user, Entity<ToggleableClothingComponent> toggleable, EntityUid attachedUid)
     {
+        // Ratbite: put check at the start to fix unequip
+        if (!CanToggleClothing(user, toggleable, false))
+            return;
+
         var suitStorageItem = FindSuitStorage(user);
         var comp = toggleable.Comp;
         var attachedClothings = comp.ClothingUids;
         var container = comp.Container;
-
-        if (!CanToggleClothing(user, toggleable, false))
-            return;
 
         if (!attachedClothings.TryGetValue(attachedUid, out var slot) || string.IsNullOrEmpty(slot))
             return;
@@ -544,13 +529,12 @@ public sealed class ToggleableClothingSystem : EntitySystem
         if (!container!.Contains(attachedUid))
         {
             UnequipClothing(user, toggleable, attachedUid, slot!);
-            ForceSuitStorage(user, suitStorageItem);
         }
         else
         {
             EquipClothing(user, toggleable, attachedUid, slot!);
-            ForceSuitStorage(user, suitStorageItem);
         }
+        ForceSuitStorage(user, suitStorageItem);
     }
 
     /// <summary>
@@ -564,14 +548,13 @@ public sealed class ToggleableClothingSystem : EntitySystem
 
         if (!CanToggleClothing(user, toggleable, true))
             return;
-
+        var suitStorageItem = FindSuitStorage(user);
         if (GetAttachedToggleStatus(user, toggleable, false, comp) == ToggleableClothingAttachedStatus.NoneToggled)
         {
             foreach (var clothing in attachedClothings)
             {
-                var suitStorageItem = FindSuitStorage(user);
                 EquipClothing(user, toggleable, clothing.Key, clothing.Value);
-                ForceSuitStorage(user, suitStorageItem);
+
             }
         }
         else
@@ -580,12 +563,11 @@ public sealed class ToggleableClothingSystem : EntitySystem
             {
                 if (!container!.Contains(clothing.Key))
                 {
-                    var suitStorageItem = FindSuitStorage(user);
                     UnequipClothing(user, toggleable, clothing.Key, clothing.Value);
-                    ForceSuitStorage(user, suitStorageItem);
                 }
             }
         }
+        ForceSuitStorage(user, suitStorageItem);
     }
 
     private bool CanToggleClothing(EntityUid user, Entity<ToggleableClothingComponent> toggleable, bool multiple)
@@ -629,7 +611,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
         var storedClothing = attachedComp.ClothingContainer.ContainedEntity;
 
         if (storedClothing != null)
-            _inventorySystem.TryEquip(parent, storedClothing.Value, slot, force: true, triggerHandContact: true, silent:true);
+            _inventorySystem.TryEquip(parent, storedClothing.Value, slot, force: true, triggerHandContact: true, silent: true);
     }
     public bool EquipClothing(EntityUid user, Entity<ToggleableClothingComponent> toggleable, EntityUid clothing, string slot, bool silent = false) // Goobstation
     {

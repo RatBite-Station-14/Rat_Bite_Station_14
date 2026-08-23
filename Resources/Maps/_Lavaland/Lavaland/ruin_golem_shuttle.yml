@@ -3447,7 +3447,7 @@ entities:
     - type: Transform
       pos: -13.014347,7.498024
       parent: 1
-- proto: WeaponCrusherGlaive
+- proto: WeaponCrusher
   entities:
   - uid: 527
     components:

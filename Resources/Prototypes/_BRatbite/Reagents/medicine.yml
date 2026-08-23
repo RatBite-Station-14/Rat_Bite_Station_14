@@ -13,13 +13,13 @@
         - !type:AdjustBoneDamage
           amount: -10
           conditions:
-          - !type:Temperature
+          - !type:TemperatureCondition
             max: 213.0
         - !type:HealthChange
           conditions:
-          - !type:OrganType
-            type: Yowie
-            shouldHave: false
+          - !type:MetabolizerTypeCondition
+            type: [Yowie]
+            inverted: true
           damage:
             types:
               Poison: 0.5
@@ -40,39 +40,39 @@
         key: KetamineSlurredSpeech
         component: KetamineSlurredAccent
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Charcoal
           max: 9.99
         time: 60
-        refresh: false
+        # refresh: false
       - !type:ModifyStatusEffect
         effectProto: StatusEffectSeeingRainbow
         time: 16
         type: Add
-        refresh: true
+        # refresh: true
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Charcoal
           max: 9.99
       - !type:Drunk
         boozePower: 3
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Charcoal
           max: 9.99
-      - !type:MovespeedModifier
+      - !type:MovementSpeedModifier
         walkSpeedModifier: 0.5
         sprintSpeedModifier: 0.5
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Charcoal
           max: 9.99
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Ketamine
           min: 15
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Charcoal
           max: 9.99
         damage:
@@ -82,15 +82,15 @@
         key: KetamineSedation
         component: KetamineSedation
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Charcoal
           max: 9.99
         time: 60
-        refresh: false
+        # refresh: false
       - !type:GenericStatusEffect
         key: KetamineSedation
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Charcoal
           min: 10
         time: 300
@@ -98,7 +98,7 @@
       - !type:GenericStatusEffect
         key: KetamineSlurredSpeech
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Charcoal
           min: 10
         time: 300
@@ -121,14 +121,16 @@
               Brute: -3 #changed from -2.5 to -3 so that it is faster healing than bic
         - !type:HealthChange
           conditions:
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
+            reagent: Libital
             min: 20
           damage:
             types:
               Heat: 1
         - !type:Jitter
           conditions:
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
+            reagent: Libital
             min: 20
 
 - type: reagent
@@ -144,7 +146,8 @@
       effects:
         - !type:HealthChange
           conditions: # yes i know i can just make it do more for OD, but this makes it more understandable in the guidebook
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
+            reagent: Lenturi
             max: 20
           damage:
             types:
@@ -153,7 +156,8 @@
               Cold: -0.8
         - !type:HealthChange
           conditions:
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
+            reagent: Lenturi
             min: 20
           damage:
             types:
@@ -162,12 +166,14 @@
               Cold: -1.2
         - !type:SatiateThirst
           conditions:
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
+            reagent: Lenturi
             min: 20
           factor: -4
         - !type:Jitter
           conditions:
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
+            reagent: Lenturi
             min: 20
 
 - type: reagent
@@ -205,14 +211,16 @@
               Brute: -0.6
             types:
               Poison: -0.1
-        - !type:ChemVomit
+        - !type:Vomit
           conditions:
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
+            reagent: Caridine
             max: 50
           probability: 0.1 # changed from 0.5 to 0.1
-        - !type:ChemVomit
+        - !type:Vomit
           conditions:
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
+            reagent: Caridine
             min: 50
           probability: 0.2
         - !type:Drunk
@@ -230,46 +238,47 @@
       effects:
         - !type:HealthChange
           conditions:
-          - !type:OrganType
-            type: Human
+          - !type:MetabolizerTypeCondition
+            type: [Human]
           damage:
             groups:
               Airloss: -14 # matches description better than just Bloodloss
         - !type:HealthChange
           conditions:
-          - !type:OrganType
-            type: Human
-            shouldHave: false
-          - !type:OrganType
-            type: Yowie
-            shouldHave: false
+          - !type:MetabolizerTypeCondition
+            type: [Human]
+            inverted: true
+          - !type:MetabolizerTypeCondition
+            type: [Yowie]
+            inverted: true
           damage:
             types:
               Poison: 2
         - !type:HealthChange # yeah i know this is goida code, dont care
           conditions:
-          - !type:OrganType
-            type: Vox
+          - !type:MetabolizerTypeCondition
+            type: [Vox]
           damage:
             types:
               Asphyxiation: 4
         - !type:HealthChange
           conditions:
-          - !type:OrganType
-            type: Slime
+          - !type:MetabolizerTypeCondition
+            type: [Slime]
           damage:
             types:
               Asphyxiation: 4
         - !type:HealthChange
           conditions:
-          - !type:OrganType
-            type: Resomi
+          - !type:MetabolizerTypeCondition
+            type: [Resomi]
           damage:
             types:
               Asphyxiation: 4
         - !type:HealthChange
           conditions:
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
+            reagent: Lectrazine
             min: 35
           damage:
             types:
@@ -280,10 +289,11 @@
           effectProto: StatusEffectDrowsiness
           time: 1.5
           type: Add
-          refresh: false
+          # refresh: false
         - !type:AdjustBoneDamage
           conditions:
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
+            reagent: Lectrazine
             min: 35
           amount: 1 # this displays wrong in guidebook AND in medtek AND in surgery UI, blame shitmed, too lazy to fix
 
@@ -307,7 +317,8 @@
               Cellular: -6
         - !type:HealthChange
           conditions:
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
+            reagent: Chornexalinn
             min: 4
           damage:
             types:
@@ -350,12 +361,11 @@
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        scaleByQuantity: true
         ignoreResistances: false
         ignoreBlockers: false
         damage:
           groups:
-            Brute: -1.5 
+            Brute: -1.5
           types:
             Heat: -0.5
             Cold: -0.5
@@ -364,14 +374,14 @@
         - !type:HasComponentOnEquipmentCondition
           components:
           - type: PressureProtection # can't get through this to reach the bodyparts!
-          invert: true
-      - !type:ModifyBleedAmount
+          inverted: true
+      - !type:ModifyBleed
         amount: -2
         conditions:
         - !type:HasComponentOnEquipmentCondition
           components:
           - type: PressureProtection
-          invert: true
+          inverted: true
   metabolisms:
     Poison:
       metabolismRate: 3
@@ -379,16 +389,16 @@
         - !type:HealthChange
           damage:
             groups:
-              Brute: -1.5 
+              Brute: -1.5
             types:
               Heat: -0.5
               Cold: -0.5
               Shock: -0.5
         - !type:HealthChange
           conditions:
-            - !type:OrganType
-              type: Yowie
-              shouldHave: false
+            - !type:MetabolizerTypeCondition
+              type: [Yowie]
+              inverted: true
           damage:
             types:
               Poison: 2
@@ -411,11 +421,12 @@
               Brute: -9
         - !type:HealthChange
           conditions:
-            - !type:ReagentThreshold
+            - !type:ReagentCondition
+              reagent: Granitbitulari
               min: 15
-            - !type:OrganType
-              type: Yowie
-              shouldHave: false
+            - !type:MetabolizerTypeCondition
+              type: [Yowie]
+              inverted: true
           damage:
             types:
               Poison: 2
@@ -438,11 +449,12 @@
               Burn: -12
         - !type:HealthChange
           conditions:
-            - !type:ReagentThreshold
+            - !type:ReagentCondition
+              reagent: Revivopine
               min: 15
-            - !type:OrganType
-              type: Yowie
-              shouldHave: false
+            - !type:MetabolizerTypeCondition
+              type: [Yowie]
+              inverted: true
           damage:
             types:
               Poison: 2
@@ -461,11 +473,13 @@
       effects:
       - !type:SexChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: AllInOneGenderAffirmingHormone
           min: 20
       - !type:AdjustReagent
         reagent: AllInOneGenderAffirmingHormone
         amount: -50.0
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: AllInOneGenderAffirmingHormone
           min: 20

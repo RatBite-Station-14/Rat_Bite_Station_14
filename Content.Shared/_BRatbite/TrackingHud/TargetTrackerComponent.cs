@@ -25,6 +25,12 @@ public enum ListeningChannels : byte
     NONE = 0,
     SECURITY = 1 << 0,
     SILICON = 1 << 1,
+    CARGO = 1 << 2,
+    ENGINEERING = 1 << 3,
+    MEDICAL = 1 << 4,
+    SCIENCE = 1 << 5,
+
+    BSO = SECURITY | CARGO | ENGINEERING | MEDICAL | SCIENCE // All but silicon
 }
 
 [Serializable, NetSerializable, DataDefinition]

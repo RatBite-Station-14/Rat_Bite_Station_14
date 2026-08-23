@@ -1,9 +1,7 @@
-// SPDX-FileCopyrightText: 2025 Discoded <33738298+Discoded@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using System.Numerics;
 using Content.Client.Atmos.EntitySystems;
 using Content.Client.Stylesheets;
 using Content.Goobstation.Shared.Supermatter.Components;
@@ -73,7 +71,7 @@ public sealed partial class SupermatterEntryContainer : BoxContainer
             { "power",          new EngineBarEntry(PowerBarLabel,       PowerBar,       PowerBarBorder,         0.9f, 0.1f, green,      orange, red) },
             { "radiation",      new EngineBarEntry(RadiationBarLabel,   RadiationBar,   RadiationBarBorder,     0.1f, 0.9f, green,      orange, red) },
             { "moles",          new EngineBarEntry(MolesBarLabel,       MolesBar,       MolesBarBorder,         0.5f, 0.5f, green,      orange, red) },
-            { "temperature",    new EngineBarEntry(TemperatureBarLabel, TemperatureBar, TemperatureBarBorder,   0.5f, 0.5f, turqoise,   green,  red) }, 
+            { "temperature",    new EngineBarEntry(TemperatureBarLabel, TemperatureBar, TemperatureBarBorder,   0.5f, 0.5f, turqoise,   green,  red) },
             { "waste",          new EngineBarEntry(WasteBarLabel,       WasteBar,       WasteBarBorder,         0.5f, 0.5f, green,      orange, red) }
         };
     }
@@ -150,12 +148,12 @@ public sealed partial class SupermatterEntryContainer : BoxContainer
 
     private float GetStoredGas(GasPrototype gas, SupermatterFocusData? focusData)
     {
-        var id = int.Parse(gas.ID);
-
-        if (focusData == null)
+        if (focusData is null)
             return 0;
 
-        return focusData.Value.GasStorage[(Gas)id];
+        Gas id = (Gas) Enum.Parse(typeof(Gas), gas.ID);
+
+        return focusData.Value.GasStorage[id];
     }
 
     private void UpdateEngineBar(ProgressBar bar, PanelContainer border, float value, float leftSize, float rightSize, Color leftColor, Color middleColor, Color rightColor)

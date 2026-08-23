@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: CrateSecgear
+  id: CrateCombatTrainingBook
+  name: combat training book crate
+  description: Contains a guide for training cadets in close-quarters combat. Requires Security access to open.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: BookCombatTraining

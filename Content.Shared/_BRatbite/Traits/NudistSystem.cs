@@ -1,4 +1,5 @@
 using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Events;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
@@ -9,8 +10,6 @@ namespace Content.Shared._BRatbite.Traits;
 public sealed partial class NudistSystem : EntitySystem
 {
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
-    [Dependency] private readonly SharedStaminaSystem _staminaSystem = default!;
-
     public override void Initialize()
     {
         base.Initialize();
@@ -18,6 +17,7 @@ public sealed partial class NudistSystem : EntitySystem
         SubscribeLocalEvent<NudistComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<NudistComponent, DidEquipEvent>(OnRecomputeNeeded);
         SubscribeLocalEvent<NudistComponent, DidUnequipEvent>(OnRecomputeNeeded);
+        SubscribeLocalEvent<StaminaModifierComponent, BeforeStaminaDamageEvent>(OnBeforeStaminaDamage);
     }
 
     private void OnRefreshMovementSpeed(Entity<NudistComponent> ent, ref RefreshMovementSpeedModifiersEvent args)
@@ -37,7 +37,13 @@ public sealed partial class NudistSystem : EntitySystem
         }
         Dirty(ent, ent.Comp);
         var stamMod = EnsureComp<StaminaModifierComponent>(ent);
-        _staminaSystem.SetModifier(ent.Owner, ent.Comp.CachedModifier.StaminaModifier, null, stamMod);
+        stamMod.Modifier = ent.Comp.CachedModifier.StaminaModifier;
+        Dirty(ent.Owner, stamMod);
+    }
+
+    private void OnBeforeStaminaDamage(Entity<StaminaModifierComponent> ent, ref BeforeStaminaDamageEvent args)
+    {
+        args.Value *= ent.Comp.Modifier;
     }
 
     private void OnMapInit(Entity<NudistComponent> ent, ref MapInitEvent args)

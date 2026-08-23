@@ -26195,26 +26195,17 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -4.5,-15.5
       parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
   - uid: 4332
     components:
     - type: Transform
       pos: 16.5,25.5
       parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
   - uid: 4333
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 12.5,-2.5
       parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
 - proto: ComputerCriminalRecords
   entities:
   - uid: 4334
@@ -26908,9 +26899,6 @@ entities:
     - type: Transform
       pos: -23.5,11.5
       parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
 - proto: CrowbarOrange
   entities:
   - uid: 4412
@@ -30857,10 +30845,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 16.5,-19.5
       parent: 2
-    - type: UserInterface
-      actors:
-        enum.StorageUiKey.Key:
-        - invalid
     - type: Storage
       storedItems:
         4303:
@@ -32934,8 +32918,6 @@ entities:
       pos: -26.5,-4.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 55
       - 5194
@@ -32956,8 +32938,6 @@ entities:
       pos: -21.5,-18.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 55
       - 5194
@@ -33224,8 +33204,6 @@ entities:
       pos: 25.5,-32.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 42
       - 5188
@@ -33238,8 +33216,6 @@ entities:
       pos: 27.5,-32.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 42
       - 5188
@@ -33630,8 +33606,6 @@ entities:
       pos: 18.5,1.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 56
       - 5143
@@ -33643,8 +33617,6 @@ entities:
       pos: 23.5,-3.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 7
       - 5193
@@ -33656,8 +33628,6 @@ entities:
       pos: 23.5,-2.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 7
       - 5193
@@ -33693,8 +33663,6 @@ entities:
       pos: 3.5,-3.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 7
       - 5193
@@ -33706,8 +33674,6 @@ entities:
       pos: 3.5,-2.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 7
       - 5193
@@ -45336,8 +45302,6 @@ entities:
       pos: -20.5,-16.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 55
       - 5194
@@ -45407,8 +45371,6 @@ entities:
     - type: AtmosPipeColor
       color: '#0335FCFF'
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 5
       - 5156
@@ -45893,8 +45855,6 @@ entities:
       pos: 18.5,3.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 5143
       - 56
@@ -46005,8 +45965,6 @@ entities:
     - type: AtmosPipeColor
       color: '#0335FCFF'
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 51
       - 5152
@@ -46279,8 +46237,6 @@ entities:
     - type: AtmosPipeColor
       color: '#FF1212FF'
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 5
       - 5156
@@ -46548,8 +46504,6 @@ entities:
       pos: -30.5,-5.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 55
       - 5194
@@ -46770,8 +46724,6 @@ entities:
       pos: 18.5,2.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 5143
       - 56
@@ -46880,8 +46832,6 @@ entities:
     - type: AtmosPipeColor
       color: '#FF1212FF'
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 51
       - 5152

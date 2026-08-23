@@ -5,6 +5,9 @@ namespace Content.Shared._BRatbite.PermaBrig;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class PrisonerComponent : Component
 {
+    // The original mind created for this prisoner spawn.
+    [DataField]
+    public EntityUid? OriginalMindId;
 
     [DataField]
     [AutoNetworkedField]

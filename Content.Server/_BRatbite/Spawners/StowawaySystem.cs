@@ -6,6 +6,7 @@ using Content.Shared.Cuffs;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Inventory;
+using Content.Shared.Storage.Components;
 using Robust.Server.Containers;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;

@@ -7,18 +7,7 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 ## This is for Nyano and Delta V tags
-
-- type: Tag
-  id: HidesHarpyWings
-
-- type: Tag
-  id: BionicSyrinxImplant
-
-- type: Tag
-  id: Skirt
-
-- type: Tag
-  id: PreventLabel
+## HidesHarpyWings, BionicSyrinxImplant, Skirt and PreventLabel live in _DV/tags.yml
 
 - type: Tag
   id: CartridgeSpecial # For the .38 special ammo and revolver

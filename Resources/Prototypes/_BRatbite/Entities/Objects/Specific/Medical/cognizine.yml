@@ -1,0 +1,14 @@
+- type: entity
+  suffix: cognizine
+  parent: PrefilledSyringe
+  id: SyringeCognizine
+  components:
+  - type: Label
+    currentLabel: reagent-name-cognizine
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 15
+        reagents:
+        - ReagentId: Cognizine
+          Quantity: 15

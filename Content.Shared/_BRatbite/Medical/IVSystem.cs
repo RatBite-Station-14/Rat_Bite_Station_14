@@ -127,7 +127,7 @@ public sealed partial class IVSystem : EntitySystem
         if (target != null)
         {
             visuals.Sprite = ent.Comp.LineSprite;
-            visuals.Target = GetNetEntity(target);
+            visuals.Target = target;
         }
         else
         {

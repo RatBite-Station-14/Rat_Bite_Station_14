@@ -59,6 +59,7 @@
     defaultChannel: Binary
     channels:
     - Binary
+  - type: IntellicardableMind # Goobstation - intellicard on more AIs
   - type: Vocalizer
     minVocalizeInterval: 8m
     maxVocalizeInterval: 10m
@@ -396,6 +397,8 @@
     - PlushieWachtel
     - PlushieLeguia
     - PlushiePasha
+    - PlushieLeoMalone
+    - PlushieRedstonewolf
     evilRewards:
     - EvilPlushieXeve
     - EvilPlushieBoggle
@@ -409,4 +412,7 @@
     - EvilPlushieWachtel
     - EvilPlushieLeguia
     - EvilPlushiePasha
+    - EvilPlushieTwofish
+    - EvilPlushieLeoMalone
+    - EvilPlushieRedstonewolf
   - type: DoAfter

@@ -12,8 +12,8 @@
       effects:
       - !type:HealthChange
         conditions:
-        - !type:OrganType # Goobstation - Yowie
-          type: Yowie
+        - !type:MetabolizerTypeCondition # Goobstation - Yowie
+          type: [Yowie]
         damage:
           groups:
             Brute: -1
@@ -24,18 +24,19 @@
             Radiation: -0.5
       - !type:HealthChange
         conditions:
-          - !type:OrganType
-            type: Yowie
-            shouldHave: false
-          - !type:ReagentThreshold
+          - !type:MetabolizerTypeCondition
+            type: [Yowie]
+            inverted: true
+          - !type:ReagentCondition
+            reagent: Pump-up
             min: 20 #lowered from 30
         damage:
           types:
             Poison: 2
-      - !type:MovespeedModifier
+      - !type:MovementSpeedModifier
         walkSpeedModifier: 1.2 #changed from 1.1 on both to 1.2 so that it moves you faster than coffee. Ephedrine and desoxy's speed was changed to accommodate for this change
         sprintSpeedModifier: 1.2
-      - !type:Jitter 
+      - !type:Jitter
       - !type:GenericStatusEffect
         key: Stun
         time: 2 #controversial but needed. Closer to (now old) desoxy whilst being stupidly easy to make, balanced because it is consumed faster
@@ -44,7 +45,7 @@
         key: KnockedDown
         time: 2 #same here
         type: Remove
-      - !type:GenericStatusEffect 
+      - !type:GenericStatusEffect
         key: Adrenaline
         component: IgnoreSlowOnDamage
         time: 5
@@ -56,7 +57,8 @@
         time: 5
       - !type:TakeStaminaDamage
         conditions:
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
+            reagent: Pump-up
             min: 20 #lowered from 30
         amount: 8
         immediate: true

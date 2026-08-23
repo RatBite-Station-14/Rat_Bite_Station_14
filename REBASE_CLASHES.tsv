@@ -1,0 +1,501 @@
+conflict_kind	path
+both modified	.github/PULL_REQUEST_TEMPLATE.md
+both modified	.github/workflows/labeler-review.yml
+both modified	.github/workflows/publish.yml
+both modified	Content.Benchmarks/MapLoadBenchmark.cs
+deleted by us	Content.Client/_Lavaland/Weapons/Ranged/Upgrades/GunUpgradeSystem.cs
+both modified	Content.Client/Drunk/DrunkOverlay.cs
+both modified	Content.Client/Lobby/UI/HumanoidProfileEditor.xaml.cs
+both modified	Content.Client/Lobby/UI/Loadouts/LoadoutContainer.xaml.cs
+both modified	Content.Client/Lobby/UI/Loadouts/LoadoutGroupContainer.xaml.cs
+both modified	Content.Client/Lobby/UI/Roles/TraitPreferenceSelector.xaml
+both modified	Content.Client/Lobby/UI/Roles/TraitPreferenceSelector.xaml.cs
+both modified	Content.Client/Options/UI/Tabs/AccessibilityTab.xaml
+both modified	Content.Client/Paper/UI/PaperBoundUserInterface.cs
+both modified	Content.Client/Paper/UI/PaperWindow.xaml
+both modified	Content.Client/Paper/UI/PaperWindow.xaml.cs
+both modified	Content.Client/Salvage/UI/OfferingWindow.xaml
+both modified	Content.Client/Salvage/UI/OfferingWindow.xaml.cs
+both modified	Content.Client/Salvage/UI/OfferingWindowOption.xaml
+both modified	Content.Client/Salvage/UI/OfferingWindowOption.xaml.cs
+both modified	Content.Client/Salvage/UI/SalvageExpeditionConsoleBoundUserInterface.cs
+both modified	Content.Client/Salvage/UI/SalvageMagnetBoundUserInterface.cs
+both modified	Content.Client/Store/Ui/StoreListingControl.xaml.cs
+both modified	Content.Client/UserInterface/Systems/Ghost/Controls/GhostTargetWindow.xaml.cs
+both modified	Content.Client/UserInterface/Systems/Ghost/GhostUIController.cs
+both modified	Content.Client/UserInterface/Systems/Ghost/Widgets/GhostGui.xaml
+both modified	Content.Client/UserInterface/Systems/Ghost/Widgets/GhostGui.xaml.cs
+both added	Content.Goobstation.Client/Chemistry/UI/EnergyReagentCardControl.xaml.cs
+both added	Content.Goobstation.Client/Chemistry/UI/EnergyReagentDispenserBoundUserInterface.cs
+both added	Content.Goobstation.Client/Chemistry/UI/EnergyReagentDispenserWindow.xaml
+both added	Content.Goobstation.Client/Chemistry/UI/EnergyReagentDispenserWindow.xaml.cs
+deleted by them	Content.Goobstation.Client/NTR/Store/GoobStoreListingControl.xaml.cs
+deleted by them	Content.Goobstation.Client/Traitor/PenSpinBoundUserInterface.cs
+both modified	Content.Goobstation.Common/CCVar/CCVars.Goob.cs
+deleted by them	Content.Goobstation.Common/Conversion/ConversionEvents.cs
+deleted by them	Content.Goobstation.Common/Mind/MindEvents.cs
+deleted by us	Content.Goobstation.Common/Standing/DropBehaviorEnum.cs
+deleted by them	Content.Goobstation.Common/Traitor/GoobCommonUplinkSystem.cs
+both modified	Content.Goobstation.Server/Blob/GameTicking/BlobRuleSystem.cs
+both modified	Content.Goobstation.Server/Changeling/ChangelingSystem.Abilities.cs
+both modified	Content.Goobstation.Server/Changeling/ChangelingSystem.cs
+both modified	Content.Goobstation.Server/Changeling/GameTicking/Rules/ChangelingRuleSystem.cs
+both added	Content.Goobstation.Server/Chemistry/Components/EnergyReagentDispenserComponent.cs
+both added	Content.Goobstation.Server/Chemistry/EntitySystems/EnergyReagentDispenserSystem.cs
+both modified	Content.Goobstation.Server/Devil/Contract/DevilContractSystem.cs
+deleted by us	Content.Goobstation.Server/EntityEffects/RandomSpeciesChange.cs
+both modified	Content.Goobstation.Server/EntityEffects/RandomTeleportNearby.cs
+deleted by them	Content.Goobstation.Server/Mimery/EntityEffectOnProjectileHitSystem.cs
+deleted by them	Content.Goobstation.Server/MobCall/MobCallSystem.cs
+both modified	Content.Goobstation.Server/Sprinting/SprintingSystem.cs
+deleted by them	Content.Goobstation.Server/StationEvents/GameDirector/GameDirectorSystem.cs
+both modified	Content.Goobstation.Server/StationEvents/Metric/CombatMetricSystem.cs
+deleted by them	Content.Goobstation.Server/SuitSensors/SuitSensorShockableSystem.cs
+deleted by them	Content.Goobstation.Server/Traitor/GoobUplinkSystem.cs
+both modified	Content.Goobstation.Server/Xenobiology/XenoVacuumSystem.cs
+deleted by them	Content.Goobstation.Shared/Changeling/Components/ChangelingActionComponent.cs
+deleted by them	Content.Goobstation.Shared/Changeling/Components/ChangelingComponent.cs
+both modified	Content.Goobstation.Shared/Changeling/Components/VoidAdaptionComponent.cs
+deleted by them	Content.Goobstation.Shared/Changeling/Systems/SharedChangelingActionSystem.cs
+both modified	Content.Goobstation.Shared/Changeling/Systems/SharedVoidAdaptionSystem.cs
+both added	Content.Goobstation.Shared/Chemistry/SharedEnergyReagentDispenser.cs
+both modified	Content.Goobstation.Shared/MartialArts/SharedMartialArtsSystem.CorporateJudo.cs
+both modified	Content.Goobstation.Shared/MartialArts/SharedMartialArtsSystem.SleepingCarp.cs
+both modified	Content.Goobstation.Shared/Overlays/SwitchableOverlaySystem.cs
+both modified	Content.Goobstation.Shared/Overlays/SwitchableVisionOverlayComponent.cs
+both modified	Content.Goobstation.Shared/Shadowling/Systems/SharedShadowlingSystem.cs
+both modified	Content.Goobstation.Shared/SpecialPassives/Fleshmend/Components/FleshmendComponent.cs
+deleted by them	Content.Goobstation.Shared/Traitor/PenSpin/PenSpinComponent.cs
+both modified	Content.IntegrationTests/Tests/EntityTest.cs
+deleted by them	Content.IntegrationTests/Tests/Goobstation/UplinkPreferenceTests.cs
+both modified	Content.IntegrationTests/Tests/PostMapInitTest.cs
+deleted by them	Content.Server/_Lavaland/Weapons/Melee/Components/WeaponUpgradeEffectsComponent.cs
+both modified	Content.Server/_Lavaland/Weapons/Ranged/GunUpgradesSystem.cs
+both modified	Content.Server/_Shitcode/Heretic/Abilities/HereticAbilitySystem.Ash.cs
+both modified	Content.Server/_Shitcode/Heretic/EntitySystems/GhoulSystem.cs
+deleted by us	Content.Server/_Shitcode/Heretic/EntitySystems/HereticKnowledgeSystem.cs
+both modified	Content.Server/_Shitcode/Heretic/EntitySystems/HereticSystem.cs
+both modified	Content.Server/_Shitcode/Heretic/EntitySystems/PathSpecific/FireBlastSystem.cs
+both modified	Content.Server/_Starlight/Objectives/TeachALessonConditionSystem.cs
+both modified	Content.Server/Access/Systems/IdCardSystem.cs
+both modified	Content.Server/Antag/AntagSelectionSystem.cs
+both modified	Content.Server/Bible/BibleUserSystem.cs
+both modified	Content.Server/Chat/Systems/AutoEmoteSystem.cs
+both modified	Content.Server/Chat/Systems/ChatSystem.cs
+both modified	Content.Server/Entry/EntryPoint.cs
+both modified	Content.Server/Fax/FaxSystem.cs
+both modified	Content.Server/GameTicking/Rules/RevolutionaryRuleSystem.cs
+both modified	Content.Server/GameTicking/Rules/TraitorRuleSystem.cs
+both modified	Content.Server/Ghost/Roles/Components/GhostRoleComponent.cs
+both modified	Content.Server/Ghost/Roles/GhostRoleSystem.cs
+both modified	Content.Server/IoC/ServerContentIoC.cs
+both modified	Content.Server/Kitchen/Components/MicrowaveComponent.cs
+deleted by us	Content.Server/Kitchen/EntitySystems/KitchenSpikeSystem.cs
+both modified	Content.Server/Lathe/LatheSystem.cs
+deleted by us	Content.Server/Medical/VomitSystem.cs
+both modified	Content.Server/Mousetrap/MousetrapSystem.cs
+both modified	Content.Server/Nuke/NukeSystem.cs
+deleted by us	Content.Server/Nutrition/EntitySystems/DrinkSystem.cs
+deleted by us	Content.Server/Nutrition/EntitySystems/FoodSystem.cs
+both modified	Content.Server/Nyanotrasen/Abilities/Felinid/FelinidComponent.cs
+both modified	Content.Server/Physics/Controllers/MoverController.cs
+both modified	Content.Server/Players/PlayTimeTracking/PlayTimeTrackingSystem.cs
+both modified	Content.Server/Power/EntitySystems/BatteryInterfaceSystem.cs
+both modified	Content.Server/Preferences/Managers/IServerPreferencesManager.cs
+both modified	Content.Server/RoundEnd/RoundEndSystem.cs
+both modified	Content.Server/StationRecords/Systems/StationRecordsSystem.cs
+both modified	Content.Server/Store/Systems/StoreSystem.Ui.cs
+both modified	Content.Server/Traitor/Uplink/UplinkSystem.cs
+both modified	Content.Server/Traits/TraitSystem.cs
+deleted by us	Content.Server/Warps/WarpPointComponent.cs
+both modified	Content.Server/Weapons/DamageMarkerSystem.cs
+both modified	Content.Shared.Database/LogType.cs
+deleted by us	Content.Shared/_DV/SmartFridge/SmartFridgeSystem.cs
+both modified	Content.Shared/_EinsteinEngines/Silicon/SharedSiliconSystem.cs
+both modified	Content.Shared/_Lavaland/Procedural/Prototypes/LavalandRuinPoolPrototype.cs
+deleted by us	Content.Shared/_Lavaland/Weapons/AttachmentBayonetComponent.cs
+deleted by us	Content.Shared/_Lavaland/Weapons/AttachmentFlashlightComponent.cs
+deleted by us	Content.Shared/_Lavaland/Weapons/Melee/Components/GunComponentUpdateComponent.cs
+added by them	Content.Shared/_Lavaland/Weapons/Melee/Components/UpgradeableGunComponent.cs
+deleted by them	Content.Shared/_Lavaland/Weapons/Melee/Components/WeaponUpgradeDamageComponent.cs
+deleted by them	Content.Shared/_Lavaland/Weapons/Melee/Components/WeaponUpgradeRangeComponent.cs
+deleted by them	Content.Shared/_Lavaland/Weapons/Melee/Components/WeaponUpgradeSpeedComponent.cs
+both modified	Content.Shared/_Lavaland/Weapons/Ranged/Components/GunUpgradePressureComponent.cs
+added by us	Content.Shared/_Lavaland/Weapons/Ranged/Components/GunUpgradeProjectileComponentsComponent.cs
+deleted by them	Content.Shared/_Lavaland/Weapons/Ranged/SharedGunUpgradesSystem.cs
+deleted by us	Content.Shared/_Lavaland/Weapons/Ranged/Upgrades/Components/GunUpgradeComponent.cs
+deleted by us	Content.Shared/_Lavaland/Weapons/Ranged/Upgrades/Components/GunUpgradeComponentsComponent.cs
+deleted by us	Content.Shared/_Lavaland/Weapons/Ranged/Upgrades/Components/GunUpgradeDamageComponent.cs
+both deleted	Content.Shared/_Lavaland/Weapons/Ranged/Upgrades/Components/GunUpgradeProjectileComponentsComponent.cs
+deleted by us	Content.Shared/_Lavaland/Weapons/Ranged/Upgrades/SharedGunUpgradeSystem.cs
+both modified	Content.Shared/_Shitcode/Heretic/Components/HereticComponent.cs
+both modified	Content.Shared/_Shitcode/Heretic/Systems/Abilities/SharedHereticAbilitySystem.cs
+both modified	Content.Shared/_Shitmed/Surgery/Wounds/Systems/WoundSystem.Wounding.cs
+both modified	Content.Shared/Access/Components/AccessReaderComponent.cs
+both modified	Content.Shared/Access/Systems/AccessReaderSystem.cs
+both modified	Content.Shared/Body/Systems/BrainSystem.cs
+both modified	Content.Shared/CCVar/CCVars.Admin.cs
+both modified	Content.Shared/CCVar/CCVars.Game.cs
+both modified	Content.Shared/Chat/SharedChatSystem.cs
+both modified	Content.Shared/Chat/SharedChatSystem.Emote.cs
+both modified	Content.Shared/CombatMode/Pacification/PacificationSystem.cs
+both modified	Content.Shared/Cuffs/SharedCuffableSystem.cs
+deleted by us	Content.Shared/Drunk/DrunkSystem.cs
+both modified	Content.Shared/GameTicking/PlayerSpawnCompleteEvent.cs
+both modified	Content.Shared/GameTicking/RoundRestartCleanupEvent.cs
+both modified	Content.Shared/Implants/SharedImplanterSystem.cs
+both modified	Content.Shared/Magic/SharedMagicSystem.cs
+both modified	Content.Shared/Materials/MaterialStorageComponent.cs
+both modified	Content.Shared/Medical/Healing/HealingSystem.cs
+both modified	Content.Shared/Mind/SharedMindSystem.cs
+both modified	Content.Shared/Movement/Components/JumpAbilityComponent.cs
+both modified	Content.Shared/Movement/Pulling/Systems/PullingSystem.cs
+both modified	Content.Shared/Movement/Systems/SharedJumpAbilitySystem.cs
+both modified	Content.Shared/Movement/Systems/SharedMoverController.cs
+both modified	Content.Shared/Paper/PaperSystem.cs
+both modified	Content.Shared/Preferences/Loadouts/Effects/PointsCostLoadoutEffect.cs
+both modified	Content.Shared/Preferences/Loadouts/LoadoutGroupPrototype.cs
+both modified	Content.Shared/Preferences/Loadouts/LoadoutPrototype.cs
+both modified	Content.Shared/Preferences/Loadouts/RoleLoadout.cs
+both modified	Content.Shared/Preferences/Loadouts/RoleLoadoutPrototype.cs
+both modified	Content.Shared/Preferences/PlayerPreferences.cs
+both modified	Content.Shared/Radio/EntitySystems/SharedHeadsetSystem.cs
+both modified	Content.Shared/Slippery/SlipperySystem.cs
+both modified	Content.Shared/Storage/EntitySystems/DumpableSystem.cs
+both modified	Content.Shared/Strip/Components/ThievingComponent.cs
+both modified	Content.Shared/Strip/SharedStrippableSystem.cs
+both modified	Content.Shared/Strip/ThievingSystem.cs
+both modified	Content.Shared/Stunnable/SharedStunSystem.cs
+both modified	Content.Shared/Traits/TraitPrototype.cs
+both modified	Content.Shared/VendingMachines/SharedVendingMachineSystem.cs
+both modified	Content.Shared/Weapons/Melee/Events/MeleeHitEvent.cs
+both modified	Content.Shared/Weapons/Melee/SharedMeleeWeaponSystem.cs
+both modified	Content.Shared/Zombies/ZombieComponent.cs
+both modified	Resources/Audio/_Goobstation/RadioStation/music/attributions.yml
+both modified	Resources/Audio/_Lavaland/Mobs/Bosses/attributions.yml
+both modified	Resources/Audio/StationEvents/attributions.yml
+both modified	Resources/Changelog/GoobChangelog.yml
+both modified	Resources/Credits/GitHub.txt
+both modified	Resources/Locale/en-US/_Goobstation/Changeling/abilities/changeling.ftl
+both modified	Resources/Locale/en-US/_Goobstation/Changeling/store/changeling-catalog.ftl
+deleted by them	Resources/Locale/en-US/_Goobstation/mimery/mimery.ftl
+both modified	Resources/Locale/en-US/_Goobstation/mind/role-types.ftl
+both modified	Resources/Locale/en-US/_Goobstation/silicons/station-ai.ftl
+both modified	Resources/Locale/en-US/_Goobstation/store/uplink-catalog.ftl
+deleted by us	Resources/Locale/en-US/_Harmony/store/uplink-catalog.ftl
+deleted by them	Resources/Locale/en-US/_Lavaland/navmap-beacons/station-beacons.ftl
+both modified	Resources/Locale/en-US/_Lavaland/stack/stacks.ftl
+both added	Resources/Locale/en-US/_Trauma/ghost/ghost-role-component.ftl
+both modified	Resources/Locale/en-US/accent/accents.ftl
+both modified	Resources/Locale/en-US/chat/emotes.ftl
+both modified	Resources/Locale/en-US/game-ticking/game-presets/preset-traitor.ftl
+both modified	Resources/Locale/en-US/markings/vox.ftl
+both modified	Resources/Locale/en-US/preferences/loadout-groups.ftl
+both modified	Resources/Locale/en-US/reagents/meta/physical-desc.ftl
+both modified	Resources/Locale/en-US/silicons/station-ai.ftl
+both modified	Resources/Locale/en-US/store/uplink-catalog.ftl
+both modified	Resources/Maps/_Goobstation/amber.yml
+both modified	Resources/Maps/_Goobstation/atlas.yml
+both modified	Resources/Maps/_Goobstation/bagel.yml
+both modified	Resources/Maps/_Goobstation/box.yml
+both modified	Resources/Maps/_Goobstation/chloris.yml
+both modified	Resources/Maps/_Goobstation/cluster.yml
+both modified	Resources/Maps/_Goobstation/cog.yml
+both modified	Resources/Maps/_Goobstation/delta.yml
+both modified	Resources/Maps/_Goobstation/fland.yml
+both modified	Resources/Maps/_Goobstation/kettle.yml
+both modified	Resources/Maps/_Goobstation/lambda.yml
+both modified	Resources/Maps/_Goobstation/leonid.yml
+both modified	Resources/Maps/_Goobstation/Nonstations/nukieplanet.yml
+both modified	Resources/Maps/_Goobstation/oasis.yml
+both modified	Resources/Maps/_Goobstation/omega.yml
+both modified	Resources/Maps/_Goobstation/origin.yml
+both modified	Resources/Maps/_Goobstation/saltern.yml
+both modified	Resources/Maps/_Goobstation/serpentcrest.yml
+deleted by them	Resources/Maps/_Goobstation/Shuttles/ShuttleEvent/Legionnaire.yml
+deleted by us	Resources/Maps/_Goobstation/submarine.yml
+both modified	Resources/Maps/centcomm.yml
+both modified	Resources/Maps/Shuttles/mining.yml
+both modified	Resources/migration.yml
+both modified	Resources/Prototypes/_BRatbite/Loadouts/role_loadouts.yml
+deleted by us	Resources/Prototypes/_BRatbite/Maps/Ratbite Supported/amber.yml
+both modified	Resources/Prototypes/_DV/Catalog/Fills/Items/Backpacks/duffelbag.yml
+both modified	Resources/Prototypes/_DV/Catalog/VendingMachines/Inventories/salvage_points.yml
+deleted by us	Resources/Prototypes/_DV/Entities/Structures/Machines/smartfridge.yml
+both modified	Resources/Prototypes/_DV/tags.yml
+both modified	Resources/Prototypes/_EinsteinEngines/Recipes/Lathes/Packs/language.yml
+both modified	Resources/Prototypes/_EinsteinEngines/Research/civilianservices.yml
+both modified	Resources/Prototypes/_Goobstation/Actions/changeling.yml
+both modified	Resources/Prototypes/_Goobstation/Actions/Heretic/basic.yml
+both modified	Resources/Prototypes/_Goobstation/Catalog/pods.yml
+both modified	Resources/Prototypes/_Goobstation/Catalog/uplink_catalog.yml
+deleted by them	Resources/Prototypes/_Goobstation/Changeling/starting_evolutions.yml
+both modified	Resources/Prototypes/_Goobstation/Entities/Clothing/Back/modsuit.yml
+both modified	Resources/Prototypes/_Goobstation/Entities/Clothing/Belt/belts.yml
+both modified	Resources/Prototypes/_Goobstation/Entities/Clothing/Head/hats.yml
+deleted by them	Resources/Prototypes/_Goobstation/Entities/Clothing/Neck/ensembles.yml
+both modified	Resources/Prototypes/_Goobstation/Entities/Clothing/OuterClothing/modsuit.yml
+deleted by them	Resources/Prototypes/_Goobstation/Entities/Effects/welding_sparks.yml
+both modified	Resources/Prototypes/_Goobstation/Entities/Mobs/Player/bingle.yml
+deleted by them	Resources/Prototypes/_Goobstation/Entities/Mobs/Player/contractor.yml
+both modified	Resources/Prototypes/_Goobstation/Entities/Mobs/Player/SlasherMob.yml
+both modified	Resources/Prototypes/_Goobstation/Entities/Mobs/Species/tajaran.yml
+deleted by them	Resources/Prototypes/_Goobstation/Entities/Modsuits/contractor.yml
+both modified	Resources/Prototypes/_Goobstation/Entities/Objects/Consumable/Food/snacks.yml
+deleted by them	Resources/Prototypes/_Goobstation/Entities/Objects/Consumable/Medicine/bottles.yml
+both modified	Resources/Prototypes/_Goobstation/Entities/Objects/Devices/Circuitboards/Machine/production.yml
+both modified	Resources/Prototypes/_Goobstation/Entities/Objects/Fun/toys.yml
+both modified	Resources/Prototypes/_Goobstation/Entities/Objects/Specific/Mech/Weapons/Gun/industrial.yml
+both modified	Resources/Prototypes/_Goobstation/Entities/Objects/Specific/Medical/medigun.yml
+both modified	Resources/Prototypes/_Goobstation/Entities/Objects/Tools/lighters.yml
+both modified	Resources/Prototypes/_Goobstation/Entities/Objects/Weapons/Guns/Ammunition/Magazines/battery_cell.yml
+both modified	Resources/Prototypes/_Goobstation/Entities/Objects/Weapons/Guns/Projectiles/hitscan.yml
+both modified	Resources/Prototypes/_Goobstation/Entities/Objects/Weapons/Melee/justice.yml
+both modified	Resources/Prototypes/_Goobstation/Entities/Objects/Weapons/Melee/kravmagagloves.yml
+both added	Resources/Prototypes/_Goobstation/Entities/Structures/Machines/dispensers.yml
+both modified	Resources/Prototypes/_Goobstation/Entities/Structures/Machines/lathe.yml
+deleted by us	Resources/Prototypes/_Goobstation/Entities/Structures/Machines/material_silo.yml
+both modified	Resources/Prototypes/_Goobstation/GameRules/Admeme/eventshuttles.yml
+both modified	Resources/Prototypes/_Goobstation/Guidebook/rules.yml
+both modified	Resources/Prototypes/_Goobstation/Guidebook/sop.yml
+both modified	Resources/Prototypes/_Goobstation/Loadouts/Jobs/Cargo/salvage.yml
+both modified	Resources/Prototypes/_Goobstation/Loadouts/Jobs/Dignitary/nanotrasen_representative.yml
+both modified	Resources/Prototypes/_Goobstation/Loadouts/loadout_groups.yml
+deleted by them	Resources/Prototypes/_Goobstation/Maps/chloris.yml
+deleted by them	Resources/Prototypes/_Goobstation/Maps/cog.yml
+deleted by them	Resources/Prototypes/_Goobstation/Maps/delta.yml
+deleted by them	Resources/Prototypes/_Goobstation/Maps/flandhighpop.yml
+deleted by them	Resources/Prototypes/_Goobstation/Maps/lambda.yml
+deleted by them	Resources/Prototypes/_Goobstation/Maps/leonid.yml
+deleted by them	Resources/Prototypes/_Goobstation/Maps/origin.yml
+deleted by them	Resources/Prototypes/_Goobstation/Maps/originhighpop.yml
+deleted by them	Resources/Prototypes/_Goobstation/Maps/serpentcrest.yml
+both modified	Resources/Prototypes/_Goobstation/Reagents/medicine.yml
+both modified	Resources/Prototypes/_Goobstation/Reagents/narcotics.yml
+both modified	Resources/Prototypes/_Goobstation/Reagents/toxins.yml
+both modified	Resources/Prototypes/_Goobstation/Recipes/Lathes/medical.yml
+both modified	Resources/Prototypes/_Goobstation/Recipes/Lathes/Packs/science.yml
+both modified	Resources/Prototypes/_Goobstation/Recipes/Lathes/security.yml
+deleted by us	Resources/Prototypes/_Goobstation/Recipes/Lathes/xenobiology.yml
+both modified	Resources/Prototypes/_Goobstation/Recipes/Reactions/medicine.yml
+both modified	Resources/Prototypes/_Goobstation/Research/experimental.yml
+both modified	Resources/Prototypes/_Goobstation/Roles/Antags/blob.yml
+both modified	Resources/Prototypes/_Goobstation/Roles/Antags/devil.yml
+deleted by them	Resources/Prototypes/_Goobstation/Roles/Jobs/Fun/antag_startinggear.yml
+both modified	Resources/Prototypes/_Goobstation/Roles/Jobs/Wildcards/command_maid.yml
+both modified	Resources/Prototypes/_Goobstation/Roles/mind_roles.yml
+both modified	Resources/Prototypes/_Goobstation/Slasher/items.yml
+deleted by them	Resources/Prototypes/_Goobstation/SpaceWhales/whale.yml
+both modified	Resources/Prototypes/_Goobstation/threats.yml
+both modified	Resources/Prototypes/_Goobstation/Xenobiology/Catalog/Bounties/xenobio.yml
+both modified	Resources/Prototypes/_Goobstation/Xenobiology/Entities/Mobs/NPCs/slimebase.yml
+both modified	Resources/Prototypes/_Goobstation/Xenobiology/Entities/Objects/Specific/Xenobiology/extract_items.yml
+deleted by them	Resources/Prototypes/_Goobstation/Xenobiology/Entities/Objects/Specific/Xenobiology/Extracts/t1/metal.yml
+deleted by them	Resources/Prototypes/_Goobstation/Xenobiology/Entities/Objects/Specific/Xenobiology/Extracts/t1/orange.yml
+deleted by them	Resources/Prototypes/_Goobstation/Xenobiology/Entities/Objects/Specific/Xenobiology/Extracts/t2/cerulean.yml
+deleted by them	Resources/Prototypes/_Goobstation/Xenobiology/Entities/Objects/Specific/Xenobiology/Extracts/t2/dark_blue.yml
+deleted by them	Resources/Prototypes/_Goobstation/Xenobiology/Entities/Objects/Specific/Xenobiology/Extracts/t2/dark_purple.yml
+deleted by them	Resources/Prototypes/_Goobstation/Xenobiology/Entities/Objects/Specific/Xenobiology/Extracts/t2/silver.yml
+deleted by them	Resources/Prototypes/_Goobstation/Xenobiology/Entities/Objects/Specific/Xenobiology/Extracts/t2/yellow.yml
+deleted by them	Resources/Prototypes/_Goobstation/Xenobiology/Entities/Objects/Specific/Xenobiology/Extracts/t3/bluespace.yml
+deleted by them	Resources/Prototypes/_Goobstation/Xenobiology/Entities/Objects/Specific/Xenobiology/Extracts/t3/gold.yml
+deleted by them	Resources/Prototypes/_Goobstation/Xenobiology/Entities/Objects/Specific/Xenobiology/Extracts/t3/red.yml
+deleted by them	Resources/Prototypes/_Goobstation/Xenobiology/Entities/Objects/Specific/Xenobiology/Extracts/t3/sepia.yml
+deleted by them	Resources/Prototypes/_Goobstation/Xenobiology/Entities/Objects/Specific/Xenobiology/Extracts/t4/adamantine.yml
+deleted by them	Resources/Prototypes/_Goobstation/Xenobiology/Entities/Objects/Specific/Xenobiology/Extracts/t4/light_pink.yml
+deleted by them	Resources/Prototypes/_Goobstation/Xenobiology/Entities/Objects/Specific/Xenobiology/Extracts/t4/oil.yml
+both modified	Resources/Prototypes/_Goobstation/Xenobiology/Entities/Objects/Specific/Xenobiology/Extracts/tier0.yml
+both modified	Resources/Prototypes/_Goobstation/Xenobiology/Reagents/reagents.yml
+deleted by us	Resources/Prototypes/_Harmony/Entities/Objects/Weapons/Guns/Shotguns/shotguns.yml
+both modified	Resources/Prototypes/_Lavaland/boss_music.yml
+both modified	Resources/Prototypes/_Lavaland/Entities/Markers/Spawners/Random/mobs.yml
+deleted by them	Resources/Prototypes/_Lavaland/Entities/Mobs/Bosses/ashdrake.yml
+deleted by them	Resources/Prototypes/_Lavaland/Entities/Mobs/Bosses/colossus.yml
+deleted by them	Resources/Prototypes/_Lavaland/Entities/Mobs/Elites/elite.yml
+both modified	Resources/Prototypes/_Lavaland/Entities/Mobs/goliath.yml
+deleted by them	Resources/Prototypes/_Lavaland/Entities/Mobs/legion.yml
+deleted by them	Resources/Prototypes/_Lavaland/Entities/Mobs/mobs.yml
+deleted by them	Resources/Prototypes/_Lavaland/Entities/Objects/Devices/station_beacon.yml
+both modified	Resources/Prototypes/_Lavaland/Entities/Objects/Misc/implants.yml
+deleted by them	Resources/Prototypes/_Lavaland/Entities/Objects/Projectiles/rude_buster.yml
+both modified	Resources/Prototypes/_Lavaland/Entities/Objects/Specific/Salvage/lavaland_loot.yml
+both modified	Resources/Prototypes/_Lavaland/Entities/Objects/Weapons/crushers.yml
+deleted by them	Resources/Prototypes/_Lavaland/Entities/Objects/Weapons/Guns/Basic/base_pka.yml
+both modified	Resources/Prototypes/_Lavaland/Entities/Objects/Weapons/Guns/Basic/pka.yml
+both modified	Resources/Prototypes/_Lavaland/Entities/Objects/Weapons/Guns/Projectiles/projectiles.yml
+both modified	Resources/Prototypes/_Lavaland/Entities/Objects/Weapons/pka_upgrade.yml
+deleted by them	Resources/Prototypes/_Lavaland/Entities/Objects/Weapons/Upgrades/crusher_upgrades.yml
+both modified	Resources/Prototypes/_Lavaland/Entities/Structures/Specific/tendril.yml
+deleted by them	Resources/Prototypes/_Lavaland/Loadouts/role_loadouts.yml
+both modified	Resources/Prototypes/_Lavaland/Procedural/lavaland_grid_ruins.yml
+both modified	Resources/Prototypes/_Lavaland/Procedural/lavaland_ruin_pools.yml
+deleted by them	Resources/Prototypes/_Lavaland/Roles/Jobs/Cargo/shaft_miner.yml
+both modified	Resources/Prototypes/_Lavaland/tags.yml
+both added	Resources/Prototypes/_Omu/tags.yml
+both modified	Resources/Prototypes/_Shitmed/Body/Organs/Animal/space.yml
+deleted by them	Resources/Prototypes/_Trauma/Reagents/pyrotechnics.yml
+deleted by them	Resources/Prototypes/_Trauma/Recipes/Reactions/single_reagent.yml
+both modified	Resources/Prototypes/AppearanceCustomization/station_ai.yml
+both modified	Resources/Prototypes/Catalog/Fills/Crates/security.yml
+both modified	Resources/Prototypes/Catalog/Fills/Lockers/heads.yml
+both modified	Resources/Prototypes/Catalog/Fills/Lockers/security.yml
+both modified	Resources/Prototypes/Catalog/VendingMachines/Inventories/chemvend.yml
+both modified	Resources/Prototypes/Entities/Clothing/Back/specific.yml
+both modified	Resources/Prototypes/Entities/Clothing/Belt/belts.yml
+both modified	Resources/Prototypes/Entities/Clothing/Eyes/glasses.yml
+both modified	Resources/Prototypes/Entities/Clothing/Hands/gloves.yml
+both modified	Resources/Prototypes/Entities/Clothing/Head/hardsuit-helmets.yml
+both modified	Resources/Prototypes/Entities/Clothing/Head/hats.yml
+both modified	Resources/Prototypes/Entities/Clothing/Neck/mantles.yml
+both modified	Resources/Prototypes/Entities/Clothing/OuterClothing/armor.yml
+both modified	Resources/Prototypes/Entities/Clothing/OuterClothing/hardsuits.yml
+both modified	Resources/Prototypes/Entities/Clothing/Uniforms/jumpskirts.yml
+both modified	Resources/Prototypes/Entities/Clothing/Uniforms/jumpsuits.yml
+both modified	Resources/Prototypes/Entities/Markers/Spawners/Random/anomaly.yml
+both modified	Resources/Prototypes/Entities/Markers/Spawners/Random/posters.yml
+both modified	Resources/Prototypes/Entities/Mobs/Customization/Markings/vox_parts.yml
+both modified	Resources/Prototypes/Entities/Mobs/NPCs/animals.yml
+both modified	Resources/Prototypes/Entities/Mobs/Player/clone.yml
+both modified	Resources/Prototypes/Entities/Mobs/Player/humanoid.yml
+both modified	Resources/Prototypes/Entities/Mobs/Player/silicon.yml
+both modified	Resources/Prototypes/Entities/Mobs/Species/base.yml
+both modified	Resources/Prototypes/Entities/Mobs/Species/vox.yml
+both modified	Resources/Prototypes/Entities/Objects/Devices/holoprojectors.yml
+both modified	Resources/Prototypes/Entities/Objects/Devices/pda.yml
+both modified	Resources/Prototypes/Entities/Objects/Misc/implanters.yml
+both modified	Resources/Prototypes/Entities/Objects/Misc/pen.yml
+both modified	Resources/Prototypes/Entities/Objects/Specific/Chemistry/chemistry.yml
+both modified	Resources/Prototypes/Entities/Objects/Tools/flashlights.yml
+both modified	Resources/Prototypes/Entities/Objects/Weapons/Guns/Ammunition/Cartridges/light_rifle.yml
+both modified	Resources/Prototypes/Entities/Objects/Weapons/Guns/Ammunition/Cartridges/magnum.yml
+both modified	Resources/Prototypes/Entities/Objects/Weapons/Guns/Ammunition/Cartridges/pistol.yml
+both modified	Resources/Prototypes/Entities/Objects/Weapons/Guns/Ammunition/Projectiles/grenade.yml
+both modified	Resources/Prototypes/Entities/Objects/Weapons/Guns/Ammunition/Projectiles/light_rifle.yml
+both modified	Resources/Prototypes/Entities/Objects/Weapons/Guns/Ammunition/Projectiles/magnum.yml
+both modified	Resources/Prototypes/Entities/Objects/Weapons/Guns/Ammunition/Projectiles/pistol.yml
+both modified	Resources/Prototypes/Entities/Objects/Weapons/Guns/Ammunition/Projectiles/rifle.yml
+both modified	Resources/Prototypes/Entities/Objects/Weapons/Guns/Ammunition/Projectiles/shotgun.yml
+both modified	Resources/Prototypes/Entities/Objects/Weapons/Guns/Battery/battery_guns.yml
+both modified	Resources/Prototypes/Entities/Objects/Weapons/Guns/Revolvers/revolvers.yml
+both modified	Resources/Prototypes/Entities/Objects/Weapons/Guns/Rifles/rifles.yml
+both modified	Resources/Prototypes/Entities/Objects/Weapons/Melee/knife.yml
+both modified	Resources/Prototypes/Entities/Stations/base.yml
+both modified	Resources/Prototypes/Entities/Structures/Doors/Airlocks/access.yml
+both modified	Resources/Prototypes/Entities/Structures/Doors/Airlocks/shuttle.yml
+both modified	Resources/Prototypes/Entities/Structures/Machines/lathe.yml
+both modified	Resources/Prototypes/Entities/Structures/Shuttles/cannons.yml
+both modified	Resources/Prototypes/Entities/Structures/Storage/Closets/Lockers/base_structurelockers.yml
+both modified	Resources/Prototypes/game_presets.yml
+both modified	Resources/Prototypes/GameRules/events.yml
+both modified	Resources/Prototypes/GameRules/roundstart.yml
+both modified	Resources/Prototypes/Guidebook/rules.yml
+both modified	Resources/Prototypes/Guidebook/species.yml
+both modified	Resources/Prototypes/Loadouts/Jobs/Civilian/passenger.yml
+both modified	Resources/Prototypes/Loadouts/Jobs/Engineering/chief_engineer.yml
+both modified	Resources/Prototypes/Loadouts/loadout_groups.yml
+both modified	Resources/Prototypes/lobbyscreens.yml
+deleted by them	Resources/Prototypes/Maps/box.yml
+deleted by them	Resources/Prototypes/Maps/fland.yml
+deleted by them	Resources/Prototypes/Maps/meta.yml
+deleted by them	Resources/Prototypes/Maps/oasis.yml
+both modified	Resources/Prototypes/Maps/Pools/default.yml
+deleted by them	Resources/Prototypes/Maps/train.yml
+both modified	Resources/Prototypes/Reagents/medicine.yml
+both modified	Resources/Prototypes/Reagents/narcotics.yml
+both modified	Resources/Prototypes/Recipes/Lathes/Packs/medical.yml
+both modified	Resources/Prototypes/Recipes/Reactions/chemicals.yml
+both modified	Resources/Prototypes/Roles/Antags/nukeops.yml
+both modified	Resources/Prototypes/Roles/Jobs/Cargo/quartermaster.yml
+both modified	Resources/Prototypes/Roles/Jobs/Cargo/salvage_specialist.yml
+both modified	Resources/Prototypes/Roles/Jobs/Command/captain.yml
+both modified	Resources/Prototypes/Roles/Jobs/Command/head_of_personnel.yml
+both modified	Resources/Prototypes/Roles/Jobs/Engineering/chief_engineer.yml
+both modified	Resources/Prototypes/Roles/Jobs/Medical/chemist.yml
+both modified	Resources/Prototypes/Roles/Jobs/Medical/chief_medical_officer.yml
+both modified	Resources/Prototypes/Roles/Jobs/Science/research_director.yml
+both modified	Resources/Prototypes/Roles/Jobs/Security/detective.yml
+both modified	Resources/Prototypes/Roles/Jobs/Security/head_of_security.yml
+both modified	Resources/Prototypes/Roles/Jobs/Security/security_cadet.yml
+both modified	Resources/Prototypes/Roles/Jobs/Security/security_officer.yml
+both modified	Resources/Prototypes/Roles/Jobs/Security/warden.yml
+both modified	Resources/Prototypes/SoundCollections/lobby.yml
+both modified	Resources/Prototypes/Species/species_weights.yml
+both modified	Resources/Prototypes/tags.yml
+both modified	Resources/Prototypes/Tiles/floors.yml
+both modified	Resources/Prototypes/Traits/categories.yml
+both modified	Resources/Prototypes/Traits/disabilities.yml
+both modified	Resources/Prototypes/Traits/quirks.yml
+both modified	Resources/Prototypes/Voice/speech_emote_sounds.yml
+both modified	Resources/Prototypes/Voice/speech_emotes.yml
+both modified	Resources/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/Command/BlueshieldOfficerSOP.xml
+both modified	Resources/ServerInfo/Guidebook/Mobs/Species.xml
+both modified	Resources/ServerInfo/Guidebook/NewPlayer/YourFirstCharacter.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/BanDurations.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/BanTypes.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/CoreRules/RuleC0.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/CoreRules/RuleC10GitGud.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/CoreRules/RuleC11Bigotry.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/CoreRules/RuleC12CharacterNames.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/CoreRules/RuleC1DMAD.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/CoreRules/RuleC2ICKOCK.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/CoreRules/RuleC3Roleplay.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/CoreRules/RuleC4Antags.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/CoreRules/RuleC5Vitals.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/CoreRules/RuleC6BanEvasion.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/CoreRules/RuleC7EnglishOnly.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/CoreRules/RuleC8ERP.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/CoreRules/RuleC9Age.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/DefaultRules.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/MRPRules/RuleM0.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/MRPRules/RuleM1DoNotPowergame.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/NRPRules.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/RoleplayRules/RuleR16AtmosTech.xml
+deleted by them	Resources/ServerInfo/Guidebook/ServerRules/RoleTypes.xml
+both modified	Resources/ServerInfo/Guidebook/ServerRules/SpaceLaw/SLCrimeList.xml
+both modified	Resources/ServerInfo/Guidebook/ServerRules/SpaceLaw/SpaceLaw.xml
+added by them	Resources/Textures/_BRatBites/Clothing/Eyes/Glasses/RSOglasses.rsi/equipped-EYES-hamster.png
+added by them	Resources/Textures/_BRatBites/Clothing/Head/Helmets/wardenhelmet.rsi/meta.json
+both modified	Resources/Textures/_Goobstation/Clothing/Head/Modsuits/standard.rsi/meta.json
+both modified	Resources/Textures/_Goobstation/Clothing/Mask/bsoswat.rsi/meta.json
+both deleted	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/ce.rsi/meta.json
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/ChiefEngineer/greence.rsi/both-equipped-NECK.png
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/ChiefEngineer/greence.rsi/cloak-equipped-NECK.png
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/ChiefEngineer/greence.rsi/cloak-icon.png
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/ChiefEngineer/greence.rsi/icon.png
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/ChiefEngineer/greence.rsi/inhand-left.png
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/ChiefEngineer/greence.rsi/inhand-right.png
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/ChiefEngineer/greence.rsi/mantle-equipped-NECK.png
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/ChiefEngineer/greence.rsi/mantle-icon.png
+added by us	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/ChiefEngineer/greence.rsi/meta.json
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/cmo.rsi/all-equipped-NECK.png
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/cmo.rsi/cloak-equipped-NECK.png
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/cmo.rsi/cloak-icon.png
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/cmo.rsi/cloakmantle-equipped-NECK.png
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/cmo.rsi/cloakmantle-icon.png
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/cmo.rsi/cloakwings-equipped-NECK.png
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/cmo.rsi/cloakwings-icon.png
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/cmo.rsi/icon.png
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/cmo.rsi/mantle-equipped-NECK.png
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/cmo.rsi/mantlewings-equipped-NECK.png
+deleted by them	Resources/Textures/_Goobstation/Clothing/Neck/Ensembles/cmo.rsi/meta.json
+deleted by them	Resources/Textures/_Goobstation/Clothing/OuterClothing/Modsuits/contractor.rsi/meta.json
+added by us	Resources/Textures/_Goobstation/Clothing/Uniforms/Jumpskirt/Cargo/shaft_miner.rsi/equipped-INNERCLOTHING-monkey.png
+added by us	Resources/Textures/_Goobstation/Clothing/Uniforms/Scrubs/blue.rsi/meta.json
+both modified	Resources/Textures/_Goobstation/Mobs/Silicon/holograms.rsi/meta.json
+both deleted	Resources/Textures/_Lavaland/Clothing/Uniforms/Jumpsuit/shaft_miner.rsi/equipped-INNERCLOTHING-monkey.png
+both deleted	Resources/Textures/_Lavaland/Clothing/Uniforms/Jumpsuit/shaft_miner.rsi/meta.json
+deleted by them	Resources/Textures/_Lavaland/Objects/Devices/pda.rsi/meta.json
+both modified	Resources/Textures/_ShitChap/Objects/Weapons/Nullrod/holyclaymore.rsi/inhand-left.png
+both modified	Resources/Textures/_ShitChap/Objects/Weapons/Nullrod/holyclaymore.rsi/inhand-right.png
+both modified	Resources/Textures/_ShitChap/Objects/Weapons/Nullrod/holyclaymore.rsi/wielded-inhand-left.png
+both modified	Resources/Textures/_ShitChap/Objects/Weapons/Nullrod/holyclaymore.rsi/wielded-inhand-right.png
+added by them	Resources/Textures/_Starlight/Clothing/Uniforms/Jumpsuit/formal_blueshield.rsi/meta.json
+both modified	Resources/Textures/Structures/Wallmounts/intercom.rsi/base.png
+both modified	Resources/Textures/Structures/Wallmounts/intercom.rsi/broadcasting.png
+both modified	Resources/Textures/Structures/Wallmounts/intercom.rsi/build.png
+both modified	Resources/Textures/Structures/Wallmounts/intercom.rsi/meta.json
+both modified	Resources/Textures/Structures/Wallmounts/intercom.rsi/unshaded.png
+both modified	runclient.sh
+both modified	runclient-Tools.sh
+both modified	runserver.sh
+both modified	runserver-Tools.sh

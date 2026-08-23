@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Actions;
@@ -28,8 +21,9 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Prototypes;
 using Content.Shared.Charges.Systems;
+using Content.Shared.Medical;
 
-namespace Content.Server.Abilities.Felinid;
+namespace Content.Server.Nyanotrasen.Abilities.Felinid;
 
 public sealed partial class FelinidSystem : EntitySystem
 {
@@ -91,16 +85,14 @@ public sealed partial class FelinidSystem : EntitySystem
 
     private void OnEquipped(EntityUid uid, FelinidComponent component, DidEquipHandEvent args)
     {
-        if (!component.EnableEatAction)
-            return;
-
         if (!HasComp<FelinidFoodComponent>(args.Equipped))
             return;
 
         component.EatActionTarget = args.Equipped;
 
         //component.EatAction = Spawn("ActionEatMouse");
-        _actionsSystem.AddAction(uid, ref component.EatAction, component.EatActionId);
+        if (component.EnableEatAction)
+            _actionsSystem.AddAction(uid, ref component.EatAction, component.EatActionId);
     }
 
     private void OnUnequipped(EntityUid uid, FelinidComponent component, DidUnequipHandEvent args)
@@ -140,7 +132,7 @@ public sealed partial class FelinidSystem : EntitySystem
 
         if (hunger.CurrentThreshold == Shared.Nutrition.Components.HungerThreshold.Overfed)
         {
-            _popupSystem.PopupEntity(Loc.GetString("food-system-you-cannot-eat-any-more"), uid, uid, Shared.Popups.PopupType.SmallCaution);
+            _popupSystem.PopupEntity(Loc.GetString("ingestion-other-cannot-ingest-any-more"), uid, uid, Shared.Popups.PopupType.SmallCaution);
             return;
         }
 
@@ -173,9 +165,9 @@ public sealed partial class FelinidSystem : EntitySystem
         var hairball = EntityManager.SpawnEntity(component.HairballPrototype, Transform(uid).Coordinates);
         var hairballComp = Comp<HairballComponent>(hairball);
 
-        if (TryComp<BloodstreamComponent>(uid, out var bloodstream) && bloodstream.ChemicalSolution.HasValue)
+        if (TryComp<BloodstreamComponent>(uid, out var bloodstream) && bloodstream.BloodSolution.HasValue)
         {
-            var temp = _solutionSystem.SplitSolution(bloodstream.ChemicalSolution.Value, 20);
+            var temp = _solutionSystem.SplitSolution(bloodstream.BloodSolution.Value, 20);
 
             if (_solutionSystem.TryGetSolution(hairball, hairballComp.SolutionName, out var hairballSolution))
             {

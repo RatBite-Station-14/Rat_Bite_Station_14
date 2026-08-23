@@ -41,7 +41,7 @@ public sealed partial class VendingMachineTippingSystem : EntitySystem
             _transformSystem.Unanchor(ent.Owner, Transform(ent.Owner));
             _vendingMachineSystem.TryUpdateVisualState((ent.Owner, ent.Comp));
 
-            _stunSystem.TryParalyze(args.OtherEntity, TimeSpan.FromSeconds(2), true);
+            _stunSystem.TryKnockdown(new Entity<CrawlerComponent?>(args.OtherEntity, null), TimeSpan.FromSeconds(2), force: true);
             _stunSystem.TrySeeingStars(args.OtherEntity);
             _damageableSystem.TryChangeDamage(args.OtherEntity, new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Blunt"), 15));
         }

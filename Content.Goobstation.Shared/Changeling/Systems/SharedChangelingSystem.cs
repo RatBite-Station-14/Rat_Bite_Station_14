@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 Spatison <137375981+Spatison@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Changeling.Components;
@@ -11,7 +5,7 @@ using Content.Goobstation.Shared.Overlays;
 using Content.Shared.Body.Systems;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.CCVar;
-using Content.Shared.Chemistry.Hypospray.Events;
+using Content.Shared.Chemistry.EntitySystems.Hypospray;
 using Content.Shared.Climbing.Components;
 using Content.Shared.Climbing.Events;
 using Content.Shared.Damage;
@@ -78,7 +72,7 @@ public abstract class SharedChangelingSystem : EntitySystem
             return;
 
         // TODO: Replace with RandomPredicted once the engine PR is merged
-        var seed = SharedRandomExtensions.HashCodeCombine(new() { (int)_timing.CurTick.Value, GetNetEntity(args.Gun).Id });
+        var seed = SharedRandomExtensions.HashCodeCombine(new List<int> { (int)_timing.CurTick.Value, GetNetEntity(args.Gun).Id });
         var rand = new System.Random(seed);
         if (!rand.Prob(ent.Comp.ClumsyDefaultCheck))
             return;
@@ -86,7 +80,7 @@ public abstract class SharedChangelingSystem : EntitySystem
         if (ent.Comp.GunShootFailDamage != null)
             _damageable.TryChangeDamage(ent, ent.Comp.GunShootFailDamage, origin: ent);
 
-        _stun.TryParalyze(ent, ent.Comp.GunShootFailStunTime, true);
+        _stun.TryKnockdown(new Entity<CrawlerComponent?>(ent.Owner, null), ent.Comp.GunShootFailStunTime, force: true);
 
         // Apply salt to the wound ("Honk!") (No idea what this comment means)
         _audio.PlayPvs(ent.Comp.GunShootFailSound, ent);

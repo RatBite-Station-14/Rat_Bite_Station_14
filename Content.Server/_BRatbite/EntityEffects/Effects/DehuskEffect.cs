@@ -1,22 +1,28 @@
 using Content.Goobstation.Common.Changeling;
 using Content.Shared.EntityEffects;
+using Content.Shared.EntityEffects;
 using Content.Shared.Popups;
 using Content.Shared.Traits.Assorted;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._BRatbite.EntityEffects.Effects;
 
-public sealed partial class DehuskEffect : EntityEffect
+public sealed partial class DehuskEffect : EntityEffectBase<DehuskEffect>
 {
-    public override void Effect(EntityEffectBaseArgs args)
+    public sealed class DehuskEffectSystem : EntityEffectSystem<AbsorbedComponent, DehuskEffect>
     {
-        if(!args.EntityManager.TryGetComponent<AbsorbedComponent>(args.TargetEntity, out var absorbedComponent)) return;
-	if (!absorbedComponent.CanDehusk || absorbedComponent.Dehusked) return;
+        protected override void Effect(Entity<AbsorbedComponent> entity, ref EntityEffectEvent<DehuskEffect> args)
+        {
+            if (!entity.Comp.CanDehusk || entity.Comp.Dehusked)
+                return;
 
-        absorbedComponent.Dehusked = true;
-        args.EntityManager.RemoveComponent<UnrevivableComponent>(args.TargetEntity);
-        var popup = args.EntityManager.EntitySysManager.GetEntitySystem<SharedPopupSystem>();
-        popup.PopupEntity(Loc.GetString("dehusk-effect-popup"), args.TargetEntity);
+            entity.Comp.Dehusked = true;
+            RemComp<UnrevivableComponent>(entity.Owner);
+            _popup.PopupEntity(Loc.GetString("dehusk-effect-popup"), entity.Owner);
+        }
+
+        [Dependency] private readonly SharedPopupSystem _popup = default!;
     }
-    protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) => Loc.GetString("dehusk-effect-guidebook-text");
+
+    public override string? EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) => Loc.GetString("dehusk-effect-guidebook-text");
 }

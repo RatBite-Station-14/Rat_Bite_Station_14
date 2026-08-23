@@ -42,7 +42,7 @@
     #   - id: SleeperAgents
     #   - id: ChangelingMidround Got annoying, moved to susrat
     - id: NinjaSpawn
-    - id: DerelictCyborgSpawn # RB, This shit is annoying, antag, not normal ghost role.
+    - id: DerelictGenericCyborgSpawn # RB, This shit is annoying, antag, not normal ghost role.
     - id: Devil
     - id: LoneAbductorSpawn
     - id: LoneOpsSpawn
@@ -61,7 +61,7 @@
     - id: Changeling
     - id: SleeperAgents
     - id: ChangelingMidround
-    - id: DerelictCyborgSpawn
+    - id: DerelictGenericCyborgSpawn
     - id: Zombie
     - id: HereticMidround # No longer broken - Ducks
 
@@ -80,7 +80,7 @@
     - id: ChangelingMidround
     #- id: ZombieOutbreak # i don't know if armokbies are reverted and i don't want to find out
     - id: LoneOpsSpawn
-    - id: DerelictCyborgSpawn
+    - id: DerelictGenericCyborgSpawn
     - id: BlobSpawn # Goobstation - Blob      # A test of mettle for only the most robust stations.
     - id: LoneAbductorSpawn # Shitmed - Starlight Abductors
     - id: DuoAbductorSpawn # Shitmed - Starlight Abductors

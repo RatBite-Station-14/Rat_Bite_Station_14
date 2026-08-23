@@ -1,15 +1,3 @@
-# SPDX-FileCopyrightText: 2025 CliveOcelot <165305605+Orion-416@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 Marty <martynashagriefer@gmail.com>
-# SPDX-FileCopyrightText: 2025 NotActuallyMarty <martynashagriefer@gmail.com>
-# SPDX-FileCopyrightText: 2025 Orion-416 <cliveocelot@gmail.com>
-# SPDX-FileCopyrightText: 2025 PunishedJoe <PunishedJoeseph@proton.me>
-# SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-# SPDX-FileCopyrightText: 2025 ShieldAcrados <222141571+ShieldAcrados@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-# SPDX-FileCopyrightText: 2026 Jvne <juneialduncan@gmail.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 # The Modsuit Itself, This is just a Deathsquad modsuit, but reskined for CC Officials
@@ -84,6 +72,16 @@
   description: A state-of-the-art helmet designed by NanoTrasen for the Corporate modsuit. It includes a built-in HUD.
   categories: [HideSpawnMenu]
   components:
+    - type: Clothing
+      clothingVisuals:
+        head:
+        - state: equipped-HEAD
+        head-vox:
+        - state: equipped-HEAD-vox
+        head-vulpkanin:
+        - state: equipped-HEAD
+        head-hydrakin:
+        - state: equipped-HEAD
     - type: Sprite
       sprite: _Goobstation/Clothing/OuterClothing/Modsuits/corporate.rsi
     - type: PressureProtection
@@ -122,6 +120,10 @@
       spriteLayer: sealed
       clothingVisuals:
         head:
+        - state: equipped-HEAD-sealed
+        head-vulpkanin:
+        - state: equipped-HEAD-sealed
+        head-hydrakin:
         - state: equipped-HEAD-sealed
         - state: equipped-HEAD-sealed-unshaded
           shader: unshaded

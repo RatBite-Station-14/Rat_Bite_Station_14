@@ -20,11 +20,11 @@
       species:
       - Felinid
       - Scurret
-  goobcoins: 45
+  goobcoins: 60
   weight: 20
   startingGear: RSOGear
   icon: "JobIconRSO"
-  supervisors: job-supervisors-centcom job-supervisors-hos
+  supervisors: job-supervisors-centcom-hos
   canBeAntag: false
   access:
   - CentralCommand

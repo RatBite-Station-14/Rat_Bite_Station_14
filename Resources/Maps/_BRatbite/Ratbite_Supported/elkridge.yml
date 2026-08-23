@@ -63911,8 +63911,6 @@ entities:
       pos: 29.5,8.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 95
       - 97
@@ -63925,8 +63923,6 @@ entities:
       pos: 29.5,7.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 95
       - 97
@@ -63939,8 +63935,6 @@ entities:
       pos: 30.5,10.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 97
       - 100
@@ -63953,8 +63947,6 @@ entities:
       pos: 31.5,10.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 97
       - 100

@@ -1,0 +1,77 @@
+- type: entity
+  id: ClothingEyesGlassesCargo
+  parent: ClothingEyesGlassesSecurity
+  name: cargo insurance glasses
+  description: Glasses with a modified security HUD.
+  components:
+  - type: Sprite
+    sprite: Clothing/Eyes/Glasses/sunglasses.rsi
+    layers:
+    - state: icon
+      color: "#FFA500"
+  - type: ClothingGrantComponent # Ratbite, target tracker
+    component:
+    - type: TargetTracker
+      channels: CARGO
+  - type: Contraband
+    allowedJobs:
+    - CargoInsurance
+
+- type: entity
+  id: ClothingEyesGlassesMedical
+  parent: ClothingEyesGlassesSecurity
+  name: medical ordely glasses
+  description: Glasses with a modified security HUD.
+  components:
+  - type: Sprite
+    sprite: Clothing/Eyes/Glasses/sunglasses.rsi
+    layers:
+    - state: icon
+      color: "#4B96FF"
+  - type: ClothingGrantComponent # Ratbite, target tracker
+    component:
+    - type: TargetTracker
+      channels: MEDICAL
+  - type: Contraband
+    allowedJobs:
+    - MedOrderly
+
+- type: entity
+  id: ClothingEyesGlassesEngineering
+  parent: ClothingEyesGlassesSecurity
+  name: engi sentry glasses
+  description: Glasses with a modified security HUD.
+  components:
+  - type: Sprite
+    sprite: Clothing/Eyes/Glasses/sunglasses.rsi
+    layers:
+    - state: icon
+      color: "#FFD700"
+  - type: ClothingGrantComponent # Ratbite, target tracker
+    component:
+    - type: TargetTracker
+      channels: ENGINEERING
+  - type: Contraband
+    allowedJobs:
+    - EngiSentry
+
+- type: entity
+  id: ClothingEyesGlassesScience
+  parent: ClothingEyesGlassesSecurity
+  name: sci curity glasses
+  description: Glasses with a modified security HUD.
+  components:
+  - type: Sprite
+    sprite: Clothing/Eyes/Glasses/sunglasses.rsi
+    layers:
+    - state: icon
+      color: "#FF00FF"
+  - type: ClothingGrantComponent # Ratbite, target tracker
+    component:
+    - type: TargetTracker
+      channels: SCIENCE
+  - type: Contraband
+    allowedJobs:
+    - ScicurityGuard
+
+

@@ -29,7 +29,7 @@
     damage:
       types:
   # Goobstation Edit Start - Moth food
-  - type: Food
+  - type: Edible
     requiresSpecialDigestion: true
     delay: 15
     forceFeedDelay: 15

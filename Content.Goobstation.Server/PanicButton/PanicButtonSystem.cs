@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Pinpointer;
@@ -70,6 +67,7 @@ namespace Content.Goobstation.Server.PanicButton
                 MapId = coordinates.MapId,
                 Sprite = ent.Comp.SecHudIcon,
                 PinColor = ent.Comp.SecHudIconColor,
+                Channels = ent.Comp.Channels,
             }, deleteAfter: TimeSpan.FromSeconds(5), soundToPlay: ent.Comp.PlayedSound);
             // Ratbite end
 

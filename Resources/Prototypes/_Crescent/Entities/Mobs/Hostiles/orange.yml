@@ -40,7 +40,7 @@
         0: Alive
         99999998: Dead
     - type: Stamina
-      critThreshold: 99999998
+      baseCritThreshold: 99999998
     - type: MeleeWeapon
       altDisarm: false
       angle: 0

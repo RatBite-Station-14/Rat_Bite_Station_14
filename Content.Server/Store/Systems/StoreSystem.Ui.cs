@@ -1,7 +1,9 @@
-// <Trauma>
-using Content.Goobstation.Shared.ManifestListings;
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using System.Linq;
 using Content.Goobstation.Shared.NTR;
 using Content.Goobstation.Shared.NTR.Events;
+using Content.Goobstation.Shared.ManifestListings;
 using Content.Server._Goobstation.Wizard.Store;
 using Content.Server.Heretic.EntitySystems;
 using Content.Server.PDA.Ringer;
@@ -36,9 +38,8 @@ namespace Content.Server.Store.Systems;
 // do not touch unless you want to shoot yourself in the leg
 public sealed partial class StoreSystem
 {
-    // <Trauma>
-    [Dependency] private readonly HereticKnowledgeSystem _heretic = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    // <Trauma>
     [Dependency] private readonly SharedGameTicker _ticker = default!;
     // </Trauma>
     [Dependency] private readonly IAdminLogManager _admin = default!;
@@ -50,6 +51,7 @@ public sealed partial class StoreSystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly HereticSystem _heretic = default!; // goobstation - heretics
 
     private void InitializeUi()
     {
@@ -218,8 +220,11 @@ public sealed partial class StoreSystem
         // so i'm just gonna shitcode my way out of my misery
         if (listing.ProductHereticKnowledge != null)
         {
-            if (TryComp<HereticComponent>(buyer, out var heretic))
-                _heretic.AddKnowledge(buyer, heretic, (ProtoId<HereticKnowledgePrototype>) listing.ProductHereticKnowledge);
+            mindId = buyer;
+            var mind = CompOrNull<MindComponent>(mindId);
+
+            if (mind != null || _mind.TryGetMind(buyer, out mindId, out mind))
+                _heretic.TryAddKnowledge(mindId, listing.ProductHereticKnowledge.Value, mind.CurrentEntity);
         }
 
         //spawn entity
@@ -335,7 +340,7 @@ public sealed partial class StoreSystem
             $"{ToPrettyString(buyer):player} purchased listing \"{ListingLocalisationHelpers.GetLocalisedNameOrEntityName(listing, _proto)}\" from {ToPrettyString(uid)}");
 
         listing.PurchaseAmount++; //track how many times something has been purchased
-        _audio.PlayEntity(component.BuySuccessSound, msg.Actor, uid); //cha-ching!
+        _audio.PlayGlobal(component.BuySuccessSound, msg.Actor); //cha-ching! // Goob edit
 
         //WD EDIT START
         if (listing.SaleLimit != 0 && listing.DiscountValue > 0 && listing.PurchaseAmount >= listing.SaleLimit)
@@ -390,7 +395,7 @@ public sealed partial class StoreSystem
         {
             var cashId = proto.Cash[value];
             var amountToSpawn = (int) MathF.Floor((float) (amountRemaining / value));
-            var ents = _stack.SpawnMultiple(cashId, amountToSpawn, coordinates);
+            var ents = _stack.SpawnMultipleAtPosition(cashId, amountToSpawn, coordinates);
             if (ents.FirstOrDefault() is {} ent)
                 _hands.PickupOrDrop(buyer, ent);
             amountRemaining -= value * amountToSpawn;

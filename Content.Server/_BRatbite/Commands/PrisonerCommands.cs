@@ -71,7 +71,14 @@ public sealed class PermaBrigCommand : LocalizedCommands
             var now = DateTimeOffset.UtcNow; // this groups bans together
             foreach (var proto in _prototypes.EnumeratePrototypes<JobPrototype>().Where(value => value.ID != "Prisoner"))
             {
-                _bans.CreateRoleBan(guid, data.Username, shell.Player?.UserId, null, data.LastHWId, proto.ID, 0, severity, "cmd-permabrig-ban-description", now);
+                var banInfo = new CreateRoleBanInfo("cmd-permabrig-ban-description");
+                banInfo.AddJob(proto.ID);
+                banInfo.AddUser(guid, data.Username);
+                banInfo.AddAddress(data.LastAddress);
+                banInfo.AddHWId(data.LastHWId);
+                banInfo.WithBanningAdmin(shell.Player?.UserId);
+                banInfo.WithSeverity(severity);
+                _bans.CreateRoleBan(banInfo);
             }
             _jobWhitelist.AddWhitelist(guid, prisonerJob);
 

@@ -7925,8 +7925,6 @@ entities:
       pos: -27.5,-18.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 70
 - proto: AltarSpawner
@@ -39555,8 +39553,6 @@ entities:
       pos: -30.5,27.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 33
   - uid: 6129
@@ -39565,8 +39561,6 @@ entities:
       pos: -30.5,28.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 33
 - proto: FirelockElectronics
@@ -54242,8 +54236,6 @@ entities:
       pos: -25.5,-15.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 70
   - uid: 8131
@@ -55205,8 +55197,6 @@ entities:
       pos: -24.5,-15.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 70
   - uid: 8250

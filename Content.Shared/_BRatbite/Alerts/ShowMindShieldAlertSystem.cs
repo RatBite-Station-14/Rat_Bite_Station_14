@@ -19,12 +19,11 @@ public sealed class ShowMindShieldAlertSystem : EntitySystem {
 
 	private void OnMindShieldStartup(Entity<MindShieldComponent> ent, ref ComponentStartup args)
 	{
-
-	    _alerts.ShowAlert(ent, ent.Comp.MindShieldAlert);
+	    _alerts.ShowAlert(ent.Owner, ent.Comp.MindShieldAlert);
 	}
 
 	private void OnMindShieldShutdown(Entity<MindShieldComponent> ent, ref ComponentShutdown args)
 	{
-	    _alerts.ClearAlert(ent, ent.Comp.MindShieldAlert);
+	    _alerts.ClearAlert(ent.Owner, ent.Comp.MindShieldAlert);
 	}
 }
