@@ -147,7 +147,6 @@
     Glass: 500
     Gold: 100
     Plasma: 100
-    BSCrystal: 50
   result: EnergyChemDispenserMachineCircuitboard
   icon:
     sprite: Structures/dispensers.rsi

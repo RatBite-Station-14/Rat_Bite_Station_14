@@ -1,0 +1,78 @@
+# Ratbite - classic (pre-resprite) mantle variants, offered as an alternate loadout choice
+
+- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckMantleCapOld
+  name: old captain's mantle
+  description: A classic captain's mantle, worn smooth by decades of tradition.
+  components:
+  - type: Sprite
+    sprite: Clothing/Neck/mantles/capmantle.rsi
+  - type: Clothing
+    sprite: Clothing/Neck/mantles/capmantle.rsi
+
+- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckMantleCEOld
+  name: old chief engineer's mantle
+  description: A classic chief engineer's mantle, from before the RIG upgrades.
+  components:
+  - type: Sprite
+    sprite: Clothing/Neck/mantles/cemantle.rsi
+  - type: Clothing
+    sprite: Clothing/Neck/mantles/cemantle.rsi
+
+- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckMantleCMOOld
+  name: old chief medical officer's mantle
+  description: A classic chief medical officer's mantle, in a simpler cut.
+  components:
+  - type: Sprite
+    sprite: Clothing/Neck/mantles/cmomantle.rsi
+  - type: Clothing
+    sprite: Clothing/Neck/mantles/cmomantle.rsi
+
+- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckMantleHOPOld
+  name: old head of personnel's mantle
+  description: A classic head of personnel's mantle, in a simpler cut.
+  components:
+  - type: Sprite
+    sprite: Clothing/Neck/mantles/hopmantle.rsi
+  - type: Clothing
+    sprite: Clothing/Neck/mantles/hopmantle.rsi
+
+- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckMantleHOSOld
+  name: old head of security's mantle
+  description: A classic head of security's mantle, without the bodycam retrofit.
+  components:
+  - type: Sprite
+    sprite: Clothing/Neck/mantles/hosmantle.rsi
+  - type: Clothing
+    sprite: Clothing/Neck/mantles/hosmantle.rsi
+
+- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckMantleQMOld
+  name: old quartermaster's mantle
+  description: A classic quartermaster's mantle, in a simpler cut.
+  components:
+  - type: Sprite
+    sprite: Clothing/Neck/mantles/qmmantle.rsi
+  - type: Clothing
+    sprite: Clothing/Neck/mantles/qmmantle.rsi
+
+- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckMantleRDOld
+  name: old research director's mantle
+  description: A classic research director's mantle, in a simpler cut.
+  components:
+  - type: Sprite
+    sprite: Clothing/Neck/mantles/rdmantle.rsi
+  - type: Clothing
+    sprite: Clothing/Neck/mantles/rdmantle.rsi
