@@ -6,3 +6,5 @@ job-name-medical-orderly = Medical Orderly
 job-name-engi-sentry = Engi Sentry
 job-name-sci-guard = Sci-Curity Guard
 job-name-cargo-insurance = Cargo Insurance
+
+job-name-redsight-overseer = Redsight Overseer

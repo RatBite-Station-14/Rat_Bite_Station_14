@@ -8,6 +8,7 @@
 # CentCom
 
 job-description-bs = Act as a bodyguard and advisor for Command and CentCom VIPs.
+job-description-ntr = Represent NT, Send reports back to them on the station's situation, Inform the heads of anything CentCom orders them to do.
 
 # Navy
 
