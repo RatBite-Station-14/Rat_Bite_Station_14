@@ -271,7 +271,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         damage *= hitEvent.Value;
         overtime *= hitEvent.Value;
 
-        TakeStaminaDamage(target, damage, source: uid, sound: component.Sound, // Goob: Ignore resists, we calculated this already.);
+        TakeStaminaDamage(target, damage, source: uid, sound: component.Sound, ignoreResist: true); // Goob: Ignore resists, we calculated this already.
         TakeOvertimeStaminaDamage(target, overtime); // Goobstation
     }
 
