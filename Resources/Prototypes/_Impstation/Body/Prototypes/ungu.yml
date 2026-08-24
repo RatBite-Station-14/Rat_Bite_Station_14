@@ -14,7 +14,7 @@
       organs:
         brain: OrganHumanBrain
         eyes: OrganHumanEyes
-    torso:
+    chest:
       part: ChestUngu
       organs:
         heart: OrganAnimalHeart
