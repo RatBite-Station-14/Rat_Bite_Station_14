@@ -24,7 +24,7 @@ public sealed partial class CombatTrainedSystem : EntitySystem
         // Add it like this to nukeops because there are a bunch of nuclear operative prototypes
         // And I don't want to add them manually
         _entityManager.RemoveComponent<CombatUntrainedComponent>(ent.Owner);
-        AddComp<CombatTrainedComponent>(ent.Owner);
+        EnsureComp<CombatTrainedComponent>(ent.Owner);
     }
 
     private void OnInitializeComp(Entity<CombatTrainedComponent> ent, ref ComponentStartup args)
@@ -37,7 +37,7 @@ public sealed partial class CombatTrainedSystem : EntitySystem
         if (TerminatingOrDeleted(ent.Owner))
             return;
 
-        AddComp<CombatUntrainedComponent>(ent.Owner);
+        EnsureComp<CombatUntrainedComponent>(ent.Owner);
     }
 
     private void OnRecoilModifiersEvent(Entity<CombatUntrainedComponent> ent, ref GetRecoilModifiersEvent args)
