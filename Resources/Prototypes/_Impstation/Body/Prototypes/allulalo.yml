@@ -5,7 +5,7 @@
 - type: body
   name: "allulalo"
   id: Allulalo
-  root: torso
+  root: chest
   slots:
     head:
       part: HeadAllulalo
@@ -14,8 +14,8 @@
       organs:
         brain: OrganHumanBrain
         eyes: OrganHumanEyes
-    torso:
-      part: TorsoAllulalo
+    chest:
+      part: ChestAllulalo
       organs:
         heart: OrganAllulaloHeart
         lungs: OrganHumanLungs

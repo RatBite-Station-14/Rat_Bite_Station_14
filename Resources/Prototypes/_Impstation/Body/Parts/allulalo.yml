@@ -17,8 +17,8 @@
         Quantity: 10
 
 - type: entity
-  id: TorsoAllulalo
-  name: "allulalo torso"
+  id: ChestAllulalo
+  name: "allulalo chest"
   parent: [PartAllulalo, BaseChest]
   components:
   - type: Sprite
@@ -33,8 +33,8 @@
         Quantity: 20
 
 - type: entity
-  id: TorsoAllulalo
-  name: "allulalo torso"
+  id: GroinAllulalo
+  name: "allulalo groin"
   parent: [PartAllulalo, BaseGroin]
   components:
   - type: Sprite
