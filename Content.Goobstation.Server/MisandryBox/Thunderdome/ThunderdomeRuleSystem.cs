@@ -690,7 +690,7 @@ public sealed class ThunderdomeRuleSystem : EntitySystem
         EnsureComp<CombatTrainedComponent>(uid);
     }
 
-    private void OnShutdown(EntityUid uid, ThunderdomePlayerComponent component, ComponentShutdown args)
+    private void OnShutdown(EntityUid uid, ThunderdomePlayerComponent component, ComponentShutdown args) // Ratbite
     {
         RemComp<CombatTrainedComponent>(uid);
     }
