@@ -23,7 +23,7 @@
       - right arm
       - left arm
       - groin
-      - head
+      - head # shitmed
     groin:
       part: GroinUngu
       connections:
