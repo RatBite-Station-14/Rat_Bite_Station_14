@@ -23,7 +23,7 @@
   components:
   - type: Sprite
     sprite: _Impstation/Mobs/Species/Allulalo/parts.rsi
-    state: "torso"
+    state: "chest"
   - type: Extractable
     juiceSolution:
       reagents:
