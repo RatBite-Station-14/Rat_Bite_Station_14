@@ -29,6 +29,7 @@
     HeadTop: MobHumanoidAnyMarking
     Hair: MobHumanoidAnyMarking
     Chest: MobAllulaloTorso
+    Groin: MobAllulaloGroin # Goob
     LArm: MobAllulaloLArm
     RArm: MobAllulaloRArm
     LHand: MobAllulaloLHand
@@ -118,6 +119,12 @@
   baseSprite:
     sprite: _Impstation/Mobs/Species/Allulalo/parts.rsi
     state: torso
+
+- type: humanoidBaseSprite
+  id: MobAllulaloGroin
+  baseSprite:
+    sprite: _Impstation/Mobs/Species/Allulalo/parts.rsi
+    state: groin
 
 - type: humanoidBaseSprite
   id: MobAllulaloLLeg
