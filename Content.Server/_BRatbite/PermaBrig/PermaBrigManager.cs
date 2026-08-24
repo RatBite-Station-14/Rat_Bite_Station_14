@@ -31,7 +31,7 @@ namespace Content.Server._BRatbite.PermaBrig
 
         private readonly List<Task> _pendingSaveTasks = new();
 
-        private ProtoId<RadioChannelPrototype> SecurityChannel = "Security";
+        // private ProtoId<RadioChannelPrototype> SecurityChannel = "Security"; // unused
 
         public void Shutdown()
         {
