@@ -10,7 +10,7 @@
     head:
       part: HeadAllulalo
       connections:
-      - torso
+      - chest
       organs:
         brain: OrganHumanBrain
         eyes: OrganHumanEyes
