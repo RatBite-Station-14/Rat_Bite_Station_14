@@ -121,6 +121,12 @@
     state: chest
 
 - type: humanoidBaseSprite
+  id: MobAllulaloGroin
+  baseSprite:
+    sprite: _Impstation/Mobs/Species/Allulalo/parts.rsi
+    state: groin
+
+- type: humanoidBaseSprite
   id: MobAllulaloGroinMale
   baseSprite:
     sprite: _Impstation/Mobs/Species/Allulalo/parts.rsi
