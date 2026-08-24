@@ -19,14 +19,20 @@
       organs:
         heart: OrganAllulaloHeart
         lungs: OrganHumanLungs
-        stomach: OrganAnimalStomach
-        liver: OrganAnimalLiver
-        kidneys: OrganHumanKidneys
       connections:
       - right arm
       - left arm
+      - groin
+      - head # Shitmed
+    groin:
+      part: GroinAllulalo
+      connections:
       - right leg
       - left leg
+      organs:
+        stomach: OrganAnimalStomach
+        liver: OrganAnimalLiver
+        kidneys: OrganHumanKidneys
     right arm:
       part: RightArmAllulalo
     left arm:
