@@ -5,6 +5,10 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
+# CentCom
+
+job-description-bs = Act as a bodyguard and advisor for Command and CentCom VIPs.
+
 # Navy
 
 job-description-navy-officer-undercover = Complete your assigned tasks, Terminate the given targets. Good luck.
