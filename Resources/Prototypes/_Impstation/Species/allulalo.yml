@@ -121,7 +121,13 @@
     state: torso
 
 - type: humanoidBaseSprite
-  id: MobAllulaloGroin
+  id: MobAllulaloGroinMale
+  baseSprite:
+    sprite: _Impstation/Mobs/Species/Allulalo/parts.rsi
+    state: groin
+
+- type: humanoidBaseSprite
+  id: MobAllulaloGroinFemale
   baseSprite:
     sprite: _Impstation/Mobs/Species/Allulalo/parts.rsi
     state: groin
