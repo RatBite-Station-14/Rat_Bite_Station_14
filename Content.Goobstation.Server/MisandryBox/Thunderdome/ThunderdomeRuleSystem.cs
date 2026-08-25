@@ -43,6 +43,8 @@ using Robust.Shared.Random;
 using Robust.Shared.Containers;
 using Robust.Shared.Spawners;
 using Robust.Shared.Timing;
+using Content.Shared._BRatbite.Weapons.Ranged;
+using Content.Goobstation.Shared.Weapons.DelayedKnockdown;
 
 namespace Content.Goobstation.Server.MisandryBox.Thunderdome;
 
@@ -93,6 +95,9 @@ public sealed class ThunderdomeRuleSystem : EntitySystem
         SubscribeLocalEvent<ThunderdomeOriginalBodyComponent, ExaminedEvent>(OnOriginalBodyExamined);
         SubscribeLocalEvent<ThunderdomePlayerComponent, PlayerDetachedEvent>(OnPlayerDetached);
         SubscribeLocalEvent<ShouldLogMobStateChangeEvent>(OnShouldLogStateChange);
+
+        SubscribeLocalEvent<ThunderdomePlayerComponent, ComponentStartup>(OnStartup); // Ratbite: Combat Training
+        SubscribeLocalEvent<ThunderdomePlayerComponent, ComponentShutdown>(OnShutdown); // Ratbite: Combat Training
     }
 
     public override void Update(float frameTime)
@@ -678,5 +683,15 @@ public sealed class ThunderdomeRuleSystem : EntitySystem
         }
 
         Dirty(ent);
+    }
+
+    private void OnStartup(EntityUid uid, ThunderdomePlayerComponent component, ComponentStartup args) // Ratbite: Ensure Combat Training in Thunderdome
+    {
+        EnsureComp<CombatTrainedComponent>(uid);
+    }
+
+    private void OnShutdown(EntityUid uid, ThunderdomePlayerComponent component, ComponentShutdown args) // Ratbite
+    {
+        RemComp<CombatTrainedComponent>(uid);
     }
 }
