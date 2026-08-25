@@ -239,7 +239,7 @@
     - Bare
   name: secretplus-lowpop-title
   description: secretplus-lowpop-description
-  showInVote: true
+  showInVote: false
   maxPlayers: 40
   rules:
     - SecretPlusLowpop
