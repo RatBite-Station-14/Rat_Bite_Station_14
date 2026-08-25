@@ -999,10 +999,6 @@ DrinkKiraSpecial: DrinkOrangeLimeSodaGlass
 # 2025-12-05
 GlowstickBase: GlowstickGreen
 
-# 2025-12-06
-SpawnPointZookeeper: null
-SpawnPointBoxer: null
-
 # 2025-12-07
 FigureSpawner: MechFigurineSpawner50
 ToySpawner: PlushieSpawner50
@@ -1017,3 +1013,6 @@ BorgModuleAdvancedChemical: BorgModuleAdvancedTopical
 
 #2026-08-23 Ratbite: Make all mapped uniform printers start with hop access
 UniformPrinter: HopUniformPrinter
+
+#2026-08-24 Ratbite: Fixes prototype
+Gauze10Lingering: Gauze

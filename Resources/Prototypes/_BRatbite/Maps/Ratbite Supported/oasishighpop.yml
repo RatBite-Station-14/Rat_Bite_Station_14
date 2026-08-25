@@ -29,6 +29,7 @@
             Chef: [ 4, 4 ]
             Janitor: [ 6, 6 ]
             Chaplain: [ 1, 1 ]
+            Zookeeper: [ 1, 1 ] #ratbite - readded zookeeper
             Librarian: [ 2, 2 ]
             ServiceWorker: [ 4, 4 ]
             Reporter: [ 3, 3 ]
