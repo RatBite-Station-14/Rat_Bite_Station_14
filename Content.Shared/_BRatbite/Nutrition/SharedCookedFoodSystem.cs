@@ -1,4 +1,5 @@
 using Content.Shared.Examine;
+using Content.Shared.Temperature.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -13,7 +14,7 @@ public sealed partial class SharedCookedFoodSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        MaxFreshnessLevels = _proto.GetInstances<FoodFreshnessPrototype>().Count;
+        MaxFreshnessLevels = _proto.GetInstances<FoodStatusPrototype>().Count;
         SubscribeLocalEvent<CookedFoodComponent, MapInitEvent>(OnCookedFoodInit);
         SubscribeLocalEvent<CookedFoodComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypeReload);
@@ -24,7 +25,7 @@ public sealed partial class SharedCookedFoodSystem : EntitySystem
         ent.Comp.LastFreshnessUpdate = _timing.CurTime;
     }
 
-    public ProtoId<FoodFreshnessPrototype> GetFreshnessLevel(Entity<CookedFoodComponent> ent)
+    public ProtoId<FoodStatusPrototype> GetFreshnessLevel(Entity<CookedFoodComponent> ent)
     {
         var foodDecay = _proto.Index(ent.Comp.FoodDecayPrototype);
         ref var currentFreshness = ref ent.Comp.CurrentFreshness;
@@ -42,11 +43,25 @@ public sealed partial class SharedCookedFoodSystem : EntitySystem
         return currentFreshness;
     }
 
+    public ProtoId<FoodStatusPrototype>? GetTemperatureStatus(Entity<CookedFoodComponent> ent)
+    {
+        if (!TryComp<TemperatureComponent>(ent, out var tempComp)) return null;
+        float closest = 0f;
+        var foodTemp = tempComp.CurrentTemperature;
+        var temperatureProto = _proto.Index(ent.Comp.FoodTemperaturePrototype);
+        foreach (var threshold in temperatureProto.TemperatureThresholds)
+        {
+            if (foodTemp >= threshold.Key && threshold.Key > closest)
+                closest = threshold.Key;
+        }
+        return temperatureProto.TemperatureThresholds.GetValueOrDefault(closest);
+    }
+
     private void OnPrototypeReload(PrototypesReloadedEventArgs args)
     {
-        if (args.WasModified<FoodFreshnessPrototype>())
+        if (args.WasModified<FoodStatusPrototype>())
         {
-            MaxFreshnessLevels = _proto.GetInstances<FoodFreshnessPrototype>().Count;
+            MaxFreshnessLevels = _proto.GetInstances<FoodStatusPrototype>().Count;
         }
     }
 
@@ -56,6 +71,11 @@ public sealed partial class SharedCookedFoodSystem : EntitySystem
         if (freshness.ExamineText is { } examineText)
         {
             args.PushMarkup(Loc.GetString(examineText));
+        }
+        var temperature = _proto.Index(GetTemperatureStatus(ent));
+        if (temperature?.ExamineText is { } text)
+        {
+            args.PushMarkup(Loc.GetString(text));
         }
     }
 }

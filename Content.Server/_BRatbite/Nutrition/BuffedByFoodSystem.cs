@@ -33,25 +33,34 @@ public sealed partial class BuffedByFoodSystem : EntitySystem
     }
 
     private void CleanupStatusEffects(ref Buff item)
-    { 
+    {
         foreach (var ent in item.Ents)
             QueueDel(ent); // Deleting the entities will call appropriate events
     }
 
     private void OnFoodEaten(Entity<CookedFoodComponent> ent, ref FullyEatenEvent args)
-    {    
+    {
         if (!TryComp<BuffedByFoodComponent>(args.User, out var buffedByFood)) return;
         var buff = new Buff(new());
         var freshness = _proto.Index(_cookedFoodSystem.GetFreshnessLevel(ent));
-        foreach (var effect in freshness.Effects)
-        {
-            // TODO: If we know a status effect can't be applied twice, we can simply add the time
-            if(_statusEffectsSystem.TryAddStatusEffect(args.User, effect, out var effectUid))
-                buff.Ents.Add(effectUid.Value); // TODO: check why C# is stupid
-        }
+        ApplyFoodEffects(ref buff, args.User, ent.Comp.StatusEffectProto);
+        ApplyFoodEffects(ref buff, args.User, freshness.Effects);
+        if (_proto.Index(_cookedFoodSystem.GetTemperatureStatus(ent)) is { } temp)
+            ApplyFoodEffects(ref buff, args.User, temp.Effects);
+
         if (buffedByFood.ActivatedBuffs.Push(buff, out var old))
             CleanupStatusEffects(ref old);
         ScaleBuffs((args.User, buffedByFood));
+    }
+
+    private void ApplyFoodEffects(ref Buff buff, EntityUid user, List<EntProtoId> Effects)
+    {
+        foreach (var effect in Effects)
+        {
+            // TODO: If we know a status effect can't be applied twice, we can simply add the time
+            if (_statusEffectsSystem.TryAddStatusEffect(user, effect, out var effectUid))
+                buff.Ents.Add(effectUid.Value);
+        }
     }
 
     private void ScaleBuffs(Entity<BuffedByFoodComponent> ent)
@@ -71,6 +80,6 @@ public sealed partial class BuffedByFoodSystem : EntitySystem
 
     private void OnBuffedInit(Entity<BuffedByFoodComponent> ent, ref MapInitEvent args)
     {
-        ent.Comp.ActivatedBuffs = new (_maxActivatedBuffs, _buffDuration, _timing);
+        ent.Comp.ActivatedBuffs = new(_maxActivatedBuffs, _buffDuration, _timing);
     }
 }

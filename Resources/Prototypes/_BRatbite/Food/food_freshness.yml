@@ -1,20 +1,20 @@
-- type: foodFreshness
+- type: foodStatus
   id: Fresh
   effects:
   - FreshStatusEffect
   examineText: food-freshness-fresh-examine
 
-- type: foodFreshness
+- type: foodStatus
   id: Stale
   effects: [ ] # TODO
   examineText: food-freshness-stale-examine
 
-- type: foodFreshness
+- type: foodStatus
   id: Rotten
   effects: [ ] # TODO
   examineText: food-freshness-rotten-examine
 
-- type: foodFreshness
+- type: foodStatus
   id: Preserved
   effects: [ ]
   examineText: food-freshness-preserved-examine

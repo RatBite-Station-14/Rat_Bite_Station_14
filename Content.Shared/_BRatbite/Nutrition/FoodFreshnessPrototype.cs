@@ -1,9 +1,10 @@
+using Content.Goobstation.Maths.FixedPoint;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._BRatbite.Nutrition;
 
 [Prototype]
-public sealed partial class FoodFreshnessPrototype : IPrototype
+public sealed partial class FoodStatusPrototype : IPrototype
 {
     [IdDataField]
     public string ID { get; private set; } = string.Empty;
@@ -26,5 +27,15 @@ public sealed partial class FoodDecayPrototype : IPrototype
 
     [DataField]
     // Starting freshness -> what it decays to
-    public Dictionary<ProtoId<FoodFreshnessPrototype>, (TimeSpan, ProtoId<FoodFreshnessPrototype>)> DecayTimes = new () { };
+    public Dictionary<ProtoId<FoodStatusPrototype>, (TimeSpan, ProtoId<FoodStatusPrototype>)> DecayTimes = new() { };
+}
+
+[Prototype]
+public sealed partial class FoodTemperaturePrototype : IPrototype
+{
+    [IdDataField]
+    public string ID { get; private set; } = string.Empty;
+
+    [DataField(required: true)]
+    public Dictionary<float, ProtoId<FoodStatusPrototype>> TemperatureThresholds = new();
 }

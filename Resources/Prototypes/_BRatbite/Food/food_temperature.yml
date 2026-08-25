@@ -1,0 +1,15 @@
+- type: foodStatus
+  id: Cold
+  effects: [ ] # TODO
+  examineText: food-temperature-cold
+
+- type: foodStatus
+  id: Hot
+  effects: [ ] # TODO
+  examineText: food-temperature-hot
+
+- type: foodTemperature
+  id: HotFoodTemperature
+  temperatureThresholds:
+    0: Cold
+    300: Hot

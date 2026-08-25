@@ -1,3 +1,8 @@
+# You can use other status effects as a foodifier, but before doing so
+# check that they have properly handled applying the same effect type
+# multiple times. Scaling is custom ratbite logic, you will likely
+# need to implement it yourself if the effect needs it.
+
 - type: entity
   parent: MobStatusEffectBase
   id: MobStatusEffectScalable
