@@ -25,7 +25,7 @@
   speciesBlacklist: # Ratbite - no translator so no foreigner trait for these species
   - Scurret
   - Monkey
-  - Kobolt
+  - Kobold
   components:
   - type: ForeignerTrait
     baseTranslator: TranslatorForeigner
