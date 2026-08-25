@@ -502,7 +502,7 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
             return false;
 
         referenceFactor = Math.Clamp(referenceFactor, 0f, ent.Comp.MaxVolumeModifier);
-        var ratio = amount / ent.Comp.BloodReferenceSolution.Volume;
+        var ratio = (float) amount / (float) ent.Comp.BloodReferenceSolution.Volume; // Goobstation - added float so 1/300 is not 0..
 
         foreach (var (referenceReagent, referenceQuantity) in ent.Comp.BloodReferenceSolution)
         {
