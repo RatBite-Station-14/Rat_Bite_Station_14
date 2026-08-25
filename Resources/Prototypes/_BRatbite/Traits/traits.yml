@@ -281,3 +281,27 @@
   components:
   - type: Trigger
 
+- type: trait
+  id: Kleptomania
+  name: trait-kleptomania-name
+  description: trait-kleptomania-desc
+  category: Mental
+  cost: -1
+  mutuallyExclusiveTraits:
+  - ChronicKleptomania
+  components:
+  - type: Kleptomania
+    timeBetweenIncidents: 12, 20
+
+- type: trait
+  id: ChronicKleptomania
+  name: trait-chronic-kleptomania-name
+  description: trait-chronic-kleptomania-desc
+  category: Mental
+  cost: -2
+  mutuallyExclusiveTraits:
+  - Kleptomania
+  components:
+  - type: Kleptomania
+    timeBetweenIncidents: 3, 3
+    riskyTargets: true
