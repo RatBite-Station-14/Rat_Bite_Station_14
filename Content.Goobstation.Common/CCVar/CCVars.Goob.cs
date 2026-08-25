@@ -123,7 +123,7 @@ public sealed partial class GoobCVars
     public static readonly CVarDef<bool> DisablePathfinding =
         CVarDef.Create("goob.disable_pathfinding", false, CVar.SERVER | CVar.SERVERONLY);
 
-  
+
     #region Player Listener
 
     /// <summary>
