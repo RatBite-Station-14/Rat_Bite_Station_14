@@ -1,4 +1,5 @@
 using Content.Shared.Examine;
+using Content.Shared.Kitchen;
 using Content.Shared.Temperature.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -9,6 +10,7 @@ public sealed partial class SharedCookedFoodSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    private readonly static ProtoId<FoodTemperaturePrototype> MicrowavedPrototype = "ReheatedTemperature";
     private int MaxFreshnessLevels;
 
     public override void Initialize()
@@ -17,6 +19,7 @@ public sealed partial class SharedCookedFoodSystem : EntitySystem
         MaxFreshnessLevels = _proto.GetInstances<FoodStatusPrototype>().Count;
         SubscribeLocalEvent<CookedFoodComponent, MapInitEvent>(OnCookedFoodInit);
         SubscribeLocalEvent<CookedFoodComponent, ExaminedEvent>(OnExamined);
+        SubscribeLocalEvent<CookedFoodComponent, BeingMicrowavedEvent>(OnMicrowaved);
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypeReload);
     }
 
@@ -77,5 +80,10 @@ public sealed partial class SharedCookedFoodSystem : EntitySystem
         {
             args.PushMarkup(Loc.GetString(text));
         }
+    }
+
+    private void OnMicrowaved(Entity<CookedFoodComponent> ent, ref BeingMicrowavedEvent args)
+    {
+        ent.Comp.FoodTemperaturePrototype = MicrowavedPrototype;
     }
 }

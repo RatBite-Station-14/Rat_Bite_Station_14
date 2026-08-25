@@ -18,7 +18,6 @@ public sealed partial class ChangeStaminaStatusEffectSystem : EntitySystem
         if (!TryComp<StaminaComponent>(args.Target, out var stamina)) return;
         var scale = CompOrNull<StatusEffectScaleComponent>(ent)?.Scale ?? 1f;
         stamina.CritThreshold += ent.Comp.AddedStamina * scale;
-        Logger.Debug($"Applied {ent.Comp.AddedStamina * scale} stamina buff");
         Dirty(args.Target, stamina);
     }
 
@@ -27,7 +26,6 @@ public sealed partial class ChangeStaminaStatusEffectSystem : EntitySystem
         if (!TryComp<StaminaComponent>(args.Target, out var stamina)) return;
         var scale = CompOrNull<StatusEffectScaleComponent>(ent)?.Scale ?? 1f;
         stamina.CritThreshold -= ent.Comp.AddedStamina * scale;
-        Logger.Debug($"Removed {ent.Comp.AddedStamina * scale} stamina buff");
         Dirty(args.Target, stamina);
     }
 
@@ -35,7 +33,6 @@ public sealed partial class ChangeStaminaStatusEffectSystem : EntitySystem
     {
         if (!TryComp<StaminaComponent>(args.Target, out var stamina)) return;
         stamina.CritThreshold += ent.Comp.AddedStamina * (args.NewScale - args.OldScale);
-        Logger.Debug($"Changed stamina by {ent.Comp.AddedStamina * (args.NewScale - args.OldScale)} stamina buff");
         Dirty(args.Target, stamina);
     }
 }

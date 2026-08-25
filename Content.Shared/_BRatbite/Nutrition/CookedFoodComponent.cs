@@ -22,6 +22,7 @@ public sealed partial class CookedFoodComponent : Component
     public ProtoId<FoodStatusPrototype> CurrentFreshness = "Fresh";
 
     [DataField]
-    // These are the status effects inherent to the food itself.
+    // These are the status effects inherent to the food itself or the
+    // way it was cooked.
     public List<EntProtoId> StatusEffectProto = new();
 }
