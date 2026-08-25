@@ -17,13 +17,29 @@
         Quantity: 10
 
 - type: entity
-  id: TorsoUngu
-  name: "ungu torso"
+  id: ChestUngu
+  name: "ungu chest"
   parent: [PartUngu, BaseChest]
   components:
   - type: Sprite
     sprite: _Impstation/Mobs/Species/Ungu/parts.rsi
-    state: "torso"
+    state: "chest"
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 10
+      - ReagentId: Blood
+        Quantity: 20
+
+- type: entity
+  id: GroinUngu
+  name: "ungu groin"
+  parent: [PartUngu, BaseGroin]
+  components:
+  - type: Sprite
+    sprite: _Impstation/Mobs/Species/Ungu/parts.rsi
+    state: "groin"
   - type: Extractable
     juiceSolution:
       reagents:

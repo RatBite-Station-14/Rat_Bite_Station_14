@@ -5,28 +5,34 @@
 - type: body
   name: "allulalo"
   id: Allulalo
-  root: torso
+  root: chest
   slots:
     head:
       part: HeadAllulalo
       connections:
-      - torso
+      - chest
       organs:
         brain: OrganHumanBrain
         eyes: OrganHumanEyes
-    torso:
-      part: TorsoAllulalo
+    chest:
+      part: ChestAllulalo
       organs:
         heart: OrganAllulaloHeart
         lungs: OrganHumanLungs
-        stomach: OrganAnimalStomach
-        liver: OrganAnimalLiver
-        kidneys: OrganHumanKidneys
       connections:
       - right arm
       - left arm
+      - groin
+      - head # Shitmed
+    groin:
+      part: GroinAllulalo
+      connections:
       - right leg
       - left leg
+      organs:
+        stomach: OrganAnimalStomach
+        liver: OrganAnimalLiver
+        kidneys: OrganHumanKidneys
     right arm:
       part: RightArmAllulalo
     left arm:

@@ -38,9 +38,9 @@
     - type: MobThresholds
       thresholds:
         0: Alive
-        99999998: Dead
+        20000: Dead
     - type: Stamina
-      baseCritThreshold: 99999998
+      baseCritThreshold: 20000
     - type: MeleeWeapon
       altDisarm: false
       angle: 0
@@ -51,8 +51,8 @@
           variation: 0.25
       damage:
         types:
-          Blunt: 99999998
-          Structural: 99999998
+          Blunt: 2000
+          Structural: 2000
     - type: SpamEmitSound
       minInterval: 10
       maxInterval: 30
