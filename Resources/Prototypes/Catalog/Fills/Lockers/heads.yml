@@ -380,7 +380,7 @@
   # - id: ComputerCargoRequestSecurityFlatpack # Goobstation
     - id: WantedListCartridge
     - id: DrinkHosFlask
-    - id: ClothingBeltSheathHeadOfSecurityFilled # Goobstation - security revamp
+    # - id: ClothingBeltSheathHeadOfSecurityFilled # Goobstation - security revamp # Ratbite: moved to loadout
     - id: MaterialSiloFlatpack # Goob
 
 # Hardsuit table, used for suit storage as well
