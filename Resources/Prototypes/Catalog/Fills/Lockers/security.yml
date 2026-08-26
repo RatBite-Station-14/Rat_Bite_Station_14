@@ -47,8 +47,8 @@
       amount: 2
     #- id: NetworkConfigurator # Goobstation?
     - id: Binoculars
-    - id: WeaponEnergyShotgun # Goobstation?
-    - id: ClothingHandsGlovesKravMaga # Goobstation - Martial Arts
+    # - id: WeaponEnergyShotgun # Ratbite: moved to loadout
+    # - id: ClothingHandsGlovesKravMaga # Ratbite: Moved to loadout
     - id: BoxLethalInjection # Goobstation
     - id: ClothingHeadsetAltWarden # Goobstation
     - id: Multitool # Goobstation
