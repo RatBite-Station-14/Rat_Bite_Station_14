@@ -5,31 +5,25 @@
 - type: body
   id: Ungu
   name: "ungu"
-  root: chest
+  root: torso
   slots:
     head:
       part: HeadUngu
       connections:
-      - chest
+      - torso
       organs:
         brain: OrganHumanBrain
         eyes: OrganHumanEyes
-    chest:
-      part: ChestUngu
-      organs:
-        heart: OrganAnimalHeart
-        lungs: OrganHumanLungs
+    torso:
+      part: TorsoUngu
       connections:
       - right arm
       - left arm
-      - groin
-      - head # shitmed
-    groin:
-      part: GroinUngu
-      connections:
       - right leg
       - left leg
       organs:
+        heart: OrganAnimalHeart
+        lungs: OrganHumanLungs
         stomach: OrganUnguStomach
         liver: OrganHumanLiver
         kidneys: OrganHumanKidneys

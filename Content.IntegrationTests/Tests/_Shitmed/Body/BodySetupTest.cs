@@ -176,7 +176,7 @@ public sealed class BodySetupTest
             {
                 Assert.That(dummy, Is.Not.EqualTo(EntityUid.Invalid));
                 var handCount = handsSys.EnumerateHands(dummy).Count();
-                Assert.That(handCount, Is.GreaterThanOrEqualTo(1), $"hands {speciesPrototype.ID}({speciesPrototype.Prototype})"); // 2->1 Ratbite: Alulalo
+                Assert.That(handCount, Is.GreaterThanOrEqualTo(2), $"hands {speciesPrototype.ID}({speciesPrototype.Prototype})");
             });
 
         }

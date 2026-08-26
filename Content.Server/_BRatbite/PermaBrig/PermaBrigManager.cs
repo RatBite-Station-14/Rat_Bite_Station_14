@@ -26,21 +26,20 @@ namespace Content.Server._BRatbite.PermaBrig
         [Dependency] private readonly ITaskManager _task = default!;
         [Dependency] private readonly IEntityManager _entManager = default!;
         [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-        private ISawmill _sawmill = default!;
 
         private readonly List<Task> _pendingSaveTasks = new();
 
-        // private ProtoId<RadioChannelPrototype> SecurityChannel = "Security"; // unused
+        private ProtoId<RadioChannelPrototype> SecurityChannel = "Security";
 
         public void Shutdown()
         {
             _task.BlockWaitOnTask(Task.WhenAll(_pendingSaveTasks));
         }
 
+        private readonly ISawmill _sawmill = Logger.GetSawmill("server_permabrig");
 
         public void Initialize()
         {
-            _sawmill = Logger.GetSawmill("server_permabrig");
         }
 
         /// <summary>
