@@ -6,6 +6,7 @@ using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Clothing.EntitySystems;
 using Content.Shared.Database;
 using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
@@ -70,7 +71,7 @@ public sealed partial class IngestionSystem : EntitySystem
         SubscribeLocalEvent<EdibleComponent, ComponentInit>(OnEdibleInit);
 
         // Interactions
-        SubscribeLocalEvent<EdibleComponent, UseInHandEvent>(OnUseEdibleInHand, after: [typeof(OpenableSystem), typeof(InventorySystem), typeof(ActivatableUISystem)]);
+        SubscribeLocalEvent<EdibleComponent, UseInHandEvent>(OnUseEdibleInHand, after: [typeof(OpenableSystem), typeof(InventorySystem), typeof(ActivatableUISystem), typeof(ClothingSystem)]); // Ratbite: Add after ClothingSystem
         SubscribeLocalEvent<EdibleComponent, AfterInteractEvent>(OnEdibleInteract, after: [typeof(ToolOpenableSystem)]);
 
         // Generic Eating Handlers
