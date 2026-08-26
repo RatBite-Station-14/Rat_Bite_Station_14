@@ -80,7 +80,8 @@
         swap: false
 
 - type: entity
-  parent: BaseItem # DeltaV - remove powercell requirement
+  # Ratbite: Make contraband
+  parent: [BaseItem, BaseScienceEngContraband] # DeltaV - remove powercell requirement
   id: HolofanProjector
   name: holofan projector
   description: Stop suicidal passengers from killing everyone during atmos emergencies.
