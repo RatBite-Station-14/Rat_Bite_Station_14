@@ -21029,20 +21029,6 @@ entities:
       parent: 2
     - type: Physics
       canCollide: False
-- proto: ClothingHandsGlovesConducting
-  entities:
-  - uid: 9375
-    components:
-    - type: Transform
-      pos: -9.426623,16.475899
-      parent: 2
-- proto: ClothingHandsGlovesExplosiveShock
-  entities:
-  - uid: 3280
-    components:
-    - type: Transform
-      pos: -9.507705,16.637915
-      parent: 2
 - proto: ClothingHandsGlovesNitrile
   entities:
   - uid: 3282
@@ -47511,32 +47497,6 @@ entities:
       parent: 2
 - proto: SheetPlasma
   entities:
-  - uid: 7171
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -45.50386,5.5666485
-      parent: 2
-    - type: Tag
-      tags:
-      - Sheet
-      - IgnoreBindSoul
-    - type: MindContainer
-    - type: InputMover
-    - type: MobMover
-    - type: MovementSpeedModifier
-    - type: Speech
-      suffixSpeechVerbs:
-        chat-speech-verb-suffix-exclamation-strong: DefaultExclamationStrong
-        chat-speech-verb-suffix-exclamation: DefaultExclamation
-        chat-speech-verb-suffix-question: DefaultQuestion
-        chat-speech-verb-suffix-stutter: DefaultStutter
-        chat-speech-verb-suffix-mumble: DefaultMumble
-      allowedEmotes: []
-    - type: Emoting
-    - type: Examiner
-    - type: Eye
-    - type: TypingIndicator
   - uid: 7172
     components:
     - type: Transform
