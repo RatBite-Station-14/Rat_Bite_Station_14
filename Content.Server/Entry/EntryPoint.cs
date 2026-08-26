@@ -83,7 +83,6 @@ namespace Content.Server.Entry
         [Dependency] private readonly ServerApi _serverApi = default!;
         [Dependency] private readonly ServerInfoManager _serverInfo = default!;
         [Dependency] private readonly ServerUpdateManager _updateManager = default!;
-        [Dependency] private readonly PermaBrigManager _permaBrig = default!; // Ratbite
 
         [Dependency] private readonly LastRolledAntagManager _lastAntagManager = default!; // Goobstation
 
@@ -140,7 +139,6 @@ namespace Content.Server.Entry
             _watchlistWebhookManager.Initialize();
             _job.Initialize();
             _rateLimit.Initialize();
-            _permaBrig.Initialize(); // Ratbite
             _lastAntagManager.Initialize(); // Goobstation
         }
 

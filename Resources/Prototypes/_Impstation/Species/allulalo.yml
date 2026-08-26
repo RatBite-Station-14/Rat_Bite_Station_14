@@ -28,8 +28,7 @@
     Head: MobAllulaloHead
     HeadTop: MobHumanoidAnyMarking
     Hair: MobHumanoidAnyMarking
-    Chest: MobAllulaloChest
-    Groin: MobAllulaloGroin # Goob
+    Chest: MobAllulaloTorso
     LArm: MobAllulaloLArm
     RArm: MobAllulaloRArm
     LHand: MobAllulaloLHand
@@ -103,40 +102,22 @@
     state: head
 
 - type: humanoidBaseSprite
-  id: MobAllulaloChest
+  id: MobAllulaloTorso
   baseSprite:
     sprite: _Impstation/Mobs/Species/Allulalo/parts.rsi
-    state: chest
+    state: torso
 
 - type: humanoidBaseSprite
-  id: MobAllulaloChestMale
+  id: MobAllulaloTorsoMale
   baseSprite:
     sprite: _Impstation/Mobs/Species/Allulalo/parts.rsi
-    state: chest
+    state: torso
 
 - type: humanoidBaseSprite
-  id: MobAllulaloChestFemale
+  id: MobAllulaloTorsoFemale
   baseSprite:
     sprite: _Impstation/Mobs/Species/Allulalo/parts.rsi
-    state: chest
-
-- type: humanoidBaseSprite
-  id: MobAllulaloGroin
-  baseSprite:
-    sprite: _Impstation/Mobs/Species/Allulalo/parts.rsi
-    state: groin
-
-- type: humanoidBaseSprite
-  id: MobAllulaloGroinMale
-  baseSprite:
-    sprite: _Impstation/Mobs/Species/Allulalo/parts.rsi
-    state: groin
-
-- type: humanoidBaseSprite
-  id: MobAllulaloGroinFemale
-  baseSprite:
-    sprite: _Impstation/Mobs/Species/Allulalo/parts.rsi
-    state: groin
+    state: torso
 
 - type: humanoidBaseSprite
   id: MobAllulaloLLeg

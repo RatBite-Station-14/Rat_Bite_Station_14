@@ -36,8 +36,7 @@
     HeadSide: MobHumanoidAnyMarking
     UndergarmentBottom: MobHumanoidAnyMarking
     UndergarmentTop: MobHumanoidAnyMarking
-    Chest: MobUnguChest
-    Groin: MobUnguGroin # Goob
+    Chest: MobUnguTorso
     Eyes: MobUnguEyes
     LArm: MobUnguLArm
     RArm: MobUnguRArm
@@ -115,40 +114,22 @@
     state: head
 
 - type: humanoidBaseSprite
-  id: MobUnguChest
+  id: MobUnguTorso
   baseSprite:
     sprite: _Impstation/Mobs/Species/Ungu/parts.rsi
-    state: chest
+    state: torso
 
 - type: humanoidBaseSprite
-  id: MobUnguChestMale
+  id: MobUnguTorsoMale
   baseSprite:
     sprite: _Impstation/Mobs/Species/Ungu/parts.rsi
-    state: chest
+    state: torso
 
 - type: humanoidBaseSprite
-  id: MobUnguChestFemale
+  id: MobUnguTorsoFemale
   baseSprite:
     sprite: _Impstation/Mobs/Species/Ungu/parts.rsi
-    state: chest
-
-- type: humanoidBaseSprite
-  id: MobUnguGroin
-  baseSprite:
-    sprite: _Impstation/Mobs/Species/Ungu/parts.rsi
-    state: groin
-
-- type: humanoidBaseSprite
-  id: MobUnguGroinMale
-  baseSprite:
-    sprite: _Impstation/Mobs/Species/Ungu/parts.rsi
-    state: groin
-
-- type: humanoidBaseSprite
-  id: MobUnguGroinFemale
-  baseSprite:
-    sprite: _Impstation/Mobs/Species/Ungu/parts.rsi
-    state: groin
+    state: torso
 
 - type: humanoidBaseSprite
   id: MobUnguLLeg

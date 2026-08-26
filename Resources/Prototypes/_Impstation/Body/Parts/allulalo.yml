@@ -17,29 +17,13 @@
         Quantity: 10
 
 - type: entity
-  id: ChestAllulalo
-  name: "allulalo chest"
+  id: TorsoAllulalo
+  name: "allulalo torso"
   parent: [PartAllulalo, BaseChest]
   components:
   - type: Sprite
     sprite: _Impstation/Mobs/Species/Allulalo/parts.rsi
-    state: "chest"
-  - type: Extractable
-    juiceSolution:
-      reagents:
-      - ReagentId: Fat
-        Quantity: 10
-      - ReagentId: Blood
-        Quantity: 20
-
-- type: entity
-  id: GroinAllulalo
-  name: "allulalo groin"
-  parent: [PartAllulalo, BaseGroin]
-  components:
-  - type: Sprite
-    sprite: _Impstation/Mobs/Species/Allulalo/parts.rsi
-    state: "groin"
+    state: "torso"
   - type: Extractable
     juiceSolution:
       reagents:

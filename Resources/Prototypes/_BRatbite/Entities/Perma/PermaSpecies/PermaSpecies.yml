@@ -46,7 +46,7 @@
     thresholds:
       0: Alive
       120: Critical
-      200: Dead
+      220: Dead
   - type: SlowOnDamage # Goobstation
     speedModifierThresholds:
       80: 0.7
