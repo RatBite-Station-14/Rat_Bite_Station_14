@@ -1023,7 +1023,7 @@
   icon: { sprite: _Goobstation/Objects/Misc/sandevistan.rsi, state: icon }
   productEntity: AutosurgeonSandevistan
   cost:
-    Telecrystal: 66 # The urge to make it 65...
+    Telecrystal: 90 # Ratbite balance sandeprice
   categories:
   - UplinkImplants
   conditions:
@@ -1039,7 +1039,7 @@
   icon: { sprite: _Goobstation/Objects/Misc/sandevistan.rsi, state: icon }
   productEntity: AutosurgeonStatvekaSandevistan
   cost:
-    Telecrystal: 66
+    Telecrystal: 225 # Ratbite balance sandeprice
   categories:
   - UplinkImplants
   conditions:
@@ -1055,7 +1055,7 @@
   icon: { sprite: _Goobstation/Objects/Misc/sandevistan.rsi, state: icon }
   productEntity: AutosurgeonSandevistan
   cost:
-    Telecrystal: 124
+    Telecrystal: 250 # Ratbite balance add
   categories:
   - UplinkImplants
   conditions:
