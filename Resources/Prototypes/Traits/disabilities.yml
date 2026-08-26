@@ -92,6 +92,7 @@
   name: trait-painnumbness-name
   description: trait-painnumbness-desc
   category: Mental # Ratbite: Changed to mental
+  cost: -1
   specials:
   - !type:ApplyStatusEffectSpecial
     statusEffects:
@@ -102,6 +103,12 @@
   name: trait-hemophilia-name
   description: trait-hemophilia-desc
   category: Mental # Ratbite: Changed to mental
+  cost: -1
+  speciesBlacklist:
+  - IPC
+  blacklist:
+    components:
+    - BorgChassis
   specials:
   - !type:ApplyStatusEffectSpecial
     statusEffects:
