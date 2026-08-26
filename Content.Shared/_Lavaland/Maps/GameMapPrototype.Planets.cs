@@ -10,5 +10,5 @@ public sealed partial class GameMapPrototype
     /// Contains info about planets that we have to spawn assigned from this game map.
     /// </summary>
     [DataField]
-    public List<ProtoId<LavalandMapPrototype>> Planets = new() { "Lavaland" };
+    public List<ProtoId<LavalandMapPrototype>> Planets = new(); // { "Lavaland" } // Ratbite: Remove Lavaland
 }
