@@ -65,7 +65,7 @@
       - id: UniformScrubsColorPurple
         weight: 0.05
     - id: ClothingMaskSterile
-    - id: JetInjector
+#    - id: JetInjector Ratbite removing OP BS
 
 - type: entity
   parent: LockerMedical
@@ -137,7 +137,7 @@
     - id: HandheldGPSBasic
     - id: MedkitFilled
       prob: 0.3
-    - id: JetInjector
+#    - id: JetInjector Ratbite removing OP BS
 
 - type: entity
   parent: LockerParamedic
