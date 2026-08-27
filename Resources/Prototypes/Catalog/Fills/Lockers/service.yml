@@ -14,8 +14,8 @@
   id: FillLockerBooze
   table: !type:AllSelector
     children:
-    - id: ClothingOuterArmorBasicSlim
-    - id: WeaponShotgunDoubleBarreledRubber
+    #- id: ClothingOuterArmorBasicSlim # Ratbite, kill tiding
+    - id: WeaponShotgunDoubleBarreled # Ratbite, lethal shotgun
     - id: DrinkShaker
     - id: ClothingEyesHudBeer
     - id: HandLabeler
@@ -27,7 +27,7 @@
     - !type:AllSelector
       rolls: 2
       children:
-      - id: BoxBeanbag
+      - id: ShellShotgun # Ratbite, lethal shotgun
       - id: RagItem
 
 #- type: entity

@@ -21,7 +21,7 @@
     - type: CombatTrained
 
 # ERT leader
-      
+
 - type: entity
   parent: BaseERTReinforcement
   id: ERTLeaderReinforcement
@@ -52,6 +52,17 @@
     components:
     - type: Loadout
       prototypes: [ ERTLeaderGearEVA ]
+      roleLoadout: [ RoleSurvivalEVA ]
+
+- type: entity
+  parent: ERTLeaderReinforcementEVA
+  id: ERTLeaderReinforcementArmed
+  suffix: ERT Leader, Armed EVA
+  components:
+  - type: GhostCharacterSpawner
+    components:
+    - type: Loadout
+      prototypes: [ ERTLeaderGearArmed ]
       roleLoadout: [ RoleSurvivalEVA ]
 
 # ERT Chaplain

@@ -9,6 +9,8 @@
   cost: -1
   speciesBlacklist: # Ratbite - no translator so no foreigner trait for these species
   - Scurret
+  - Monkey
+  - Kobold
   components:
   - type: ForeignerTrait
     cantUnderstand: false
@@ -22,6 +24,8 @@
   cost: -2
   speciesBlacklist: # Ratbite - no translator so no foreigner trait for these species
   - Scurret
+  - Monkey
+  - Kobold
   components:
   - type: ForeignerTrait
     baseTranslator: TranslatorForeigner

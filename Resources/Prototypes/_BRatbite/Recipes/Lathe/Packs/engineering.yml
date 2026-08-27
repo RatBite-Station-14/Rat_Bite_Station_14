@@ -1,0 +1,9 @@
+- type: latheRecipePack
+  id: TechnicalToolsStatic
+  recipes:
+  - VoiceSensor
+  - Multitool
+  - Signaller
+  - UtilityBelt
+  - TRayScanner
+  - WeaponHammer

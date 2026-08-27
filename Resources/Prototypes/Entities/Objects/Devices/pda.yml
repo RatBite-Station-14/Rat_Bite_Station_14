@@ -68,7 +68,7 @@
   - type: UnpoweredFlashlight
   - type: PointLight
     enabled: false
-    radius: 5.1 # Ratbite - 3x bigger
+    radius: 3 # Ratbite - 2x bigger
     falloff: 3
     softness: 5
     autoRot: true
@@ -1602,3 +1602,40 @@
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
+
+- type: entity
+  parent: BasePDA
+  id: ZookeeperPDA
+  name: zookeeper PDA
+  description: Made with genuine synthetic leather. Crikey!
+  components:
+  - type: Pda
+    id: ZookeeperIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-zookeeper
+  - type: PdaBorderColor
+    borderColor: "#ffe685"
+  - type: Icon
+    state: pda-zookeeper
+
+- type: entity
+  parent: BasePDA
+  id: BoxerPDA
+  name: boxer PDA
+  description: Float like a butterfly, ringtone like a bee.
+  components:
+  - type: Pda
+    id: BoxerIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-boxer
+  - type: PdaBorderColor
+    borderColor: "#333333"
+    accentVColor: "#390504"
+  - type: Icon
+    state: pda-boxer

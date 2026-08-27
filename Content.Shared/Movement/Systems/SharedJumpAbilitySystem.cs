@@ -1,9 +1,13 @@
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Cloning.Events;
+using Content.Shared._BRatbite.Movement; // RatBite - Add stun on failing a leap.
+using Content.Shared.Damage.Components; // RatBite - Add stun on failing a leap.
+using Content.Shared.Damage.Systems; // RatBite - Add stun on failing a leap.
 using Content.Shared.Gravity;
 using Content.Shared.Movement.Components;
 using Content.Shared.Popups;
+using Content.Shared.Physics; // RatBite - Add stun on failing a leap.
 using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
@@ -18,6 +22,7 @@ public sealed partial class SharedJumpAbilitySystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedGravitySystem _gravity = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private readonly SharedStaminaSystem _stamina = default!; // RatBite - Add stun on failing a leap.
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly StandingStateSystem _standing = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
@@ -53,6 +58,13 @@ public sealed partial class SharedJumpAbilitySystem : EntitySystem
 
     private void OnLeaperCollide(Entity<ActiveLeaperComponent> entity, ref StartCollideEvent args)
     {
+        if ((args.OtherFixture.CollisionLayer & (int) CollisionGroup.Impassable) != 0 && // RatBite - Add stun on failing a leap.
+            TryComp(entity.Owner, out StaminaComponent? stamina))
+        {
+            _stamina.TakeStaminaDamage(entity.Owner, stamina.CritThreshold, stamina, immediate: true); // RatBite - Add stun on failing a leap.
+        }
+
+        RaiseLocalEvent(entity.Owner, new LeapWallImpactEvent(GetNetEntity(entity.Owner), entity.Comp.KnockdownDuration)); // RatBite - Add stun on failing a leap.
         _stun.TryKnockdown(entity.Owner, entity.Comp.KnockdownDuration, force: true);
         RemCompDeferred<ActiveLeaperComponent>(entity);
     }
@@ -80,18 +92,18 @@ public sealed partial class SharedJumpAbilitySystem : EntitySystem
         var throwing = xform.LocalRotation.ToWorldVec() * entity.Comp.JumpDistance;
         var direction = xform.Coordinates.Offset(throwing); // to make the character jump in the direction he's looking
 
-        RaiseLocalEvent(args.Performer, new JumpAbilityPerformedEvent());
-
-        _throwing.TryThrow(args.Performer, direction, entity.Comp.JumpThrowSpeed);
-
-        _audio.PlayPredicted(entity.Comp.JumpSound, args.Performer, args.Performer);
-
         if (entity.Comp.CanCollide)
         {
             EnsureComp<ActiveLeaperComponent>(entity, out var leaperComp);
             leaperComp.KnockdownDuration = entity.Comp.CollideKnockdown;
             Dirty(entity.Owner, leaperComp);
         }
+
+        RaiseLocalEvent(args.Performer, new JumpAbilityPerformedEvent()); // RatBite - Add stun on failing a leap.
+
+        _throwing.TryThrow(args.Performer, direction, entity.Comp.JumpThrowSpeed); // ^
+
+        _audio.PlayPredicted(entity.Comp.JumpSound, args.Performer, args.Performer); // ^
 
         args.Handled = true;
     }
