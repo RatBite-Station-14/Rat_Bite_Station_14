@@ -927,7 +927,7 @@
       cluster-payload: !type:Container
   - type: ProjectileGrenade
     triggerKey: trigger
-    fillPrototype: PelletClusterLessLethal
+    fillPrototype: PelletClusterLethal # Ratbite - bevv removed PelletClusterLessLethal and didnt change this, thanks bevv!
     capacity: 30
   - type: SmartLinkBlacklist  # Goobstation
 
