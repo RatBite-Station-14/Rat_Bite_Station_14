@@ -1,10 +1,11 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  name: beta mine
+  name: second sector mine # Ratbite
   parent: BaseLandMine
   id: LandMineRedialTest
+  suffix: Debug, RB2 banishment # Ratbite
   components:
   - type: RedialUserOnTrigger
-    address: ss14s://beta.goobstation.com
+    address: ss14://static.120.32.243.136.clients.your-server.de:25503 # Ratbite - evil RB2 banishment mine, now 15% less likely to trip antiviruses!
   - type: DeleteOnTrigger
