@@ -8,59 +8,13 @@
   },
   "states": [
     {
-      "name": "rack"
-    },
-    {
       "name": "shelf_wood"
     },
     {
       "name": "metal_shelf"
     },
     {
-      "name": "bookempty"
-    },
-    {
-      "name": "book-0"
-    },
-    {
-      "name": "book-1"
-    },
-    {
-      "name": "book-2"
-    },
-    {
-      "name": "book-3"
-    },
-    {
-      "name": "book-4"
-    },
-    {
-      "name": "book-5"
-    },
-    {
-      "name": "grand_clock",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1
-        ]
-      ]
-    },
-    {
       "name": "vat"
-    },
-    {
-      "name": "punchingbag"
     }
   ]
 }

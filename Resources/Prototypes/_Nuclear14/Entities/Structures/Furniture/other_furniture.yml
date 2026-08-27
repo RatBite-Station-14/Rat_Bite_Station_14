@@ -1,13 +1,3 @@
-- type: entity
-  parent: BaseStructure
-  id: N14GrandfatherClock
-  name: grandfather clock
-  description: An old clock. Looks grand.
-  components:
-  - type: Sprite
-    sprite: _Nuclear14/Structures/Furniture/np13_misc.rsi
-    state: grand_clock
-
 # Televisions
 - type: entity
   parent: BaseStructure

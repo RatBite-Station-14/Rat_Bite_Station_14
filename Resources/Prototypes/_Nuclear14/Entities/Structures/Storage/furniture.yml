@@ -148,7 +148,7 @@
   id: Cashregister
   components:
   - type: Sprite
-    state: filingcabinet
+    state: register_clean
     layers:
     - state: register_clean
     - state: register_cleanopen
@@ -160,7 +160,7 @@
   id: BloodyCashregister
   components:
   - type: Sprite
-    state: filingcabinet
+    state: register_blood
     layers:
     - state: register_blood
     - state: register_bloodopen

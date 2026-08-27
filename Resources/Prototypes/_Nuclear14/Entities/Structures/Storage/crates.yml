@@ -110,23 +110,6 @@
     - state: closed
       map: ["enum.StorageVisualLayers.Door"]
 
-- type: entity
-  parent: CrateGeneric
-  id: N14CrateFreezer
-  name: freezer
-  description: A freezer for keeping things cool.
-  components:
-  - type: Icon
-    sprite: _Nuclear14/Structures/Storage/Crates/freezer.rsi
-  - type: Sprite
-    sprite: _Nuclear14/Structures/Storage/Crates/freezer.rsi
-    layers:
-    - state: base
-      map: ["enum.StorageVisualLayers.Base"]
-    - state: closed
-      map: ["enum.StorageVisualLayers.Door"]
-  - type: AntiRottingContainer
-
 # Wooden
 - type: entity
   parent: CrateGeneric

@@ -137,7 +137,7 @@
   - type: DamageStateVisuals
     states:
       Alive:
-        Base: deathclaw
+        Base: walking
       Dead:
         Base: dead
 
@@ -374,7 +374,7 @@
     # name: Mr Handy
     # description: |
       # Protect your area and remove any trespassers.
-  - type: ProjectileBatteryAmmoProvider
+  - type: BasicEntityAmmoProvider
     proto: BulletPistol
     fireCost: 50
   - type: BatterySelfRecharger

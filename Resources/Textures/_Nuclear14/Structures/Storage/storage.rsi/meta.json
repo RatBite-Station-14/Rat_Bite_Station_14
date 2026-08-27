@@ -32,32 +32,14 @@
       "name": "firstaid_open"
     },
     {
-      "name": "vent"
-    },
-    {
-      "name": "vent-damaged"
-    },
-    {
-      "name": "vent-open"
-    },
-    {
       "name": "locker"
     },
-    {
-      "name": "locker_door"
-    },
-    {
-      "name": "locker_open"
-    },
-    {
-      "name": "toolbox"
-    },
-    {
-      "name": "toolbox_open"
-    },
-    {
-      "name": "locker_loot"
-    },
+	{ 
+	  "name": "locker_door"
+	},
+	{ 
+	  "name": "locker_open"
+	},
     {
       "name": "closet"
     },

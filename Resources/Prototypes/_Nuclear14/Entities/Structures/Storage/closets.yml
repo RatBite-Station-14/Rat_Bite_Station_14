@@ -74,15 +74,6 @@
 
 - type: entity
   parent: N14ClosetBaseW
-  id: N14ClosetGunCabinet
-  name: gun cabinet
-  description: A secure cabinet for storing guns.
-  components:
-  - type: Sprite
-    sprite: _Nuclear14/Structures/Storage/Closets/guncabinet.rsi
-
-- type: entity
-  parent: N14ClosetBaseW
   id: N14ClosetFridgeDirty
   name: fridge
   description: A dirty old fridge for keeping food fresh

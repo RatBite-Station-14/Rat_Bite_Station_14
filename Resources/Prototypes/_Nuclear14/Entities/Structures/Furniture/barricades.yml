@@ -122,7 +122,7 @@
     intersectRatio: 0.2
     requiredTriggeredSpeed: 0
   - type: TriggerOnStepTrigger
-  - type: DamageUserOnTrigger
+  - type: DamageContacts
     damage:
       types:
         Piercing: 5
