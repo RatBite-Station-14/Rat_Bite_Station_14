@@ -146,6 +146,13 @@ namespace Content.Shared.Roles
         [DataField]
         public IReadOnlyCollection<ProtoId<AccessGroupPrototype>> ExtendedAccessGroups { get; private set; } = Array.Empty<ProtoId<AccessGroupPrototype>>();
 
+        // Ratbite
+        [DataField]
+        public IReadOnlyCollection<ProtoId<AccessLevelPrototype>> EmergencyAccessAdded { get; private set; } = Array.Empty<ProtoId<AccessLevelPrototype>>();
+        [DataField]
+        public IReadOnlyCollection<ProtoId<AccessLevelPrototype>> EmergencyAccessRemoved { get; private set; } = Array.Empty<ProtoId<AccessLevelPrototype>>();
+        // Ratbite end
+
         [DataField]
         public bool Whitelisted;
 

@@ -20,6 +20,10 @@
   - Lawyer
   - Brig
   - Maintenance
+  # Ratbite start
+  emergencyAccessRemoved:
+  - Maintenance
+  # Ratbite end
   special: # Goobstation - Everyone knows lawyers are soulless.
   - !type:AddComponentSpecial
     components:

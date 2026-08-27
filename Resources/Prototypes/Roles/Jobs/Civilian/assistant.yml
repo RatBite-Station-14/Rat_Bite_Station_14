@@ -11,6 +11,10 @@
   goobcoins: 5 #Goob content    # Ratbite - why did tiders get 20 GC but bartenders 10? lowered
   access:
   - Maintenance
+  # Ratbite start
+  emergencyAccessRemoved:
+  - Maintenance
+  # Ratbite end
   special: # Goobstation
   - !type:AddComponentSpecial
     components:

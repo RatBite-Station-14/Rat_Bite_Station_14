@@ -11,5 +11,9 @@
   overrideConsoleVisibility: true
   access:
   - Maintenance
+  # Ratbite start
+  emergencyAccessRemoved:
+  - Maintenance
+  # Ratbite end
   extendedAccess:
   - External

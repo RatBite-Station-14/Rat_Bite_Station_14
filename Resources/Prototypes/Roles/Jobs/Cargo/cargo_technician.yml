@@ -14,6 +14,10 @@
   access:
   - Cargo
   - Maintenance
+  # Ratbite start
+  emergencyAccessRemoved:
+  - Maintenance
+  # Ratbite end
   extendedAccess:
   - Salvage
   - External # goobstation

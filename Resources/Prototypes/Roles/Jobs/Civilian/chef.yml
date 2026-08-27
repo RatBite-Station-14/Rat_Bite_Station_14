@@ -20,6 +20,10 @@
   - Service
   - Maintenance
   - Kitchen
+  # Ratbite start
+  emergencyAccessRemoved:
+  - Maintenance
+  # Ratbite end
   extendedAccess:
   - Hydroponics
   - Bar
