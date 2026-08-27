@@ -43,7 +43,8 @@ namespace Content.Server.Administration.Managers
         public event Action<AdminPermsChangedEventArgs>? OnPermsChanged;
 
         public IEnumerable<ICommonSession> ActiveAdmins => _admins
-            .Where(p => p.Value.Data.Active)
+            // Filter out zombie sessions whose channel already dropped but haven't hit SessionStatus.Disconnected yet
+            .Where(p => p.Value.Data.Active && p.Key.Channel.IsConnected)
             .Select(p => p.Key);
 
         public IEnumerable<ICommonSession> AllAdmins => _admins.Select(p => p.Key);
