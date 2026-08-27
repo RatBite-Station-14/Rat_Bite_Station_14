@@ -9,5 +9,6 @@
   components:
   - type: CursedEntityStorage
   - type: EntityStorage
+    masksToRemove: 29 # Ratbite: Fix exploit
     closeSound:
       path: /Audio/Effects/teleport_arrival.ogg

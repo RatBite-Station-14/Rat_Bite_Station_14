@@ -45,6 +45,7 @@
       sprite: Structures/Storage/Crates/artifact.rsi
       state: artifact_container_icon
     - type: EntityStorage
+      masksToRemove: 29 # Ratbite: Fix exploit
       capacity: 1
       whitelist:
         components:
