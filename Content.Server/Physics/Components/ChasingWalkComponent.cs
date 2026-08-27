@@ -92,4 +92,7 @@ public sealed partial class ChasingWalkComponent : Component
     /// </summary>
     [DataField]
     public Angle RotationAngleOffset = Angle.Zero;
+
+    [DataField]
+    public bool Reverse = false; // Ratbite
 }
