@@ -196,6 +196,7 @@
             min: 3
             max: 5
   - type: EntityStorage
+    masksToRemove: 29 # Ratbite: Fix exploit
     closeSound:
       path: /Audio/Effects/rustle1.ogg
     openSound:
@@ -376,6 +377,7 @@
   name: livestock crate
   components:
   - type: EntityStorage
+    masksToRemove: 29 # Ratbite: Fix exploit
     airtight: false
   - type: Sprite
     sprite: Structures/Storage/Crates/livestock.rsi
@@ -474,6 +476,7 @@
   - type: Physics
     bodyType: Dynamic
   - type: EntityStorage
+    masksToRemove: 29 # Ratbite: Fix exploit
     capacity: 1
     airtight: false
   - type: Fixtures
