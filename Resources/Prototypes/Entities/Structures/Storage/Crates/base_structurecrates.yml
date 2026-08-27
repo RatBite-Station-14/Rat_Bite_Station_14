@@ -41,6 +41,7 @@
         layer:
         - MachineLayer
   - type: EntityStorage
+    masksToRemove: 29 # Ratbite: Fix exploit
   - type: PlaceableSurface
     isPlaceable: false # defaults to closed.
   - type: Damageable

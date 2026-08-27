@@ -48,7 +48,7 @@
         - MachineLayer
   - type: EntityStorage
     # Goob start; allow changing collisionmasks to remove when opening containers
-    masksToRemove: 84
+    masksToRemove: 85 # Ratbite: fix exploit
     #Goob end
   - type: ContainerContainer
     containers:
@@ -273,6 +273,7 @@
         layer:
         - MachineLayer
   - type: EntityStorage
+    masksToRemove: 29 # Ratbite: Fix exploit
   - type: ContainerContainer
     containers:
       entity_storage: !type:Container

@@ -12,7 +12,6 @@ using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Utility;
-using Robust.Client.UserInterface.RichText;
 using Content.Client.UserInterface.RichText;
 using Robust.Shared.Input;
 using Content.Shared._BRatbite.Paper;
@@ -440,7 +439,20 @@ namespace Content.Client.Paper.UI
 
         private void UpdateDrawingState()
         {
+            DrawButton.Pressed = DrawWindow.Drawing;
             DrawingButtons.Visible = DrawWindow.Drawing;
+            DrawWindow.Visible = DrawWindow.Drawing;
+            WrittenTextLabel.Visible = DrawWindow.Drawing;
+            InputContainer.Visible = !DrawWindow.Drawing;
+            if (DrawWindow.Drawing)
+            {
+                WrittenTextLabel.SetMessage(Rope.Collapse(Input.TextRope), UserFormattableTags.BaseAllowedTags, DefaultTextColor);
+                Input.MouseFilter = MouseFilterMode.Ignore;
+            }
+            else
+            {
+                Input.MouseFilter = MouseFilterMode.Stop;
+            }
             DrawWindow.InvalidateMeasure();
         }
 

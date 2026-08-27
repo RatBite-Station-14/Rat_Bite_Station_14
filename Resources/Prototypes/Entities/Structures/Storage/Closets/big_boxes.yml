@@ -32,6 +32,7 @@
       openOnMove: false
       airtight: false
       capacity: 5 #5 entity capacity to fit all of your friends (or teammates on your nuclear operation without reinforcements).
+      masksToRemove: 29 # Ratbite: Fix exploit
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
@@ -110,6 +111,7 @@
             - SlipLayer
           hard: false #It's a ghostly box, it can go through walls
     - type: EntityStorage
+      masksToRemove: 29 # Ratbite: Fix exploit
       isCollidableWhenOpen: false
       openOnMove: false
       airtight: false

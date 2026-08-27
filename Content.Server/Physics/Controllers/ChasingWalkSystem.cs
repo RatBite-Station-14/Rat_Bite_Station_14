@@ -98,7 +98,7 @@ public sealed class ChasingWalkSystem : VirtualController
         var pos2 = _transform.GetWorldPosition(component.ChasingEntity.Value);
 
         var delta = pos2 - pos1;
-        var speed = delta.Length() > 0 ? delta.Normalized() * component.Speed : Vector2.Zero;
+        var speed = delta.LengthSquared() > 0 ? delta.Normalized() * component.Speed * (component.Reverse ? -1 : 1) : Vector2.Zero;
 
         _physics.SetLinearVelocity(uid, speed);
         _physics.SetBodyStatus(uid, physics, BodyStatus.InAir); //If this is not done, from the explosion up close, the tesla will "Fall" to the ground, and almost stop moving.
@@ -108,5 +108,13 @@ public sealed class ChasingWalkSystem : VirtualController
             var ang = speed.ToAngle() + Angle.FromDegrees(90); // we want "Up" to be forward, bullet convention.
             _transform.SetWorldRotation(uid, ang + component.RotationAngleOffset);
         }
+    }
+
+    // Ratbite
+    public bool SetReverse(Entity<ChasingWalkComponent?> ent, bool value)
+    {
+        if (!Resolve(ent.Owner, ref ent.Comp)) return false;
+        ent.Comp.Reverse = value;
+        return true;
     }
 }

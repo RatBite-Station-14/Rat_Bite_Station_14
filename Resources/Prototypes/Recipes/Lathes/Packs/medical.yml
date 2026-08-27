@@ -64,7 +64,7 @@
   - WhiteCane
   - OffsetCane
   - OffsetCaneWood
-#  - JetInjector Ratbite removing OP BS
+  - JetInjector
 
 - type: latheRecipePack
   id: RollerBedsStatic
@@ -116,7 +116,7 @@
   - SyringeBluespace
   #- LauncherSyringe # Goob i think  we dont have these
   #- MiniSyringe # Goob i think  we dont have these
-#  - AdvancedJetInjector Ratbite removing OP BS
+  - AdvancedJetInjector
   - MedkitCombat #goob - Move combat kit to research
   - VialBluespace # goob edit - bluespace vials
   - CryostasisCigarette # goob - cryo cig
