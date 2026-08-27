@@ -19,7 +19,7 @@ public sealed partial class FlatpackComponent : Component
     /// The tool quality that, upon used to interact with this object, will create the <see cref="Entity"/>
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public ProtoId<ToolQualityPrototype> QualityNeeded = "Pulsing";
+    public ProtoId<ToolQualityPrototype> QualityNeeded = "Unpacking"; // Ratbite
 
     /// <summary>
     /// The entity that is spawned when this object is unpacked.

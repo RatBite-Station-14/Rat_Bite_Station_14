@@ -221,6 +221,7 @@
   - type: Tool
     qualities:
     - Pulsing
+    - Unpacking # Ratbite
   - type: NetworkConfigurator
   - type: ActivatableUI
     key: enum.NetworkConfiguratorUiKey.List
@@ -308,6 +309,9 @@
     materialComposition:
       Steel: 25
       Plastic: 25
+  - type: Tool # Ratbite
+    qualities:
+    - Unpacking
 
 #Power tools
 #Later on these should switch probably switch damage when changing the tool behavior.
