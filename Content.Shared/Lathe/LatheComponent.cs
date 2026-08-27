@@ -2,6 +2,7 @@
 
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Lathe.Prototypes;
+using Content.Shared.Materials;
 using Content.Shared.Research.Prototypes;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -97,6 +98,10 @@ namespace Content.Shared.Lathe
         // Ratbite, limit queue to a max length
         [DataField]
         public int MaxQueueLength = 300;
+
+        // Ratbite
+        [DataField]
+        public List<ProtoId<MaterialPrototype>> AdditionalMaterials = new();
     }
 
     public sealed class LatheGetRecipesEvent : EntityEventArgs

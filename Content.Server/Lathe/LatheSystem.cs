@@ -136,7 +136,7 @@ namespace Content.Server.Lathe
         {
             if (args.Storage != uid)
                 return;
-            var materialWhitelist = new List<ProtoId<MaterialPrototype>>();
+            var materialWhitelist = new List<ProtoId<MaterialPrototype>>(component.AdditionalMaterials);
             var recipes = GetAvailableRecipes(uid, component, true);
             foreach (var id in recipes)
             {

@@ -635,6 +635,8 @@
     - TranslatorImplanters # Language
     # Ratbite
     - LegalTechSciMed
+    additionalMaterials:
+    - Uranium
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: EmagLatheRecipes # Goobstation Packs
