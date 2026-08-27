@@ -10,6 +10,7 @@ using Content.Server.Mind;
 using Content.Server.Prayer;
 using Content.Server.Silicons.Laws;
 using Content.Server.Station.Systems;
+using Content.Server.Traits; // RatBite - Traits persist through Spawn & Clone
 using Content.Shared.Administration;
 using Content.Shared.Administration.Systems;
 using Content.Shared.Chemistry.Components.SolutionManager;
@@ -68,6 +69,7 @@ namespace Content.Server.Administration.Systems
         [Dependency] private readonly AdminFrozenSystem _freeze = default!;
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly SiliconLawSystem _siliconLawSystem = default!;
+        [Dependency] private readonly TraitSystem _traits = default!; // RatBite - Traits persist through Spawn & Clone
 
         private readonly Dictionary<ICommonSession, List<EditSolutionsEui>> _openSolutionUis = new();
 
@@ -148,6 +150,7 @@ namespace Content.Server.Administration.Systems
 
                             var profile = _gameTicker.GetPlayerProfile(targetActor.PlayerSession);
                             var mobUid = _spawning.SpawnPlayerMob(coords.Value, null, profile, stationUid);
+                            _traits.ApplyTraits(mobUid, profile); // RatBite - Traits persist through Spawn & Clone
 
                             if (_mindSystem.TryGetMind(args.Target, out var mindId, out var mindComp))
                                 _mindSystem.TransferTo(mindId, mobUid, true, mind: mindComp);
@@ -173,7 +176,8 @@ namespace Content.Server.Administration.Systems
                             var stationUid = _stations.GetOwningStation(args.Target);
 
                             var profile = _gameTicker.GetPlayerProfile(targetActor.PlayerSession);
-                            _spawning.SpawnPlayerMob(coords.Value, null, profile, stationUid);
+                            var cloneUid = _spawning.SpawnPlayerMob(coords.Value, null, profile, stationUid);
+                            _traits.ApplyTraits(cloneUid, profile); // RatBite - Traits persist through Spawn & Clone
                         },
                         ConfirmationPopup = true,
                         Impact = LogImpact.High,

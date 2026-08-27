@@ -22,7 +22,7 @@
   name: trait-leap-name
   description: trait-leap-desc
   category: Physical
-  cost: 2
+  cost: 8
   includedSpecies:
   - Tajaran
   - Resomi
@@ -35,6 +35,7 @@
   - type: JumpAbility
     action: ActionTraitLeap
     jumpDistance: 4
+    canCollide: true
     jumpSound: /Audio/Effects/stealthoff.ogg
 
 - type: trait

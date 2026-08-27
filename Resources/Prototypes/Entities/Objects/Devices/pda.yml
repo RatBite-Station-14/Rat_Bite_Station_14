@@ -68,7 +68,7 @@
   - type: UnpoweredFlashlight
   - type: PointLight
     enabled: false
-    radius: 5.1 # Ratbite - 3x bigger
+    radius: 3 # Ratbite - 2x bigger
     falloff: 3
     softness: 5
     autoRot: true

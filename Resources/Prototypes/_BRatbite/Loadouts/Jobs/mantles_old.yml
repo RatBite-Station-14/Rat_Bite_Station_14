@@ -6,8 +6,11 @@
   equipment:
     neck: ClothingNeckMantleCapOld
   effects:
-  - !type:GroupLoadoutEffect
-    proto: MasterCap
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobCaptain
+      time: 100h
 
 - type: startingGear
   id: CaptainMantleOld
@@ -20,8 +23,11 @@
   equipment:
     neck: ClothingNeckMantleCEOld
   effects:
-  - !type:GroupLoadoutEffect
-    proto: MasterCE
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobChiefEngineer
+      time: 100h
   groupBy: "cemantle"
 
 # Chief Medical Officer
@@ -30,8 +36,11 @@
   equipment:
     neck: ClothingNeckMantleCMOOld
   effects:
-  - !type:GroupLoadoutEffect
-    proto: MasterCMO
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobChiefMedicalOfficer
+      time: 100h
 
 - type: startingGear
   id: ChiefMedicalOfficerMantleOld
@@ -44,8 +53,11 @@
   equipment:
     neck: ClothingNeckMantleHOPOld
   effects:
-  - !type:GroupLoadoutEffect
-    proto: MasterHoP
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobHeadOfPersonnel
+      time: 100h
 
 - type: startingGear
   id: HoPMantleOld
@@ -58,8 +70,11 @@
   equipment:
     neck: ClothingNeckMantleHOSOld
   effects:
-  - !type:GroupLoadoutEffect
-    proto: MasterHoS
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobHeadOfSecurity
+      time: 100h
 
 - type: startingGear
   id: HeadofSecurityMantleOld
@@ -72,8 +87,11 @@
   equipment:
     neck: ClothingNeckMantleQMOld
   effects:
-  - !type:GroupLoadoutEffect
-    proto: MasterQM
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobQuartermaster
+      time: 100h
 
 - type: startingGear
   id: QuartermasterMantleOld
@@ -86,8 +104,11 @@
   equipment:
     neck: ClothingNeckMantleRDOld
   effects:
-  - !type:GroupLoadoutEffect
-    proto: MasterRD
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobResearchDirector
+      time: 100h
 
 - type: startingGear
   id: ResearchDirectorMantleOld

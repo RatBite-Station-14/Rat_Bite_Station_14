@@ -509,9 +509,9 @@
     animation: WeaponArcThrust
     soundHit:
       path: /Audio/Weapons/pierce.ogg
-  ##- type: CombatDoAfter - This is just problematic and unfun
-  ##  trigger: !type:CombatSyringeTriggerEvent
-    ##  breakOnDamage: true
+  - type: CombatDoAfter # Ratbite: This is very unproblematic and fun if you just fucking make it take longer, chudtards.
+    delay: 6
+    trigger: !type:CombatSyringeTriggerEvent
   - type: Projectile
     deleteOnCollide: false
     onlyCollideWhenShot: true
