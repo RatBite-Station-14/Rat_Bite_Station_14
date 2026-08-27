@@ -36,57 +36,6 @@
     },
     {
       "name": "substation_rust_destroyed"
-    },
-    {
-      "name": "recorder"
-    },
-    {
-      "name": "recorder_on",
-      "delays": [
-        [
-          0.15,
-          0.15,
-          0.15,
-          0.15
-        ]
-      ]
-    },
-    {
-      "name": "rack"
-    },
-    {
-      "name": "rack_on",
-      "delays": [
-        [
-          0.2,
-          0.2,
-          0.2,
-          0.2
-        ]
-      ]
-    },
-    {
-      "name": "rackempty"
-    },
-    {
-      "name": "rackparts"
-    },
-    {
-      "name": "rackdestroyed"
-    },
-    {
-      "name": "serverrack"
-    },
-    {
-      "name": "serverrack_on",
-      "delays": [
-        [
-          0.2,
-          0.2,
-          0.2,
-          0.2
-        ]
-      ]
     }
   ]
 }
