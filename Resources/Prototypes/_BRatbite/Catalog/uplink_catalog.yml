@@ -5,7 +5,7 @@
   icon: { sprite: _Goobstation/Structures/Machines/tc_printer.rsi, state: display }
   productEntity: TCminerFlatpack
   cost:
-    Telecrystal: 100
+    Telecrystal: 110 # Ratbite balance. You must skin the renault.
   categories:
   - UplinkDisruption
   conditions:
