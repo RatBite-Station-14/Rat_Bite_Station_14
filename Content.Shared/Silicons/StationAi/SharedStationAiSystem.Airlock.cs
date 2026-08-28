@@ -116,7 +116,7 @@ public abstract partial class SharedStationAiSystem
 
     private void OnMachineBolt(Entity<BoltableMachineComponent> ent, ref StationAiBoltEvent args)
     {
-        if (!PowerReceiver.IsPowered(ent.Owner))
+        if (!PowerReceiver.IsPowered(ent.Owner) || ent.Comp.BoltedWireCut)
         {
             ShowDeviceNotRespondingPopup(args.User);
             _adminLogger.Add(LogType.Action,

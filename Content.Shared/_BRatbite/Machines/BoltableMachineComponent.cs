@@ -9,7 +9,7 @@ public sealed partial class BoltableMachineComponent : Component
     [DataField, AutoNetworkedField]
     public bool Bolted = true;
 
-    [DataField, AutoNetworkedField]
+    [ViewVariables, AutoNetworkedField]
     public bool BoltedWireCut = false;
 
     [DataField]
