@@ -6,9 +6,6 @@
   description: job-description-rd
   playTimeTracker: JobResearchDirector
   requirements:
-  - !type:RoleTimeRequirement
-    role: JobScientist
-    time: 6h # Goobstation
   - !type:DepartmentTimeRequirement
     department: Science
     time: 10h
@@ -16,6 +13,8 @@
     inverted: true
     species:
     - Felinid
+    - Scurret
+    - Monkey
   weight: 10
   startingGear: ResearchDirectorGear
   icon: "JobIconResearchDirector"

@@ -6,20 +6,15 @@
   description: job-description-warden
   playTimeTracker: JobWarden
   requirements:
-    - !type:RoleTimeRequirement
-      role: JobSecurityOfficer
-      time: 5h
-    - !type:RoleTimeRequirement # Goobstation
-      role: JobBrigmedic
-      time: 5h
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 10h
-    - !type:SpeciesRequirement # Goob - None Felinid
+      time: 5h
+    - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
       inverted: true
       species:
       - Felinid
       - Scurret
+      - Monkey
   weight: 5
   startingGear: WardenGear
   icon: "JobIconWarden"

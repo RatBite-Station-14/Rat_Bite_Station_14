@@ -26,6 +26,7 @@
       species:
       - Felinid
       - Scurret
+      - Monkey
   guides: # goobstation
   - Command
   - Succession
