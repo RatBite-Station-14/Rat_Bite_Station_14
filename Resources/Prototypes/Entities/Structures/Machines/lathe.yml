@@ -20,6 +20,10 @@
         layer:
           - MachineLayer
   - type: Lathe
+  - type: StationAiWhitelist # Ratbite
+  - type: Electrified # Ratbite
+    enabled: false
+    usesApcPower: true
   - type: MaterialStorage
   - type: Destructible
     thresholds:
@@ -51,6 +55,8 @@
         type: ResearchClientBoundUserInterface
       enum.WiresUiKey.Key: # Ratbite
         type: WiresBoundUserInterface
+      enum.AiUi.Key: # Ratbite
+        type: StationAiBoundUserInterface
   - type: Transform
     anchored: true
   - type: Pullable
@@ -81,6 +87,7 @@
   # Goobstation
   - type: SpamEmitSoundRequirePower
   - type: OreSiloClient
+  - type: EmergencyAccess # Ratbite
 
 # a lathe that can be sped up with space lube / slowed down with glue
 - type: entity

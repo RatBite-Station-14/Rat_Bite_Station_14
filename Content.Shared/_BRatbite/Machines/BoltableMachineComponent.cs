@@ -9,6 +9,9 @@ public sealed partial class BoltableMachineComponent : Component
     [DataField, AutoNetworkedField]
     public bool Bolted = true;
 
+    [DataField, AutoNetworkedField]
+    public bool BoltedWireCut = false;
+
     [DataField]
     public SoundSpecifier BoltSound = new SoundPathSpecifier("/Audio/Machines/boltsdown.ogg");
 

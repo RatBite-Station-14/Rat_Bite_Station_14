@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._BRatbite.Access;
+using Content.Shared._BRatbite.Machines;
 using Content.Shared.Doors.Components;
 using Content.Shared.Electrocution;
 using Content.Shared.Silicons.StationAi;
@@ -14,8 +16,9 @@ public sealed partial class StationAiSystem
     private void InitializeAirlock()
     {
         SubscribeLocalEvent<DoorBoltComponent, GetStationAiRadialEvent>(OnDoorBoltGetRadial);
-        SubscribeLocalEvent<AirlockComponent, GetStationAiRadialEvent>(OnEmergencyAccessGetRadial);
+        SubscribeLocalEvent<EmergencyAccessComponent, GetStationAiRadialEvent>(OnEmergencyAccessGetRadial);
         SubscribeLocalEvent<ElectrifiedComponent, GetStationAiRadialEvent>(OnDoorElectrifiedGetRadial);
+        SubscribeLocalEvent<BoltableMachineComponent, GetStationAiRadialEvent>(OnMachineBoltGetRadial); // Ratbite
     }
 
     private void OnDoorBoltGetRadial(Entity<DoorBoltComponent> ent, ref GetStationAiRadialEvent args)
@@ -37,7 +40,7 @@ public sealed partial class StationAiSystem
         );
     }
 
-    private void OnEmergencyAccessGetRadial(Entity<AirlockComponent> ent, ref GetStationAiRadialEvent args)
+    private void OnEmergencyAccessGetRadial(Entity<EmergencyAccessComponent> ent, ref GetStationAiRadialEvent args) // Ratbite: made generic
     {
         args.Actions.Add(
             new StationAiRadial
@@ -70,6 +73,25 @@ public sealed partial class StationAiSystem
                 Event = new StationAiElectrifiedEvent
                 {
                     Electrified = !ent.Comp.Enabled,
+                }
+            }
+        );
+    }
+
+    private void OnMachineBoltGetRadial(Entity<BoltableMachineComponent> ent, ref GetStationAiRadialEvent args)
+    {
+        args.Actions.Add(
+            new StationAiRadial
+            {
+                Sprite = ent.Comp.Bolted
+                    ? new SpriteSpecifier.Rsi(_aiActionsRsi, "unbolt_door")
+                    : new SpriteSpecifier.Rsi(_aiActionsRsi, "bolt_door"),
+                Tooltip = ent.Comp.Bolted
+                    ? Loc.GetString("bolt-open")
+                    : Loc.GetString("bolt-close"),
+                Event = new StationAiBoltEvent
+                {
+                    Bolted = !ent.Comp.Bolted,
                 }
             }
         );

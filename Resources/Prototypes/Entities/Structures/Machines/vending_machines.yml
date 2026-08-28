@@ -66,6 +66,8 @@
         type: VendingMachineBoundUserInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
+      enum.AiUi.Key: # Ratbite
+        type: StationAiBoundUserInterface
   - type: WiresPanel
   - type: Wires
     boardName: wires-board-name-vendingmachine
@@ -128,6 +130,7 @@
     understands:
     - TauCetiBasic
     - RobotTalk
+  - type: EmergencyAccess # Ratbite
 
 - type: entity
   id: VendingMachineWallmount
