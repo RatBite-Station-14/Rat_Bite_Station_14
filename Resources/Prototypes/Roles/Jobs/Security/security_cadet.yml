@@ -7,7 +7,7 @@
   playTimeTracker: JobSecurityCadet
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 10h
+      time: 0.5h #Ratbite, no raiders but let people play sec bruh
     - !type:DepartmentTimeRequirement
       department: Security
       time: 10h # Goobstation
@@ -17,6 +17,7 @@
       species:
       - Felinid
       - Scurret
+      - Monkey
   startingGear: SecurityCadetGear
   icon: "JobIconSecurityCadet"
   supervisors: job-supervisors-security

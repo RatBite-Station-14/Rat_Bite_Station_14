@@ -6,22 +6,15 @@
   description: job-description-hos
   playTimeTracker: JobHeadOfSecurity
   requirements:
-    - !type:RoleTimeRequirement
-      role: JobWarden
-      time: 5h # Goobstation
-    - !type:RoleTimeRequirement
-      role: JobDetective
-      time: 1h # knowing how to use the tools is important
-    - !type:RoleTimeRequirement
-      role: JobSecurityOfficer
-      time: 10h # Goobstation
     - !type:DepartmentTimeRequirement
       department: Security
       time: 10h
-    - !type:SpeciesRequirement # Goob - None Felinid
+    - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
       inverted: true
       species:
       - Felinid
+      - Scurret
+      - Monkey
   weight: 10
   startingGear: HoSGear
   icon: "JobIconHeadOfSecurity"
