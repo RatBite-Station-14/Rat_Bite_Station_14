@@ -651,8 +651,9 @@ public abstract partial class SharedDoorSystem : EntitySystem
             return true;
 
         // If the door is on emergency access we skip the checks.
-        if (TryComp<AirlockComponent>(uid, out var airlock) && airlock.EmergencyAccess)
-            return true;
+        // Ratbite: This was moved to the access reader system
+        // if (TryComp<AirlockComponent>(uid, out var airlock) && airlock.EmergencyAccess)
+        //     return true;
 
         // Anyone can click to open firelocks
         if (Resolve(uid, ref door) && door.State == DoorState.Closed &&

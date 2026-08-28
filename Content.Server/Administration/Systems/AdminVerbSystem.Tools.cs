@@ -11,6 +11,7 @@ using Content.Server.Hands.Systems;
 using Content.Server.Stack;
 using Content.Server.Station.Systems;
 using Content.Server.Weapons.Ranged.Systems;
+using Content.Shared._BRatbite.Access;
 using Content.Shared.Access;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
@@ -47,7 +48,7 @@ namespace Content.Server.Administration.Systems;
 public sealed partial class AdminVerbSystem
 {
     [Dependency] private readonly DoorSystem _door = default!;
-    [Dependency] private readonly AirlockSystem _airlockSystem = default!;
+    [Dependency] private readonly EmergencyAccessSystem _emergencyAccessSystem = default!;
     [Dependency] private readonly StackSystem _stackSystem = default!;
     [Dependency] private readonly SharedAccessSystem _accessSystem = default!;
     [Dependency] private readonly HandsSystem _handsSystem = default!;
@@ -91,22 +92,22 @@ public sealed partial class AdminVerbSystem
             args.Verbs.Add(bolt);
         }
 
-        if (TryComp<AirlockComponent>(args.Target, out var airlockComp))
+        if (TryComp<EmergencyAccessComponent>(args.Target, out var emergencyAccessComp))
         {
             Verb emergencyAccess = new()
             {
-                Text = Loc.GetString(airlockComp.EmergencyAccess ? "admin-verbs-emergency-access-off" : "admin-verbs-emergency-access-on"),
+                Text = Loc.GetString(emergencyAccessComp.EmergencyAccess ? "admin-verbs-emergency-access-off" : "admin-verbs-emergency-access-on"),
                 Category = VerbCategory.Tricks,
                 Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/AdminActions/emergency_access.png")),
                 Act = () =>
                 {
-                    _airlockSystem.SetEmergencyAccess((args.Target, airlockComp), !airlockComp.EmergencyAccess);
+                    _emergencyAccessSystem.SetEmergencyAccess((args.Target, emergencyAccessComp), !emergencyAccessComp.EmergencyAccess);
                 },
                 Impact = LogImpact.Medium,
-                Message = Loc.GetString(airlockComp.EmergencyAccess
+                Message = Loc.GetString(emergencyAccessComp.EmergencyAccess
                     ? "admin-trick-emergency-access-off-description"
                     : "admin-trick-emergency-access-on-description"),
-                Priority = (int)(airlockComp.EmergencyAccess ? TricksVerbPriorities.EmergencyAccessOff : TricksVerbPriorities.EmergencyAccessOn),
+                Priority = (int)(emergencyAccessComp.EmergencyAccess ? TricksVerbPriorities.EmergencyAccessOff : TricksVerbPriorities.EmergencyAccessOn),
             };
             args.Verbs.Add(emergencyAccess);
         }

@@ -23,6 +23,7 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Content.Shared.Mindshield.Components;
+using Content.Shared._BRatbite.Access;
 
 namespace Content.Shared.Access.Systems;
 
@@ -279,6 +280,10 @@ public sealed class AccessReaderSystem : EntitySystem
     {
         if (!reader.Enabled)
             return true;
+
+        // Ratbite start: Decouple Emergency access from airlocks
+        if (TryComp<EmergencyAccessComponent>(target, out var emergencyAccess) && emergencyAccess.EmergencyAccess) return true;
+        // Ratbite end
 
         if (reader.ContainerAccessProvider == null)
             return IsAllowedInternal(access, stationKeys, reader);

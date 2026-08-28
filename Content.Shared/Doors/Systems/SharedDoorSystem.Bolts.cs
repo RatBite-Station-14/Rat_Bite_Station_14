@@ -24,6 +24,7 @@ public abstract partial class SharedDoorSystem
 
         SubscribeLocalEvent<DoorBoltComponent, InteractUsingEvent>(OnInteractUsingEvent); // Goobstation - Unbolting unpowered door with wrench
         SubscribeLocalEvent<DoorBoltComponent, ManualBoltingDoAfterEvent>(OnManualBolting);
+        InitDoorRemotes(); // Ratbite
     }
 
     private void OnDoorPry(EntityUid uid, DoorBoltComponent component, ref BeforePryEvent args)
