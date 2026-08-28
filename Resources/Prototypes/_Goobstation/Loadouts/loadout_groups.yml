@@ -1436,6 +1436,7 @@
   - JackBoots
   - SecurityWinterBoots
   - AdvancedJackBoots
+  - SecMagBoots # Ratbite
 
 - type: loadoutGroup
   id: HeadofSecurityEnvirohelm

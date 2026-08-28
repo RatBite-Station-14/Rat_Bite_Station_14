@@ -185,7 +185,6 @@
     - id: OxygenTankFilled
     - id: UndeterminedVoidsuitSecurity # Goob edit
     - id: ClothingMaskBreath
-    - id: ClothingShoesBootsMagSec # Ratbite
 
 #CE's hardsuit
 - type: entity
