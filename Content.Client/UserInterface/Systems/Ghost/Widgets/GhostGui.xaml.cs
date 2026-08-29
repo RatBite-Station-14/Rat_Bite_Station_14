@@ -36,7 +36,8 @@ public sealed partial class GhostGui : UIWidget
         GhostRolesButton.OnPressed += _ => GhostRolesPressed?.Invoke();
         GhostRolesButton.OnPressed += _ => GhostRolesButton.StyleClasses.Remove(StyleClass.Negative);
         ThunderdomeButton.OnPressed += _ => ThunderdomePressed?.Invoke(); // Goobstation - Thunderdome
-        AltServerConnectButton.OnPressed += _ => AltServerConnectPressed?.Invoke();
+        AltServerConnectButton.OnPressed += _ => AltServerConfirmWindow.OpenCentered();
+        AltServerConfirmWindow.OnConfirmPressed += () => AltServerConnectPressed?.Invoke();
     }
 
     public void Hide()
