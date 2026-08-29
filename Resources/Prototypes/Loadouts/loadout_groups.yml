@@ -1487,6 +1487,7 @@
   - JackBoots
   - CombatBoots # Goobstation
   - SecurityWinterBoots
+  - SecMagBoots
 
 - type: loadoutGroup
   id: SecurityPDA
