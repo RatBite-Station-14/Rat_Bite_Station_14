@@ -46,7 +46,6 @@
       - type: CommandStaff
       - type: Condemned
         soulOwnedNotDevil: true
-      - type: CombatTrained # ratbite
 
 - type: startingGear
   id: RSOGear
