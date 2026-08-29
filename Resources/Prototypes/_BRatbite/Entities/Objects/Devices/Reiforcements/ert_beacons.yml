@@ -18,7 +18,6 @@
     - type: AutoImplant
       implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, BluespaceLifelineImplant ] # bluespace implant because unrobust ERT keep giving antags/selfantags free loot
     - type: MindShield
-    - type: CombatTrained
 
 # ERT leader
 
@@ -155,7 +154,6 @@
   components:
   - type: GhostCharacterSpawner
     components:
-    - type: CombatTrained
     - type: Loadout
       prototypes: [ ERTEngineerGearEVA ]
       roleLoadout: [ RoleSurvivalEVA ]
@@ -208,7 +206,6 @@
       settings: short
   - type: GhostCharacterSpawner
     components:
-    - type: CombatTrained
     - type: Loadout
       prototypes: [ ERTMedicalGear ]
       roleLoadout: [ RoleSurvivalExtended ]
@@ -241,4 +238,3 @@
     - type: Loadout
       prototypes: [ CBURNGear ]
       roleLoadout: [ RoleSurvivalEVA ]
-

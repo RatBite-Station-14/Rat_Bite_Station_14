@@ -1016,3 +1016,6 @@ UniformPrinter: HopUniformPrinter
 
 #2026-08-24 Ratbite: Fixes prototype
 Gauze10Lingering: Gauze
+
+#2026-08-28 Ratbite: Combat Training removal
+BookCombatTraining: null

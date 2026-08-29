@@ -20,9 +20,6 @@
   special: # Goobstation
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm ]
-  - !type:AddComponentSpecial
-    components:
-      - type: CombatTrained
 
 - type: startingGear
   parent: ERTLeaderGearEVA
@@ -131,7 +128,6 @@
     - type: BibleUser #Lets them heal with bibles
     - type: CurseImmune # Goobstation - Wraith
     - type: CanEnchant #GoobStation
-    - type: CombatTrained # ratbite
   - !type:AddImplantSpecial
      implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm ]
 
@@ -215,9 +211,6 @@
   special: # Goobstation
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm ]
-  - !type:AddComponentSpecial
-    components:
-      - type: CombatTrained # ratbite
 
 - type: startingGear
   parent: ERTEngineerGearEVA
@@ -317,9 +310,6 @@
   special: # Goobstation
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm]
-  - !type:AddComponentSpecial
-    components:
-      - type: CombatTrained # ratbite
 
 - type: startingGear
   parent: ERTSecurityGearEVA
@@ -511,9 +501,6 @@
   special: # Goobstation
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm ]
-  - !type:AddComponentSpecial
-    components:
-      - type: CombatTrained # ratbite
 
 - type: startingGear
   parent: ERTMedicalGearEVA
@@ -631,9 +618,6 @@
   special: # Goobstation
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm]
-  - !type:AddComponentSpecial
-    components:
-      - type: CombatTrained # ratbite
 
 - type: startingGear
   parent: ERTJanitorGearEVA
