@@ -41,6 +41,106 @@
     - HereticItem
 
 - type: entity
+  parent: [ BaseItem, BaseMagicalContraband ]
+  id: CodexMorbus
+  name: codex morbus
+  description: A hideous, ragged book covered in separately-blinking eyes, all of them staring at you. You have no idea how to hold this thing, and to be honest you're not sure if you want to.
+  components:
+  - type: UnholyItem
+  - type: Sprite
+    sprite: _Goobstation/Heretic/book_morbus.rsi
+    layers:
+      - state: icon
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleAnimationVisuals.ToggleState:
+        base:
+          On: { state: icon-on }
+          Off: { state: icon }
+          TogglingOn: { state: icon-opening }
+          TogglingOff: { state: icon-closing }
+  - type: Item
+    size: Small
+    sprite: _Goobstation/Heretic/book_morbus.rsi
+  - type: UseDelay
+    delay: 2.0
+  - type: Appearance
+  - type: ItemToggle
+  - type: ComponentToggler
+    components:
+    - type: HereticMagicItem
+    - type: EldritchInfluenceDrainer
+    - type: TransmutationRuneScriber
+  - type: ItemToggleSize
+    activatedSize: Normal
+  - type: ToggleAnimation
+  - type: EnchantingTool
+  - type: Tag
+    tags:
+    - HereticItem
+
+- type: entity
+  parent: [ BaseItem, BaseMagicalContraband ]
+  id: HereticPhylactery
+  name: phylactery of damnation
+  description: Used to steal blood from soon-to-be victims.
+  components:
+  - type: UnholyItem
+  - type: Sprite
+    sprite: _Goobstation/Heretic/phylactery.rsi
+    layers:
+      - state: icon
+  - type: Icon
+    sprite: _Goobstation/Heretic/phylactery.rsi
+    state: icon
+  - type: Appearance
+  - type: Tag
+    tags:
+    - HereticItem
+  - type: Injector
+    minTransferAmount: 5
+    maxTransferAmount: 5
+    injectOnly: true
+    toggleState: Draw
+    solutionName: injector
+    ignoreMobs: false
+    delay: 0
+    delayPerVolume: 0
+    bypassInjectionBlock: true
+    instant: true
+    targetAfterDrawMessage: hypospray-component-feel-prick-message
+    drawSound:
+      path: /Audio/Items/hypospray.ogg
+    ignoreAccessChecks: true
+    activeModeProtoId: DropperDrawMode
+    allowedModes:
+    - DropperDrawMode
+    - DropperInjectMode
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: phylactery
+    metamorphic: false
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 10
+  - type: MixableSolution
+    solution: injector
+  - type: ExaminableSolution
+    solution: injector
+  - type: Spillable
+    solution: injector
+  - type: DrawableSolution
+    solution: injector
+  - type: RefillableSolution
+    solution: injector
+  - type: SolutionTransfer
+  - type: Forensics
+    canStoreDNA: false
+  - type: UseDelay
+    delay: 0.3
+
+- type: entity
   parent: [ DrinkBase, BaseMagicalContraband ]
   id: HereticEldritchFlask
   name: eldritch flask

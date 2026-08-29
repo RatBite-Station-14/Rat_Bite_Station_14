@@ -82,3 +82,10 @@ heretic-ritual-flesh-ascend = Priest's Final Hymn
 ## void path
 heretic-ritual-void-blade = Glimmer of Winter
 heretic-ritual-void-ascend = Waltz at the End of Time
+
+# New items, Finally heretic content !!!!
+heretic-ritual-basic-phylactery = Phylactery of Damnation
+heretic-ritual-basic-phylactery-desc = A tincture twisted into the shape of a bloodsucker vermin. Allows you to transmute a beaker and a pool of blood into a Phylactery that can instantly draw blood, even from long distances.
+
+knowledge-path-side-s6-morbus-name = Codex Morbus
+knowledge-path-side-s6-morbus-desc = The spine of this leather-bound tome creaks with an eerily pained sigh. It speaks of coming plagues, needles to peel the skin of the world back and leaving it to fester.

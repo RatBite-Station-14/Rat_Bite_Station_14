@@ -449,3 +449,31 @@
     Knife: 1
   output:
     CarvingKnife: 1
+
+- type: hereticRitual
+  id: PhylacteryOfDamnation
+  locName: heretic-ritual-basic-phylactery
+  locDesc: heretic-ritual-basic-phylactery-desc
+  icon:
+    sprite: _Goobstation/Heretic/phylactery.rsi
+    state: icon
+  customBehaviors:
+  - !type:RitualReagentPuddleBehavior
+  requiredTags:
+    GlassBeaker: 1
+  output:
+    HereticPhylactery: 1
+
+- type: hereticRitual
+  id: CodexMorbus
+  locName: knowledge-path-side-s6-morbus-name
+  locDesc: knowledge-path-side-s6-morbus-desc
+  icon:
+    sprite: _Goobstation/Heretic/book_morbus.rsi
+    state: icon-on
+  customBehaviors:
+  - !type:RitualSacrificeBehavior
+  requiredTags:
+    CodexCicatrix: 1
+  output:
+    CodexMorbus: 1

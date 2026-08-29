@@ -98,6 +98,9 @@
   id: CombatMech
 
 - type: Tag
+  id: CodexCicatrix
+
+- type: Tag
   id: CorporateOverride
 
 - type: Tag
