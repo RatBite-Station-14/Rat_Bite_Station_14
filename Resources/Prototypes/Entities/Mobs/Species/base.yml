@@ -345,12 +345,12 @@
   #  power: 0.6
   - type: FlightAffectedByScale # Goobstation: port EE height/width sliders.
   - type: StunVisuals
-  - type: DiseaseCarrier
-  - type: Immunity
-    affectedTypes:
-    - Viral
-    - Bacterial
-    - Parasite
+ # - type: DiseaseCarrier
+ # - type: Immunity
+ #   affectedTypes:
+ #   - Viral
+#    - Bacterial
+ #   - Parasite
   - type: ObraDinnBody # Goobstation
   # </Goobstation>
   # Ratbite: All species are combat untrained by default, unless they are given the trained component

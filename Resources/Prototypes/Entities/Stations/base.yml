@@ -78,8 +78,8 @@
         ruins: !type:GridSpawnGroup
           hide: true
           nameGrid: true
-          minCount: 3 #Ratbite
-          maxCount: 5 #Ratbite
+          minCount: 1 #Ratbite
+          maxCount: 2 #Ratbite
           stationGrid: false
           paths:
           - /Maps/Ruins/abandoned_outpost.yml
@@ -101,10 +101,10 @@
           - /Maps/Shuttles/mining.yml #Ratbite
         wrecks: !type:DungeonSpawnGroup
           minimumDistance: 150
-          maximumDistance: 450 #Ratbite
+          maximumDistance: 300 #Ratbite
           stationGrid: false
-          minCount: 12
-          maxCount: 16
+          minCount: 1 #Ratbite
+          maxCount: 2 #Ratbite
           addComponents:
           - type: Gravity
             enabled: true
