@@ -6,3 +6,4 @@
   - !type:LogWireAction
   - !type:MachineBoltWireAction
   - !type:SpeechWireAction
+  - !type:AiInteractWireAction

@@ -23,21 +23,22 @@ public sealed partial class AirlockComponent : Component
     [DataField, AutoNetworkedField]
     public bool Safety = true;
 
-    [ViewVariables(VVAccess.ReadWrite)]
-    [DataField, AutoNetworkedField]
-    public bool EmergencyAccess = false;
+    // Ratbite: Moved to its own component to reuse it
+    // [ViewVariables(VVAccess.ReadWrite)]
+    // [DataField, AutoNetworkedField]
+    // public bool EmergencyAccess = false;
 	
-    /// <summary>
-    /// Sound to play when the airlock emergency access is turned on.
-    /// </summary>
-    [DataField]
-    public SoundSpecifier EmergencyOnSound = new SoundPathSpecifier("/Audio/Machines/airlock_emergencyon.ogg");
+    // /// <summary>
+    // /// Sound to play when the airlock emergency access is turned on.
+    // /// </summary>
+    // [DataField]
+    // public SoundSpecifier EmergencyOnSound = new SoundPathSpecifier("/Audio/Machines/airlock_emergencyon.ogg");
 
-    /// <summary>
-    /// Sound to play when the airlock emergency access is turned off.
-    /// </summary>
-    [DataField]
-    public SoundSpecifier EmergencyOffSound = new SoundPathSpecifier("/Audio/Machines/airlock_emergencyoff.ogg");
+    // /// <summary>
+    // /// Sound to play when the airlock emergency access is turned off.
+    // /// </summary>
+    // [DataField]
+    // public SoundSpecifier EmergencyOffSound = new SoundPathSpecifier("/Audio/Machines/airlock_emergencyoff.ogg");
 
     /// <summary>
     /// Pry modifier for a powered airlock.

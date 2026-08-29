@@ -6,17 +6,18 @@ using Content.Shared.Popups;
 using Content.Shared.Prying.Components;
 using Content.Shared.Wires;
 using Robust.Shared.Timing;
+using Content.Shared._BRatbite.Access;
 
 namespace Content.Shared.Doors.Systems;
 
 public abstract class SharedAirlockSystem : EntitySystem
 {
-    [Dependency] private   readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] protected readonly SharedAppearanceSystem Appearance = default!;
     [Dependency] protected readonly SharedAudioSystem Audio = default!;
     [Dependency] protected readonly SharedDoorSystem DoorSystem = default!;
     [Dependency] protected readonly SharedPopupSystem Popup = default!;
-    [Dependency] private   readonly SharedWiresSystem _wiresSystem = default!;
+    [Dependency] private readonly SharedWiresSystem _wiresSystem = default!;
 
     public override void Initialize()
     {
@@ -29,6 +30,7 @@ public abstract class SharedAirlockSystem : EntitySystem
         SubscribeLocalEvent<AirlockComponent, BeforeDoorDeniedEvent>(OnBeforeDoorDenied);
         SubscribeLocalEvent<AirlockComponent, GetPryTimeModifierEvent>(OnGetPryMod);
         SubscribeLocalEvent<AirlockComponent, BeforePryEvent>(OnBeforePry);
+        SubscribeLocalEvent<AirlockComponent, EmergencyAccessChangedEvent>((Entity<AirlockComponent> ent, ref EmergencyAccessChangedEvent ev) => UpdateEmergencyLightStatus(ent));
     }
 
     private void OnBeforeDoorClosed(EntityUid uid, AirlockComponent airlock, BeforeDoorClosedEvent args)
@@ -141,29 +143,21 @@ public abstract class SharedAirlockSystem : EntitySystem
         args.Cancelled = true;
     }
 
-    public void UpdateEmergencyLightStatus(EntityUid uid, AirlockComponent component)
+    public void UpdateEmergencyLightStatus(EntityUid uid)
     {
-        Appearance.SetData(uid, DoorVisuals.EmergencyLights, component.EmergencyAccess);
+        var emergencyAccess = EnsureComp<EmergencyAccessComponent>(uid);
+        Appearance.SetData(uid, DoorVisuals.EmergencyLights, emergencyAccess.EmergencyAccess);
     }
 
-    public void SetEmergencyAccess(Entity<AirlockComponent> ent, bool value, EntityUid? user = null, bool predicted = false)
-    {
-        if(!ent.Comp.Powered)
-            return;
-
-        if (ent.Comp.EmergencyAccess == value)
-            return;
-
-        ent.Comp.EmergencyAccess = value;
-        Dirty(ent, ent.Comp); // This only runs on the server apparently so we need this.
-        UpdateEmergencyLightStatus(ent, ent.Comp);
-
-        var sound = ent.Comp.EmergencyAccess ? ent.Comp.EmergencyOnSound : ent.Comp.EmergencyOffSound;
-        if (predicted)
-            Audio.PlayPredicted(sound, ent, user: user);
-        else
-            Audio.PlayPvs(sound, ent);
-    }
+    // Ratbite: don't use this, use EmergencyAccessSystem::SetEmergencyAccess.
+    //    public void SetEmergencyAccess(Entity<AirlockComponent> ent, bool value, EntityUid? user = null, bool predicted = false)
+    //    {
+    //        if(!ent.Comp.Powered)
+    //            return;
+    //        var emergencyAccess = EnsureComp<EmergencyAccessComponent>(ent);
+    //
+    //        _emergencyAccessSystem.SetEmergencyAccess((ent.Owner, emergencyAccess), value, user, predicted);
+    //    }
 
     public void SetAutoCloseDelayModifier(AirlockComponent component, float value)
     {

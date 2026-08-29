@@ -71,6 +71,7 @@
   - !type:VendingMachineContrabandWireAction
   - !type:VendingMachineEjectItemWireAction
   - !type:SpeechWireAction
+  - !type:MachineBoltWireAction # Ratbite
 
 - type: wireLayout
   id: AirAlarm

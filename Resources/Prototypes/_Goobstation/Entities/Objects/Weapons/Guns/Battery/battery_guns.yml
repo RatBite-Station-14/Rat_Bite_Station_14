@@ -427,10 +427,10 @@
     - WeaponEnergyGunLawbringer
   - type: StealTarget
     stealGroup: WeaponEnergyGunLawbringer
-  - type: RestrictById
-    restrictMelee: true
-    restrictRanged: true
-    isEmaggable: true
+#  - type: RestrictById # Ratbite: We have out own mindshield locks
+#    restrictMelee: true
+#    restrictRanged: true
+#    isEmaggable: true
   - type: StaticPrice
     price: 750
   - type: TriggerOnVoiceIdLocked
@@ -439,6 +439,9 @@
     holderOnly: true
   - type: AccessReader
     access: [['HeadOfSecurity']]
+  - type: FiringPin # Ratbite
+  - type: Lock # Ratbite
+    locked: true
   - type: ActiveListener
   - type: ExplodeOnTrigger
   - type: DropOnTrigger

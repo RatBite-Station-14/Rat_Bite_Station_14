@@ -19,6 +19,11 @@
       map: ["enum.MaterialStorageVisualLayers.Inserting"]
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    - state: electrified_ai
+      sprite: Interface/Misc/ai_hud.rsi
+      shader: unshaded
+      visible: false
+      map: ["enum.ElectrifiedLayers.HUD"]
   - type: Machine
     board: EngineeringTechFabCircuitboard
   - type: Lathe
@@ -93,6 +98,11 @@
       map: ["enum.MaterialStorageVisualLayers.Inserting"]
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    - state: electrified_ai
+      sprite: Interface/Misc/ai_hud.rsi
+      shader: unshaded
+      visible: false
+      map: ["enum.ElectrifiedLayers.HUD"]
   - type: Machine
     board: CargoTechFabCircuitboard
   - type: Lathe
@@ -162,6 +172,11 @@
       map: ["enum.MaterialStorageVisualLayers.Inserting"]
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    - state: electrified_ai
+      sprite: Interface/Misc/ai_hud.rsi
+      shader: unshaded
+      visible: false
+      map: ["enum.ElectrifiedLayers.HUD"]
   - type: Machine
     board: ScienceTechFabCircuitboard
   - type: Lathe
@@ -259,6 +274,11 @@
       map: ["enum.MaterialStorageVisualLayers.Inserting"]
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    - state: electrified_ai
+      sprite: Interface/Misc/ai_hud.rsi
+      shader: unshaded
+      visible: false
+      map: ["enum.ElectrifiedLayers.HUD"]
   - type: Machine
     board: ServiceTechFabCircuitboard
   - type: Lathe
@@ -325,6 +345,11 @@
           map: ["enum.MaterialStorageVisualLayers.Inserting"]
         - state: panel
           map: ["enum.WiresVisualLayers.MaintenancePanel"]
+        - state: electrified_ai
+          sprite: Interface/Misc/ai_hud.rsi
+          shader: unshaded
+          visible: false
+          map: ["enum.ElectrifiedLayers.HUD"]
     - type: Machine
       board: ERTTechFabCircuitboard
     - type: Lathe
