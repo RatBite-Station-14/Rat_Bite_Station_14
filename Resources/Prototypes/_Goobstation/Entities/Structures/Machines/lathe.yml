@@ -19,6 +19,11 @@
       map: ["enum.MaterialStorageVisualLayers.Inserting"]
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    - state: electrified_ai
+      sprite: Interface/Misc/ai_hud.rsi
+      shader: unshaded
+      visible: false
+      map: ["enum.ElectrifiedLayers.HUD"]
   - type: Machine
     board: EngineeringTechFabCircuitboard
   - type: Lathe
@@ -40,6 +45,7 @@
     - MiscSignallersStatic
     - NailgunStatic
     - NailsStatic
+    - TechnicalToolsStatic # Ratbite
     dynamicPacks:
     - ConstructionBagOfHolding
     - AdvancedTools
@@ -92,6 +98,11 @@
       map: ["enum.MaterialStorageVisualLayers.Inserting"]
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    - state: electrified_ai
+      sprite: Interface/Misc/ai_hud.rsi
+      shader: unshaded
+      visible: false
+      map: ["enum.ElectrifiedLayers.HUD"]
   - type: Machine
     board: CargoTechFabCircuitboard
   - type: Lathe
@@ -161,6 +172,11 @@
       map: ["enum.MaterialStorageVisualLayers.Inserting"]
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    - state: electrified_ai
+      sprite: Interface/Misc/ai_hud.rsi
+      shader: unshaded
+      visible: false
+      map: ["enum.ElectrifiedLayers.HUD"]
   - type: Machine
     board: ScienceTechFabCircuitboard
   - type: Lathe
@@ -188,6 +204,7 @@
     - ScienceExplosives # Goobstation - Roundstart Grenade Tech
     - GrenadeTriggersStatic # Goobstation - Roundstart Grenade Tech
     - MiscSignallersStatic
+    - TechnicalToolsStatic
     dynamicPacks:
     - AdvancedTools
     - ScienceEquipment
@@ -257,6 +274,11 @@
       map: ["enum.MaterialStorageVisualLayers.Inserting"]
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    - state: electrified_ai
+      sprite: Interface/Misc/ai_hud.rsi
+      shader: unshaded
+      visible: false
+      map: ["enum.ElectrifiedLayers.HUD"]
   - type: Machine
     board: ServiceTechFabCircuitboard
   - type: Lathe
@@ -323,6 +345,11 @@
           map: ["enum.MaterialStorageVisualLayers.Inserting"]
         - state: panel
           map: ["enum.WiresVisualLayers.MaintenancePanel"]
+        - state: electrified_ai
+          sprite: Interface/Misc/ai_hud.rsi
+          shader: unshaded
+          visible: false
+          map: ["enum.ElectrifiedLayers.HUD"]
     - type: Machine
       board: ERTTechFabCircuitboard
     - type: Lathe

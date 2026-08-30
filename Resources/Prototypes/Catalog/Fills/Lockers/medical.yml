@@ -65,7 +65,7 @@
       - id: UniformScrubsColorPurple
         weight: 0.05
     - id: ClothingMaskSterile
-    - id: JetInjector
+    - id: JetInjector # Hi, ratbite here, these are perfectly balanced 
 
 - type: entity
   parent: LockerMedical

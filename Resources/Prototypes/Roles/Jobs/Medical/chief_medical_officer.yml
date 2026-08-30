@@ -19,6 +19,8 @@
       inverted: true
       species:
       - Felinid
+      - Scurret
+      - Monkey
   weight: 10
   startingGear: CMOGear
   icon: "JobIconChiefMedicalOfficer"

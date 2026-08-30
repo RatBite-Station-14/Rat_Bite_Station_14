@@ -2,8 +2,8 @@
 #region Medical Orderly
 - type: job
   id: MedOrderly
-  name: Medical Orderly
-  description: "Protect the medical department, its staff, its patients and above all else, the CMO"
+  name: job-name-medical-orderly
+  description: job-description-medical-orderly
   playTimeTracker: JobMedOrderly
   requirements:
     - !type:DepartmentTimeRequirement
@@ -34,7 +34,6 @@
     components:
       - type: Condemned
         soulOwnedNotDevil: true # Bootlicker for NT
-      - type: CombatTrained # ratbite
 
 - type: startingGear
   id: MedicalOrderlyGear
@@ -62,8 +61,8 @@
 #region Cargo Insurance
 - type: job
   id: CargoInsurance
-  name: Cargo Insurance
-  description: "Protect the cargo department, its assets, its employees, and above all else, protect the quartermaster"
+  name: job-name-cargo-insurance
+  description: job-description-cargo-insurance
   playTimeTracker: JobCargoInsurance
 
   requirements:
@@ -95,7 +94,6 @@
     components:
       - type: Condemned
         soulOwnedNotDevil: true
-      - type: CombatTrained # ratbite
 
 - type: startingGear
   id: CargoInsuranceGear
@@ -123,8 +121,8 @@
 #region SciGuard
 - type: job
   id: ScicurityGuard
-  name: Sci-Curity Guard
-  description: "Protect the science department, the scientists, its research, and above all else, the Research Director"
+  name: job-name-sci-guard
+  description: job-description-sci-guard
   playTimeTracker: JobScicurityGuard
   requirements:
     - !type:DepartmentTimeRequirement
@@ -154,7 +152,6 @@
     components:
       - type: Condemned
         soulOwnedNotDevil: true
-      - type: CombatTrained # ratbite
 
 - type: startingGear
   id: ScicurityguardGear
@@ -182,8 +179,8 @@
 #region Engi Sentry
 - type: job
   id: EngiSentry
-  name: Engi Sentry
-  description: "Protect engineering, its workers, its infrastructure, and above all else, the Chief Engineer"
+  name: job-name-engi-sentry
+  description: job-description-engi-sentry
   playTimeTracker: JobEngiSentry
   requirements:
     - !type:DepartmentTimeRequirement
@@ -217,7 +214,6 @@
     components:
       - type: Condemned
         soulOwnedNotDevil: true
-      - type: CombatTrained # ratbite
   - !type:AddComponentSpecial
     components:
     - type: EngineeringStaff

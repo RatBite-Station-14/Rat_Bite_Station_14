@@ -106,7 +106,7 @@
   # Visual
   inventoryTemplateId: borgTall
   spriteBodyState: miner
-  spriteBodyMovementState: miner_moving
+  # spriteBodyMovementState: miner_moving # Ratbite: Remove because not all sprites have it
   spriteHasMindState: miner_e
   spriteNoMindState: miner_e_r
   spriteToggleLightState: miner_l
@@ -143,7 +143,7 @@
   # Visual
   inventoryTemplateId: borgShort
   spriteBodyState: janitor
-  spriteBodyMovementState: janitor_moving
+  # spriteBodyMovementState: janitor_moving # ratbite: Removed becasue not all sprites have it
   spriteHasMindState: janitor_e
   spriteNoMindState: janitor_e_r
   spriteToggleLightState: janitor_l
@@ -197,7 +197,7 @@
   # Visual
   inventoryTemplateId: borgDutch
   spriteBodyState: medical
-  spriteBodyMovementState: medical_moving
+  # spriteBodyMovementState: medical_moving # Ratbite: Remove because not all sprites have it
   spriteHasMindState: medical_e
   spriteNoMindState: medical_e_r
   spriteToggleLightState: medical_l

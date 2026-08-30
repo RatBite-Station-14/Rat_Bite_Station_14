@@ -700,7 +700,7 @@
             state: neck
   - type: EatToGrow # Goobstation Eat To Grow System
     growth: 0.05
-    maxGrowth: 2
+    maxGrowth: 4 # Ratbite - cap of 2 tiles instead of 1
 
 # Note that the mallard duck is actually a male drake mallard, with the brown duck being the female variant of the same species, however ss14 lacks sex specific textures
 # The white duck is more akin to a pekin or call duck.
@@ -1584,7 +1584,7 @@
     cap: 140
   - type: Crawler
   - type: StatusIcon
-  - type: DiseaseCarrier # Goobstation
+  #- type: DiseaseCarrier # Goobstation
   - type: Emoting
   - type: BodyEmotes
     soundsId: GeneralBodyEmotes
@@ -2111,9 +2111,9 @@
       chance: 0.05 # 1984 lower chance for normal mice so creating the turboplague horde is not as strong
       power: 1
       spreadType: Blood
-  - type: DiseaseCarrier
-    effectImmune: true
-  - type: ShowDiseaseIcons # they sense it
+ # - type: DiseaseCarrier
+ #   effectImmune: true
+ # - type: ShowDiseaseIcons # they sense it
   - type: Destructible # Shitmed Change
     thresholds:
     - trigger:

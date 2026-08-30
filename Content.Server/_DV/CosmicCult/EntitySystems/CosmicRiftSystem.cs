@@ -63,13 +63,19 @@ public sealed class CosmicRiftSystem : EntitySystem
             if (_timing.CurTime < comp.NextPulseTime) continue;
             comp.NextPulseTime = _timing.CurTime + _random.Next(comp.MinPulseTime, comp.MaxPulseTime);
 
-            var pos = Transform(uid).Coordinates;
+            // Rift may have lost its Transform this tick (e.g. queued deletion); skip instead of throwing.
+            if (!TryComp<TransformComponent>(uid, out var riftXform))
+                continue;
+
+            var pos = riftXform.Coordinates;
             Spawn(comp.PulseVFX, pos);
             _lookup.GetEntitiesInRange<MobStateComponent>(pos, comp.PulseRange, _mobs);
             _mobs.RemoveWhere(target => _chaplainsQuery.HasComp(target) || _cultistsQuery.HasComp(target) || _colossiQuery.HasComp(target));
             foreach(var mob in _mobs)
             {
-                if (!pos.TryDistance(EntityManager, Transform(mob).Coordinates, out var distance)) continue;
+                if (!TryComp<TransformComponent>(mob, out var mobXform))
+                    continue;
+                if (!pos.TryDistance(EntityManager, mobXform.Coordinates, out var distance)) continue;
                 if (!_random.Prob(comp.PulseProb)) continue;
                 var damageMultiplier = Math.Clamp(comp.PulseRange / distance, 1, 10); //0.2 damage per second at max distance, up to 2 per second if closer
                 var effectDuration = _random.Next(10, 40); //2-8 damage at max distance, 20-80 damage at min distance

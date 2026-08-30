@@ -26,6 +26,7 @@
       species:
       - Felinid
       - Scurret
+      - Monkey
       #any MRP using our code might eventually want to use it
     # - !type:SaturationRequirement # MisandryBox - no neon hair on captain
     #   hairColorSaturation: 0.30
@@ -51,7 +52,6 @@
       - type: CommandStaff
       - type: Condemned # Goobstation - Nanotrasen owns your soul pal.
         soulOwnedNotDevil: true
-      - type: CombatTrained # Ratbite
 
 - type: startingGear
   id: CaptainGear

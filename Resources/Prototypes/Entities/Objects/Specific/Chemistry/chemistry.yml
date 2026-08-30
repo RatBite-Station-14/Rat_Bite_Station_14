@@ -104,18 +104,19 @@
     damage:
       types:
         Blunt: 10
-  - type: HeatTint # Goob - color liquid by temperature
-    colorGradient:
-    - temperature: 200
-      color: "#A0BCE0"
-    - temperature: 293
-      color: "#FFFFFF"
-    - temperature: 350
-      color: "#FFC0A8"
-    - temperature: 800
-      color: "#FF9880"
-    affectedLayers:
-    - "enum.SolutionContainerLayers.Fill"
+# Ratbite: Remove the tint
+#  - type: HeatTint # Goob - color liquid by temperature
+#    colorGradient:
+#    - temperature: 200
+#      color: "#A0BCE0"
+#    - temperature: 293
+#      color: "#FFFFFF"
+#    - temperature: 350
+#      color: "#FFC0A8"
+#    - temperature: 800
+#      color: "#FF9880"
+#    affectedLayers:
+#    - "enum.SolutionContainerLayers.Fill"
 
 - type: entity
   parent: BaseItem
@@ -509,9 +510,9 @@
     animation: WeaponArcThrust
     soundHit:
       path: /Audio/Weapons/pierce.ogg
-  ##- type: CombatDoAfter - This is just problematic and unfun
-  ##  trigger: !type:CombatSyringeTriggerEvent
-    ##  breakOnDamage: true
+  - type: CombatDoAfter # Ratbite: This is very unproblematic and fun if you just fucking make it take longer, chudtards.
+    delay: 6
+    trigger: !type:CombatSyringeTriggerEvent
   - type: Projectile
     deleteOnCollide: false
     onlyCollideWhenShot: true

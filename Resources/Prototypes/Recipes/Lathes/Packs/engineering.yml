@@ -4,27 +4,27 @@
 - type: latheRecipePack
   id: ToolsStatic
   recipes:
-  - VoiceSensor
+  # - VoiceSensor # Ratbite: Moved to TechnicalToolsStatic
   - Wirecutter
   - Screwdriver
   - Welder
   - Wrench
   - CrowbarGreen
-  - Multitool
+  # - Multitool # Ratbite: Moved to TechnicalToolsStatic
   - NetworkConfigurator
-  - Signaller
+  # - Signaller # Ratbite: Moved to TechnicalToolsStatic
   - SprayPainter
   - GeigerCounter #Goob station
   - SprayPainterAmmo
   - FlashlightLantern
   - HandheldGPSBasic
-  - TRayScanner
-  - UtilityBelt
+  # - TRayScanner # Ratbite: Moved to TechnicalToolsStatic
+  # - UtilityBelt # Ratbite: Moved to TechnicalToolsStatic
   - ClothingOuterVestTank
   - HandheldStationMap
   - ClothingHeadHatWelding
   - ClothingHeadHatCone
-  - WeaponHammer
+  # - WeaponHammer # Ratbite: Moved to TechnicalToolsStatic
 
 - type: latheRecipePack
   id: AtmosStatic

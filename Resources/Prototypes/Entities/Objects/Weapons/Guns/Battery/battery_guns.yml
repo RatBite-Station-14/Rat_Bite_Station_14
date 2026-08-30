@@ -1078,7 +1078,14 @@
   - type: BatteryAmmoProvider
     proto: BulletLaserSpreadNarrow
     fireCost: 80
+  - type: BatterySelfRecharger
+    autoRechargeRate: 50
+    autoRechargePauseTime: 40
   - type: FiringPin # Ratbite, mindshield restriction system
+  - type: AccessReader
+    access: [[ "Armory" ]]
+  - type: Lock
+    locked: true
   # Goob edit start
   #  - type: BatteryWeaponFireModes
   #    fireModes:

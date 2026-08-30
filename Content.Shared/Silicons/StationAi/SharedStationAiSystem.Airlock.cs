@@ -5,6 +5,8 @@ using Content.Shared.Database;
 using Content.Shared.Doors.Components;
 using Robust.Shared.Serialization;
 using Content.Shared.Electrocution;
+using Content.Shared._BRatbite.Access;
+using Content.Shared._BRatbite.Machines;
 
 namespace Content.Shared.Silicons.StationAi;
 
@@ -12,11 +14,14 @@ namespace Content.Shared.Silicons.StationAi;
 public abstract partial class SharedStationAiSystem
 {
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly EmergencyAccessSystem _emergencyAccessSystem = default!;
+    [Dependency] private readonly SharedBoltableMachineSystem _boltableMachineSystem = default!;
 
     private void InitializeAirlock()
     {
         SubscribeLocalEvent<DoorBoltComponent, StationAiBoltEvent>(OnAirlockBolt);
-        SubscribeLocalEvent<AirlockComponent, StationAiEmergencyAccessEvent>(OnAirlockEmergencyAccess);
+        SubscribeLocalEvent<BoltableMachineComponent, StationAiBoltEvent>(OnMachineBolt); // Ratbite
+        SubscribeLocalEvent<EmergencyAccessComponent, StationAiEmergencyAccessEvent>(OnEmergencyAccess);
         SubscribeLocalEvent<ElectrifiedComponent, StationAiElectrifiedEvent>(OnElectrified);
     }
 
@@ -57,7 +62,7 @@ public abstract partial class SharedStationAiSystem
     /// <summary>
     /// Attempts to toggle the door's emergency access. If wire was cut (AI) or its not powered - notifies AI and does nothing.
     /// </summary>
-    private void OnAirlockEmergencyAccess(EntityUid ent, AirlockComponent component, StationAiEmergencyAccessEvent args)
+    private void OnEmergencyAccess(EntityUid ent, EmergencyAccessComponent component, StationAiEmergencyAccessEvent args) // Ratbite: made generic and not airlock specific
     {
         if (!PowerReceiver.IsPowered(ent))
         {
@@ -75,7 +80,7 @@ public abstract partial class SharedStationAiSystem
             return;
         }
 
-        _airlocks.SetEmergencyAccess((ent, component), args.EmergencyAccess, args.User, predicted: true);
+        _emergencyAccessSystem.SetEmergencyAccess((ent, component), args.EmergencyAccess, args.User, predicted: true);
         _adminLogger.Add(LogType.Action, $"{args.User} set emergency access status on {ent} to [{args.EmergencyAccess}] using the Station AI radial.");
     }
 
@@ -107,6 +112,27 @@ public abstract partial class SharedStationAiSystem
             : component.AirlockElectrifyDisabled;
         _audio.PlayLocal(soundToPlay, ent, args.User);
     }
+
+
+    private void OnMachineBolt(Entity<BoltableMachineComponent> ent, ref StationAiBoltEvent args)
+    {
+        if (!PowerReceiver.IsPowered(ent.Owner) || ent.Comp.BoltedWireCut)
+        {
+            ShowDeviceNotRespondingPopup(args.User);
+            _adminLogger.Add(LogType.Action,
+                $"{args.User} was unable to change bolt status on {ent} to [{args.Bolted}] using the Station AI radial because it was unpowered.");
+            return;
+        }
+        if (!_access.IsAllowed(args.User, ent))
+        {
+            ShowDeviceNoAccessPopup(args.User);
+            _adminLogger.Add(LogType.Action,
+                $"{args.User} was unable to change bolt status on {ent} to [{args.Bolted}] using the Station AI radial because they had no access.");
+            return;
+        }
+        _boltableMachineSystem.ToggleBolts(ent, args.User);
+    }
+
 }
 
 /// <summary> Event for StationAI attempt at bolting/unbolting door. </summary>

@@ -22,7 +22,7 @@
   name: trait-leap-name
   description: trait-leap-desc
   category: Physical
-  cost: 2
+  cost: 8
   includedSpecies:
   - Tajaran
   - Resomi
@@ -35,6 +35,7 @@
   - type: JumpAbility
     action: ActionTraitLeap
     jumpDistance: 4
+    canCollide: true
     jumpSound: /Audio/Effects/stealthoff.ogg
 
 - type: trait
@@ -214,17 +215,6 @@
   - type: Believer
 
 - type: trait
-  id: CombatTrained
-  name: trait-combat-trained-name
-  description: trait-combat-trained-desc
-  category: Mental
-  cost: 2
-  speciesBlacklist:
-  - Oni
-  components:
-  - type: CombatTrained
-
-- type: trait
   id: ScaredOfGuns
   name: trait-scared-of-guns-name
   description: trait-scared-of-guns-desc
@@ -281,3 +271,27 @@
   components:
   - type: Trigger
 
+- type: trait
+  id: Kleptomania
+  name: trait-kleptomania-name
+  description: trait-kleptomania-desc
+  category: Mental
+  cost: -1
+  mutuallyExclusiveTraits:
+  - ChronicKleptomania
+  components:
+  - type: Kleptomania
+    timeBetweenIncidents: 12, 20
+
+- type: trait
+  id: ChronicKleptomania
+  name: trait-chronic-kleptomania-name
+  description: trait-chronic-kleptomania-desc
+  category: Mental
+  cost: -2
+  mutuallyExclusiveTraits:
+  - Kleptomania
+  components:
+  - type: Kleptomania
+    timeBetweenIncidents: 3, 3
+    riskyTargets: true

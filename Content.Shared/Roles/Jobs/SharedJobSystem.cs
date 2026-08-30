@@ -54,7 +54,8 @@ public abstract partial class SharedJobSystem : EntitySystem
     public string GetJobPrototype(string trackerProto)
     {
         DebugTools.Assert(_prototypes.HasIndex<PlayTimeTrackerPrototype>(trackerProto));
-        return _inverseTrackerLookup[trackerProto];
+        // _BRatbite: avoid crashing prefs load if a tracker has no corresponding job (e.g. after a job removal/rename)
+        return _inverseTrackerLookup.GetValueOrDefault(trackerProto, string.Empty);
     }
 
     /// <summary>

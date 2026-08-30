@@ -4,3 +4,11 @@
   result: ClothingOuterStraightjacket
   materials:
     Cloth: 300
+
+- type: latheRecipe
+  id: ClothingShoesBootsMagSec
+  result: ClothingShoesBootsMagSec
+  completetime: 10
+  materials:
+    Steel: 1000
+    Plastic: 500

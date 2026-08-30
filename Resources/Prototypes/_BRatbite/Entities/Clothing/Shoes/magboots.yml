@@ -1,0 +1,20 @@
+- type: entity
+  parent: [ClothingShoesBootsMagBase, ClothingShoesMilitaryBase, BaseSecurityContraband]
+  id: ClothingShoesBootsMagSec
+  name: security magboots
+  description: Magnetic boots, originally intended for patrolling the outside of the station, now used by security officers to avoid slipping on banana peels
+  components:
+  - type: Sprite
+    sprite: _BRatbite/Clothing/Shoes/Boots/magboots-sec.rsi
+    state: icon
+  - type: Clothing
+    sprite: _BRatbite/Clothing/Shoes/Boots/magboots-sec.rsi
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 250
+      Plastic: 125
+  - type: ClothingSpeedModifier # Better than regular magboots, but not as good as advanced ones
+    walkModifier: 0.90
+    sprintModifier: 0.90
+  - type: AccessReader
+    access: [["Security"]]

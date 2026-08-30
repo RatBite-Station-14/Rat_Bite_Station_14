@@ -1,7 +1,7 @@
 - type: job
   id: RedsightOverseer
-  name: Redsight Overseer
-  description: "Ensure security's compliance with spacelaw, act as the judge in legal disputes"
+  name: job-name-redsight-overseer
+  description: job-description-redsight-overseer
   playTimeTracker: JobRedsightOverseer
   requirements:
     - !type:DepartmentTimeRequirement
@@ -46,7 +46,6 @@
       - type: CommandStaff
       - type: Condemned
         soulOwnedNotDevil: true
-      - type: CombatTrained # ratbite
 
 - type: startingGear
   id: RSOGear
@@ -80,4 +79,3 @@
     outerClothing: RSOJack
     gloves: ClothingHandsGlovesRSOShock
     shoes: ClothingShoesBootsJack
-
