@@ -28,6 +28,12 @@
   equipment:
     mask: ClothingMaskGas
 
+# Ratbite pirate eyepatch
+- type: loadout
+  id: PirateEyepatch
+  equipment:
+    eyes: ClothingEyesEyepatch
+
 # Jumpsuits
 # Grey
 - type: loadout
@@ -104,6 +110,12 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryTurtleneckMercenary
 
+# Ratbite pirate slops
+- type: loadout
+  id: PirateJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPirate
+
 # Neck
 - type: loadout
   id: Mantle
@@ -173,6 +185,12 @@
   equipment:
     outerClothing: ClothingOuterWinterCoat
 
+# Ratbite pirate coat
+- type: loadout
+  id: PirateCoat
+  equipment:
+    outerClothing: ClothingOuterCoatPirate
+
 # Shoes
 - type: loadout
   id: BlackShoes
@@ -184,3 +202,9 @@
   equipment:
     shoes: ClothingShoesBootsWinter
 
+# Head
+# Ratbite pirate hat
+- type: loadout
+  id: PirateHat
+  equipment:
+    head: ClothingHeadHatPirate
