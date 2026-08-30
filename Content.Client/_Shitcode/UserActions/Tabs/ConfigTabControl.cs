@@ -20,6 +20,7 @@ using Robust.Client.Utility;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using static Content.Shared.Administration.SharedBwoinkSystem;
 
 namespace Content.Client._Shitcode.UserActions.Tabs;
 
@@ -101,7 +102,7 @@ public sealed partial class ConfigTabControl : BaseTabControl
                 Loc.GetString("ui-config-menu-ahelp"),
                 "/Textures/Interface/info.svg.192dpi.png");
         ahelpButton.OnPressed += (_) =>
-            ahelpUIController.ToggleWindow();
+            ahelpUIController.ToggleWindow(BwoinkType.AHelp);
         MenuList.AddChild(ahelpButton);
 
         UpdateButtonsLayout();

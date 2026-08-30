@@ -21,15 +21,15 @@ namespace Content.Client.Administration.Systems
             OnBwoinkTextMessageRecieved?.Invoke(this, message);
         }
 
-        public void Send(NetUserId channelId, string text, bool playSound, bool adminOnly)
+        public void Send(BwoinkType type, NetUserId channelId, string text, bool playSound, bool adminOnly)
         {
             // Reuse the channel ID as the 'true sender'.
             // Server will ignore this and if someone makes it not ignore this (which is bad, allows impersonation!!!), that will help.
-            RaiseNetworkEvent(new BwoinkTextMessage(channelId, channelId, text, playSound: playSound, adminOnly: adminOnly));
-            SendInputTextUpdated(channelId, false);
+            RaiseNetworkEvent(new BwoinkTextMessage(channelId, channelId, text, playSound: playSound, adminOnly: adminOnly, type: type));
+            SendInputTextUpdated(type, channelId, false);
         }
 
-        public void SendInputTextUpdated(NetUserId channel, bool typing)
+        public void SendInputTextUpdated(BwoinkType? type, NetUserId channel, bool typing)
         {
             if (_lastTypingUpdateSent.Typing == typing &&
                 _lastTypingUpdateSent.Timestamp + TimeSpan.FromSeconds(1) > _timing.RealTime)

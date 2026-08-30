@@ -1,21 +1,21 @@
 <!--
-SPDX-License-Identifier: AGPL-3.0-or-later
+     SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
 <widgets:GameTopMenuBar xmlns="https://spacestation14.io"
-           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-           xmlns:style="clr-namespace:Content.Client.Stylesheets"
-           xmlns:ic="clr-namespace:Robust.Shared.Input;assembly=Robust.Shared"
-           xmlns:is="clr-namespace:Content.Shared.Input;assembly=Content.Shared"
-           xmlns:xe="clr-namespace:Content.Client.UserInterface.XamlExtensions"
-           xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
-           xmlns:widgets="clr-namespace:Content.Client.UserInterface.Systems.MenuBar.Widgets"
-           Name = "MenuButtons"
-           VerticalExpand="False"
-           Orientation="Horizontal"
-           HorizontalAlignment="Stretch"
-           VerticalAlignment="Top"
-           SeparationOverride="5"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:style="clr-namespace:Content.Client.Stylesheets"
+                        xmlns:ic="clr-namespace:Robust.Shared.Input;assembly=Robust.Shared"
+                        xmlns:is="clr-namespace:Content.Shared.Input;assembly=Content.Shared"
+                        xmlns:xe="clr-namespace:Content.Client.UserInterface.XamlExtensions"
+                        xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
+                        xmlns:widgets="clr-namespace:Content.Client.UserInterface.Systems.MenuBar.Widgets"
+                        Name = "MenuButtons"
+                        VerticalExpand="False"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"
+                        SeparationOverride="5"
 >
     <ui:MenuButton
         Name="EscapeButton"
@@ -26,7 +26,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         MinSize="70 64"
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonOpenRight}"
-        />
+    />
     <ui:MenuButton
         Name="GuidebookButton"
         Access="Internal"
@@ -36,7 +36,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         MinSize="42 64"
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
-        />
+    />
     <ui:MenuButton
         Name="CharacterButton"
         Access="Internal"
@@ -46,7 +46,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         MinSize="42 64"
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
-        />
+    />
     <ui:MenuButton
         Name="EmotesButton"
         Access="Internal"
@@ -56,7 +56,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         MinSize="42 64"
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
-        />
+    />
     <ui:MenuButton
         Name="CraftingButton"
         Access="Internal"
@@ -66,7 +66,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         MinSize="42 64"
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
-        />
+    />
     <ui:MenuButton
         Name="ActionButton"
         Access="Internal"
@@ -76,7 +76,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         MinSize="42 64"
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
-        />
+    />
     <ui:MenuButton
         Name="LanguageButton"
         Access="Internal"
@@ -86,7 +86,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         MinSize="42 64"
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
-        />
+    />
     <ui:MenuButton
         Name="AdminButton"
         Access="Internal"
@@ -96,7 +96,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         MinSize="42 64"
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
-        />
+    />
     <ui:MenuButton
         Name="SandboxButton"
         Access="Internal"
@@ -106,7 +106,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         MinSize="42 64"
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
-        />
+    />
     <ui:MenuButton
         Name="AHelpButton"
         Access="Internal"
@@ -115,6 +115,16 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         ToolTip="{Loc 'ui-options-function-open-a-help'}"
         MinSize="42 64"
         HorizontalExpand="True"
+        AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
+    />
+    <ui:MenuButton
+        Name="RPHelpButton"
+        Access="Internal"
+        Icon="{xe:Tex '/Textures/Interface/info.svg.192dpi.png'}"
+        BoundKey = "{x:Static is:ContentKeyFunctions.OpenRPHelp}"
+        ToolTip="{Loc 'ui-options-function-open-rp-help'}"
+        MinSize="42 64"
+        HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleClass.ButtonOpenLeft}"
-        />
+    />
 </widgets:GameTopMenuBar>

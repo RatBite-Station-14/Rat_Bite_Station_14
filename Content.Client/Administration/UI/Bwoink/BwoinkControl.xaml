@@ -17,6 +17,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
             <BoxContainer Orientation="Horizontal" SetHeight="30" >
                 <CheckBox Name="AdminOnly" Access="Public" Text="{Loc 'admin-ahelp-admin-only'}" ToolTip="{Loc 'admin-ahelp-admin-only-tooltip'}" />
                 <Control HorizontalExpand="True" MinWidth="5" />
+                <CheckBox Name="RPHelp" Access="Public" Text="{Loc 'admin-ahelp-rp-help'}" ToolTip="{Loc 'admin-ahelp-rp-help-tooltip'}" />
+                <Control HorizontalExpand="True" MinWidth="5" />
                 <CheckBox Name="PlaySound" Access="Public" Text="{Loc 'admin-bwoink-play-sound'}" Pressed="True" />
                 <Control HorizontalExpand="True" MinWidth="5" />
                 <Button Visible="True" Name="PopOut" Access="Public" Text="{Loc 'admin-logs-pop-out'}" StyleClasses="OpenBoth" HorizontalAlignment="Left" />
