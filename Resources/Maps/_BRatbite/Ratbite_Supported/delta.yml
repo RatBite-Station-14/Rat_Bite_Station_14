@@ -4,8 +4,8 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 08/18/2026 17:36:50
-  entityCount: 38994
+  time: 08/30/2026 08:04:09
+  entityCount: 38992
 maps:
 - 1
 grids:
@@ -35343,7 +35343,7 @@ entities:
       pos: 16.5,70.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -7612.4766
+      secondsUntilStateChange: -8326.711
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -116382,12 +116382,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -16.5,-52.5
       parent: 2
-  - uid: 15662
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -16.5,-42.5
-      parent: 2
   - uid: 15663
     components:
     - type: Transform
@@ -182518,6 +182512,20 @@ entities:
     - type: Transform
       pos: -29.5,33.5
       parent: 2
+- proto: HopUniformPrinter
+  entities:
+  - uid: 32330
+    components:
+    - type: Transform
+      pos: -13.5,2.5
+      parent: 2
+    - type: TechnologyDatabase
+      supportedDisciplines:
+      - Industrial
+      - Arsenal
+      - Experimental
+      - CivilianServices
+      - LEGAL
 - proto: HospitalCurtains
   entities:
   - uid: 24927
@@ -220591,18 +220599,6 @@ entities:
     - type: Transform
       pos: 28.5,36.5
       parent: 2
-- proto: SpawnVehicleMotobike
-  entities:
-  - uid: 38959
-    components:
-    - type: Transform
-      pos: 44.5,-38.5
-      parent: 2
-  - uid: 38961
-    components:
-    - type: Transform
-      pos: 48.5,-38.5
-      parent: 2
 - proto: SpawnVendingMachineRestockFoodDrink
   entities:
   - uid: 30453
@@ -221508,6 +221504,14 @@ entities:
     components:
     - type: Transform
       pos: 25.5,-30.5
+      parent: 2
+- proto: StationAiFixerComputer
+  entities:
+  - uid: 15662
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -16.5,-42.5
       parent: 2
 - proto: StationAiUploadComputer
   entities:
@@ -232545,20 +232549,6 @@ entities:
     - type: Transform
       pos: -36.5,52.5
       parent: 2
-- proto: UniformPrinter
-  entities:
-  - uid: 32330
-    components:
-    - type: Transform
-      pos: -13.5,2.5
-      parent: 2
-    - type: TechnologyDatabase
-      supportedDisciplines:
-      - Industrial
-      - Arsenal
-      - Experimental
-      - CivilianServices
-      - LEGAL
 - proto: UniformShortsRed
   entities:
   - uid: 15358
