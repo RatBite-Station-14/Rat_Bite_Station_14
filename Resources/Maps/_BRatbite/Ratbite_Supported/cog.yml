@@ -4,8 +4,8 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 08/18/2026 17:24:22
-  entityCount: 31978
+  time: 08/30/2026 08:02:01
+  entityCount: 31979
 maps:
 - 1
 grids:
@@ -15182,7 +15182,7 @@ entities:
       pos: 26.5,17.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -74446.65
+      secondsUntilStateChange: -75098.08
       state: Opening
     - type: DeviceLinkSink
       invokeCounter: 1
@@ -16294,7 +16294,7 @@ entities:
       pos: 41.5,62.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -31713.334
+      secondsUntilStateChange: -32364.766
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -145144,6 +145144,20 @@ entities:
     - type: Transform
       pos: 12.5,-33.5
       parent: 2
+- proto: HopUniformPrinter
+  entities:
+  - uid: 27478
+    components:
+    - type: Transform
+      pos: -37.5,23.5
+      parent: 2
+    - type: TechnologyDatabase
+      supportedDisciplines:
+      - Industrial
+      - Arsenal
+      - Experimental
+      - CivilianServices
+      - LEGAL
 - proto: HospitalCurtainsOpen
   entities:
   - uid: 22146
@@ -171707,6 +171721,14 @@ entities:
     - type: Transform
       pos: -13.5,-51.5
       parent: 2
+- proto: StationAiFixerComputer
+  entities:
+  - uid: 31979
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -39.5,-24.5
+      parent: 2
 - proto: StationAiUploadComputer
   entities:
   - uid: 26363
@@ -179902,20 +179924,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 0.5,-51.5
       parent: 2
-- proto: UniformPrinter
-  entities:
-  - uid: 27478
-    components:
-    - type: Transform
-      pos: -37.5,23.5
-      parent: 2
-    - type: TechnologyDatabase
-      supportedDisciplines:
-      - Industrial
-      - Arsenal
-      - Experimental
-      - CivilianServices
-      - LEGAL
 - proto: UniformShortsRed
   entities:
   - uid: 12726

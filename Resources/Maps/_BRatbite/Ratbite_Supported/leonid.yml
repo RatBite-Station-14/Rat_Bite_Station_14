@@ -4,8 +4,8 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 08/18/2026 17:47:24
-  entityCount: 36056
+  time: 08/30/2026 08:07:31
+  entityCount: 36057
 maps:
 - 1
 grids:
@@ -158063,6 +158063,20 @@ entities:
     - type: Transform
       pos: -81.5,-28.5
       parent: 2
+- proto: HopUniformPrinter
+  entities:
+  - uid: 30874
+    components:
+    - type: Transform
+      pos: -28.5,14.5
+      parent: 2
+    - type: TechnologyDatabase
+      supportedDisciplines:
+      - Industrial
+      - Arsenal
+      - Experimental
+      - CivilianServices
+      - LEGAL
 - proto: HospitalCurtainsOpen
   entities:
   - uid: 16522
@@ -166233,10 +166247,10 @@ entities:
       parent: 2
 - proto: PottedPlantRD
   entities:
-  - uid: 24983
+  - uid: 30934
     components:
     - type: Transform
-      pos: -63.5,-60.5
+      pos: -64.5,-61.5
       parent: 2
 - proto: PowerCellHigh
   entities:
@@ -195075,6 +195089,13 @@ entities:
     - type: Transform
       pos: -61.5,-17.5
       parent: 2
+- proto: StationAiFixerComputer
+  entities:
+  - uid: 24983
+    components:
+    - type: Transform
+      pos: -63.5,-60.5
+      parent: 2
 - proto: StationAiUploadComputer
   entities:
   - uid: 29684
@@ -203072,20 +203093,6 @@ entities:
     - type: Transform
       pos: -88.5,9.5
       parent: 2
-- proto: UniformPrinter
-  entities:
-  - uid: 30874
-    components:
-    - type: Transform
-      pos: -28.5,14.5
-      parent: 2
-    - type: TechnologyDatabase
-      supportedDisciplines:
-      - Industrial
-      - Arsenal
-      - Experimental
-      - CivilianServices
-      - LEGAL
 - proto: UniqueLockerBlueshieldOfficerFilled
   entities:
   - uid: 30875
