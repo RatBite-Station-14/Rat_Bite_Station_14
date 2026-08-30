@@ -1,0 +1,104 @@
+- type: entity
+  id: EnergyMedicineDispenser
+  parent: [SmallConstructibleMachine, BaseMedicalScienceContraband] # Ratbite: perstronzio contraband stuff
+  name: energy medicine dispenser
+  suffix: energy
+  description: A bluespace medicine Dispenser that uses station energy to synthesize basic medicines. The future is here and now.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: Structures/dispensers.rsi
+    state: industrial-working
+    snapCardinals: true
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25, -0.4, 0.25, 0.4"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Battery
+    netsync: false
+    maxCharge: 1500
+    startingCharge: 1500
+  - type: ApcPowerReceiverBattery
+    idleLoad: 65
+    batteryRechargeRate: 10
+    batteryRechargeEfficiency: 1.0
+  - type: ApcPowerReceiver
+    powerLoad: 65
+  - type: ExtensionCableReceiver
+  - type: Anchorable
+  - type: Pullable
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:ChangeConstructionNodeBehavior
+        node: machineFrame
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      energyBeakerSlot: !type:ContainerSlot
+      storagebase: !type:Container
+  - type: StaticPrice
+    price: 1000
+  - type: WiresPanel
+  - type: GuideHelp
+    guides:
+    - Chemicals
+    - Chemist
+  - type: Machine
+    board: EnergyMedicineDispenserMachineCircuitboard
+  - type: ActivatableUI
+    key: enum.EnergyReagentDispenserUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.EnergyReagentDispenserUiKey.Key:
+        type: EnergyReagentDispenserBoundUserInterface
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: EnergyReagentDispenser #Keep on bottom for view's sake, format is reagentProto: Cost
+    energyBeakerSlot:
+      whitelistFailPopup: reagent-dispenser-component-cannot-put-entity-message
+      whitelist:
+        components:
+        - FitsInDispenser
+    reagents:
+      Phalanximine: 60
+      Tricordrazine: 40
+      Dylovene: 30
+      Kelotane: 30
+      Hyronalin: 30
+      Caridine: 20
+      Aiuri: 20
+      PotassiumIodide: 20
+      Saline: 20
+      Charcoal: 20
+      KaolinPowder: 20
+      Iron: 10
+      Copper: 10
+      Inaprovaline: 10

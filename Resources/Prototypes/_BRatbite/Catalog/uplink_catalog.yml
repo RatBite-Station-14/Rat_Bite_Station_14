@@ -11,3 +11,13 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
+
+- type: listing
+  id: UplinkKaolinpacket
+  name: uplink-kaolinpacket-name
+  description: uplink-kaolinpacket-desc
+  productEntity: FoodCondimentPacketKaolin
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkChemicals

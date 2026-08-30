@@ -1,0 +1,48 @@
+- type: entity    # ported from BF14
+  parent: BaseFoodCondiment
+  id: FoodCondimentPacketKaolin
+  name: haemostatic kaolin granule packet # heh... ratbit here, changed hemostatic to haemostatic because it sounds cooler. Also granule instead of powder
+  suffix: VXMED
+  description: Haemostatic powder. Whilst food shaped, do not eat. Splash on the wound... # ratbite here also
+  components:
+  - type: Item
+    size: Tiny
+  - type: Openable
+    sound:
+      collection: packetOpenSounds
+    closeable: true
+  - type: Spillable
+    solution: food
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 40 # Ratbite, 30 to 40
+        reagents:
+        - ReagentId: KaolinPowder # Ratbite, changed the ID to ratbites version
+          Quantity: 40 # Ratbite, 30 to 40
+  - type: SolutionTransfer
+    maxTransferAmount: 10 # Ratbite, was 20
+    CanChangeTransferAmount: true
+  - type: ExaminableSolution
+    solution: food
+  - type: Sprite
+    sprite: _VXS14/Objects/Medical/medical.rsi
+    state: kaolin
+  - type: Icon
+    sprite: _VXS14/Objects/Medical/medical.rsi
+    state: kaolin
+  - type: PhysicalComposition
+    materialComposition:
+      Plastic: 50
+  - type: Tag
+    tags:
+      - Packet
+  - type: Appearance
+  - type: MeleeWeapon
+    soundNoDamage:
+      path: "/Audio/Effects/packetrip.ogg"
+    damage:
+      types:
+        Blunt: 0
+  - type: FitsInDispenser
+    solution: food

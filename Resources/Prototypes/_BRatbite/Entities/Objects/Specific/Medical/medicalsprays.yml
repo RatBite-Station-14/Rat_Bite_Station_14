@@ -1,0 +1,21 @@
+
+- type: entity
+  name: tepalal spray bottle
+  id: SprayBottleTepalal
+  suffix: Filled, Tepalal
+  parent: SprayBottleBase
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Objects/Specific/Medical/Tepalalspray.rsi
+    layers:
+    - state: icon
+  - type: Tag
+    tags:
+    - Spray
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 100
+        reagents:
+        - ReagentId: Tepalal
+          Quantity: 100

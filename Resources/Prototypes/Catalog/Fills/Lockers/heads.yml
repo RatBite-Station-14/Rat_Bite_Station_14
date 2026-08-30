@@ -257,6 +257,7 @@
     - id: VaccinatorFlatPack
     # Goobstation End
     - id: PanicButtonMedical # Ratbite
+    - id: EnergyMedicineDispenserFlatpack # Ratbite
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable

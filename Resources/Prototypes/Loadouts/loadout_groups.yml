@@ -1908,3 +1908,22 @@
   hidden: true
   loadouts:
   - LoadoutSpeciesBreathToolSecurity
+
+- type: loadoutGroup
+  id: MedicalMedicineRoundstart
+  name: loadout-group-medicines
+  minLimit: 0
+  maxLimit: 2
+  loadouts:
+  - SprayBottleStypticPowder
+  - SprayBottleSilverSulfadiazine
+  - SprayBottleTepalal
+  - ChemistryBottleBiofoam
+  - EmergencyMedipen
+  - BruteAutoInjector
+  - BurnAutoInjector
+  - AirlossAutoInjector
+  - SpaceMedipen
+  - PillCanisterBicaMera
+  - ChemistryBottleRevivopine
+  - ChemistryBottleGranitbitulari

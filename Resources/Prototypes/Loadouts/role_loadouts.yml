@@ -630,6 +630,7 @@
   - ChiefMedicalOfficerNeck
   - ChiefMedicalOfficerShoes
  # - MedicalEyewear #Goobstation - Spawns with medichem hud
+  - MedicalMedicineRoundstart # ratbite
   - SurvivalMedical
   - Trinkets
   - ChiefMedicalOfficerJobTrinkets
@@ -653,6 +654,7 @@
   - MedicalShoes
   - MedicalDoctorPDA
   - MedicalEyewear
+  - MedicalMedicineRoundstart # ratbite
   - SurvivalMedical
   - Trinkets
   - MedicalDoctorJobTrinkets
@@ -670,6 +672,7 @@
   - MedicalInternJumpsuit
   - MedicalBackpack
   - MedicalEyewear
+  - MedicalMedicineRoundstart # ratbite
   - SurvivalMedical
   - Trinkets
   - MedicalInternJobTrinkets
@@ -691,6 +694,7 @@
   - ChemistBackpack
   - ChemistOuterClothing
   - MedicalShoes
+  - MedicalMedicineRoundstart # ratbite
   - SurvivalMedical
   - Trinkets
   - ChemistJobTrinkets
@@ -713,6 +717,7 @@
   - ParamedicOuterClothing
   - ParamedicShoes
   - MedicalEyewear
+  - MedicalMedicineRoundstart # ratbite
   - SurvivalMedical
   - Trinkets
   - ParamedicJobTrinkets

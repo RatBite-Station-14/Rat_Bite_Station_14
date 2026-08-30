@@ -8,6 +8,7 @@
     Brutepack: 3
     Ointment: 3
     Bloodpack: 3
+    FoodCondimentPacketKaolin: 2 # ratbite, added kaolin
     ChemistryBottleEpinephrine: 3
     Syringe: 3
     PillCanisterTricordrazine: 2
@@ -40,15 +41,17 @@
     Ointment: 5
     Bloodpack: 5
     Tourniquet: 6 # Goobstation
+    FoodCondimentPacketKaolin: 4 # ratbite, added kaolin
     ChemistryBottleEpinephrine: 3
-    ChemistryBottleBicaridine: 1
+    ChemistryBottleBicaridine: 3 # ratbite, was 1
     Syringe: 5
-    JetInjector: 2
+    JetInjector: 3 # ratbite, was 2
     BoxBottle: 3
     PillCanisterTricordrazine: 3
-    PillCanisterIron: 1
-    PillCanisterCopper: 1
-    PillCanisterPotassiumIodide: 1
+    PillCanisterIron: 2 # ratbite, was 1
+    PillCanisterCopper: 2 # ratbite, was 1
+    PillCanisterPotassiumIodide: 2 # ratbite, was 1
+    PillCanisterBicaMera: 2 # ratbite
     SyringeIpecac: 1
     ClothingEyesHudMedical: 2
     ClothingEyesEyepatchHudMedical: 2
@@ -56,7 +59,7 @@
     MedicalPatchPrefilledDermaline: 3
     MedicalPatchBasic: 5 # so people don't rip clothes to get them shift start
     CigPackMedical: 2 # same as above
-    ParamedHypo: 2
+    ParamedHypo: 3 # ratbite, was 2
     CartridgeSaline: 4
     CartridgeBicaridine: 4
     CartridgeDermaline: 4
@@ -65,6 +68,7 @@
     FoodSnackLollypopWrappedMystery: 10
     FoodSnackLollypopWrappedTricordrazine: 8
     NitrousOxideTankFilled: 2
+    JugUniversalBloodReplacement: 3 # ratbite
     IVEquipment: 3 # Ratbite
   emaggedInventory:
     SyringeMicroplastics: 2 #Technically a medicine
@@ -85,6 +89,7 @@
     Ointment: 4
     Bloodpack: 5
     Tourniquet: 1
+    FoodCondimentPacketKaolin: 2 # ratbite, added kaolin
     ChemistryBottleEpinephrine: 3
     Syringe: 5
     BoxBottle: 3
