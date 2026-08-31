@@ -1,0 +1,7 @@
+- type: entity
+  parent: Paper
+  id: LockableIDCardPaper
+  name: captain's ID code
+  description: The code to AA
+  components:
+  - type: LockableIDCardPaper
