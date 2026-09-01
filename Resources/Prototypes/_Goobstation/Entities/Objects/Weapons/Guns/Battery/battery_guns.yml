@@ -354,11 +354,17 @@
         whitelist:
           tags:
             - EnergyMagAmmo
-  - type: FiringPin #Ratbite, mindshield restriction system
-  - type: Lock #Ratbite
-    locked: true
-  - type: AccessReader #Ratbite
-    access: [ [ "Security" ] ]
+      # Ratbite
+      gun_tracker:
+        name: Gun Tracker
+        startingItem: GunTracker
+        priority: 3
+        whitelist:
+          components:
+          - GunTracker
+        swap: false
+        disableEject: true
+  - type: GunTrackable #Ratbite, mindshield restriction system
 
 - type: entity
   name: DT-12 "Lawbringer"
@@ -437,11 +443,6 @@
     keyPhrase: "lawbringer-phrase"
     listenRange: 1
     holderOnly: true
-  - type: AccessReader
-    access: [['HeadOfSecurity']]
-  - type: FiringPin # Ratbite
-  - type: Lock # Ratbite
-    locked: true
   - type: ActiveListener
   - type: ExplodeOnTrigger
   - type: DropOnTrigger
@@ -456,6 +457,18 @@
   - type: BatterySelfRecharger
     autoRechargeRate: 50
     autoRechargePauseTime: 40
+  - type: ItemSlots
+    slots:
+    # Ratbite
+      gun_tracker:
+        name: Gun Tracker
+        startingItem: GunTracker
+        whitelist:
+          components:
+          - GunTracker
+        swap: false
+        disableEject: true
+  - type: GunTrackable #Ratbite, mindshield restriction system
 
 - type: entity
   name: ion rifle

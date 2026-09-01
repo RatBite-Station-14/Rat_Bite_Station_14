@@ -437,11 +437,18 @@
     - LaserWeapon
   - type: BatterySelfRecharger # Goobstation - CentComm Job Revamp
     autoRechargeRate: 40
-  - type: FiringPin #Ratbite, mindshield restriction system
-  - type: Lock #Ratbite
-    locked: true
-  - type: AccessReader #Ratbite
-    access: [ [ "CentralCommand" ] ]
+  - type: ItemSlots
+    slots:
+    # Ratbite
+      gun_tracker:
+        name: Gun Tracker
+        startingItem: GunTracker
+        whitelist:
+          components:
+            - GunTracker
+        swap: false
+        disableEject: true
+  - type: GunTrackable #Ratbite, mindshield restriction system
 
 - type: entity
   name: pulse carbine
@@ -501,11 +508,18 @@
     size: Huge
     shape:
     - 0,0,4,1
-  - type: FiringPin #Ratbite, mindshield restriction system
-  - type: Lock #Ratbite
-    locked: true
-  - type: AccessReader #Ratbite
-    access: [ [ "CentralCommand" ] ]
+  - type: ItemSlots
+    slots:
+    # Ratbite
+      gun_tracker:
+        name: Gun Tracker
+        startingItem: GunTracker
+        whitelist:
+          components:
+            - GunTracker
+        swap: false
+        disableEject: true
+  - type: GunTrackable #Ratbite, mindshield restriction system
 
 - type: entity
   name: pulse rifle
@@ -1081,11 +1095,18 @@
   - type: BatterySelfRecharger
     autoRechargeRate: 50
     autoRechargePauseTime: 40
-  - type: FiringPin # Ratbite, mindshield restriction system
-  - type: AccessReader
-    access: [[ "Armory" ]]
-  - type: Lock
-    locked: true
+  - type: ItemSlots
+    slots:
+    # Ratbite
+      gun_tracker:
+        name: Gun Tracker
+        startingItem: GunTracker
+        whitelist:
+          components:
+            - GunTracker
+        swap: false
+        disableEject: true
+  - type: GunTrackable #Ratbite, mindshield restriction system
   # Goob edit start
   #  - type: BatteryWeaponFireModes
   #    fireModes:
