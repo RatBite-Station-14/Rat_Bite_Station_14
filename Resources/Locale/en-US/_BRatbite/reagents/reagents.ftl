@@ -26,3 +26,5 @@ reagent-name-depleteduranium = depleted uranium
 reagent-desc-depleteduranium = Uranium with a smaller amount of U-235 than natural uranium, used in uranium bullets. Less radioactive than natural uranium and metabolizes slowly in bloodstream, causing minor radiation sickness.
 reagent-name-aiogah = All-in-One Gender Affirming Hormone
 reagent-desc-aiogah = A concoction of hormones and chemicals that miraculously rearrange the DNA of the metaboliser, completely switching their biological sex. Not really a horomone... but it gets the job done.
+reagent-name-primed-ichor = primed ichor
+reagent-desc-primed-ichor = A supercharged variant of ichor laced with an unknown telecrystal-derived catalyst. It metabolizes violently fast, yet somehow knits wounds back together quickly enough to watch bruises fade, bones creak into place, and organs gurgle as they reform beneath the skin.
