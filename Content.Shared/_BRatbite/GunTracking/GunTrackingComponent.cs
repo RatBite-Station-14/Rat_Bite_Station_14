@@ -6,8 +6,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared._BRatbite.GunTracking;
 
 [RegisterComponent, NetworkedComponent]
-public sealed partial class GunTrackerComponent : Component
-{ }
+public sealed partial class GunTrackerComponent : Component;
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class GunTrackingComputerComponent : Component;
