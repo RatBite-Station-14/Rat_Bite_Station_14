@@ -63,3 +63,191 @@
     - type: Reflect
       reflectProb: 1
       spread: 0
+
+- type: entity
+  name: annoying orange
+  id: AdmemeMobOrangePeaceful
+  parent: [ SimpleSpaceMobBase, FlyingMobBase, MobCombat ]
+  suffix: Admeme (PACIFIED EDITION)
+  description: God this guy is fucking annoying
+  components:
+    - type: Absorbable
+    - type: InputMover
+    - type: MobMover
+    - type: HTN
+      rootTask:
+        task: SimpleHostileCompound
+      blackboard:
+        NavSmash: !type:Bool
+          true
+    - type: Sprite
+      drawdepth: Mobs
+      sprite: _Crescent/Objects/Fun/Plushies/orange.rsi
+      layers:
+      - map: [ "enum.DamageStateVisualLayers.Base" ]
+        state: base
+    - type: CombatMode
+    - type: Physics
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.40
+          density: 80
+          mask:
+            - FlyingMobMask
+          layer:
+            - FlyingMobLayer
+    - type: MobState
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        99999998: Dead
+    - type: Stamina
+      critThreshold: 99999998
+    - type: SpamEmitSound
+      minInterval: 5
+      maxInterval: 30
+      sound:
+        collection: AnnoyingOrange
+        params:
+          variation: 0.25
+    - type: Reflect
+      reflectProb: 1
+      spread: 0
+
+- type: entity
+  name: Goot
+  id: AdmemeMobOrangeGoot
+  parent: [ SimpleSpaceMobBase, FlyingMobBase, MobCombat ]
+  suffix: Admeme (HESBACK)
+  description: HES FUCKING BACK RUN!!!
+  components:
+    - type: Absorbable
+    - type: InputMover
+    - type: MobMover
+    - type: HTN
+      rootTask:
+        task: SimpleHostileCompound
+      blackboard:
+        NavSmash: !type:Bool
+          true
+    - type: Sprite
+      drawdepth: Mobs
+      sprite: _Crescent/Objects/Fun/Plushies/orange.rsi
+      layers:
+      - map: [ "enum.DamageStateVisualLayers.Base" ]
+        state: base
+    - type: CombatMode
+    - type: Physics
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.40
+          density: 80
+          mask:
+            - FlyingMobMask
+          layer:
+            - FlyingMobLayer
+    - type: MobState
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        99999998: Dead
+    - type: Stamina
+      critThreshold: 99999998
+    - type: MeleeWeapon
+      altDisarm: false
+      angle: 0
+      animation: WeaponArcBite
+      soundHit:
+        collection: AnnoyingOrange
+        params:
+          variation: 0.25
+      damage:
+        types:
+          Heat: 99999998
+          Structural: 99999998
+    - type: IgniteOnMeleeHit
+      fireStacks: 200
+    - type: SpamEmitSound
+      minInterval: 5
+      maxInterval: 20
+      sound:
+        collection: AnnoyingOrange
+        params:
+          variation: 0.25
+    - type: Reflect
+      reflectProb: 1
+      spread: 0
+
+
+- type: entity
+  name: Goot
+  id: AdmemeMobOrangeGootPacified
+  parent: [ SimpleSpaceMobBase, FlyingMobBase, MobCombat ]
+  suffix: Admeme (Goot weakened, PACIFIED EDITION)
+  description: A false idol of true power of Goot. He will be coming for you... true verison
+  components:
+    - type: Absorbable
+    - type: InputMover
+    - type: MobMover
+    - type: HTN
+      rootTask:
+        task: SimpleHostileCompound
+      blackboard:
+        NavSmash: !type:Bool
+          true
+    - type: Sprite
+      drawdepth: Mobs
+      sprite: _Crescent/Objects/Fun/Plushies/orange.rsi
+      layers:
+      - map: [ "enum.DamageStateVisualLayers.Base" ]
+        state: base
+    - type: CombatMode
+    - type: Physics
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.40
+          density: 80
+          mask:
+            - FlyingMobMask
+          layer:
+            - FlyingMobLayer
+    - type: MobState
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        99999998: Dead
+    - type: Stamina
+      critThreshold: 99999998
+    - type: MeleeWeapon
+      altDisarm: false
+      angle: 0
+      animation: WeaponArcBite
+      soundHit:
+        collection: AnnoyingOrange
+        params:
+          variation: 0.25
+      damage:
+        types:
+          Stamina: 1000
+    - type: IgniteOnMeleeHit
+      fireStacks: 200
+    - type: SpamEmitSound
+      minInterval: 5
+      maxInterval: 20
+      sound:
+        collection: AnnoyingOrange
+        params:
+          variation: 0.25
+    - type: Reflect
+      reflectProb: 1
+      spread: 0
+
