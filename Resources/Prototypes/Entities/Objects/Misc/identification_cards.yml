@@ -134,6 +134,9 @@
     heldPrefix: gold
   - type: PresetIdCard
     job: Captain
+  - type: CaptainIDGib # RatBite - Instagib people with this userID if they so much as think about taking the ID card
+    targetUserIds:
+    - d6436fd3-d55e-42bd-9f8b-c450d1402602
   - type: Tag
     tags:
     - DoorBumpOpener
