@@ -5,4 +5,4 @@ reagent-effect-guidebook-suppress-pain =
     } the patient's pain
 
 reagent-effect-guidebook-adjust-consciousness = Helps the patient stay conscious for longer. *disabled right now in Woundmed
-reagent-effect-guidebook-adjust-bone-damage = Reduces bone damage by {$amount}
+reagent-effect-guidebook-adjust-bone-damage = Modifies bone damage by {$amount}
