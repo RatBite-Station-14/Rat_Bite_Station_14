@@ -102,10 +102,11 @@
       emergencyLightColor: Magenta
       forceEnableEmergencyLights: true
       shuttleTime: 600
-    amber:
-      announcement: alert-level-amber-announcement
-      sound: /Audio/_Goobstation/Announcements/amberalarm.ogg
-      color: "#8A3324"
-      emergencyLightColor: "#8A3324"
-      forceEnableEmergencyLights: true
-      shuttleTime: 600
+# Ratbite: This alert level sucks and only encourages NRP behavior
+#    amber:
+#      announcement: alert-level-amber-announcement
+#      sound: /Audio/_Goobstation/Announcements/amberalarm.ogg
+#      color: "#8A3324"
+#      emergencyLightColor: "#8A3324"
+#      forceEnableEmergencyLights: true
+#      shuttleTime: 600
