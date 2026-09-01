@@ -192,6 +192,7 @@
   table: !type:AllSelector
     children:
  #  - id: CaptainIDCard
+    - id: LockableIDCardPaper # Ratbite
     - id: CigarGoldCase
       prob: 0.25
     - id: ClothingBeltSheathFilled
@@ -595,4 +596,4 @@
     - id: SpaceCash1000
     - id: BeachBall
     - id: BikeHorn
-    - id: CaptainIDCard # Ratbite convenience/balance
+    - id: CaptainLockableIDCard # Ratbite convenience/balance
