@@ -95,6 +95,7 @@
     sound:
       collection: RiflesDrop
   # Goobstation edit end
+  - type: GunTrackable # Ratbite
 
 - type: entity
   name: AKM

@@ -7,6 +7,7 @@ using Content.Shared.Mindshield.Components;
 using Content.Shared.Popups;
 using Content.Shared.Tools.Systems;
 using Content.Shared.Weapons.Ranged.Events;
+using Content.Shared.Whitelist;
 
 namespace Content.Shared._BRatbite.GunTracking;
 
@@ -25,6 +26,7 @@ public sealed partial class GunTrackableSystem : EntitySystem
         SubscribeLocalEvent<GunTrackableComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<GunTrackableComponent, InteractUsingEvent>(OnInteractUsing);
         SubscribeLocalEvent<GunTrackableComponent, RemoveTrackerEvent>(OnRemoveTracker);
+        SubscribeLocalEvent<GunTrackableComponent, MapInitEvent>(OnGunTrackableInit);
     }
 
     private void OnShotAttempted(Entity<GunTrackableComponent> ent, ref ShotAttemptedEvent args)
@@ -69,5 +71,21 @@ public sealed partial class GunTrackableSystem : EntitySystem
         if (args.Cancelled || args.Handled) return;
         args.Handled = true;
         _itemSlots.TryEject(ent, ent.Comp.GunTrackerSlotId, args.User, out var _);
+    }
+
+    private void OnGunTrackableInit(Entity<GunTrackableComponent> ent, ref MapInitEvent args)
+    {
+        if (_itemSlots.TryGetSlot(ent.Owner, ent.Comp.GunTrackerSlotId, out _)) return;
+        var whitelist = new EntityWhitelist
+        {
+            Components = new string[] { "GunTracker" },
+        };
+        _itemSlots.AddItemSlot(ent.Owner, ent.Comp.GunTrackerSlotId, new ItemSlot
+        {
+            Name = "Gun Tracker",
+            Whitelist = whitelist,
+            Swap = false,
+            DisableEject = true,
+        });
     }
 }

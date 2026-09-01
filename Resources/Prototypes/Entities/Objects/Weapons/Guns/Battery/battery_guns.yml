@@ -58,6 +58,7 @@
     missChance: 0.4
     spreadMultiplier: 3
     spreadAddition: 40
+  - type: GunTrackable # Ratbite
 
 - type: entity
   parent: [BaseWeaponBattery, BaseGunWieldable]
