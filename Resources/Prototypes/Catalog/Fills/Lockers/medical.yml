@@ -66,6 +66,8 @@
         weight: 0.05
     - id: ClothingMaskSterile
     - id: JetInjector # Hi, ratbite here, these are perfectly balanced 
+    - id: BookCPRTraining # Ratbite
+      prob: 0.4
 
 - type: entity
   parent: LockerMedical
