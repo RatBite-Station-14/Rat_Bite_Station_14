@@ -1,10 +1,13 @@
+using Content.Shared.Access.Systems;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.DoAfter;
 using Content.Shared.Electrocution;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
+using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Mindshield.Components;
 using Content.Shared.Popups;
+using Content.Shared.Remotes.Components;
 using Content.Shared.Tools.Systems;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Whitelist;
@@ -18,6 +21,7 @@ public sealed partial class GunTrackableSystem : EntitySystem
     [Dependency] private readonly SharedToolSystem _toolSystem = default!;
     [Dependency] private readonly SharedElectrocutionSystem _electrocutionSystem = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private readonly AccessReaderSystem _accessReaderSystem = default!;
 
     public override void Initialize()
     {
@@ -27,15 +31,21 @@ public sealed partial class GunTrackableSystem : EntitySystem
         SubscribeLocalEvent<GunTrackableComponent, InteractUsingEvent>(OnInteractUsing);
         SubscribeLocalEvent<GunTrackableComponent, RemoveTrackerEvent>(OnRemoveTracker);
         SubscribeLocalEvent<GunTrackableComponent, MapInitEvent>(OnGunTrackableInit);
+        SubscribeLocalEvent<GunTrackableComponent, DoorRemoteUsedEvent>(OnDoorRemoteUsed);
     }
 
     private void OnShotAttempted(Entity<GunTrackableComponent> ent, ref ShotAttemptedEvent args)
     {
-        if (!IsTracked(ent)) return;
+        if (!IsMindshieldLocked(ent)) return;
         if (HasComp<MindShieldComponent>(args.User) || HasComp<FakeMindShieldComponent>(args.User))
             return;
         _popup.PopupClient(Loc.GetString("firing-pin-cant-fire"), ent, args.User);
         args.Cancel();
+    }
+
+    private bool IsMindshieldLocked(Entity<GunTrackableComponent> ent)
+    {
+        return _itemSlots.TryGetSlot(ent.Owner, ent.Comp.GunTrackerSlotId, out var slot) && TryComp<ItemToggleComponent>(slot.Item, out var itemToggle) && itemToggle.Activated;
     }
 
     private bool IsTracked(Entity<GunTrackableComponent> ent)
@@ -47,6 +57,8 @@ public sealed partial class GunTrackableSystem : EntitySystem
     {
         if (!IsTracked(ent)) return;
         args.PushMarkup(Loc.GetString("gun-trackable-tracked"));
+        if (!IsMindshieldLocked(ent))
+            args.PushMarkup(Loc.GetString("gun-trackable-examine-mindshield-off"));
     }
 
     private void OnInteractUsing(Entity<GunTrackableComponent> ent, ref InteractUsingEvent args)
@@ -87,5 +99,14 @@ public sealed partial class GunTrackableSystem : EntitySystem
             Swap = false,
             DisableEject = true,
         });
+    }
+
+    private void OnDoorRemoteUsed(Entity<GunTrackableComponent> ent, ref DoorRemoteUsedEvent args)
+    {
+        if (args.Mode != OperatingMode.ToggleEmergencyAccess) return;
+        if (!_accessReaderSystem.IsAllowed(args.AccessTarget, args.Target)) return;
+        if (!_itemSlots.TryGetSlot(ent.Owner, ent.Comp.GunTrackerSlotId, out var slot) || !TryComp<ItemToggleComponent>(slot.Item, out var itemToggle)) return;
+        itemToggle.Activated = !itemToggle.Activated;
+        _popup.PopupClient(Loc.GetString(itemToggle.Activated ? "gun-trackable-mindshield-enabled" : "gun-trackable-mindshield-disabled"), ent.Owner, args.User);
     }
 }
