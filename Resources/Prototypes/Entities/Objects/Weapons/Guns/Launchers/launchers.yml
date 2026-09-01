@@ -24,6 +24,7 @@
       ballistic-ammo: !type:Container
         ents: []
   - type: GunExecutionBlacklist # Goobstation
+  - type: GunTrackable # Ratbite
 
 - type: entity
   name: china lake

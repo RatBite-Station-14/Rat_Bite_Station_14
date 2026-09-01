@@ -1,0 +1,17 @@
+- type: entity
+  name: gun tracker monitor
+  parent: [BaseSecurityContraband, BaseHandheldComputer]
+  id: GunTrackerMonitor
+  description: A monitor tracking the position of guns that are supposed to be in the armory
+  components:
+  - type: Item
+  - type: Sprite
+    sprite: _BRatbite/Objects/GunTracker/guntrackermonitor.rsi
+    state: scanner
+  - type: GunTrackingComputer
+  - type: ActivatableUI
+    key: enum.GunTrackingUIKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.GunTrackingUIKey.Key:
+        type: GunTrackingBoundUserInterface

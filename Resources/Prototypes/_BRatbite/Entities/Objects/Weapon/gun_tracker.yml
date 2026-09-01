@@ -1,0 +1,21 @@
+- type: entity
+  parent: [BaseItem, BaseSecurityContraband]
+  id: GunTracker
+  name: gun tracker
+  description: A gadget that attaches to guns, tracks them, and makes them unable to be fired by non mindshielded personnel
+  components:
+  - type: Sprite
+    sprite: _BRatbite/Objects/GunTracker/guntracker.rsi
+    layers:
+    - state: icon
+  - type: Item
+    size: Small
+  - type: GunTracker
+  - type: ItemToggle # If toggled on, it will do mindshield checks
+    activated: true
+    verbToggleOn: gun-trackable-mindshield-verb-on
+    verbToggleOff: gun-trackable-mindshield-verb-off
+    popupActivate: gun-trackable-mindshield-enabled
+    popupDeactivate: gun-trackable-mindshield-disabled
+  - type: AccessReader
+    access: [[ "Armory" ]]

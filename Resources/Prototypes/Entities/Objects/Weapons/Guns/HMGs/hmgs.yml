@@ -38,6 +38,7 @@
     sound:
       collection: SnipersDrop
   # Goobstation edit end
+  - type: GunTrackable # Ratbite
 
 - type: entity
   name: minigun

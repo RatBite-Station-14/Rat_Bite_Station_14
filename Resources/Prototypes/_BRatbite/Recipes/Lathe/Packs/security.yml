@@ -10,6 +10,7 @@
   - EnergyMagPistolLethal
   - SpeedLoaderSpecial
   - MagazineBoxSpecial
+  - GunTracker
  # - EnergyMagPistolDisabler - Kill double disabler
 
 - type: latheRecipePack
