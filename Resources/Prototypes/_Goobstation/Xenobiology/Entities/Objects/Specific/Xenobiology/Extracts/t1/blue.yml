@@ -1,13 +1,13 @@
 - type: entity
-  id: GreySlimeExtract
+  id: BlueSlimeExtract
   parent: BaseSlimeExtract
-  name: grey slime extract
+  name: blue slime extract
   components:
   - type: Sprite
     layers:
     - sprite: _Goobstation/Xenobiology/Specific/Xenobiology/extract.rsi
       state: core
-      color: "#828282"
+      color: "#79F6FC"
   - type: Reactive
     oneUnitReaction: true
     reactions:
@@ -17,41 +17,40 @@
       - !type:MakeUnreactiveEntityEffect
       - !type:PopupMessage
         type: Pvs
-        messages: [ "xeno-extract-reaction-reagent" ]
+        messages: [ "xeno-extract-reaction" ]
       - !type:PlaySoundEffect
         sound: /Audio/Effects/Chemistry/bubbles.ogg
-      - !type:AdjustReagent
-        reagent: Epinephrine
-        amount: 100
+      - !type:AreaReactionEffect
+        duration: 10
+        prototypeId: Foam
+        sound:
+          path: /Audio/Effects/extinguish.ogg
     - reagents: [ Plasma ]
       methods: [ Touch, Injection ]
       effects:
       - !type:MakeUnreactiveEntityEffect
       - !type:PopupMessage
         type: Pvs
-        messages: [ "xeno-extract-reaction-evil" ]
+        messages: [ "xeno-extract-reaction-reagent" ]
       - !type:PlaySoundEffect
         sound: /Audio/Effects/Chemistry/bubbles.ogg
-      - !type:Jitter
-        time: 3
-        frequency: 20
-      - !type:SpawnEntity
-        entity: MobSlimeXenobioBabyGrey
-        number: 3
-        shouldScale: false
+      - !type:AddReagentToSolution
+        solution: extract
+        reagent: FrostOil
+        strengthModifier: 6
     - reagents: [ Blood ]
       methods: [ Touch, Injection ]
       effects:
       - !type:MakeUnreactiveEntityEffect
       - !type:PopupMessage
         type: Pvs
-        messages: [ "xeno-extract-reaction" ]
+        messages: [ "xeno-extract-reaction-reagent" ]
       - !type:PlaySoundEffect
         sound: /Audio/Effects/Chemistry/bubbles.ogg
-      - !type:SpawnEntity
-        entity: MonkeyCube
-        number: 3
-        shouldScale: false
+      - !type:AddReagentToSolution
+        solution: extract
+        reagent: XenobioJellyBlue
+        strengthModifier: 1
   - type: Tag
     tags:
-    - XenobiologyGreyExtract
+    - XenobiologyBlueExtract
