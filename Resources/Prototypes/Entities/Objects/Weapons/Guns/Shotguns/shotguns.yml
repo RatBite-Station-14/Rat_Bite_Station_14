@@ -82,6 +82,25 @@
       collection: MetalThud # Goobstation ^
 
 - type: entity
+  name: BaseWeaponShotgunTracked
+  id: BaseWeaponShotgunTracked
+  abstract: true
+  parent: BaseWeaponShotgun
+  components:
+  - type: ItemSlots
+    slots:
+    # Ratbite
+      gun_tracker:
+        name: Gun Tracker
+        startingItem: GunTracker
+        whitelist:
+          components:
+            - GunTracker
+        swap: false
+        disableEject: true
+  - type: GunTrackable #Ratbite, mindshield restriction system
+
+- type: entity
   name: Bulldog
   # Don't parent to BaseWeaponShotgun because it differs significantly
   parent: [BaseItem, BaseGunWieldable, BaseSyndicateContraband]
@@ -179,7 +198,7 @@
 
 - type: entity
   name: Enforcer
-  parent: [BaseWeaponShotgun, BaseGunWieldable, BaseSecurityContraband]
+  parent: [BaseWeaponShotgunTracked, BaseGunWieldable, BaseSecurityContraband]
   id: WeaponShotgunEnforcer
   description: A premium semi-automatic shotgun, and the pride of all security forces. Uses 12 Gauge shotgun shells. # Goob edit
   components: # intend for Enforcer to have wider choke for semi-auto function
@@ -195,11 +214,18 @@
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     fireRate: 1.7 # Goobstation
-  - type: FiringPin #Ratbite, mindshield restriction system
-  - type: Lock #Ratbite
-    locked: true
-  - type: AccessReader #Ratbite
-    access: [ [ "Security" ] ]
+  - type: ItemSlots
+    slots:
+    # Ratbite
+      gun_tracker:
+        name: Gun Tracker
+        startingItem: GunTracker
+        whitelist:
+          components:
+            - GunTracker
+        swap: false
+        disableEject: true
+  - type: GunTrackable #Ratbite, mindshield restriction system
 
 
 - type: entity
@@ -212,7 +238,7 @@
 
 - type: entity
   name: Kammerer
-  parent: [BaseWeaponShotgun, BaseGunWieldable, BaseSecurityContraband]
+  parent: [BaseWeaponShotgunTracked, BaseGunWieldable, BaseSecurityContraband]
   id: WeaponShotgunKammerer
   description: An old yet faithful design, and a favorite among irregular forces of many worlds. Uses 12 Gauge shotgun shells. # Goob edit
   components: # intend for Kammerer to have tighter choke for slower fire rate and/or manual cycling
@@ -232,11 +258,6 @@
     - WeaponShotgunKammerer
   - type: BallisticAmmoProvider # Goobstation
     autoCycle: false
-  - type: FiringPin #Ratbite, mindshield restriction system
-  - type: Lock #Ratbite
-    locked: true
-  - type: AccessReader #Ratbite
-    access: [ [ "Security" ] ]
 
 
 - type: entity

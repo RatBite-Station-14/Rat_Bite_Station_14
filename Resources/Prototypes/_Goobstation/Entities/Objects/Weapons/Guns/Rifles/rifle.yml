@@ -145,20 +145,26 @@
         whitelist:
           tags:
           - CartridgeLightRifle
+      # Ratbite
+      gun_tracker:
+        name: Gun Tracker
+        priority: 3
+        whitelist:
+          components:
+          - GunTracker
+        swap: false
+        disableEject: true
+  - type: GunTrackable # ratbite
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
+      gun_tracker: !type:ContainerSlot
   - type: MagazineVisuals
     magState: mag
     steps: 1
     zeroVisible: true
   - type: Appearance
-  - type: FiringPin #Ratbite, mindshield restriction system
-  - type: Lock #Ratbite
-    locked: true
-  - type: AccessReader #Ratbite
-    access: [ [ "CentralCommand" ] ]
 
 - type: entity
   name: WSPR

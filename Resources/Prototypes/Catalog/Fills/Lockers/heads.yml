@@ -543,6 +543,7 @@
     - id: DrinkHosFlask
   # - id: ClothingBeltSheathHeadOfSecurityFilled # Goobstation - security revamp # ratbite moved to loadout
     - id: ReinforcementCallerHos # Trauma
+    - id: GunTrackerMonitor # ratbite
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
