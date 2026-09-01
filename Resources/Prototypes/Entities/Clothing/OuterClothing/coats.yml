@@ -101,6 +101,7 @@
         Piercing: 0.40 # Ratbite balance, cannot believe I forgot this lmfao I've been so cooked for so long. -bevv
         Heat: 0.55
         Caustic: 0.6
+  - type: MindshieldArmor # Ratbite
   - type: ExplosionResistance
     damageCoefficient: 0.9
   - type: ModifyDelayedKnockdown # Goobstation
@@ -132,6 +133,7 @@
         Piercing: 0.65
         Heat: 0.55
         Caustic: 0.8
+  - type: MindshieldArmor # Ratbite
   - type: ExplosionResistance
     damageCoefficient: 0.9
   - type: ModifyDelayedKnockdown # Goobstation

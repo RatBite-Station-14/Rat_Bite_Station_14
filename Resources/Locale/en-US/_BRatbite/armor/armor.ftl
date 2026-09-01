@@ -1,0 +1,1 @@
+mindshield-armor-slowdown=Slows down the wearer by [color=lightblue]{$value}%[/color] if they don't have a [color=cyan]mindshield[/color]

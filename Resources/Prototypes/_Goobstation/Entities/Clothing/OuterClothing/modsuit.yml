@@ -159,6 +159,7 @@
         Piercing: 0.55
         Heat: 0.55
         Radiation: 0.6
+  - type: MindshieldArmor
   - type: ComponentToggler
     components:
     - type: PressureProtection
@@ -239,6 +240,7 @@
         Caustic: 0.5
         Radiation: 0.4
         #ratbite lil more protection, lil less speed
+  - type: MindshieldArmor
   - type: ComponentToggler
     components:
     - type: PressureProtection
@@ -637,6 +639,7 @@
         Radiation: 0.1
         Caustic: 0.5
         #ratbite its fucking CAPTAIN man
+  - type: MindshieldArmor
   - type: ComponentToggler
     components:
     - type: PressureProtection

@@ -110,7 +110,7 @@ namespace Content.Shared.Movement.Systems
                 isImmune = true;
             // </Goobstation Change>
 
-            var ev = new RefreshMovementSpeedModifiersEvent(isImmune);
+            var ev = new RefreshMovementSpeedModifiersEvent(uid, isImmune);
             RaiseLocalEvent(uid, ev);
 
             if (MathHelper.CloseTo(ev.WalkSpeedModifier, move.WalkSpeedModifier) &&
@@ -181,6 +181,8 @@ namespace Content.Shared.Movement.Systems
     /// </summary>
     public sealed class RefreshMovementSpeedModifiersEvent : EntityEventArgs, IInventoryRelayEvent
     {
+        // ratbite
+        public EntityUid User;
         public SlotFlags TargetSlots { get; } = ~SlotFlags.POCKET;
 
         public float WalkSpeedModifier { get; private set; } = 1.0f;
@@ -203,9 +205,10 @@ namespace Content.Shared.Movement.Systems
             SprintSpeedModifier *= sprint;
         }
 
-        public RefreshMovementSpeedModifiersEvent(bool isImmune = false)
+        public RefreshMovementSpeedModifiersEvent(EntityUid user, bool isImmune = false)
         {
             _isImmune = isImmune;
+            User = user;
         }
         // </Goobstation Change>
 
