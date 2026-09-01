@@ -59,6 +59,7 @@
     wideAnimationRotation: 90 # -90 if it takes bayonets (hits with muzzle) 90 if not (hits with butt)
     soundHit:
       collection: MetalThud # Goobstation ^
+  - type: GunTrackable # Ratbite
 
 # Goobstation - Start - I decided to put it here, because it changes Hristov.
 - type: entity
