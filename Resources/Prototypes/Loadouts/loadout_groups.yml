@@ -92,6 +92,7 @@
   - GlassesJamjar
   - GlassesJensen
   - CheapSunglasses # Goobstation
+  - PirateEyepatch # ratbite
 
 - type: loadoutGroup
   id: Animals  # Goobstation
@@ -274,6 +275,10 @@
   - MercGreenJumpsuit
   - MercBlueJumpsuit
   - FreakPants
+  - ZookeeperJumpsuit
+  - PirateJumpsuit
+  - BoxerShortsWithTop
+  - BoxerShorts
 
 #ratbite end
   - RainbowJumpsuit
@@ -308,7 +313,10 @@
   minLimit: 0
   loadouts:
   - MercBeret
-
+# ratbite adds
+  - PirateHat
+  - ZookeeperHead
+# ratbite end
 
 - type: loadoutGroup
   id: PassengerFace
@@ -356,6 +364,7 @@
   minLimit: 0
   loadouts:
   - PassengerWintercoat
+  - PirateCoat #ratbite
 
 - type: loadoutGroup
   id: PassengerShoes
