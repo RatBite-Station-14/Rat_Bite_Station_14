@@ -1,0 +1,8 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakAgender
+  name: mysterious cloak
+  description: This cloak makes the user feel mysterious.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Neck/Cloaks/agender.rsi

@@ -118,6 +118,7 @@
         - id: ClothingNeckCloakGay
         - id: ClothingNeckCloakEnby
         - id: ClothingNeckCloakPan
+        - id: ClothingNeckCloakAgender
       - id: ToyFigurineSkeleton
       - id: MysteryFigureBox
       - id: FoodSnackLollypopWrappedMysteryNeutral # Goobstation - Lollypops!
