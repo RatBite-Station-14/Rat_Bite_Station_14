@@ -1,0 +1,82 @@
+- type: entity
+  name: sledge hammer
+  parent: [BaseItem, BaseMajorContraband]
+  id: N14SledgeHammer
+  description: A robust sledge hammer that requires considerable strength to be wielded.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Melee/sledgehammer.rsi
+    state: icon
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    attackRate: 1.35
+    damage:
+      types:
+        Blunt: 5
+    soundHit:
+      collection: MetalThud
+  - type: Wieldable
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 15
+        Structural: 25
+    soundHit:
+      collection: MetalThud
+  - type: Item
+    size: Large
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Melee/sledgehammer.rsi
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
+  # - type: Tool
+    # qualities:
+      # - Crushing
+    # useSound:
+      # path: /Audio/Items/eating_2.ogg # TODO: Crushing noise
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  name: super sledge hammer
+  parent: N14SledgeHammer
+  id: N14SuperSledgeHammer
+  description: A bigger, heavier, and more destructive sledge hammer, you really need some strong arms to swing it.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Melee/supersledge.rsi
+    state: icon
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 46
+        Structural: 20
+    soundHit:
+      collection: MetalThud
+  - type: Wieldable
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 35
+        Structural: 20    
+    soundHit:
+      collection: MetalThud
+  - type: MeleeThrowOnHit
+    speed: 10
+    lifetime: 0.025
+  - type: Item
+    size: Ginormous
+  - type: ClothingSpeedModifier
+    walkModifier: 1.5
+    sprintModifier: 1.5
+  - type: HeldSpeedModifier
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Melee/supersledge.rsi
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
+  - type: StaticPrice
+    price: 10000

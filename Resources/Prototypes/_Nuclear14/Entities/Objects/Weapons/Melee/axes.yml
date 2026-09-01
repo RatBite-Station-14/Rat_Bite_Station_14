@@ -1,0 +1,71 @@
+- type: entity
+  name: fireaxe
+  parent: N14BaseAxe
+  id: N14FireAxe
+  description: Truly the weapon of a madman. Who would think to fight fire with an axe?
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Melee/fireaxe.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Melee/fireaxe.rsi
+    slots:
+    - Back
+    - suitStorage
+  - type: Item
+    size: Large
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+  - type: Tool
+    qualities:
+      - Prying
+  - type: ToolTileCompatible
+  - type: Prying
+  - type: StaticPrice
+    price: 30
+
+- type: entity
+  name: axe
+  parent: [BaseItem, BaseMajorContraband]
+  id: N14BaseAxe
+  description: HERE'S CHONNY!
+  components:
+  - type: Tag
+    tags:
+    - FireAxe
+    - BotanyHatchet
+  - type: Sharp
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Melee/axe.rsi
+    state: icon
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    attackRate: 0.75
+    damage:
+      types:
+        # axes are kinda like sharp hammers, you know?
+        Blunt: 5
+        Slash: 5
+    soundHit:
+      collection: MetalThud
+
+  - type: Wieldable
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 5
+        Slash: 10
+  - type: Clothing
+    sprite: _Nuclear14/Objects/Weapons/Melee/axe.rsi
+    slots:
+    - Back
+    - suitStorage
+  - type: Item
+    size: Large
+  - type: BoneSaw # Shitmed
+    speed: 0.35
+  - type: SurgeryTool # Shitmed
+    startSound:
+      path: /Audio/_Shitmed/Medical/Surgery/saw.ogg
+  - type: StaticPrice
+    price: 30

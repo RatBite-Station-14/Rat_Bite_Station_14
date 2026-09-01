@@ -1,0 +1,14 @@
+- type: soundCollection
+  id: N14PlasmaPistolGunshot
+  files:
+  - /Audio/_Nuclear14/Weapons/Guns/Battery/N14WeaponPlasmaPistol/shot1.ogg
+  - /Audio/_Nuclear14/Weapons/Guns/Battery/N14WeaponPlasmaPistol/shot2.ogg
+  - /Audio/_Nuclear14/Weapons/Guns/Battery/N14WeaponPlasmaPistol/shot3.ogg
+  - /Audio/_Nuclear14/Weapons/Guns/Battery/N14WeaponPlasmaPistol/shot4.ogg
+  
+- type: soundCollection
+  id: N14RechargerRifleGunshot
+  files:
+  - /Audio/_Nuclear14/Weapons/Guns/Battery/N14WeaponRechargerRifle/shot1.ogg
+  - /Audio/_Nuclear14/Weapons/Guns/Battery/N14WeaponRechargerRifle/shot2.ogg
+  - /Audio/_Nuclear14/Weapons/Guns/Battery/N14WeaponRechargerRifle/shot3.ogg

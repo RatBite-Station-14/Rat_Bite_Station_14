@@ -1,0 +1,414 @@
+# See basemob.yml for parent entities
+# Molerat #Oh hi Mark.
+- type: entity
+  name: molerat
+  id: N14MobMolerat
+  parent: N14MobBaseHostile
+  description: Part mole, part rat, full pest. Watch out for the teeth.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: molerat
+      sprite: _Nuclear14/Mobs/Animals/molerat.rsi
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3
+    baseSprintSpeed : 4
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.20
+        density: 20
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Dead
+  - type: Stamina
+    critThreshold: 60
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: molerat
+      Critical:
+        Base: molerat
+      Dead:
+        Base: dead
+  - type: MeleeWeapon
+    altDisarm: false
+    hidden: true
+    soundHit:
+        path: /Audio/Effects/bite.ogg
+    angle: 60
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    damage:
+      groups:
+        Brute: 10
+ #- type: Reproductive
+   #breedChance: 0.05
+   #birthPopup: reproductive-birth-popup
+   #makeOffspringInfant: false
+   #partnerWhitelist:
+     # tags:
+    #  - Molerat
+   #offspring:
+   #- id: N14MobMolerat
+     #maxAmount: 1
+ #- type: ReproductivePartner
+ # - type: Tag
+ #   tags:
+#    - Molerat
+  # - type: NPCTamingOnTouchBehaviour
+    # follow: true
+    # persistent: true
+    # tameChance: 0.5
+    # oneTry: false
+    # successPopup: This pet is your friend now!
+    # deniedPopup: This pet refused to be your friend.
+    # whitelist:
+      # components:
+      # - HumanoidAppearance
+
+- type: entity
+  name: pigrat
+  id: N14MobPigrat
+  parent: N14MobBaseHostile
+  description: Part pig, part rat, full pest. Watch out for the teeth.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: pigrat
+      sprite: _Nuclear14/Mobs/Animals/pigrat.rsi
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3
+    baseSprintSpeed : 4
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.20
+        density: 20
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      30: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: pigrat
+      Critical:
+        Base: pigrat
+      Dead:
+        Base: dead
+  - type: MeleeWeapon
+    altDisarm: false
+    hidden: true
+    soundHit:
+        path: /Audio/Effects/bite.ogg
+    angle: 60
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    damage:
+      groups:
+        Brute: 10
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+      amount: 3
+ #- type: Reproductive
+   #breedChance: 0.05
+   #birthPopup: reproductive-birth-popup
+   #makeOffspringInfant: false
+   #partnerWhitelist:
+    #  tags:
+    #  - Pigrat
+   #offspring:
+  #- id: N14MobPigrat
+     #maxAmount: 1
+ #- type: ReproductivePartner
+ #- type: Tag
+ #   tags:
+ #   - Pigrat
+
+#MARK: Iguana
+- type: entity
+  parent: N14MobBaseSimple
+  id: N14MobIguana
+  name: iguana
+  description: Little green food... I mean friend.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: iguana
+      sprite: _Nuclear14/Mobs/Animals/iguana.rsi
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: iguana
+      Dead:
+        Base: dead
+  - type: Stamina
+    critThreshold: 20
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatLizard
+      amount: 1
+      prob: 0.95
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: WastelandAnimal
+  # - type: Reproductive
+    # breedChance: 0.05
+    # birthPopup: reproductive-laid-egg-popup
+    # makeOffspringInfant: false
+    # partnerWhitelist:
+      # tags:
+      # - Chicken
+    # offspring:
+    # - id: N14FoodEggChickenFertilized
+      # maxAmount: 3
+  # - type: ReproductivePartner
+  # - type: EggLayer
+    # eggSpawn:
+    # - id: N14FoodEggChicken
+  - type: Item
+    size: Small
+  - type: HTN
+    rootTask:
+      task: MouseCompound
+
+# Rats
+
+- type: entity
+  name: Giant Sand Rat
+  id: N14MobGiantSandRat
+  parent: N14MobBaseSimple
+  description: Damn, that's a sandy rat.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: desertrat
+      sprite: _Nuclear14/Mobs/Animals/desertrat.rsi
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3
+    baseSprintSpeed : 4
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    name: ghost-role-information-biggie-cheese-name
+    description: ghost-role-information-biggie-cheese-description
+  - type: GhostTakeoverAvailable
+  - type: Speech
+    speechSounds: Squeak
+    speechVerb: SmallMob
+  - type: LanguageKnowledge
+    speaks:
+    - Mouse
+    understands:
+    - Mouse
+  - type: NpcFactionMember
+    factions:
+    - Mouse
+  - type: Item
+    size: Large
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 0.76
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      30: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: pigrat
+      Critical:
+        Base: pigrat
+      Dead:
+        Base: dead
+  - type: MeleeWeapon
+    altDisarm: false
+    hidden: true
+    soundHit:
+        path: /Audio/Effects/bite.ogg
+    angle: 60
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    damage:
+      groups:
+        Brute: 5
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+      amount: 3
+      
+- type: entity
+  name: Giant Rat
+  id: N14MobGiantRat
+  parent: N14MobBaseSimple
+  description: Damn, that's a big rat.
+  components:
+  - type: Sprite
+    drawdepth: SmallMobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: giantrat
+      sprite: _Nuclear14/Mobs/Animals/giantrat.rsi
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3
+    baseSprintSpeed : 4
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    name: ghost-role-information-biggie-cheese-name
+    description: ghost-role-information-biggie-cheese-description
+  - type: GhostTakeoverAvailable
+  - type: Speech
+    speechSounds: Squeak
+    speechVerb: SmallMob
+  - type: LanguageKnowledge
+    speaks:
+    - Mouse
+    understands:
+    - Mouse
+  - type: NpcFactionMember
+    factions:
+    - Mouse
+  - type: Item
+    size: Large
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 0.76
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      30: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: pigrat
+      Critical:
+        Base: pigrat
+      Dead:
+        Base: dead
+  - type: MeleeWeapon
+    altDisarm: false
+    hidden: true
+    soundHit:
+        path: /Audio/Effects/bite.ogg
+    angle: 60
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    damage:
+      groups:
+        Brute: 5
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+      amount: 3
+      
+ #Radhog
+ 
+- type: entity
+  name: Radhog
+  id: N14MobRadhog
+  parent: N14MobBaseHostile
+  description: Big, Angry and ready to mess you up.
+  components:
+  - type: LanguageKnowledge
+    speaks:
+    - Pig
+    understands:
+    - Pig
+  - type: Sprite
+    drawdepth: SmallMobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: radhog
+      sprite: _Nuclear14/Mobs/Animals/radhog.rsi
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3
+    baseSprintSpeed : 4
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.20
+        density: 20
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: InteractionPopup
+    successChance: 0.7
+    interactSuccessString: petting-success-pig
+    interactFailureString: petting-failure-generic
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound:
+      path: /Audio/Animals/pig_oink.ogg
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      30: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: pigrat
+      Critical:
+        Base: pigrat
+      Dead:
+        Base: dead
+  - type: MeleeThrowOnHit
+    speed: 3
+  - type: MeleeWeapon
+    altDisarm: false
+    hidden: true
+    soundHit:
+        path: /Audio/Effects/bite.ogg
+    angle: 60
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    damage:
+      groups:
+        Brute: 15
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+      amount: 3

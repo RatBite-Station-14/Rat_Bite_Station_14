@@ -1,0 +1,367 @@
+#MARK: Hostile Animals
+- type: entity
+  name: Molerat Spawner
+  id: N14SpawnMobMolerat
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Animals/molerat.rsi
+        state: molerat
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobMolerat
+
+- type: entity
+  name: Pigrat Spawner
+  id: N14SpawnMobPigrat
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Animals/pigrat.rsi
+        state: pigrat
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobPigrat
+
+- type: entity
+  name: Radhog Spawner
+  id: N14SpawnMobRadhog
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Animals/radhog.rsi
+        state: radhog
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRadhog
+      
+- type: entity
+  name: Gecko Spawner
+  id: N14SpawnMobGecko
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Animals/gecko.rsi
+        state: gecko
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobGecko
+
+- type: entity
+  name: Fire Gecko Spawner
+  id: N14SpawnMobGeckoFire
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Animals/firegecko.rsi
+        state: gecko
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobGeckoFire
+
+- type: entity
+  name: Golden Gecko Spawner
+  id: N14SpawnMobGeckoGolden
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Animals/goldengecko.rsi
+        state: gecko
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobGeckoGolden
+
+#MARK: Insects   
+- type: entity
+  name: Giant Ant Spawner
+  id: N14SpawnMobGiantAnt
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Insects/giantant.rsi
+        state: giantant
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobGiantAnt
+      
+- type: entity
+  name: Giant Fire Ant Spawner
+  id: N14SpawnMobGiantFireAnt
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Insects/fireant.rsi
+        state: fireant
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobGiantFireAnt
+      
+- type: entity
+  name: Radroach Spawner
+  id: N14SpawnMobRadroach
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Insects/radroach.rsi
+        state: radroach
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRadroach
+      
+- type: entity
+  name: Giant Rat Spawner
+  id: N14SpawnMobGiantRat
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Animals/giantrat.rsi
+        state: giantrat
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobGiantRat
+      - N14MobGiantSandRat
+      
+- type: entity
+  name: Radscorpion Spawner
+  id: N14SpawnMobRadscorpion
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Insects/radscorpion.rsi
+        state: radscorpion
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRadscorpion
+      
+- type: entity
+  name: Barkscorpion Spawner
+  id: N14SpawnMobRadscorpionBark
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Insects/radscorpionbark.rsi
+        state: radscorpion
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRadscorpionBark
+      
+#MARK: Robots
+- type: entity
+  name: Assaultron Spawner
+  id: N14SpawnMobAssaultron
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Robots/assaultron.rsi
+        state: icon
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRobotAssaultronHostile
+      
+- type: entity
+  name: Protectron Spawner
+  id: N14SpawnMobProtectron
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Robots/protectron.rsi
+        state: icon
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRobotProtectronHostile
+      
+- type: entity
+  name: Protectron Builder Spawner
+  id: N14SpawnMobProtectronBuilder
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Robots/protectron-builder.rsi
+        state: icon
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRobotProtectronBuilderHostile
+      
+- type: entity
+  name: Protectron Fire Spawner
+  id: N14SpawnMobProtectronFire
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Robots/protectron-fire.rsi
+        state: icon
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRobotProtectronFireHostile
+      
+- type: entity
+  name: Protectron Police Spawner
+  id: N14SpawnMobProtectronPoliceHostile
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Robots/protectron-police.rsi
+        state: icon
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRobotProtectronPoliceHostile
+      
+- type: entity
+  name: Mr Handy Spawner
+  id: N14SpawnMobMrHandyClaw
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Robots/mrhandyclaw.rsi
+        state: icon
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRobotMrHandyClaw
+      
+- type: entity
+  name: Mr Handy Gun Spawner
+  id: N14SpawnMobMrHandyGun
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Robots/mrhandygun.rsi
+        state: icon
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRobotMrHandyGun
+      
+- type: entity
+  name: Mr Handy Saw Spawner
+  id: N14SpawnMobMrHandySaw
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Robots/mrhandysaw.rsi
+        state: icon
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRobotMrHandySaw
+      
+- type: entity
+  name: Mr Gutsy Spawner
+  id: N14SpawnMobMrHandyGutsy
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Robots/mrhandygutsy.rsi
+        state: icon
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRobotMrHandyGutsy
+      
+- type: entity
+  name: Robobrain Spawner
+  id: N14SpawnMobRobobrain
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Robots/robobrain.rsi
+        state: icon
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRobotRobobrain
+      
+- type: entity
+  name: Eyebot Spawner
+  id: N14SpawnMobEyebot
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Robots/eyebot.rsi
+        state: icon
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobRobotEyebot
+
+#MARK: Ghoul
+- type: entity
+  name: Feral Ghoul Spawner
+  id: N14SpawnMobFeralGhoul
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Nuclear14/Mobs/Ghouls/ghoul.rsi
+        state: ghoul
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - N14MobGhoulFeral
+      - N14MobGhoulFrozen
+      - N14MobGhoulPale
+      - N14MobGhoulGlow

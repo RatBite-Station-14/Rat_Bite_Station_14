@@ -1,0 +1,274 @@
+# Consider making our own base mob in future so we're resilient to upstream changes.
+#MARK: Base Simple
+
+- type: entity
+  name: wasteland animal
+  abstract: true
+  id: N14MobBaseSimple
+  parent: SimpleSpaceMobBase
+  description: It's a dirty wasteland animal. Watch out for it's bite, it could be infectious.
+  components:
+  - type: Body
+    prototype: AnimalRuminant
+  - type: InputMover
+  - type: MobMover
+  - type: NpcFactionMember
+    factions:
+    - Passive
+  - type: Sprite
+    drawdepth: Mobs # Replace this with a mob error or something
+  - type: Physics
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 2
+    baseSprintSpeed : 3.9
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.30
+        density: 20
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobState
+    allowedStates:
+      - Alive
+      - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      15: Dead
+  - type: MovementAlwaysTouching
+  - type: Appearance
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+      Dead:
+        Base: dead
+  - type: Butcherable
+    spawned:
+    - id: N14FoodMeatRadRaw
+      amount: 1
+    - id: N14MaterialRawLeather1
+      amount: 1
+  - type: Bloodstream
+    bloodMaxVolume: 50
+    bloodReagent: Blood
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: WastelandAnimal
+  - type: Puller
+    needsHands: true
+  - type: IgnitionSource
+
+#MARK: Base Hostile
+- type: entity
+  abstract: true
+  id: N14MobBaseHostile
+  parent: N14MobBaseSimple
+  description: It's a dirty wasteland animal. Watch out for it's bite, it could be infectious.
+  components:
+  - type: Hunger
+    thresholds:
+      Overfed: 200
+      Okay: 150
+      Peckish: 100
+      Starving: 50
+      Dead: 0
+    baseDecayRate: 0.0 # Decay rate decreased to 0, because humanoid raider NPCs are able to starve to death. We generally don't need life sim for any hostile mob.
+  - type: Thirst
+    thresholds:
+      OverHydrated: 200
+      Okay: 150
+      Thirsty: 100
+      Parched: 50
+      Dead: 0
+    baseDecayRate: 0.0 # Decay rate decreased to 0, because hostile mobs can be way too easily defeated by slowness applied to them.
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: HTN
+    rootTask:
+      task: SimpleRangedHostileCompound
+  - type: Sprite
+    drawdepth: Mobs
+  - type: MobState
+    allowedStates:
+      - Alive
+      - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      15: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+      Dead:
+        Base: dead
+  - type: Butcherable
+    spawned:
+    - id: N14FoodMeatRadRaw
+      amount: 1
+  - type: Bloodstream
+    bloodMaxVolume: 50
+    bloodReagent: Blood
+  - type: CombatMode
+  - type: MeleeWeapon
+    hidden: true
+    attackRate: 2
+    range: 1
+    soundHit:
+        path: /Audio/Effects/bite.ogg
+    angle: 60
+    animation: WeaponArcBite
+    wideAnimation: WeaponArcBite
+    damage:
+      groups:
+        Brute: 2
+  - type: SolutionContainerManager
+    solutions:
+      melee:
+        reagents:
+        - ReagentId: Toxin
+          Quantity: 0.1
+  - type: MeleeChemicalInjector
+    solution: melee
+  - type: ReplacementAccent
+    accent: genericAggressive
+
+#MARK: Base Scaley
+- type: entity
+  name: scaley wasteland animal
+  abstract: true
+  id: N14MobBaseHostileScaley
+  parent: N14MobBaseHostile
+  components:
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: N14Scale
+  - type: Speech
+    speechSounds: Squeak
+  - type: ReplacementAccent
+    accent: genericAggressive
+
+#MARK: Base Insect
+- type: entity
+  name: wasteland insect
+  abstract: true
+  id: N14MobBaseHostileInsect
+  parent: N14MobBaseHostile
+  components:
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: N14Insect
+  - type: NoSlip
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: Speech
+    speechSounds: Squeak
+  - type: ReplacementAccent
+    accent: genericAggressive
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.30
+        density: 30
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+
+#MARK: Base Insect
+- type: entity
+  name: Friendly wasteland insect
+  abstract: true
+  id: N14MobBasepassiveInsect
+  parent: N14MobBaseSimple
+  components:
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: N14Insect
+  - type: NoSlip
+  - type: NpcFactionMember
+    factions:
+    - Passive
+  - type: Speech
+    speechSounds: Squeak
+  - type: ReplacementAccent
+    accent: genericAggressive
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.30
+        density: 30
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+
+- type: entity
+  name: feral ghoul
+  abstract: true
+  id: N14MobBaseHostileFeral
+  parent: N14MobBaseHostile
+  description: A mean looking ghoul.
+  components:
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: GhoulNPC
+  # - type: NoSlip
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: HTN
+    rootTask:
+      task: SimpleRangedHostileCompound
+    blackboard:
+      NavClimb: !type:Bool
+        true
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+      Critical:
+        Base: alive
+      Dead:
+        Base: dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 2.75
+    baseSprintSpeed : 5.5
+  - type: Hands
+  - type: Puller
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      60: 0.8
+      80: 0.6
+  - type: LanguageKnowledge
+    speaks:
+    - English
+    understands:
+    - English
+  - type: Appearance
+  - type: Clumsy
+    clumsySound:
+      collection: BodyFall
+  - type: SpamEmitSound
+    minInterval: 20
+    maxInterval: 60
+    sound:
+      collection: Ghouling
+      params:
+        variation: 0.25
