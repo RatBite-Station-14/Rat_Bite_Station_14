@@ -1,6 +1,8 @@
 using System.Numerics;
+using Content.Shared._BRatbite.TrackingHud.MarkerMonitor;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 
@@ -12,7 +14,7 @@ public sealed partial class TargetTrackerComponent : Component
     // Don't spam other clients with this
     public override bool SendOnlyToOwner => true;
 
-    [DataField, AutoNetworkedField]
+    [ViewVariables, AutoNetworkedField]
     public Dictionary<string, TrackingTarget> Targets = new();
 
     [DataField]
@@ -34,7 +36,7 @@ public enum ListeningChannels : byte
 }
 
 [Serializable, NetSerializable, DataDefinition]
-public partial struct TrackingTarget
+public partial class TrackingTarget
 {
     [DataField]
     public Vector2 TargetLocation;
@@ -46,7 +48,7 @@ public partial struct TrackingTarget
     public MapId MapId;
 
     [DataField]
-    public SpriteSpecifier Sprite = new SpriteSpecifier.Rsi(new("/Textures/_BRatBites/Interface/Misc/exclamation-mark.rsi"), "exclamation-mark");
+    public ProtoId<MarkerPrototype> MarkerPrototype = "WarningExclamation";
 
     [DataField]
     public ListeningChannels Channels = ListeningChannels.SECURITY;
