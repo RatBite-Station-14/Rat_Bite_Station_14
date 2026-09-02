@@ -16,7 +16,7 @@
   - Maintenance
   special: # Goobstation
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, BluespaceLifelineImplant ] # CC gets bluespace
+    implants: [ MindShieldImplant, BluespaceLifelineImplant, RPHelpImplant ] # CC gets bluespace
   - !type:AddComponentSpecial
     components:
       - type: Condemned # the intern sell their soul to corporation life
@@ -40,7 +40,7 @@
   - Maintenance
   special: # Goobstation
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, BluespaceLifelineImplant ] # CC gets bluespace
+    implants: [ MindShieldImplant, BluespaceLifelineImplant, RPHelpImplant ] # CC gets bluespace
   - !type:AddComponentSpecial
     components:
       - type: Condemned # the intern sell their soul to corporation life

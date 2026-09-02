@@ -6,6 +6,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using static Content.Shared.Administration.SharedBwoinkSystem;
 
 namespace Content.Client.Administration.UI.Bwoink
 {
@@ -61,9 +62,20 @@ namespace Content.Client.Administration.UI.Bwoink
                 Unread++;
 
             var formatted = new FormattedMessage(1);
-            formatted.AddMarkupOrThrow($"[color=gray]{message.SentAt.ToShortTimeString()}[/color] {message.Text}");
+            formatted.AddMarkupOrThrow($"{GetBwoinkTypeFormat(message.Type)} [color=gray]{message.SentAt.ToShortTimeString()}[/color] {message.Text}");
             TextOutput.AddMessage(formatted);
             LastMessage = message.SentAt;
+        }
+
+        // Ratbite
+        private string GetBwoinkTypeFormat(BwoinkType type)
+        {
+            return type switch
+            {
+                BwoinkType.AHelp => "",
+                BwoinkType.RPHelp => "[color=purple](RPHelp)[/color]",
+                _ => "",
+            };
         }
 
         private void UpdateTypingIndicator()
