@@ -40,7 +40,7 @@
   - Cryogenics
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, BluespaceLifelineImplant ] # CC gets bluespace
+    implants: [ MindShieldImplant, BluespaceLifelineImplant, RPHelpImplant ] # CC gets bluespace
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff

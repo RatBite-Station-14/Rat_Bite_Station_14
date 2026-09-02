@@ -8,6 +8,7 @@ using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Content.Goobstation.Common.CCVar;
+using Content.Server._BRatbite.Administration;
 using Content.Server.Administration.Managers;
 using Content.Server.Afk;
 using Content.Server.Database;
@@ -671,6 +672,12 @@ namespace Content.Server.Administration.Systems
                 // Unauthorized bwoink (log?)
                 return;
             }
+
+            // Ratbite: Custom checks for bwoinks
+            var ev = new BeforeBwoinkMessageSentEvent(message, senderSession, senderAHelpAdmin);
+            RaiseLocalEvent(ref ev);
+            if (ev.Cancelled) return;
+            // Ratbite end
 
             if (_rateLimit.CountAction(eventArgs.SenderSession, RateLimitKey) != RateLimitStatus.Allowed)
                 return;

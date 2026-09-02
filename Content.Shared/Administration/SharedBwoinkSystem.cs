@@ -60,6 +60,7 @@ namespace Content.Shared.Administration
         }
 
         // Ratbite
+        [Serializable, NetSerializable]
         public enum BwoinkType : byte
         {
             AHelp,

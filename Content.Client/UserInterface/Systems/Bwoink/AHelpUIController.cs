@@ -10,7 +10,6 @@ using Content.Client.Gameplay;
 using Content.Client.Lobby;
 using Content.Client.Lobby.UI;
 using Content.Client.Stylesheets;
-using Content.Client.Stylesheets.Sheetlets;
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.MenuBar.Widgets;
 using Content.Shared._BRatbite.CCVar;
@@ -48,7 +47,6 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
 
     private BwoinkSystem? _bwoinkSystem;
     private MenuButton? GameAHelpButton => UIManager.GetActiveUIWidgetOrNull<GameTopMenuBar>()?.AHelpButton;
-    private MenuButton? GameRPHelpButton => UIManager.GetActiveUIWidgetOrNull<GameTopMenuBar>()?.RPHelpButton;
     private Button? LobbyAHelpButton => (UIManager.ActiveScreen as LobbyGui)?.AHelpButton;
     public IAHelpUIHandler? UIHelper;
     private bool _discordRelayActive;
@@ -77,10 +75,6 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
         if (GameAHelpButton != null)
             GameAHelpButton.OnPressed -= AHelpButtonPressed;
 
-        // Ratbite
-        if (GameRPHelpButton != null)
-            GameRPHelpButton.OnPressed -= RPHelpButtonPressed;
-
         if (LobbyAHelpButton != null)
             LobbyAHelpButton.OnPressed -= AHelpButtonPressed;
     }
@@ -90,20 +84,12 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
         if (GameAHelpButton != null)
             GameAHelpButton.OnPressed += AHelpButtonPressed;
 
-        // Ratbite
-        if (GameRPHelpButton != null)
-        {
-            GameRPHelpButton.Disabled = _adminManager.IsActive();
-            GameRPHelpButton.OnPressed += RPHelpButtonPressed;
-        }
-
         if (LobbyAHelpButton != null)
             LobbyAHelpButton.OnPressed += AHelpButtonPressed;
     }
 
     private void OnAdminStatusUpdated()
     {
-        GameRPHelpButton?.Disabled = _adminManager.IsActive();
         if (UIHelper is not { IsAnyOpen: true })
             return;
         EnsureUIHelper();
@@ -113,12 +99,6 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
     {
         EnsureUIHelper();
         UIHelper!.ToggleWindow(BwoinkType.AHelp);
-    }
-
-    private void RPHelpButtonPressed(BaseButton.ButtonEventArgs obj)
-    {
-        EnsureUIHelper();
-        UIHelper!.ToggleWindow(BwoinkType.RPHelp);
     }
 
     public void OnSystemLoaded(BwoinkSystem system)
@@ -167,7 +147,6 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
 
     private void SetRPHelpPressed(bool pressed)
     {
-        GameRPHelpButton?.Pressed = pressed;
         UIManager.ClickSound();
     }
 
@@ -310,13 +289,6 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
 
     public void OnStateEntered(GameplayState state)
     {
-        if (GameRPHelpButton != null)
-        {
-            GameRPHelpButton.OnPressed -= RPHelpButtonPressed;
-            GameRPHelpButton.OnPressed += RPHelpButtonPressed;
-            GameRPHelpButton.Pressed = UIHelper?.IsOpen(BwoinkType.RPHelp) ?? false;
-        }
-
         if (GameAHelpButton != null)
         {
             GameAHelpButton.OnPressed -= AHelpButtonPressed;
@@ -338,9 +310,6 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
     {
         if (GameAHelpButton != null)
             GameAHelpButton.OnPressed -= AHelpButtonPressed;
-
-        if (GameRPHelpButton != null)
-            GameRPHelpButton.OnPressed -= RPHelpButtonPressed;
     }
 
     public void OnStateEntered(LobbyState state)
@@ -653,7 +622,7 @@ public sealed class UserAHelpUIHandler : IAHelpUIHandler
             var window = new DefaultWindow()
             {
                 TitleClass="windowTitleAlert",
-                HeaderClass = bwoinkType == BwoinkType.AHelp ? "windowHeaderAlert" : "purple",
+                HeaderClass = bwoinkType == BwoinkType.AHelp ? StyleClass.AlertWindowHeader : StyleClass.Positive,
                 Title=Loc.GetString(bwoinkType == BwoinkType.AHelp ? "bwoink-user-title" : "bwoink-rphelp-title"),
                 MinSize = new Vector2(500, 300),
             };
