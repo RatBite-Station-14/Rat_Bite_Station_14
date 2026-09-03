@@ -51,7 +51,7 @@
     PillCanisterIron: 2 # ratbite, was 1
     PillCanisterCopper: 2 # ratbite, was 1
     PillCanisterPotassiumIodide: 2 # ratbite, was 1
-    PillCanisterBicaMera: 2 # ratbite
+    PillCanisterBicaMera: 1 # ratbite
     SyringeIpecac: 1
     ClothingEyesHudMedical: 2
     ClothingEyesEyepatchHudMedical: 2

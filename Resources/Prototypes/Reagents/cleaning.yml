@@ -135,7 +135,7 @@
     Acidic:
       methods: [ Touch ]
       effects:
-      # pva glue? no, antibiotic glue for sealing wounds
+      # pva glue? no, antibiotic glue for sealing wounds. Keeping because this is kind of funny actually.
       - !type:ModifyBleed
         amount: -1.5
   metabolisms:

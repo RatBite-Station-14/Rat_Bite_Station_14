@@ -165,7 +165,7 @@
   color: "#ffaa00"
   metabolisms:
     Medicine:
-      metabolismRate: 0.2 # Ratbite - was default (0.5)
+      metabolismRate: 0.2 # Ratbite - was default (0.5).
       effects:
       - !type:SuppressPain
         amount: 1.2
@@ -179,7 +179,7 @@
       - !type:HealthChange
         damage:
           groups:
-            Brute: -2.5 # Was 2, Buffed due to limb damage changes(GoobStation)
+            Brute: -1.8 # Ratbite, was 2.5, 0.6 of each type
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition # Goobstation - Yowie
@@ -187,7 +187,7 @@
           inverted: true
         - !type:ReagentCondition
           reagent: Bicaridine
-          min: 15
+          min: 15.5 # was 15, now 15.5, Ratbite
         damage:
           types:
             Asphyxiation: 0.5
@@ -320,10 +320,10 @@
       - !type:HealthChange
         damage:
           types:
-            Heat: -3
-            Shock: -3
-            Cold: -3 # Was 1.5, Buffed due to limb damage changes(GoobStation) | Ratbite - was -2 before
-            Caustic: -1.5 # Ratbite, added caustic healing to dermaline
+            Heat: -2 # ratbite, was -3 before
+            Shock: -2 # ratbite, was -3
+            Cold: -2 # ratbite, was -3
+            Caustic: -1 # Ratbite, added caustic healing to dermaline. Now it is -1, was -1.5
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition # Goobstation - Yowie
@@ -331,7 +331,7 @@
           inverted: true
         - !type:ReagentCondition
           reagent: Dermaline
-          min: 10
+          min: 10.5 # was 10, now 10.5, Ratbite
         damage:
           types:
             Asphyxiation: 1
@@ -570,7 +570,7 @@
         - !type:MetabolizerTypeCondition # Goobstation - Yowie
           type: [Yowie]
           inverted: true
-        probability: 0.02
+        probability: 0.01 # ratbite, was 0.02
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition # Goobstation - Yowie
@@ -1287,7 +1287,7 @@
   color: "#e0a5b9"
   metabolisms:
     Medicine:
-      metabolismRate: 0.1 #Goob
+      metabolismRate: 0.2 # ratbite, was 0.1
       effects:
       - !type:HealthChange
         damage:
@@ -1356,7 +1356,7 @@
   color: "#283332"
   metabolisms:
     Medicine:
-      metabolismRate: 0.1 # Goob
+      metabolismRate: 0.5 # ratbite, was 0.1
       effects:
       - !type:HealthChange
         damage:
@@ -1386,7 +1386,7 @@
   color: "#b9bf93"
   metabolisms:
     Medicine:
-      metabolismRate: 0.1 # Goob
+      metabolismRate: 0.5 # ratbite, was 0.1
       effects:
       - !type:HealthChange
         damage:
@@ -1415,7 +1415,7 @@
   color: "#ff3636"
   metabolisms:
     Medicine:
-      metabolismRate: 0.1 # Goob
+      metabolismRate: 0.5 # ratbite, was 0.1
       effects:
       - !type:HealthChange
         damage:
@@ -1547,7 +1547,7 @@
   color: "#8147ff"
   metabolisms:
     Medicine:
-      metabolismRate: 0.1 # Goob
+      metabolismRate: 0.5 # ratbite, was 0.1
       effects:
       # heals shocks and removes shock chems
       - !type:HealthChange

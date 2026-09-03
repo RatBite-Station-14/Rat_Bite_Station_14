@@ -101,7 +101,7 @@
       drink: # This solution name and target volume is hard-coded in ChemMasterComponent
         maxVol: 30
         reagents:
-        - ReagentId: Granitbitlari
+        - ReagentId: Granitbitulari
           Quantity: 30
 
 - type: entity

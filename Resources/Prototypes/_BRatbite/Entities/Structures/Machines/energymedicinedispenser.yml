@@ -88,17 +88,17 @@
         components:
         - FitsInDispenser
     reagents:
-      Phalanximine: 60
-      Tricordrazine: 40
-      Dylovene: 30
-      Kelotane: 30
-      Hyronalin: 30
-      Caridine: 20
-      Aiuri: 20
-      PotassiumIodide: 20
-      Saline: 20
-      Charcoal: 20
-      KaolinPowder: 20
-      Iron: 10
-      Copper: 10
-      Inaprovaline: 10
+      Phalanximine: 60 # might remove
+      Tricordrazine: 40 # cant remove
+      Dylovene: 30 # might remove
+      Kelotane: 30 # cant remove
+      Hyronalin: 30 # cant remove
+      Caridine: 20 # cant remove
+      Aiuri: 20 # might remove
+      PotassiumIodide: 20 # might remove
+      Saline: 20 # probably shouldnt remove
+      Charcoal: 20 # might remove
+      KaolinPowder: 20 # cant remove
+      Iron: 10 # cant remove
+      Copper: 10 # cant remove
+      Inaprovaline: 10 # cant remove

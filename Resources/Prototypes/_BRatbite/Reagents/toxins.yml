@@ -31,6 +31,9 @@
   group: Toxins
   desc: reagent-desc-hexachlorobenzene
   physicalDesc: reagent-physical-desc-crystalline
+  allowedJobs:
+  - Chemist
+  - Botanist
   color: "#ffffff"
   plantMetabolism:
     - !type:PlantAdjustWeeds

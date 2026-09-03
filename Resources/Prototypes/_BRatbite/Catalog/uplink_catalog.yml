@@ -16,7 +16,7 @@
   id: UplinkKaolinpacket
   name: uplink-kaolinpacket-name
   description: uplink-kaolinpacket-desc
-  productEntity: FoodCondimentPacketKaolin
+  productEntity: FoodCondimentPacketKaolinInterdyne
   cost:
     Telecrystal: 3
   categories:

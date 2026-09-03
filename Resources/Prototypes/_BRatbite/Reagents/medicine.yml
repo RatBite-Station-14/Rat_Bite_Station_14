@@ -536,8 +536,8 @@
         reagent: Biofoam
         amount: -15
       - !type:MovespeedModifier
-        walkSpeedModifier: 0.9
-        sprintSpeedModifier: 0.9
+        walkSpeedModifier: 0.8
+        sprintSpeedModifier: 0.8
       - !type:PopupMessage
         conditions:
         - !type:ReagentCondition
@@ -559,7 +559,7 @@
   worksOnTheDead: true
   metabolisms:
     Medicine:
-      metabolismRate: 0.5
+      metabolismRate: 0.25 # changed because it didnt do much before, wasnt really a problem
       effects:
       - !type:HealthChange
         conditions:
@@ -585,12 +585,12 @@
   color: "#fd5964"
   metabolisms:
     Medicine:
-      metabolismRate: 0.2
+      metabolismRate: 0.4 # nerfed a little, now heals like 25 damage instead of 50~
       effects:
         - !type:HealthChange
           damage:
             groups:
-              Brute: -6.5
+              Brute: -6 # now it is double bicaridine
             types:
               Cellular: -0.1
         - !type:HealthChange
@@ -844,7 +844,7 @@
       methods: [ Touch ]
       effects:
       - !type:ModifyBleed
-        amount: -2 # bit higher than glue
+        amount: -0.6 # very weak but cheap and everywhere. Needs like ~15u to stop full bleed. Glue is the a T3 external clotting med, tepalal T2, I think the other ones also stop bleeding? Idk.
         conditions:
         - !type:HasComponentOnEquipmentCondition
           components:
@@ -852,7 +852,7 @@
           inverted: true
   metabolisms:
     Poison:
-      metabolismRate: 0.2
+      metabolismRate: 0.05
       effects:
         - !type:HealthChange
           damage:
@@ -870,4 +870,4 @@
             inverted: true
           damage:
             types:
-              Caustic: 0.5
+              Caustic: 0.15

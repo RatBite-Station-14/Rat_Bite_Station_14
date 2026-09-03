@@ -2,7 +2,6 @@
   parent: BaseFoodCondiment
   id: FoodCondimentPacketKaolin
   name: haemostatic kaolin granule packet # heh... ratbit here, changed hemostatic to haemostatic because it sounds cooler. Also granule instead of powder
-  suffix: VXMED
   description: Haemostatic powder. Whilst food shaped, do not eat. Splash on the wound... # ratbite here also
   components:
   - type: Item
@@ -31,6 +30,54 @@
   - type: Icon
     sprite: _VXS14/Objects/Medical/medical.rsi
     state: kaolin
+  - type: PhysicalComposition
+    materialComposition:
+      Plastic: 50
+  - type: Tag
+    tags:
+      - Packet
+  - type: Appearance
+  - type: MeleeWeapon
+    soundNoDamage:
+      path: "/Audio/Effects/packetrip.ogg"
+    damage:
+      types:
+        Blunt: 0
+  - type: FitsInDispenser
+    solution: food
+
+- type: entity
+  parent: BaseFoodCondiment
+  id: FoodCondimentPacketKaolinInterdyne
+  name: interdyne pharmaceuticals haemostatic kaolin granule packet
+  description: Advanced haemostatic granules, each grain hand crafted with immaculate care by our finest chemists at interdyne pharmaceuticals. There's a little symbol scribbled out by a marker on the back...
+  components:
+  - type: Item
+    size: Tiny
+  - type: Openable
+    sound:
+      collection: packetOpenSounds
+    closeable: true
+  - type: Spillable
+    solution: food
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 40
+        reagents:
+        - ReagentId: KaolinPowder
+          Quantity: 40
+  - type: SolutionTransfer
+    maxTransferAmount: 10
+    CanChangeTransferAmount: false
+  - type: ExaminableSolution
+    solution: food
+  - type: Sprite
+    sprite: _VXS14/Objects/Medical/medical.rsi
+    state: kaolininterdyne
+  - type: Icon
+    sprite: _VXS14/Objects/Medical/medical.rsi
+    state: kaolininterdyne
   - type: PhysicalComposition
     materialComposition:
       Plastic: 50

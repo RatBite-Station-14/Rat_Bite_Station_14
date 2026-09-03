@@ -1,0 +1,6 @@
+- type: stack
+  parent: BaseSmallStack
+  id: Synthskin
+  name: stack-synthskin
+  icon: { sprite: "/Textures/_BRatbites/Objects/Specific/Medical/synthskin.rsi", state: synthskin }
+  spawn: Synthskin
