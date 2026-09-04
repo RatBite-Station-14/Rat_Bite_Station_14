@@ -571,7 +571,7 @@
             Blunt: 2
             Asphyxiation: 2
             Poison: 2
-      - !type:MovespeedModifier
+      - !type:MovementspeedModifier # omg wizden
         walkSpeedModifier: 0.9
         sprintSpeedModifier: 0.9
 
