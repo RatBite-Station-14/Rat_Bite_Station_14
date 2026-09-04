@@ -24,7 +24,7 @@
         Heat: 0.85
 
 - type: entity
-  parent: [ ClothingUniformBase, BaseSyndicateContraband ] # Ratbite: Contraband
+  parent: ClothingUniformBase
   id: ClothingUniformJumpsuitResonant
   name: resonant jumpsuit
   description: Lets not play too rough. Neither you nor I can reach it just yet…
