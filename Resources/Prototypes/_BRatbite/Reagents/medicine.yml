@@ -559,7 +559,7 @@
   worksOnTheDead: true
   metabolisms:
     Medicine:
-      metabolismRate: 0.25 # changed because it didnt do much before, wasnt really a problem
+      metabolismRate: 0.5 # okay, nevermind
       effects:
       - !type:HealthChange
         conditions:
