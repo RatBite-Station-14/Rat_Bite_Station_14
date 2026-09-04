@@ -298,6 +298,8 @@
       amount: 1
     - id: EbifinlLazideChemistryVial
       amount: 1
+    - id: ChornexalinnChemistryVial # Ratbite, added chornexalinn to the thingy
+      amount: 1
 
 - type: entity
   parent: ClothingBeltUtilityFilled

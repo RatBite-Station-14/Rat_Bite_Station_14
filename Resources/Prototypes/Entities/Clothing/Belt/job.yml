@@ -189,6 +189,7 @@
       - MedicalPatch # Goobstation
       - AutoinjectorCartridge # Goobstation
       - HandheldCrewMonitor # Goobstation
+      - Packet # Ratbite, for kaolin and... mustard?
       components:
       - Injector
       - Pill

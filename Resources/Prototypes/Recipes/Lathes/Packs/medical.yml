@@ -103,6 +103,7 @@
   - CondenserMachineCircuitBoard
   - HotplateMachineCircuitboard
   - EnergyChemDispenserMachineCircuitboard #Goob edit - all things that get base med boards get E-Chem
+  - EnergyMedicineDispenserMachineCircuitboard # ratbit, add the e-med dispenser
 
 ## Dynamic
 

@@ -165,3 +165,137 @@
       catalyst: true
   products:
     AllInOneGenderAffirmingHormone: 3
+
+
+- type: reaction
+  id: Biofoam
+  reactants:
+    Synthcells:
+      amount: 1
+    Fluorosurfactant:
+      amount: 1
+    Carbon:
+      amount: 1
+    Tepalal:
+      amount: 1
+  products:
+    Biofoam: 3
+
+- type: reaction
+  id: Meralyne
+  reactants:
+    Caridine:
+      amount: 1
+    Bicaridine:
+      amount: 1
+    Carbon:
+      amount: 1
+  products:
+    Meralyne: 3
+
+- type: reaction
+  id: UniversalBloodReplacement
+  reactants:
+    PolytrinicAcid:
+      amount: 1
+      catalyst: true
+    Iron:
+      amount: 1
+    Copper:
+      amount: 1
+    Nitrogen:
+      amount: 1
+    Oxygen:
+      amount: 1
+    Sugar:
+      amount: 2
+    Water:
+      amount: 2
+  products:
+    UniversalBloodReplacement: 9
+
+- type: reaction
+  id: EphedrinePhoride
+  minTemp: 400
+  reactants:
+    Ephedrine:
+      amount: 1
+    Plasma:
+      amount: 1
+  products:
+    EphedrinePhoride: 1
+
+- type: reaction
+  id: Metorapan
+  minTemp: 500
+  reactants:
+    PolytrinicAcid:
+      amount: 1
+    Meralyne:
+      amount: 1
+    Probital:
+      amount: 1
+    Ibuprofen:
+      amount: 1
+  products:
+    Metorapan: 4
+
+- type: reaction
+  id: Metorixadone
+  reactants:
+    Cryoxadone:
+      amount: 3
+    Metorapan:
+      amount: 1
+  products:
+    Metorixadone: 4
+
+- type: reaction
+  id: Paracetamol
+  reactants:
+    Tramadol:
+      amount: 1
+    Nitrogen:
+      amount: 1
+    Water:
+      amount: 1
+  products:
+    Paracetamol: 3
+
+- type: reaction
+  id: Urozine
+  minTemp: 500
+  reactants:
+    PolytrinicAcid:
+      amount: 1
+    Dermaline:
+      amount: 1
+    Probital:
+      amount: 1
+    Paracetamol:
+      amount: 1
+  products:
+    Urozine: 4
+
+- type: reaction
+  id: CompressedTricordrazine
+  reactants:
+    Tricordrazine:
+      amount: 3
+    Plasma:
+      amount: 1 # with plasma, anything can happen!
+  products:
+    CompressedTricordrazine: 1
+
+- type: reaction
+  id: KaolinPowder
+  minTemp: 455
+  reactants:
+    Aluminium:
+      amount: 1
+    Silicon:
+      amount: 1
+    Water:
+      amount: 1
+  products:
+    KaolinPowder: 3  

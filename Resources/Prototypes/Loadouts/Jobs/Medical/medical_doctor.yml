@@ -204,3 +204,77 @@
   id: MedicalEyePatchHud
   equipment:
     eyes: ClothingEyesEyepatchHudMedical
+
+# Medicines, ratbite
+
+- type: loadout
+  id: SprayBottleStypticPowder
+  storage:
+    back:
+    - SprayBottleStypticPowder
+
+- type: loadout
+  id: SprayBottleSilverSulfadiazine
+  storage:
+    back:
+    - SprayBottleSilverSulfadiazine
+
+- type: loadout
+  id: SprayBottleTepalal
+  storage:
+    back:
+    - SprayBottleTepalal
+
+- type: loadout
+  id: ChemistryBottleBiofoam
+  storage:
+    back:
+    - ChemistryBottleBiofoam
+
+- type: loadout
+  id: EmergencyMedipen # now they get 3 emerg medipens :godo:
+  storage:
+    back:
+    - EmergencyMedipen
+
+- type: loadout
+  id: BruteAutoInjector
+  storage:
+    back:
+    - BruteAutoInjector
+
+- type: loadout
+  id: BurnAutoInjector
+  storage:
+    back:
+    - BurnAutoInjector
+
+- type: loadout
+  id: AirlossAutoInjector
+  storage:
+    back:
+    - AirlossAutoInjector
+
+- type: loadout
+  id: SpaceMedipen
+  storage:
+    back:
+    - SpaceMedipen
+
+- type: loadout
+  id: PillCanisterBicaMera
+  storage:
+    back:
+    - PillCanisterBicaMera
+
+- type: loadout
+  id: ChemistryBottleRevivopine
+  storage:
+    back:
+    - ChemistryBottleRevivopine
+
+- type: loadout
+  id: ChemistryBottleGranitbitulari
+  storage:
+    back:
+    - ChemistryBottleGranitbitulari

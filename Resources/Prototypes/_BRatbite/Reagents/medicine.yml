@@ -211,19 +211,12 @@
               Brute: -0.6
             types:
               Poison: -0.1
-        - !type:Vomit
-          conditions:
-          - !type:ReagentCondition
-            reagent: Caridine
-            max: 50
-          probability: 0.1 # changed from 0.5 to 0.1
-        - !type:Vomit
+        - !type:Vomit # removed vomiting when not drunk
           conditions:
           - !type:ReagentCondition
             reagent: Caridine
             min: 50
           probability: 0.2
-        - !type:Drunk
 
 - type: reagent
   id: Lectrazine
@@ -376,7 +369,7 @@
           - type: PressureProtection # can't get through this to reach the bodyparts!
           inverted: true
       - !type:ModifyBleed
-        amount: -2
+        amount: -0.5 # nerfed because I HATE fun
         conditions:
         - !type:HasComponentOnEquipmentCondition
           components:
@@ -483,3 +476,398 @@
         - !type:ReagentCondition
           reagent: AllInOneGenderAffirmingHormone
           min: 20
+
+
+# biofoam, meralyne, and universal blood replacement (renamed from nanoblood) are from battlefield 14, put in this folder because idk
+
+- type: reagent
+  id: Biofoam # Yowie still overdose on purpose
+  name: reagent-name-biofoam
+  group: Medicine
+  desc: reagent-desc-biofoam
+  physicalDesc: reagent-physical-desc-thick
+  flavor: medicine
+  color: "#edd9c0"
+  worksOnTheDead: true
+  metabolisms:
+    Medicine:
+      metabolismRate: 1
+      effects:
+      - !type:AdjustReagent
+        reagent: BiofoamRemnants
+        amount: 0.75
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+         reagent: Biofoam
+         max: 10.5
+        damage:                        # no airloss because I don't get why it would heal that lol
+          groups:
+            Brute: -14
+            Burn: -19
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: Biofoam
+          min: 10.5
+        damage:
+          types:
+            Blunt: 10
+            Asphyxiation: 8
+            Poison: 2
+      - !type:ModifyBleed
+        amount: -6 # buff a bit
+      - !type:PopupMessage
+        conditions:
+        - !type:ReagentCondition
+          reagent: Biofoam
+          max: 10.5
+        visualType: Medium
+        messages: ["biofoam-effect-organrepair", "biofoam-effect-bodyrepair"]
+        type: Local
+        probability: 0.2
+      - !type:Jitter
+      - !type:AdjustReagent
+        conditions:
+        - !type:ReagentCondition
+          reagent: Biofoam
+          min: 11
+          max: 12
+        reagent: Biofoam
+        amount: -15
+      - !type:MovementSpeedModifier
+        walkSpeedModifier: 0.8
+        sprintSpeedModifier: 0.8
+      - !type:PopupMessage
+        conditions:
+        - !type:ReagentCondition
+          reagent: Biofoam
+          min: 10.5
+        visualType: MediumCaution
+        messages: ["reagent-effect-overdose1", "reagent-effect-overdose2", "reagent-effect-overdose3"]
+        type: Local
+        probability: 0.3
+
+- type: reagent
+  id: BiofoamRemnants
+  name: reagent-name-biofoamremnants
+  group: Medicine
+  desc: reagent-desc-biofoamremnants
+  physicalDesc: reagent-physical-desc-thick
+  flavor: medicine
+  color: "#edd9c0"
+  worksOnTheDead: true
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.5 # okay, nevermind
+      effects:
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: BiofoamRemnants
+          min: 3.5
+        damage:
+          types:
+            Blunt: 2
+            Asphyxiation: 2
+            Poison: 2
+      - !type:MovementSpeedModifier # omg wizden
+        walkSpeedModifier: 0.9
+        sprintSpeedModifier: 0.9
+
+- type: reagent
+  id: Meralyne
+  name: reagent-name-meralyne
+  group: Medicine
+  desc: reagent-desc-meralyne
+  physicalDesc: reagent-physical-desc-thick
+  flavor: medicine
+  color: "#fd5964"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.4 # nerfed a little, now heals like 25 damage instead of 50~
+      effects:
+        - !type:HealthChange
+          damage:
+            groups:
+              Brute: -6 # now it is double bicaridine
+            types:
+              Cellular: -0.1
+        - !type:HealthChange
+          conditions:
+          - !type:ReagentCondition
+            reagent: Meralyne
+            min: 15.5
+          - !type:MetabolizerTypeCondition
+            type: [Yowie]
+            inverted: true
+          damage:
+            types:
+              Blunt: 2
+              Heat: 4
+              Poison: 4
+        - !type:Vomit
+          conditions:
+          - !type:ReagentCondition
+            reagent: Meralyne
+            min: 30
+          probability: 0.2
+
+- type: reagent
+  id: UniversalBloodReplacement  # nanoblood but fits lore of ratbite by being the stuff in bloodpacks. Nevermind, this is unrecognisable from nanoblood
+  name: reagent-name-universalbloodreplacement
+  group: Medicine
+  desc: reagent-desc-universalbloodreplacement
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#63062a"
+  worksOnTheDead: true
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ModifyBloodLevel
+        amount: 5 # weaker than artiplates
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: UniversalBloodReplacement
+          min: 5.5
+        - !type:MetabolizerTypeCondition
+          type: [Yowie]
+          inverted: true
+        damage:
+          types:
+            Poison: 2 
+
+# that is all of the stolen BoyFriend14 chemicals
+
+- type: reagent
+  id: EphedrinePhoride
+  name: reagent-name-ephedrinephoride
+  group: Medicine
+  desc: reagent-desc-ephedrinephoride
+  physicalDesc: reagent-physical-desc-shocking
+  flavor: medicine
+  color: "#9900ff"
+  metabolisms:
+    Narcotic:
+      metabolismRate: 5
+      effects:
+      - !type:TakeStaminaDamage # 4x that of hyperzine because this is a specialised medicine and is metabolised VERY fast
+        conditions:
+        - !type:ReagentCondition
+          reagent: EphedrinePhoride
+          min: 5
+          max: 20
+        amount: -40
+        immediate: true
+
+- type: reagent # this chemical will not be addictive once we get addictions. Bicaridine, caridine, and meralyne will be
+  id: Metorapan
+  name: reagent-name-metorapan
+  group: Medicine
+  desc: reagent-desc-metorapan
+  physicalDesc: reagent-physical-desc-oily
+  flavor: medicine
+  color: "#857d57"
+  metabolisms:
+    Medicine:
+      metabolismRate: 1
+      effects:
+        - !type:HealthChange
+          conditions:
+          - !type:ReagentCondition
+            reagent: Metorapan
+            min: 1
+            max: 5
+          damage:
+            groups:
+              Brute: -27 # buffed a little
+        - !type:HealthChange
+          conditions:
+          - !type:ReagentCondition
+            reagent: Metorapan
+            min: 5.5
+          - !type:MetabolizerTypeCondition
+            type: [Yowie]
+            inverted: true
+          damage:
+            types:
+              Caustic: 4
+
+- type: reagent
+  id: Metorixadone
+  name: reagent-name-metorixadone
+  group: Medicine
+  desc: reagent-desc-metorixadone
+  physicalDesc: reagent-physical-desc-fizzy
+  flavor: medicine
+  color: "#f5b782"
+  worksOnTheDead: true
+  metabolisms:
+    Medicine:
+      effects:
+        - !type:HealthChange
+          conditions:
+          - !type:TemperatureCondition
+            max: 213.0
+          scaleByTemperature:
+            min: 100.0
+            max: 213.0
+            scale: 1.6
+          damage:
+            groups:
+             Brute: -30
+
+
+- type: reagent # ibuprofen but different name :godo: also stops pain a bit more
+  id: Paracetamol
+  name: reagent-name-paracetamol
+  group: Medicine
+  desc: reagent-desc-paracetamol
+  physicalDesc: reagent-physical-desc-crystalline
+  flavor: medicine
+  color: "#bcb448"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.1
+      effects:
+      - !type:SuppressPain
+        amount: 5
+        time: 15
+      - !type:AdjustPainFeels
+        conditions:
+        - !type:ReagentCondition
+          reagent: Paracetamol
+          min: 0.1
+        amount: 0.04
+      - !type:HealthChange
+        damage:
+          types:
+            Heat: -0.5
+      - !type:AdjustTemperature
+        conditions:
+        - !type:TemperatureCondition
+          max: 293.15
+        amount: 1000
+      - !type:AdjustTemperature
+        conditions:
+        - !type:TemperatureCondition
+          min: 293.15
+        amount: -1000
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 0.4
+        conditions:
+        - !type:ReagentCondition
+          reagent: Paracetamol
+          min: 35
+        - !type:MetabolizerTypeCondition
+          type: [Yowie]
+          inverted: true
+      - !type:AdjustConsciousness
+        conditions:
+        - !type:ReagentCondition
+          reagent: Paracetamol
+          min: 0.1
+        allowNewModifiers: true
+        modifierType: Pain
+        identifier: Suffocation
+        amount: -2.4
+        time: 12
+
+- type: reagent
+  id: Urozine
+  name: reagent-name-urozine
+  group: Medicine
+  desc: reagent-desc-urozine
+  physicalDesc: reagent-physical-desc-oily
+  flavor: medicine
+  color: "#68d0fc"
+  metabolisms:
+    Medicine:
+      metabolismRate: 1
+      effects:
+        - !type:HealthChange
+          conditions:
+          - !type:ReagentCondition
+            reagent: Urozine
+            min: 1
+            max: 5
+          damage:
+            groups:
+              Burn: -36 # 9 of each burn type, same as metorapan
+        - !type:HealthChange
+          conditions:
+          - !type:ReagentCondition
+            reagent: Urozine
+            min: 5.5
+          - !type:MetabolizerTypeCondition
+            type: [Yowie]
+            inverted: true
+          damage:
+            types:
+              Poison: 4
+
+- type: reagent
+  id: CompressedTricordrazine
+  name: reagent-name-compressedtricordrazine
+  group: Medicine
+  desc: reagent-desc-compressedtricordrazine
+  physicalDesc: reagent-physical-desc-solid # when you can't even say my name
+  flavor: medicine
+  color: "#00e5ff"
+  metabolisms:
+    Medicine:
+      metabolismRate: 1
+      effects:
+        - !type:AdjustReagent
+          conditions:
+          - !type:ReagentCondition
+            reagent: CompressedTricordrazine
+            min: 1
+          amount: 3
+          reagent: Tricordrazine
+
+- type: reagent
+  id: KaolinPowder
+  name: reagent-name-kaolinpowder
+  group: Medicine
+  desc: reagent-desc-kaolinpowder
+  physicalDesc: reagent-physical-desc-powdery
+  flavor: medicine
+  color: "#ffd7a8"
+  worksOnTheDead: true
+  reactiveEffects:
+    Acidic:
+      methods: [ Touch ]
+      effects:
+      - !type:ModifyBleed
+        amount: -0.6 # very weak but cheap and everywhere. Needs like ~15u to stop full bleed. Glue is the a T3 external clotting med, tepalal T2, I think the other ones also stop bleeding? Idk.
+        conditions:
+        - !type:HasComponentOnEquipmentCondition
+          components:
+          - type: PressureProtection
+          inverted: true
+  metabolisms:
+    Poison:
+      metabolismRate: 0.05
+      effects:
+        - !type:HealthChange
+          damage:
+            types:
+              Poison: -1 # thereapeutic, can be used in trace amounts in mixes
+              Bloodloss: -1
+              Heat: -0.5
+        - !type:HealthChange
+          conditions:
+          - !type:ReagentCondition
+            reagent: KaolinPowder
+            min: 4.5
+          - !type:MetabolizerTypeCondition
+            type: [Yowie]
+            inverted: true
+          damage:
+            types:
+              Caustic: 0.15
