@@ -516,7 +516,7 @@
             Asphyxiation: 8
             Poison: 2
       - !type:ModifyBleed
-        amount: -5
+        amount: -6 # buff a bit
       - !type:PopupMessage
         conditions:
         - !type:ReagentCondition
