@@ -535,7 +535,7 @@
           max: 12
         reagent: Biofoam
         amount: -15
-      - !type:MovespeedModifier
+      - !type:MovementspeedModifier
         walkSpeedModifier: 0.8
         sprintSpeedModifier: 0.8
       - !type:PopupMessage
@@ -836,7 +836,7 @@
   group: Medicine
   desc: reagent-desc-kaolinpowder
   physicalDesc: reagent-physical-desc-powdery
-  flavor: earthy
+  flavor: medicine
   color: "#ffd7a8"
   worksOnTheDead: true
   reactiveEffects:
