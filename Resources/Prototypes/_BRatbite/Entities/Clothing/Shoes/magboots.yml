@@ -2,7 +2,7 @@
   parent: [ClothingShoesBootsMagBase, ClothingShoesMilitaryBase, BaseSecurityContraband]
   id: ClothingShoesBootsMagSec
   name: security magboots
-  description: Magnetic boots, originally intended for patrolling the outside of the station, this version however has been outfitted with ID scanning measures along with Jackboot-adjacent perks, though this comes at the cost of making them slightly heavier than normal magboots
+  description: Magnetic boots, originally intended for patrolling the outside of the station, now used by security officers to avoid slipping on banana peels
   components:
   - type: Sprite
     sprite: _BRatbite/Clothing/Shoes/Boots/magboots-sec.rsi
@@ -13,8 +13,8 @@
     materialComposition:
       Steel: 250
       Plastic: 125
-  - type: ClothingSpeedModifier # Sacrifices 25% movement speed when activated for advanced ID scanning and Jackboots while unactivated, along with being accessible in loadouts roundstart
-    walkModifier: 0.75
-    sprintModifier: 0.75
+  - type: ClothingSpeedModifier # Better than regular magboots, but not as good as advanced ones
+    walkModifier: 0.90
+    sprintModifier: 0.90
   - type: AccessReader
     access: [["Security"]]
