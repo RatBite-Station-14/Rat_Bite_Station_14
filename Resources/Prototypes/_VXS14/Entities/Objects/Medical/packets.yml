@@ -21,7 +21,6 @@
           Quantity: 40 # Ratbite, 30 to 40
   - type: SolutionTransfer
     maxTransferAmount: 10 # Ratbite, was 20
-    CanChangeTransferAmount: true
   - type: ExaminableSolution
     solution: food
   - type: Sprite
@@ -69,7 +68,6 @@
           Quantity: 40
   - type: SolutionTransfer
     maxTransferAmount: 10
-    CanChangeTransferAmount: false
   - type: ExaminableSolution
     solution: food
   - type: Sprite
