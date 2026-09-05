@@ -1,6 +1,6 @@
 - type: stack
   id: Chemial
   name: chemial-material-name
-  icon: { sprite: _BRatbite/Objects/Materials/chemial.rsi, state: chemial }
+  icon: { sprite: _BRatbite/Objects/Materials/chemial.rsi, state: chemial_3 }
   spawn: Chemial1
   maxCount: 30

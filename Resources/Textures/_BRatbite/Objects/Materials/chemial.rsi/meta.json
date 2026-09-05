@@ -1,14 +1,20 @@
 {
   "version": 1,
   "license": "CC0-1.0",
-  "copyright": "Perstronzio",
+  "copyright": "Lyman on discord",
   "size": {
     "x": 32,
     "y": 32
   },
   "states": [
     {
-      "name": "chemial"
+      "name": "chemial_1"
+    },
+    {
+      "name": "chemial_2"
+    },
+    {
+      "name": "chemial_3"
     },
     {
       "name": "chemial-inhand-left",
