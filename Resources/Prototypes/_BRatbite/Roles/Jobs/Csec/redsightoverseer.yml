@@ -20,6 +20,16 @@
       species:
       - Felinid
       - Scurret
+      - Monkey
+      - Kobold
+    - !type:TraitsRequirement # Ratbite: No NRP traits
+      inverted: true
+      traits:
+      - Trigger
+      - SocialAnxietyTrait
+      - ChronicKleptomania
+      - Nudist
+      - Stowaway
   goobcoins: 60
   weight: 20
   startingGear: RSOGear
