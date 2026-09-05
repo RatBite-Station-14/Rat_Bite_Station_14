@@ -28,7 +28,13 @@
     node: girder
   - type: Sprite
     sprite: Structures/Walls/solid.rsi
-    state: wall_girder
+    layers: # Ratbite: Added electrified state
+    - state: wall_girder
+    - state: electrified
+      sprite: Effects/electricity.rsi
+      map: ["enum.ElectrifiedLayers.Sparks"]
+      shader: unshaded
+      visible: false
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallic
@@ -56,6 +62,29 @@
           collection: MetalBreak
   - type: StaticPrice
     price: 30
+  - type: Electrified # Ratbite
+    requirePower: true
+    highVoltageNode: high
+    mediumVoltageNode: medium
+    lowVoltageNode: low
+  - type: NodeContainer # Ratbite
+    nodes:
+      high:
+        !type:CableDeviceNode
+        nodeGroupID: HVPower
+      medium:
+        !type:CableDeviceNode
+        nodeGroupID: MVPower
+      low:
+        !type:CableDeviceNode
+        nodeGroupID: Apc
+  - type: Appearance # Ratbite
+  - type: GenericVisualizer # Ratbite
+    visuals:
+      enum.ElectrifiedVisuals.ShowSparks:
+        enum.ElectrifiedLayers.Sparks:
+          True: { visible: True }
+          False: { visible: False }
 
 - type: entity
   id: ReinforcedGirder
@@ -108,7 +137,13 @@
   components:
     - type: Sprite
       sprite: Structures/Walls/clock.rsi
-      state: wall_gear
+      layers:
+      - state: wall_gear
+      - state: electrified
+        sprite: Effects/electricity.rsi
+        map: ["enum.ElectrifiedLayers.Sparks"]
+        shader: unshaded
+        visible: false
     - type: Construction
       graph: ClockworkGirder
       node: clockGirder
