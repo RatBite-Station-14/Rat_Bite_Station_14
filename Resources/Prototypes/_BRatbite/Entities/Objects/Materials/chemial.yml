@@ -1,0 +1,60 @@
+- type: entity
+  parent: MaterialBase
+  id: Chemial
+  name: chemial
+  description: A weird substance that reacts to electricity to form various chemicals.
+  suffix: Full
+  components:
+  - type: Sprite
+    sprite: _BRatbite/Objects/Materials/chemial.rsi
+    state: chemial_3
+    layers:
+    - state: chemial_3
+      map: ["base"]
+  - type: PhysicalComposition
+    materialComposition:
+      Chemial: 100
+  - type: Material
+  - type: Stack
+    stackType: Chemial
+    baseLayer: base
+    layerStates:
+    - chemial_1
+    - chemial_2
+    - chemial_3
+  - type: Chemial
+    reagents: # I wanted to put every reagent from the energy chem,
+              # but it could be easily abused to spam reagents and lag
+              # the server with random reactions and random potassium/foam spills
+    - Carbon
+    - Chlorine
+    - Ethanol
+    - Sulfur
+    spillQuantity: 0.2
+  - type: Appearance
+
+- type: entity
+  parent: Chemial
+  id: Chemial10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: Chemial
+  id: Chemial1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: material
+  id: Chemial
+  stackEntity: Chemial1
+  name: chemial-material-name
+  icon:
+    sprite: _BRatbite/Objects/Materials/chemial.rsi
+    state: chemial_3
+  color: "#008f8f"
+  price: 0.10

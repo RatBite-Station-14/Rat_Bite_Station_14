@@ -667,6 +667,7 @@
     - MedicalVehiclesStatic
     - MedicalBoardsStatic
     - MedicalBoardsStaticGoob
+    - EnergyChemistryStatic # Ratbite
     - PowerCellsStatic
     - GrenadeTriggersStatic
     # Einstein Engines Packs
