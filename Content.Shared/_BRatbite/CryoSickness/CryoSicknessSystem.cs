@@ -4,10 +4,8 @@ using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Damage;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
-using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Popups;
-using Content.Shared.StatusEffect;
 using Content.Shared.Tag;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -19,8 +17,6 @@ public abstract class SharedCryoSicknessSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly TagSystem _tagSystem = default!;
 
@@ -61,9 +57,6 @@ public abstract class SharedCryoSicknessSystem : EntitySystem
             var duration = TimeSpan.FromMinutes(ent.Comp.DurationInMinutes);
             ent.Comp.ExpireTime = _timing.CurTime + duration;
             ent.Comp.HadPacifism = HasComp<PacifiedComponent>(ent);
-
-            if (!_statusEffectsSystem.HasStatusEffect(ent.Owner, ent.Comp.Effect))
-                _statusEffectsSystem.TryAddStatusEffect(ent.Owner, ent.Comp.Effect, duration, true, new PacifiedComponent());
         }
 
         EnsureComp<PacifiedComponent>(ent);
@@ -81,7 +74,6 @@ public abstract class SharedCryoSicknessSystem : EntitySystem
         if (LifeStage(ent) >= EntityLifeStage.Terminating) return;
         if (!ent.Comp.HadPacifism)
         {
-            _statusEffectsSystem.TryRemoveStatusEffect(ent.Owner, ent.Comp.Effect);
             RemComp<PacifiedComponent>(ent);
         }
         _popup.PopupClient(Loc.GetString("cryosickness-end-popup"), ent.Owner, ent.Owner);
@@ -109,7 +101,6 @@ public abstract class SharedCryoSicknessSystem : EntitySystem
         if ((args.DamageDelta?.GetTotal() ?? 0) < ent.Comp.MinDamageBeforeRemove && args.Damageable.Damage.GetTotal() < ent.Comp.MinTotalDamageBeforeRemove) return;
         if (!ent.Comp.HadPacifism)
         {
-            _statusEffectsSystem.TryRemoveStatusEffect(ent.Owner, ent.Comp.Effect);
             if (RemComp<PacifiedComponent>(ent))
             {
                 // I'm not completely sold if it should be removed
@@ -128,7 +119,6 @@ public abstract class SharedCryoSicknessSystem : EntitySystem
         if (newTime < ent.Comp.ExpireTime)
         {
             ent.Comp.ExpireTime = newTime;
-
         }
 
         if (args.Origin is null) return;
@@ -168,7 +158,7 @@ public abstract class SharedCryoSicknessSystem : EntitySystem
             return;
 
         // Allow defending against non-player mobs/entities while keeping cryo PvP protection.
-        if (!_mind.TryGetMind(target, out _, out _))
+        if (!_tagSystem.HasTag(ent, _cryoSicknessTag))
             args.Cancel();
     }
 
