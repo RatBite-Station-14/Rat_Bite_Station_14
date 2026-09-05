@@ -8,3 +8,5 @@ job-name-sci-guard = Sci-Curity Guard
 job-name-cargo-insurance = Cargo Insurance
 
 job-name-redsight-overseer = Redsight Overseer
+
+job-name-tram-driver = tram driver
