@@ -1,0 +1,42 @@
+- type: entity
+  parent: SheetOtherBase
+  id: Chemial
+  name: chemial
+  description: A weird substance that is slowly leaking chemicals.
+  suffix: Full
+  components:
+  - type: Sprite
+    sprite: _BRatbite/Objects/Materials/chemial.rsi
+    state: chemial
+  - type: PhysicalComposition
+    materialComposition:
+      Chemial: 100
+  - type: Material
+  - type: Stack
+    stackType: Chemial
+
+- type: entity
+  parent: Chemial
+  id: Chemial10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: Chemial
+  id: Chemial1
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1
+
+- type: material
+  id: Chemial
+  stackEntity: Chemial1
+  name: chemial-material-name
+  icon:
+    sprite: _BRatbite/Objects/Materials/chemial.rsi
+    state: chemial
+  color: "#008f8f"
+  price: 0.10
