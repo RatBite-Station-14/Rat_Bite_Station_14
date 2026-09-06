@@ -8,6 +8,9 @@ using Content.Goobstation.Common.ItemMiner;
 using Content.Server.Chat.Systems;
 using Content.Server.Pinpointer;
 using Content.Server.Station.Components;
+using Content.Shared._BRatbite.TrackingHud;
+using Robust.Server.GameObjects;
+using Robust.Shared.Utility;
 
 namespace Content.Goobstation.Server.ItemMiner;
 
@@ -15,12 +18,15 @@ public sealed class TelecrystalMinerSystem : EntitySystem
 {
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly NavMapSystem _navMap = default!;
+    [Dependency] private readonly SharedTrackingTargetSystem _trackingTargetSystem = default!;
+    [Dependency] private readonly TransformSystem _transformSystem = default!;
 
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<TelecrystalMinerComponent, ItemMinerCheckEvent>(OnCheck);
         SubscribeLocalEvent<TelecrystalMinerComponent, ItemMinedEvent>(OnMined);
+        SubscribeLocalEvent<TelecrystalMinerComponent, ComponentShutdown>(OnShutdown);
     }
 
     private void OnCheck(Entity<TelecrystalMinerComponent> ent, ref ItemMinerCheckEvent args)
@@ -71,8 +77,31 @@ public sealed class TelecrystalMinerSystem : EntitySystem
                 }
                 break;
             }
+            case TCMinerStage.LocationAnnounced:
+            {
+                if (ent.Comp.Accumulated >= ent.Comp.LocationWithPingAt)
+                {
+                    ent.Comp.NotifiedStage = TCMinerStage.LocationWithPing;
+                    var xform = Transform(ent);
+                    _chat.DispatchStationAnnouncement(xform.ParentUid, Loc.GetString(ent.Comp.LocationAnnouncementWithPing), colorOverride: Color.Yellow);
+                    var coords = _transformSystem.GetMapCoordinates(xform);
+                    ent.Comp.LocationPingId = _trackingTargetSystem.AddTargetToAllEntities(new TrackingTarget {
+                        TargetLocation = coords.Position,
+                        PinColor = Color.DarkRed,
+                        MapId = coords.MapId,
+                        Sprite = new SpriteSpecifier.Rsi(new ("/Textures/_Goobstation/Structures/Machines/tc_printer.rsi"), "icon"),
+                    });
+                }
+                break;
+            }
             default:
                 break;
         }
+    }
+
+    private void OnShutdown(Entity<TelecrystalMinerComponent> ent, ref ComponentShutdown args)
+    {
+        if (ent.Comp.LocationPingId is { } pingId)
+            _trackingTargetSystem.RemoveFromAllTargets(pingId);
     }
 }

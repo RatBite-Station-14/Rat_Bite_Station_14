@@ -31,6 +31,17 @@ public sealed partial class TelecrystalMinerComponent : Component
     [DataField]
     public int LocationAt = 100;
 
+    // Ratbite start
+    [DataField]
+    public int LocationWithPingAt = 150;
+
+    [DataField]
+    public LocId LocationAnnouncementWithPing = "telecrystal-miner-announcement3";
+
+    [ViewVariables]
+    public string? LocationPingId;
+    // Ratbite end
+
     [DataField]
     public LocId LocationAnnouncement = "telecrystal-miner-announcement2";
 
@@ -45,5 +56,6 @@ public enum TCMinerStage
 {
     Initial,
     FirstAnnounced,
-    LocationAnnounced
+    LocationAnnounced,
+    LocationWithPing, // Ratbite
 }
