@@ -7,6 +7,9 @@
   - type: Sprite
     sprite: _BRatbite/Clothing/Shoes/Boots/magboots-sec.rsi
     state: icon
+  - type: ToggleClothing
+    action: ActionToggleSecMagboots
+    mustEquip: false
   - type: Clothing
     sprite: _BRatbite/Clothing/Shoes/Boots/magboots-sec.rsi
   - type: PhysicalComposition
@@ -18,3 +21,20 @@
     sprintModifier: 0.90
   - type: AccessReader
     access: [["Security"]]
+
+
+- type: entity
+  parent: BaseAction
+  id: ActionToggleSecMagboots
+  name: Toggle Magboots
+  description: Toggles the magboots on and off.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+  - type: InstantAction
+    event: !type:ToggleActionEvent
+  - type: DoAfterArgs
+    delay: 1
+    breakOnDamage: true
+    breakOnWeightlessMove: false
+    breakOnMove: true
