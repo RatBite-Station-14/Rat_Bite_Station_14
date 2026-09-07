@@ -368,7 +368,7 @@
 
 - type: entity
   name: DT-12 "Lawbringer"
-  parent: [BaseWeaponBatterySmall, BaseGrandTheftContraband]
+  parent: [BaseWeaponBatterySmall, BaseMindshieldedWeapon, BaseGrandTheftContraband] # Ratbite
   id: WeaponEnergyGunLawbringer
   description: A versatile energy gun, with many different modes. The owner of this gun embodies the law itself.
   components:
@@ -457,24 +457,12 @@
   - type: BatterySelfRecharger
     autoRechargeRate: 50
     autoRechargePauseTime: 40
-  - type: ItemSlots
-    slots:
-    # Ratbite
-      gun_tracker:
-        name: Gun Tracker
-        startingItem: GunTracker
-        whitelist:
-          components:
-          - GunTracker
-        swap: false
-        disableEject: true
-  - type: GunTrackable #Ratbite, mindshield restriction system
 
 - type: entity
   name: ion rifle
   id: WeaponEnergyIonRifle
   description: An energy rifle that shoots ionized energy bolts designed to destroy mechanical targets.
-  parent: [BaseWeaponBattery, BaseSecurityContraband]
+  parent: [BaseWeaponBattery, BaseMindshieldedWeapon, BaseSecurityContraband] # Ratbite
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Battery/ion_rifle.rsi
@@ -509,3 +497,4 @@
   - type: Battery
     maxCharge: 800
     startingCharge: 800
+
