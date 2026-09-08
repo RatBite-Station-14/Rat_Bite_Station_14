@@ -1,0 +1,19 @@
+﻿- type: foodPreparationMethod
+  id: Baking
+  cookTimeMultiplier: 2.0
+  foodStatus: GoodHot
+
+- type: foodPreparationMethod
+  id: Boiling
+  cookTimeMultiplier: 1.5
+  foodStatus: GoodHot
+
+- type: foodPreparationMethod
+  id: Microwaving
+  cookTimeMultiplier: 1.0
+  foodStatus: Reheated
+
+- type: foodPreparationMethod
+  id: Preserving
+  cookTimeMultiplier: 2.0
+  foodStatus: Preserved

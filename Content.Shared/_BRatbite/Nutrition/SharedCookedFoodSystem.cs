@@ -17,18 +17,18 @@ public sealed partial class SharedCookedFoodSystem : EntitySystem
     {
         base.Initialize();
         MaxFreshnessLevels = _proto.GetInstances<FoodStatusPrototype>().Count;
-        SubscribeLocalEvent<CookedFoodComponent, MapInitEvent>(OnCookedFoodInit);
-        SubscribeLocalEvent<CookedFoodComponent, ExaminedEvent>(OnExamined);
-        SubscribeLocalEvent<CookedFoodComponent, BeingMicrowavedEvent>(OnMicrowaved);
+        SubscribeLocalEvent<Components.CookedFoodComponent, MapInitEvent>(OnCookedFoodInit);
+        SubscribeLocalEvent<Components.CookedFoodComponent, ExaminedEvent>(OnExamined);
+        SubscribeLocalEvent<Components.CookedFoodComponent, BeingMicrowavedEvent>(OnMicrowaved);
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypeReload);
     }
 
-    private void OnCookedFoodInit(Entity<CookedFoodComponent> ent, ref MapInitEvent args)
+    private void OnCookedFoodInit(Entity<Components.CookedFoodComponent> ent, ref MapInitEvent args)
     {
         ent.Comp.LastFreshnessUpdate = _timing.CurTime;
     }
 
-    public ProtoId<FoodStatusPrototype> GetFreshnessLevel(Entity<CookedFoodComponent> ent)
+    public ProtoId<FoodStatusPrototype> GetFreshnessLevel(Entity<Components.CookedFoodComponent> ent)
     {
         var foodDecay = _proto.Index(ent.Comp.FoodDecayPrototype);
         ref var currentFreshness = ref ent.Comp.CurrentFreshness;
@@ -46,7 +46,7 @@ public sealed partial class SharedCookedFoodSystem : EntitySystem
         return currentFreshness;
     }
 
-    public ProtoId<FoodStatusPrototype>? GetTemperatureStatus(Entity<CookedFoodComponent> ent)
+    public ProtoId<FoodStatusPrototype>? GetTemperatureStatus(Entity<Components.CookedFoodComponent> ent)
     {
         if (!TryComp<TemperatureComponent>(ent, out var tempComp)) return null;
         float closest = 0f;
@@ -68,7 +68,7 @@ public sealed partial class SharedCookedFoodSystem : EntitySystem
         }
     }
 
-    private void OnExamined(Entity<CookedFoodComponent> ent, ref ExaminedEvent args)
+    private void OnExamined(Entity<Components.CookedFoodComponent> ent, ref ExaminedEvent args)
     {
         var freshness = _proto.Index(GetFreshnessLevel(ent));
         if (freshness.ExamineText is { } examineText)
@@ -82,7 +82,7 @@ public sealed partial class SharedCookedFoodSystem : EntitySystem
         }
     }
 
-    private void OnMicrowaved(Entity<CookedFoodComponent> ent, ref BeingMicrowavedEvent args)
+    private void OnMicrowaved(Entity<Components.CookedFoodComponent> ent, ref BeingMicrowavedEvent args)
     {
         ent.Comp.FoodTemperaturePrototype = MicrowavedPrototype;
     }

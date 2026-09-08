@@ -19,7 +19,7 @@ public sealed partial class InjectOvertimeStatusEffectSystem : OvertimeStatusEff
         var eq = EntityQueryEnumerator<InjectOvertimeStatusEffectComponent, StatusEffectComponent>();
         while (eq.MoveNext(out var uid, out var injectOvertimeComp, out var statusEffect))
         {
-            var scale = CompOrNull<StatusEffectScaleComponent>(uid)?.Scale ?? 1f;
+            var scale = CompOrNull<Components.StatusEffectScaleComponent>(uid)?.Scale ?? 1f;
             if (!TryComp<SolutionComponent>(uid, out var solutionComp)) continue;
             if (statusEffect.AppliedTo is not { } appliedTo) continue;
             if (!_solutionContainers.TryGetInjectableSolution(appliedTo, out var targetSoln, out var targetSolution))

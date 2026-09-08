@@ -1,3 +1,4 @@
+using Content.Shared._BRatbite.Nutrition.Components;
 using Content.Shared.Damage.Components;
 using Content.Shared.StatusEffectNew;
 
@@ -16,7 +17,7 @@ public sealed partial class ChangeStaminaStatusEffectSystem : EntitySystem
     private void OnStatusApplied(Entity<ChangeStaminaStatusEffectComponent> ent, ref StatusEffectAppliedEvent args)
     {
         if (!TryComp<StaminaComponent>(args.Target, out var stamina)) return;
-        var scale = CompOrNull<StatusEffectScaleComponent>(ent)?.Scale ?? 1f;
+        var scale = CompOrNull<Components.StatusEffectScaleComponent>(ent)?.Scale ?? 1f;
         stamina.CritThreshold += ent.Comp.AddedStamina * scale;
         Dirty(args.Target, stamina);
     }
@@ -24,7 +25,7 @@ public sealed partial class ChangeStaminaStatusEffectSystem : EntitySystem
     private void OnStatusRemoved(Entity<ChangeStaminaStatusEffectComponent> ent, ref StatusEffectRemovedEvent args)
     {
         if (!TryComp<StaminaComponent>(args.Target, out var stamina)) return;
-        var scale = CompOrNull<StatusEffectScaleComponent>(ent)?.Scale ?? 1f;
+        var scale = CompOrNull<Components.StatusEffectScaleComponent>(ent)?.Scale ?? 1f;
         stamina.CritThreshold -= ent.Comp.AddedStamina * scale;
         Dirty(args.Target, stamina);
     }

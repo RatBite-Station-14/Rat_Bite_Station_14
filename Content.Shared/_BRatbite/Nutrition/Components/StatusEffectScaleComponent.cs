@@ -1,4 +1,4 @@
-namespace Content.Shared._BRatbite.Nutrition;
+﻿namespace Content.Shared._BRatbite.Nutrition.Components;
 
 [RegisterComponent]
 // A status effect that can be scaled

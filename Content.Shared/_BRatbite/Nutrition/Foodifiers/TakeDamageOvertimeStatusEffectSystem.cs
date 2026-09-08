@@ -12,7 +12,7 @@ public sealed partial class TakeDamageOvertimeStatusEffectSystem : OvertimeStatu
         var eq = EntityQueryEnumerator<TakeDamageOvertimeStatusEffectComponent, StatusEffectComponent>();
         while (eq.MoveNext(out var uid, out var damageOvertimeComp, out var statusEffect))
         {
-            var scale = CompOrNull<StatusEffectScaleComponent>(uid)?.Scale ?? 1f;
+            var scale = CompOrNull<Components.StatusEffectScaleComponent>(uid)?.Scale ?? 1f;
             _damageableSystem.TryChangeDamage(statusEffect.AppliedTo, damageOvertimeComp.DamagePerSecond * scale * elapsedTime.TotalSeconds);
         }
     }

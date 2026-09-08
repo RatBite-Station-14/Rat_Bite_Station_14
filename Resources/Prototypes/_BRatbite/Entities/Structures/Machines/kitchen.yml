@@ -1,0 +1,351 @@
+﻿- type: entity
+  abstract: true
+  id: BaseCookingMachine
+  parent: [ BaseMachinePowered, SmallConstructibleMachine ]
+  components:
+  - type: Rotatable
+    rotateWhileAnchored: false
+  - type: TimedCooker
+  - type: UserInterface
+    interfaces:
+      enum.TimedCookerUiKey.Key:
+        type: TimedCookerBoundUserInterface
+  - type: ActivatableUI
+    key: enum.TimedCookerUiKey.Key
+  - type: Appearance
+  - type: ApcPowerReceiver
+    powerLoad: 400
+  - type: ContainerContainer
+    containers:
+      cooking_entity_container: !type:Container
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: EmptyOnMachineDeconstruct
+    containers:
+    - cooking_entity_container
+  - type: Transform
+    noRot: false
+  - type: GuideHelp
+    guides:
+    - Chef
+    - FoodRecipes
+
+- type: entity
+  id: KitchenOven
+  parent: [ BaseCookingMachine ]
+  name: oven
+  description: "An electric oven. It works by directing electrical current to high-resistance metal coils where energy is dissipated as heat. In other words, it's magic.\nSlower than preparing with a microwave or a pot, but generally produces higher-qualtiy food.\n"
+  components:
+  - type: CookingVessel
+    preparationMethod: Baking
+    requiresPower: true
+  - type: TimedCooker
+    onUIOpenSound: /Audio/_Goobstation/DropPod/closet_open.ogg
+    onUICloseSound: /Audio/Effects/closetclose.ogg
+    startCookingSound: /Audio/Items/Lighters/lighter1.ogg
+    loopingSound: /Audio/Effects/burning.ogg
+    foodDoneSound: /Audio/Machines/ding.ogg
+  - type: EntityHeater
+    settingSound:
+      path: /Audio/Weapons/click.ogg
+      params:
+        volume: -6
+  - type: ItemPlacer
+    maxEntities: 4 # big grill, many steaks
+    whitelist:
+      components:
+      - Temperature
+  - type: Sprite
+    sprite: _BRatBites/Entities/Machines/Kitchen/Oven.rsi
+    drawdepth: SmallObjects
+    layers:
+    - state: base
+      map: ["base"]
+    - state: low
+      map: ["range"]
+      shader: unshaded
+      visible: false
+    - state: closed
+      map: ["door"]
+    - state: closed_unlit
+      map: ["door_unlit"]
+      shader: unshaded
+      visible: false
+  - type: GenericVisualizer
+    visuals:
+      enum.TimedCookerDataKeys.DoorOpen:
+        door:
+          True: { state: open }
+          False: { state: closed }
+        door_unlit:
+          True: { state: open_unlit }
+          False: { state: closed_unlit }
+      enum.TimedCookerDataKeys.Active:
+        door_unlit:
+          True: { visible: true }
+          False : { visible: false }
+      enum.EntityHeaterVisuals.Setting:
+        range:
+          Off: { visible: false }
+          Low: { visible: true, state: low }
+          Medium: { visible: true, state: medium }
+          High: { visible: true, state: high }
+  - type: Machine
+    board: OvenMachineCircuitboard
+
+- type: entity
+  id: OvenMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: oven machine board
+  components:
+  - type: Sprite
+    state: service
+  - type: MachineBoard
+    prototype: KitchenOven
+    stackRequirements:
+      Manipulator: 2
+      Glass: 2
+      Cable: 2
+  - type: Tag
+    tags:
+    - DroneUsable
+
+- type: entity
+  id: KitchenMicrowave
+  parent: [ BaseCookingMachine ]
+  name: microwave
+  description: "An electric microwave. It's magic."
+  components:
+  - type: CookingVessel
+    preparationMethod: Microwaving
+    requiresPower: true
+  - type: TimedCooker
+    loopingSound: /Audio/Machines/microwave_loop.ogg
+    onUIOpenSound: /Audio/_Goobstation/DropPod/closet_open.ogg
+    onUICloseSound: /Audio/Effects/closetclose.ogg
+  - type: Sprite
+    sprite: _BRatBites/Entities/Machines/Kitchen/Directional_microwave.rsi
+    drawdepth: SmallObjects
+    layers:
+    - state: mw
+      map: ["body"]
+    - state: mwbloody
+      map: ["blood"]
+      visible: false
+    - state: mw_unlit
+      map: ["display"]
+      shader: unshaded
+    - state: mw_running_unlit
+      map: ["running"]
+      shader: unshaded
+      visible: false
+  - type: GenericVisualizer
+    visuals:
+      enum.TimedCookerDataKeys.DoorOpen:
+        body:
+          True: { state: mwo }
+          False: { state: mw }
+        blood:
+          True: { state: mwbloodyo }
+          False: { state: mwbloody }
+      enum.TimedCookerDataKeys.Bloody:
+        blood:
+          True: { visible: true }
+          False: { visible: false }
+      enum.TimedCookerDataKeys.Active:
+        running:
+          True: { visible: true }
+          False: { visible: false }
+      enum.PowerDeviceVisuals.Powered:
+        display:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Machine
+    board: MicrowaveMachineCircuitboard
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 5
+    totalIntensity: 2.5
+    intensitySlope: 2.5
+    canCreateVacuum: false
+    deleteAfterExplosion: true
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.3,-0.16,0.3,0.16"
+        density: 190
+        mask:
+        - TabletopMachineMask
+        layer:
+        - TabletopMachineLayer
+  - type: Item
+    sprite: _BRatBites/Entities/Machines/Kitchen/Directional_microwave.rsi
+    size: Ginormous
+  - type: MultiHandedItem
+  - type: MeleeWeapon
+    attackRate: 0.5
+    soundHit:
+      collection: MetalBreak
+    damage:
+      types:
+        Blunt: 25
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 10
+  - type: DamageOnHit
+    damage:
+      types:
+        Blunt: 10
+  - type: DamageOnLand
+    damage:
+      types:
+        Blunt: 50
+  - type: EmitSoundOnLand
+    sound:
+      collection: MetalBreak
+      params:
+        variation: 0.25
+  - type: HeldSpeedModifier
+    walkModifier: 0.7
+    sprintModifier: 0.7
+  - type: DamageExaminable
+
+- type: entity
+  id: MicrowaveMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: microwave machine board
+  components:
+  - type: Sprite
+    state: service
+  - type: MachineBoard
+    prototype: KitchenMicrowave
+    stackRequirements:
+      Manipulator: 1
+      Glass: 2
+      Cable: 2
+  - type: Tag
+    tags:
+    - DroneUsable
+    - MicrowaveMachineBoard
+
+- type: entity
+  id: KitchenPreservatronic
+  parent: [ BaseCookingMachine ]
+  name: preservatronic
+  description: "Waiter, Waiter, more slop please!"
+  components:
+  - type: CookingVessel
+    preparationMethod: Preserving
+    requiresPower: true
+  - type: TimedCooker
+    loopingSound: /Audio/Machines/microwave_loop.ogg
+    onUIOpenSound: /Audio/_Goobstation/DropPod/closet_open.ogg
+    onUICloseSound: /Audio/Effects/closetclose.ogg
+  - type: Sprite
+    sprite: _BRatBites/Entities/Machines/Kitchen/Preservatronic.rsi
+    drawdepth: SmallObjects
+    layers:
+    - state: base
+    - state: closed
+      map: ["door"]
+    - state: on_unlit
+      map: [ "base_unlit" ]
+      shader: unshaded
+      visible: false
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        base_unlit:
+          True: { visible: true }
+          False: { visible: false }
+      enum.TimedCookerDataKeys.DoorOpen:
+        door:
+          True: { state: open }
+          False: { state: closed }
+  - type: Machine
+    board: PreservatronicMachineCircuitboard
+
+- type: entity
+  id: PreservatronicMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: preservatronic machine board
+  components:
+  - type: Sprite
+    state: service
+  - type: MachineBoard
+    prototype: KitchenPreservatronic
+    stackRequirements:
+      Manipulator: 2
+      Glass: 1
+      Cable: 2
+  - type: Tag
+    tags:
+    - DroneUsable
+
+- type: entity
+  id: KitchenElectricGrill
+  parent: [ BaseHeaterMachine ]
+  name: electric grill
+  description: "A boy's grill. 'cause it's electric."
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Entities/Machines/Kitchen/Directional_grill.rsi
+    drawdepth: SmallObjects
+    layers:
+    - state: icon
+    - map: [ "enum.EntityHeaterVisuals.Setting" ]
+      shader: unshaded
+      visible: false
+  - type: ApcPowerReceiver
+    powerLoad: 0
+  - type: EntityHeater
+    settingSound:
+      path: /Audio/Weapons/click.ogg
+      params:
+        volume: -6
+  - type: ItemPlacer
+    maxEntities: 4
+    whitelist:
+      components:
+      - Temperature
+  - type: PlaceableSurface
+  - type: Machine
+    board: ElectricGrillMachineCircuitboard
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.EntityHeaterVisuals.Setting:
+        enum.EntityHeaterVisuals.Setting:
+          Off: { visible: false }
+          Low: { visible: true, state: low }
+          Medium: { visible: true, state: medium }
+          High: { visible: true, state: high }
+
+- type: entity
+  id: ElectricGrillMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: electric grill machine board
+  components:
+  - type: Sprite
+    state: service
+  - type: MachineBoard
+    prototype: KitchenElectricGrill
+    stackRequirements:
+      Manipulator: 4
+      Glass: 2
+      Cable: 5
+  - type: Tag
+    tags:
+    - DroneUsable
