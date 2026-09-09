@@ -76,9 +76,12 @@
   priority: 2
   children:
   - CargoSOP
+  - CentralCommandSOP # Ratbite
   - CommandSOP
+  - DepartmentalGuardSOP # Ratbite
   - EngineeringSOP
   - MedicalSOP
+  - PsychologistSOP # Ratbite
   - ScienceSOP
   - SecuritySOP
   - ServiceSOP
