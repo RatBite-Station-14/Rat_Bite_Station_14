@@ -36,6 +36,8 @@
   access:
   - Maintenance
   - Medical
+  - Chemistry
+  - DepartmentalGuard
 
   special:
   - !type:AddImplantSpecial
@@ -106,6 +108,7 @@
   access:
   - Cargo
   - Maintenance
+  - DepartmentalGuard
 
   special:
   - !type:AddImplantSpecial
@@ -174,6 +177,7 @@
   access:
   - Research
   - Maintenance
+  - DepartmentalGuard
 
   special: # Sci guard has mindshield because fuck you.
   - !type:AddImplantSpecial
@@ -242,10 +246,9 @@
   access:
   - Maintenance
   - Engineering
-  - External
-  extendedAccess:
   - Atmospherics
-
+  - DepartmentalGuard
+  - External
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
