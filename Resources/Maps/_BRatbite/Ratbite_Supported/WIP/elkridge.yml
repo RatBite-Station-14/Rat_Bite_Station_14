@@ -47810,7 +47810,7 @@ entities:
     - type: Transform
       pos: -70.281,-10.984222
       parent: 2
-- proto: ClothingHandsGlovesColorYellow
+- proto: ClothingHandsGlovesColorYellowBudget
   entities:
   - uid: 6695
     components:

@@ -60179,7 +60179,7 @@ entities:
     - type: Transform
       pos: 13.480946,-3.4905777
       parent: 24772
-- proto: ClothingHandsGlovesColorYellow
+- proto: ClothingHandsGlovesColorYellowBudget
   entities:
   - uid: 9287
     components:

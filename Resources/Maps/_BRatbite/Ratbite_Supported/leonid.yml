@@ -101354,7 +101354,7 @@ entities:
     - type: Transform
       pos: -32.489037,-7.358781
       parent: 2
-- proto: ClothingHandsGlovesColorYellow
+- proto: ClothingHandsGlovesColorYellowBudget
   entities:
   - uid: 9046
     components:
@@ -101369,7 +101369,7 @@ entities:
     - type: Physics
       angularDamping: 0
       linearDamping: 0
-- proto: ClothingHandsGlovesColorYellowBudget
+- proto: ClothingHandsGlovesColorYellowBudgetBudget
   entities:
   - uid: 16350
     components:
