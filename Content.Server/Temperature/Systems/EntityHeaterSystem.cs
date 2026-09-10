@@ -2,9 +2,11 @@
 
 using Content.Server.Power.Components;
 using Content.Shared.Placeable;
+using Content.Shared.Tag;
 using Content.Shared.Temperature;
 using Content.Shared.Temperature.Components;
 using Content.Shared.Temperature.Systems;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Temperature.Systems;
 
@@ -14,6 +16,8 @@ namespace Content.Server.Temperature.Systems;
 public sealed class EntityHeaterSystem : SharedEntityHeaterSystem
 {
     [Dependency] private readonly TemperatureSystem _temperature = default!;
+    [Dependency] private readonly TagSystem _tagSystem = default!; // Ratbite
+    private static readonly ProtoId<TagPrototype> DoNotHeatTag = "EntityHeaterBlacklist"; // Ratbite
 
     public override void Initialize()
     {
@@ -43,6 +47,8 @@ public sealed class EntityHeaterSystem : SharedEntityHeaterSystem
             var energy = power.PowerReceived * deltaTime;
             foreach (var ent in placer.PlacedEntities)
             {
+                if (_tagSystem.HasTag(ent, DoNotHeatTag)) // Ratbite
+                    continue;
                 _temperature.ChangeHeat(ent, energy);
             }
         }

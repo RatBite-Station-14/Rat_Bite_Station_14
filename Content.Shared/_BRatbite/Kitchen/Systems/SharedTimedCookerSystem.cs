@@ -22,7 +22,7 @@ public abstract class SharedTimedCookerSystem : EntitySystem
         SubscribeLocalEvent<TimedCookerComponent, EntInsertedIntoContainerMessage>(OnContainerContentsUpdate);
         SubscribeLocalEvent<TimedCookerComponent, EntRemovedFromContainerMessage>(OnContainerContentsUpdate);
         SubscribeLocalEvent<TimedCookerComponent, TimedCookerEjectMessage>(OnEjectMsg);
-        SubscribeLocalEvent<TimedCookerComponent, TimedCookerEjectIndexedIngrediantMessage>(OnEjectIndex);
+        SubscribeLocalEvent<TimedCookerComponent, TimedCookerEjectIndexedIngredientMessage>(OnEjectIndex);
 
         SubscribeLocalEvent<ActiveTimedCookerComponent, EntInsertedIntoContainerMessage>(OnActiveCookerInsert);
         SubscribeLocalEvent<ActiveTimedCookerComponent, EntRemovedFromContainerMessage>(OnActiveCookerRemove);
@@ -57,7 +57,7 @@ public abstract class SharedTimedCookerSystem : EntitySystem
         beingUsedInRecipeComponent.OwnedBy = ent;
     }
 
-    private void OnEjectIndex(Entity<TimedCookerComponent> ent, ref TimedCookerEjectIndexedIngrediantMessage args)
+    private void OnEjectIndex(Entity<TimedCookerComponent> ent, ref TimedCookerEjectIndexedIngredientMessage args)
     {
         if (!GetContents(ent, out var cookingVesselComponent))
             return;

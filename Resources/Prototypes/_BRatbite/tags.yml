@@ -10,3 +10,8 @@
 - type: Tag
   id: BypassMindshieldAccessRequirement
 
+- type: Tag
+  id: SolutionHeaterBlacklist
+
+- type: Tag
+  id: EntityHeaterBlacklist

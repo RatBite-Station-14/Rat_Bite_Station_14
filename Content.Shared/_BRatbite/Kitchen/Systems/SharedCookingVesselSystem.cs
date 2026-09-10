@@ -34,7 +34,7 @@ public abstract class SharedCookingVesselSystem : EntitySystem
 
     private void OnGetVerbs(Entity<CookingVesselComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
     {
-        if (!args.CanAccess || !args.CanInteract)
+        if (!args.CanAccess || !args.CanInteract || ent.Comp.Cooking)
             return;
 
         args.Verbs.Add(
@@ -87,7 +87,7 @@ public abstract class SharedCookingVesselSystem : EntitySystem
             }
         }
 
-        if (HasComp<ToolComponent>(args.Used)) // they'll want to insert it via right-click verb.
+        if (HasComp<ToolComponent>(args.Used) || HasComp<ContainerCookerComponent>(args.Used)) // they'll want to insert it via right-click verb.
             return;
 
         if (TryComp<ItemComponent>(args.Used, out var item))

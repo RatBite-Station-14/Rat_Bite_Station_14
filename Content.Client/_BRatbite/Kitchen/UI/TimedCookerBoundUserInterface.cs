@@ -108,7 +108,7 @@ public sealed class TimedCookerBoundUserInterface(EntityUid owner, Enum uiKey) :
             };
             button.OnPressed += _ =>
             {
-                SendPredictedMessage(new TimedCookerEjectIndexedIngrediantMessage(EntMan.GetNetEntity(ingredient)));
+                SendPredictedMessage(new TimedCookerEjectIndexedIngredientMessage(EntMan.GetNetEntity(ingredient)));
             };
             _menu.IngredientsList.AddChild(listEntry);
         }

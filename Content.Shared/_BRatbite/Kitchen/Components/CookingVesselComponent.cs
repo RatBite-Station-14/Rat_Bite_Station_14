@@ -21,6 +21,9 @@ public sealed partial class CookingVesselComponent : Component
     [DataField, AutoNetworkedField, ViewVariables]
     public bool RequiresPower;
 
+    [DataField, AutoNetworkedField, ViewVariables]
+    public bool Cooking;
+
     #region storage
     public Container Storage = default!;
 

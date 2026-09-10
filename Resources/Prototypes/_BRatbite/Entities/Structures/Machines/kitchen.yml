@@ -5,6 +5,8 @@
   components:
   - type: Rotatable
     rotateWhileAnchored: false
+  - type: Transform
+    noRot: false
   - type: TimedCooker
   - type: UserInterface
     interfaces:
@@ -23,12 +25,22 @@
   - type: EmptyOnMachineDeconstruct
     containers:
     - cooking_entity_container
-  - type: Transform
-    noRot: false
   - type: GuideHelp
     guides:
     - Chef
     - FoodRecipes
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+
 
 - type: entity
   id: KitchenOven
@@ -55,6 +67,26 @@
     whitelist:
       components:
       - Temperature
+      - ContainerCooker
+  - type: Fixtures
+    fixtures:
+      itemcollide:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.14,-0.05,0.15,0.25"
+        layer:
+        - HighImpassable
+        hard: false
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: PlaceableSurface
   - type: Sprite
     sprite: _BRatBites/Entities/Machines/Kitchen/Oven.rsi
     drawdepth: SmallObjects
@@ -320,6 +352,7 @@
     whitelist:
       components:
       - Temperature
+      - ContainerCooker
   - type: PlaceableSurface
   - type: Machine
     board: ElectricGrillMachineCircuitboard
@@ -349,3 +382,143 @@
   - type: Tag
     tags:
     - DroneUsable
+
+- type: entity
+  abstract: true
+  id: BaseCookingPot
+  parent: BaseItem
+  components:
+  - type: CookingVessel
+    preparationMethod: Boiling
+    requiresPower: false
+  - type: ContainerCooker
+  - type: Sprite
+    sprite: _BRatBites/Objects/Specific/Kitchen/Sauspan.rsi
+    layers:
+    - state: icon
+      map: [ "base" ]
+    - state: fill-1
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+      visible: false
+  - type: SolutionContainerVisuals
+    maxFillLevels: 3
+    fillBaseName: fill-
+    solutionName: beaker
+  - type: Tag
+    tags:                           # both types of heaters now check the ent for their respective tags.
+    - SolutionHeaterBlacklist       # it does not stop them from being placed on it, just stops it from actually applying heat.
+    - EntityHeaterBlacklist         # since heat is something we manage in the cooking systems ourselves.
+  - type: Item
+    size: Normal
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 50
+  - type: Temperature
+  - type: RefillableSolution
+    solution: beaker
+  - type: DrainableSolution
+    solution: beaker
+  - type: ExaminableSolution
+    solution: beaker
+    exactVolume: true
+  - type: DrawableSolution
+    solution: beaker
+  - type: InjectableSolution
+    solution: beaker
+  - type: SolutionTransfer
+    canChangeTransferAmount: true
+    maxTransferAmount: 50
+  - type: Spillable
+    solution: beaker
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ContainerCookerUiKey.Key:
+        type: ContainerCookerMenuBoundUserInterface
+  - type: ActivatableUI
+    key: enum.ContainerCookerUiKey.Key
+  - type: Appearance
+  - type: Edible
+    edible: Drink
+    solution: beaker
+    destroyOnEmpty: false
+    utensil: None
+    grid:
+    - 0,0,1,1
+    maxItemSize: Normal
+  - type: MeleeWeapon
+    soundNoDamage:
+      path: /Audio/Items/trayhit1.ogg
+    damage:
+      types:
+        Blunt: 5
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 5
+  - type: HeatTint # Goob - color liquid by temperature
+    colorGradient:
+    - temperature: 200
+      color: "#A0BCE0"
+    - temperature: 293
+      color: "#FFFFFF"
+    - temperature: 350
+      color: "#FFC0A8"
+    - temperature: 800
+      color: "#FF9880"
+    affectedLayers:
+    - "enum.SolutionContainerLayers.Fill"
+    - "base"
+
+- type: entity
+  id: KitchenPotSmall
+  name: sauce pan
+  description: "Almost a pot. Used for cooking.\nCan cook more than sauce in it."
+  parent: BaseCookingPot
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _BRatBites/Objects/Specific/Kitchen/Sauspan.rsi
+
+- type: entity
+  id: KitchenPotMedium
+  name: pot
+  description: "A pot. You could probably cook something with this.\nThis one doesn't squeak."
+  parent: BaseCookingPot
+  components:
+  - type: Item
+    size: Normal
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 100
+  - type: SolutionTransfer
+    maxTransferAmount: 100
+  - type: Sprite
+    sprite: _BRatBites/Objects/Specific/Kitchen/Pot.rsi
+
+- type: entity
+  id: KitchenPotLarge
+  name: boiling pot
+  description: "A substantially large pot used for cooking.\nThe pot itself isn't actually boiling."
+  parent: BaseCookingPot
+  components:
+  - type: Item
+    size: Huge
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 200
+  - type: MeleeWeapon
+    soundNoDamage:
+      path: /Audio/Items/trayhit2.ogg
+    damage:
+      types:
+        Blunt: 5
+  - type: SolutionTransfer
+    maxTransferAmount: 200
+  - type: Sprite
+    sprite: _BRatBites/Objects/Specific/Kitchen/Boilingpot.rsi

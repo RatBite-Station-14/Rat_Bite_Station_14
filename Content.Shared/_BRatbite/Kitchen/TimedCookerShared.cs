@@ -15,7 +15,7 @@ public sealed class TimedCookerStartCookingMessage(uint selectedTimePreset) : Bo
 public sealed class TimedCookerEjectMessage : BoundUserInterfaceMessage;
 
 [Serializable, NetSerializable]
-public sealed class TimedCookerEjectIndexedIngrediantMessage(NetEntity entityId) : BoundUserInterfaceMessage
+public sealed class TimedCookerEjectIndexedIngredientMessage(NetEntity entityId) : BoundUserInterfaceMessage
 {
     public NetEntity EntityId = entityId;
 }
