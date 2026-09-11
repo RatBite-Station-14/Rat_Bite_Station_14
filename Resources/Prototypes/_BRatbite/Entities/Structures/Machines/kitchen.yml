@@ -282,7 +282,7 @@
     preparationMethod: Preserving
     requiresPower: true
   - type: TimedCooker
-    loopingSound: /Audio/Machines/microwave_loop.ogg
+    loopingSound: /Audio/Effects/hydraulic_press.ogg
     onUIOpenSound: /Audio/_Goobstation/DropPod/closet_open.ogg
     onUICloseSound: /Audio/Effects/closetclose.ogg
   - type: Sprite
@@ -296,11 +296,22 @@
       map: [ "base_unlit" ]
       shader: unshaded
       visible: false
+    - state: sloppening
+      map: [ "anim" ]
+      visible: false
   - type: GenericVisualizer
     visuals:
+      enum.TimedCookerDataKeys.Active:
+        anim:
+          True: { state: sloppening, visible: true }
+          False: { visible: false }
+        door:
+          True: { state: closed }
       enum.PowerDeviceVisuals.Powered:
         base_unlit:
           True: { visible: true }
+          False: { visible: false }
+        anim:
           False: { visible: false }
       enum.TimedCookerDataKeys.DoorOpen:
         door:
