@@ -68,6 +68,24 @@
       components:
       - Temperature
       - ContainerCooker
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 1
   - type: Fixtures
     fixtures:
       itemcollide:
@@ -194,14 +212,6 @@
           False: { visible: false }
   - type: Machine
     board: MicrowaveMachineCircuitboard
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 200
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
   - type: Explosive
     explosionType: Default
     maxIntensity: 5
