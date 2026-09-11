@@ -15,7 +15,4 @@ public sealed class ContainerCookerEjectIndexedIngredientMessage(NetEntity entit
 }
 
 [Serializable, NetSerializable]
-public sealed class ContainerCookerUpdateUserInterfaceState(bool busy) : BoundUserInterfaceState
-{
-    public bool Busy = busy;
-}
+public sealed class ContainerCookerUpdateUserInterfaceState(bool busy) : BoundUserInterfaceState;

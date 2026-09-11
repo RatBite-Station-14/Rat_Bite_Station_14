@@ -9,20 +9,17 @@ namespace Content.Shared._BRatbite.Kitchen.Components;
 /// <summary>
 /// Used to denote things that can cook. See <see cref="SharedCookingVesselSystem"/>
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(SharedCookingVesselSystem))]
 public sealed partial class CookingVesselComponent : Component
 {
     [DataField("failureResult")]
     public EntProtoId BadRecipeEntityId = "FoodBadRecipe";
 
-    [DataField, ViewVariables]
+    [DataField, AutoNetworkedField, ViewVariables]
     public ProtoId<FoodPreparationMethodPrototype> PreparationMethod = "Microwaving";
 
     [DataField, AutoNetworkedField, ViewVariables]
     public bool RequiresPower;
-
-    [DataField, AutoNetworkedField, ViewVariables]
-    public bool Cooking;
 
     #region storage
     public Container Storage = default!;

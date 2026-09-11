@@ -2,7 +2,6 @@
 using Content.Server.Construction.Components;
 using Content.Server.Explosion.EntitySystems;
 using Content.Server.Lightning;
-using Content.Shared._BRatbite.Kitchen.Components;
 using Content.Shared.Database;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
@@ -34,10 +33,8 @@ public sealed class MalfunctioningMicrowaveSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        var activeMicrowaves = EntityQueryEnumerator<ActiveTimedCookerComponent, MalfunctioningMicrowaveComponent>();
-        while (activeMicrowaves.MoveNext(out var uid,
-                   out var activeTimedCookerComponent,
-                   out var malfunctioningMicrowaveComponent))
+        var activeMicrowaves = EntityQueryEnumerator<MalfunctioningMicrowaveComponent>();
+        while (activeMicrowaves.MoveNext(out var uid, out var malfunctioningMicrowaveComponent))
         {
             if (malfunctioningMicrowaveComponent.NextMalfunction > _gameTiming.CurTime)
                 continue;

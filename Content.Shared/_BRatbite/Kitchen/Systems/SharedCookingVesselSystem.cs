@@ -1,4 +1,7 @@
-﻿using Content.Shared._BRatbite.Kitchen.Components;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using Content.Shared._BRatbite.Kitchen.Components;
+using Content.Shared.Chemistry.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
@@ -34,7 +37,7 @@ public abstract class SharedCookingVesselSystem : EntitySystem
 
     private void OnGetVerbs(Entity<CookingVesselComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
     {
-        if (!args.CanAccess || !args.CanInteract || ent.Comp.Cooking)
+        if (!args.CanAccess || !args.CanInteract || HasComp<ActiveCookingVesselComponent>(ent))
             return;
 
         args.Verbs.Add(
@@ -87,7 +90,7 @@ public abstract class SharedCookingVesselSystem : EntitySystem
             }
         }
 
-        if (HasComp<ToolComponent>(args.Used) || HasComp<ContainerCookerComponent>(args.Used)) // they'll want to insert it via right-click verb.
+        if (HasComp<ToolComponent>(args.Used) || HasComp<ContainerCookerComponent>(args.Used) || HasComp<DrainableSolutionComponent>(args.Used)) // they'll want to insert it via right-click verb.
             return;
 
         if (TryComp<ItemComponent>(args.Used, out var item))
@@ -118,6 +121,29 @@ public abstract class SharedCookingVesselSystem : EntitySystem
 
         args.Handled = true;
         _sharedHandsSystem.TryDropIntoContainer(args.User, args.Used, ent.Comp.Storage);
+    }
+
+    public void EjectEntity(Entity<CookingVesselComponent?> ent, EntityUid toEject)
+    {
+        if (!GetContents(ent, out var cookingVesselComponent))
+            return;
+        _container.Remove(toEject, cookingVesselComponent.Storage);
+    }
+
+    public void EjectAllContents(Entity<CookingVesselComponent?> ent)
+    {
+        if (!GetContents(ent.Owner, out var cookingVesselComponent))
+            return;
+        _container.EmptyContainer(cookingVesselComponent.Storage);
+    }
+
+    protected bool GetContents(EntityUid ent, [NotNullWhen(true)] out CookingVesselComponent? component)
+    {
+        component = null;
+        if (!TryComp<CookingVesselComponent>(ent, out var definiteComponent))
+            return false;
+        component = definiteComponent;
+        return component.Storage.ContainedEntities.Any();
     }
 
     private void OnInit(Entity<CookingVesselComponent> ent, ref ComponentInit args)

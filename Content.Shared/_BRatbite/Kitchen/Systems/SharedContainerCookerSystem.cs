@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using Content.Shared._BRatbite.Kitchen.Components;
+﻿using Content.Shared._BRatbite.Kitchen.Components;
 using Robust.Shared.Containers;
 
 namespace Content.Shared._BRatbite.Kitchen.Systems;
@@ -10,8 +8,8 @@ namespace Content.Shared._BRatbite.Kitchen.Systems;
 /// </summary>
 public abstract class SharedContainerCookerSystem : EntitySystem
 {
-    [Dependency] private readonly SharedContainerSystem _sharedContainerSystem = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _sharedUserInterface = default!;
+    [Dependency] private readonly SharedCookingVesselSystem _sharedCookingVesselSystem = default!;
 
     public override void Initialize()
     {
@@ -20,49 +18,27 @@ public abstract class SharedContainerCookerSystem : EntitySystem
         SubscribeLocalEvent<ContainerCookerComponent, ContainerCookerEjectIndexedIngredientMessage>(OnEjectIndex);
         SubscribeLocalEvent<ContainerCookerComponent, ContainerCookerEjectMessage>(OnEjectMsg);
 
-        SubscribeLocalEvent<ContainerCookerComponent, EntInsertedIntoContainerMessage>(OnContainerContentsUpdate);
-        SubscribeLocalEvent<ContainerCookerComponent, EntRemovedFromContainerMessage>(OnContainerContentsUpdate);
+        SubscribeLocalEvent<ContainerCookerComponent, EntInsertedIntoContainerMessage>((ent, ref _) => UpdateUserInterfaceState(ent));
+        SubscribeLocalEvent<ContainerCookerComponent, EntRemovedFromContainerMessage>((ent, ref _) => UpdateUserInterfaceState(ent));
     }
 
-    private void UpdateUserInterfaceState(Entity<CookingVesselComponent> entity)
+    protected void UpdateUserInterfaceState(EntityUid ent)
     {
-        _sharedUserInterface.SetUiState(entity.Owner,
+        _sharedUserInterface.SetUiState(ent,
             ContainerCookerUiKey.Key,
-            new ContainerCookerUpdateUserInterfaceState(entity.Comp.Cooking));
+            new ContainerCookerUpdateUserInterfaceState(HasComp<ActiveCookingVesselComponent>(ent)));
     }
 
     private void OnEjectMsg(Entity<ContainerCookerComponent> ent, ref ContainerCookerEjectMessage args)
     {
-        if (!GetContents(ent, out var cookingVesselComponent))
-            return;
-        _sharedContainerSystem.EmptyContainer(cookingVesselComponent.Storage);
-        UpdateUserInterfaceState((ent, cookingVesselComponent));
+        _sharedCookingVesselSystem.EjectAllContents(ent.Owner);
+        UpdateUserInterfaceState(ent);
     }
 
     private void OnEjectIndex(Entity<ContainerCookerComponent> ent,
         ref ContainerCookerEjectIndexedIngredientMessage args)
     {
-        if (!GetContents(ent, out var cookingVesselComponent))
-            return;
-        _sharedContainerSystem.Remove(GetEntity(args.EntityId), cookingVesselComponent.Storage);
-        UpdateUserInterfaceState((ent, cookingVesselComponent));
-    }
-
-    private void OnContainerContentsUpdate(EntityUid ent,
-        ContainerCookerComponent containerCookerComponent,
-        ContainerModifiedMessage args)
-    {
-        if (!TryComp<CookingVesselComponent>(ent, out var cookingVesselComponent))
-            return;
-        UpdateUserInterfaceState((ent, cookingVesselComponent));
-    }
-
-    private bool GetContents(EntityUid ent, [NotNullWhen(true)] out CookingVesselComponent? cookingVesselComponent)
-    {
-        cookingVesselComponent = null;
-        if (!TryComp<CookingVesselComponent>(ent, out var definiteComponent))
-            return false;
-        cookingVesselComponent = definiteComponent;
-        return cookingVesselComponent.Storage.ContainedEntities.Any();
+        _sharedCookingVesselSystem.EjectEntity(ent.Owner, GetEntity(args.EntityId));
+        UpdateUserInterfaceState(ent);
     }
 }

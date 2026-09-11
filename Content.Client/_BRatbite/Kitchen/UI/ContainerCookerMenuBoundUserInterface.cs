@@ -28,7 +28,7 @@ public sealed class ContainerCookerMenuBoundUserInterface(EntityUid owner, Enum 
         if (state is not ContainerCookerUpdateUserInterfaceState cState || _menu is null)
             return;
 
-        _menu.IsBusy = cState.Busy;
+        _menu.IsBusy = EntMan.HasComponent<ActiveCookingVesselComponent>(Owner);
 
         _menu.SetPanelDisabled(_menu.IsBusy);
 

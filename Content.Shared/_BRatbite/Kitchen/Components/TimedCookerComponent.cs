@@ -10,7 +10,7 @@ namespace Content.Shared._BRatbite.Kitchen.Components;
 /// <seealso cref="CookingVesselComponent"/>
 /// <seealso cref="SharedTimedCookerSystem"/>
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, Access(typeof(SharedTimedCookerSystem))]
 public sealed partial class TimedCookerComponent : Component
 {
     /// <summary>
@@ -19,6 +19,9 @@ public sealed partial class TimedCookerComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public uint[] CookTimePresets = [5, 10, 15, 20, 25, 30];
+
+    [AutoNetworkedField]
+    public uint[]? CalculatedPresets;
 
     #region audio
 
