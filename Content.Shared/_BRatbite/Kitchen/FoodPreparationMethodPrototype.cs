@@ -16,9 +16,9 @@ public sealed partial class FoodPreparationMethodPrototype : IPrototype
     [DataField]
     public float CookTimeMultiplier = 1f;
 
-    [DataField(required: true)]
-    public ProtoId<FoodStatusPrototype> FoodStatus = "GoodHot";
+    [DataField]
+    public float ProductTemperature = 330f;
 
     [DataField]
-    public List<EntProtoId> OtherStatusEffects = [];
+    public List<EntProtoId> StatusEffects = [];
 }

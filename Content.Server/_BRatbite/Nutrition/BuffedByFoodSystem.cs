@@ -20,7 +20,7 @@ public sealed partial class BuffedByFoodSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<BuffedByFoodComponent, MapInitEvent>(OnBuffedInit);
-        SubscribeLocalEvent<Shared._BRatbite.Nutrition.Components.CookedFoodComponent, FullyEatenEvent>(OnFoodEaten);
+        SubscribeLocalEvent<CookedFoodComponent, FullyEatenEvent>(OnFoodEaten);
     }
 
     public override void Update(float _)
@@ -39,7 +39,7 @@ public sealed partial class BuffedByFoodSystem : EntitySystem
             QueueDel(ent); // Deleting the entities will call appropriate events
     }
 
-    private void OnFoodEaten(Entity<Shared._BRatbite.Nutrition.Components.CookedFoodComponent> ent, ref FullyEatenEvent args)
+    private void OnFoodEaten(Entity<CookedFoodComponent> ent, ref FullyEatenEvent args)
     {
         if (!TryComp<BuffedByFoodComponent>(args.User, out var buffedByFood)) return;
         var buff = new Buff(new());
@@ -71,7 +71,7 @@ public sealed partial class BuffedByFoodSystem : EntitySystem
             var buff = ent.Comp.ActivatedBuffs[i];
             foreach (var entity in buff.Ents)
             {
-                if (!TryComp<Shared._BRatbite.Nutrition.Components.StatusEffectScaleComponent>(entity, out var statusScale)) continue;
+                if (!TryComp<StatusEffectScaleComponent>(entity, out var statusScale)) continue;
                 // Each buff will be half as effective as the previous one
                 var ev = new StatusEffectScaleEvent(1f / (1 << i), statusScale.Scale, ent.Owner);
                 RaiseLocalEvent(entity, ref ev);

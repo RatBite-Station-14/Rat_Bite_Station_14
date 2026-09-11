@@ -5,6 +5,8 @@ using Content.Server.Temperature.Systems;
 using Content.Shared._BRatbite.Kitchen;
 using Content.Shared._BRatbite.Kitchen.Components;
 using Content.Shared._BRatbite.Kitchen.Systems;
+using Content.Shared._BRatbite.Nutrition;
+using Content.Shared._BRatbite.Nutrition.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reaction;
@@ -33,6 +35,7 @@ public sealed class CookingVesselSystem : SharedCookingVesselSystem
     [Dependency] private readonly SharedPowerReceiverSystem _sharedPowerReceiverSystem = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly SharedCookedFoodSystem _cookedFoodSystem = default!;
 
     private static readonly ProtoId<TagPrototype> MetalTag = "Metal";
     private static readonly ProtoId<TagPrototype> PlasticTag = "Plastic";
@@ -356,7 +359,12 @@ public sealed class CookingVesselSystem : SharedCookingVesselSystem
                 for (var i = 0; i < activeComp.Recipe.Value.portions; i++)
                 {
                     SubtractContents((uid, cookingVesselComp), activeComp.Recipe.Value.recipe);
-                    Spawn(activeComp.Recipe.Value.recipe.Result, Transform(uid).Coordinates);
+                    var result = Spawn(activeComp.Recipe.Value.recipe.Result, Transform(uid).Coordinates);
+                    var prepMethod = _prototype.Index(cookingVesselComp.PreparationMethod);
+                    var tempComp = EnsureComp<TemperatureComponent>(result);
+                    _temperatureSystem.ForceChangeTemperature(result, prepMethod.ProductTemperature, tempComp);
+                    var cookedFoodComponent = AddComp<CookedFoodComponent>(result);
+                    prepMethod.StatusEffects.ForEach(effect => _cookedFoodSystem.AddStatusEffect((result, cookedFoodComponent), effect));
                 }
             }
             StopCooking(uid);
