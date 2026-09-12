@@ -90,7 +90,7 @@ You were unfortunately brutally and illegally murdered (and not brought back) by
 ## Additional Rulings (Sanitarium Rulings)
 Violating sanitarium rulings will cause you to be designated as a mentally unwell convict, a risk to yourself and others. You will go to the brig in a straitjacket.
 
-Sanitarium rulings are modifiers and ONLY apply if another CRuling violation was committed in the same shift.
+Unless stated otherwise, Sanitarium rulings are modifiers and ONLY apply if another CRuling violation was committed in the same shift.
 
 SRuling 1:
 Intermittent Explosive Disorder. (IED) +4
@@ -107,6 +107,12 @@ Your crime was committed on the basis of visions, voices, or other noncorporeal/
 SRuling 4:
 Irreverent Suicidality (IS) +6
 Your crime was committed with little or no regard for your own life and resulted in your extreme endangerment or death.
+
+SRuling 5:
+Delusional Simulative Psychosis (DSP) +15
+Also known as Matrix Syndrome, you have demonstrated earnest belief of the world as a simulation and 'not real' by using terms such as "game admins" and mentions of "video game mechanics". This ruling is uniquely standalone, and does not require another CRuling violation to have been committed to be applied.
+
+The CMO and Psychologist can clear someone's Sanitarium status through the Sanitarium Release procedure, see [textlink="Psychologist/PsychWard SOP" link="PsychologistSOP"]
 
 ## Repeat Offenses:
 If you noticeably/egregiously repeat the same offense within 1 month of irl time (31 days), you will receive double the brig sentence punishment for the second and third offense, then triple for every offense after that.
