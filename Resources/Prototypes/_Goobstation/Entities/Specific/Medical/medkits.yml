@@ -20,7 +20,7 @@
       pen:
         maxVol: 40
         reagents:
-        - ReagentId: Ichor
+        - ReagentId: PrimedIchor # RatBite - Advanced combat medipen rebalance
           Quantity: 35
         - ReagentId: TranexamicAcid
           Quantity: 5

@@ -836,7 +836,7 @@
   description: uplink-advanced-combat-medipen-desc
   productEntity: AdvancedCombatMedipen
   cost:
-    Telecrystal: 24
+    Telecrystal: 30 # RatBite - Advanced combat medipen rebalance
   categories:
   - UplinkChemicals
 
