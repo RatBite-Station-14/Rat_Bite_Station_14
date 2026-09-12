@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTramDriver
+  name: tram driver jumpsuit
+  description: Perfectly ironed, for well-prepared professionals.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Uniforms/tramdriver.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Uniforms/tramdriver.rsi
