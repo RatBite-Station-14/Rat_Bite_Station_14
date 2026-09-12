@@ -158,7 +158,7 @@ public abstract class SharedCryoSicknessSystem : EntitySystem
             return;
 
         // Allow defending against non-player mobs/entities while keeping cryo PvP protection.
-        if (!_tagSystem.HasTag(ent, _cryoSicknessTag))
+        if (!_tagSystem.HasTag(target, _cryoSicknessTag))
             args.Cancel();
     }
 
