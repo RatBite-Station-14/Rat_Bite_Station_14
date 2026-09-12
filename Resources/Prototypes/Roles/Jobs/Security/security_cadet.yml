@@ -18,6 +18,15 @@
       - Felinid
       - Scurret
       - Monkey
+      - Kobold
+    - !type:TraitsRequirement # Ratbite: No NRP traits
+      inverted: true
+      traits:
+      - Trigger
+      - SocialAnxietyTrait
+      - ChronicKleptomania
+      - Nudist
+      - Stowaway
   startingGear: SecurityCadetGear
   icon: "JobIconSecurityCadet"
   supervisors: job-supervisors-security

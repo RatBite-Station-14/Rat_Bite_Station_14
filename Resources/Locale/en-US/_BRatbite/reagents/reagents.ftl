@@ -52,3 +52,5 @@ reagent-name-compressedtricordrazine = compressed tricordrazine
 reagent-desc-compressedtricordrazine = Compressed tricordrazine. Dissolves in the bloodstream into normal tricordrazine. Really dense. Would hurt if you were hit in the head with it.
 reagent-name-kaolinpowder = kaolin powder
 reagent-desc-kaolinpowder = A soft, therapeutic clotting powder. Can be splashed onto the wound to stem bleeding.
+reagent-name-primed-ichor = primed ichor
+reagent-desc-primed-ichor = A supercharged variant of ichor laced with an unknown telecrystal-derived catalyst. It metabolizes violently fast, yet somehow knits wounds back together quickly enough to watch bruises fade, bones creak into place, and organs gurgle as they reform beneath the skin.

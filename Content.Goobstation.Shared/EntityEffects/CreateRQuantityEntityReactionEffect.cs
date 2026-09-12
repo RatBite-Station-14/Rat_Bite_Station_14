@@ -9,21 +9,19 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototy
 namespace Content.Goobstation.Shared.EntityEffects;
 
 // i dont even know if this works. if you're reading this, it likely doesn't. Change the Comp.
-public sealed partial class CreateRQuantityEntityReactionEffectSystem : EntityEffectSystem<ReactiveComponent, CreateRQuantityEntityReactionEffect>
+// Ratbite: Changed to transform component so it doesn't break when it becomes unreactive
+public sealed partial class CreateRQuantityEntityReactionEffectSystem : EntityEffectSystem<TransformComponent, CreateRQuantityEntityReactionEffect>
 {
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    protected override void Effect(Entity<ReactiveComponent> entity, ref EntityEffectEvent<CreateRQuantityEntityReactionEffect> args)
+    protected override void Effect(Entity<TransformComponent> entity, ref EntityEffectEvent<CreateRQuantityEntityReactionEffect> args)
     {
         var quantity = _random.Next(1, args.Effect.MaxEntities + 1);
 
-        var coords = _transform.GetMapCoordinates(entity.Owner);
-
         for (var i = 0; i < quantity; i++)
         {
-            var uid = EntityManager.SpawnEntity(args.Effect.Entity, coords);
-            _transform.AttachToGridOrMap(uid);
+            SpawnNextToOrDrop(args.Effect.Entity, entity); // Ratbite
         }
     }
 }
@@ -34,8 +32,8 @@ public sealed partial class CreateRQuantityEntityReactionEffect : EntityEffectBa
     /// <summary>
     ///     What entity to create.
     /// </summary>
-    [DataField(required: true, customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string Entity = default!;
+    [DataField(required: true)]
+    public EntProtoId Entity = default!;
 
     /// <summary>
     ///     What is our maximum allowed entities to be spawned?

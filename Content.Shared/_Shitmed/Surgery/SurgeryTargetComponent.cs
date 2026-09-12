@@ -15,4 +15,10 @@ public sealed partial class SurgeryTargetComponent : Component
     /// </summary>
     [DataField]
     public bool SepsisImmune;
+
+    /// <summary>
+    /// Ratbite: Last time sepsis warning appeared
+    /// </summary>
+    [DataField]
+    public TimeSpan LastSepsisWarningTime;
 }

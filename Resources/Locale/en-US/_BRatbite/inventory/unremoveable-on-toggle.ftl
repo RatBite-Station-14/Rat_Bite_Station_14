@@ -1,0 +1,1 @@
+unremoveable-on-toggle-fail = Deactivate the item to unequip it

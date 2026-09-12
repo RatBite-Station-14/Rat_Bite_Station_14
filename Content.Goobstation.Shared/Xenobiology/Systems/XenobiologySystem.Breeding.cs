@@ -64,6 +64,7 @@ public partial class XenobiologySystem
     private void UpdateMitosis()
     {
         var query = EntityQueryEnumerator<SlimeComponent, MobGrowthComponent, HungerComponent>();
+        var slimeToMitosis = new List<Entity<SlimeComponent>>(); // Ratbite: C# complains if we do mitosis while it's enumerating
         while (query.MoveNext(out var uid, out var slime, out var growthComp, out var hungerComp))
         {
             if (_gameTiming.CurTime < slime.NextUpdateTime
@@ -77,9 +78,12 @@ public partial class XenobiologySystem
             if (_hunger.GetHunger(hungerComp) < slime.MitosisHunger)
                 continue;
 
-            DoMitosis((uid, slime));
+            slimeToMitosis.Add((uid, slime)); // Ratbite
             slime.NextUpdateTime = _gameTiming.CurTime + slime.UpdateInterval;
         }
+        foreach (var slime in slimeToMitosis) // Ratbite
+            DoMitosis(slime);
+
     }
 
     /// <summary>

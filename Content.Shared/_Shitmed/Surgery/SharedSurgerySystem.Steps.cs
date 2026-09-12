@@ -26,11 +26,13 @@ using Content.Shared.Item;
 using Content.Shared._Shitmed.Body.Organ;
 using Content.Shared._Shitmed.Body.Part;
 using Content.Shared.Popups;
+using Content.Shared.Tag;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using System.Linq;
 using Content.Shared._Shitmed.Surgery;
 using Content.Shared._Shitmed.Medical.Surgery.Traumas.Systems;
+using Robust.Shared.Toolshed.Commands.Values;
 
 namespace Content.Shared._Shitmed.Medical.Surgery;
 
@@ -79,6 +81,8 @@ public abstract partial class SharedSurgerySystem
             subs.Event<SurgeryStepChosenBuiMsg>(OnSurgeryTargetStepChosen);
         });
     }
+
+    private readonly TimeSpan _sepsisPopupCooldown = TimeSpan.FromSeconds(10);
 
     private void SubSurgery<TComp>(EntityEventRefHandler<TComp, SurgeryStepEvent> onStep,
         EntityEventRefHandler<TComp, SurgeryStepCompleteCheckEvent> onComplete) where TComp : IComponent
@@ -199,8 +203,8 @@ public abstract partial class SharedSurgerySystem
         // Right now the bonus is based off the body's total damage, maybe we could make it based off each part in the future.
         var bonus = ent.Comp.HealMultiplier * _wounds.GetWoundableSeverityPoint(args.Part, damageGroup: ent.Comp.MainGroup);
 
-        if (_mobState.IsDead(args.Body))
-            bonus *= 0.2;
+        //if (_mobState.IsDead(args.Body)) // Ratbite Edit: This is unnecessary.
+        //    bonus *= 0.2;
 
         var adjustedDamage = new DamageSpecifier(ent.Comp.Damage);
 
@@ -674,11 +678,17 @@ public abstract partial class SharedSurgerySystem
 
     private void OnPainInflicterCheck(Entity<SurgeryStepPainInflicterComponent> ent, ref SurgeryStepCompleteCheckEvent args)
     {
-        if (!_consciousness.TryGetNerveSystem(args.Body, out var nerveSys))
-            return;
+        // Ratbite: I don't know what the author intended, why
+        // should surgeries be marked as not complete if you can't
+        // get the pain modifier?
 
-        if (!_pain.TryGetPainModifier(nerveSys.Value.Owner, args.Part, "SurgeryPain", out _, nerveSys))
-            args.Cancelled = true;
+        //if (!_consciousness.TryGetNerveSystem(args.Body, out var nerveSys))
+        //     return;
+
+        // if (!_pain.TryGetPainModifier(nerveSys.Value.Owner, args.Part, "SurgeryPain", out _, nerveSys))
+        // {
+        // args.Cancelled = true;
+        // }
     }
 
 
@@ -715,6 +725,13 @@ public abstract partial class SharedSurgerySystem
         var sepsis = new DamageSpecifier(_prototypes.Index<DamageTypePrototype>("Poison"), 5);
         var ev = new SurgeryStepDamageEvent(args.User, args.Body, args.Part, args.Surgery, sepsis, 0.5f);
         RaiseLocalEvent(args.Body, ref ev);
+
+        // Ratbite Begin
+        if (TryComp<SurgeryTargetComponent>(args.Body, out var surgeryComponent) && surgeryComponent.LastSepsisWarningTime >= _timing.RealTime)
+        {
+            _popup.PopupPredicted(Loc.GetString("surgery-sepsis-warning"), args.User, args.User, PopupType.MediumCaution);
+            surgeryComponent.LastSepsisWarningTime += _sepsisPopupCooldown;
+        }
     }
 
     private bool TryToolAudio(Entity<SurgeryStepComponent> ent, SurgeryStepEvent args)

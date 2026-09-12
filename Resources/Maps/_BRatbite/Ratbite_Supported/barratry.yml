@@ -40780,7 +40780,7 @@ entities:
       pos: -7.521523,39.691025
       parent: 2
     - type: Insulated
-- proto: ClothingHandsGlovesColorYellow
+- proto: ClothingHandsGlovesColorYellowBudget
   entities:
   - uid: 5400
     components:

@@ -1,0 +1,56 @@
+- type: marker
+  id: WarningExclamation
+  icon:
+    sprite: /Textures/_BRatBites/Interface/Misc/exclamation-mark.rsi
+    state: exclamation-mark
+  hideFromMonitor: true
+
+- type: marker
+  id: AI
+  icon:
+    sprite: /Textures/Mobs/Silicon/station_ai.rsi
+    state: ai
+  hideFromMonitor: true
+
+- type: marker
+  id: Nuke
+  icon:
+    sprite: /Textures/Objects/Devices/nuke.rsi
+    state: nuclearbomb_base
+  hideFromMonitor: true
+
+- type: marker
+  id: DoubleExclamationMark
+  icon:
+    sprite: /Textures/_BRatbite/Markers/markers.rsi
+    state: double_exclamation_mark
+
+- type: marker
+  id: ExclamationMark
+  icon:
+    sprite: /Textures/_BRatbite/Markers/markers.rsi
+    state: exclamation_mark
+
+- type: marker
+  id: QuestionMark
+  icon:
+    sprite: /Textures/_BRatbite/Markers/markers.rsi
+    state: question_mark
+
+- type: marker
+  id: Rombus
+  icon:
+    sprite: /Textures/_BRatbite/Markers/markers.rsi
+    state: rombus
+
+- type: marker
+  id: Square
+  icon:
+    sprite: /Textures/_BRatbite/Markers/markers.rsi
+    state: square
+
+- type: marker
+  id: Star
+  icon:
+    sprite: /Textures/_BRatbite/Markers/markers.rsi
+    state: star

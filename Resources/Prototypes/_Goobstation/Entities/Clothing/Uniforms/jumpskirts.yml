@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  parent: ClothingUniformSkirtBase
+  parent: [ ClothingUniformSkirtBase, BaseCentcommContraband ] # Ratbite: Contraband
   id: CentcomAgentSkirt
   name: centcom agent skirt
   description: A skirt worn by CentComs legal team. Smells of burnt coffee.
@@ -12,7 +12,7 @@
     sprite: _Goobstation/Clothing/Uniforms/Jumpskirt/Centcom/centcom_agent.rsi
 
 - type: entity
-  parent: ClothingUniformSkirtBase
+  parent: [ ClothingUniformSkirtBase, BaseCentcommContraband ] # Ratbite: Contraband
   id: ClothingUniformJumpskirtNanotrasenRepresentative
   name: nanotrasen representative skirt
   description: A black skirt worn by officials.
@@ -23,7 +23,7 @@
     sprite: _Goobstation/Clothing/Uniforms/Jumpskirt/Centcom/nanotrasen_representative.rsi
 
 - type: entity
-  parent: [ClothingUniformBase,  ClothingUniformFoldableBase]
+  parent: [ClothingUniformBase,  ClothingUniformFoldableBase, BaseCentcommContraband] # Ratbite: Contraband
   id: ClothingUniformJumpskirtBlueshieldOfficer
   name: blueshield officer jumpskirt
   description: A short-sleeved grey and blue jumpskirt, made out of a sturdy material. Blueshield standard issue.
@@ -34,7 +34,7 @@
     sprite: _Goobstation/Clothing/Uniforms/Jumpskirt/Centcom/blueshield_officer.rsi
 
 - type: entity
-  parent: ClothingUniformJumpsuitNavyGold
+  parent: [ClothingUniformJumpsuitNavyGold, BaseCentcommContraband] # Ratbite: Contraband
   id: ClothingUniformJumpskirtTrainer
   name: NCT Jumpskirt
   description: A jumpskirt issued to Nanotrasen Career Trainers. Fills you with a feeling of pride.
@@ -56,7 +56,7 @@
     sprite: _Goobstation/Clothing/Uniforms/Jumpskirt/Cargo/mailman.rsi
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: [ ClothingUniformBase, BaseCommandContraband ]
   id: ClothingUniformJumpskirtCommandMaid
   name: command maid uniform
   description: A stylish maid uniform specially designed for elite Command Maids. Combines professionalism with a touch of elegance.

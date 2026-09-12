@@ -38,55 +38,48 @@ public sealed partial class IVSystem : EntitySystem
         SubscribeLocalEvent<IVComponent, GetVerbsEvent<AlternativeVerb>>(AddAlternativeVerbs);
         SubscribeLocalEvent<IVComponent, GotEquippedHandEvent>(OnGetEquipped);
         SubscribeLocalEvent<IVComponent, IVAttachDoAfterEvent>(OnDoAfterAttach);
-
     }
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
-        if (!_timing.IsFirstTimePredicted)
-            return;
-        foreach (var comp in EntityManager.EntityQuery<IVComponent>())
+        var eq = EntityQueryEnumerator<IVComponent, TransformComponent>();
+        while (eq.MoveNext(out var uid, out var ivComp, out var xform))
         {
-            if (_timing.CurTime < comp.NextUpdate)
+            if (_timing.CurTime < ivComp.NextUpdate)
                 continue;
-            if (comp.AttachedEntity == null) continue;
-            var xform = Transform(comp.Owner);
+            if (ivComp.AttachedEntity == null) continue;
 
-            if (xform.GridUid != xform.ParentUid || !xform.Coordinates.TryDistance(EntityManager, Transform(comp.AttachedEntity.Value).Coordinates, out var distance) || distance > comp.MaxDistance)
+            if (xform.GridUid != xform.ParentUid || !xform.Coordinates.TryDistance(EntityManager, Transform(ivComp.AttachedEntity.Value).Coordinates, out var distance) || distance > ivComp.MaxDistance)
             {
-                ChangeAttachedEntity((comp.Owner, comp), null);
+                ChangeAttachedEntity((uid, ivComp), null);
                 return;
             }
 
-            comp.NextUpdate = _timing.CurTime + comp.UpdateTime;
+            ivComp.NextUpdate = _timing.CurTime + ivComp.UpdateTime;
 
-            TryInject((comp.Owner, comp));
+            TryInject((uid, ivComp));
         }
     }
 
 
     private bool TryInject(Entity<IVComponent> ent)
     {
-        var target = ent.Comp.AttachedEntity;
-        if (target == null) return false;
+        if (ent.Comp.AttachedEntity is not { } target) return false;
         if (_itemSlots.TryGetSlot(ent.Owner, ent.Comp.ItemSlotId, out var itemSlot))
         {
-            var item = itemSlot.Item;
-            if (item == null) return false;
-            if (!_solutionContainers.TryGetSolution((EntityUid) item, ent.Comp.SolutionName, out var beakerSoln, out var beakerSolution) || beakerSolution.Volume == 0)
+            if (itemSlot.Item is not { } item) return false;
+            if (!_solutionContainers.TryGetSolution(item, ent.Comp.SolutionName, out var beakerSoln, out var beakerSolution) || beakerSolution.Volume == 0)
                 return false;
-            if (!_solutionContainers.TryGetInjectableSolution((EntityUid) target, out var targetSoln, out var targetSolution))
-            {
+            if (!_solutionContainers.TryGetInjectableSolution(target, out var targetSoln, out var targetSolution))
                 return false;
-            }
             var transferAmount = FixedPoint2.Min(ent.Comp.InjectedUnitsPerUpdate, targetSolution.AvailableVolume);
             if (transferAmount <= 0)
                 return false;
             var removedSolution = _solutionContainers.SplitSolution(beakerSoln.Value, transferAmount);
             if (!targetSolution.CanAddSolution(removedSolution))
                 return false;
-            _reactiveSystem.DoEntityReaction((EntityUid) target, removedSolution, ReactionMethod.Injection);
+            _reactiveSystem.DoEntityReaction(target, removedSolution, ReactionMethod.Injection);
             _solutionContainers.TryAddSolution(targetSoln.Value, removedSolution);
             return true;
         }

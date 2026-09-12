@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Ratbite Station People",
+    "copyright": "Ratbite Station People,TramDriver based on ServiceWorker and made by ketufaispikinut (github)",
     "size": {
         "x": 8,
         "y": 8
@@ -24,6 +24,9 @@
       },
       {
       "name": "ntrintern"
+     },
+     {
+      "name": "TramDriver"
      }
     ]
 }

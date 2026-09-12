@@ -299,3 +299,19 @@
       amount: 1
   products:
     KaolinPowder: 3  
+- type: reaction
+  id: Chemial
+  impact: Medium
+  quantized: true
+  reactants:
+    PolytrinicAcid:
+      amount: 5
+    Plasma:
+      amount: 5
+    Carbon:
+      amount: 5
+    Hercuri:
+      amount: 5
+  effects:
+    - !type:SpawnEntity
+      entity: Chemial1
