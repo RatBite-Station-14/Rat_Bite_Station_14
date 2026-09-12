@@ -17,6 +17,16 @@
       species:
       - Felinid
       - Scurret
+      - Monkey
+      - Kobold
+  - !type:TraitsRequirement # Ratbite: No NRP traits
+    inverted: true
+    traits:
+    - Trigger
+    - SocialAnxietyTrait
+    - ChronicKleptomania
+    - Nudist
+    - Stowaway
   startingGear: BrigmedicGear
   icon: "JobIconBrigmedic"
   supervisors: job-supervisors-hos
