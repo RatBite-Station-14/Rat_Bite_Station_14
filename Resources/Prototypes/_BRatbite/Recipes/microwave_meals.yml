@@ -1,0 +1,16 @@
+﻿- type: microwaveMealRecipe
+  id: RecipeBlindingStew
+  name: one-day blinding stew
+  result: FoodSoupBlinding
+  time: 30
+  group: Soup
+  reagents:
+    Water: 10
+    ChloralHydrate: 10
+  solids:
+    FoodBowlBig: 1
+    FoodMeatCutlet: 1
+    FoodPotato: 2
+    FoodEggplant: 1
+    FoodMushroom: 2
+    FoodMeatFish: 1

@@ -1,0 +1,36 @@
+﻿- type: entity
+  name: one day blinding stew
+  parent: FoodBowlBase
+  id: FoodSoupBlinding
+  description: A nice warm stew. Typically used by inns to control unruly guests.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - eggplant
+    - potato
+  - type: Sprite
+    layers:
+    - state: bowl
+    - state: stew
+  - type: Edible
+    trash: [ FoodBowlBig ]
+    transferAmount: 10
+    utensilRequired: false
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 50
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 15
+        - ReagentId: Protein
+          Quantity: 5
+        - ReagentId: Vitamin
+          Quantity: 2
+        - ReagentId: BlindToxin  # TODO: Later might be a good idea to move this to foodifiers
+          Quantity: 28
+  - type: Tag
+    tags:
+    - Meat
+    - Soup
