@@ -674,11 +674,17 @@ public abstract partial class SharedSurgerySystem
 
     private void OnPainInflicterCheck(Entity<SurgeryStepPainInflicterComponent> ent, ref SurgeryStepCompleteCheckEvent args)
     {
-        if (!_consciousness.TryGetNerveSystem(args.Body, out var nerveSys))
-            return;
+        // Ratbite: I don't know what the author intended, why
+        // should surgeries be marked as not complete if you can't
+        // get the pain modifier?
 
-        if (!_pain.TryGetPainModifier(nerveSys.Value.Owner, args.Part, "SurgeryPain", out _, nerveSys))
-            args.Cancelled = true;
+        //if (!_consciousness.TryGetNerveSystem(args.Body, out var nerveSys))
+        //     return;
+
+        // if (!_pain.TryGetPainModifier(nerveSys.Value.Owner, args.Part, "SurgeryPain", out _, nerveSys))
+        // {
+        // args.Cancelled = true;
+        // }
     }
 
 
