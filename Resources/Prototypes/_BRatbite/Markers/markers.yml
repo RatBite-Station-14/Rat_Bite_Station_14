@@ -60,3 +60,4 @@
   icon:
     sprite: /Textures/_Goobstation/Structures/Machines/tc_printer.rsi
     state: icon
+  hideFromMonitor: true
