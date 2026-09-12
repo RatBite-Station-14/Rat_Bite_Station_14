@@ -76,9 +76,6 @@ public sealed class SupermatterSystem : SharedSupermatterSystem
     private const string Sound = "/Audio/_Goobstation/Effects/Smites/Thunderstrike/thunderstrike.ogg";
     private const string ltgsm = "/Textures/_Goobstation/MisandryBox/LTGSM.png";
 
-    private readonly Dictionary<EntityUid, TimeSpan> _pending = new();
-    private float _accumulator;
-
     private DelamType _delamType = DelamType.Explosion;
 
     public override void Initialize()
@@ -116,22 +113,6 @@ public sealed class SupermatterSystem : SharedSupermatterSystem
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
-
-        if (_pending.Count == 0)
-            return;
-
-        _accumulator += frameTime;
-        for (var i = _pending.Count - 1; i >= 0; i--)
-        {
-            var (entity, expiryTime) = _pending.ElementAt(i);
-
-            if (!(_accumulator >= expiryTime.TotalSeconds))
-                continue;
-
-            _pending.Remove(entity);
-            Del(entity);
-        }
-
         if (!_gameTiming.IsFirstTimePredicted)
             return;
 
