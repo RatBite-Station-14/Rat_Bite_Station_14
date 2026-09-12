@@ -28,7 +28,7 @@ public sealed partial class AlertSecuritySystem : EntitySystem
             TargetLocation = coords.Position,
             MapId = coords.MapId,
             PinColor = new Color(0f, 1f, 0f, 0.6f),
-            Sprite = new SpriteSpecifier.Rsi(new("/Textures/Mobs/Silicon/station_ai.rsi"), "ai"),
+            MarkerPrototype = "AI",
             Channels = ListeningChannels.SECURITY | ListeningChannels.SILICON,
         }, defaultId: $"{args.DefaultId}-${_counter}", deleteAfter: TimeSpan.FromSeconds(30));
 

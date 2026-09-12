@@ -1,0 +1,23 @@
+- type: entity
+  parent: BaseHandheldComputer
+  id: MarkerMonitorHandeldComputer
+  name: marker monitor
+  description: A monitor capable of sending markers to security HUD's
+  components:
+  - type: Item
+  - type: Sprite
+    sprite: _Goobstation/Objects/Devices/tablets.rsi
+    layers:
+    - state: tabletsol
+    - state: marker
+  - type: MarkerMonitorComputer
+  - type: ActivatableUI
+    key: enum.MarkerMonitorUIKey.Key
+  - type: TargetTracker
+  - type: UserInterface
+    interfaces:
+      enum.MarkerMonitorUIKey.Key:
+        type: MarkerMonitorBoundUserInterface
+  - type: Contraband
+    allowedJobs:
+    - HeadOfSecurity
