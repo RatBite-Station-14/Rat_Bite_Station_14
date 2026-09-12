@@ -21038,7 +21038,7 @@ entities:
       parent: 2
     - type: Physics
       canCollide: False
-- proto: ClothingHandsGlovesColorYellow
+- proto: ClothingHandsGlovesColorYellowBudget
   entities:
   - uid: 3281
     components:

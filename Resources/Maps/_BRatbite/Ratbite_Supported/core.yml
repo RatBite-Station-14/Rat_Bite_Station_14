@@ -61489,14 +61489,14 @@ entities:
     - type: Transform
       pos: 52.361446,-25.989706
       parent: 2
-- proto: ClothingHandsGlovesColorYellow
+- proto: ClothingHandsGlovesColorYellowBudget
   entities:
   - uid: 8785
     components:
     - type: Transform
       pos: -8.454939,-21.453827
       parent: 2
-- proto: ClothingHandsGlovesColorYellowBudget
+- proto: ClothingHandsGlovesColorYellowBudgetBudget
   entities:
   - uid: 8786
     components:
