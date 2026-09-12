@@ -4,8 +4,8 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 08/30/2026 08:05:27
-  entityCount: 18754
+  time: 09/08/2026 06:22:12
+  entityCount: 18761
 maps:
 - 1
 grids:
@@ -12918,6 +12918,19 @@ entities:
       - 9252
       - 9253
       - 9248
+    - type: Fixtures
+      fixtures: {}
+  - uid: 18761
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 39.5,9.5
+      parent: 2
+    - type: DeviceList
+      devices:
+      - 18760
+      - 18759
+      - 18758
     - type: Fixtures
       fixtures: {}
 - proto: AirAlarmElectronics
@@ -64703,6 +64716,17 @@ entities:
       - 122
       - 134
       - 9104
+  - uid: 18760
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 41.5,7.5
+      parent: 2
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 18761
 - proto: Fireplace
   entities:
   - uid: 9325
@@ -66003,22 +66027,6 @@ entities:
       parent: 2
     - type: AtmosPipeColor
       color: '#990000FF'
-  - uid: 9500
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 40.5,8.5
-      parent: 2
-    - type: AtmosPipeColor
-      color: '#990000FF'
-  - uid: 9501
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 41.5,7.5
-      parent: 2
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
   - uid: 9502
     components:
     - type: Transform
@@ -79541,6 +79549,21 @@ entities:
       rot: 3.141592653589793 rad
       pos: 32.5,-43.5
       parent: 2
+  - uid: 18755
+    components:
+    - type: Transform
+      pos: 40.5,7.5
+      parent: 2
+  - uid: 18756
+    components:
+    - type: Transform
+      pos: 41.5,6.5
+      parent: 2
+  - uid: 18757
+    components:
+    - type: Transform
+      pos: 40.5,6.5
+      parent: 2
 - proto: GasPipeStraightAlt1
   entities:
   - uid: 11258
@@ -79618,6 +79641,18 @@ entities:
       parent: 2
 - proto: GasPipeTJunction
   entities:
+  - uid: 9500
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 41.5,7.5
+      parent: 2
+  - uid: 9501
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 40.5,8.5
+      parent: 2
   - uid: 11267
     components:
     - type: Transform
@@ -83011,6 +83046,17 @@ entities:
       - 150
     - type: AtmosPipeColor
       color: '#0055CCFF'
+  - uid: 18759
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 41.5,5.5
+      parent: 2
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 18761
 - proto: GasVentPumpFreezer
   entities:
   - uid: 11662
@@ -84333,6 +84379,17 @@ entities:
       - 149
     - type: AtmosPipeColor
       color: '#990000FF'
+  - uid: 18758
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 40.5,5.5
+      parent: 2
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 18761
 - proto: GasVentScrubberFreezer
   entities:
   - uid: 11788
