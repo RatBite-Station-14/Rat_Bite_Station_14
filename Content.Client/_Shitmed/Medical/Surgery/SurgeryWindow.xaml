@@ -19,7 +19,13 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         </BoxContainer>
         <cc:HSeparator />
         <ScrollContainer VScrollEnabled="True" HorizontalExpand="True" VerticalExpand="True">
-            <BoxContainer Name="Parts" Access="Public" Orientation="Vertical" Visible="False" />
+            <Control Name="Parts" Access="Public" Visible="False"
+                     HorizontalExpand="True" VerticalExpand="True">
+                <controls:SurgeryPartSelector Name="PartSelector" Access="Public"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Margin="24 0 0 0" />
+            </Control>
             <BoxContainer Name="Surgeries" Access="Public" Orientation="Vertical" Visible="False" />
             <BoxContainer Name="Steps" Access="Public" Orientation="Vertical" Visible="False" />
         </ScrollContainer>
