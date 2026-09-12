@@ -36,7 +36,6 @@
   access:
   - Maintenance
   - Medical
-  - Chemistry
   - DepartmentalGuard
 
   special:
@@ -246,9 +245,10 @@
   access:
   - Maintenance
   - Engineering
-  - Atmospherics
   - DepartmentalGuard
   - External
+  extendedAccess:
+  - Atmospherics
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
