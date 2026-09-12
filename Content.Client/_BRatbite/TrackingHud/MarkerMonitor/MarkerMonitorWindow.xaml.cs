@@ -28,6 +28,8 @@ public sealed partial class MarkerMonitorWindow : FancyWindow
         Color.Purple,
         Color.Green,
     };
+    private readonly ShaderInstance _baseShader;
+    private Dictionary<Color, ShaderInstance> _shaders = new ();
     private Color? _selectedColor;
     private ProtoId<MarkerPrototype>? _selectedMarker;
     public MarkerMonitorWindow()
@@ -36,10 +38,20 @@ public sealed partial class MarkerMonitorWindow : FancyWindow
         IoCManager.InjectDependencies(this);
         _spriteSystem = _entManager.System<SpriteSystem>();
         _transformSystem = _entManager.System<TransformSystem>();
+        _baseShader = _proto.Index<ShaderPrototype>("ColorCorrection").Instance();
 
         NavMap.ClickedOnMapAction += OnClickedOnMap;
         MarkerGrid.Columns = _availableColors.Length;
         PopulateMarkers();
+    }
+
+    private ShaderInstance GetShader(Color color)
+    {
+        if (_shaders.TryGetValue(color, out var s)) return s;
+        var shader = _baseShader.Duplicate();
+        shader.SetParameter("TargetColor", color);
+        _shaders.Add(color, shader);
+        return shader;
     }
 
     public void SetMap(EntityUid? mapUid)
@@ -74,10 +86,9 @@ public sealed partial class MarkerMonitorWindow : FancyWindow
             var texture = _spriteSystem.Frame0(marker.Icon);
             foreach (var color in _availableColors)
             {
-                var textureButton = new TextureButton()
+                var textureButton = new ShaderTextureButton(GetShader(color))
                 {
                     TextureNormal = texture,
-                    Modulate = color,
                     Scale = new Vector2(2, 2),
                     ToggleMode = true,
                 };
@@ -127,7 +138,8 @@ public sealed partial class MarkerMonitorWindow : FancyWindow
             NavMap.TrackedEntities.Add(new(dummy++), new ()
             {
                 Texture = texture,
-                Color = target.PinColor.WithAlpha(0.90f),
+                Shader = GetShader(target.PinColor),
+                Color = Color.White,
                 Coordinates = coords,
                 Blinks = false,
                 Scale = 3,
