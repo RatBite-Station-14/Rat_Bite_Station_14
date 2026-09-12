@@ -382,18 +382,17 @@ namespace Content.Server.Ghost
                 var entity = GetNetEntity(uid);
                 if (warp.Mob)
                 {
-                    var followers = 0;
+                    if (!TryComp<MindContainerComponent>(uid, out var mind) || !mind.HasMind)
+                    {
+                        continue;
+                    }
+                    byte followers = 0;
                     if (TryComp<FollowedComponent>(uid, out var followComponent))
                     {
-                        foreach(var _ in followComponent.Following)
-                            followers++;
+                        followers = (byte) followComponent.Following.Count;
                     }
-                    TryComp<MindContainerComponent>(uid, out var mind);
-                    if (mind?.Mind != null)
-                    {
-                        var player_name = $"{warp.Location ?? Name(uid)} ({_jobs.MindTryGetJobName(mind.Mind)})";
-                        yield return new GhostWarp(entity, player_name, warp.Mob, _mobState.IsDead(uid), warp.Ghost, warp.Antagonist, followers);
-                    }
+                    string player_name = $"{warp.Location ?? Name(uid)} ({_jobs.MindTryGetJobName(mind.Mind)})";
+                    yield return new GhostWarp(entity, player_name, warp.Mob, _mobState.IsDead(uid), warp.Ghost, warp.Antagonist, followers);
                 }
                 else
                 {
