@@ -102,7 +102,7 @@
   - ChemMasterMachineCircuitboard
   - CondenserMachineCircuitBoard
   - HotplateMachineCircuitboard
-  - EnergyChemDispenserMachineCircuitboard #Goob edit - all things that get base med boards get E-Chem
+  # - EnergyChemDispenserMachineCircuitboard #Goob edit - all things that get base med boards get E-Chem # Ratbite: Moved to its own pack
 
 ## Dynamic
 
@@ -128,4 +128,4 @@
   - CryoPodMachineCircuitboard
   - BiomassReclaimerMachineCircuitboard
   - StasisOperatingTableCircuitboard # Corvax-Goob-StasisOperatingTable
-  - EnergyChemDispenserMachineCircuitboard #Goob
+  # - EnergyChemDispenserMachineCircuitboard #Goob # Ratbite: Moved to its own pack
