@@ -103,9 +103,9 @@
   - type: UseDelay
 #  - type: Clothing Ratbite, removed tennis ball being equipable by players
 #    slots: [mask]
-  - type: Tag
-    tags:
-    - PetWearable
+#  - type: Tag
+#    tags:
+#    - PetWearable
 
 - type: entity
   parent: [ BaseItem, BaseSportsBall ]
