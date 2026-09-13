@@ -1,0 +1,5 @@
+- type: shader
+  id: ColorCorrection
+  kind: source
+  path: "/Textures/_BRatbite/Shaders/color_correction.swsl"
+
