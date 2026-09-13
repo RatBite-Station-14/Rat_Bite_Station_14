@@ -1,6 +1,68 @@
 ﻿- type: entity
+  abstract: true
+  parent: FoodInjectableBase
+  id: FoodBowlUnspillableBase
+  components:
+  - type: Item
+    shape:
+    - 0,0,1,0
+  - type: Edible
+    trash:
+      - FoodBowlBig
+    utensil: Spoon
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 20
+  - type: Sprite
+    sprite: Objects/Consumable/Food/bowl.rsi
+  - type: DamageOnLand
+    damage:
+      types:
+        Blunt: 5
+  - type: MeleeWeapon
+    soundNoDamage:
+      path: "/Audio/Effects/Fluids/splat.ogg"
+    damage:
+      types:
+        Blunt: 0
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Tag
+    tags:
+    - Soup
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 5
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+          params:
+            volume: -8
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          FoodBowlBigTrash:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: ThrowableBlocked
+    behavior: Damage
+    damage:
+      types:
+        Blunt: 20
+
+
+
+- type: entity
   name: one day blinding stew
-  parent: FoodBowlBase
+  parent: FoodBowlUnspillableBase
   id: FoodSoupBlinding
   description: A nice warm stew. Typically used by inns to control unruly guests.
   components:
