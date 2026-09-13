@@ -120,6 +120,7 @@
           path: /Audio/_Goobstation/Effects/Slasher/JasonJumpscare.ogg
     postSelectionComponents:
     - type: Slasher
+    - type: BrainInChest # Ratbite
     - type: SlasherSummonMachete
     - type: SlasherStaggerArea
     - type: SlasherRelentlessGrab
