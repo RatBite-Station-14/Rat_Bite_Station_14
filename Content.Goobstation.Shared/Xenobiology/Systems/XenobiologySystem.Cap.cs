@@ -20,8 +20,7 @@ namespace Content.Goobstation.Shared.Xenobiology.Systems;
 public partial class XenobiologySystem
 {
     private Dictionary<EntityUid, int> _cachedStationSlimeCount = [];
-
-    private int _slimeCountCap;
+    private int _slimeCountCap; // Set by cvar
     private TimeSpan _nextSlimeCountCacheUpdate = TimeSpan.Zero;
     private readonly TimeSpan _slimeCountCacheDelay = TimeSpan.FromSeconds(10);
     private Dictionary<EntityUid, TimeSpan> _nextCapPopupTime = [];
