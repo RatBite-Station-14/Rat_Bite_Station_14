@@ -10,6 +10,7 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Chemistry.Components;
 using Robust.Shared.Prototypes;
+using Content.Shared.Popups;
 
 namespace Content.Goobstation.Shared.Xenobiology.Systems;
 
@@ -63,6 +64,9 @@ public partial class XenobiologySystem
     /// </summary>
     private void UpdateMitosis()
     {
+        if (_net.IsClient) // Ratbite: Shouldn't run on clients
+            return;
+
         var query = EntityQueryEnumerator<SlimeComponent, MobGrowthComponent, HungerComponent>();
         var slimeToMitosis = new List<Entity<SlimeComponent>>(); // Ratbite: C# complains if we do mitosis while it's enumerating
         while (query.MoveNext(out var uid, out var slime, out var growthComp, out var hungerComp))
@@ -93,10 +97,29 @@ public partial class XenobiologySystem
     /// </summary>
     private void DoMitosis(Entity<SlimeComponent> ent)
     {
-        if (_net.IsClient)
-            return;
+        //if (_net.IsClient) // Ratbite: Moved to UpdateMitosis()
+        //    return;
 
         var offspringCount = _random.Next(1, ent.Comp.MaxOffspring + 1);
+
+        // Ratbite Begin — handles capping slime count by grids
+        if (Transform(ent).GridUid is { } gridUid
+        && _cachedStationSlimeCount.TryGetValue(gridUid, out var currentCount))
+        {
+            if (offspringCount > _slimeCountCap - currentCount)
+            {
+                if (_gameTiming.CurTime >= _nextCapPopupTime.GetValueOrDefault(gridUid))
+                {
+                    _nextCapPopupTime[gridUid] = _gameTiming.CurTime + _capPopupCooldown;
+                    _popup.PopupEntity(Loc.GetString("slime-mitosis-population-cap"), ent, PopupType.Medium);
+                }
+                return;
+            }
+
+            _cachedStationSlimeCount[gridUid] = currentCount - 1 + offspringCount;
+        }
+        // Ratbite End
+
         _audio.PlayPredicted(ent.Comp.MitosisSound, ent, ent);
 
         List<EntityUid> slimes = [];
@@ -121,7 +144,7 @@ public partial class XenobiologySystem
         }
 
         // transfer chem bloodstream and stomach chemicals to children evenly
-        var slimeScale = 1/(float)slimes.Count;
+        var slimeScale = 1 / (float) slimes.Count;
         var parentStomachList = _body.GetBodyOrganEntityComps<StomachComponent>(ent.Owner);
         var parentStomachSolutionTransfer = new Solution();
         foreach (var stomach in parentStomachList)

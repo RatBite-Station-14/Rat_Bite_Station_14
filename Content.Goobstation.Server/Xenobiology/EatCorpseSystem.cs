@@ -47,8 +47,8 @@ public sealed partial class EatCorpseSystem : EntitySystem
         BodyComponent? targetBody = null,
         MobStateComponent? targetState = null)
     {
-        if (!Resolve(eaterUid, ref eater)
-            || !Resolve(targetUid, ref targetState, ref targetBody))
+        if (!Resolve(eaterUid, ref eater, logMissing: false) // Ratbite: Don't log missing
+            || !Resolve(targetUid, ref targetState, ref targetBody, logMissing: false)) // Ratbite: Don't log missing
             return false;
 
         if (!_mobState.IsDead(targetUid))
@@ -67,8 +67,8 @@ public sealed partial class EatCorpseSystem : EntitySystem
         BodyComponent? targetBody = null,
         MobStateComponent? targetState = null)
     {
-        if (!Resolve(eaterUid, ref eater)
-            || !Resolve(targetUid, ref targetState, ref targetBody))
+        if (!Resolve(eaterUid, ref eater, logMissing: false) // Ratbite: Don't log missing
+            || !Resolve(targetUid, ref targetState, ref targetBody, logMissing: false)) // Ratbite: Don't log missing
             return false;
 
         if (!_body.TryGetRootPart(targetUid, out var rootPart, targetBody))
