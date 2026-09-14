@@ -1,16 +1,4 @@
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Content.Goobstation.Common.CCVar;
 using Content.Goobstation.Shared.Xenobiology.Components;
-using Content.Shared.Nutrition.Components;
-using Robust.Shared.Random;
-using Content.Shared.Body.Systems;
-using Content.Shared.Body.Components;
-using Content.Shared.Chemistry.EntitySystems;
-using Content.Goobstation.Maths.FixedPoint;
-using Content.Shared.Chemistry.Components;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs;
 
