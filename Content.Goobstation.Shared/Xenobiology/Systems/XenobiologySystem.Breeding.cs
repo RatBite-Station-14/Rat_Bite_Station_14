@@ -64,6 +64,9 @@ public partial class XenobiologySystem
     /// </summary>
     private void UpdateMitosis()
     {
+        if (_net.IsClient) // Ratbite: Shouldn't run on clients
+            return;
+
         var query = EntityQueryEnumerator<SlimeComponent, MobGrowthComponent, HungerComponent>();
         var slimeToMitosis = new List<Entity<SlimeComponent>>(); // Ratbite: C# complains if we do mitosis while it's enumerating
         while (query.MoveNext(out var uid, out var slime, out var growthComp, out var hungerComp))
@@ -94,8 +97,8 @@ public partial class XenobiologySystem
     /// </summary>
     private void DoMitosis(Entity<SlimeComponent> ent)
     {
-        if (_net.IsClient)
-            return;
+        //if (_net.IsClient) // Ratbite: Moved to UpdateMitosis()
+        //    return;
 
         var offspringCount = _random.Next(1, ent.Comp.MaxOffspring + 1);
 
