@@ -1,0 +1,1 @@
+chem-master-temperature-label = ({$temperature} ˚K)

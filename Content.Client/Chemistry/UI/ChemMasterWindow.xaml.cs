@@ -168,6 +168,7 @@ namespace Content.Client.Chemistry.UI
             OutputEjectButton.Disabled = castState.OutputContainerInfo is null;
             CreateBottleButton.Disabled = castState.OutputContainerInfo?.Reagents == null;
             CreatePillButton.Disabled = castState.OutputContainerInfo?.Entities == null;
+            TemperatureLabel.Text = Loc.GetString("chem-master-temperature-label", [("temperature", MathF.Round(castState.BufferTemperature))]);
 
             UpdateDosageFields(castState);
         }

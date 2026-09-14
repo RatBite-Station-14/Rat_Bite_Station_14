@@ -187,6 +187,8 @@ namespace Content.Shared.Chemistry
         /// </summary>
         public readonly IReadOnlyList<ReagentQuantity> BufferReagents;
 
+        public readonly float BufferTemperature; // Ratbite
+
         public readonly ChemMasterMode Mode;
 
         public readonly ChemMasterSortingType SortingType;
@@ -202,12 +204,13 @@ namespace Content.Shared.Chemistry
 
         public ChemMasterBoundUserInterfaceState(
             ChemMasterMode mode, ChemMasterSortingType sortingType, ContainerInfo? inputContainerInfo, ContainerInfo? outputContainerInfo,
-            IReadOnlyList<ReagentQuantity> bufferReagents, FixedPoint2 bufferCurrentVolume,
+            IReadOnlyList<ReagentQuantity> bufferReagents, float bufferTemperature, FixedPoint2 bufferCurrentVolume,
             uint selectedPillType, uint pillDosageLimit, bool updateLabel, ChemMasterDrawSource drawSource)
         {
             InputContainerInfo = inputContainerInfo;
             OutputContainerInfo = outputContainerInfo;
             BufferReagents = bufferReagents;
+            BufferTemperature = bufferTemperature; // Ratbite
             Mode = mode;
             SortingType = sortingType;
             BufferCurrentVolume = bufferCurrentVolume;

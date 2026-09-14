@@ -35,7 +35,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
             <!-- Buffer -->
             <BoxContainer Orientation="Horizontal">
-                <Label Text="{Loc 'chem-master-window-buffer-text'}" />
+                <Label Text="{Loc 'chem-master-window-buffer-text'}" Margin="0 0 5 0" />
+                <Label Name="TemperatureLabel" StyleClasses="LabelWeak" />
                 <Control HorizontalExpand="True" />
                 <Button MinSize="80 0" Margin="0 0 10 0" Name="BufferSortButton" Access="Public" Text="{Loc 'chem-master-window-sort-type-none'}" />
                 <Button MinSize="80 0" Name="BufferTransferButton" Access="Public" Text="{Loc 'chem-master-window-transfer-button'}" ToggleMode="True" StyleClasses="OpenRight" />
