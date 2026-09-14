@@ -82,7 +82,7 @@ public abstract partial class SharedSurgerySystem
         });
     }
 
-    private readonly TimeSpan _sepsisPopupCooldown = TimeSpan.FromSeconds(10);
+    private readonly TimeSpan _sepsisPopupCooldown = TimeSpan.FromSeconds(10); // Ratbite
 
     private void SubSurgery<TComp>(EntityEventRefHandler<TComp, SurgeryStepEvent> onStep,
         EntityEventRefHandler<TComp, SurgeryStepCompleteCheckEvent> onComplete) where TComp : IComponent
@@ -727,10 +727,10 @@ public abstract partial class SharedSurgerySystem
         RaiseLocalEvent(args.Body, ref ev);
 
         // Ratbite Begin
-        if (TryComp<SurgeryTargetComponent>(args.Body, out var surgeryComponent) && surgeryComponent.LastSepsisWarningTime >= _timing.RealTime)
+        if (TryComp<SurgeryTargetComponent>(args.Body, out var surgeryComponent) && surgeryComponent.LastSepsisWarningTime >= _timing.RealTime + _sepsisPopupCooldown)
         {
             _popup.PopupPredicted(Loc.GetString("surgery-sepsis-warning"), args.User, args.User, PopupType.MediumCaution);
-            surgeryComponent.LastSepsisWarningTime += _sepsisPopupCooldown;
+            surgeryComponent.LastSepsisWarningTime = _timing.RealFrameTime;
         }
     }
 
