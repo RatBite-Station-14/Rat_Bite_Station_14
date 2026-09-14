@@ -44,6 +44,7 @@
     components:
       - type: Condemned
         soulOwnedNotDevil: true # Bootlicker for NT
+      - type: CPRTraining
 
 - type: startingGear
   id: MedicalOrderlyGear
