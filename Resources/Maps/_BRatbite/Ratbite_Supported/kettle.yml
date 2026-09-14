@@ -64463,7 +64463,7 @@ entities:
     - type: Transform
       pos: -16.583656,36.51174
       parent: 2
-- proto: ClothingHandsGlovesColorYellowBudgetBudget
+- proto: ClothingHandsGlovesColorYellowBudget
   entities:
   - uid: 10055
     components:
