@@ -73,7 +73,6 @@ public sealed class SusRatThreatSystem : GameRuleSystem<SusRatThreatComponent>
     {
         base.Started(uid, component, gameRule, args);
 
-        component.MidroundRolled = false;
         component.RoundEnderRolled = false;
         component.MidroundTime = _timing.CurTime + Vary(component.MidroundDelay, component.MidroundVariance);
         component.RoundEnderTime = _timing.CurTime + Vary(component.RoundEnderDelay, component.RoundEnderVariance);
@@ -86,10 +85,10 @@ public sealed class SusRatThreatSystem : GameRuleSystem<SusRatThreatComponent>
         var query = QueryActiveRules();
         while (query.MoveNext(out _, out var component, out _))
         {
-            if (!component.MidroundRolled && _timing.CurTime >= component.MidroundTime)
+            if (_timing.CurTime >= component.MidroundTime)
             {
-                component.MidroundRolled = true;
                 RollMidrounds();
+                component.MidroundTime = _timing.CurTime + Vary(component.MidroundDelay, component.MidroundVariance);
             }
 
             if (!component.RoundEnderRolled && _timing.CurTime >= component.RoundEnderTime)

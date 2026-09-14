@@ -22,8 +22,5 @@ public sealed partial class SusRatThreatComponent : Component
     public TimeSpan RoundEnderTime;
 
     [ViewVariables]
-    public bool MidroundRolled;
-
-    [ViewVariables]
     public bool RoundEnderRolled;
 }
