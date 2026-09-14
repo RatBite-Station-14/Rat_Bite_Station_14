@@ -79,10 +79,6 @@ public partial class XenobiologySystem
             if (_hunger.GetHunger(hungerComp) < slime.MitosisHunger)
                 continue;
 
-            // Ratbite Begin
-
-            // Ratbite End
-
             slimeToMitosis.Add((uid, slime)); // Ratbite
             slime.NextUpdateTime = _gameTiming.CurTime + slime.UpdateInterval;
         }
