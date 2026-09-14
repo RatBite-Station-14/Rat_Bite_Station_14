@@ -101369,7 +101369,7 @@ entities:
     - type: Physics
       angularDamping: 0
       linearDamping: 0
-- proto: ClothingHandsGlovesColorYellowBudgetBudget
+- proto: ClothingHandsGlovesColorYellowBudget
   entities:
   - uid: 16350
     components:

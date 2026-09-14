@@ -41705,7 +41705,7 @@ entities:
     - type: Transform
       pos: -32.45865,38.48124
       parent: 2
-- proto: ClothingHandsGlovesColorYellowBudgetBudget
+- proto: ClothingHandsGlovesColorYellowBudget
   entities:
   - uid: 6590
     components:
