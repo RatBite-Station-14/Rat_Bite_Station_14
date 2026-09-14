@@ -28,6 +28,9 @@ public partial class XenobiologySystem
 
     private void UpdateSlimeCountCache()
     {
+        if (_net.IsClient)
+            return;
+
         if (_gameTiming.CurTime < _nextSlimeCountCacheUpdate)
             return;
 

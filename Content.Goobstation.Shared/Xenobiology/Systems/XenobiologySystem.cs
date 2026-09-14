@@ -43,7 +43,8 @@ public sealed partial class XenobiologySystem : EntitySystem
 
         SubscribeLocalEvent<SlimeComponent, ExaminedEvent>(OnExamined);
 
-        Subs.CVar(_configuration, RatbiteCVars.GridSlimeCountCap, value => _slimeCountCap = value, true); // Ratbite
+        if (_net.IsServer)
+            Subs.CVar(_configuration, RatbiteCVars.GridSlimeCountCap, value => _slimeCountCap = value, true); // Ratbite
     }
 
     public override void Update(float frameTime)
