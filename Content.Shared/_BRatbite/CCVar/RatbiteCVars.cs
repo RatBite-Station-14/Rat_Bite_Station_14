@@ -27,7 +27,7 @@ public sealed partial class RatbiteCVars
         CVarDef.Create("misc.alt_server_name", "Ratbite 2", CVar.SERVER | CVar.REPLICATED);
 
     public static readonly CVarDef<int> GridSlimeCountCap =
-        CVarDef.Create("slimes.population_grid_cap", 80, CVar.SERVERONLY);
+        CVarDef.Create("xenobiology.breeding_population_cap", 80, CVar.SERVERONLY);
 
     public static readonly CVarDef<float> PointerScale = CVarDef.Create("accessibility.pointer_scale", 1f, CVar.CLIENTONLY | CVar.ARCHIVE);
 
