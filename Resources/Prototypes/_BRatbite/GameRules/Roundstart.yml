@@ -47,6 +47,7 @@
   id: SusRatRoundstartAntag
   parent: BaseGameRule
   components:
+  - type: SusRatThreat
   - type: SubGamemodes
     rules:
     - id: SusRatTraitor
