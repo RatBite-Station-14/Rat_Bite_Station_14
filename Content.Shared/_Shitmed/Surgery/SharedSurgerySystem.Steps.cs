@@ -727,10 +727,10 @@ public abstract partial class SharedSurgerySystem
         RaiseLocalEvent(args.Body, ref ev);
 
         // Ratbite Begin
-        if (TryComp<SurgeryTargetComponent>(args.Body, out var surgeryComponent) && surgeryComponent.LastSepsisWarningTime <= _timing.RealTime + _sepsisPopupCooldown)
+        if (TryComp<SurgeryTargetComponent>(args.Body, out var surgeryComponent) && surgeryComponent.NextSepsisWarningTime <= _timing.RealTime)
         {
             _popup.PopupPredicted(Loc.GetString("surgery-sepsis-warning"), args.User, args.User, PopupType.MediumCaution);
-            surgeryComponent.LastSepsisWarningTime = _timing.RealFrameTime;
+            surgeryComponent.NextSepsisWarningTime = _timing.RealTime + _sepsisPopupCooldown;
         }
     }
 
