@@ -75,6 +75,7 @@
     back:
     - Flash
     - TelescopicBaton # Goobstation
+    - LockableIDCardPaper # Ratbite
 
 - type: chameleonOutfit
   id: ChiefMedicalOfficerChameleonOutfit
