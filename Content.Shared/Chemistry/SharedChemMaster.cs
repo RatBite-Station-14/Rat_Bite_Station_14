@@ -12,7 +12,9 @@ namespace Content.Shared.Chemistry
     public sealed class SharedChemMaster
     {
         public const uint PillTypes = 20;
-        public const string BufferSolutionName = "buffer";
+        // Ratbite: This was removed, use the methods in the ratbite
+        // partial file instead
+        // public const string BufferSolutionName = "buffer";
         public const string InputSlotName = "beakerSlot";
         public const string OutputSlotName = "outputSlot";
         public const string PillSolutionName = "food";
@@ -185,7 +187,11 @@ namespace Content.Shared.Chemistry
         /// <summary>
         /// A list of the reagents and their amounts within the buffer, if applicable.
         /// </summary>
-        public readonly IReadOnlyList<ReagentQuantity> BufferReagents;
+        public readonly List<ReagentQuantityTemperature> BufferReagents; // Ratbite: added temperature
+
+        public readonly ReagentId? SelectedReagentToHeat; // Ratbite
+
+        public float TargetTemperature; // Ratbite
 
         public readonly ChemMasterMode Mode;
 
@@ -202,8 +208,8 @@ namespace Content.Shared.Chemistry
 
         public ChemMasterBoundUserInterfaceState(
             ChemMasterMode mode, ChemMasterSortingType sortingType, ContainerInfo? inputContainerInfo, ContainerInfo? outputContainerInfo,
-            IReadOnlyList<ReagentQuantity> bufferReagents, FixedPoint2 bufferCurrentVolume,
-            uint selectedPillType, uint pillDosageLimit, bool updateLabel, ChemMasterDrawSource drawSource)
+            List<ReagentQuantityTemperature> bufferReagents, FixedPoint2 bufferCurrentVolume,
+            uint selectedPillType, uint pillDosageLimit, bool updateLabel, ChemMasterDrawSource drawSource, ReagentId? selectedReagentToHeat, float targetTemperature)
         {
             InputContainerInfo = inputContainerInfo;
             OutputContainerInfo = outputContainerInfo;
@@ -215,6 +221,8 @@ namespace Content.Shared.Chemistry
             PillDosageLimit = pillDosageLimit;
             UpdateLabel = updateLabel;
             DrawSource = drawSource;
+            SelectedReagentToHeat = selectedReagentToHeat;
+            TargetTemperature = targetTemperature;
         }
     }
 
@@ -223,4 +231,37 @@ namespace Content.Shared.Chemistry
     {
         Key
     }
+
+    // Ratbite start: Reagent quantity with temperature
+    [Serializable, NetSerializable]
+    public record struct ReagentQuantityTemperature(ReagentId Reagent, FixedPoint2 Quantity, float Temperature)
+    {
+        public ReagentQuantity ToReagentQuantity()
+        {
+            return new ReagentQuantity(Reagent, Quantity);
+        }
+    }
+
+    [Serializable, NetSerializable]
+    public class ChemMasterSelectReagentToHeatMessage : BoundUserInterfaceMessage
+    {
+        public ReagentId? Reagent;
+
+        public ChemMasterSelectReagentToHeatMessage(ReagentId? reagent)
+        {
+            Reagent = reagent;
+        }
+    }
+
+    [Serializable, NetSerializable]
+    public class ChemMasterSetHeatMessage : BoundUserInterfaceMessage
+    {
+        public float Temperature;
+
+        public ChemMasterSetHeatMessage(float temperature)
+        {
+            Temperature = temperature;
+        }
+    }
+    // Ratbite end
 }
