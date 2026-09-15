@@ -135,10 +135,56 @@
             - material: MeatSheets
               amount: 2
               doAfter: 2
-
+# Ratbite start
+        - to: secureGirder
+          steps:
+          - tag: RadioChip
+            name: radio-chip-name
+            icon:
+              sprite: _BRatBites/Objects/Misc/radio_chip.rsi
+              state: icon
+    - node: secureGirder
+      entity: Girder
+      edges:
+      - to: girder
+        completed:
+        - !type:GivePrototype
+          prototype: RadioChip
+        steps:
+        - tool: Screwing
+          doAfter: 20
+      - to: secureWall
+        conditions:
+        - !type:EntityAnchored {}
+        steps:
+        - material: Steel
+          amount: 2
+          doAfter: 2
+    - node: secureWall
+      entity: WallSecure
+      edges:
+      - to: secureGirder
+        completed:
+        - !type:Radio
+          radioMessage: "secure-wall-destroy"
+          radioChannel: "Security"
+        - !type:GivePrototype
+          prototype: SheetSteel1
+          amount: 2
+        steps:
+        - tool: Welding
+          doAfter: 20
+# Ratbite end
     - node: wall
       entity: WallSolid
       edges:
+        - to: secureWall # Ratbite
+          steps:
+          - tag: RadioChip
+            name: radio-chip-name
+            icon:
+              sprite: _BRatBites/Objects/Misc/radio_chip.rsi
+              state: icon
         - to: girder
           completed:
             - !type:GivePrototype
@@ -309,16 +355,30 @@
           steps:
             - tool: Cutting
               doAfter: 2
+        - to: secureReinforcedGirder # Ratbite
+          steps:
+          - tag: RadioChip
+            name: radio-chip-name
+            icon:
+              sprite: _BRatBites/Objects/Misc/radio_chip.rsi
+              state: icon
 
     - node: reinforcedWall
       entity: WallReinforced
       edges:
+        - to: secureReinforcedWall # Ratbite
+          steps:
+          - tag: RadioChip
+            name: radio-chip-name
+            icon:
+              sprite: _BRatBites/Objects/Misc/radio_chip.rsi
+              state: icon
         - to: reinforcedGirder
           completed:
             - !type:SpawnPrototype
               prototype: SheetPlasteel1
               amount: 2
-          steps:
+          steps: &ReinforcedWallSteps
             - tool: Cutting
               doAfter: 1
               completed:
@@ -361,6 +421,40 @@
                   data: 0
             - tool: Cutting
               doAfter: 1
+# Ratbite start
+    - node: secureReinforcedGirder
+      entity: ReinforcedGirder
+      edges:
+      - to: reinforcedGirder
+        completed:
+        - !type:GivePrototype
+          prototype: RadioChip
+        steps:
+        - tool: Screwing
+          doAfter: 20
+      - to: secureReinforcedWall
+        completed:
+        - !type:SnapToGrid
+          southRotation: true
+        conditions:
+        - !type:EntityAnchored {}
+        steps:
+        - material: Plasteel
+          amount: 2
+          doAfter: 1
+    - node: secureReinforcedWall
+      entity: WallReinforcedSecure
+      edges:
+      - to: secureReinforcedGirder
+        completed:
+        - !type:Radio
+          radioMessage: "secure-wall-destroy"
+          radioChannel: "Security"
+        - !type:SpawnPrototype
+          prototype: SheetPlasteel1
+          amount: 2
+        steps: *ReinforcedWallSteps
+# Ratbite end
 
     - node: reinforcedWallChitin
       entity: WallReinforcedChitin

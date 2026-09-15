@@ -12,3 +12,12 @@
   materials:
     Steel: 1000
     Plastic: 500
+
+- type: latheRecipe
+  id: RadioChip
+  result: RadioChip
+  completetime: 5
+  materials:
+    Steel: 200
+    Glass: 300
+    Plastic: 100
