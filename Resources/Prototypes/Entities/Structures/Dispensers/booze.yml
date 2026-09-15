@@ -1,22 +1,15 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-
+# Ratbite split yml
 - type: entity
-  id: BoozeDispenserEmpty
+  id: BaseBoozeDispenser
+  abstract: true
   name: booze dispenser
-  suffix: Empty
-  description: A booze dispenser with a single slot for a container to be filled.
-  parent: ReagentDispenserBase
   components:
   - type: Rotatable
   - type: Sprite
     sprite: Structures/smalldispensers.rsi
     drawdepth: SmallObjects
     state: booze
-  - type: Storage
-    openOnActivate: false
-    whitelist:
-      tags:
-      - DrinkBottle
   - type: Transform
     noRot: false
   - type: Machine
@@ -27,6 +20,11 @@
     - Drinks
   - type: StealTarget
     stealGroup: BoozeDispenser
+
+- type: entity
+  id: BoozeDispenserEmpty
+  parent: [BaseBoozeDispenser, ReagentDispenserBase]
+  suffix: Empty
 
 - type: entity
   id: BoozeDispenser
