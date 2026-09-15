@@ -1,0 +1,167 @@
+# Washing Machines
+- type: entity
+  parent: ClosetBase
+  id: N14FurnitureWashingmachine
+  name: washing machine
+  description: wishy washy.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Storage/Furniture/washingmachine.rsi
+    layers:
+    - state: generic
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: generic_door
+      map: ["enum.StorageVisualLayers.Door"]
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: generic_open
+    stateDoorClosed: generic_door
+  - type: Transform
+    anchored: true
+    noRot: false
+
+- type: entity
+  parent: N14FurnitureWashingmachine
+  id: N14FurnitureWashingmachineIndustrial
+  suffix: Industrial
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Storage/Furniture/washingmachine_industrial.rsi
+
+# Safes
+- type: entity
+  parent: N14ClosetBaseW
+  id: N14ClosetSafe
+  name: safe
+  description: Might be filled with valuables.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Storage/Furniture/safe.rsi
+
+- type: entity
+  parent: N14ClosetSafe
+  id: N14ClosetSafeSpinner
+  suffix: spinner
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Storage/Furniture/safespinner.rsi
+
+- type: entity
+  parent: BaseWallCloset
+  id: N14Wallsafe
+  name: wallsafe
+  description: Might be filled with valuables.
+  suffix: wallsafe
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Storage/storage.rsi
+  - type: EntityStorageVisuals
+    stateBaseClosed: safe_wall
+    stateDoorOpen: safe_wall-open
+    stateDoorClosed: safe_wall
+
+- type: entity
+  parent: BaseWallCloset
+  id: N14FirstAidwall
+  name: First Aid Wall Unit
+  description: Might be filled with valuables.
+  suffix: wallsafe
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Storage/storage.rsi
+  - type: EntityStorageVisuals
+    stateBaseClosed: firstaid
+    stateDoorOpen: firstaid_open
+    stateDoorClosed: firstaid_door
+
+# Cash Registers 
+- type: entity
+  parent: [ BaseStructureDynamic, BaseBagOpenClose ]
+  id: Basecashregister
+  description: Cash Register, because you've got to have MONEY.
+  suffix: Empty
+  abstract: true
+  components:
+  - type: Storage
+    grid:
+    - 0,0,9,3
+    maxItemSize: Normal
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Storage/Furniture/cashregister.rsi
+    noRot: false
+  - type: Appearance
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: Transform
+    noRot: false
+  - type: Rotatable
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.18,-0.48,0.18,0.48"
+        density: 200
+        mask:
+        - TabletopMachineMask
+        layer:
+        - TabletopMachineLayer
+  - type: InteractionOutline
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger: # Excess damage, don't spawn entities
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 2
+
+- type: entity
+  name: Cash Register
+  parent: Basecashregister
+  id: Cashregister
+  components:
+  - type: Sprite
+    state: register_clean
+    layers:
+    - state: register_clean
+    - state: register_cleanopen
+      map: ["openLayer"]
+      
+- type: entity
+  name: Dirty Cash Register
+  parent: Basecashregister
+  id: BloodyCashregister
+  components:
+  - type: Sprite
+    state: register_blood
+    layers:
+    - state: register_blood
+    - state: register_bloodopen
+      map: ["openLayer"]

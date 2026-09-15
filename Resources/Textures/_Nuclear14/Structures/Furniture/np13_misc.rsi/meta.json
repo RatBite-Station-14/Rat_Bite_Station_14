@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-SA-3.0",
+  "copyright": "Taken from Nukapop13",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "shelf_wood"
+    },
+    {
+      "name": "metal_shelf"
+    },
+    {
+      "name": "vat"
+    }
+  ]
+}

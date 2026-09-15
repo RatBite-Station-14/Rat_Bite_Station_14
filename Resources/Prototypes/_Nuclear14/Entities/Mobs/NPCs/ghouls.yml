@@ -1,0 +1,206 @@
+- type: entity
+  name: Feral Ghoul
+  id: N14MobGhoulFeral
+  parent: N14MobBaseHostileFeral
+  description: A mean looking ghoul.
+  components:
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3.5
+    baseSprintSpeed : 3.5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    angle: 0
+    animation: WeaponArcFist
+    damage:
+      types:
+        Slash: 7
+    range: 1
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Ghouls/ghoul.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: ghoul
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: unshaded
+      shader: unshaded
+  
+- type: entity
+  parent: N14MobBaseHostileFeral
+  id: N14MobGhoulGlow
+  name: Glowing Feral Ghoul
+  description: oh neat, this one glows!
+  components:
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3.5
+    baseSprintSpeed : 3.5
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    angle: 0
+    animation: WeaponArcFist
+    damage:
+      types:
+        Slash: 4
+        Radiation: 7
+    range: 1
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Ghouls/glowghoul.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: glowghoul
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: unshaded
+      shader: unshaded
+  - type: PointLight
+    radius: 2
+    energy: 0.5
+    color: "#4CBB17FF"
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+        
+- type: entity
+  parent: N14MobBaseHostileFeral
+  id: N14MobGhoulPale
+  name: Pale Feral Ghoul
+  description: This one needs to get out more.
+  components:
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 6
+    baseSprintSpeed : 6
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    angle: 0
+    animation: WeaponArcFist
+    damage:
+      types:
+        Slash: 3
+    range: 1
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Ghouls/paleghoul.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: paleghoul
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: unshaded
+      shader: unshaded
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Dead
+ 
+- type: entity
+  name: Ice Feral Ghoul
+  id: N14MobGhoulFrozen
+  parent: N14MobBaseHostileFeral
+  description: Well let's see you come up with better ideas tough guy!
+  components:
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 2.5
+    baseSprintSpeed : 2.5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      250: Dead
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    angle: 0
+    animation: WeaponArcFist
+    damage:
+      types:
+        Slash: 2
+        Cold: 5
+    range: 1
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Nuclear14/Mobs/Ghouls/frozenghoul.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: frozenghoul
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: unshaded
+      shader: unshaded
+   
+#MARK: Maypole
+- type: entity
+  parent: N14MobBaseHostileFeral
+  id: N14MobGhoulMaypole
+  name: Maypole
+  description: A special looking ghoul towering over most everything.
+  components:
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: N14ToughAnimal
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    angle: 0
+    animation: WeaponArcFist
+    damage:
+      types:
+        Brute: 30
+        Slash: 10
+    range: 2.5
+  - type: MeleeThrowOnHit
+    speed: 15
+    lifetime: 0.025
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.925
+        Slash: 0.925
+        Piercing: 0.95
+        Heat: 0.95
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+      sprite: _Nuclear14/Mobs/Ghouls/maypole.rsi
+  - type: PointLight
+    radius: 2
+    energy: 0.5
+    color: "#4CBB17FF"
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 5
+    baseSprintSpeed : 5
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.7
+        density: 20
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1000: Dead
+
+#ghoul sounds
+
+- type: soundCollection
+  id: Ghouling
+  files:
+  - "/Audio/Voice/Zombie/zombie-1.ogg"
+  - "/Audio/Voice/Zombie/zombie-2.ogg"
+  - "/Audio/Voice/Zombie/zombie-3.ogg"
