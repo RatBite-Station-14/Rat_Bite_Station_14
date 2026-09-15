@@ -8,7 +8,7 @@ public partial class WoundSystem
 
     private static readonly KeyValuePair<WoundSeverity, FixedPoint2>[] WoundThresholds =
     [
-        new(WoundSeverity.Loss, 100),
+        new(WoundSeverity.Loss, 300),
         new(WoundSeverity.Critical, 80),
         new(WoundSeverity.Severe, 50),
         new(WoundSeverity.Moderate, 25),
