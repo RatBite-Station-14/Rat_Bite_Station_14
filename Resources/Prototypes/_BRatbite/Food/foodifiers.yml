@@ -1,0 +1,44 @@
+# You can use other status effects as a foodifier, but before doing so
+# check that they have properly handled applying the same effect type
+# multiple times. Scaling is custom ratbite logic, you will likely
+# need to implement it yourself if the effect needs it.
+
+- type: entity
+  parent: MobStatusEffectBase
+  id: MobStatusEffectScalable
+  abstract: true
+  components:
+  - type: StatusEffectScale
+
+- type: entity
+  parent: MobStatusEffectScalable
+  id: FreshStatusEffect
+  name: fresh
+  components:
+  - type: ChangeStaminaStatusEffect
+    addedStamina: 5
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: MicrowavedFoodStatusEffect
+  name: Microwaved
+  components:
+  - type: TakeDamageOvertimeStatusEffect
+    damagePerSecond:
+      types:
+        Radiation: 1
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: TestFoodStatusEffect
+  name: Test Injection
+  components:
+  - type: InjectOvertimeStatusEffect
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Water
+        Quantity: 1
+      - ReagentId: Potassium
+        Quantity: 1
+      canReact: false

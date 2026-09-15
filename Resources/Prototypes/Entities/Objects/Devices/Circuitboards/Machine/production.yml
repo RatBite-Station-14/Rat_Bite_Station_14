@@ -938,7 +938,7 @@
 
 - type: entity
   parent: BaseMachineCircuitboard
-  id: ElectricGrillMachineCircuitboard
+  id: OldElectricGrillMachineCircuitboard #Ratbite
   name: electric grill machine board
   description: A machine printed circuit board for an electric grill.
   components:
@@ -1043,14 +1043,14 @@
       Manipulator: 2
 
 - type: entity
-  id: MicrowaveMachineCircuitboard
+  id: OldMicrowaveMachineCircuitboard #Ratbite
   parent: BaseMachineCircuitboard
   name: microwave machine board
   components:
     - type: Sprite
       state: service
     - type: MachineBoard
-      prototype: KitchenMicrowave
+      prototype: OldKitchenMicrowave #Ratbite
       stackRequirements:
         Manipulator: 1
         Glass: 2

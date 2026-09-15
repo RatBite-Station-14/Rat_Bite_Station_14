@@ -1,0 +1,43 @@
+- type: foodStatus
+  id: BadCold
+  effects: [ ] # TODO
+  examineText: food-temperature-bad-cold
+
+- type: foodStatus
+  id: GoodHot
+  effects:
+  - FreshStatusEffect
+  - TestFoodStatusEffect
+  examineText: food-temperature-good-hot
+
+- type: foodTemperature
+  id: HotFoodTemperature # Food items that are best eaten hot
+  temperatureThresholds:
+    0: BadCold
+    323: GoodHot
+
+- type: foodStatus
+  id: GoodCold
+  effects: [ ]
+  examineText: food-temperature-good-cold
+
+- type: foodStatus
+  id: BadWarm
+  effects: [ ]
+  examineText: food-temperature-bad-warm
+
+- type: foodTemperature
+  id: ColdFoodTemperature # Food items that are best eaten cold
+  temperatureThresholds:
+    0: GoodCold
+    273: BadWarm # It's starting to melt
+
+- type: foodStatus
+  id: Reheated
+  effects: [ MicrowavedFoodStatusEffect ] # TODO: Move to cooking method, this is just for testing
+  examineText: food-temperature-reheated
+
+- type: foodTemperature
+  id: ReheatedTemperature
+  temperatureThresholds:
+    0: Reheated
