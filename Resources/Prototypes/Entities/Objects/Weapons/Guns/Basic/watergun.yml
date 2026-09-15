@@ -52,6 +52,7 @@
     materialComposition:
       Plastic: 150
   - type: PacifismAllowedGun
+  - type: GunTrackable
 
 - type: entity
   id: WeaponWaterPistol

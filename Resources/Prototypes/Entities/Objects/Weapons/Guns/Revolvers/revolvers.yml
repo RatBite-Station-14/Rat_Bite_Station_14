@@ -73,6 +73,7 @@
     sound:
       collection: RevolversDrop
   # Goobstation edit end
+  - type: GunTrackable # Ratbite
 
 - type: entity
   name: Deckard

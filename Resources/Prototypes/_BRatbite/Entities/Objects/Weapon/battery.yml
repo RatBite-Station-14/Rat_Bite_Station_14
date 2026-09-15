@@ -122,11 +122,6 @@
     - Sidearm
   - type: StaticPrice
     price: 750
-  - type: FiringPin
-  - type: Lock
-    locked: true
-  - type: AccessReader
-    access: [ [ "Security" ] ]
   - type: EmitSoundOnPickup
     sound:
       collection: LasersPickUp

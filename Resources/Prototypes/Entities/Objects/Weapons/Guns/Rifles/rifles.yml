@@ -48,10 +48,19 @@
         whitelist:
           tags:
             - CartridgeLightRifle
+      # Ratbite
+      gun_tracker:
+        name: Mindshield Upgrade
+        startingItem: GunTracker
+        priority: 3
+        whitelist:
+          components:
+          - GunTracking
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
+      gun_tracker: !type:ContainerSlot
   - type: StaticPrice
     price: 500
   - type: Multishot # Goobstation V
@@ -86,6 +95,7 @@
     sound:
       collection: RiflesDrop
   # Goobstation edit end
+  - type: GunTrackable # Ratbite
 
 - type: entity
   name: AKM
@@ -217,6 +227,15 @@
         whitelist:
           tags:
             - CartridgeRifle
+      # Ratbite
+      gun_tracker:
+        name: Gun Tracker
+        startingItem: GunTracker
+        whitelist:
+          components:
+            - GunTracker
+        swap: false
+        disableEject: true
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
@@ -226,11 +245,7 @@
     steps: 1 # Goobstation?
     zeroVisible: true
   - type: Appearance
-  - type: FiringPin #Ratbite, mindshield restriction system
-  - type: Lock #Ratbite
-    locked: true
-  - type: AccessReader #Ratbite
-    access: [ [ "Security" ] ]
+  - type: GunTrackable #Ratbite, mindshield restriction system
 
 
 - type: entity
