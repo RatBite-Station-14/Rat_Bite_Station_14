@@ -29,4 +29,7 @@ public sealed partial class RatbiteCVars
     public static readonly CVarDef<float> PointerScale = CVarDef.Create("accessibility.pointer_scale", 1f, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     public static readonly CVarDef<bool> PointerOutline = CVarDef.Create("accessibility.pointer_outline", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    public static readonly CVarDef<string> RPHelpSound =
+        CVarDef.Create("audio.rphelp_sound", "/Audio/_BRatbite/Effects/nt-generic.ogg", CVar.ARCHIVE | CVar.CLIENTONLY);
 }

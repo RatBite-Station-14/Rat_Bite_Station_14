@@ -1,0 +1,42 @@
+- type: entity
+  id: RPHelpImplanter
+  suffix: RPHelp
+  parent: BaseImplantOnlyImplanterCentcomm
+  components:
+  - type: Implanter
+    implant: RPHelpImplant
+
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: RPHelpImplant
+  name: cc communications implant
+  description: Open a communication line with Central Command
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SubdermalImplant
+    permanent: true
+    implantAction: ActionRPHelp
+  - type: ComponentsImplant
+    added:
+    - type: RPHelp
+  - type: Tag
+    tags:
+    - SubdermalImplant
+    - HideContextMenu
+
+- type: entity
+  parent: BaseAction
+  id: ActionRPHelp
+  name: Contact Central Command
+  description: Open a communication line with Central Command
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    icon:
+      sprite: _BRatbite/Actions/rphelp.rsi
+      state: icon
+  - type: InstantAction
+    event: !type:RPHelpActionEvent
+

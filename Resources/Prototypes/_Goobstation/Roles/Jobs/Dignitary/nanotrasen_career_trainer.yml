@@ -20,7 +20,7 @@
   - BlueshieldOfficer
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, BluespaceLifelineImplant ]
+    implants: [ MindShieldImplant, BluespaceLifelineImplant, RPHelpImplant ]
 #  - !type:AddComponentSpecial # Intentionally not command. I don't want them to ruin rev rounds.
 #    components:
 #    - type: CommandStaff
