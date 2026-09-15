@@ -6,7 +6,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
-                MinSize="620 670"
+                MinSize="650 670"
                 Title="{Loc 'chem-master-bound-user-interface-title'}">
     <TabContainer Name="Tabs" Margin="5 5 7 5">
         <BoxContainer Orientation="Vertical" HorizontalExpand="True" Margin="5" SeparationOverride="10">
@@ -33,10 +33,19 @@ SPDX-License-Identifier: AGPL-3.0-or-later
             <!-- Padding -->
             <Control MinSize="0 10" />
 
+            <!-- Ratbite: thermostat -->
+            <BoxContainer Orientation="Horizontal">
+                <Label Text="{Loc 'chem-master-window-target-temperature'}" />
+                <BoxContainer Orientation="Horizontal" HorizontalExpand="True" HorizontalAlignment="Right">
+                    <Button Text="-" Name="DecreaseTempRange" StyleClasses="OpenRight"/>
+                    <LineEdit Name="Thermostat" MinSize="55 0"></LineEdit>
+                    <Button Text="+" Name="IncreaseTempRange" StyleClasses="OpenLeft"/>
+                </BoxContainer>
+            </BoxContainer>
+            <!-- Ratbite end -->
             <!-- Buffer -->
             <BoxContainer Orientation="Horizontal">
                 <Label Text="{Loc 'chem-master-window-buffer-text'}" Margin="0 0 5 0" />
-                <Label Name="TemperatureLabel" StyleClasses="LabelWeak" />
                 <Control HorizontalExpand="True" />
                 <Button MinSize="80 0" Margin="0 0 10 0" Name="BufferSortButton" Access="Public" Text="{Loc 'chem-master-window-sort-type-none'}" />
                 <Button MinSize="80 0" Name="BufferTransferButton" Access="Public" Text="{Loc 'chem-master-window-transfer-button'}" ToggleMode="True" StyleClasses="OpenRight" />
