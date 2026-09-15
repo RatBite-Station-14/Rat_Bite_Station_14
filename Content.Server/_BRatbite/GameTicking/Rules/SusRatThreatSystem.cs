@@ -37,7 +37,7 @@ public sealed class SusRatThreatSystem : GameRuleSystem<SusRatThreatComponent>
     [
         new("TraitorMidround", 4, ["SusRatTraitor", "Traitor", "TraitorMidround"]),
         new("ChangelingMidround", 3, ["SusRatChangeling", "Changeling", "ChangelingMidround"]),
-        new("Shadowling", 2, ["Shadowling"]),
+        // new("Shadowling", 2, ["Shadowling"]), -- Experienced players mentioned that Shadowlings are too overtuned.
         new("ParadoxCloneSpawn", 3, ["ParadoxCloneSpawn"]),
         new("Devil", 1, ["Devil"]),
         new("DarkPriestMidround", 1, ["DarkPriestMidround"]),
@@ -45,11 +45,12 @@ public sealed class SusRatThreatSystem : GameRuleSystem<SusRatThreatComponent>
         new("LoneOpsSpawn", 2, ["LoneOpsSpawn"], MinimumPopulation: 40),
         new("HereticMidround", 2, ["SusRatHeretic", "Heretic", "HereticMidround"], MinimumPopulation: 40, ChaplainNeeded: true),
         new("Xenoborgs", 1, ["Xenoborgs"], MinimumPopulation: 40, PreserveTeamSize: true),
-        new("LoneAbductorSpawn", 1, ["LoneAbductorSpawn"], MinimumPopulation: 30),
-        new("DuoAbductorSpawn", 1, ["DuoAbductorSpawn"], MinimumPopulation: 40, PreserveTeamSize: true),
-        new("BingleSpawn", 1, ["BingleSpawn"], MinimumPopulation: 40, PreserveTeamSize: true),
-        new("SlasherSpawn", 2, ["SlasherSpawn"], MinimumPopulation: 40),
+        new("LoneAbductorSpawn", 1, ["LoneAbductorSpawn"], MinimumPopulation: 25),
+        new("DuoAbductorSpawn", 1, ["DuoAbductorSpawn"], MinimumPopulation: 30, PreserveTeamSize: true),
+        new("BingleSpawn", 1, ["BingleSpawn"], MinimumPopulation: 45, PreserveTeamSize: true),
+        new("SlasherSpawn", 2, ["SlasherSpawn"], MinimumPopulation: 45),
         new("VoxRaidersMidround", 1, ["VoxRaidersMidround"], MinimumPopulation: 30, PreserveTeamSize: true),
+        new("RevolutionaryMidround", 1, ["RevolutionaryMidround"], MinimumPopulation: 60, PreserveTeamSize: true),
     ];
 
     private static readonly string[] RoundEnders =
@@ -58,7 +59,6 @@ public sealed class SusRatThreatSystem : GameRuleSystem<SusRatThreatComponent>
         "Honkops",
         "ZombieOutbreak",
         "DragonSpawn",
-        "RevolutionaryMidround",
         "ColossusSpawn",
         "CosmicCult",
         "WraithMidround",
