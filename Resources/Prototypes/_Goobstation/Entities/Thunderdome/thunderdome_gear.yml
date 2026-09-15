@@ -12,6 +12,7 @@
   storage:
     back:
       - MedkitFilled
+      - FoodCondimentPacketKaolin # ratbite
 
 - type: startingGear
   id: ThunderdomeShotgun
