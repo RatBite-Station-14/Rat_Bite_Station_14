@@ -1,0 +1,136 @@
+- type: entity
+  id: ChemistryBottleCaridine
+  suffix: caridine
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-caridine
+  - type: SolutionContainerManager
+    solutions:
+      drink: # This solution name and target volume is hard-coded in ChemMasterComponent
+        maxVol: 30
+        reagents:
+        - ReagentId: Caridine
+          Quantity: 30
+
+- type: entity
+  id: ChemistryBottleAiuri
+  suffix: aiuri
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-aiuri
+  - type: SolutionContainerManager
+    solutions:
+      drink: # This solution name and target volume is hard-coded in ChemMasterComponent
+        maxVol: 30
+        reagents:
+        - ReagentId: Aiuri
+          Quantity: 30
+
+- type: entity
+  id: ChemistryBottleLenturi
+  suffix: lenturi
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-lenturi
+  - type: SolutionContainerManager
+    solutions:
+      drink: # This solution name and target volume is hard-coded in ChemMasterComponent
+        maxVol: 30
+        reagents:
+        - ReagentId: Lenturi
+          Quantity: 30
+
+- type: entity
+  id: ChemistryBottleLibital
+  suffix: libital
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-libital
+  - type: SolutionContainerManager
+    solutions:
+      drink: # This solution name and target volume is hard-coded in ChemMasterComponent
+        maxVol: 30
+        reagents:
+        - ReagentId: Libital
+          Quantity: 30
+
+- type: entity
+  name: biofoam bottle # for the loadout to work
+  id: ChemistryBottleBiofoam
+  suffix: biofoam
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-biofoam
+  - type: SolutionContainerManager
+    solutions:
+      drink: # This solution name and target volume is hard-coded in ChemMasterComponent
+        maxVol: 30
+        reagents:
+        - ReagentId: Biofoam
+          Quantity: 30
+
+- type: entity
+  parent: Jug
+  suffix: universalbloodreplacement
+  id: JugUniversalBloodReplacement
+  components:
+  - type: Label
+    currentLabel: reagent-name-universalbloodreplacement
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: UniversalBloodReplacement
+          Quantity: 200
+
+- type: entity
+  name: granitbitulari bottle # for the loadout to work
+  id: ChemistryBottleGranitbitulari
+  suffix: granitbitulari
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-granitbitulari
+  - type: SolutionContainerManager
+    solutions:
+      drink: # This solution name and target volume is hard-coded in ChemMasterComponent
+        maxVol: 30
+        reagents:
+        - ReagentId: Granitbitulari
+          Quantity: 30
+
+- type: entity
+  name: revivopine bottle # for the loadout to work
+  id: ChemistryBottleRevivopine
+  suffix: revivopine
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-revivopine
+  - type: SolutionContainerManager
+    solutions:
+      drink: # This solution name and target volume is hard-coded in ChemMasterComponent
+        maxVol: 30
+        reagents:
+        - ReagentId: Revivopine
+          Quantity: 30
+
+- type: entity
+  parent: ChemistryEmptyVial
+  id: ChornexalinnChemistryVial
+  suffix: chornexalinn
+  components:
+  - type: Label
+    currentLabel: reagent-name-chornexalinn
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 30
+        reagents:
+        - ReagentId: Chornexalinn
+          Quantity: 30

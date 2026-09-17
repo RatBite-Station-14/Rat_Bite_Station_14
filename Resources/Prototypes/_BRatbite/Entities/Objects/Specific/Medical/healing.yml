@@ -1,0 +1,43 @@
+- type: entity
+  name: roll of synthskin
+  description: A polymer-based artificial flesh that is used to treat extreme burns, small lacerations, and bruises.
+  parent: BaseHealingItem
+  id: Synthskin
+  suffix: Full
+  components:
+  - type: Tag # so that it can go in medical belts
+    tags:
+    - Gauze
+  - type: Sprite
+    sprite: _BRatBites/Objects/Specific/Medical/synthskin.rsi
+    state: synthskin
+  - type: Item
+    heldPrefix: synthskin
+    storedRotation: -90
+  - type: Healing
+    damageContainers:
+      - Biological
+    damage:
+      types:
+        Slash: -15
+        Blunt: -15
+        Heat: -20
+        Cold: -20
+        Caustic: -20
+        Shock: -20
+    bloodlossModifier: -15
+    healingBeginSound:
+      path: "/Audio/Items/Medical/brutepack_begin.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
+    healingEndSound:
+      path: "/Audio/Items/Medical/brutepack_end.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
+  - type: Stack
+    stackType: Synthskin
+    count: 5
+  - type: StackPrice
+    price: 50
