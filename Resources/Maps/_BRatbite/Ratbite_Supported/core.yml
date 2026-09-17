@@ -61496,7 +61496,7 @@ entities:
     - type: Transform
       pos: -8.454939,-21.453827
       parent: 2
-- proto: ClothingHandsGlovesColorYellowBudgetBudget
+- proto: ClothingHandsGlovesColorYellowBudget
   entities:
   - uid: 8786
     components:

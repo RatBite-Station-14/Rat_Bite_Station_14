@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingShoesBootsMagBase, ClothingShoesMilitaryBase, BaseSecurityContraband]
+  parent: [ClothingShoesBootsMagBase, BaseSecurityContraband]
   id: ClothingShoesBootsMagSec
   name: security magboots
   description: Magnetic boots, originally intended for patrolling the outside of the station, now used by security officers to avoid slipping on banana peels
