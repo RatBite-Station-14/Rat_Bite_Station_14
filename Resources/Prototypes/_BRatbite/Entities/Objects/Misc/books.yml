@@ -1,0 +1,54 @@
+- type: entity
+  parent: BaseItem
+  id: BookCPRTraining
+  name: "How to CPR 101"
+  description: "Detailed instructions on how to perform first aid procedures"
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/books.rsi
+    layers:
+    - state: paper
+    - state: cover_base
+      color: "#90D5FF"
+    - state: decor_wingette
+      color: "#FFFFFF"
+    - state: icon_medical_cross
+      color: "#FF0000"
+    - state: icon_medical
+      color: "gold"
+  - type: Tag
+    tags:
+    - Book
+    - Paper # Goobstation - Moth food
+  - type: MeleeWeapon
+    soundHit:
+      collection: Punch
+    damage:
+      types:
+        Blunt: 1
+  - type: DamageOtherOnHit
+    damage:
+      types:
+  # Goobstation Edit Start - Moth food
+  - type: Food
+    requiresSpecialDigestion: true
+    delay: 15
+    forceFeedDelay: 15
+  - type: BadFood
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 10
+  - type: FlavorProfile
+    flavors:
+    - paper
+    ignoreReagents:
+    - Fiber
+  # Goobstation Edit End
+  - type: AddComponentsOnInteract
+    popupText: book-cpr-training-success
+    components:
+    - type: CPRTraining
