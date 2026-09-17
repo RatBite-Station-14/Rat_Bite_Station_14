@@ -19,7 +19,7 @@
 #        department: Command
 #        time: 18000 # five hours
     - type: AutoImplant
-      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, BluespaceLifelineImplant ] # bluespace implant because unrobust ERT keep giving antags/selfantags free loot
+      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, BluespaceLifelineImplant, RPHelpImplant ] # bluespace implant because unrobust ERT keep giving antags/selfantags free loot
     - type: RandomMetadata
       nameSegments:
       - NamesMilitaryFirstLeader

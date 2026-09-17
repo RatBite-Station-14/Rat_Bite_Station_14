@@ -92,7 +92,7 @@
   parent: CentcommHumanoid # Goobstation
   components:
     - type: AutoImplant
-      implants: [ FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm] # Goobstation
+      implants: [ FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm, RPHelpImplant ] # Goobstation
     - type: DeathSquadMember # Goobstation
     - type: GhostRole
       name: ghost-role-information-Death-Squad-name
@@ -601,7 +601,7 @@
   parent: CentcommHumanoid
   components:
     - type: AutoImplant
-      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, BluespaceLifelineImplant ] # Goobstation; Ratbite - bluespace implant because unrobust ERT keep giving antags/selfantags free loot
+      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, BluespaceLifelineImplant, RPHelpImplant ] # Goobstation; Ratbite - bluespace implant because unrobust ERT keep giving antags/selfantags free loot
     - type: Loadout
       prototypes: [CBURNGear]
       roleLoadout: [ RoleSurvivalEVA ]

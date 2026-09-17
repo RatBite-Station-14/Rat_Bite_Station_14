@@ -8,6 +8,7 @@ using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Content.Goobstation.Common.CCVar;
+using Content.Server._BRatbite.Administration;
 using Content.Server.Administration.Managers;
 using Content.Server.Afk;
 using Content.Server.Database;
@@ -672,6 +673,12 @@ namespace Content.Server.Administration.Systems
                 return;
             }
 
+            // Ratbite: Custom checks for bwoinks
+            var ev = new BeforeBwoinkMessageSentEvent(message, senderSession, senderAHelpAdmin);
+            RaiseLocalEvent(ref ev);
+            if (ev.Cancelled) return;
+            // Ratbite end
+
             if (_rateLimit.CountAction(eventArgs.SenderSession, RateLimitKey) != RateLimitStatus.Allowed)
                 return;
 
@@ -740,7 +747,7 @@ namespace Content.Server.Administration.Systems
 
             // If it's not an admin / admin chooses to keep the sound and message is not an admin only message, then play it.
             var playSound = (bwoinkParams.SenderAdmin == null || bwoinkParams.Message.PlaySound) && !bwoinkParams.Message.AdminOnly;
-            var msg = new BwoinkTextMessage(bwoinkParams.Message.UserId, bwoinkParams.SenderId, bwoinkText, playSound: playSound, adminOnly: bwoinkParams.Message.AdminOnly);
+            var msg = new BwoinkTextMessage(bwoinkParams.Message.UserId, bwoinkParams.SenderId, bwoinkText, playSound: playSound, adminOnly: bwoinkParams.Message.AdminOnly, type: bwoinkParams.Message.Type);
 
             LogBwoink(msg);
 
@@ -833,7 +840,7 @@ namespace Content.Server.Administration.Systems
             if (bwoinkParams.SenderChannel != null)
             {
                 var systemText = Loc.GetString("bwoink-system-starmute-message-no-other-users");
-                var starMuteMsg = new BwoinkTextMessage(bwoinkParams.Message.UserId, SystemUserId, systemText);
+                var starMuteMsg = new BwoinkTextMessage(bwoinkParams.Message.UserId, SystemUserId, systemText, type: bwoinkParams.Message.Type);
                 RaiseNetworkEvent(starMuteMsg, bwoinkParams.SenderChannel);
             }
         }

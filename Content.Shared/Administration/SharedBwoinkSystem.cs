@@ -44,7 +44,10 @@ namespace Content.Shared.Administration
 
             public readonly bool AdminOnly;
 
-            public BwoinkTextMessage(NetUserId userId, NetUserId trueSender, string text, DateTime? sentAt = default, bool playSound = true, bool adminOnly = false)
+            // Ratbite
+            public readonly BwoinkType Type;
+
+            public BwoinkTextMessage(NetUserId userId, NetUserId trueSender, string text, DateTime? sentAt = default, bool playSound = true, bool adminOnly = false, BwoinkType type = BwoinkType.AHelp)
             {
                 SentAt = sentAt ?? DateTime.Now;
                 UserId = userId;
@@ -52,7 +55,16 @@ namespace Content.Shared.Administration
                 Text = text;
                 PlaySound = playSound;
                 AdminOnly = adminOnly;
+                Type = type;
             }
+        }
+
+        // Ratbite
+        [Serializable, NetSerializable]
+        public enum BwoinkType : byte
+        {
+            AHelp,
+            RPHelp,
         }
     }
 
