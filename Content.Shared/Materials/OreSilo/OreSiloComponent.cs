@@ -22,8 +22,9 @@ public sealed partial class OreSiloComponent : Component
     /// <remarks>
     /// Default value should be big enough to span a single large department.
     /// </remarks>
-    [DataField, AutoNetworkedField]
-    public float Range = 40f; // Goob - 20->40
+    // Ratbite: Moved it to be per grid instead
+    // [DataField, AutoNetworkedField]
+    // public float Range = 40f; // Goob - 20->40
 }
 
 [Serializable, NetSerializable]
