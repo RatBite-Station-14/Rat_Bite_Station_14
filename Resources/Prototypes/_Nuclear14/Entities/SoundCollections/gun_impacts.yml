@@ -1,0 +1,8 @@
+- type: soundCollection
+  id: N14MeatLaserImpact
+  files:
+  - "/Audio/_Nuclear14/Weapons/Effects/Hits/Laser/Meat/energy_meat1.ogg"
+  - "/Audio/_Nuclear14/Weapons/Effects/Hits/Laser/Meat/energy_meat2.ogg"
+  - "/Audio/_Nuclear14/Weapons/Effects/Hits/Laser/Meat/energy_meat3.ogg"
+  - "/Audio/_Nuclear14/Weapons/Effects/Hits/Laser/Meat/energy_meat4.ogg"
+  - "/Audio/_Nuclear14/Weapons/Effects/Hits/Laser/Meat/energy_meat5.ogg"

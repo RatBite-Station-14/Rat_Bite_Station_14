@@ -184,6 +184,7 @@
   - type: ConditionalSpawner
     prototypes:
     - MobLizard
+    - N14MobIguana
 
 - type: entity
   parent: MarkerBase

@@ -1,0 +1,6 @@
+- type: vendingMachineInventory
+  id: NukaInventory
+  startingInventory:
+    DrinkNuclearColaGlass: 20
+
+# higher number higher chances (also maximum amount)
