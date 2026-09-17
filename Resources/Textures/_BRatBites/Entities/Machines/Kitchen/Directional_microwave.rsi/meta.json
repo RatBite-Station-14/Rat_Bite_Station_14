@@ -1,0 +1,57 @@
+﻿{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from /tg/station at commit 9065b811726ae52be5d1889f436c01a24efbf47a, edited by github user @Flareguy for Space Station 14, inhands by BoskiYourk (GitHub)",
+    "states": [
+        {
+            "name": "mw",
+			"directions": 4
+        },
+        {
+            "name": "mw_unlit",
+             "directions": 4
+        },
+        {
+            "name": "mw0",
+            "directions": 4
+        },
+        {
+            "name": "mw_running_unlit",
+            "directions": 4
+        },
+        {
+            "name": "mwb",
+            "directions": 4
+        },
+        {
+            "name": "mwbloody",
+            "directions": 4
+        },
+        {
+            "name": "mwbloody0"
+        },
+        {
+            "name": "mwbloody1"
+        },
+        {
+            "name": "mwbloodyo",
+            "directions": 4
+        },
+        {
+            "name": "mwo",
+            "directions": 4
+        },
+        {
+            "name": "inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "inhand-left",
+            "directions": 4
+        }
+      ]
+    }

@@ -2,8 +2,9 @@
 
 - type: entity
   parent: BaseHeaterMachine
-  id: KitchenElectricGrill
+  id: OldKitchenElectricGrill # Ratbite
   name: electric grill
+  suffix: OLD DO NOT MAP # Ratbite
   description: A microwave? No, a real man cooks steaks on a grill!
   components:
   - type: Sprite
@@ -30,7 +31,7 @@
       - Temperature
   - type: PlaceableSurface
   - type: Machine
-    board: ElectricGrillMachineCircuitboard
+    board: OldElectricGrillMachineCircuitboard #Ratbite
   - type: Appearance
   - type: GenericVisualizer
     visuals:

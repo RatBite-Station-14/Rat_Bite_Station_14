@@ -1,0 +1,22 @@
+﻿- type: foodPreparationMethod
+  id: Baking
+  cookTimeMultiplier: 2.0
+  productTemperature: 330
+  statusEffects: [ FreshStatusEffect ]
+
+- type: foodPreparationMethod
+  id: Boiling
+  cookTimeMultiplier: 1.5
+  productTemperature: 330
+  statusEffects: [ FreshStatusEffect ]
+
+- type: foodPreparationMethod
+  id: Microwaving
+  cookTimeMultiplier: 1.0
+  productTemperature: 285
+  statusEffects: [ MicrowavedFoodStatusEffect ]
+
+- type: foodPreparationMethod
+  id: Preserving
+  cookTimeMultiplier: 2.0
+  productTemperature: 275

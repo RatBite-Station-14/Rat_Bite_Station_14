@@ -1,0 +1,43 @@
+﻿{
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "by aaron swoop",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "base",
+      "directions": 4
+    },
+    {
+      "name": "low",
+      "directions": 4
+    },
+    {
+      "name": "medium",
+      "directions": 4
+    },
+    {
+      "name": "high",
+      "directions": 4
+    },
+    {
+      "name": "open",
+      "directions": 4
+    },
+    {
+      "name": "closed",
+      "directions": 4
+    },
+    {
+      "name": "open_unlit",
+      "directions": 4
+    },
+    {
+      "name": "closed_unlit",
+      "directions": 4
+    }
+  ]
+}

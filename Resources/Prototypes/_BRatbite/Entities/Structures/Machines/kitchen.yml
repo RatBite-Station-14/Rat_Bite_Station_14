@@ -1,0 +1,545 @@
+﻿- type: entity
+  abstract: true
+  id: BaseCookingMachine
+  parent: [ BaseMachinePowered, SmallConstructibleMachine ]
+  components:
+  - type: Rotatable
+    rotateWhileAnchored: false
+  - type: Transform
+    noRot: false
+  - type: TimedCooker
+  - type: UserInterface
+    interfaces:
+      enum.TimedCookerUiKey.Key:
+        type: TimedCookerBoundUserInterface
+  - type: ActivatableUI
+    key: enum.TimedCookerUiKey.Key
+  - type: Appearance
+  - type: ApcPowerReceiver
+    powerLoad: 400
+  - type: ContainerContainer
+    containers:
+      cooking_entity_container: !type:Container
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: EmptyOnMachineDeconstruct
+    containers:
+    - cooking_entity_container
+  - type: GuideHelp
+    guides:
+    - Chef
+    - FoodRecipes
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+
+
+- type: entity
+  id: KitchenOven
+  parent: [ BaseCookingMachine ]
+  name: oven
+  description: "An electric oven. It works by directing electrical current to high-resistance metal coils where energy is dissipated as heat. In other words, it's magic.\nSlower than preparing with a microwave or a pot, but generally produces higher-qualtiy food.\n"
+  components:
+  - type: CookingVessel
+    preparationMethod: Baking
+    requiresPower: true
+  - type: TimedCooker
+    onUIOpenSound: /Audio/_Goobstation/DropPod/closet_open.ogg
+    onUICloseSound: /Audio/Effects/closetclose.ogg
+    startCookingSound: /Audio/Items/Lighters/lighter1.ogg
+    loopingSound: /Audio/Effects/burning.ogg
+    foodDoneSound: /Audio/Machines/ding.ogg
+  - type: EntityHeater
+    settingSound:
+      path: /Audio/Weapons/click.ogg
+      params:
+        volume: -6
+  - type: ItemPlacer
+    maxEntities: 4 # big grill, many steaks
+    whitelist:
+      components:
+      - Temperature
+      - ContainerCooker
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 1
+  - type: Fixtures
+    fixtures:
+      itemcollide:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.14,-0.05,0.15,0.25"
+        layer:
+        - HighImpassable
+        hard: false
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: PlaceableSurface
+  - type: Sprite
+    sprite: _BRatBites/Entities/Machines/Kitchen/Oven.rsi
+    drawdepth: SmallObjects
+    layers:
+    - state: base
+      map: ["base"]
+    - state: low
+      map: ["range"]
+      shader: unshaded
+      visible: false
+    - state: closed
+      map: ["door"]
+    - state: closed_unlit
+      map: ["door_unlit"]
+      shader: unshaded
+      visible: false
+  - type: GenericVisualizer
+    visuals:
+      enum.TimedCookerDataKeys.DoorOpen:
+        door:
+          True: { state: open }
+          False: { state: closed }
+        door_unlit:
+          True: { state: open_unlit }
+          False: { state: closed_unlit }
+      enum.TimedCookerDataKeys.Active:
+        door_unlit:
+          True: { visible: true }
+          False : { visible: false }
+      enum.EntityHeaterVisuals.Setting:
+        range:
+          Off: { visible: false }
+          Low: { visible: true, state: low }
+          Medium: { visible: true, state: medium }
+          High: { visible: true, state: high }
+  - type: Machine
+    board: OvenMachineCircuitboard
+
+- type: entity
+  id: OvenMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: oven machine board
+  components:
+  - type: Sprite
+    state: service
+  - type: MachineBoard
+    prototype: KitchenOven
+    stackRequirements:
+      Manipulator: 2
+      Glass: 2
+      Cable: 2
+  - type: Tag
+    tags:
+    - DroneUsable
+
+- type: entity
+  id: KitchenMicrowave
+  parent: [ BaseCookingMachine ]
+  name: microwave
+  description: "An electric microwave. It's magic."
+  components:
+  - type: CookingVessel
+    preparationMethod: Microwaving
+    requiresPower: true
+  - type: TimedCooker
+    loopingSound: /Audio/Machines/microwave_loop.ogg
+    onUIOpenSound: /Audio/_Goobstation/DropPod/closet_open.ogg
+    onUICloseSound: /Audio/Effects/closetclose.ogg
+  - type: Sprite
+    sprite: _BRatBites/Entities/Machines/Kitchen/Directional_microwave.rsi
+    drawdepth: SmallObjects
+    layers:
+    - state: mw
+      map: ["body"]
+    - state: mwbloody
+      map: ["blood"]
+      visible: false
+    - state: mw_unlit
+      map: ["display"]
+      shader: unshaded
+    - state: mw_running_unlit
+      map: ["running"]
+      shader: unshaded
+      visible: false
+  - type: GenericVisualizer
+    visuals:
+      enum.TimedCookerDataKeys.DoorOpen:
+        body:
+          True: { state: mwo }
+          False: { state: mw }
+        blood:
+          True: { state: mwbloodyo }
+          False: { state: mwbloody }
+      enum.TimedCookerDataKeys.Bloody:
+        blood:
+          True: { visible: true }
+          False: { visible: false }
+      enum.TimedCookerDataKeys.Active:
+        running:
+          True: { visible: true }
+          False: { visible: false }
+      enum.PowerDeviceVisuals.Powered:
+        display:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Machine
+    board: MicrowaveMachineCircuitboard
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 5
+    totalIntensity: 2.5
+    intensitySlope: 2.5
+    canCreateVacuum: false
+    deleteAfterExplosion: true
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.3,-0.16,0.3,0.16"
+        density: 190
+        mask:
+        - TabletopMachineMask
+        layer:
+        - TabletopMachineLayer
+  - type: Item
+    sprite: _BRatBites/Entities/Machines/Kitchen/Directional_microwave.rsi
+    size: Ginormous
+  - type: MultiHandedItem
+  - type: MeleeWeapon
+    attackRate: 0.5
+    soundHit:
+      collection: MetalBreak
+    damage:
+      types:
+        Blunt: 25
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 10
+  - type: DamageOnHit
+    damage:
+      types:
+        Blunt: 10
+  - type: DamageOnLand
+    damage:
+      types:
+        Blunt: 50
+  - type: EmitSoundOnLand
+    sound:
+      collection: MetalBreak
+      params:
+        variation: 0.25
+  - type: HeldSpeedModifier
+    walkModifier: 0.7
+    sprintModifier: 0.7
+  - type: DamageExaminable
+
+- type: entity
+  id: MicrowaveMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: microwave machine board
+  components:
+  - type: Sprite
+    state: service
+  - type: MachineBoard
+    prototype: KitchenMicrowave
+    stackRequirements:
+      Manipulator: 1
+      Glass: 2
+      Cable: 2
+  - type: Tag
+    tags:
+    - DroneUsable
+    - MicrowaveMachineBoard
+
+- type: entity
+  id: KitchenPreservatronic
+  parent: [ BaseCookingMachine ]
+  name: preservatronic
+  description: "Waiter, Waiter, more slop please!"
+  components:
+  - type: CookingVessel
+    preparationMethod: Preserving
+    requiresPower: true
+  - type: TimedCooker
+    loopingSound: /Audio/Effects/hydraulic_press.ogg
+    onUIOpenSound: /Audio/_Goobstation/DropPod/closet_open.ogg
+    onUICloseSound: /Audio/Effects/closetclose.ogg
+  - type: Sprite
+    sprite: _BRatBites/Entities/Machines/Kitchen/Preservatronic.rsi
+    drawdepth: SmallObjects
+    layers:
+    - state: base
+    - state: closed
+      map: ["door"]
+    - state: on_unlit
+      map: [ "base_unlit" ]
+      shader: unshaded
+      visible: false
+    - state: sloppening
+      map: [ "anim" ]
+      visible: false
+  - type: GenericVisualizer
+    visuals:
+      enum.TimedCookerDataKeys.Active:
+        anim:
+          True: { state: sloppening, visible: true }
+          False: { visible: false }
+        door:
+          True: { state: closed }
+      enum.PowerDeviceVisuals.Powered:
+        base_unlit:
+          True: { visible: true }
+          False: { visible: false }
+        anim:
+          False: { visible: false }
+      enum.TimedCookerDataKeys.DoorOpen:
+        door:
+          True: { state: open }
+          False: { state: closed }
+  - type: Machine
+    board: PreservatronicMachineCircuitboard
+
+- type: entity
+  id: PreservatronicMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: preservatronic machine board
+  components:
+  - type: Sprite
+    state: service
+  - type: MachineBoard
+    prototype: KitchenPreservatronic
+    stackRequirements:
+      Manipulator: 2
+      Glass: 1
+      Cable: 2
+  - type: Tag
+    tags:
+    - DroneUsable
+
+- type: entity
+  id: KitchenElectricGrill
+  parent: [ BaseHeaterMachine ]
+  name: electric grill
+  description: "A boy's grill. 'cause it's electric."
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Entities/Machines/Kitchen/Directional_grill.rsi
+    drawdepth: SmallObjects
+    layers:
+    - state: icon
+    - map: [ "enum.EntityHeaterVisuals.Setting" ]
+      shader: unshaded
+      visible: false
+  - type: ApcPowerReceiver
+    powerLoad: 0
+  - type: EntityHeater
+    settingSound:
+      path: /Audio/Weapons/click.ogg
+      params:
+        volume: -6
+  - type: ItemPlacer
+    maxEntities: 4
+    whitelist:
+      components:
+      - Temperature
+      - ContainerCooker
+  - type: PlaceableSurface
+  - type: Machine
+    board: ElectricGrillMachineCircuitboard
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.EntityHeaterVisuals.Setting:
+        enum.EntityHeaterVisuals.Setting:
+          Off: { visible: false }
+          Low: { visible: true, state: low }
+          Medium: { visible: true, state: medium }
+          High: { visible: true, state: high }
+
+- type: entity
+  id: ElectricGrillMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: electric grill machine board
+  components:
+  - type: Sprite
+    state: service
+  - type: MachineBoard
+    prototype: KitchenElectricGrill
+    stackRequirements:
+      Manipulator: 4
+      Glass: 2
+      Cable: 5
+  - type: Tag
+    tags:
+    - DroneUsable
+
+- type: entity
+  abstract: true
+  id: BaseCookingPot
+  parent: BaseItem
+  components:
+  - type: CookingVessel
+    preparationMethod: Boiling
+    requiresPower: false
+  - type: ContainerCooker
+  - type: Sprite
+    sprite: _BRatBites/Objects/Specific/Kitchen/Sauspan.rsi
+    layers:
+    - state: icon
+      map: [ "base" ]
+    - state: fill-1
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+      visible: false
+  - type: SolutionContainerVisuals
+    maxFillLevels: 3
+    fillBaseName: fill-
+    solutionName: beaker
+  - type: Tag
+    tags:                           # both types of heaters now check the ent for their respective tags.
+    - SolutionHeaterBlacklist       # it does not stop them from being placed on it, just stops it from actually applying heat.
+    - EntityHeaterBlacklist         # since heat is something we manage in the cooking systems ourselves.
+  - type: Item
+    size: Normal
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 50
+  - type: Temperature
+  - type: RefillableSolution
+    solution: beaker
+  - type: DrainableSolution
+    solution: beaker
+  - type: ExaminableSolution
+    solution: beaker
+    exactVolume: true
+  - type: DrawableSolution
+    solution: beaker
+  - type: InjectableSolution
+    solution: beaker
+  - type: SolutionTransfer
+    canChangeTransferAmount: true
+    maxTransferAmount: 50
+  - type: Spillable
+    solution: beaker
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ContainerCookerUiKey.Key:
+        type: ContainerCookerMenuBoundUserInterface
+  - type: ActivatableUI
+    key: enum.ContainerCookerUiKey.Key
+  - type: Appearance
+  - type: Edible
+    edible: Drink
+    solution: beaker
+    destroyOnEmpty: false
+    utensil: None
+    grid:
+    - 0,0,1,1
+    maxItemSize: Normal
+  - type: MeleeWeapon
+    soundNoDamage:
+      path: /Audio/Items/trayhit1.ogg
+    damage:
+      types:
+        Blunt: 5
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 5
+  - type: HeatTint # Goob - color liquid by temperature
+    colorGradient:
+    - temperature: 200
+      color: "#A0BCE0"
+    - temperature: 293
+      color: "#FFFFFF"
+    - temperature: 350
+      color: "#FFC0A8"
+    - temperature: 800
+      color: "#FF9880"
+    affectedLayers:
+    - "enum.SolutionContainerLayers.Fill"
+    - "base"
+
+- type: entity
+  id: KitchenPotSmall
+  name: sauce pan
+  description: "Almost a pot. Used for cooking.\nCan cook more than sauce in it."
+  parent: BaseCookingPot
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _BRatBites/Objects/Specific/Kitchen/Sauspan.rsi
+
+- type: entity
+  id: KitchenPotMedium
+  name: pot
+  description: "A pot. You could probably cook something with this.\nThis one doesn't squeak."
+  parent: BaseCookingPot
+  components:
+  - type: Item
+    size: Normal
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 100
+  - type: SolutionTransfer
+    maxTransferAmount: 100
+  - type: Sprite
+    sprite: _BRatBites/Objects/Specific/Kitchen/Pot.rsi
+
+- type: entity
+  id: KitchenPotLarge
+  name: boiling pot
+  description: "A substantially large pot used for cooking.\nThe pot itself isn't actually boiling."
+  parent: BaseCookingPot
+  components:
+  - type: Item
+    size: Huge
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 200
+  - type: MeleeWeapon
+    soundNoDamage:
+      path: /Audio/Items/trayhit2.ogg
+    damage:
+      types:
+        Blunt: 5
+  - type: SolutionTransfer
+    maxTransferAmount: 200
+  - type: Sprite
+    sprite: _BRatBites/Objects/Specific/Kitchen/Boilingpot.rsi
