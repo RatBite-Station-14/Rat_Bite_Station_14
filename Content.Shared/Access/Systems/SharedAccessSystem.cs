@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Access.Components;
+using Content.Shared.Lock;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 
@@ -34,6 +35,9 @@ namespace Content.Shared.Access.Systems
         private void OnGetAccessTags(EntityUid uid, AccessComponent component, ref GetAccessTagsEvent args)
         {
             if (!component.Enabled)
+                return;
+            // Ratbite
+            if (TryComp<LockComponent>(uid, out var lockComp) && lockComp.Locked)
                 return;
 
             args.Tags.UnionWith(component.Tags);
