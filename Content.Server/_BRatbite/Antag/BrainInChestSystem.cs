@@ -1,18 +1,16 @@
-/* Ratbite: Moved to Content.Server/_BRatbite/Antag/BrainInChestSystem.cs
-using Content.Goobstation.Shared.Slasher.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
-using Content.Server.Body.Components;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Standing;
 
-namespace Content.Goobstation.Server.Slasher.Systems;
+namespace Content.Server._BRatbite.Antag;
 
 /// <summary>
-/// Moves the slasher's brain from the head into the chest
+/// Moves the brain from the head into the chest
+/// Taken from Content.Goobstation.Server/Slasher/Systems/SlasherSystem.cs
 /// </summary>
-public sealed class SlasherSystem : EntitySystem
+public sealed class BrainInChestSystem : EntitySystem
 {
     [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly StandingStateSystem _standing = default!;
@@ -21,17 +19,17 @@ public sealed class SlasherSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<SlasherComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<SlasherComponent, RejuvenateEvent>(OnRejuvenate);
+        SubscribeLocalEvent<BrainInChestComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<BrainInChestComponent, RejuvenateEvent>(OnRejuvenate);
     }
 
-    private void OnMapInit(Entity<SlasherComponent> ent, ref MapInitEvent args) =>
+    private void OnMapInit(Entity<BrainInChestComponent> ent, ref MapInitEvent args) =>
         MoveBrainToChest(ent);
 
-    private void OnRejuvenate(Entity<SlasherComponent> ent, ref RejuvenateEvent args) =>
+    private void OnRejuvenate(Entity<BrainInChestComponent> ent, ref RejuvenateEvent args) =>
         MoveBrainToChest(ent);
 
-    private void MoveBrainToChest(Entity<SlasherComponent> ent)
+    private void MoveBrainToChest(Entity<BrainInChestComponent> ent)
     {
         if (!TryComp<BodyComponent>(ent, out var bodyComp)
             || !_body.TryGetBodyOrganEntityComps<BrainComponent>((ent.Owner, bodyComp), out var brains)
@@ -62,4 +60,3 @@ public sealed class SlasherSystem : EntitySystem
         _standing.Stand(ent.Owner, force: true);
     }
 }
-*/

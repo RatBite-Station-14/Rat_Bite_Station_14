@@ -423,7 +423,7 @@ public partial class NavMapControl : MapGridControl
 
                 var scalingCoefficient = MinmapScaleModifier * float.Sqrt(MinimapScale);
                 var positionOffset = new Vector2(scalingCoefficient * blip.Scale * blip.Texture.Width, scalingCoefficient * blip.Scale * blip.Texture.Height);
-
+                handle.UseShader(blip.Shader);
                 handle.DrawTextureRect(blip.Texture, new UIBox2(position - positionOffset, position + positionOffset), blip.Color);
             }
         }
@@ -742,8 +742,9 @@ public struct NavMapBlip
     public bool Blinks;
     public bool Selectable;
     public float Scale;
+    public ShaderInstance? Shader; // Ratbite
 
-    public NavMapBlip(EntityCoordinates coordinates, Texture texture, Color color, bool blinks, bool selectable = true, float scale = 1f)
+    public NavMapBlip(EntityCoordinates coordinates, Texture texture, Color color, bool blinks, bool selectable = true, float scale = 1f, ShaderInstance? shader = null)
     {
         Coordinates = coordinates;
         Texture = texture;
@@ -751,5 +752,6 @@ public struct NavMapBlip
         Blinks = blinks;
         Selectable = selectable;
         Scale = scale;
+        Shader = shader;
     }
 }
