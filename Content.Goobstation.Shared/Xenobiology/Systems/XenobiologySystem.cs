@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Xenobiology.Components;
+using Content.Shared.CCVar;
 using Content.Shared.Examine;
 using Content.Shared.Jittering;
 using Content.Shared.Mobs.Systems;
@@ -12,7 +13,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-
+using Content.Shared._BRatbite.CCVar;
 namespace Content.Goobstation.Shared.Xenobiology.Systems;
 
 /// <summary>
@@ -41,11 +42,15 @@ public sealed partial class XenobiologySystem : EntitySystem
         SubscribeBreeding();
 
         SubscribeLocalEvent<SlimeComponent, ExaminedEvent>(OnExamined);
+
+        if (_net.IsServer)
+            Subs.CVar(_configuration, RatbiteCVars.GridSlimeCountCap, value => _slimeCountCap = value, true); // Ratbite
     }
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+        UpdateSlimeCountCache();
         UpdateMitosis();
     }
 
