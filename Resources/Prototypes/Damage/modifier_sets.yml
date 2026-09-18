@@ -205,9 +205,9 @@
   id: Diona
   coefficients:
     Blunt: 0.7
-    Slash: 0.8
-    Heat: 1.5
-    Shock: 1.2
+    Slash: 0.7
+    Heat: 2.0
+    Shock: 1.4
   ignoreArmorPierceFlags: All # Goobstation
 
 - type: damageModifierSet
