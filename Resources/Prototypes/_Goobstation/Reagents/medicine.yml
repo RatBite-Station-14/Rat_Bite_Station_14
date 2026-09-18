@@ -966,6 +966,12 @@
           components:
           - type: PressureProtection # can't get through this to reach the bodyparts!
           inverted: true
+      - !type:DehuskEffect # Ratbite
+        conditions:
+        - !type:HasComponentOnEquipmentCondition
+          components:
+          - type: PressureProtection # can't get through this to reach the bodyparts!
+          inverted: true
   metabolisms:
     Medicine:
       effects:
