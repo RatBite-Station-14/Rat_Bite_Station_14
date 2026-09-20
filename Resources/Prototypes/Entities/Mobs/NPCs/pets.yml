@@ -970,7 +970,15 @@
     understands:
     - Bubblish
     - TauCetiBasic
-
+  - type: SolutionRegeneration
+    solution: melee
+    generated:
+      reagents:
+      - ReagentId: Omnizine
+        Quantity: 1
+  - type: MeleeChemicalInjector
+    transferAmount: 0.5
+    solution: melee
 - type: entity
   name: Pun Pun
   parent: MobMonkey
