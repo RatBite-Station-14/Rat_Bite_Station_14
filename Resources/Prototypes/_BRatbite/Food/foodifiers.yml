@@ -42,3 +42,27 @@
       - ReagentId: Potassium
         Quantity: 1
       canReact: false
+
+- type: entity
+  parent: [MobStatusEffectBase, MobStatusEffectDebuff]
+  id: TheyThemStatusEffect
+  name: They/them status effect
+  components:
+  - type: ChangeGenderStatusEffect
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: GunAccuracyStatusEffect
+  name: Improved accuracy
+  components:
+  - type: GunAccuracyStatusEffect
+    accuracyMultiplier: 0.8
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: MeleeBuffStatusEffect
+  name: Melee Buff
+  components:
+  - type: MeleeDamageStatusEffect
+    multiplier: 500
+    onlyPunches: true

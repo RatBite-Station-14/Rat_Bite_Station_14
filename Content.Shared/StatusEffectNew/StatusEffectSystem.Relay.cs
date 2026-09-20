@@ -7,6 +7,8 @@ using Content.Shared.Rejuvenate;
 using Content.Shared.Speech;
 using Content.Shared.StatusEffectNew.Components;
 using Content.Shared.Stunnable;
+using Content.Shared.Weapons.Melee.Events;
+using Content.Shared.Weapons.Ranged.Events;
 using Robust.Shared.Player;
 
 namespace Content.Shared.StatusEffectNew;
@@ -35,6 +37,11 @@ public sealed partial class StatusEffectsSystem
         SubscribeLocalEvent<StatusEffectContainerComponent, AccentGetEvent>(RelayStatusEffectEvent);
 
         SubscribeLocalEvent<StatusEffectContainerComponent, BleedModifierEvent>(RefRelayStatusEffectEvent);
+
+        // Ratbite relayed events
+        SubscribeLocalEvent<StatusEffectContainerComponent, GunRefreshModifiersEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, GetMeleeDamageEvent>(RefRelayStatusEffectEvent);
+        // Ratbite end
     }
 
     private void RefRelayStatusEffectEvent<T>(EntityUid uid, StatusEffectContainerComponent component, ref T args) where T : struct

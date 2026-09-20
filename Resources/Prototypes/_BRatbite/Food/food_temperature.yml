@@ -1,13 +1,15 @@
 - type: foodStatus
   id: BadCold
-  effects: [ ] # TODO
+  effects:
+  - MeleeBuffStatusEffect
   examineText: food-temperature-bad-cold
 
 - type: foodStatus
   id: GoodHot
   effects:
-  - FreshStatusEffect
-  - TestFoodStatusEffect
+#  - FreshStatusEffect
+#  - TestFoodStatusEffect
+  - TheyThemStatusEffect
   examineText: food-temperature-good-hot
 
 - type: foodTemperature
