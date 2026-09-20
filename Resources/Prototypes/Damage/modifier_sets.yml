@@ -202,7 +202,7 @@
   ignoreArmorPierceFlags: All # Goobstation
 
 - type: damageModifierSet
-  id: Diona
+  id: Diona # Ratbite changed slash from 0.8 to 0.7, shock from 1.2 to 1.4 and heat 1.5 to 2.0
   coefficients:
     Blunt: 0.7
     Slash: 0.7
