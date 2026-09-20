@@ -7,7 +7,7 @@
   name: trait-small-name
   description: trait-small-desc
   category: Physical
-  cost: 5
+  cost: 0 # cosmetic thingy and also not a buff
   includedSpecies:
   - Tajaran
   - Resomi
