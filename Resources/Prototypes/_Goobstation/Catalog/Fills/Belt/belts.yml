@@ -180,8 +180,8 @@
 
 - type: entity
   id: ClothingBeltMilitaryWebbingFilled
-  parent: ClothingBeltMilitaryWebbing
-  suffix: Filled, BSO
+  parent: ClothingBeltMilitaryWebbingBSO # Ratbite decontraband it
+  suffix: Assault
   components:
   - type: EntityTableContainerFill
     containers:
