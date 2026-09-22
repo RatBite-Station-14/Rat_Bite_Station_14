@@ -126,7 +126,8 @@ namespace Content.Server.Database
                 {loc.GetString("ban-banned-3", ("reason", Reason))}
                 {expires}
                 {loc.GetString("ban-banned-4")}
-                """;
+                {(Addresses.Length != 0 ? loc.GetString("ratbite-ban-banned-5") : "")}
+                """; // Ratbite: Add VPN warning
         }
 
         // Goobstation change: add banning admin
