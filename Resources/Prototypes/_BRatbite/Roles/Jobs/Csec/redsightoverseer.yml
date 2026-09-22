@@ -50,7 +50,7 @@
   - Cryogenics
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, BluespaceLifelineImplant ] # CC gets bluespace
+    implants: [ MindShieldImplant, BluespaceLifelineImplant, KravMagaImplant ] # CC gets bluespace
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
@@ -68,7 +68,6 @@
     pocket1: ClothingMaskGasSecurity
   storage:
     back:
-    - KravMagaImplanter
     - BookSpaceLaw
     - Flash
     - RSOUndeterminedWeapon
