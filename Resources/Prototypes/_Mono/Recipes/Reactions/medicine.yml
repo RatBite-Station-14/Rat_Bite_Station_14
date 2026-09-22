@@ -9,3 +9,27 @@
       amount: 1
   products:
     Peranol: 4
+
+- type: reaction
+  id: Rhymatine
+  reactants:
+    FluorosulfuricAcid:
+      amount: 2
+    Ethylredoxrazine:
+      amount: 1
+    Doxarubixadone:
+      amount: 2
+  products:
+    Rhymatine: 5
+
+- type: reaction
+  id: Celoxradine
+  reactants:
+    Arithrazine:
+      amount: 1.75
+    Insuzine:
+      amount: 1.25
+    Lacerinol:
+      amount: 1
+  products:
+    Celoxradine: 5

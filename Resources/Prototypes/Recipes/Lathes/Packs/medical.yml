@@ -102,6 +102,7 @@
   - ChemMasterMachineCircuitboard
   - CondenserMachineCircuitBoard
   - HotplateMachineCircuitboard
+#  - EnergyMedicineDispenserMachineCircuitboard # ratbit, add the e-med dispenser No more because of bevv
   # - EnergyChemDispenserMachineCircuitboard #Goob edit - all things that get base med boards get E-Chem # Ratbite: Moved to its own pack
 
 ## Dynamic

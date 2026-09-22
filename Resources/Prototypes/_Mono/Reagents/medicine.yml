@@ -35,3 +35,89 @@
           type: [ Hydrakin ]
           inverted: true
         amount: -7500
+
+- type: reagent
+  id: Rhymatine
+  name: reagent-name-rhymatine
+  group: Medicine
+  desc: reagent-desc-rhymatine
+  physicalDesc: reagent-physical-desc-translucent
+  flavor: medicine
+  worksOnTheDead: false # It is true on omu and mono but I don't really think it is needed - Ratbite change
+  color: "#03fc9d"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.75
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Cellular: -1 # Ratbite, changed from -2.5 to -1 because of balance
+            Shock: 0.1 # Ratbite, changed from 1.25
+            Cold: 0.1 # Ratbite, changed from 1.25
+      - !type:HealthChange
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [Yowie]
+          inverted: true
+        - !type:ReagentCondition
+          reagent: Rhymatine
+          min: 10
+        damage:
+          types:
+            Asphyxiation: 6
+            Cold: 6
+          groups:
+            Brute: 0.5
+      - !type:Jitter
+        conditions:
+        - !type:ReagentCondition
+          reagent: Rhymatine
+          min: 10
+
+- type: reagent
+  id: Celoxradine
+  name: reagent-name-celoxradine
+  group: Medicine
+  desc: reagent-desc-celoxradine
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#fc035e"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.25 # for healing uncommon (in-combat) damage types slowly. What the fuck was monolith thinking. 100 rads from 5u before hahaha. Was 0.1u/s, now 0.25u/s - ratbite
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Shock: -3 # 60 from 5u 
+            Radiation: -1 # changed to -1 by ratbite
+            Heat: -1.25
+          groups:
+            Brute: -0.5
+      - !type:HealthChange
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [Yowie]
+          inverted: true
+        - !type:ReagentCondition
+          reagent: Celoxradine
+          min: 15
+        damage:
+          types:
+            Asphyxiation: 2.5
+            Poison: 2.0
+      - !type:Vomit
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [Yowie]
+          inverted: true
+        - !type:ReagentCondition
+          reagent: Celoxradine
+          min: 30
+        probability: 0.5
+      - !type:Jitter
+        conditions:
+        - !type:ReagentCondition
+          reagent: Celoxradine
+          min: 15

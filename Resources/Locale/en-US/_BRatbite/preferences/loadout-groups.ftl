@@ -29,6 +29,9 @@ loadout-group-security-ammo = Sidearm Ammo
 loadout-group-security-longarm = Security Longarm
 loadout-group-security-gloves = Security Gloves
 
+# Medicines for like med and stuff
+
+loadout-group-medicines = Medicines
 # tram
 loadout-group-tramdriver-jumpsuit = Tram driver jumpsuit
 loadout-group-tramdriver-outerclothing = Tram driver suit
