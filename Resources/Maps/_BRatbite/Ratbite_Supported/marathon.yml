@@ -4,7 +4,7 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 08/30/2026 08:09:06
+  time: 09/13/2026 16:27:04
   entityCount: 23120
 maps:
 - 1
@@ -11198,7 +11198,7 @@ entities:
       pos: -1.5,18.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -7948.766
+      secondsUntilStateChange: -7987.7227
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -11725,7 +11725,7 @@ entities:
       pos: 40.5,11.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -11694.592
+      secondsUntilStateChange: -11733.549
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -11762,7 +11762,7 @@ entities:
       pos: 41.5,8.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -8543.132
+      secondsUntilStateChange: -8582.089
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -65223,7 +65223,7 @@ entities:
       pos: 12.5,-12.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -6911.0996
+      secondsUntilStateChange: -6950.056
       state: Closing
     - type: Firelock
       emergencyCloseCooldown: 1795.33154
@@ -129837,155 +129837,10 @@ entities:
     - type: Transform
       pos: -44.5,50.5
       parent: 2
-  - uid: 20041
-    components:
-    - type: Transform
-      pos: -43.5,50.5
-      parent: 2
-  - uid: 20042
-    components:
-    - type: Transform
-      pos: -42.5,50.5
-      parent: 2
   - uid: 20043
     components:
     - type: Transform
       pos: -36.5,49.5
-      parent: 2
-  - uid: 20044
-    components:
-    - type: Transform
-      pos: -36.5,50.5
-      parent: 2
-  - uid: 20045
-    components:
-    - type: Transform
-      pos: -36.5,51.5
-      parent: 2
-  - uid: 20046
-    components:
-    - type: Transform
-      pos: -36.5,52.5
-      parent: 2
-  - uid: 20047
-    components:
-    - type: Transform
-      pos: -36.5,53.5
-      parent: 2
-  - uid: 20048
-    components:
-    - type: Transform
-      pos: -36.5,54.5
-      parent: 2
-  - uid: 20049
-    components:
-    - type: Transform
-      pos: -36.5,55.5
-      parent: 2
-  - uid: 20050
-    components:
-    - type: Transform
-      pos: -36.5,56.5
-      parent: 2
-  - uid: 20051
-    components:
-    - type: Transform
-      pos: -36.5,57.5
-      parent: 2
-  - uid: 20052
-    components:
-    - type: Transform
-      pos: -37.5,57.5
-      parent: 2
-  - uid: 20053
-    components:
-    - type: Transform
-      pos: -38.5,57.5
-      parent: 2
-  - uid: 20054
-    components:
-    - type: Transform
-      pos: -39.5,57.5
-      parent: 2
-  - uid: 20055
-    components:
-    - type: Transform
-      pos: -40.5,57.5
-      parent: 2
-  - uid: 20056
-    components:
-    - type: Transform
-      pos: -41.5,57.5
-      parent: 2
-  - uid: 20057
-    components:
-    - type: Transform
-      pos: -42.5,57.5
-      parent: 2
-  - uid: 20058
-    components:
-    - type: Transform
-      pos: -42.5,56.5
-      parent: 2
-  - uid: 20059
-    components:
-    - type: Transform
-      pos: -42.5,55.5
-      parent: 2
-  - uid: 20060
-    components:
-    - type: Transform
-      pos: -42.5,54.5
-      parent: 2
-  - uid: 20061
-    components:
-    - type: Transform
-      pos: -42.5,53.5
-      parent: 2
-  - uid: 20062
-    components:
-    - type: Transform
-      pos: -42.5,52.5
-      parent: 2
-  - uid: 20063
-    components:
-    - type: Transform
-      pos: -42.5,51.5
-      parent: 2
-  - uid: 20064
-    components:
-    - type: Transform
-      pos: -43.5,51.5
-      parent: 2
-  - uid: 20065
-    components:
-    - type: Transform
-      pos: -43.5,52.5
-      parent: 2
-  - uid: 20066
-    components:
-    - type: Transform
-      pos: -43.5,53.5
-      parent: 2
-  - uid: 20067
-    components:
-    - type: Transform
-      pos: -43.5,54.5
-      parent: 2
-  - uid: 20068
-    components:
-    - type: Transform
-      pos: -43.5,55.5
-      parent: 2
-  - uid: 20069
-    components:
-    - type: Transform
-      pos: -43.5,56.5
-      parent: 2
-  - uid: 20070
-    components:
-    - type: Transform
-      pos: -43.5,57.5
       parent: 2
   - uid: 20071
     components:
@@ -137935,6 +137790,153 @@ entities:
     components:
     - type: Transform
       pos: -33.5,0.5
+      parent: 2
+- proto: WallReinforcedSecure
+  entities:
+  - uid: 15793
+    components:
+    - type: Transform
+      pos: -43.5,50.5
+      parent: 2
+  - uid: 15794
+    components:
+    - type: Transform
+      pos: -42.5,50.5
+      parent: 2
+  - uid: 19717
+    components:
+    - type: Transform
+      pos: -36.5,50.5
+      parent: 2
+  - uid: 20041
+    components:
+    - type: Transform
+      pos: -36.5,51.5
+      parent: 2
+  - uid: 20042
+    components:
+    - type: Transform
+      pos: -36.5,52.5
+      parent: 2
+  - uid: 20044
+    components:
+    - type: Transform
+      pos: -36.5,53.5
+      parent: 2
+  - uid: 20045
+    components:
+    - type: Transform
+      pos: -36.5,54.5
+      parent: 2
+  - uid: 20046
+    components:
+    - type: Transform
+      pos: -36.5,55.5
+      parent: 2
+  - uid: 20047
+    components:
+    - type: Transform
+      pos: -36.5,56.5
+      parent: 2
+  - uid: 20048
+    components:
+    - type: Transform
+      pos: -36.5,57.5
+      parent: 2
+  - uid: 20049
+    components:
+    - type: Transform
+      pos: -37.5,57.5
+      parent: 2
+  - uid: 20050
+    components:
+    - type: Transform
+      pos: -38.5,57.5
+      parent: 2
+  - uid: 20051
+    components:
+    - type: Transform
+      pos: -39.5,57.5
+      parent: 2
+  - uid: 20052
+    components:
+    - type: Transform
+      pos: -40.5,57.5
+      parent: 2
+  - uid: 20053
+    components:
+    - type: Transform
+      pos: -41.5,57.5
+      parent: 2
+  - uid: 20054
+    components:
+    - type: Transform
+      pos: -42.5,57.5
+      parent: 2
+  - uid: 20055
+    components:
+    - type: Transform
+      pos: -42.5,56.5
+      parent: 2
+  - uid: 20056
+    components:
+    - type: Transform
+      pos: -42.5,55.5
+      parent: 2
+  - uid: 20057
+    components:
+    - type: Transform
+      pos: -42.5,54.5
+      parent: 2
+  - uid: 20058
+    components:
+    - type: Transform
+      pos: -42.5,53.5
+      parent: 2
+  - uid: 20059
+    components:
+    - type: Transform
+      pos: -42.5,52.5
+      parent: 2
+  - uid: 20060
+    components:
+    - type: Transform
+      pos: -42.5,51.5
+      parent: 2
+  - uid: 20061
+    components:
+    - type: Transform
+      pos: -43.5,51.5
+      parent: 2
+  - uid: 20062
+    components:
+    - type: Transform
+      pos: -43.5,52.5
+      parent: 2
+  - uid: 20063
+    components:
+    - type: Transform
+      pos: -43.5,53.5
+      parent: 2
+  - uid: 20064
+    components:
+    - type: Transform
+      pos: -43.5,54.5
+      parent: 2
+  - uid: 20065
+    components:
+    - type: Transform
+      pos: -43.5,55.5
+      parent: 2
+  - uid: 20066
+    components:
+    - type: Transform
+      pos: -43.5,56.5
+      parent: 2
+  - uid: 20067
+    components:
+    - type: Transform
+      pos: -43.5,57.5
       parent: 2
 - proto: WallSolid
   entities:

@@ -541,7 +541,6 @@
     - SecurityHypoStatic
     - MechWeaponsSecurityStatic
     - SecurityBoardsStaticGoob
-    - SecurityBoardsStaticGoob
     - PowerCellsStatic
     - ScienceExplosives
     - GrenadeTriggersStatic

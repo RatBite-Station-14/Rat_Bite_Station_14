@@ -1,0 +1,115 @@
+- type: entity
+  parent: BaseWall
+  id: WallSecure
+  name: secure wall
+  description: Upgraded wall with an integrated radio chip capable of alerting security when destroyed.
+  components:
+  - type: Sprite
+    sprite: _BRatbite/Structures/Walls/secure.rsi
+  - type: Construction
+    graph: Girder
+    node: secureWall
+  - type: Icon
+    sprite: _BRatbite/Structures/Walls/secure.rsi
+  - type: IconSmooth
+    key: walls
+    base: solid
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:RadioBehavior
+        radioMessage: "secure-wall-destroy"
+        radioChannel: "Security"
+
+- type: entity
+  parent: BaseWall
+  id: WallReinforcedSecure
+  name: reinforced secure wall
+  description: Upgraded reinforced wall with an integrated radio chip capable of alerting security when destroyed.
+  components:
+  - type: Sprite
+    sprite: _BRatbite/Structures/Walls/secure.rsi
+  - type: Icon
+    sprite: _BRatbite/Structures/Walls/secure.rsi
+    state: rgeneric
+  - type: IconSmooth
+    key: walls
+    base: reinf_over
+  - type: Construction
+    graph: Girder
+    node: secureReinforcedWall
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrong
+  - type: RadiationBlocker
+    resistance: 5
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 2000
+  - type: Penetratable
+    penetrateDamage: 100
+    damagePenalty: 0.25
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 600
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:RadioBehavior
+        radioMessage: "secure-wall-destroy"
+        radioChannel: "Security"
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ReinforcedWallVisuals.DeconstructionStage:
+        ReinforcedWallVisualLayers.Deconstruction:
+          -1: { visible: false }
+          0: { state: reinf_construct-0, visible: true}
+          1: { state: reinf_construct-1, visible: true}
+          2: { state: reinf_construct-2, visible: true}
+          3: { state: reinf_construct-3, visible: true}
+          4: { state: reinf_construct-4, visible: true}
+          5: { state: reinf_construct-5, visible: true}
