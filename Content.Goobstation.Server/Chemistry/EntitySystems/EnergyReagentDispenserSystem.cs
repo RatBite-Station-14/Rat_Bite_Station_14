@@ -161,7 +161,7 @@ namespace Content.Goobstation.Server.Chemistry.EntitySystems
                 return;
 
             var amount = (int) reagentDispenser.Comp.DispenseAmount;
-            var powerRequired = GetPowerCostForReagent(message.ReagentId, amount, reagentDispenser.Comp);
+            var powerRequired = GetPowerCostForReagent(message.ReagentId, amount, reagentDispenser.Comp) ?? float.MaxValue; // ratbite
 
             if (battery.LastCharge < powerRequired)
             {
@@ -186,7 +186,7 @@ namespace Content.Goobstation.Server.Chemistry.EntitySystems
                 || !_solutionContainerSystem.TryGetFitsInDispenser(outputContainer, out var solution, out var soln))
                 return;
 
-            var refundedPower = soln.Sum(reagent => GetPowerCostForReagent(reagent.Reagent.Prototype, (int) reagent.Quantity, reagentDispenser));
+            var refundedPower = soln.Sum(reagent => GetPowerCostForReagent(reagent.Reagent.Prototype, (int) reagent.Quantity, reagentDispenser) ?? 0); // Ratbite: Fix infinite power glitch
             if (refundedPower > 0)
             {
                 _battery.TryGetBatteryComponent(reagentDispenser, out var batteryComponent, out _);
@@ -203,11 +203,12 @@ namespace Content.Goobstation.Server.Chemistry.EntitySystems
         private void ClickSound(Entity<EnergyReagentDispenserComponent> reagentDispenser) =>
             _audioSystem.PlayPvs(reagentDispenser.Comp.ClickSound, reagentDispenser, AudioParams.Default.WithVolume(-2f));
 
-        private static float GetPowerCostForReagent(string reagentId, int amount, EnergyReagentDispenserComponent comp)
+        private static float? GetPowerCostForReagent(string reagentId, int amount, EnergyReagentDispenserComponent comp)
         {
+            // Ratbite: Fix infinite power glitch
             return comp.Reagents.TryGetValue(reagentId, out var cost)
                 ? cost * amount
-                : float.MaxValue;
+                : null;
         }
         private void OnMapInit(Entity<EnergyReagentDispenserComponent> entity, ref MapInitEvent args) =>
             _itemSlotsSystem.AddItemSlot(entity.Owner, SharedEnergyReagentDispenser.OutputSlotName, entity.Comp.EnergyBeakerSlot);
