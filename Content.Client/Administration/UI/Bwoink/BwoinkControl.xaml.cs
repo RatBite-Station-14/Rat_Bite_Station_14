@@ -15,6 +15,7 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Network;
 using Robust.Shared.Configuration;
 using Robust.Shared.Utility;
+using static Content.Shared.Administration.SharedBwoinkSystem;
 
 namespace Content.Client.Administration.UI.Bwoink
 {
@@ -29,6 +30,8 @@ namespace Content.Client.Administration.UI.Bwoink
         [Dependency] private readonly IUserInterfaceManager _ui = default!;
         [Dependency] private readonly IConfigurationManager _cfg = default!;
         public AdminAHelpUIHandler AHelpHelper = default!;
+        // Ratbite
+        public BwoinkType SelectedType = BwoinkType.AHelp;
 
         private PlayerInfo? _currentPlayer;
 
@@ -50,6 +53,7 @@ namespace Content.Client.Administration.UI.Bwoink
             UpdateButtons();
 
             AdminOnly.OnToggled += args => PlaySound.Disabled = args.Pressed;
+            RPHelp.OnToggled += args => SelectedType = args.Pressed ? BwoinkType.RPHelp : BwoinkType.AHelp;
 
             ChannelSelector.OnSelectionChanged += sel =>
             {

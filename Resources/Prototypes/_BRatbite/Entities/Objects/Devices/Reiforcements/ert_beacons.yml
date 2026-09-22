@@ -16,7 +16,7 @@
     - type: IdBind
     - type: Loadout
     - type: AutoImplant
-      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, BluespaceLifelineImplant ] # bluespace implant because unrobust ERT keep giving antags/selfantags free loot
+      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, BluespaceLifelineImplant, RPHelpImplant ] # bluespace implant because unrobust ERT keep giving antags/selfantags free loot
     - type: MindShield
 
 # ERT leader
@@ -39,7 +39,7 @@
       prototypes: [ ERTLeaderGear ]
       roleLoadout: [ RoleSurvivalExtended ]
     - type: AutoImplant
-      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, BluespaceLifelineImplant, DeathRattleImplantCentcomm ]
+      implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, BluespaceLifelineImplant, DeathRattleImplantCentcomm, RPHelpImplant ]
 
 
 - type: entity

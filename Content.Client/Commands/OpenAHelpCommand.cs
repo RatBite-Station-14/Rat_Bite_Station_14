@@ -5,6 +5,7 @@ using Content.Shared.Administration;
 using Robust.Client.UserInterface;
 using Robust.Shared.Console;
 using Robust.Shared.Network;
+using static Content.Shared.Administration.SharedBwoinkSystem;
 
 namespace Content.Client.Commands;
 
@@ -26,7 +27,7 @@ public sealed class OpenAHelpCommand : LocalizedCommands
         }
         if (args.Length == 0)
         {
-            _userInterfaceManager.GetUIController<AHelpUIController>().Open();
+            _userInterfaceManager.GetUIController<AHelpUIController>().Open(BwoinkType.AHelp);
         }
         else
         {
