@@ -64,6 +64,7 @@
     back:
     - Flash
     - MagazinePistol
+    - LockableIDCardPaper # Ratbite
 
 - type: chameleonOutfit
   id: WardenChameleonOutfit
