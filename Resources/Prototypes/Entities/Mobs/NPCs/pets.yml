@@ -946,8 +946,8 @@
   - type: MeleeWeapon
     damage:
       types:
-        Blunt: 1
-        Caustic: 1
+        Blunt: 0.3
+        Caustic: 0.5
   - type: MultiHandedItem
   - type: Item
     sprite: Mobs/Pets/Smile/smile.rsi
@@ -969,7 +969,20 @@
     - Bubblish # I am not giving them universal like EE. They are a slime, they can do slime speak.
     understands:
     - Bubblish
-    - TauCetiBasic
+    - TauCetiBasic 
+  - type: SolutionContainerManager
+    solutions:
+      melee:
+        maxVol: 5
+  - type: SolutionRegeneration
+    solution: melee
+    generated:
+      reagents:
+      - ReagentId: Omnizine
+        Quantity: 1
+  - type: MeleeChemicalInjector
+    transferAmount: 0.5
+    solution: melee
 
 - type: entity
   name: Pun Pun
