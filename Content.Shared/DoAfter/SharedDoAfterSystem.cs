@@ -233,7 +233,7 @@ public abstract partial class SharedDoAfterSystem : EntitySystem
         // Goobstation start
         if (args.MultiplyDelay)
         {
-            var delayMultiplierEv = new GetDoAfterDelayMultiplierEvent();
+            var delayMultiplierEv = new GetDoAfterDelayMultiplierEvent(args.Event);
             RaiseLocalEvent(args.User, delayMultiplierEv);
             args.Delay *= delayMultiplierEv.Multiplier;
         }

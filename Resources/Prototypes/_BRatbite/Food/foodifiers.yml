@@ -66,3 +66,16 @@
   - type: MeleeDamageStatusEffect
     multiplier: 500
     onlyPunches: true
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: TestFoodifier
+  name: Test Foodifier
+  components:
+  - type: ToolInteractionSpeedupStatusEffect
+  - type: SurgeryInteractionSpeedupStatusEffect
+  - type: InjectionInteractionSpeedupStatusEffect
+  - type: ChatFontOverrideStatusEffect
+    color: '#00FF00'
+  - type: ColorChangeStatusEffect
+    color: '#00FF00'

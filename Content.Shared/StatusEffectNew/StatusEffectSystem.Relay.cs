@@ -1,4 +1,6 @@
+using Content.Shared._Shitmed.DoAfter;
 using Content.Shared.Body.Events;
+using Content.Shared.Chat;
 using Content.Shared.Damage.Events;
 using Content.Shared.Mobs.Events;
 using Content.Shared.Movement.Events;
@@ -41,6 +43,8 @@ public sealed partial class StatusEffectsSystem
         // Ratbite relayed events
         SubscribeLocalEvent<StatusEffectContainerComponent, GunRefreshModifiersEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, GetMeleeDamageEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, GetDoAfterDelayMultiplierEvent>(RelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, TransformSpeakerFontEvent>(RelayStatusEffectEvent);
         // Ratbite end
     }
 

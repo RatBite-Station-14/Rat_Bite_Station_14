@@ -1,7 +1,7 @@
 - type: foodStatus
   id: BadCold
   effects:
-  - MeleeBuffStatusEffect
+  - TestFoodifier
   examineText: food-temperature-bad-cold
 
 - type: foodStatus
