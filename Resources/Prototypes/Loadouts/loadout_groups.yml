@@ -270,17 +270,18 @@
   - TacticoolJumpsuit
   - TacticoolJumpskirt
 # ratbite adds
+  - BlackJumpsuit
+  - BlackJumpskirt
+  - QuarterzipJumpsuit
   - MercJumpsuit
   - MercGreenJumpsuit
   - MercBlueJumpsuit
   - FreakPants
-
 #ratbite end
-  - RainbowJumpsuit
-  - RainbowJumpskirt
  # goob changes start
   - JumpsuitRecruit
   - OverallsJumpsuit
+  - BlackMJAlt
   - GreyMJ
   - BlackMJ
   - BlueMJ
@@ -296,11 +297,12 @@
   - LightBrownMJ
   - BrownMJ
   - MaroonMJ
-  - QuarterzipJumpsuit
   - ContractorJumpsuit
   - ContractorJumpsuitTac
-  - BlackMJAlt
+
  # goob changes end
+  - RainbowJumpsuit
+  - RainbowJumpskirt
 
 - type: loadoutGroup
   id: PassengerHead
@@ -308,6 +310,8 @@
   minLimit: 0
   loadouts:
   - MercBeret
+  - GangHat1
+  - GangHat2
 
 
 - type: loadoutGroup
@@ -316,7 +320,10 @@
   minLimit: 0
   loadouts:
   - PassengerFace
+  #Ratbite adds
   - MercBandana
+  - GangMask1
+  - GangMask2
 
 - type: loadoutGroup
   id: CivilianTacticoolMask
@@ -356,12 +363,25 @@
   minLimit: 0
   loadouts:
   - PassengerWintercoat
+# Ratbite additions
+  - Gang1Letterman
+  - Gang2Letterman
+  - BomberJacket
+  - BikerJacket
+  - LeatherJacket
+  - TrenchCoat
 
 - type: loadoutGroup
   id: PassengerShoes
   name: loadout-group-passenger-shoes
   loadouts:
   - BlackShoes
+  - WinterBoots
+  # Ratbite adds
+  - WorkBoots
+  - LaceupShoes
+  - SyndieWinterBoots
+  #ratbite end
   - WinterBoots
 
 - type: loadoutGroup
