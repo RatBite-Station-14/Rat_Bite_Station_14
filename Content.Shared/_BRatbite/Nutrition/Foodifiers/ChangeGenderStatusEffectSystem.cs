@@ -16,6 +16,7 @@ public sealed partial class ChangeGenderStatusEffectSystem : EntitySystem
 
         SubscribeLocalEvent<ChangeGenderStatusEffectComponent, StatusEffectAppliedEvent>(OnStatusApplied);
         SubscribeLocalEvent<ChangeGenderStatusEffectComponent, StatusEffectRemovedEvent>(OnStatusRemoved);
+        SubscribeLocalEvent<ChangeGenderStatusEffectComponent, EffectDescriptionEvent>(OnGetDescription);
     }
 
     private void OnStatusApplied(Entity<ChangeGenderStatusEffectComponent> ent, ref StatusEffectAppliedEvent args)
@@ -32,5 +33,19 @@ public sealed partial class ChangeGenderStatusEffectSystem : EntitySystem
         if (_statusEffectsSystem.HasEffectComp<ChangeGenderStatusEffectComponent>(args.Target)) return;
         var oldGender = CompOrNull<HumanoidAppearanceComponent>(args.Target)?.Gender ?? Gender.Neuter;
         _grammarSystem.SetGender((args.Target, grammar), oldGender);
+    }
+
+    private void OnGetDescription(Entity<ChangeGenderStatusEffectComponent> ent, ref EffectDescriptionEvent args)
+    {
+        var pronouns = ent.Comp.NewGender switch
+        {
+            Gender.Neuter => "guidebook-pronouns-neuter",
+            Gender.Epicene => "guidebook-pronouns-epicene",
+            Gender.Female => "guidebook-pronouns-female",
+            Gender.Male => "guidebook-pronouns-male",
+            _ => ""
+        };
+        args.Message.AddMarkupOrThrow(Loc.GetString("guidebook-description-change-gender", ("pronouns", Loc.GetString(pronouns))));
+        args.Message.PushNewline();
     }
 }

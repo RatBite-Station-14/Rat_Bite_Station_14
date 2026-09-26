@@ -10,6 +10,7 @@ public sealed partial class GunAccuracyStatusEffectSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<GunAccuracyStatusEffectComponent, StatusEffectRelayedEvent<GunRefreshModifiersEvent>>(OnGunRefresh);
+        SubscribeLocalEvent<GunAccuracyStatusEffectComponent, EffectDescriptionEvent>(OnGetEffectDescription);
     }
 
     private void OnGunRefresh(Entity<GunAccuracyStatusEffectComponent> ent, ref StatusEffectRelayedEvent<GunRefreshModifiersEvent> args)
@@ -19,5 +20,11 @@ public sealed partial class GunAccuracyStatusEffectSystem : EntitySystem
         ev.MinAngle *= ent.Comp.AccuracyMultiplier * scale;
         ev.MaxAngle *= ent.Comp.AccuracyMultiplier * scale;
         args.Args = ev;
+    }
+
+    private void OnGetEffectDescription(Entity<GunAccuracyStatusEffectComponent> ent, ref EffectDescriptionEvent args)
+    {
+        args.Message.AddMarkupOrThrow(Loc.GetString("guidebook-description-change-accuracy", ("accuracy", MathF.Round(ent.Comp.AccuracyMultiplier * 100))));
+        args.Message.PushNewline();
     }
 }

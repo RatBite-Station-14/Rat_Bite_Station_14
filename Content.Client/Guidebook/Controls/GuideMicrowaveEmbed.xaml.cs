@@ -187,5 +187,6 @@ public sealed partial class GuideMicrowaveEmbed : PanelContainer, IDocumentTag, 
         GenerateHeader(recipe);
         GenerateIngredients(recipe);
         GenerateCookTime(recipe);
+        GenerateEffectDescription(recipe);
     }
 }

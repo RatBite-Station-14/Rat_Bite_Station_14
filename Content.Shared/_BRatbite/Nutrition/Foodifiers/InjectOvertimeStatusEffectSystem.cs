@@ -1,17 +1,22 @@
+using System.Text;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.StatusEffectNew.Components;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._BRatbite.Nutrition.Foodifiers;
 
 public sealed partial class InjectOvertimeStatusEffectSystem : OvertimeStatusEffectSystem
 {
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainers = default!;
+    [Dependency] private readonly IPrototypeManager _proto = default!;
+
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<InjectOvertimeStatusEffectComponent, EffectDescriptionEvent>(OnGetDescription);
     }
 
     protected override void Tick(TimeSpan elapsedTime)
@@ -31,5 +36,23 @@ public sealed partial class InjectOvertimeStatusEffectSystem : OvertimeStatusEff
             if (!targetSolution.CanAddSolution(solution)) continue;
             _solutionContainers.TryAddSolution(targetSoln.Value, solution);
         }
+    }
+
+    private void OnGetDescription(Entity<InjectOvertimeStatusEffectComponent> ent, ref EffectDescriptionEvent args)
+    {
+        if (!TryComp<SolutionComponent>(ent, out var solutionComp)) return;
+        var sol = solutionComp.Solution;
+        sol.ScaleTo(ent.Comp.InjectAmountPerSecond);
+        var reagents = sol.GetReagentPrototypes(_proto);
+        var sb = new StringBuilder();
+        var i = 0;
+        foreach (var (reagent, amount) in reagents)
+        {
+            sb.Append(Loc.GetString("guidebook-description-reagent", ("amount", amount), ("reagent", reagent.LocalizedName)));
+            if (i++ != reagents.Count - 1)
+                sb.Append(", ");
+        }
+        args.Message.AddMarkupOrThrow(Loc.GetString("guidebook-description-reagents-inject", ("reagents", sb.ToString())));
+        args.Message.PushNewline();
     }
 }
