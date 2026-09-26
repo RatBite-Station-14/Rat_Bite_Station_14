@@ -1,0 +1,29 @@
+- type: foodStatus
+  id: Fresh
+  effects:
+  - FreshStatusEffect
+  examineText: food-freshness-fresh-examine
+
+- type: foodStatus
+  id: Stale
+  effects: [ ] # TODO
+  examineText: food-freshness-stale-examine
+
+- type: foodStatus
+  id: Rotten
+  effects: [ ] # TODO
+  examineText: food-freshness-rotten-examine
+
+- type: foodStatus
+  id: Preserved
+  effects: [ ]
+  examineText: food-freshness-preserved-examine
+
+- type: foodDecay
+  id: HotFoodDecay
+  decayTimes:
+    Fresh: [ 45, Stale ]
+    Stale: [ 120, Rotten ]
+
+- type: foodDecay
+  id: Preserved

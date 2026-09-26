@@ -1,0 +1,101 @@
+# You can use other status effects as a foodifier, but before doing so
+# check that they have properly handled applying the same effect type
+# multiple times. Scaling is custom ratbite logic, you will likely
+# need to implement it yourself if the effect needs it.
+
+- type: entity
+  parent: MobStatusEffectBase
+  id: MobStatusEffectScalable
+  abstract: true
+  components:
+  - type: StatusEffectScale
+
+- type: entity
+  parent: MobStatusEffectScalable
+  id: FreshStatusEffect
+  name: fresh
+  components:
+  - type: ChangeStaminaStatusEffect
+    addedStamina: 5
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: MicrowavedFoodStatusEffect
+  name: Microwaved
+  components:
+  - type: TakeDamageOvertimeStatusEffect
+    damagePerSecond:
+      types:
+        Radiation: 1
+        Bloodloss: 2
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: TestFoodStatusEffect
+  name: Test Injection
+  components:
+  - type: InjectOvertimeStatusEffect
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Water
+        Quantity: 1
+      #- ReagentId: Potassium
+      #  Quantity: 1
+      canReact: false
+
+- type: entity
+  parent: [MobStatusEffectBase, MobStatusEffectDebuff]
+  id: TheyThemStatusEffect
+  name: They/them status effect
+  components:
+  - type: ChangeGenderStatusEffect
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: GunAccuracyStatusEffect
+  name: Improved accuracy
+  components:
+  - type: GunAccuracyStatusEffect
+    accuracyMultiplier: 0.8
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: MeleeBuffStatusEffect
+  name: Melee Buff
+  components:
+  - type: MeleeDamageStatusEffect
+    multiplier: 500
+    onlyPunches: true
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: TestFoodifier
+  name: Test Foodifier
+  components:
+  - type: ToolInteractionSpeedupStatusEffect
+  - type: SurgeryInteractionSpeedupStatusEffect
+  - type: InjectionInteractionSpeedupStatusEffect
+  - type: ChatFontOverrideStatusEffect
+    color: '#00FF00'
+    fontId: MonospaceBold
+  - type: ColorChangeStatusEffect
+    color: '#00FF00'
+  - type: ChatOverTimeStatusEffect
+    message: guidebook-pronouns-neuter
+    chatType: Emote
+  - type: DamageResistanceStatusEffect
+    damageModifier:
+      coefficients:
+        Blunt: 0.1
+        Piercing: 0.1
+      flatReductions:
+        Radiation: 20
+  - type: HemophiliaStatusEffect
+    bleedReductionMultiplier: 1
+    bleedAmountMultiplier: 100000001
+  - type: HungerMultiplierStatusEffect
+    multiplier: 10000000
+  - type: DropImmuneStatusEffect
+  - type: NoSlipStatusEffect
+  - type: PreventSpeechStatusEffect

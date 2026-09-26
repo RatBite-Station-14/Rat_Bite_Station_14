@@ -287,6 +287,11 @@ namespace Content.Server.Hands.Systems
                 if (throwAttempt.Cancelled)
                     continue;
 
+                // Ratbite: Also raise on the thrower if not cancelled
+                RaiseLocalEvent(entity, ref throwAttempt);
+                if (throwAttempt.Cancelled)
+                    continue;
+
                 if (!TryDrop(entity.AsNullable(), hand, checkActionBlocker: false))
                     continue;
 

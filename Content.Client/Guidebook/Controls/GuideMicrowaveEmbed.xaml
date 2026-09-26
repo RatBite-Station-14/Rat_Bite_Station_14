@@ -35,5 +35,11 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         <BoxContainer Margin="10">
             <RichTextLabel Name="ResultDescription" HorizontalAlignment="Left"/>
         </BoxContainer>
+        <!-- Ratbite start -->
+        <BoxContainer Margin="10" Orientation="Vertical">
+            <RichTextLabel Name="ResultEffectsHeader" Text="{Loc 'guidebook-microwave-effects-header'}" HorizontalAlignment="Left"/>
+            <RichTextLabel Name="ResultEffects" HorizontalAlignment="Left" />
+        </BoxContainer>
+        <!-- Ratbite end -->
     </BoxContainer>
 </PanelContainer>
