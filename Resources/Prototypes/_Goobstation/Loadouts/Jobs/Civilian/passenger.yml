@@ -13,7 +13,7 @@
   id: QuarterzipJumpsuit
   effects:
   - !type:GroupLoadoutEffect
-    proto: SophisticatedTider
+    proto: GreyTider #ratbite make quarterzip attainable
   equipment:
     jumpsuit: ClothingUniformJumpsuitPassengerQuarterzip
 
