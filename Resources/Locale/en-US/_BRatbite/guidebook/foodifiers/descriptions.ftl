@@ -7,7 +7,7 @@ guidebook-pronouns-epicene = they/them
 guidebook-pronouns-female = she/her
 guidebook-pronouns-male = he/him
 
-guidebook-description-change-accuracy = Modifies accuracy by [bold]{$accuracy}[/bold]%.
+guidebook-description-change-accuracy = Modifies gun spread by [bold]{$accuracy}[/bold]%.
 guidebook-description-reagents-inject = Injects {$reagents} per second.
 guidebook-description-reagent = [bold]{$amount}[/bold]u of [bold]{$reagent}[/bold]
 
