@@ -40,8 +40,8 @@
       reagents:
       - ReagentId: Water
         Quantity: 1
-      - ReagentId: Potassium
-        Quantity: 1
+      #- ReagentId: Potassium
+      #  Quantity: 1
       canReact: false
 
 - type: entity
@@ -81,3 +81,16 @@
     fontId: MonospaceBold
   - type: ColorChangeStatusEffect
     color: '#00FF00'
+  - type: ChatOverTimeStatusEffect
+    message: guidebook-pronouns-neuter
+    chatType: Emote
+  - type: DamageResistanceStatusEffect
+    damageModifier:
+      coefficients:
+        Blunt: 0.1
+        Piercing: 0.1
+      flatReductions:
+        Radiation: 20
+  - type: HemophiliaStatusEffect
+    bleedReductionMultiplier: 1
+    bleedAmountMultiplier: 100000001

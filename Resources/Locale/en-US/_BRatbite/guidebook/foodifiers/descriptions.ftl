@@ -26,3 +26,13 @@ guidebook-description-speedup-tools = using tools
 guidebook-description-speedup-surgery = doing surgery
 guidebook-description-speedup-injection = injecting reagents
 guidebook-description-speedup-effect = Changes the speed of [bold]{$effect}[/bold] by [bold]{$multiplier}[/bold]%.
+
+guidebook-description-chat-speak = Causes the user to speak uncontrollably.
+guidebook-description-chat-emote = Causes the user to emote uncontrollably.
+guidebook-description-chat-whisper = Causes the user to emote uncontrollably.
+
+guidebook-description-damage-resistance-coefficient = Modifies incoming [bold]{$type}[/bold] damage by [bold]{$coefficient}[/bold]%.
+guidebook-description-damage-resistance-flat-reduction = Reduces incoming [bold]{$type}[/bold] damage by [bold]{$amount}[/bold].
+
+guidebook-description-hemophilia-bleed-reduction = Modifies blood clotting capabilities by [bold]{$amount}[/bold]%.
+guidebook-description-hemophilia-bleed-multiplier = Modifies bleed amount by [bold]{$amount}[/bold]%.
