@@ -36,3 +36,11 @@ guidebook-description-damage-resistance-flat-reduction = Reduces incoming [bold]
 
 guidebook-description-hemophilia-bleed-reduction = Modifies blood clotting capabilities by [bold]{$amount}[/bold]%.
 guidebook-description-hemophilia-bleed-multiplier = Modifies bleed amount by [bold]{$amount}[/bold]%.
+
+guidebook-description-hunger = Changes hunger by [bold]{$multiplier}[/bold]%.
+
+guidebook-description-drop-immune = Makes the entity not drop the items in their hands when falling down.
+
+guidebook-description-no-slip = Makes the entity immune to slipping.
+
+guidebook-description-prevent-speech = Makes the entity unable to speak.

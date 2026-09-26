@@ -1,4 +1,5 @@
 ﻿using Content.Shared._BRatbite.Nutrition;
+using Content.Shared._BRatbite.Nutrition.Components;
 using Content.Shared.Body.Events;
 using Content.Shared.StatusEffectNew;
 
@@ -14,9 +15,10 @@ public sealed class HemophiliaSystem : EntitySystem
 
     private void OnBleedModifier(Entity<HemophiliaStatusEffectComponent> ent, ref StatusEffectRelayedEvent<BleedModifierEvent> args)
     {
+        var scale = CompOrNull<StatusEffectScaleComponent>(ent)?.Scale ?? 1f; // Ratbite: added scale
         var ev = args.Args;
-        ev.BleedReductionAmount *= ent.Comp.BleedReductionMultiplier;
-        ev.BleedAmount *= ent.Comp.BleedAmountMultiplier;
+        ev.BleedReductionAmount *= ent.Comp.BleedReductionMultiplier * scale;
+        ev.BleedAmount *= ent.Comp.BleedAmountMultiplier * scale;
         args.Args = ev;
     }
 

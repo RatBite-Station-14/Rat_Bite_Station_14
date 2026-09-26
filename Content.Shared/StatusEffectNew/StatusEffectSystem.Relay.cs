@@ -1,3 +1,4 @@
+using Content.Shared._BRatbite.Nutrition;
 using Content.Shared._Shitmed.DoAfter;
 using Content.Shared.Body.Events;
 using Content.Shared.Chat;
@@ -7,7 +8,9 @@ using Content.Shared.Mobs.Events;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Rejuvenate;
+using Content.Shared.Slippery;
 using Content.Shared.Speech;
+using Content.Shared.Standing;
 using Content.Shared.StatusEffectNew.Components;
 using Content.Shared.Stunnable;
 using Content.Shared.Weapons.Melee.Events;
@@ -47,6 +50,11 @@ public sealed partial class StatusEffectsSystem
         SubscribeLocalEvent<StatusEffectContainerComponent, GetDoAfterDelayMultiplierEvent>(RelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, TransformSpeakerFontEvent>(RelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, DamageModifyEvent>(RelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, HungerMultiplierEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, FellDownThrowAttemptEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, SlipAttemptEvent>(RelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, GetSlowedOverSlipperyModifierEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, SpeakAttemptEvent>(RelayStatusEffectEvent);
         // Ratbite end
     }
 

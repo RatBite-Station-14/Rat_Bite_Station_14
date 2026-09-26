@@ -94,3 +94,8 @@
   - type: HemophiliaStatusEffect
     bleedReductionMultiplier: 1
     bleedAmountMultiplier: 100000001
+  - type: HungerMultiplierStatusEffect
+    multiplier: 10000000
+  - type: DropImmuneStatusEffect
+  - type: NoSlipStatusEffect
+  - type: PreventSpeechStatusEffect
