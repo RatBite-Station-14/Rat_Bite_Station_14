@@ -27,6 +27,7 @@
     damagePerSecond:
       types:
         Radiation: 1
+        Bloodloss: 2
 
 - type: entity
   parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
@@ -77,5 +78,6 @@
   - type: InjectionInteractionSpeedupStatusEffect
   - type: ChatFontOverrideStatusEffect
     color: '#00FF00'
+    fontId: MonospaceBold
   - type: ColorChangeStatusEffect
     color: '#00FF00'

@@ -14,4 +14,15 @@ guidebook-description-reagent = [bold]{$amount}[/bold]u of [bold]{$reagent}[/bol
 guidebook-description-melee-buff = Modifies melee damage by [bold]{$multiplier}[/bold]%.
 guidebook-description-melee-buff-punch = Modifies punch damage by [bold]{$multiplier}[/bold]%.
 
-guidebook-description-damage-overtime = Damages the user with {$damages} per second.
+guidebook-description-damage = [bold]{$damageAmount} point of {$damageType}[/bold]
+guidebook-description-damage-overtime = Deals {$damages} per second.
+
+guidebook-description-chat-color = Changes chat color to [bold]{$color}[/bold].
+guidebook-description-chat-font =  Changes chat font to [bold]{$font}[/bold].
+
+guidebook-description-color-change = Changes the color of the entity to [bold]{$color}[/bold].
+
+guidebook-description-speedup-tools = using tools
+guidebook-description-speedup-surgery = doing surgery
+guidebook-description-speedup-injection = injecting reagents
+guidebook-description-speedup-effect = Changes the speed of [bold]{$effect}[/bold] by [bold]{$multiplier}[/bold]%.

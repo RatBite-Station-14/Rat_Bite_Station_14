@@ -12,6 +12,7 @@ public abstract partial class ColorChangeStatusEffectSystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<ColorChangeStatusEffectComponent, StatusEffectAppliedEvent>(OnStatusEffectApplied);
         SubscribeLocalEvent<ColorChangeStatusEffectComponent, StatusEffectRemovedEvent>(OnStatusEffectRemoved);
+        SubscribeLocalEvent<ColorChangeStatusEffectComponent, EffectDescriptionEvent>(OnGetEffectDescription);
     }
 
     private void OnStatusEffectApplied(Entity<ColorChangeStatusEffectComponent> ent, ref StatusEffectAppliedEvent args)
@@ -24,5 +25,11 @@ public abstract partial class ColorChangeStatusEffectSystem : EntitySystem
     {
         if (_statusEffectsSystem.HasEffectComp<ColorChangeStatusEffectComponent>(args.Target)) return;
         _appearanceSystem.SetData(args.Target, ColorStatusEffectVisuals.Color, Color.White);
+    }
+
+    private void OnGetEffectDescription(Entity<ColorChangeStatusEffectComponent> ent, ref EffectDescriptionEvent args)
+    {
+        args.Message.AddMarkupOrThrow(Loc.GetString("guidebook-description-color-change", ("color", ent.Comp.Color)));
+        args.Message.PushNewline();
     }
 }

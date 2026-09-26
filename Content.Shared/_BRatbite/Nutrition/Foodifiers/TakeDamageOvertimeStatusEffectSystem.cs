@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared.Damage;
 using Content.Shared.StatusEffectNew.Components;
 
@@ -25,7 +26,8 @@ public sealed partial class TakeDamageOvertimeStatusEffectSystem : OvertimeStatu
 
     private void OnEffectDescription(Entity<TakeDamageOvertimeStatusEffectComponent> ent, ref EffectDescriptionEvent args)
     {
-        args.Message.AddMarkupOrThrow(Loc.GetString("guidebook-description-damage-overtime", ("damages", ent.Comp.DamagePerSecond.GetTotal()))); // TODO: do each type
+        var damages = string.Join(", ", ent.Comp.DamagePerSecond.DamageDict.Select((damage) => Loc.GetString("guidebook-description-damage", ("damageType", damage.Key), ("damageAmount", damage.Value))));
+        args.Message.AddMarkupOrThrow(Loc.GetString("guidebook-description-damage-overtime", ("damages", damages)));
         args.Message.PushNewline();
     }
 }

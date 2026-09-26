@@ -225,6 +225,17 @@
         color: "#b37659"
       - state: alpha-filling-inhand-right
         color: "#e8634f"
+  # Ratbite
+  - type: CookedFood
+    statusEffectProto:
+    - TheyThemStatusEffect
+    - FreshStatusEffect
+    - MicrowavedFoodStatusEffect
+    - TestFoodStatusEffect
+    - GunAccuracyStatusEffect
+    - MeleeBuffStatusEffect
+    - TestFoodifier
+  # Ratbite end
 # Tastes like bun, bacon.
 
 - type: entity
