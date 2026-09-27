@@ -466,9 +466,6 @@
     solution: beaker
     destroyOnEmpty: false
     utensil: None
-    grid:
-    - 0,0,1,1
-    maxItemSize: Normal
   - type: MeleeWeapon
     soundNoDamage:
       path: /Audio/Items/trayhit1.ogg
