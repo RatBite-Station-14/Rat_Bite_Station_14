@@ -1,3 +1,4 @@
+using Content.Goobstation.Common.Speech;
 using Content.Shared._BRatbite.Nutrition;
 using Content.Shared._Shitmed.DoAfter;
 using Content.Shared.Body.Events;
@@ -55,6 +56,7 @@ public sealed partial class StatusEffectsSystem
         SubscribeLocalEvent<StatusEffectContainerComponent, SlipAttemptEvent>(RelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, GetSlowedOverSlipperyModifierEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, SpeakAttemptEvent>(RelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, GetEmoteSoundsEvent>(RefRelayStatusEffectEvent);
         // Ratbite end
     }
 

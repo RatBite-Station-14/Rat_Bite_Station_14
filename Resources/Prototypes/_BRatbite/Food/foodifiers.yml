@@ -99,3 +99,26 @@
   - type: DropImmuneStatusEffect
   - type: NoSlipStatusEffect
   - type: PreventSpeechStatusEffect
+  - type: ChangeMobThresholdStateStatusEffect
+    state: Critical
+    amount: 1000000
+  - type: EmoteOverrideStatusEffect
+    sounds: Mouse
+  - type: ChangeTemperatureOvertimeStatusEffect
+    energyPerSecond: 1000000000
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: BaseHotFoodifier
+  abstract: true
+  components:
+  - type: ChangeTemperatureOvertimeStatusEffect
+    energyPerSecond: 8000
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: BaseCarpFoodifier
+  abstract: true
+  components:
+  - type: MeleeDamageStatusEffect
+    multiplier: 115

@@ -44,3 +44,11 @@ guidebook-description-drop-immune = Makes the entity not drop the items in their
 guidebook-description-no-slip = Makes the entity immune to slipping.
 
 guidebook-description-prevent-speech = Makes the entity unable to speak.
+
+guidebook-description-mob-state-threshold = Changes the entity threshold for [bold]{$state}[/bold] by [bold]{$amount}[/bold].
+
+guidebook-description-owo-accent = Gives the user the [bold]OwO[/bold] accent.
+
+guidebook-description-emote-override = Changes the emotes of the user to [bold]{$emotes}[/bold].
+
+guidebook-description-change-temperature = Changes the entity temperature by [bold]{$heatPerSecond}[/bold] Joules per second.

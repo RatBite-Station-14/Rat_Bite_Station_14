@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: MIT
 
-namespace Content.Server.Speech.Components
-{
-    [RegisterComponent]
-    public sealed partial class OwOAccentComponent : Component
-    {
-    }
-}
+// Ratbite: moved to shared
+// namespace Content.Server.Speech.Components
+// {
+//     [RegisterComponent]
+//     public sealed partial class OwOAccentComponent : Component
+//     {
+//     }
+// }

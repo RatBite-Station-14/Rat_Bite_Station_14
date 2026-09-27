@@ -431,6 +431,10 @@
     tags:
     - Meat
     - Pizza
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - TestFoodifier # Adding to pineapple pizza temporarely because it
+                    # spawns by default in the dev map
 
 - type: entity
   name: slice of Hawaiian pizza

@@ -142,6 +142,9 @@
         color: "#f70000"
       - state: alpha-filling-inhand-right
         color: "#f70000"
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - AmanitaBurgerFoodifier
 
 # Burger
 
@@ -228,13 +231,7 @@
   # Ratbite
   - type: CookedFood
     statusEffectProto:
-    - TheyThemStatusEffect
-    - FreshStatusEffect
-    - MicrowavedFoodStatusEffect
-    - TestFoodStatusEffect
-    - GunAccuracyStatusEffect
-    - MeleeBuffStatusEffect
-    - TestFoodifier
+    - MeatBurgerFoodifier
   # Ratbite end
 # Tastes like bun, bacon.
 
@@ -274,6 +271,9 @@
       - state: alpha-bun-inhand-right
         color: "#f7f7f7"
       - state: burger-inhand-right
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BaseballBatBurgerFoodifier
 
 - type: entity
   parent: FoodBurgerBase
@@ -308,6 +308,9 @@
   - type: Tag
     tags:
     - Meat
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - MeatBurgerFoodifier
 
 - type: entity
   parent: FoodBurgerBase
@@ -344,6 +347,9 @@
   - type: Tag
     tags:
     - Meat
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - ComplexMeatBurgerFoodifier
 # Tastes like bun, silver, magic.
 
 - type: entity
@@ -417,6 +423,9 @@
   - type: Tag
     tags:
     - Meat
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - CatBurgerFoodifier
 
 - type: entity
   name: cheese burger
@@ -451,6 +460,9 @@
       - state: plain-inhand-left
       right:
       - state: plain-inhand-right
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - MeatBurgerFoodifier
 # TODO: Make this work.
   # - type: Sprite
   #   state: plate
@@ -503,6 +515,9 @@
         color: "#98d966"
       - state: alpha-patty-inhand-right
         color: "#f7b125"
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - MeatBurgerFoodifier
 # Tastes like bun, chicken.
 
 - type: entity
@@ -569,6 +584,9 @@
       - state: dog-inhand-left
       right:
       - state: dog-inhand-right
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - CorgiBurgerFoodifier
 
 - type: entity
   name: crab burger
@@ -610,6 +628,9 @@
         color: "#7e1a07"
       - state: alpha-patty-inhand-right
         color: "#7e1a07"
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - ComplexMeatBurgerFoodifier
 
 - type: entity
   parent: FoodBurgerBase
@@ -695,6 +716,9 @@
   - type: Tag
     tags:
     - Meat
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - ComplexMeatBurgerFoodifier
 # Tastes like bun, duck.
 
 - type: entity
@@ -757,6 +781,9 @@
   - type: Tag
     tags:
     - Meat
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - CarpBurgerFoodifier
 # Tastes like bun, fish.
 
 - type: entity
@@ -797,6 +824,9 @@
   - type: Tag
     tags:
     - Meat
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - HotBurgerFoodifer
 
 # Tastes like bun, HEAT.
 
@@ -845,6 +875,9 @@
     tags:
       - ClothMade
       - Meat
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - GhostBurgerFoodifier
 # Tastes like bun, ectoplasm.
 
 - type: entity
@@ -967,6 +1000,9 @@
         color: "#899660"
       - state: alpha-patty-inhand-right
         color: "#a94a31"
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - ComplexMeatBurgerFoodifier
 # Tastes like bun, pork patty.
 
 - type: entity
@@ -1000,6 +1036,9 @@
       - state: mime-inhand-left
       right:
       - state: mime-inhand-right
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - MimeBurgerFoodifier
 # Tastes like  .
 
 - type: entity
@@ -1034,6 +1073,9 @@
       - state: plain-inhand-left
       right:
       - state: plain-inhand-right
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BaseBurgerFoodifier
 
 - type: entity
   name: rat burger
@@ -1069,6 +1111,9 @@
       right:
       - state: bun-inhand-right
       - state: rat-inhand-right
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - RatBurgerFoodifier
 
 # Tastes like bun, HEAT.
 
@@ -1113,6 +1158,9 @@
         color: "#c0c0c0"
       - state: alpha-filling-inhand-right
         color: "#141414"
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - RoburgerFoodifier
 # Tastes like bun, lettuce, sludge.
 
 - type: entity
@@ -1153,6 +1201,9 @@
           Quantity: 6
         - ReagentId: Vitamin
           Quantity: 5
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - SoyBurgerFoodifier
 # Tastes like bun, redditors.
 
 - type: entity
@@ -1268,6 +1319,9 @@
         color: "#f0d8a1"
       - state: alpha-filling-inhand-right
         color: "#e5ad29"
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - SoyBurgerFoodifier
 # Tastes like bun, tofu.
 
 - type: entity

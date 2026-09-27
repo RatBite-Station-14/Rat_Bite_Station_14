@@ -1,0 +1,1 @@
+corgi-killer-message = Death to NanoTrasen!!!
