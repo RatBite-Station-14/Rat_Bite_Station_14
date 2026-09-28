@@ -1,21 +1,12 @@
-using Content.Goobstation.Common.Speech;
-using Content.Shared._BRatbite.Nutrition;
-using Content.Shared._Shitmed.DoAfter;
 using Content.Shared.Body.Events;
-using Content.Shared.Chat;
-using Content.Shared.Damage;
 using Content.Shared.Damage.Events;
 using Content.Shared.Mobs.Events;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Rejuvenate;
-using Content.Shared.Slippery;
 using Content.Shared.Speech;
-using Content.Shared.Standing;
 using Content.Shared.StatusEffectNew.Components;
 using Content.Shared.Stunnable;
-using Content.Shared.Weapons.Melee.Events;
-using Content.Shared.Weapons.Ranged.Events;
 using Robust.Shared.Player;
 
 namespace Content.Shared.StatusEffectNew;
@@ -44,20 +35,7 @@ public sealed partial class StatusEffectsSystem
         SubscribeLocalEvent<StatusEffectContainerComponent, AccentGetEvent>(RelayStatusEffectEvent);
 
         SubscribeLocalEvent<StatusEffectContainerComponent, BleedModifierEvent>(RefRelayStatusEffectEvent);
-
-        // Ratbite relayed events
-        SubscribeLocalEvent<StatusEffectContainerComponent, GunRefreshModifiersEvent>(RefRelayStatusEffectEvent);
-        SubscribeLocalEvent<StatusEffectContainerComponent, GetMeleeDamageEvent>(RefRelayStatusEffectEvent);
-        SubscribeLocalEvent<StatusEffectContainerComponent, GetDoAfterDelayMultiplierEvent>(RelayStatusEffectEvent);
-        SubscribeLocalEvent<StatusEffectContainerComponent, TransformSpeakerFontEvent>(RelayStatusEffectEvent);
-        SubscribeLocalEvent<StatusEffectContainerComponent, DamageModifyEvent>(RelayStatusEffectEvent);
-        SubscribeLocalEvent<StatusEffectContainerComponent, HungerMultiplierEvent>(RefRelayStatusEffectEvent);
-        SubscribeLocalEvent<StatusEffectContainerComponent, FellDownThrowAttemptEvent>(RefRelayStatusEffectEvent);
-        SubscribeLocalEvent<StatusEffectContainerComponent, SlipAttemptEvent>(RelayStatusEffectEvent);
-        SubscribeLocalEvent<StatusEffectContainerComponent, GetSlowedOverSlipperyModifierEvent>(RefRelayStatusEffectEvent);
-        SubscribeLocalEvent<StatusEffectContainerComponent, SpeakAttemptEvent>(RelayStatusEffectEvent);
-        SubscribeLocalEvent<StatusEffectContainerComponent, GetEmoteSoundsEvent>(RefRelayStatusEffectEvent);
-        // Ratbite end
+        SubscribeRatbiteRelays(); // Ratbite
     }
 
     private void RefRelayStatusEffectEvent<T>(EntityUid uid, StatusEffectContainerComponent component, ref T args) where T : struct

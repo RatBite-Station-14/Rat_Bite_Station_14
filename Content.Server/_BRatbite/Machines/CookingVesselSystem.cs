@@ -363,7 +363,7 @@ public sealed class CookingVesselSystem : SharedCookingVesselSystem
                     var prepMethod = _prototype.Index(cookingVesselComp.PreparationMethod);
                     var tempComp = EnsureComp<TemperatureComponent>(result);
                     _temperatureSystem.ForceChangeTemperature(result, prepMethod.ProductTemperature, tempComp);
-                    var cookedFoodComponent = AddComp<CookedFoodComponent>(result);
+                    var cookedFoodComponent = EnsureComp<CookedFoodComponent>(result);
                     prepMethod.StatusEffects.ForEach(effect => _cookedFoodSystem.AddStatusEffect((result, cookedFoodComponent), effect));
                 }
             }

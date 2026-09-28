@@ -3,6 +3,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Content.Goobstation.Common.DoAfter; // Goobstation
+using Content.Shared._BRatbite.DoAfter;
 using Content.Shared._Shitmed.DoAfter; // Shitmed
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
@@ -238,6 +239,14 @@ public abstract partial class SharedDoAfterSystem : EntitySystem
             args.Delay *= delayMultiplierEv.Multiplier;
         }
         // Goobstation end
+        // Ratbite start
+        if (args.MultiplyDelay && args.Target is { } target)
+        {
+            var delayMultiplierEv = new GetDoAfterTargetMultiplierEvent(args.Event);
+            RaiseLocalEvent(target, ref delayMultiplierEv);
+            args.Delay *= delayMultiplierEv.Multiplier;
+        }
+        // Ratbite end
 
         id = new DoAfterId(args.User, comp.NextId++);
         var doAfter = new DoAfter(id.Value.Index, args, GameTiming.CurTime);

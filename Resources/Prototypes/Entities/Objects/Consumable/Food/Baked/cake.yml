@@ -95,6 +95,9 @@
       - state: plain-inhand-right
       - state: alpha-filling-inhand-right
         color: blue
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BerryCakeFoodifier
 
 - type: entity
   name: blueberry slice
@@ -146,6 +149,9 @@
           Quantity: 5
   - type: Item
     heldPrefix: plain
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BaseCakeFoodifier
 
 # Added in type lines above
 
@@ -206,6 +212,9 @@
         color: "#f8e0af"
       - state: alpha-filling-inhand-right
         color: "#ffbd2f"
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - CarrotCakeFoodifier
 
 - type: entity
   name: slice of carrot cake
@@ -320,6 +329,9 @@
       - state: plain-inhand-right
       - state: alpha-filling-inhand-right
         color: "#ffffff"
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - CheeseCakeFoodifier
 
 - type: entity
   name: slice of cheese cake
@@ -668,6 +680,9 @@
       - state: plain-inhand-right
       - state: alpha-filling-inhand-right
         color: "#ff4300"
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - AppleCakeFoodifier
 
 - type: entity
   name: slice of apple cake
@@ -877,6 +892,10 @@
     slice: FoodCakeBirthdaySlice
   - type: Item
     heldPrefix: birthday
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BirthdayCakeFoodifier
+
 
 - type: entity
   name: slice of birthday cake
@@ -913,6 +932,10 @@
           Quantity: 15
   - type: Item
     heldPrefix: vanilla
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BaseCakeFoodifier
+
 
 - type: entity
   name: slice of vanilla cake
@@ -1124,6 +1147,9 @@
     damage:
       groups:
         Brute: 1
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - CakCakeFoodifier
 
 # Suppermatter
 # I can't figure out where to put this. It kind of acts like a cake I guess?
@@ -1288,6 +1314,10 @@
       - state: plain-inhand-right
       - state: alpha-filling-inhand-right
         color: red
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BerryCakeFoodifier
+
 
 - type: entity
   name: berry delight slice

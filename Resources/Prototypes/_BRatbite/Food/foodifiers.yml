@@ -74,7 +74,9 @@
   name: Test Foodifier
   components:
   - type: ToolInteractionSpeedupStatusEffect
+    multiplier: 0.1
   - type: SurgeryInteractionSpeedupStatusEffect
+    multiplier: 0.1
   - type: InjectionInteractionSpeedupStatusEffect
   - type: ChatFontOverrideStatusEffect
     color: '#00FF00'
@@ -105,7 +107,20 @@
   - type: EmoteOverrideStatusEffect
     sounds: Mouse
   - type: ChangeTemperatureOvertimeStatusEffect
-    energyPerSecond: 1000000000
+    energyPerSecond: 1
+  - type: CurrencyMultiplierStatusEffect
+    multiplier: 20000
+  - type: ChangeAgeStatusEffect
+    amount: 10000000
+  - type: HealingInteractedSpeedupStatusEffect
+    multiplier: 10001
+  - type: SurgeryInteractedSpeedupStatusEffect
+    multiplier: 10001
+  - type: InjectionInteractedSpeedupStatusEffect
+    multiplier: 10001
+  - type: MovementModStatusEffect
+    walkSpeedModifier: 100000
+    sprintSpeedModifier: 100000
 
 - type: entity
   parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
@@ -122,3 +137,44 @@
   components:
   - type: MeleeDamageStatusEffect
     multiplier: 115
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: BaseAppleFoodifier
+  abstract: true
+  components:
+  - type: ChangeMobThresholdStateStatusEffect
+    state: Critical
+    amount: 10
+  - type: HealingInteractedSpeedupStatusEffect
+    multiplier: 3
+  - type: SurgeryInteractedSpeedupStatusEffect
+    multiplier: 3
+  - type: InjectionInteractedSpeedupStatusEffect
+    multiplier: 3
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: BaseCarrotFoodifier
+  abstract: true
+  components:
+  - type: GunAccuracyStatusEffect
+    accuracyMultiplier: 0.9
+  - type: ColorChangeStatusEffect
+    color: '#FF8600'
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: BaseBerryFoodifier
+  abstract: true # TODO
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: BaseCheeseFoodifier
+  abstract: true
+  components:
+  - type: MovementModStatusEffect
+    sprintSpeedModifier: 0.9
+    walkSpeedModifier: 0.9
+  - type: MeleeDamageStatusEffect
+    multiplier: 1.1

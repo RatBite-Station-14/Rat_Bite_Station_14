@@ -1,11 +1,14 @@
 using System.Linq;
 using Content.Goobstation.Common.Stunnable;
+using Content.Shared._BRatbite.Nutrition;
+using Content.Shared._BRatbite.Nutrition.Components;
 using Content.Shared.Damage.Components;
 using Content.Shared.Jittering;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
 using Content.Shared.Speech.EntitySystems;
 using Content.Shared.StatusEffectNew;
+using Content.Shared.StatusEffectNew.Components;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Movement.Systems;
@@ -39,9 +42,21 @@ public sealed class MovementModStatusSystem : EntitySystem
     {
         SubscribeLocalEvent<MovementModStatusEffectComponent, StatusEffectRemovedEvent>(OnMovementModRemoved);
         SubscribeLocalEvent<MovementModStatusEffectComponent, StatusEffectRelayedEvent<RefreshMovementSpeedModifiersEvent>>(OnRefreshRelay);
+        // Ratbite start
+        SubscribeLocalEvent<MovementModStatusEffectComponent, StatusEffectAppliedEvent>((ent, ref _) => RefreshMovementSpeed(ent));
+        SubscribeLocalEvent<MovementModStatusEffectComponent, StatusEffectScaleEvent>((ent, ref _) => RefreshMovementSpeed(ent));
+        SubscribeLocalEvent<MovementModStatusEffectComponent, EffectDescriptionEvent>(OnMovementModGetDescription);
+        // Ratbite end
         SubscribeLocalEvent<FrictionStatusEffectComponent, StatusEffectRemovedEvent>(OnFrictionStatusEffectRemoved);
         SubscribeLocalEvent<FrictionStatusEffectComponent, StatusEffectRelayedEvent<RefreshFrictionModifiersEvent>>(OnRefreshFrictionStatus);
         SubscribeLocalEvent<FrictionStatusEffectComponent, StatusEffectRelayedEvent<TileFrictionEvent>>(OnRefreshTileFrictionStatus);
+    }
+
+    // Ratbite
+    private void RefreshMovementSpeed(Entity<MovementModStatusEffectComponent> ent)
+    {
+        if (!TryComp<StatusEffectComponent>(ent.Owner, out var statusEffect) || statusEffect.AppliedTo is not { } uid) return;
+        _movementSpeedModifier.RefreshMovementSpeedModifiers(uid);
     }
 
     private void OnMovementModRemoved(Entity<MovementModStatusEffectComponent> ent, ref StatusEffectRemovedEvent args)
@@ -59,7 +74,8 @@ public sealed class MovementModStatusSystem : EntitySystem
         ref StatusEffectRelayedEvent<RefreshMovementSpeedModifiersEvent> args
     )
     {
-        args.Args.ModifySpeed(entity.Comp.WalkSpeedModifier, entity.Comp.WalkSpeedModifier);
+        var scale = CompOrNull<StatusEffectScaleComponent>(entity)?.Scale ?? 1f; // Ratbite
+        args.Args.ModifySpeed(entity.Comp.WalkSpeedModifier * scale, entity.Comp.WalkSpeedModifier * scale);
     }
 
     private void OnRefreshFrictionStatus(Entity<FrictionStatusEffectComponent> ent, ref StatusEffectRelayedEvent<RefreshFrictionModifiersEvent> args)
@@ -302,5 +318,20 @@ public sealed class MovementModStatusSystem : EntitySystem
 
         _movementSpeedModifier.RefreshFrictionModifiers(entity);
         return true;
+    }
+
+    private void OnMovementModGetDescription(Entity<MovementModStatusEffectComponent> ent, ref EffectDescriptionEvent args)
+    {
+        if (ent.Comp.WalkSpeedModifier != 1f)
+        {
+            args.Message.AddMarkupOrThrow(Loc.GetString("guidebook-description-movement-mod-status-effect-walk", ("amount", MathF.Round(ent.Comp.WalkSpeedModifier * 100))));
+            args.Message.PushNewline();
+        }
+
+        if (ent.Comp.SprintSpeedModifier != 1f)
+        {
+            args.Message.AddMarkupOrThrow(Loc.GetString("guidebook-description-movement-mod-status-effect-sprint", ("amount", MathF.Round(ent.Comp.SprintSpeedModifier * 100))));
+            args.Message.PushNewline();
+        }
     }
 }

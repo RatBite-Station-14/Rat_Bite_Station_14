@@ -25,7 +25,10 @@ guidebook-description-color-change = Changes the color of the entity to [bold]{$
 guidebook-description-speedup-tools = using tools
 guidebook-description-speedup-surgery = doing surgery
 guidebook-description-speedup-injection = injecting reagents
+guidebook-description-speedup-healing = healing with topicals
 guidebook-description-speedup-effect = Changes the speed of [bold]{$effect}[/bold] by [bold]{$multiplier}[/bold]%.
+
+guidebook-description-speedup-interacted-effect = Changes the speed of being interacted when [bold]{$effect}[/bold] by [bold]{$multiplier}[/bold]%.
 
 guidebook-description-chat-speak = Causes the user to speak uncontrollably.
 guidebook-description-chat-emote = Causes the user to emote uncontrollably.
@@ -52,3 +55,18 @@ guidebook-description-owo-accent = Gives the user the [bold]OwO[/bold] accent.
 guidebook-description-emote-override = Changes the emotes of the user to [bold]{$emotes}[/bold].
 
 guidebook-description-change-temperature = Changes the entity temperature by [bold]{$heatPerSecond}[/bold] Joules per second.
+
+guidebook-description-server-currency-multiplier = Modifies the amount of [bold]Rat Coins[/bold] earned by [bold]{$multiplier}[/bold]%.
+
+guidebook-description-change-age-positive = Ages the entity by [bold]{$amount}[/bold] {     $amount ->
+        [one] year
+        *[other] years
+}.
+guidebook-description-change-age-negative = Makes the entity {$amount} {
+    $amount ->
+        [one] year
+        *[other] years
+} younger.
+
+guidebook-description-movement-mod-status-effect-walk = Modifies walking speed by [bold]{$amount}[/bold]%.
+guidebook-description-movement-mod-status-effect-sprint = Modifies sprinting speed by [bold]{$amount}[/bold]%.

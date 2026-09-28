@@ -5,6 +5,7 @@ using Content.Goobstation.Common.ServerCurrency;
 using Content.Server._RMC14.LinkAccount;
 using Content.Server.GameTicking;
 using Content.Server.Popups;
+using Content.Shared._BRatbite.ServerCurrency;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
@@ -102,6 +103,11 @@ namespace Content.Goobstation.Server.ServerCurrency
 
                         if (session != null && _linkAccount.GetPatron(session)?.Tier != null)
                             money *= 2;
+                        // Ratbite start
+                        var currencyMultiplierEvent = new ServerCurrencyMultiplierEvent(1f);
+                        RaiseLocalEvent(uid, ref currencyMultiplierEvent);
+                        money = (int) ((float) money * currencyMultiplierEvent.Multiplier);
+                        // Ratbite end
 
                         if (_goobcoinsUseShortRoundPenalty)
                         {
