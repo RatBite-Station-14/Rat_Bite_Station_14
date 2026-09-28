@@ -23,7 +23,7 @@ Small fixes/refactors are exempt. Media may be used in SS14 progress reports wit
 - [ ] I have added media to this PR or it does not require an in-game showcase.
 <!-- You should understand that not following the above may get your PR closed at maintainer’s discretion -->
 
-<!-- As Goobstation is moving to Goob Reforged, we'll be changing licenses. Checking this makes it easier on maints and we won't have to ask every contrib one by one. -->
+<!-- Ratbite wants to ensure if you have the rights to the changes you have made, ports and whatnot from other codebases with different licenses, you allow it to go under CC0 if it is possible. -->
 - [ ] I allow my code and changes to be licensed to [`CC0`](https://creativecommons.org/public-domain/), to ensure the content is free for everyone, and be able to be shared.
 ## Breaking changes
 <!-- List any breaking changes, including namespaces, public class/method/field changes, prototype renames; and provide instructions for fixing them.
