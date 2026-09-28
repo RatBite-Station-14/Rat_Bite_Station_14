@@ -70,3 +70,5 @@ guidebook-description-change-age-negative = Makes the entity {$amount} {
 
 guidebook-description-movement-mod-status-effect-walk = Modifies walking speed by [bold]{$amount}[/bold]%.
 guidebook-description-movement-mod-status-effect-sprint = Modifies sprinting speed by [bold]{$amount}[/bold]%.
+
+guidebook-description-french-accent = Gives the user the [bold]French[/bold] accent.

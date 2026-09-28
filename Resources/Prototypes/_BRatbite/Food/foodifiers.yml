@@ -100,7 +100,7 @@
     multiplier: 10000000
   - type: DropImmuneStatusEffect
   - type: NoSlipStatusEffect
-  - type: PreventSpeechStatusEffect
+  # - type: PreventSpeechStatusEffect
   - type: ChangeMobThresholdStateStatusEffect
     state: Critical
     amount: 1000000
@@ -121,6 +121,7 @@
   - type: MovementModStatusEffect
     walkSpeedModifier: 100000
     sprintSpeedModifier: 100000
+  - type: FrenchAccent
 
 - type: entity
   parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
