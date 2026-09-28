@@ -1,7 +1,6 @@
 namespace Content.Shared._BRatbite.Nutrition.Foodifiers;
 
 // Changes the speed of certain interactions performed by the entity
-[DataDefinition]
 public abstract partial class InteractionSpeedupStatusEffectComponent : Component
 {
     [DataField]
@@ -21,7 +20,6 @@ public sealed partial class InjectionInteractionSpeedupStatusEffectComponent : I
 public sealed partial class HealingInteractionSpeedupStatusEffectComponent : InteractionSpeedupStatusEffectComponent;
 
 // Changes the speed of certain interactions when performed to the entity
-[DataDefinition]
 public abstract partial class InteractedSpeedupStatusEffectComponent : Component
 {
     [DataField]

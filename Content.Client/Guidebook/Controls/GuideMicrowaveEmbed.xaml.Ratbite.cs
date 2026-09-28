@@ -10,7 +10,11 @@ public sealed partial class GuideMicrowaveEmbed
 
     private void GenerateEffectDescription(FoodRecipePrototype recipe)
     {
-        if (!_prototype.Index(recipe.Result).Components.TryGetComponent("CookedFood", out var comp) || comp is not CookedFoodComponent cookedFood) return;
+        if (!_prototype.Index(recipe.Result).Components.TryGetComponent("CookedFood", out var comp) || comp is not CookedFoodComponent cookedFood)
+        {
+            ResultEffectsHeader.Visible = false;
+            return;
+        }
         var ev = new EffectDescriptionEvent(new ());
         foreach (var statusEffect in cookedFood.StatusEffectProto)
         {
