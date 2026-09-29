@@ -1,7 +1,8 @@
+ghost-role-information-reinforcement-description = Return to the shift as a reinforcement
 ghost-role-information-reinforcement-sec-name = Security reinforcement
-ghost-role-information-reinforcement-description = Reinforce security
+ghost-role-information-reinforcement-sec-description = Reinforce security
 ghost-role-information-reinforcement-fast-sec-name = Security reinforcement (fast)
-ghost-role-information-reinforcement-specialist-sec-name = Salvage specialist reinforcement
+ghost-role-information-reinforcement-specialist-sec-name = Security reinforcement (specialist)
 ghost-role-information-reinforcement-bartender-name = Bartender reinforcement
 ghost-role-information-reinforcement-chef-name = Chef reinforcement
 ghost-role-information-reinforcement-botanist-name = Botanist reinforcement
