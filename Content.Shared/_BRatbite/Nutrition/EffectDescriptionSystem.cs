@@ -1,3 +1,4 @@
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Overlays;
 using Content.Shared.Radiation.Components;
 
@@ -17,7 +18,7 @@ public sealed partial class EffectDescriptionSystem : EntitySystem
 
     private void OnGetRadiationDescription(Entity<RadiationSourceComponent> ent, ref EffectDescriptionEvent args)
     {
-        args.Message.AddMarkupOrThrow(Loc.GetString("guidebook-description-radiation", ("weak", ent.Comp.IsWeakSource), ("intensity", MathF.Round(ent.Comp.Intensity, 2)), ("slope", ent.Comp.Slope)));
+        args.Message.AddMarkupOrThrow(Loc.GetString("guidebook-description-radiation", ("weak", ent.Comp.IsWeakSource), ("intensity", FixedPoint2.New(ent.Comp.Intensity)), ("slope", FixedPoint2.New(ent.Comp.Slope))));
         args.Message.PushNewline();
     }
 
