@@ -8,7 +8,6 @@ public sealed partial class RatbiteFrenchAccentSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<FrenchAccentComponent, EffectDescriptionEvent>(OnGetEffectDescription);
-
     }
 
     private void OnGetEffectDescription(Entity<FrenchAccentComponent> ent, ref EffectDescriptionEvent args)

@@ -1,0 +1,23 @@
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: BasePizzaFoodifier
+  components:
+  - type: ReplacementAccent
+    accent: italian
+
+- type: entity
+  parent: [BasePizzaFoodifier, BasePineappleFoodifier]
+  id: PineapplePizzaFoodifier
+  components:
+  - type: ChatOverTimeStatusEffect # It says so in the description
+    chatType: Emote
+    message: chat-emote-msg-crying
+    interval: 60
+
+- type: entity
+  parent: [BasePizzaFoodifier, BaseMeatFoodifier]
+  id: MeatPizzaFoodifier
+
+- type: entity
+  parent: [BasePizzaFoodifier, BaseHotFoodifier, BaseRadioactiveFoodifier]
+  id: SpicyRockPizzaFoodifier

@@ -61,4 +61,7 @@ public sealed partial class EntityWhitelist
     /// </summary>
     [DataField]
     public bool RequireAll;
+
+    [DataField]
+    public bool CheckStatusEffect = false; // Ratbite, if true it will check status effects too
 }

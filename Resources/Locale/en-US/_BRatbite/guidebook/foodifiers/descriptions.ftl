@@ -71,4 +71,16 @@ guidebook-description-change-age-negative = Makes the entity {$amount} {
 guidebook-description-movement-mod-status-effect-walk = Modifies walking speed by [bold]{$amount}[/bold]%.
 guidebook-description-movement-mod-status-effect-sprint = Modifies sprinting speed by [bold]{$amount}[/bold]%.
 
-guidebook-description-french-accent = Gives the user the [bold]French[/bold] accent.
+guidebook-description-french-accent = Gives the user the [bold]french[/bold] accent.
+
+guidebook-description-ignore-kudzu = Makes the user immune to [bold]kudzu[/bold] effects.
+
+guidebook-description-replacement-accent-description = Gives the user the [bold]{$name}[/bold] accent.
+
+guidebook-description-radiation = Makes the user {
+    $weak ->
+        [true] weakly{" "}
+        *[other] {""}
+}radioactive with intensity [bold]{$intensity}[/bold] and slope [bold]{$slope}[/bold].
+
+guidebook-description-job-icons = Allows the user to see job icons.

@@ -5,6 +5,8 @@ using Content.Shared._BRatbite.ServerCurrency;
 using Content.Shared._Shitmed.DoAfter;
 using Content.Shared.Chat;
 using Content.Shared.Damage;
+using Content.Shared.Inventory.Events;
+using Content.Shared.Overlays;
 using Content.Shared.Slippery;
 using Content.Shared.Speech;
 using Content.Shared.Standing;
@@ -31,5 +33,6 @@ public sealed partial class StatusEffectsSystem
         SubscribeLocalEvent<StatusEffectContainerComponent, GetEmoteSoundsEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, ServerCurrencyMultiplierEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, GetDoAfterTargetMultiplierEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, RefreshEquipmentHudEvent<ShowJobIconsComponent>>(RefRelayStatusEffectEvent);
     }
 }

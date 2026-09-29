@@ -122,6 +122,8 @@
     walkSpeedModifier: 100000
     sprintSpeedModifier: 100000
   - type: FrenchAccent
+  - type: IgnoreKudzu
+  - type: ShowJobIcons
 
 - type: entity
   parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
@@ -179,3 +181,51 @@
     walkSpeedModifier: 0.9
   - type: MeleeDamageStatusEffect
     multiplier: 1.1
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: BaseChocolateFoodifier
+  abstract: true
+  components:
+  - type: MovementModStatusEffect
+    sprintSpeedModifier: 0.9
+    walkSpeedModifier: 0.9
+  - type: ToolInteractionSpeedupStatusEffect
+    multiplier: 0.8
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: BaseOrangeFoodifier
+  abstract: true
+  components:
+  - type: IgnoreKudzu
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: BasePineappleFoodifier
+  abstract: true
+  components:
+  - type: NoSlipStatusEffect
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: BaseMeatFoodifier
+  components:
+  - type: MeleeDamageStatusEffect
+    multiplier: 1.05
+    onlyPunches: true
+
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: BaseRadioactiveFoodifier
+  components:
+  - type: RadiationSource
+    intensity: 0.15
+  - type: DamageResistanceStatusEffect
+    damageModifier:
+      coefficients:
+        Radiation: 0.2
+  - type: PointLight
+    intensity: 2
+    radius: 7
+    color: "#03CF03"

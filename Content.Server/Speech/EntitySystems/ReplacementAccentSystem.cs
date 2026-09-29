@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using Content.Server.Speech.Components;
 using Content.Server.Speech.Prototypes;
 using Content.Shared.Speech;
+using Content.Shared.StatusEffectNew;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -27,6 +28,7 @@ namespace Content.Server.Speech.EntitySystems
         public override void Initialize()
         {
             SubscribeLocalEvent<ReplacementAccentComponent, AccentGetEvent>(OnAccent);
+            SubscribeLocalEvent<ReplacementAccentComponent, StatusEffectRelayedEvent<AccentGetEvent>>(OnAccentRelayed); // Ratbite
 
             _proto.PrototypesReloaded += OnPrototypesReloaded;
         }
@@ -141,6 +143,11 @@ namespace Content.Server.Speech.EntitySystems
         private void OnPrototypesReloaded(PrototypesReloadedEventArgs obj)
         {
             _cachedReplacements.Clear();
+        }
+
+        private void OnAccentRelayed(Entity<ReplacementAccentComponent> ent, ref StatusEffectRelayedEvent<AccentGetEvent> args)
+        {
+            args.Args.Message = ApplyReplacements(args.Args.Message, ent.Comp.Accent);
         }
     }
 }

@@ -8,18 +8,14 @@
 
 - type: entity
   parent: BaseBurgerFoodifier
-  id: MeatBurgerFoodifier
-  components:
-  - type: MeleeDamageStatusEffect
-    multiplier: 1.05
-    onlyPunches: true
-
-- type: entity
-  parent: BaseBurgerFoodifier
   id: BaseballBatBurgerFoodifier
   components:
   - type: MeleeDamageStatusEffect
     multiplier: 1.10
+
+- type: entity
+  parent: [BaseBurgerFoodifier, BaseMeatFoodifier]
+  id: MeatBurgerFoodifier
 
 - type: entity
   parent: MeatBurgerFoodifier

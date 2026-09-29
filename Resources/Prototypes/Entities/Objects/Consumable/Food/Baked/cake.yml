@@ -380,6 +380,9 @@
       - state: plain-inhand-right
       - state: alpha-filling-inhand-right
         color: "#ff9900"
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - OrangeCakeFoodifier
 
 - type: entity
   name: slice of orange cake
@@ -622,6 +625,9 @@
       right:
       - state: alpha-inhand-right
         color: "#ba672e"
+  - type: CookedFood
+    statusEffectProto:
+    - ChocolateCakeFoodifier
 
 - type: entity
   name: slice of chocolate cake
