@@ -15,4 +15,4 @@ ghost-role-information-DClass-description = You are a DClass. Aid science with e
 ghost-role-information-reinforcement-doctor-name = Medical Doctor reinforcement
 ghost-role-information-reinforcement-chemist-name = Chemist reinforcement
 ghost-role-information-reinforcement-cargo-name = Cargo Technician reinforcement
-ghost-role-information-reinforcement-salv-name = Salvanger reinforcement
+ghost-role-information-reinforcement-salv-name = Salvager reinforcement
