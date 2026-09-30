@@ -81,6 +81,9 @@
     - state: margherita
   - type: SliceableFood
     slice: FoodPizzaMargheritaSlice
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BasePizzaFoodifier
 
 - type: entity
   name: slice of margherita pizza
@@ -120,6 +123,9 @@
     tags:
     - Meat
     - Pizza
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - MeatPizzaFoodifier
 
 - type: entity
   name: slice of meat pizza
@@ -210,6 +216,9 @@
           Quantity: 5
         - ReagentId: Vitamin
           Quantity: 5
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - VegetablePizzaFoodifier
 
 - type: entity
   name: slice of vegetable pizza
@@ -431,6 +440,11 @@
     tags:
     - Meat
     - Pizza
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - TestFoodifier # Adding to pineapple pizza temporarely because it
+                    # spawns by default in the dev map
+    - PineapplePizzaFoodifier
 
 - type: entity
   name: slice of Hawaiian pizza
@@ -601,6 +615,9 @@
           Quantity: 4
         - ReagentId: Uranium
           Quantity: 16
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - SpicyRockPizzaFoodifier
 
 - type: entity
   name: slice of spicy rock pizza

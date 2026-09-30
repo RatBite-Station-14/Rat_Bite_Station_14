@@ -350,6 +350,20 @@ public sealed partial class StatusEffectsSystem
         return false;
     }
 
+    // Ratbite start
+    public bool HasEffectComp(EntityUid? target, ComponentRegistration comp)
+    {
+        if (!_containerQuery.TryComp(target, out var container))
+            return false;
+        foreach (var effect in container.ActiveStatusEffects?.ContainedEntities ?? [])
+        {
+            if (EntityManager.HasComponent(effect, comp))
+                return true;
+        }
+        return false;
+    }
+    // Ratbite end
+
     /// <summary>
     /// Returns all status effects that have the specified component.
     /// </summary>

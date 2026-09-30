@@ -79,6 +79,7 @@
     ignoreWhitelist:
       components:
       - IgnoreKudzu
+      checkStatusEffect: true
   - type: Tag
     tags:
     - Ruminant

@@ -97,6 +97,7 @@
       ignoreWhitelist:
         components:
         - IgnoreKudzu
+        checkStatusEffect: true # Ratbite
     - type: Edible
       requiresSpecialDigestion: true
       delay: 0.5
@@ -148,6 +149,7 @@
       ignoreWhitelist:
         components:
         - IgnoreKudzu
+        checkStatusEffect: true # Ratbite
     - type: RandomSpawner
       deleteSpawnerAfterSpawn: false
       rareChance: 0.15

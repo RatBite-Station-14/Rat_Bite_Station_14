@@ -4,6 +4,8 @@ using Content.Shared.GameTicking;
 using Content.Shared.Hands; // Goobstation
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
+using Content.Shared.StatusEffectNew;
+using Content.Shared.StatusEffectNew.Components;
 using Robust.Client.Player;
 using Robust.Shared.Player;
 
@@ -35,9 +37,15 @@ public abstract class EquipmentHudSystem<T> : EntitySystem where T : IComponent
         SubscribeLocalEvent<T, GotEquippedEvent>(OnCompEquip);
         SubscribeLocalEvent<T, GotUnequippedEvent>(OnCompUnequip);
 
+        // Ratbite
+        SubscribeLocalEvent<T, StatusEffectAppliedEvent>((_, ref _) => RefreshOverlay());
+        // Ratbite
+        SubscribeLocalEvent<T, StatusEffectRemovedEvent>((_, ref _) => RefreshOverlay());
+
         SubscribeLocalEvent<T, RefreshEquipmentHudEvent<T>>(OnRefreshComponentHud);
         SubscribeLocalEvent<T, InventoryRelayedEvent<RefreshEquipmentHudEvent<T>>>(OnRefreshEquipmentHud);
         SubscribeLocalEvent<T, HeldRelayedEvent<RefreshEquipmentHudEvent<T>>>(OnRefreshEquipmentHud); // Goobstation
+        SubscribeLocalEvent<T, StatusEffectRelayedEvent<RefreshEquipmentHudEvent<T>>>(OnRefreshStatusEffectHud);
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
     }
@@ -118,6 +126,13 @@ public abstract class EquipmentHudSystem<T> : EntitySystem where T : IComponent
     {
         args.Active = true;
         args.Components.Add(ent.Comp);
+    }
+
+    // Ratbite
+    protected virtual void OnRefreshStatusEffectHud(Entity<T> ent, ref StatusEffectRelayedEvent<RefreshEquipmentHudEvent<T>> args)
+    {
+        args.Args = args.Args with { Active = true };
+        args.Args.Components.Add(ent.Comp);
     }
 
     protected void RefreshOverlay()

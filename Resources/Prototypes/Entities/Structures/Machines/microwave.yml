@@ -1,9 +1,10 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  id: KitchenMicrowave
+  id: OldKitchenMicrowave # Ratbite
   parent: [ BaseMachinePowered, SmallConstructibleMachine, BaseAutomatedMachine ] # Goob: Automation
   name: microwave
+  suffix: OLD DO NOT MAP # Ratbite
   description: It's magic.
   components:
   - type: Microwave
@@ -104,7 +105,7 @@
   - type: ApcPowerReceiver
     powerLoad: 400
   - type: Machine
-    board: MicrowaveMachineCircuitboard
+    board: OldMicrowaveMachineCircuitboard # Ratbite
   - type: ContainerContainer
     containers:
       microwave_entity_container: !type:Container

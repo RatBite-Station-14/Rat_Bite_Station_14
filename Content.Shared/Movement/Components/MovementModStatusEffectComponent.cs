@@ -13,12 +13,14 @@ public sealed partial class MovementModStatusEffectComponent : Component
 {
     /// <summary>
     /// Multiplicative sprint modifier, with bounds of [0, 1)
+    /// Ratbite: The bounds are a lie
     /// </summary>
     [DataField, AutoNetworkedField]
     public float SprintSpeedModifier = 0.5f;
 
     /// <summary>
     /// Multiplicative walk modifier, with bounds of [0, 1)
+    /// Ratbite: The bounds are a lie
     /// </summary>
     [DataField, AutoNetworkedField]
     public float WalkSpeedModifier = 0.5f;

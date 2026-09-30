@@ -262,6 +262,7 @@
   - type: MindControllable # Goobstation
   - type: VisibleContraband # Goobstation
   - type: MomentumSteering # Goobstation - No steer
+  - type: BuffedByFood # Ratbite
 
 - type: entity
   save: false

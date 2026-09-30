@@ -2,6 +2,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Item;
+using Content.Shared.StatusEffectNew;
 using Content.Shared.Tag;
 using Robust.Shared.Utility;
 
@@ -53,7 +54,7 @@ public sealed class EntityWhitelistSystem : EntitySystem
         {
             foreach (var reg in list.Registrations)
             {
-                if (EntityManager.HasComponent(uid, reg))
+                if (HasComponent(list, uid, reg))
                 {
                     if (!list.RequireAll)
                         return true;
@@ -78,6 +79,18 @@ public sealed class EntityWhitelistSystem : EntitySystem
 
         return list.RequireAll;
     }
+
+    // Ratbite
+    private bool HasComponent(EntityWhitelist whitelist, EntityUid uid, ComponentRegistration comp)
+    {
+        if (EntityManager.HasComponent(uid, comp))
+            return true;
+        // We need to fetch the system manually because this system is
+        // loaded early because of some EE changes
+        if (whitelist.CheckStatusEffect && EntityManager.TrySystem<StatusEffectsSystem>(out var statusEffects)) return statusEffects.HasEffectComp(uid, comp);
+        return false;
+    }
+
     /// The following are a list of "helper functions" that are basically the same as each other
     /// to help make code that uses EntityWhitelist a bit more readable because at the moment
     /// it is quite clunky having to write out component.Whitelist == null ? true : _whitelist.IsValid(component.Whitelist, uid)

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Text.RegularExpressions;
+using Content.Shared._BRatbite.Speech;
 using Content.Shared.Chat;
 using Content.Shared.Speech;
 
@@ -20,6 +21,9 @@ public sealed class AccentSystem : EntitySystem
         if (args.Cancelled)
             return;
 
+        var beforeEvent = new OnBeforeAccentEvent(); // Ratbite
+        RaiseLocalEvent(args.Sender, ref beforeEvent);
+        if (beforeEvent.Cancelled) return;
         var accentEvent = new AccentGetEvent(args.Sender, args.Message);
 
         RaiseLocalEvent(args.Sender, accentEvent, true);

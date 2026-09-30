@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared._BRatbite.Nutrition;
 using Content.Shared.Alert;
 using Content.Shared.Damage;
 using Content.Shared.Mobs.Systems;
@@ -142,7 +143,7 @@ public sealed class HungerSystem : EntitySystem
         DoHungerThresholdEffects(uid, component);
     }
 
-    private void DoHungerThresholdEffects(EntityUid uid, HungerComponent? component = null, bool force = false)
+    public void DoHungerThresholdEffects(EntityUid uid, HungerComponent? component = null, bool force = false)
     {
         if (!Resolve(uid, ref component))
             return;
@@ -166,7 +167,9 @@ public sealed class HungerSystem : EntitySystem
 
         if (component.HungerThresholdDecayModifiers.TryGetValue(component.CurrentThreshold, out var modifier))
         {
-            component.ActualDecayRate = component.BaseDecayRate * modifier;
+            var ev = new HungerMultiplierEvent();
+            RaiseLocalEvent(uid, ref ev);
+            component.ActualDecayRate = component.BaseDecayRate * modifier * ev.Multiplier;
             DirtyField(uid, component, nameof(HungerComponent.ActualDecayRate));
             SetAuthoritativeHungerValue((uid, component), GetHunger(component));
         }

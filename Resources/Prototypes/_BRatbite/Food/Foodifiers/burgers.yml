@@ -1,0 +1,101 @@
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: BaseBurgerFoodifier
+  components:
+  - type: ChangeMobThresholdStateStatusEffect
+    amount: 5
+    state: Critical
+
+- type: entity
+  parent: BaseBurgerFoodifier
+  id: BaseballBatBurgerFoodifier
+  components:
+  - type: MeleeDamageStatusEffect
+    multiplier: 1.10
+
+- type: entity
+  parent: [BaseBurgerFoodifier, BaseMeatFoodifier]
+  id: MeatBurgerFoodifier
+
+- type: entity
+  parent: MeatBurgerFoodifier
+  id: ComplexMeatBurgerFoodifier
+  components:
+  - type: MeleeDamageStatusEffect
+    multiplier: 1.15
+    onlyPunches: true
+
+- type: entity
+  parent: MeatBurgerFoodifier
+  id: CatBurgerFoodifier
+  components:
+  - type: OwOAccent
+
+- type: entity
+  parent: MeatBurgerFoodifier
+  id: CorgiBurgerFoodifier
+  components:
+  - type: ChatOverTimeStatusEffect
+    message: corgi-killer-message
+    chatType: Speak
+    interval: 10
+  - type: ChatFontOverrideStatusEffect
+    color: '#FF0000'
+  - type: DamageResistanceStatusEffect
+    damageModifier:
+      coefficients:
+        Blunt: 0.9
+        Piercing: 0.9
+
+- type: entity
+  parent: BaseBurgerFoodifier
+  id: GhostBurgerFoodifier
+  components:
+  - type: ColorChangeStatusEffect
+    color: '#FFFFFF55'
+
+- type: entity
+  parent: [ BaseBurgerFoodifier, MimeFoodifier ]
+  id: MimeBurgerFoodifier
+
+- type: entity
+  parent: BaseBurgerFoodifier
+  id: AmanitaBurgerFoodifier
+  components:
+  - type: InjectOvertimeStatusEffect
+    injectAmountPerSecond: 0.01
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Amatoxin
+        Quantity: 1
+
+- type: entity
+  parent: BaseBurgerFoodifier
+  id: RatBurgerFoodifier
+  components:
+  - type: EmoteOverrideStatusEffect
+    sounds: Mouse
+
+- type: entity
+  parent: [MeatBurgerFoodifier, BaseHotFoodifier]
+  id: HotBurgerFoodifer
+
+- type: entity
+  parent: [BaseBurgerFoodifier, TheyThemStatusEffect]
+  id: SoyBurgerFoodifier
+
+- type: entity
+  parent: [BaseBurgerFoodifier, VeganFoodifier]
+  id: VeganBurger
+
+- type: entity
+  parent: [MeatBurgerFoodifier, BaseCarpFoodifier]
+  id: CarpBurgerFoodifier
+
+- type: entity
+  parent: [BaseBurgerFoodifier]
+  id: RoburgerFoodifier
+  components:
+  - type: EmoteOverrideStatusEffect
+    sounds: UnisexIPC

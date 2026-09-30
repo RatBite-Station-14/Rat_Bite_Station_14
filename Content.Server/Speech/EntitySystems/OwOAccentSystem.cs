@@ -2,6 +2,7 @@
 
 using Content.Server.Speech.Components;
 using Content.Shared.Speech;
+using Content.Shared.Speech.Components;
 using Content.Shared.StatusEffectNew;
 using Robust.Shared.Random;
 

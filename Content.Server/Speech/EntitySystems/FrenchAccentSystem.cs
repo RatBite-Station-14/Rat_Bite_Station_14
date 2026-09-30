@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Text.RegularExpressions;
-using Content.Server.Speech.Components;
+using Content.Shared._BRatbite.Accents;
 using Content.Shared.Speech;
+using Content.Shared.StatusEffectNew;
 
 namespace Content.Server.Speech.EntitySystems;
 
@@ -22,6 +23,9 @@ public sealed class FrenchAccentSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<FrenchAccentComponent, AccentGetEvent>(OnAccentGet);
+        // Ratbite start
+        SubscribeLocalEvent<FrenchAccentComponent, StatusEffectRelayedEvent<AccentGetEvent>>(OnAccentGetStatusEffect);
+        // Ratbite end
     }
 
     public string Accentuate(string message, FrenchAccentComponent component)
@@ -60,4 +64,11 @@ public sealed class FrenchAccentSystem : EntitySystem
     {
         args.Message = Accentuate(args.Message, component);
     }
+
+    // Ratbite start
+    private void OnAccentGetStatusEffect(Entity<FrenchAccentComponent> ent, ref StatusEffectRelayedEvent<AccentGetEvent> args)
+    {
+        args.Args.Message = Accentuate(args.Args.Message, ent.Comp);
+    }
+    // Ratbite end
 }

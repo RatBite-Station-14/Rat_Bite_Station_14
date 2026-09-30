@@ -147,4 +147,10 @@ public sealed class TimedRingBuffer<T>
     // index to the array for a given item number
     private int Index(int i)
         => (_offset + i) % Capacity;
+
+    // Ratbite, readonly indexer
+    public T this[int index]
+    {
+        get => _items[index].Item2;
+    }
 }

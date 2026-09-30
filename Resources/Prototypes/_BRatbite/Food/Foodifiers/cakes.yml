@@ -1,0 +1,43 @@
+- type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: BaseCakeFoodifier
+  components:
+  - type: CurrencyMultiplierStatusEffect
+    multiplier: 1.3
+
+- type: entity
+  parent: [BaseCakeFoodifier, BaseCarrotFoodifier]
+  id: CarrotCakeFoodifier
+
+- type: entity
+  parent: BaseCakeFoodifier
+  id: CakCakeFoodifier
+  components:
+  - type: OwOAccent
+
+- type: entity
+  parent: BaseCakeFoodifier
+  id: BirthdayCakeFoodifier
+  components:
+  - type: ChangeAgeStatusEffect
+    amount: 1
+
+- type: entity
+  parent: [BaseCakeFoodifier, BaseAppleFoodifier]
+  id: AppleCakeFoodifier
+
+- type: entity
+  parent: [BaseCakeFoodifier, BaseBerryFoodifier]
+  id: BerryCakeFoodifier
+
+- type: entity
+  parent: [BaseCakeFoodifier, BaseCheeseFoodifier]
+  id: CheeseCakeFoodifier
+
+- type: entity
+  parent: [BaseCakeFoodifier, BaseChocolateFoodifier]
+  id: ChocolateCakeFoodifier
+
+- type: entity
+  parent: [BaseCakeFoodifier, BaseOrangeFoodifier]
+  id: OrangeCakeFoodifier
