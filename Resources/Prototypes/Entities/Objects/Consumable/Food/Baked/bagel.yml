@@ -28,6 +28,10 @@
   parent: FoodBagelBase
   id: FoodBagel
   name: bagel
+  components:
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BoringFoodifier
 
 - type: entity
   parent: FoodBagelBase

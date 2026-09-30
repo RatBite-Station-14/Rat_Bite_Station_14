@@ -124,6 +124,7 @@
   - type: FrenchAccent
   - type: IgnoreKudzu
   - type: ShowJobIcons
+  - type: Accentless
 
 - type: entity
   parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
@@ -229,3 +230,27 @@
     intensity: 2
     radius: 7
     color: "#03CF03"
+
+- type: entity
+  parent: [ MobStatusEffectDebuff ]
+  id: BoringFoodifier
+  components:
+  - type: Accentless
+
+- type: entity
+  parent: [ MobStatusEffectDebuff ]
+  id: VeganFoodifier
+  components:
+  - type: VeganAccent
+
+- type: entity
+  parent: [ MobStatusEffectDebuff ]
+  id: MimeFoodifier
+  components:
+  - type: PreventSpeechStatusEffect
+
+- type: entity
+  parent: [ MobStatusEffectDebuff ]
+  id: FrenchFoodifier
+  components:
+  - type: FrenchAccent

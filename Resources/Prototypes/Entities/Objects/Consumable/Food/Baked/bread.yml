@@ -304,6 +304,9 @@
     tags:
     - Meat
     - Bread
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BaseMeatFoodifier
 # Tastes like bread, meat.
 
 - type: entity
@@ -362,6 +365,9 @@
           Quantity: 5
         - ReagentId: MuteToxin
           Quantity: 5
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - MimeFoodifier
 # Tastes like bread, cheese.
 
 - type: entity
@@ -402,6 +408,9 @@
     - state: plain
   - type: SliceableFood
     slice: FoodBreadPlainSlice
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BoringFoodifier
 
 - type: entity
   name: bread slice
@@ -443,6 +452,9 @@
     tags:
     - Meat
     - Bread
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BaseMeatFoodifier
 
 - type: entity
   name: sausage bread slice
@@ -556,6 +568,9 @@
           Quantity: 30
         - ReagentId: Protein
           Quantity: 12
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - VeganFoodifier
 # Tastes like bread, tofu.
 
 - type: entity
@@ -692,6 +707,9 @@
       - Haleigh Pryocraft
     ocNames:
       - limer__treats
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - FrenchFoodifier
 
 # Tastes like France.
 
@@ -835,6 +853,9 @@
           Quantity: 4
         - ReagentId: Vitamin
           Quantity: 2
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - FrenchFoodifier
 # Tastes like bread, butter.
 
 - type: entity
@@ -928,6 +949,9 @@
           Quantity: 2
         - ReagentId: Wine
           Quantity: 5
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BoringFoodifier
 # Tastes like decaying fungus.
 
 - type: entity

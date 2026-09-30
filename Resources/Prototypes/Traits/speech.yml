@@ -11,13 +11,13 @@
   cost: 2
   components:
   - type: Accentless
-    removes:
-    - type: LizardAccent
-    - type: MothAccent
-    - type: ReplacementAccent
-      accent: dwarf
-    - type: CheeseAccent # goob edit
-    - type: BoganAccent # goob edit
+    # removes:
+    # - type: LizardAccent
+    # - type: MothAccent
+    # - type: ReplacementAccent
+    #   accent: dwarf
+    # - type: CheeseAccent # goob edit
+    # - type: BoganAccent # goob edit
 
 # 1 Cost
 

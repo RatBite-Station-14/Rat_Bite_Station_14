@@ -2,6 +2,7 @@ using Content.Goobstation.Common.Speech;
 using Content.Shared._BRatbite.DoAfter;
 using Content.Shared._BRatbite.Nutrition;
 using Content.Shared._BRatbite.ServerCurrency;
+using Content.Shared._BRatbite.Speech;
 using Content.Shared._Shitmed.DoAfter;
 using Content.Shared.Chat;
 using Content.Shared.Damage;
@@ -34,5 +35,6 @@ public sealed partial class StatusEffectsSystem
         SubscribeLocalEvent<StatusEffectContainerComponent, ServerCurrencyMultiplierEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, GetDoAfterTargetMultiplierEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, RefreshEquipmentHudEvent<ShowJobIconsComponent>>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, OnBeforeAccentEvent>(RefRelayStatusEffectEvent);
     }
 }

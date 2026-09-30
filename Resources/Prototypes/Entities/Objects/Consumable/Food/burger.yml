@@ -26,6 +26,9 @@
         amount: 1
       - id: FoodBreadBunBottom
         amount: 1
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BoringFoodifier
 
 - type: entity
   parent: FoodBreadSliceBase
@@ -1321,7 +1324,7 @@
         color: "#e5ad29"
   - type: CookedFood # Ratbite
     statusEffectProto:
-    - SoyBurgerFoodifier
+    - VeganBurger
 # Tastes like bun, tofu.
 
 - type: entity

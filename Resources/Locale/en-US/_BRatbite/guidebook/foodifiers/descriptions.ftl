@@ -84,3 +84,7 @@ guidebook-description-radiation = Makes the user {
 }radioactive with intensity [bold]{$intensity}[/bold] and slope [bold]{$slope}[/bold].
 
 guidebook-description-job-icons = Allows the user to see job icons.
+
+guidebook-description-accentless = Makes the user accentless.
+
+guidebook-description-vegan = Gives the user the [bold]vegan[/bold] accent.

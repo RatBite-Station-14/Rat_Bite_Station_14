@@ -14,6 +14,7 @@ public sealed partial class AccentlessComponent : Component
     /// <summary>
     ///     The accents removed by the accentless trait.
     /// </summary>
-    [DataField("removes", required: true), ViewVariables(VVAccess.ReadWrite)]
-    public ComponentRegistry RemovedAccents = new();
+    /// Ratbite: Changed to an event based system
+    // [DataField("removes", required: true), ViewVariables(VVAccess.ReadWrite)]
+    // public ComponentRegistry RemovedAccents = new();
 }

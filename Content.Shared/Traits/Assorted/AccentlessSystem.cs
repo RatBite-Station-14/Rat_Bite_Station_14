@@ -1,5 +1,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._BRatbite.Nutrition;
+using Content.Shared._BRatbite.Speech;
+using Content.Shared.StatusEffectNew;
+
 namespace Content.Shared.Traits.Assorted;
 
 /// <summary>
@@ -12,15 +16,24 @@ public sealed class AccentlessSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<AccentlessComponent, ComponentStartup>(RemoveAccents);
+        SubscribeLocalEvent<AccentlessComponent, OnBeforeAccentEvent>(OnBeforeAccent);
+        SubscribeLocalEvent<AccentlessComponent, StatusEffectRelayedEvent<OnBeforeAccentEvent>>(OnBeforeAccentRelayed);
+        SubscribeLocalEvent<AccentlessComponent, EffectDescriptionEvent>(OnGetDescription);
     }
 
-    private void RemoveAccents(EntityUid uid, AccentlessComponent component, ComponentStartup args)
+    private void OnBeforeAccent(Entity<AccentlessComponent> ent, ref OnBeforeAccentEvent args)
     {
-        foreach (var accent in component.RemovedAccents.Values)
-        {
-            var accentComponent = accent.Component;
-            RemComp(uid, accentComponent.GetType());
-        }
+        args.Cancelled = true;
+    }
+
+    private void OnBeforeAccentRelayed(Entity<AccentlessComponent> ent, ref StatusEffectRelayedEvent<OnBeforeAccentEvent> args)
+    {
+        args.Args = args.Args with { Cancelled = true };
+    }
+
+    private void OnGetDescription(Entity<AccentlessComponent> ent, ref EffectDescriptionEvent args)
+    {
+        args.Message.AddMarkupOrThrow(Loc.GetString("guidebook-description-accentless"));
+        args.Message.PushNewline();
     }
 }

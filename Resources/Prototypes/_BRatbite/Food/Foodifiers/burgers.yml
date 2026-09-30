@@ -55,10 +55,8 @@
     color: '#FFFFFF55'
 
 - type: entity
-  parent: BaseBurgerFoodifier
+  parent: [ BaseBurgerFoodifier, MimeFoodifier ]
   id: MimeBurgerFoodifier
-  components:
-  - type: PreventSpeechStatusEffect
 
 - type: entity
   parent: BaseBurgerFoodifier
@@ -86,6 +84,10 @@
 - type: entity
   parent: [BaseBurgerFoodifier, TheyThemStatusEffect]
   id: SoyBurgerFoodifier
+
+- type: entity
+  parent: [BaseBurgerFoodifier, VeganFoodifier]
+  id: VeganBurger
 
 - type: entity
   parent: [MeatBurgerFoodifier, BaseCarpFoodifier]

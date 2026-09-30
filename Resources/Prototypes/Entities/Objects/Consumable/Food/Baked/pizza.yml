@@ -216,6 +216,9 @@
           Quantity: 5
         - ReagentId: Vitamin
           Quantity: 5
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - VegetablePizzaFoodifier
 
 - type: entity
   name: slice of vegetable pizza
