@@ -5,6 +5,7 @@ using Content.Shared._BRatbite.ServerCurrency;
 using Content.Shared._BRatbite.Speech;
 using Content.Shared._Shitmed.DoAfter;
 using Content.Shared.Chat;
+using Content.Shared.Cuffs.Components;
 using Content.Shared.Damage;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Overlays;
@@ -12,6 +13,7 @@ using Content.Shared.Slippery;
 using Content.Shared.Speech;
 using Content.Shared.Standing;
 using Content.Shared.StatusEffectNew.Components;
+using Content.Shared.StepTrigger.Systems;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Events;
 
@@ -36,5 +38,8 @@ public sealed partial class StatusEffectsSystem
         SubscribeLocalEvent<StatusEffectContainerComponent, GetDoAfterTargetMultiplierEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, RefreshEquipmentHudEvent<ShowJobIconsComponent>>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, OnBeforeAccentEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, StepTriggeredOffEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, StepTriggerAttemptEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, CuffAttemptEvent>(RefRelayStatusEffectEvent);
     }
 }

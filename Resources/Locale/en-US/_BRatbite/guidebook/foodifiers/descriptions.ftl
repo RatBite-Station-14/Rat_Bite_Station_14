@@ -88,3 +88,7 @@ guidebook-description-job-icons = Allows the user to see job icons.
 guidebook-description-accentless = Makes the user accentless.
 
 guidebook-description-vegan = Gives the user the [bold]vegan[/bold] accent.
+
+guidebook-description-slippery = Makes the entity [bold]slippery[/bold].
+
+guidebook-description-prevent-cuff = Makes the entity escape being cuffed for the first attempt.

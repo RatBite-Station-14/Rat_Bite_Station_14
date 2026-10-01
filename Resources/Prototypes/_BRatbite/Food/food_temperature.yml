@@ -1,7 +1,6 @@
 - type: foodStatus
   id: BadCold
-  effects:
-  - TestFoodifier
+  effects: [ ]
   examineText: food-temperature-bad-cold
 
 - type: foodStatus

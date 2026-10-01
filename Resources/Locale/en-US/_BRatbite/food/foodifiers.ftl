@@ -1,0 +1,1 @@
+status-effect-cuff-failed-attempt = The cuffs slip off {$name} hands.

@@ -1,0 +1,7 @@
+- type: entity
+  parent: [ BoringFoodifier, ButterFoodifier ]
+  id: ButterToastFoodifier
+
+- type: entity
+  parent: [ BoringFoodifier, ButterFoodifier, BaseCheeseFoodifier ]
+  id: CheeseToastFoodifier

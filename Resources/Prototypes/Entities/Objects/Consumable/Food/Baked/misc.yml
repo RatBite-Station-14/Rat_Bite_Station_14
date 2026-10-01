@@ -882,6 +882,9 @@
           Quantity: 2
         - ReagentId: Vitamin
           Quantity: 3
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - CheeseToastFoodifier
 
 - type: entity
   parent: FoodBakedGrilledCheeseSandwich

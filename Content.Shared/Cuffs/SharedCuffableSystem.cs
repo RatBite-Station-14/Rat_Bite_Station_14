@@ -366,6 +366,16 @@ namespace Content.Shared.Cuffs
                 return;
             args.Handled = true;
 
+            // Ratbite start
+            if (!args.Cancelled)
+            {
+                var ev = new CuffAttemptEvent(user, target);
+                RaiseLocalEvent(target, ref ev);
+                Logger.Debug($"cancleed: {ev.Cancelled}");
+                if (ev.Cancelled) return;
+            }
+            // Ratbite end
+
             if (!args.Cancelled && TryAddNewCuffs(target, user, uid, cuffable))
             {
                 component.Used = true;

@@ -107,6 +107,10 @@ public record struct UncuffAttemptEvent(EntityUid User, EntityUid Target)
     public bool Cancelled = false;
 }
 
+[ByRefEvent]
+// Ratbite
+public record struct CuffAttemptEvent(EntityUid User, EntityUid Target, bool Cancelled = false);
+
 /// <summary>
 /// Event raised on an entity being uncuffed to determine any modifiers to the amount of time it takes to uncuff them.
 /// </summary>

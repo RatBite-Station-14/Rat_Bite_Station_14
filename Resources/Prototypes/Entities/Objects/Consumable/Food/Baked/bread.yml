@@ -830,6 +830,9 @@
           Quantity: 5
         - ReagentId: Vitamin
           Quantity: 1
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - ButterToastFoodifier
 # Tastes like bread, butter.
 
 - type: entity
