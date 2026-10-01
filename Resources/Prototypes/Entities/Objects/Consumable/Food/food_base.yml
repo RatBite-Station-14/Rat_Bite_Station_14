@@ -35,6 +35,7 @@
       color: "#FF6600"
     - temperature: 600
       color: "#FF2200"
+  - type: Temperature
 
 # This base type is used to cover all of the "obvious" things that should be doable to open-package food.
 # Practically this means injection.

@@ -1,8 +1,9 @@
+using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._BRatbite.Nutrition.Components;
 
-[RegisterComponent, Access(typeof(SharedCookedFoodSystem))]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause, Access(typeof(SharedCookedFoodSystem))]
 public sealed partial class CookedFoodComponent : Component
 {
     [DataField]
@@ -11,9 +12,14 @@ public sealed partial class CookedFoodComponent : Component
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public ProtoId<FoodDecayPrototype> FoodDecayPrototype = "HotFoodDecay";
 
-    [ViewVariables]
-    // The last time when the freshness was updated
-    public TimeSpan LastFreshnessUpdate;
+    [ViewVariables, AutoNetworkedField]
+    // Elapsed time, accounting for food temperature.
+    // May not be updated, use SharedCookedFoodSystem::GetFreshnessLevel
+    public TimeSpan ElapsedTime;
+
+    [ViewVariables, AutoPausedField, AutoNetworkedField]
+    // Elapsed time since last decay update
+    public TimeSpan LastFoodDecayUpdate;
 
     [DataField("freshness")]
     // Use to set the starting freshness of the food
