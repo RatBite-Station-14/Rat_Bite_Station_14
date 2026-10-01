@@ -342,6 +342,7 @@
     #  - state: prisoner-inhand-right
   - type: Clothing
     sprite: _Goobstation/Clothing/Uniforms/Jumpskirt/color/prisoner.rsi # Goob
+    equipDelay: 2 # Ratbite
     #clothingVisuals: # Goob
     #  jumpsuit:
     #  - state: equipped-INNERCLOTHING
@@ -358,6 +359,7 @@
     - PrisonUniform
     - WhitelistChameleon
     - Skirt
+  - type: SelfUnremovableClothing # Ratbite
 
 - type: entity
   parent: [ClothingUniformSkirtBase, ClothingUniformFoldableBase, BaseCommandContraband] # Goob
