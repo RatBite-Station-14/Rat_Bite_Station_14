@@ -1,0 +1,26 @@
+- type: entity
+  parent: [ MobStatusEffectDebuff, MobStatusEffectScalable ]
+  id: BaseSoupFoodifier
+
+- type: entity
+  parent: [ BaseSoupFoodifier, BaseMeatFoodifier, BaseHotFoodifier ]
+  id: GumboFoodifier
+
+- type: entity
+  parent: [ BaseSoupFoodifier, BaseOatFoodifier ]
+  id: OatMealFoodifier
+
+- type: entity
+  parent: [ BaseSoupFoodifier, BaseCarrotFoodifier, BaseMeatFoodifier ]
+  id: MeatballSoupFoodifier
+
+- type: entity
+  parent: [ BaseSoupFoodifier, BaseCarrotFoodifier, VeganFoodifier ]
+  id: VegetableSoupFoodifier
+
+- type: entity
+  parent: [ BaseSoupFoodifier ]
+  id: MonkeySoupFoodifier
+  components:
+  - type: ReplaceTauCetiStatusEffect
+    language: Monkey

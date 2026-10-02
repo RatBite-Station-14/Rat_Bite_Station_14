@@ -514,6 +514,9 @@
     tags:
     - Meat
     - Soup
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - GumboFoodifier
 
 # Misc
 
@@ -542,6 +545,9 @@
           Quantity: 2
         - ReagentId: Milk
           Quantity: 10
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - OatMealFoodifier
 
 - type: entity
   name: space liberty duff
@@ -614,6 +620,9 @@
     tags:
     - Meat
     - Soup
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - MeatballSoupFoodifier
 
 - type: entity
   name: slime soup
@@ -748,6 +757,9 @@
           Quantity: 10
         - ReagentId: Oculine
           Quantity: 1
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - VegetableSoupFoodifier
 
 - type: entity
   name: nettle soup
@@ -821,6 +833,9 @@
   - type: Tag
     tags:
     - ChiliBowl
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - GumboFoodifier
 
 
 - type: entity
@@ -914,6 +929,9 @@
     tags:
     - Meat
     - Soup
+  - type: CookedFood
+    statusEffectProto:
+    - MonkeySoupFoodifier
 
 - type: entity
   name: tomato soup

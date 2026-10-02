@@ -268,3 +268,18 @@
   - type: PreventCuffStatusEffect
   - type: ColorChangeStatusEffect
     color: '#FFFF81'
+
+- type: entity
+  id: EggFoodifier
+  components:
+  - type: ChangeMobThresholdStateStatusEffect
+    state: Critical
+    amount: 10
+
+- type: entity
+  id: BaseOatFoodifier
+  parent: [ MobStatusEffectDebuff, MobStatusEffectScalable ]
+  components:
+  - type: HemophiliaStatusEffect
+    bleedReductionMultiplier: 2
+    bleedAmountMultiplier: 0.8

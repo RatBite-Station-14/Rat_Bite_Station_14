@@ -1,0 +1,20 @@
+- type: entity
+  parent: [ MobStatusEffectDebuff ]
+  id: BaseItalianPastaFoodifier
+  components:
+  - type: ReplacementAccent
+    accent: italian
+
+- type: entity
+  parent: [ MobStatusEffectDebuff ]
+  id: CopyPastaFoodifier
+  components:
+  - type: CopyPastaAccent
+
+- type: entity
+  parent: [ BaseItalianPastaFoodifier, BaseMeatFoodifier ]
+  id: MeatPastaFoodifier
+
+- type: entity
+  parent: [ BaseCarrotFoodifier, EggFoodifier ]
+  id: ChowMeinFoodifier

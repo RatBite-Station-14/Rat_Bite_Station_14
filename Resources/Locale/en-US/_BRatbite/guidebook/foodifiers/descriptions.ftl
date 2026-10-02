@@ -92,3 +92,7 @@ guidebook-description-vegan = Gives the user the [bold]vegan[/bold] accent.
 guidebook-description-slippery = Makes the entity [bold]slippery[/bold].
 
 guidebook-description-prevent-cuff = Makes the entity escape being cuffed for the first attempt.
+
+guidebook-description-copy-pasta = Makes the user repeat everything they say.
+
+guidebook-description-replace-tau-ceti = Replaces the user tau ceti knowledge with {$language}.

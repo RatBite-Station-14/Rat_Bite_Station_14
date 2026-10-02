@@ -36,6 +36,9 @@
       - pasta
   - type: Sprite
     state: boiled
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BoringFoodifier
 # Tastes like pasta.
 
 - type: entity
@@ -55,6 +58,9 @@
   - type: Tag
     tags:
     - Fruit
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BaseItalianPastaFoodifier
 # Tastes like pasta, tomato.
 
 - type: entity
@@ -85,6 +91,9 @@
           Quantity: 12
         - ReagentId: Vitamin
           Quantity: 8
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - CopyPastaFoodifier
 # Tastes like pasta, bad humor.
 
 - type: entity
@@ -113,6 +122,9 @@
   - type: Tag
     tags:
     - Meat
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - MeatPastaFoodifier
 # Tastes like pasta, meat.
 
 - type: entity
@@ -163,6 +175,9 @@
           Quantity: 7
         - ReagentId: Vitamin
           Quantity: 6
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - ChowMeinFoodifier
 # Tastes like pasta, tomato.
 
 - type: entity
@@ -188,4 +203,7 @@
           Quantity: 8
         - ReagentId: Vitamin
           Quantity: 1
+  - type: CookedFood # Ratibte
+    statusEffectProto:
+    - ButterFoodifier
 # Tastes like pasta, butter.

@@ -3,6 +3,7 @@ using Content.Shared._BRatbite.DoAfter;
 using Content.Shared._BRatbite.Nutrition;
 using Content.Shared._BRatbite.ServerCurrency;
 using Content.Shared._BRatbite.Speech;
+using Content.Shared._EinsteinEngines.Language.Events;
 using Content.Shared._Shitmed.DoAfter;
 using Content.Shared.Chat;
 using Content.Shared.Cuffs.Components;
@@ -41,5 +42,6 @@ public sealed partial class StatusEffectsSystem
         SubscribeLocalEvent<StatusEffectContainerComponent, StepTriggeredOffEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, StepTriggerAttemptEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, CuffAttemptEvent>(RefRelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, DetermineEntityLanguagesEvent>(RefRelayStatusEffectEvent);
     }
 }
