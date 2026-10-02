@@ -267,7 +267,7 @@
   name: trait-trigger-name
   description: trait-trigger-desc
   category: Mental
-  cost: -10
+  cost: -2
   components:
   - type: Trigger
 
