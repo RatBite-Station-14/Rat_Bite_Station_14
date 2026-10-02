@@ -86,13 +86,13 @@
   - type: ChatOverTimeStatusEffect
     message: guidebook-pronouns-neuter
     chatType: Emote
-  - type: DamageResistanceStatusEffect
-    damageModifier:
-      coefficients:
-        Blunt: 0.1
-        Piercing: 0.1
-      flatReductions:
-        Radiation: 20
+#  - type: DamageResistanceStatusEffect
+#    damageModifier:
+#      coefficients:
+#        Blunt: 0.1
+#        Piercing: 0.1
+#      flatReductions:
+#        Radiation: 20
   - type: HemophiliaStatusEffect
     bleedReductionMultiplier: 1
     bleedAmountMultiplier: 100000001
@@ -127,6 +127,13 @@
   - type: Accentless
   - type: Slippery
   - type: PreventCuffStatusEffect
+  - type: WideSwingResistanceStatusEffect
+    damageModifier:
+      coefficients:
+        Blunt: 0.1
+        Piercing: 0.1
+      flatReductions:
+        Radiation: 20      
 
 - type: entity
   parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
@@ -162,7 +169,6 @@
 - type: entity
   parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
   id: BaseCarrotFoodifier
-  abstract: true
   components:
   - type: GunAccuracyStatusEffect
     accuracyMultiplier: 0.9
@@ -172,12 +178,10 @@
 - type: entity
   parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
   id: BaseBerryFoodifier
-  abstract: true # TODO
 
 - type: entity
   parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
   id: BaseCheeseFoodifier
-  abstract: true
   components:
   - type: MovementModStatusEffect
     sprintSpeedModifier: 0.9
@@ -188,7 +192,6 @@
 - type: entity
   parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
   id: BaseChocolateFoodifier
-  abstract: true
   components:
   - type: MovementModStatusEffect
     sprintSpeedModifier: 0.9
@@ -283,3 +286,33 @@
   - type: HemophiliaStatusEffect
     bleedReductionMultiplier: 2
     bleedAmountMultiplier: 0.8
+
+- type: entity
+  id: BaseMushroomFoodifier
+  parent: [ MobStatusEffectDebuff, MobStatusEffectScalable ]
+  components:
+  - type: WideSwingResistanceStatusEffect
+    damageModifier:
+      coefficients:
+        Blunt: 0.5
+        Piercing: 0.5
+        Slash: 0.5
+        Heat: 0.5
+
+- type: entity
+  id: BaseBananaFoodifier
+  parent: [ MobStatusEffectDebuff, MobStatusEffectScalable ]
+  components:
+  - type: TakeDamageOvertimeStatusEffect
+    damagePerSecond:
+      groups:
+        Brute: -0.07
+      types:
+        Heat: -0.07
+
+- type: entity
+  id: ChineseFoodifier
+  parent: [ MobStatusEffectDebuff ]
+  components:
+  - type: ReplaceTauCetiStatusEffect
+    language: SolCommon

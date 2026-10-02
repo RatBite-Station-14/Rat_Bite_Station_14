@@ -167,6 +167,9 @@
     - state: mushroom
   - type: SliceableFood
     slice: FoodPizzaMushroomSlice
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - MushroomPizzaFoodifier
 
 - type: entity
   name: slice of mushroom pizza

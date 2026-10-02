@@ -881,7 +881,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                 continue;
             }
 
-            var attackedEvent = new AttackedEvent(meleeUid, user, GetCoordinates(ev.Coordinates));
+            var attackedEvent = new AttackedEvent(meleeUid, user, GetCoordinates(ev.Coordinates), true);
             RaiseLocalEvent(entity, attackedEvent);
             var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
             modifiedDamage = DamageSpecifier.ApplyModifierSets(modifiedDamage, attackedEvent.ModifiersList); // Goobstation

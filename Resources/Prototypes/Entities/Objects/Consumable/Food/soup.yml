@@ -394,6 +394,9 @@
     layers:
     - state: bowl
     - state: rice
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BoringFoodifier
 
 - type: entity
   name: egg-fried rice
@@ -482,6 +485,10 @@
           Quantity: 5
         - ReagentId: Sugar
           Quantity: 5
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BoringFoodifier
+
 
 - type: entity
   name: black-eyed gumbo
@@ -1049,6 +1056,9 @@
             Quantity: 5
           - ReagentId: Milk
             Quantity: 5
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - MushroomSoupFoodifier
 
 - type: entity
   name: beet soup

@@ -25,3 +25,7 @@
 - type: entity
   parent: [BasePizzaFoodifier, BaseCarrotFoodifier] # TODO: Add the other vegetables
   id: VegetablePizzaFoodifier
+
+- type: entity
+  parent: [ BasePizzaFoodifier, BaseMushroomFoodifier ]
+  id: MushroomPizzaFoodifier

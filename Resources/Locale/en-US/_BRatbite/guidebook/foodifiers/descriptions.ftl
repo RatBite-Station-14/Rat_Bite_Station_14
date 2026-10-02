@@ -34,8 +34,14 @@ guidebook-description-chat-speak = Causes the user to speak uncontrollably.
 guidebook-description-chat-emote = Causes the user to emote uncontrollably.
 guidebook-description-chat-whisper = Causes the user to emote uncontrollably.
 
-guidebook-description-damage-resistance-coefficient = Modifies incoming [bold]{$type}[/bold] damage by [bold]{$coefficient}[/bold]%.
-guidebook-description-damage-resistance-flat-reduction = Reduces incoming [bold]{$type}[/bold] damage by [bold]{$amount}[/bold].
+guidebook-description-damage-resistance-coefficient = Modifies incoming { $wideSwing ->
+    [true] wideswing{" "}
+    *[other] {""}
+}[bold]{$type}[/bold] damage by [bold]{$coefficient}[/bold]%.
+guidebook-description-damage-resistance-flat-reduction = Reduces incoming { $wideSwing ->
+    [true] wideswing{" "}
+    *[other] {""}
+}[bold]{$type}[/bold] damage by [bold]{$amount}[/bold].
 
 guidebook-description-hemophilia-bleed-reduction = Modifies blood clotting capabilities by [bold]{$amount}[/bold]%.
 guidebook-description-hemophilia-bleed-multiplier = Modifies bleed amount by [bold]{$amount}[/bold]%.

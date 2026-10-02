@@ -47,6 +47,9 @@
       - sweet
   - type: Item
     size: Tiny
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BaseMuffinFoodifier
 
 - type: entity
   name: berry muffin
@@ -125,6 +128,9 @@
           Quantity: 2
         - ReagentId: CocoaPowder
           Quantity: 2
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - ChocolateMuffinFoodifier
 
 - type: entity
   name: banana muffin
@@ -148,6 +154,9 @@
   - type: Tag
     tags:
     - Fruit
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BananaMuffinFoodifier
 
 # Buns
 
@@ -340,6 +349,9 @@
   - type: Tag
     tags:
     - Pancake
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - EggFoodifier
 
 - type: entity
   name: blueberry pancake
@@ -393,6 +405,9 @@
     tags:
     - Pancake
     - Fruit
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BaseBerryFoodifier
 
 - type: entity
   name: chocolate chip pancake
@@ -451,6 +466,9 @@
           Quantity: 5
         - ReagentId: Theobromine
           Quantity: 1
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BaseChocolateFoodifier
 
 - type: entity
   name: waffles
@@ -471,6 +489,9 @@
           Quantity: 8
         - ReagentId: Vitamin
           Quantity: 1
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - EggFoodifier
 
 - type: entity
   name: soy waffles
@@ -491,6 +512,9 @@
           Quantity: 10
         - ReagentId: Vitamin
           Quantity: 1
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - TheyThemStatusEffect
 
 - type: entity
   name: soylent waffles
@@ -585,6 +609,9 @@
   - type: Tag
     tags:
     - Meat
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - ChineseFoodifier
 
 - type: entity
   name: chèvre chaud
@@ -816,6 +843,10 @@
     damage:
       types:
         Blunt: 0 # so the damage stats icon doesn't immediately give away the syndie ones
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - CroissantFoodifier
+
 
 - type: entity
   parent: FoodBakedCroissant

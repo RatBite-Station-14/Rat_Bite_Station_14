@@ -24,3 +24,7 @@
   components:
   - type: ReplaceTauCetiStatusEffect
     language: Monkey
+
+- type: entity
+  parent: [ BaseSoupFoodifier, BaseMushroomFoodifier ]
+  id: MushroomSoupFoodifier

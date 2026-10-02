@@ -98,6 +98,9 @@
     tags:
     - Fruit
     - Bread
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BaseBananaFoodifier
 # Tastes like bread, banana, nut.
 
 - type: entity
@@ -250,6 +253,9 @@
           Quantity: 20
         - ReagentId: Vitamin
           Quantity: 5
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BaseCheeseFoodifier
 # Tastes like bread, cheese.
 
 - type: entity

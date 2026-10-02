@@ -1,0 +1,15 @@
+- type: entity
+  parent: [ MobStatusEffectDebuff, MobStatusEffectScalable, BaseCakeFoodifier ] # For now it's the same as cakes
+  id: BaseMuffinFoodifier
+
+- type: entity
+  parent: [ BaseMuffinFoodifier, BaseBananaFoodifier ]
+  id: BananaMuffinFoodifier
+  
+- type: entity
+  parent: [ BaseMuffinFoodifier, BaseChocolateFoodifier ]
+  id: ChocolateMuffinFoodifier
+
+- type: entity
+  parent: [ FrenchFoodifier, ButterFoodifier ]
+  id: CroissantFoodifier

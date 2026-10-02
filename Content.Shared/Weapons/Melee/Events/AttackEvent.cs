@@ -42,6 +42,9 @@ namespace Content.Shared.Weapons.Melee.Events
         /// </summary>
         public EntityCoordinates ClickLocation { get; }
 
+        // Ratbite
+        public bool WideSwing { get; }
+
         /// <summary>
         ///     Goobstation.
         ///     Modifier sets to apply to the hit event when it's all said and done.
@@ -51,11 +54,12 @@ namespace Content.Shared.Weapons.Melee.Events
 
         public DamageSpecifier BonusDamage = new();
 
-        public AttackedEvent(EntityUid used, EntityUid user, EntityCoordinates clickLocation)
+        public AttackedEvent(EntityUid used, EntityUid user, EntityCoordinates clickLocation, bool wideSwing = false)
         {
             Used = used;
             User = user;
             ClickLocation = clickLocation;
+            WideSwing = wideSwing; // Ratbite
         }
     }
 

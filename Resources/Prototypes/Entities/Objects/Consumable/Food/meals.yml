@@ -99,6 +99,10 @@
         reagents:
         - ReagentId: JuiceCarrot
           Quantity: 20
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BaseCarrotFoodifier
+
 # Tastes like carrots, salt.
 
 - type: entity
@@ -408,6 +412,9 @@
   - type: Tag
     tags:
     - Meat
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BaseMeatFoodifier
 # Tastes like meat, smokey sauce.
 
 - type: entity
@@ -689,3 +696,6 @@
           Quantity: 4
         - ReagentId: Vitamin
           Quantity: 4
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - ButterFoodifier
