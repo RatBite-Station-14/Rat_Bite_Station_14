@@ -194,6 +194,7 @@
     openState: gygax-open
     brokenState: gygax-broken
     mechToPilotDamageMultiplier: 0.3
+    maxIntegrity: 300 #ratbite
     airtight: true
     pilotWhitelist:
       components:
@@ -210,6 +211,8 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 2 #Goobedit
+  - type: Damageable
+    damageModifierSet: MediumArmorNT
   - type: StaticPrice
     price: 3000
   - type: Tag
@@ -254,7 +257,7 @@
     brokenState: durand-broken
     mechToPilotDamageMultiplier: 0.25
     airtight: true
-    maxIntegrity: 400
+    maxIntegrity: 450 #ratbite
     pilotWhitelist:
       components:
         - HumanoidAppearance
@@ -408,7 +411,7 @@
         Structural: 400
   - type: MovementSpeedModifier
     baseWalkSpeed: 2.2
-    baseSprintSpeed: 2.2 
+    baseSprintSpeed: 2.2
   - type: Damageable
     damageModifierSet: HeavyArmorNT
   - type: CanMoveInAir
