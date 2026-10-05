@@ -72,7 +72,7 @@
   coefficients:
     Blunt: 0.75
     Slash: 0.75
-    Piercing: 0.7
+    Piercing: 0.50 #ratbite
     Shock: 1.2
     Heat: 0.7
     Ion: 1.0
@@ -85,7 +85,7 @@
   coefficients:
     Blunt: 0.6
     Slash: 0.6
-    Piercing: 0.65
+    Piercing: 0.35 #ratbite
     Shock: 1.4
     Heat: 0.7
     Ion: 1.0
@@ -98,7 +98,7 @@
   coefficients:
     Blunt: 0.5
     Slash: 0.5
-    Piercing: 0.35
+    Piercing: 0.25 #ratbite
     Shock: 1.8
     Heat: 0.6
     Ion: 1.0
@@ -111,7 +111,7 @@
   coefficients:
     Blunt: 0.6
     Slash: 0.6
-    Piercing: 0.6
+    Piercing: 0.4 #ratbite
     Shock: 1.4
     Heat: 0.75
     Ion: 1.0
@@ -124,7 +124,7 @@
   coefficients:
     Blunt: 0.5
     Slash: 0.5
-    Piercing: 0.4
+    Piercing: 0.3 #ratbite
     Shock: 1.8
     Heat: 0.7
     Ion: 1.0

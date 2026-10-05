@@ -155,7 +155,7 @@
       types:
         Piercing: 12 # Ratbite - TRVTHNVKE buckshit shitgun meta
         Structural: 5 # Ratbite - they'll bleed out anyways from the pierce before you whine
-      armorPenetration: -0.2 # Ratbite - Body armor does what it's >>>explicitly designed to<<< against buckshot.
+ #     armorPenetration: -0.2 # Ratbite - Body armor does what it's >>>explicitly designed to<<< against buckshot. Close range meatshotting with a shotgun however, should CHUNK. (change made for mechs)
 
 
 - type: entity
