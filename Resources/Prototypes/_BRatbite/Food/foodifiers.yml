@@ -237,6 +237,20 @@
     color: "#03CF03"
 
 - type: entity
+  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  id: PlasmaFoodifier
+  components:
+  - type: MeleeDamageStatusEffect
+    multiplier: 1
+    extraDamage:
+      types:
+        Heat: 20
+    onlyPunches: true
+  - type: IgniteOnFireStatusEffect
+    fireStacksToAdd: 6
+    guaranteedFireStacks: 6
+
+- type: entity
   parent: [ MobStatusEffectDebuff ]
   id: BoringFoodifier
   components:

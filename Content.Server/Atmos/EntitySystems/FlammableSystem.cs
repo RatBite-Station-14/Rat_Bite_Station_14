@@ -38,6 +38,7 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Configuration;
 using Content.Goobstation.Common.Flammability;
+using Content.Shared._BRatbite.Atmos;
 
 namespace Content.Server.Atmos.EntitySystems
 {
@@ -353,6 +354,10 @@ namespace Content.Server.Atmos.EntitySystems
         {
             // Goobstation - from EE at 7b0949568d07df81b298251c6fce9be4d7d03f18 (https://github.com/Simple-Station/Einstein-Engines/pull/2462)
             if (!Resolve(uid, ref flammable) || !flammable.CanExtinguish)
+                return;
+            var ev = new ExtinguishAttemptEvent();
+            RaiseLocalEvent(uid, ref ev);
+            if (ev.Cancelled)
                 return;
 
             // Goobstation - from EE at 7b0949568d07df81b298251c6fce9be4d7d03f18 (https://github.com/Simple-Station/Einstein-Engines/pull/2462)

@@ -13,8 +13,10 @@ guidebook-description-reagent = [bold]{$amount}[/bold]u of [bold]{$reagent}[/bol
 
 guidebook-description-melee-buff = Modifies melee damage by [bold]{$multiplier}[/bold]%.
 guidebook-description-melee-buff-punch = Modifies punch damage by [bold]{$multiplier}[/bold]%.
+guidebook-description-melee-buff-extra = Adds [bold]{$newDamage}[/bold] to melee damage.
+guidebook-description-melee-buff-extra-punch = Adds [bold]{$newDamage}[/bold] to punch damage.
 
-guidebook-description-damage = [bold]{$damageAmount} point of {$damageType}[/bold]
+guidebook-description-damage = [bold]{$damageAmount} points of {$damageType}[/bold]
 guidebook-description-damage-overtime = Deals {$damages} per second.
 
 guidebook-description-chat-color = Changes chat color to [bold]{$color}[/bold].
@@ -51,6 +53,8 @@ guidebook-description-hunger = Changes hunger by [bold]{$multiplier}[/bold]%.
 guidebook-description-drop-immune = Makes the entity not drop the items in their hands when falling down.
 
 guidebook-description-no-slip = Makes the entity immune to slipping.
+
+guidebook-description-ignite = Makes the entity catch on fire.
 
 guidebook-description-prevent-speech = Makes the entity unable to speak.
 

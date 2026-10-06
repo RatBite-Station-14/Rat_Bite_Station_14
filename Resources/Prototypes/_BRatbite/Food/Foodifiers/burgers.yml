@@ -55,6 +55,10 @@
     color: '#FFFFFF55'
 
 - type: entity
+  parent: [BaseBurgerFoodifier, PlasmaFoodifier] 
+  id: PlasmaBurgerFoodifier
+
+- type: entity
   parent: [ BaseBurgerFoodifier, MimeFoodifier ]
   id: MimeBurgerFoodifier
 

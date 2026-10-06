@@ -1,4 +1,5 @@
 using Content.Goobstation.Common.Speech;
+using Content.Shared._BRatbite.Atmos;
 using Content.Shared._BRatbite.DoAfter;
 using Content.Shared._BRatbite.Nutrition;
 using Content.Shared._BRatbite.ServerCurrency;
@@ -44,5 +45,6 @@ public sealed partial class StatusEffectsSystem
         SubscribeLocalEvent<StatusEffectContainerComponent, CuffAttemptEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, DetermineEntityLanguagesEvent>(RefRelayStatusEffectEvent);
         SubscribeLocalEvent<StatusEffectContainerComponent, AttackedEvent>(RelayStatusEffectEvent);
+        SubscribeLocalEvent<StatusEffectContainerComponent, ExtinguishAttemptEvent>(RefRelayStatusEffectEvent);
     }
 }

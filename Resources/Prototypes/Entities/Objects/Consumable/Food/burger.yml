@@ -752,6 +752,9 @@
           Quantity: 8
         - ReagentId: Licoxide
           Quantity: 5
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - PlasmaBurgerFoodifier
 # Tastes like bun, pure electricity.
 
 - type: entity

@@ -28,7 +28,7 @@ namespace Content.Shared.Atmos.Components
 
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField]
-        public float MinimumFireStacks = -10f;
+        public float MinimumFireStacks = -1f;
 
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField]
