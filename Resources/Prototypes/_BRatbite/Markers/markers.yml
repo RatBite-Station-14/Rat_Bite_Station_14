@@ -54,3 +54,10 @@
   icon:
     sprite: /Textures/_BRatbite/Markers/markers.rsi
     state: star
+
+- type: marker
+  id: TCMiner
+  icon:
+    sprite: /Textures/_Goobstation/Structures/Machines/tc_printer.rsi
+    state: icon
+  hideFromMonitor: true
