@@ -1019,3 +1019,11 @@ Gauze10Lingering: Gauze
 
 #2026-08-28 Ratbite: Combat Training removal
 BookCombatTraining: null
+
+# 2026-01-10 Goobstation Change Mapped Chem to Energy Chem by default
+ChemDispenser: EnergyChemDispenser
+
+# 2026-08-12 Ratbite: Booze and soda dispensers
+BoozeDispenser: EnergyBoozeDispenser
+SodaDispenser: EnergySodaDispenser
+

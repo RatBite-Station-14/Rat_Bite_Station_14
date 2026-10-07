@@ -40,6 +40,8 @@
   - BoozeDispenserMachineCircuitboard
   - SodaDispenserMachineCircuitboard
   - SmartFridgeCircuitboard
+  - EnergyBoozeDispenserMachineCircuitboard # Ratbite
+  - EnergySodaDispenserMachineCircuitboard # Ratbite
 
 ## Dynamic
 
