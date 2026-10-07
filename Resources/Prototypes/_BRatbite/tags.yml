@@ -10,3 +10,5 @@
 - type: Tag
   id: BypassMindshieldAccessRequirement
 
+- type: Tag
+  id: RadioChip

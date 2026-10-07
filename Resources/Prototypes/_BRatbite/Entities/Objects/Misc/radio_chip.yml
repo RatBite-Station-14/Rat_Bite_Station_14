@@ -1,0 +1,14 @@
+- type: entity
+  id: RadioChip
+  parent: BaseItem
+  name: radio chip
+  description: Special radio chip that attaches to walls and alerts security via radio when they are destroyed
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Objects/Misc/radio_chip.rsi
+    state: icon
+  - type: Item
+    size: Small
+  - type: Tag
+    tags:
+    - RadioChip

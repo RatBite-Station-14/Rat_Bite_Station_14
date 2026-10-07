@@ -1,0 +1,25 @@
+- type: construction
+  id: SecureWall
+  graph: Girder
+  startNode: start
+  targetNode: secureWall
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: SecureReinforcedWall
+  graph: Girder
+  startNode: start
+  targetNode: secureReinforcedWall
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
