@@ -1,0 +1,5 @@
+- type: localizedDataset
+  id: ContrabandSweeperAds
+  values:
+    prefix: advertisement-contraband-sweeper-
+    count: 7

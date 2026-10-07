@@ -1,0 +1,111 @@
+- type: mineSweeperCell
+  id: One
+  state: One
+  icon:
+    sprite: /Textures/_BRatbite/UI/contraband-sweeper.rsi
+    state: 1
+
+- type: mineSweeperCell
+  id: Two
+  state: Two
+  icon:
+    sprite: /Textures/_BRatbite/UI/contraband-sweeper.rsi
+    state: 2
+
+- type: mineSweeperCell
+  id: Three
+  state: Three
+  icon:
+    sprite: /Textures/_BRatbite/UI/contraband-sweeper.rsi
+    state: 3
+
+- type: mineSweeperCell
+  id: Four
+  state: Four
+  icon:
+    sprite: /Textures/_BRatbite/UI/contraband-sweeper.rsi
+    state: 4
+
+- type: mineSweeperCell
+  id: Five
+  state: Five
+  icon:
+    sprite: /Textures/_BRatbite/UI/contraband-sweeper.rsi
+    state: 5
+
+- type: mineSweeperCell
+  id: Six
+  state: Six
+  icon:
+    sprite: /Textures/_BRatbite/UI/contraband-sweeper.rsi
+    state: 6
+
+- type: mineSweeperCell
+  id: Seven
+  state: Seven
+  icon:
+    sprite: /Textures/_BRatbite/UI/contraband-sweeper.rsi
+    state: 7
+
+- type: mineSweeperCell
+  id: Eight
+  state: Eight
+  icon:
+    sprite: /Textures/_BRatbite/UI/contraband-sweeper.rsi
+    state: 8
+
+- type: mineSweeperCell
+  id: Blank
+  state: Blank
+  icon:
+    sprite: /Textures/_BRatbite/UI/contraband-sweeper.rsi
+    state: blank
+
+- type: mineSweeperCell
+  id: Flag
+  state: Flag
+  icon:
+    sprite: /Textures/_BRatbite/UI/contraband-sweeper.rsi
+    state: flag
+
+- type: mineSweeperCell
+  id: Covered
+  state: Covered
+  icon:
+    sprite: /Textures/_BRatbite/UI/contraband-sweeper.rsi
+    state: hidden
+
+- type: mineSweeperCell
+  id: Multitool
+  state: Mine
+  icon:
+    sprite: /Textures/_BRatbite/UI/contraband-sweeper.rsi
+    state: multitool
+
+- type: mineSweeperCell
+  id: InsulatedGloves
+  state: Mine
+  icon:
+    sprite: /Textures/_BRatbite/UI/contraband-sweeper.rsi
+    state: insuls
+
+- type: mineSweeperCell
+  id: Stunbaton
+  state: Mine
+  icon:
+    sprite: /Textures/_BRatbite/UI/contraband-sweeper.rsi
+    state: stunbaton
+
+- type: mineSweeperCell
+  id: Boots
+  state: Mine
+  icon:
+    sprite: /Textures/_BRatbite/UI/contraband-sweeper.rsi
+    state: boots
+
+- type: mineSweeperCell
+  id: ID
+  state: Mine
+  icon:
+    sprite: /Textures/_BRatbite/UI/contraband-sweeper.rsi
+    state: id
