@@ -1,0 +1,31 @@
+- type: entity
+  id: BaseLockableIDCard
+  parent: IDCardStandard
+  abstract: true
+  components:
+  - type: Lock
+  - type: LockableIDCard
+  - type: ActivatableUI
+    key: enum.LockableIDUiKey.Key
+  - type: Appearance
+  - type: UserInterface
+    interfaces:
+      enum.LockableIDUiKey.Key:
+        type: LockBoundUserInterface
+
+- type: entity
+  id: CaptainLockableIDCard
+  suffix: Locked
+  parent: [CaptainIDCard, BaseLockableIDCard]
+  components:
+  - type: Sprite
+    layers:
+    - state: gold
+    - state: lock
+      map: [ "enum.LockVisualLayers.Lock" ]
+    - state: unlocked
+      visible: false
+      map: [ "enum.StorageVisuals.Open" ]
+  - type: LockVisuals
+    stateLocked: lock
+    stateUnlocked: unlocked
