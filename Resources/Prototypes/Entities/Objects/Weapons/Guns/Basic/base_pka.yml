@@ -118,3 +118,4 @@
         Blunt: 5
   - type: AltFireMelee
     attackType: Heavy
+  - type: GunTrackable # Ratbite

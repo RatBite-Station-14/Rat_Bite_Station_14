@@ -1,0 +1,8 @@
+- type: latheRecipe
+  parent: BasePartRecipe
+  id: GunTracker
+  completetime: 5
+  materials:
+    Steel: 500
+    Plastic: 300
+  result: GunTracker

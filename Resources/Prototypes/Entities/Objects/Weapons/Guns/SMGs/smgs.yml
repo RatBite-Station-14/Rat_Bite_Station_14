@@ -92,6 +92,7 @@
     wideAnimationRotation: 90 # -90 if it takes bayonets (hits with muzzle) 90 if not (hits with butt)
     soundHit:
       collection: MetalThud # Goobstation ^
+  - type: GunTrackable # Ratbite
 
 - type: entity
   name: Atreides
@@ -253,16 +254,20 @@
           whitelist:
             tags:
               - CartridgePistol
+        gun_tracker:
+          name: Gun Tracker
+          startingItem: GunTracker
+          whitelist:
+            components:
+            - GunTracker
+          swap: false
+          disableEject: true
     - type: MagazineVisuals
       magState: mag
       steps: 1
       zeroVisible: true
     - type: Appearance
-    - type: FiringPin #Ratbite, mindshield restriction system
-    - type: Lock #Ratbite
-      locked: true
-    - type: AccessReader #Ratbite
-      access: [ [ "Security" ] ]
+    - type: GunTrackable #Ratbite, mindshield restriction system
 
 
 - type: entity
@@ -317,22 +322,26 @@
         whitelist:
           tags:
             - CartridgePistol
+      gun_tracker:
+        name: Gun Tracker
+        startingItem: GunTracker
+        whitelist:
+          components:
+            - GunTracker
+        swap: false
+        disableEject: true
   - type: MagazineVisuals
     magState: mag
     steps: 6
     zeroVisible: true
   - type: Appearance
-  - type: FiringPin #Ratbite, mindshield restriction system
-  - type: Lock #Ratbite
-    locked: true
-  - type: AccessReader #Ratbite
-    access: [ [ "Security" ] ]
   # Goobstation
   - type: Multishot
     missChance: 0.3
   - type: Item
     shape:
     - 0,0,2,1
+  - type: GunTrackable # Ratbite
 
 - type: entity
   name: brown briefcase

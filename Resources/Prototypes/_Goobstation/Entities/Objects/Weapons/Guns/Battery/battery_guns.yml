@@ -354,15 +354,21 @@
         whitelist:
           tags:
             - EnergyMagAmmo
-  - type: FiringPin #Ratbite, mindshield restriction system
-  - type: Lock #Ratbite
-    locked: true
-  - type: AccessReader #Ratbite
-    access: [ [ "Security" ] ]
+      # Ratbite
+      gun_tracker:
+        name: Gun Tracker
+        startingItem: GunTracker
+        priority: 3
+        whitelist:
+          components:
+          - GunTracker
+        swap: false
+        disableEject: true
+  - type: GunTrackable #Ratbite, mindshield restriction system
 
 - type: entity
   name: DT-12 "Lawbringer"
-  parent: [BaseWeaponBatterySmall, BaseGrandTheftContraband]
+  parent: [BaseWeaponBatterySmall, BaseMindshieldedWeapon, BaseGrandTheftContraband] # Ratbite
   id: WeaponEnergyGunLawbringer
   description: A versatile energy gun, with many different modes. The owner of this gun embodies the law itself.
   components:
@@ -437,11 +443,6 @@
     keyPhrase: "lawbringer-phrase"
     listenRange: 1
     holderOnly: true
-  - type: AccessReader
-    access: [['HeadOfSecurity']]
-  - type: FiringPin # Ratbite
-  - type: Lock # Ratbite
-    locked: true
   - type: ActiveListener
   - type: ExplodeOnTrigger
   - type: DropOnTrigger
@@ -461,7 +462,7 @@
   name: ion rifle
   id: WeaponEnergyIonRifle
   description: An energy rifle that shoots ionized energy bolts designed to destroy mechanical targets.
-  parent: [BaseWeaponBattery, BaseSecurityContraband]
+  parent: [BaseWeaponBattery, BaseMindshieldedWeapon, BaseSecurityContraband] # Ratbite
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Battery/ion_rifle.rsi
@@ -496,3 +497,4 @@
   - type: Battery
     maxCharge: 800
     startingCharge: 800
+
