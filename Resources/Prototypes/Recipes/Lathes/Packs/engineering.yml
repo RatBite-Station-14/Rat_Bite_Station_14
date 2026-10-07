@@ -19,7 +19,7 @@
   - FlashlightLantern
   - HandheldGPSBasic
   # - TRayScanner # Ratbite: Moved to TechnicalToolsStatic
-  # - UtilityBelt # Ratbite: Moved to TechnicalToolsStatic
+  - UtilityBelt # NO?????????????
   - ClothingOuterVestTank
   - HandheldStationMap
   - ClothingHeadHatWelding
@@ -65,6 +65,7 @@
   - PowerDrill
   - WelderExperimental
   - JawsOfLife
+  - Multitool
 
 - type: latheRecipePack
   id: AtmosTools
