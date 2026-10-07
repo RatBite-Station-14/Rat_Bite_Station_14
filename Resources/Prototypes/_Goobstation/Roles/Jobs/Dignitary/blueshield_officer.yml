@@ -66,6 +66,7 @@
       - type: CommandStaff
       - type: Condemned
         soulOwnedNotDevil: true
+      - type: CPRTraining # ratbite
 
 - type: startingGear
   id: BlueshieldOfficerGear

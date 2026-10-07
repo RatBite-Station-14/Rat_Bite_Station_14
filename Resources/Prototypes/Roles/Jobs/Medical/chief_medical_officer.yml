@@ -63,6 +63,7 @@
     components:
     - type: SurgerySpeedModifier
       speedModifier: 2
+    - type: CPRTraining # Ratbite
 
 - type: startingGear
   id: CMOGear
