@@ -40,6 +40,7 @@ using Content.Shared.Popups;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
 using Content.Goobstation.Maths.FixedPoint;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.Body.Systems;
 
@@ -634,21 +635,12 @@ public partial class SharedBodySystem
                     }
                     else
                     {
-                        var childPart = Spawn(connectionSlot.Part, new EntityCoordinates(parentEntity, Vector2.Zero));
-                        cameFromEntities[connection] = childPart;
-
-                        var childPartComponent = Comp<BodyPartComponent>(childPart);
-
-                        var partSlot = new BodyPartSlot(connection, childPartComponent.PartType, childPartComponent.Symmetry);
-                        childPartComponent.ParentSlot = partSlot;
-                        parentPartComponent.Children.TryAdd(connection, partSlot);
-
-                        Dirty(parentEntity, parentPartComponent);
-                        Dirty(childPart, childPartComponent);
-
-                        Containers.Insert(childPart, container);
-
-                        SetupOrgans((childPart, childPartComponent), connectionSlot.Organs);
+                        if (!CreateBodyPart((parentEntity, parentPartComponent), connectionSlot, connection, out var childPart))
+                        {
+                            Log.Error($"Could not create slot for connection {connection} in body {prototype.ID}");
+                            continue;
+                        }
+                        cameFromEntities[connection] = childPart.Value;
                     }
                 }
                 else
@@ -700,6 +692,34 @@ public partial class SharedBodySystem
         }
     }
     // Goob edit end
+
+    // Ratbite helper function
+    public bool CreateBodyPart(Entity<BodyPartComponent> ent, BodyPrototypeSlot part, string connection, [NotNullWhen(true)] out EntityUid? childPart)
+    {
+        childPart = Spawn(part.Part, new EntityCoordinates(ent.Owner, Vector2.Zero));
+
+        var childPartComponent = Comp<BodyPartComponent>(childPart.Value);
+
+        var partSlot = CreatePartSlot(ent.Owner, connection, childPartComponent.PartType, childPartComponent.Symmetry, ent.Comp);
+        childPartComponent.ParentSlot = partSlot;
+
+        Dirty(ent.Owner, ent.Comp);
+        Dirty(childPart.Value, childPartComponent);
+
+        if (partSlot is null)
+        {
+            QueueDel(childPart);
+            childPart = null;
+            return false;
+        }
+
+        var container = Containers.GetContainer(ent.Owner, GetPartSlotContainerId(connection));
+        Containers.Insert(childPart.Value, container);
+
+        SetupOrgans((childPart.Value, childPartComponent), part.Organs);
+        return true;
+    }
+    // Ratbite end
 
     /// <summary>
     /// Gets all child body parts of this entity that have component T, including the root entity if it has component T.

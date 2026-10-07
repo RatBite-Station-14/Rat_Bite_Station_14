@@ -1,0 +1,12 @@
+- type: entity
+  parent: BaseAction
+  id: ActionRegrowLimb
+  name: Regrow limb
+  description: Spend hunger to regrow your limb
+  components:
+  - type: Action
+    icon:
+      sprite: _Goobstation/Xenobiology/Mobs/slimesBaby.rsi
+      state: base
+  - type: InstantAction
+    event: !type:RegrowLimbActionEvent
