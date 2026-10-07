@@ -1,0 +1,3 @@
+- type: accessLevel
+  id: DepartmentalGuard
+  name: id-card-access-level-dept-guard

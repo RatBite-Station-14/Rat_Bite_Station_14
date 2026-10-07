@@ -42,13 +42,12 @@ public sealed partial class IdCardConsoleComponent : Component
     // Put this on shared so we just send the state once in PVS range rather than every time the UI updates.
 
     [DataField, AutoNetworkedField]
-    public List<ProtoId<AccessLevelPrototype>> AccessLevels = new()
+    public List<ProtoId<AccessLevelPrototype>> AccessLevels = new() // Ratbite: Sorted these access levels
     {
         "Armory",
         "Atmospherics",
         "Bar",
         "Brig",
-        "Detective",
         "Captain",
         "Cargo",
         "Chapel",
@@ -57,6 +56,8 @@ public sealed partial class IdCardConsoleComponent : Component
         "ChiefMedicalOfficer",
         "Command",
         "Cryogenics",
+        "DepartmentalGuard", // Ratbite
+        "Detective",
         "Engineering",
         "External",
         "GenpopEnter",
@@ -65,6 +66,7 @@ public sealed partial class IdCardConsoleComponent : Component
         "HeadOfSecurity",
         "Hydroponics",
         "Janitor",
+        "Journalism", //Goob
         "Kitchen",
         "Lawyer",
         "Maintenance",
@@ -72,12 +74,11 @@ public sealed partial class IdCardConsoleComponent : Component
         "Quartermaster",
         "Research",
         "ResearchDirector",
+        "Robotics", //Goob
         "Salvage",
         "Security",
         "Service",
-        "Theatre",
-        "Robotics", //Goob
-        "Journalism" //Goob
+        "Theatre"
     };
 
     [Serializable, NetSerializable]
