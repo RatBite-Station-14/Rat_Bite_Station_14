@@ -4,8 +4,8 @@ meta:
   engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 10/07/2026 02:37:21
-  entityCount: 26332
+  time: 10/07/2026 02:55:55
+  entityCount: 26333
 maps:
 - 1
 grids:
@@ -121118,6 +121118,12 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -57.5,-76.5
+      parent: 15
+  - uid: 26333
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 44.5,-42.5
       parent: 15
 - proto: Protolathe
   entities:
