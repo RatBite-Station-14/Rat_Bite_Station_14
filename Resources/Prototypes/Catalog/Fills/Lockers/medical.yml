@@ -106,7 +106,8 @@
     - id: ClothingMaskSterile
     - id: portableChemicalMixer # Goob, until chemmaster rework
     - id: HandLabeler
-      prob: 0.5
+#      prob: 0.5 ratbite, ew, why is it only half the time. Gayyyyy
+    - id: SheetPlasma10 # ratbite, added plasma to chemistry lockers, 100u
 
 - type: entity
   parent: LockerChemistry

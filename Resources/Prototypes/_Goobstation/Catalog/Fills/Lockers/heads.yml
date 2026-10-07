@@ -42,6 +42,7 @@
     - id: NitrogenTankFilled
     - id: HandheldCrewMonitorBSO
     - id: FlashlightSeclite
+    - id: OmnimedTool # Ratbite, added surgical omnitool to the BSOs locker
 
 - type: entity
   id: LockerBlueshieldOfficerFilled

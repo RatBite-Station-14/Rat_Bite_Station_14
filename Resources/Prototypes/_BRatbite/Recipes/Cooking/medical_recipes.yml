@@ -1,0 +1,9 @@
+- type: microwaveMealRecipe
+  id: RecipeSynthskin
+  name: synthskin recipe
+  result: Synthskin
+  time: 5
+  group: Medicinal
+  solids:
+    FoodMeatSynth: 2
+    Gauze: 5

@@ -1,6 +1,6 @@
 - type: entity
   name: pill
-  suffix: All-in-One-Gender-Affirming-Hormone 20u
+  suffix: unstable space HRT solution 20u
   parent: Pill
   id: Pillaiogah
   components:
@@ -9,7 +9,7 @@
   - type: Sprite
     state: pill20
   - type: Label
-    currentLabel: All-in-One-Gender-Affirming-Hormone 20u
+    currentLabel: unstable space HRT solution 20u
   - type: SolutionContainerManager
     solutions:
       food:
@@ -22,10 +22,10 @@
   name: pill canister
   parent: PillCanister
   id: PillCanisteraiogah
-  suffix: All-in-One-Gender-Affirming-Hormone 20u, 15
+  suffix: unstable space HRT solution 20u, 15
   components:
   - type: Label
-    currentLabel: All-in-One-Gender-Affirming-Hormone 20u
+    currentLabel: unstable space HRT solution 20u
   - type: StorageFill
     contents:
     - id: Pillaiogah

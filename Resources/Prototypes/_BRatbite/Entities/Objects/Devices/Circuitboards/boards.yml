@@ -1,0 +1,31 @@
+- type: entity
+  id: EnergyMedicineDispenserMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: energy medicine dispenser machine board
+  description: A machine printed circuit board for an energy medicine dispenser.
+  components:
+    - type: Sprite
+      state: medical
+    - type: MachineBoard
+      prototype: EnergyMedicineDispenser
+      stackRequirements:
+        Manipulator: 1
+        Glass: 1
+        Steel: 3
+      tagRequirements:
+        GlassBeaker:
+          amount: 2
+          defaultPrototype: Beaker
+
+- type: latheRecipe
+  id: EnergyMedicineDispenserMachineCircuitboard
+  parent: BaseGoldCircuitboardRecipe
+  materials:
+    Steel: 100
+    Glass: 500
+    Gold: 100
+    Plasma: 100
+  result: EnergyMedicineDispenserMachineCircuitboard
+  icon:
+    sprite: Structures/dispensers.rsi
+    state: industrial-working

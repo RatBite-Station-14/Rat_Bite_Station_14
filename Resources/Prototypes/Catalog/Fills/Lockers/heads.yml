@@ -418,6 +418,8 @@
     - id: VaccinatorFlatPack
     # Goobstation End
     - id: PanicButtonMedical # Ratbite
+#    - id: EnergyMedicineDispenserFlatpack # Ratbite 1984 by bevv
+    - id: ClothingHandsGlovesSurgical # Ratbite, added bluespace gloves back
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable

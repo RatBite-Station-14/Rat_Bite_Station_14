@@ -1,0 +1,17 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "original made by LogDog for VXS14, resprited to be more like station medical and the syndicate",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "kaolin"
+        },
+        {
+            "name": "kaolininterdyne"
+        }
+    ]
+}

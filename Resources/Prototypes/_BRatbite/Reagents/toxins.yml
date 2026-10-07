@@ -24,3 +24,28 @@
         damage:
           types:
             Radiation: 0.12
+
+- type: reagent
+  id: Hexachlorobenzene
+  name: reagent-name-hexachlorobenzene
+  group: Toxins
+  desc: reagent-desc-hexachlorobenzene
+  physicalDesc: reagent-physical-desc-crystalline
+  allowedJobs:
+  - Chemist
+  - Botanist
+  color: "#ffffff"
+  plantMetabolism:
+    - !type:PlantAdjustWeeds
+      amount: -3
+    - !type:PlantAdjustToxins
+      amount: 1
+  metabolisms:
+    Poison:
+      metabolismRate: 0.01
+      effects:
+        - !type:HealthChange   # same as cyanide but it metabolises wayyyyyy slower. Should also combat fungal infections if we ever get those.
+          damage:
+            types:
+             Poison: 0.2
+             Asphyxiation: 0.4 # a bit more because asphyx heals back very fast

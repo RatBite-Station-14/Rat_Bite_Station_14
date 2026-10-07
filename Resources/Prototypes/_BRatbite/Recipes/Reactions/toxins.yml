@@ -1,1 +1,15 @@
 
+- type: reaction
+  id: Hexachlorobenzene
+  reactants:
+    Benzene:
+      amount: 2
+    Chlorine:
+      amount: 1
+    Cyanide:
+      amount: 1
+    Iron:
+      amount: 1
+      catalyst: true
+  products:
+    Hexachlorobenzene: 2
