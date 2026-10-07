@@ -70,7 +70,7 @@ public sealed class DelayedGhostRoleSystem : EntitySystem
     {
         _fastTime = TimeSpan.FromSeconds(seconds);
         if (_fast != default)
-            _fast.PopDelay = _slowTime;
+            _fast.PopDelay = _fastTime;
     }
 
     private void CreateGhostRole(EntityUid uid)
