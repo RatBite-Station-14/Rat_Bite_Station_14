@@ -1,0 +1,11 @@
+- type: entity
+  parent: [ MobStatusEffectScalable, MobStatusEffectDebuff, UnemployedFoodifier ]
+  id: NachosFoodifier
+
+- type: entity
+  parent: [ NachosFoodifier, BaseCheeseFoodifier ]
+  id: CheesyNachosFoodifier
+
+- type: entity
+  parent: [ NachosFoodifier, BaseHotFoodifier ]
+  id: HotNachosFoodifier

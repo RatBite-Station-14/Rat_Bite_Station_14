@@ -110,3 +110,7 @@ guidebook-description-copy-pasta = Makes the user repeat everything they say.
 guidebook-description-all-caps = Makes the user speak slightly louder.
 
 guidebook-description-replace-tau-ceti = Replaces the user tau ceti knowledge with {$language}.
+
+guidebook-description-random-accent = Gives the user a random accent.
+
+guidebook-description-seeing-rainbows = Makes the user hallucinate.

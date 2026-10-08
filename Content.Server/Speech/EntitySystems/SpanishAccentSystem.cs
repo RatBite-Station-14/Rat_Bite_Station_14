@@ -3,6 +3,7 @@
 using System.Text;
 using Content.Server.Speech.Components;
 using Content.Shared.Speech;
+using Content.Shared.StatusEffectNew;
 
 namespace Content.Server.Speech.EntitySystems
 {
@@ -11,6 +12,7 @@ namespace Content.Server.Speech.EntitySystems
         public override void Initialize()
         {
             SubscribeLocalEvent<SpanishAccentComponent, AccentGetEvent>(OnAccent);
+            SubscribeLocalEvent<SpanishAccentComponent, StatusEffectRelayedEvent<AccentGetEvent>>(OnGetStatusEffectAccent);
         }
 
         public string Accentuate(string message)
@@ -71,6 +73,11 @@ namespace Content.Server.Speech.EntitySystems
         private void OnAccent(EntityUid uid, SpanishAccentComponent component, AccentGetEvent args)
         {
             args.Message = Accentuate(args.Message);
+        }
+
+        private void OnGetStatusEffectAccent(Entity<SpanishAccentComponent> ent, ref StatusEffectRelayedEvent<AccentGetEvent> args)
+        {
+            args.Args.Message = Accentuate(args.Args.Message);
         }
     }
 }

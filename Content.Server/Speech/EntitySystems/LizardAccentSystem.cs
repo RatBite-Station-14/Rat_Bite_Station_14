@@ -3,6 +3,7 @@
 using System.Text.RegularExpressions;
 using Content.Server.Speech.Components;
 using Content.Shared.Speech;
+using Content.Shared.StatusEffectNew;
 
 namespace Content.Server.Speech.EntitySystems;
 
@@ -18,12 +19,16 @@ public sealed class LizardAccentSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<LizardAccentComponent, AccentGetEvent>(OnAccent);
+        SubscribeLocalEvent<LizardAccentComponent, StatusEffectRelayedEvent<AccentGetEvent>>(OnGetStatusEffectAccent);
     }
 
     private void OnAccent(EntityUid uid, LizardAccentComponent component, AccentGetEvent args)
     {
-        var message = args.Message;
+        args.Message = Accentuate(args.Message);
+    }
 
+    private string Accentuate(string message)
+    {
         // hissss
         message = RegexLowerS.Replace(message, "sss");
         // hiSSS
@@ -34,7 +39,11 @@ public sealed class LizardAccentSystem : EntitySystem
         message = RegexLowerEndX.Replace(message, "ecks$1");
         // eckS
         message = RegexUpperEndX.Replace(message, "ECKS$1");
+        return message;
+    }
 
-        args.Message = message;
+    private void OnGetStatusEffectAccent(Entity<LizardAccentComponent> ent, ref StatusEffectRelayedEvent<AccentGetEvent> args)
+    {
+        args.Args.Message = Accentuate(args.Args.Message);
     }
 }

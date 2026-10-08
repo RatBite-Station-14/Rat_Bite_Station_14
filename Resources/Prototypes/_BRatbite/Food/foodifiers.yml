@@ -190,7 +190,7 @@
     multiplier: 1.1
 
 - type: entity
-  parent: [MobStatusEffectScalable, MobStatusEffectDebuff]
+  parent: [ MobStatusEffectScalable, MobStatusEffectDebuff ]
   id: BaseChocolateFoodifier
   components:
   - type: MovementModStatusEffect
@@ -350,3 +350,40 @@
     severity: HighlyIllegal
     allowedJobs: [ ] # no one
     allowedDepartments: [ ] # no one
+
+- type: entity
+  id: AmanitaFoodifier
+  parent: [ MobStatusEffectDebuff, MobStatusEffectScalable ]
+  components:
+  - type: HungerMultiplierStatusEffect
+    multiplier: 5
+  - type: SeeingRainbowsStatusEffect
+
+
+- type: entity
+  id: CannabisFoodifier
+  parent: [ MobStatusEffectDebuff ]
+  components:
+  - type: GrantRandomComponent
+    components: # TODO: the other accents need to be added to the status effect
+    - type: OwoAccent
+    - type: AllCapsAccent
+    - type: FrenchAccent
+    - type: LizardAccent
+    - type: SkeletonAccent
+    - type: SpanishAccent
+    - type: MonkeyAccent
+  - type: EffectDescriptionStatusEffect
+    description: guidebook-description-random-accent
+
+- type: entity
+  parent: [ MobStatusEffectDebuff ]
+  id: UnemployedFoodifier
+  components:
+  - type: ShowJobIcons
+
+- type: entity
+  parent: [ MobStatusEffectDebuff ]
+  id: GrapeFoodifier
+  components:
+  - type: DropImmuneStatusEffect

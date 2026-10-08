@@ -3,6 +3,7 @@
 using System.Text.RegularExpressions;
 using Content.Server.Speech.Components;
 using Content.Shared.Speech;
+using Content.Shared.StatusEffectNew;
 using Robust.Shared.Random;
 
 namespace Content.Server.Speech.EntitySystems;
@@ -20,6 +21,7 @@ public sealed partial class SkeletonAccentSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<SkeletonAccentComponent, AccentGetEvent>(OnAccentGet);
+        SubscribeLocalEvent<SkeletonAccentComponent, StatusEffectRelayedEvent<AccentGetEvent>>(OnGetStatusEffectAccent);
     }
 
     public string Accentuate(string message, SkeletonAccentComponent component)
@@ -49,5 +51,10 @@ public sealed partial class SkeletonAccentSystem : EntitySystem
     private void OnAccentGet(EntityUid uid, SkeletonAccentComponent component, AccentGetEvent args)
     {
         args.Message = Accentuate(args.Message, component);
+    }
+
+    private void OnGetStatusEffectAccent(Entity<SkeletonAccentComponent> ent, ref StatusEffectRelayedEvent<AccentGetEvent> args)
+    {
+        args.Args.Message = Accentuate(args.Args.Message, ent.Comp);
     }
 }

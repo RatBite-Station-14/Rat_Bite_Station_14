@@ -82,6 +82,10 @@
     tags:
     - Fruit
     - Pie
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - ApplePieFoodifier
+
 
 - type: entity
   name: slice of apple pie
@@ -177,6 +181,9 @@
     slice: FoodPieBananaCreamSlice
   - type: ThrowableBlocked # Goobstation
     behavior: Destroy
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BananaPieFoodifier
 
 - type: entity
   name: slice of banana cream pie
@@ -300,6 +307,9 @@
     tags:
     - Meat
     - Pie
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - MeatPieFoodifier
 
 - type: entity
   name: slice of meat pie
@@ -445,6 +455,9 @@
     heldPrefix: mime
   - type: SliceableFood
     slice: FoodTartMimeSlice
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - MimePieFoodifier
 
 - type: entity
   name: slice of mime tart
@@ -485,6 +498,9 @@
           Quantity: 3
         - ReagentId: Vitamin
           Quantity: 4
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - AmanitaPieFoodifier
 # Tastes like pie, mushrooms.
 
 - type: entity
@@ -517,6 +533,9 @@
     tags:
     - Fruit
     - Pie
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - GrapePieFoodifier
 # Tastes like tart, grape.
 
 - type: entity
@@ -559,4 +578,7 @@
           Quantity: 15
         - ReagentId: Theobromine
           Quantity: 2
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - ChocolatePieFoodifier
 # Tastes like tart, dark chocolate.

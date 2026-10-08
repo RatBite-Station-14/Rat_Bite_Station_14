@@ -63,16 +63,8 @@
   id: MimeBurgerFoodifier
 
 - type: entity
-  parent: BaseBurgerFoodifier
+  parent: [ BaseBurgerFoodifier, AmanitaFoodifier ]
   id: AmanitaBurgerFoodifier
-  components:
-  - type: InjectOvertimeStatusEffect
-    injectAmountPerSecond: 0.01
-  - type: Solution
-    solution:
-      reagents:
-      - ReagentId: Amatoxin
-        Quantity: 1
 
 - type: entity
   parent: BaseBurgerFoodifier

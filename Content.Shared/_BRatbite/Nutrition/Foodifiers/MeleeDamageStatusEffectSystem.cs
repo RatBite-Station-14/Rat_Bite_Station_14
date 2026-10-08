@@ -25,7 +25,7 @@ public sealed partial class MeleeDamageStatusEffectSystem : EntitySystem
 
     private void OnEffectDescription(Entity<MeleeDamageStatusEffectComponent> ent, ref EffectDescriptionEvent args)
     {
-        if (ent.Comp.Multiplier is > 0.99f and < 1.01f)
+        if (ent.Comp.Multiplier is < 0.99f or > 1.01f)
         {
             args.Message.AddMarkupOrThrow(Loc.GetString(ent.Comp.OnlyPunches ? "guidebook-description-melee-buff-punch" : "guidebook-description-melee-buff", ("multiplier", MathF.Round(ent.Comp.Multiplier * 100))));
             args.Message.PushNewline();

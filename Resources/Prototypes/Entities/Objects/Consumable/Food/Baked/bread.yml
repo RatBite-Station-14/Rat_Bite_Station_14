@@ -913,6 +913,9 @@
           Quantity: 4
         - ReagentId: Vitamin
           Quantity: 4
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - AmanitaFoodifier
 # Tastes like garlic, Italy.
 
 - type: entity

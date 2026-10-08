@@ -132,6 +132,9 @@
           Quantity: 1
         - ReagentId: TableSalt
           Quantity: 1
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - NachosFoodifier
 # Tastes like nachos.
 
 - type: entity
@@ -162,6 +165,9 @@
           Quantity: 3
         - ReagentId: TableSalt
           Quantity: 1
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - CheesyNachosFoodifier
 # Tastes like nachos, cheese.
 
 - type: entity
@@ -193,6 +199,9 @@
           Quantity: 7
         - ReagentId: Vitamin
           Quantity: 5
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - HotNachosFoodifier
 # Tastes like nachos, hot pepper.
 
 - type: entity

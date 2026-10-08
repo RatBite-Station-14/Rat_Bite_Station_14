@@ -1,4 +1,5 @@
 using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared.Drugs;
 using Content.Shared.Overlays;
 using Content.Shared.Radiation.Components;
 
@@ -14,6 +15,7 @@ public sealed partial class EffectDescriptionSystem : EntitySystem
         // it here to minimize potential collisions
         SubscribeLocalEvent<RadiationSourceComponent, EffectDescriptionEvent>(OnGetRadiationDescription);
         SubscribeLocalEvent<ShowJobIconsComponent, EffectDescriptionEvent>(OnGetJobIconsDescription);
+        SubscribeLocalEvent<SeeingRainbowsStatusEffectComponent, EffectDescriptionEvent>(OnSeeingRainbows);
     }
 
     private void OnGetRadiationDescription(Entity<RadiationSourceComponent> ent, ref EffectDescriptionEvent args)
@@ -25,6 +27,12 @@ public sealed partial class EffectDescriptionSystem : EntitySystem
     private void OnGetJobIconsDescription(Entity<ShowJobIconsComponent> ent, ref EffectDescriptionEvent args)
     {
         args.Message.AddMarkupOrThrow(Loc.GetString("guidebook-description-job-icons"));
+        args.Message.PushNewline();
+    }
+
+    private void OnSeeingRainbows(Entity<SeeingRainbowsStatusEffectComponent> ent, ref EffectDescriptionEvent args)
+    {
+        args.Message.AddMarkupOrThrow(Loc.GetString("guidebook-description-seeing-rainbows"));
         args.Message.PushNewline();
     }
 }

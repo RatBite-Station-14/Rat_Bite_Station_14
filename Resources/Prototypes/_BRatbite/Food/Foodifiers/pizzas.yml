@@ -29,3 +29,11 @@
 - type: entity
   parent: [ BasePizzaFoodifier, BaseMushroomFoodifier ]
   id: MushroomPizzaFoodifier
+
+- type: entity
+  parent: [ BasePizzaFoodifier, CannabisFoodifier ]
+  id: DankPizzaFoodifier
+
+- type: entity
+  parent: [ BasePizzaFoodifier, UnemployedFoodifier ]
+  id: UnemployedPizzaFoodifier

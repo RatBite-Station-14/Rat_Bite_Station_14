@@ -286,6 +286,9 @@
     tags:
     - Meat
     - Pizza
+  - type: CookedFood
+    statusEffectProto:
+    - UnemployedPizzaFoodifier
 
 
 - type: entity
@@ -346,6 +349,9 @@
           Quantity: 20
         - ReagentId: THC
           Quantity: 30
+  - type: CookedFood
+    statusEffectProto:
+    - DankPizzaFoodifier
 
 - type: entity
   name: slice of dank pizza
@@ -779,3 +785,5 @@
           Quantity: 2
         - ReagentId: Pax
           Quantity: 1.5
+
+  

@@ -206,6 +206,10 @@
   components:
   - type: Sprite
     state: COOKIE!!!
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - CookieFoodifier
+
 
 - type: entity
   name: oatmeal cookie
@@ -224,6 +228,9 @@
           Quantity: 5
         - ReagentId: Vitamin
           Quantity: 1
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - OatCookieFoodifier
 
 - type: entity
   name: raisin cookie
@@ -254,6 +261,9 @@
   components:
   - type: Sprite
     state: cookie-sugar
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - ButterFoodifier
 
 # Nuggets
 
@@ -697,6 +707,10 @@
   - type: SliceableFood
     count: 6
     slice: FoodBakedBrownie
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - BrowniesFoodifier
+
 
 - type: entity
   name: brownie
@@ -756,6 +770,9 @@
   - type: SliceableFood
     count: 6
     slice: FoodBakedCannabisBrownie
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - SpecialBrowniesFoodifier
 
 - type: entity
   parent: FoodBakedBase

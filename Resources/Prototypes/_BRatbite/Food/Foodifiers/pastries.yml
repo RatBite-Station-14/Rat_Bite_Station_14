@@ -22,3 +22,46 @@
   parent: [ BasePieFoodifier, GoldFoodifier ]
   id: GoldPieFoodifier
 
+- type: entity
+  parent: [ BasePieFoodifier, AmanitaFoodifier ]
+  id: AmanitaPieFoodifier
+
+- type: entity
+  parent: [ BasePieFoodifier, BaseAppleFoodifier ]
+  id: ApplePieFoodifier
+
+- type: entity
+  parent: [ BasePieFoodifier, BaseBananaFoodifier ]
+  id: BananaPieFoodifier
+
+- type: entity
+  parent: [ BasePieFoodifier, BaseChocolateFoodifier ]
+  id: ChocolatePieFoodifier
+
+- type: entity
+  parent: [ BasePieFoodifier, GrapeFoodifier ]
+  id: GrapePieFoodifier
+
+- type: entity
+  parent: [ BasePieFoodifier, BaseMeatFoodifier ]
+  id: MeatPieFoodifier
+
+- type: entity
+  parent: [ BasePieFoodifier, MimeFoodifier ]
+  id: MimePieFoodifier
+
+- type: entity
+  parent: [ BaseChocolateFoodifier, ButterFoodifier ]
+  id: BrowniesFoodifier
+
+- type: entity
+  parent: [ BrowniesFoodifier, CannabisFoodifier ]
+  id: SpecialBrowniesFoodifier
+
+- type: entity
+  parent: [ BaseChocolateFoodifier, ButterFoodifier ]
+  id: CookieFoodifier
+
+- type: entity
+  parent: [ BaseOatFoodifier, ButterFoodifier ]
+  id: OatCookieFoodifier

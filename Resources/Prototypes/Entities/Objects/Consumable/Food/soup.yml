@@ -596,6 +596,9 @@
           Quantity: 6
         - ReagentId: Amatoxin
           Quantity: 6
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - AmanitaFoodifier
 
 # Soup
 
