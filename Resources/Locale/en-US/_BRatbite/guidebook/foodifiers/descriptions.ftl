@@ -78,6 +78,8 @@ guidebook-description-change-age-negative = Makes the entity {$amount} {
         *[other] years
 } younger.
 
+guidebook-description-change-contraband = Makes the entity contraband!
+
 guidebook-description-movement-mod-status-effect-walk = Modifies walking speed by [bold]{$amount}[/bold]%.
 guidebook-description-movement-mod-status-effect-sprint = Modifies sprinting speed by [bold]{$amount}[/bold]%.
 
@@ -104,5 +106,7 @@ guidebook-description-slippery = Makes the entity [bold]slippery[/bold].
 guidebook-description-prevent-cuff = Makes the entity escape being cuffed for the first attempt.
 
 guidebook-description-copy-pasta = Makes the user repeat everything they say.
+
+guidebook-description-all-caps = Makes the user speak slightly louder.
 
 guidebook-description-replace-tau-ceti = Replaces the user tau ceti knowledge with {$language}.

@@ -13,3 +13,12 @@
 - type: entity
   parent: [ FrenchFoodifier, ButterFoodifier ]
   id: CroissantFoodifier
+
+- type: entity
+  parent: [ MobStatusEffectDebuff, MobStatusEffectScalable, BaseCakeFoodifier ] # For now it's the same as cakes
+  id: BasePieFoodifier
+
+- type: entity
+  parent: [ BasePieFoodifier, GoldFoodifier ]
+  id: GoldPieFoodifier
+

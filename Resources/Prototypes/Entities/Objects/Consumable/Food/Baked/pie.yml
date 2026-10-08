@@ -534,6 +534,9 @@
     tags:
     - Fruit
     - Pie
+  - type: CookedFood # Ratbite
+    statusEffectProto:
+    - GoldPieFoodifier
 # Tastes like tart, apple, expensive metal.
 
 - type: entity
