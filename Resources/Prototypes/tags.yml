@@ -1021,6 +1021,10 @@
   id: Mushroom  # ConstructionGraph: Soil
 
 ## N ##
+
+- type: Tag
+  id: NicotinePouch # Storage whitelist: Yipz Container.. Does it look like I know what the fuck I'm doing? -Luweegee
+
 - type: Tag
   id: NinjaBombingTargetBlocker # Ninjas will not target this warp point
 
