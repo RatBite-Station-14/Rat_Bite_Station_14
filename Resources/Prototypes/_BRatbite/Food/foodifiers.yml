@@ -366,7 +366,7 @@
   components:
   - type: GrantRandomComponent
     components: # TODO: the other accents need to be added to the status effect
-    - type: OwoAccent
+    - type: OwOAccent
     - type: AllCapsAccent
     - type: FrenchAccent
     - type: LizardAccent
