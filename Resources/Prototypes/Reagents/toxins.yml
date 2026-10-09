@@ -820,27 +820,6 @@
         probability: 0.5 #goob edit
 
 - type: reagent
-  id: PoopChem
-  name: reagent-name-poop-chem
-  group: Medicine
-  desc: reagent-desc-poop-chem
-  physicalDesc: reagent-physical-desc-shitty
-  flavor: flavor-base-terrible
-  color: "#543613"
-  metabolisms:
-    Medicine:
-      effects:
-      - !type:Vomit
-        probability: 0.1
-      - !type:HealthChange
-        damage:
-          types:
-            Poison: 1
-      - !type:AdjustReagent
-        reagent: PoopChem
-        amount: -1
-
-- type: reagent
   id: Lipolicide
   name: reagent-name-lipolicide
   group: Toxins

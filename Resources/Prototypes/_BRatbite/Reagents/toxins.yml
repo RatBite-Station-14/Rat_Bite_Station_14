@@ -24,3 +24,26 @@
         damage:
           types:
             Radiation: 0.12
+
+- type: reagent
+  id: Poop
+  name: reagent-name-poop
+  group: Medicine
+  desc: reagent-desc-poop
+  physicalDesc: reagent-physical-desc-shitty
+  flavor: terrible
+  color: "#543613"
+  metabolisms:
+    Medicine:
+      metabolismRate: 1.5
+      effects:
+      - !type:Vomit
+        probability: 0.1
+      - !type:Emote 
+        emote: Fart
+        showInChat: true
+        probability: 0.2
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 1

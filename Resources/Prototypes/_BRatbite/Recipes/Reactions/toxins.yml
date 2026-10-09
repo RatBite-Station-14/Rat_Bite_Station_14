@@ -1,5 +1,5 @@
 - type: reaction
-  id: PoopChem
+  id: Poop
   reactants:
     Ammonia:
       amount: 1
@@ -8,4 +8,4 @@
     Water:
       amount: 1
   products:
-    PoopChem: 3
+    Poop: 3
