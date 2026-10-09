@@ -1,1 +1,11 @@
-
+- type: reaction
+  id: PoopChem
+  reactants:
+    Ammonia:
+      amount: 1
+    Nutriment:
+      amount: 1
+    Water:
+      amount: 1
+  products:
+    PoopChem: 3
