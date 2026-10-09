@@ -55,11 +55,11 @@
     onUIOpenSound: /Audio/_Goobstation/DropPod/closet_open.ogg
     onUICloseSound: /Audio/Effects/closetclose.ogg
     startCookingSound: /Audio/Items/Lighters/lighter1.ogg
-    loopingSound: /Audio/Effects/burning.ogg
-    foodDoneSound: /Audio/Machines/ding.ogg
+    loopingSound: /Audio/_BRatbite/Kitchen/OvenTick.ogg
+    foodDoneSound: /Audio/_BRatbite/Kitchen/OvenDonePing.ogg
   - type: EntityHeater
     settingSound:
-      path: /Audio/Weapons/click.ogg
+      path: /Audio/_BRatbite/Kitchen/TurnOvenKnob.ogg
       params:
         volume: -6
   - type: ItemPlacer
