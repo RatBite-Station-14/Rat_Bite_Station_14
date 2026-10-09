@@ -42,7 +42,7 @@
       - !type:Emote 
         emote: Fart
         showInChat: true
-        probability: 0.2
+        probability: 0.1 # extremely budget crapotoxin :steamhappy: 
       - !type:HealthChange
         damage:
           types:
