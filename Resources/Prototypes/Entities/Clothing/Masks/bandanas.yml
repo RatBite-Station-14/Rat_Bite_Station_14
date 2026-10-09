@@ -153,3 +153,17 @@
     sprite: Clothing/Head/Bandanas/brown.rsi
   - type: Clothing
     sprite: Clothing/Head/Bandanas/brown.rsi
+
+
+#Ratbite add purple for gang violence
+
+- type: entity
+  parent: ClothingMaskBandanaBase
+  id: ClothingMaskBandPurple
+  name: purple bandana
+  description: A purple bandana to make you look cool.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Bandanas/purple.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Bandanas/purple.rsi
