@@ -1,0 +1,47 @@
+- type: emoji
+  id: shock_glove
+  sprite:
+    sprite: /Textures/_BRatBites/CharEffects/shock_glove.rsi
+    state: icon
+
+- type: emoji
+  id: mansus_grasp
+  sprite:
+    sprite: /Textures/_Goobstation/Heretic/mansus_grasp.rsi
+    state: icon
+
+- type: emoji
+  id: codex_cicatrix
+  sprite:
+    sprite: /Textures/_Goobstation/Heretic/book.rsi
+    state: icon-on
+
+- type: emoji
+  id: eldritch_blade
+  sprite:
+    sprite: /Textures/_Goobstation/Heretic/Blades/eldritch_blade.rsi
+    state: icon
+
+- type: emoji
+  id: zipties
+  sprite:
+    sprite: /Textures/Objects/Misc/zipties.rsi
+    state: cuff
+
+- type: emoji
+  id: syndiroach
+  sprite:
+    sprite: /Textures/_Goobstation/Mobs/Animals/syndiroach.rsi
+    state: icon
+
+- type: emoji
+  id: mothroach
+  sprite:
+    sprite: /Textures/Mobs/Animals/mothroach/mothroach.rsi
+    state: icon
+
+- type: emoji
+  id: mouse
+  sprite:
+    sprite: /Textures/Mobs/Animals/mouse.rsi
+    state: icon-2
