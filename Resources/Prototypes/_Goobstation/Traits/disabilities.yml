@@ -33,6 +33,8 @@
   traitGear: Cane
   category: Physical
   cost: -5
+  speciesBlacklist:
+  - Diona
   blacklist:
     components:
     - BorgChassis

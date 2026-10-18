@@ -193,6 +193,7 @@
    - Steadfast
   speciesBlacklist:
    - Felinid
+   - Diona
    - Tajaran
   components:
     - type: SlowOnDamage

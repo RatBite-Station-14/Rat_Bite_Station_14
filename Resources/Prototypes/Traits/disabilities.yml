@@ -48,6 +48,8 @@
   description: trait-unrevivable-desc
   category: Physical
   cost: -1
+  speciesBlacklist:
+  - IPC
   components:
     - type: Unrevivable
       cloneable: true
