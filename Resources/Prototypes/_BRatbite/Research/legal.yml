@@ -170,7 +170,7 @@
 
 - type: technology
   id: SyndicateMindSlavingTechnologies
-  name: Syndicate Mind Slaving
+  name: research-legal-mind-control
   icon:
     sprite: _Goobstation/Mobs/Species/Yowie/organs.rsi
     state: brain
