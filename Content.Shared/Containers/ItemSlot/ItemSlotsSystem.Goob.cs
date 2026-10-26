@@ -15,6 +15,28 @@ public sealed partial class ItemSlotsSystem
         SubscribeLocalEvent<ItemSlotsComponent, ItemSlotInteractionDoAfterEvent>(HandleDoAfter);
     }
 
+    private void OnReclaimed(EntityUid uid, ItemSlotsComponent component, GotReclaimedEvent args)
+    {
+        foreach (var slot in component.Slots.Values)
+        {
+            if (slot.ContainerSlot != null)
+                _containers.EmptyContainer(slot.ContainerSlot, destination: args.ReclaimerCoordinates);
+        }
+    }
+
+    private void HandleDoAfter(EntityUid uid, ItemSlotsComponent component, ItemSlotInteractionDoAfterEvent args)
+    {
+        if (args.Handled
+            || args.Cancelled
+            || !component.Slots.TryGetValue(args.SlotId, out var slot))
+            return;
+
+        if (args.TryEject && slot.HasItem)
+            TryEjectToHands(uid, slot, args.User, true, false);
+        else if (args.TryInsert && !slot.HasItem && args.Used != null)
+            TryInsertWithConditions(uid, component, args.User, args.Used.Value, false);
+    }
+
     public bool TryInsertWithConditions(EntityUid uid, ItemSlotsComponent itemSlots, EntityUid user, EntityUid toInsert, bool doAfter = true)
     {
         if (!TryComp(user, out HandsComponent? hands))
@@ -138,18 +160,5 @@ public sealed partial class ItemSlotsSystem
         }
 
         return false;
-    }
-
-    private void HandleDoAfter(EntityUid uid, ItemSlotsComponent component, ItemSlotInteractionDoAfterEvent args)
-    {
-        if (args.Handled
-            || args.Cancelled
-            || !component.Slots.TryGetValue(args.SlotId, out var slot))
-            return;
-
-        if (args.TryEject && slot.HasItem)
-            TryEjectToHands(uid, slot, args.User, true);
-        else if (args.TryInsert && !slot.HasItem && args.Used != null)
-            TryInsertWithConditions(uid, component, args.User, args.Used.Value, false);
     }
 }
