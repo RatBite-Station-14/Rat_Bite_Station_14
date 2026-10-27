@@ -22,7 +22,7 @@
 - type: startingGear
   id: JanitorGear
   equipment:
-    shoes: ClothingShoesGaloshes
+#    shoes: ClothingShoesGaloshes # Ratbite - moved to loadouts
     id: JanitorPDA
     ears: ClothingHeadsetService
     belt: ClothingBeltJanitorFilled

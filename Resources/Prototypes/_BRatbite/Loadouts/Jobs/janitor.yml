@@ -1,0 +1,16 @@
+
+- type: loadoutEffectGroup
+  id: GaloshesUnlock
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:OverallPlaytimeRequirement
+      time: 60 # :godo:
+
+- type: loadout
+  id: Galoshes
+  equipment:
+    shoes: ClothingShoesGaloshes
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: GaloshesUnlock
