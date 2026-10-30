@@ -59,6 +59,7 @@ namespace Content.Server.Lathe
         [Dependency] private readonly StackSystem _stack = default!;
         [Dependency] private readonly TransformSystem _transform = default!;
         [Dependency] private readonly RadioSystem _radio = default!;
+        [Dependency] private readonly IComponentFactory _factory = default!;
 
         /// <summary>
         /// Per-tick cache
@@ -223,15 +224,10 @@ namespace Content.Server.Lathe
             UpdateRunningAppearance(uid, true);
             UpdateUserInterfaceState(uid, component);
 
+            // RATBITE: just check if time is zero and skip to finishing immediately
             if (time == TimeSpan.Zero)
-            {
-                // Goobstation edit start: handle special case with lots of 0-time recipes that insert into storage
-                if (component.OutputToStorage)
-                    FinishProducingManyStorage((uid, component, lathe));
-                // Goobstation edit end
-
                 FinishProducing(uid, component, lathe);
-            }
+
             return true;
         }
 
@@ -243,41 +239,71 @@ namespace Content.Server.Lathe
             if (comp.CurrentRecipe != null)
             {
                 var currentRecipe = _proto.Index(comp.CurrentRecipe.Value);
+
+                var count = 1;
+                if (currentRecipe.CompleteTime == TimeSpan.Zero)
+                {
+                    while (comp.Queue.First is not null)
+                    {
+                        if (comp.Queue.First.Value.Recipe != comp.CurrentRecipe)
+                            break;
+
+                        var nextBatch = comp.Queue.First.Value;
+                        count += Math.Max(nextBatch.ItemsRequested - nextBatch.ItemsPrinted, 0);
+                        comp.Queue.RemoveFirst();
+                    }
+                }
+
                 if (currentRecipe.Result is { } resultProto)
                 {
+                    // RATBITE: turn output to storage short circuit chain into method, allow for multiple copies
+                    // of a prototype to be produced at once if the recipe takes no time.
                     // Goobstation, output to material storage instead of spawning, if preferred & possible
-                    var prototype = _proto.Index(resultProto);
-                    if (!comp.OutputToStorage || !prototype.TryGetComponent<PhysicalCompositionComponent>(out var composition, _factory)
-                        || _materialStorage.TryChangeMaterialAmount(uid, composition.MaterialComposition))
+                    if (!TryOutputToStorage((uid, comp), resultProto, count))
                     {
-                        var result = Spawn(resultProto, Transform(uid).Coordinates);
-                        _stack.TryMergeToContacts(result);
+                        for (var i = 0; i < count; i++)
+                        {
+                            var result = Spawn(resultProto, Transform(uid).Coordinates);
+                            _stack.TryMergeToContacts(result);
 
-                        // <Goobstation> No NTR factorio
-                        if (TryComp<ScannableForPointsComponent>(result, out var scannable))
-                            scannable.Points = 0;
-                        // </Goobstation>
+                            // <Goobstation> No NTR factorio
+                            if (TryComp<ScannableForPointsComponent>(result, out var scannable))
+                                scannable.Points = 0;
+                            // </Goobstation>
+                        }
                     }
+                    // RATBITE end
                 }
 
                 if (currentRecipe.ResultReagents is { } resultReagents &&
                     comp.ReagentOutputSlotId is { } slotId)
                 {
-                    var toAdd = new Solution(
-                        resultReagents.Select(p => new ReagentQuantity(p.Key.Id, p.Value, null)));
+                    // RATBITE: Same as above, allow for fluid recipes to take no time, but in the case of multiple
+                    // spills, just show the popup once. Might honestly make a ton of noise.
+                    var shownPopup = false;
+                    for (var i = 0; i < count; i++)
+                    {
+                        var toAdd = new Solution(
+                            resultReagents.Select(p => new ReagentQuantity(p.Key.Id, p.Value, null)));
 
-                    // dispense it in the container if we have it and dump it if we don't
-                    if (_container.TryGetContainer(uid, slotId, out var container) &&
-                        container.ContainedEntities.Count == 1 &&
-                        _solution.TryGetFitsInDispenser(container.ContainedEntities.First(), out var solution, out _))
-                    {
-                        _solution.AddSolution(solution.Value, toAdd);
+                        // dispense it in the container if we have it and dump it if we don't
+                        if (_container.TryGetContainer(uid, slotId, out var container) &&
+                            container.ContainedEntities.Count == 1 &&
+                            _solution.TryGetFitsInDispenser(container.ContainedEntities.First(), out var solution, out _))
+                        {
+                            _solution.AddSolution(solution.Value, toAdd);
+                        }
+                        else
+                        {
+                            if (!shownPopup)
+                            {
+                                _popup.PopupEntity(Loc.GetString("lathe-reagent-dispense-no-container", ("name", uid)), uid);
+                                shownPopup = true;
+                            }
+                            _puddle.TrySpillAt(uid, toAdd, out _);
+                        }
                     }
-                    else
-                    {
-                        _popup.PopupEntity(Loc.GetString("lathe-reagent-dispense-no-container", ("name", uid)), uid);
-                        _puddle.TrySpillAt(uid, toAdd, out _);
-                    }
+                    // RATBITE end
                 }
             }
 
