@@ -46,7 +46,7 @@
     - id: Devil
     - id: LoneAbductorSpawn
     - id: LoneOpsSpawn
-    - id: RevenantSpawn
+    #- id: RevenantSpawn # linterfailing + axed for wraith iirc
 
 # Used in: Susrat
 - type: entityTable
