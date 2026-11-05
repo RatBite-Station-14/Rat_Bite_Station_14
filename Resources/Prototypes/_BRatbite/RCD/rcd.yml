@@ -1,0 +1,35 @@
+- type: rcd
+  id: APC
+  category: Electrical
+  sprite: /Textures/Interface/Radial/RCD/apc.png
+  mode: ConstructObject
+  prototype: APCBasic
+  cost: 6
+  delay: 2
+  collisionMask: Impassable
+  rotation: User
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: SMES
+  category: Electrical
+  sprite: /Textures/Interface/Radial/RCD/smes.png
+  mode: ConstructObject
+  prototype: SMESBasicEmpty
+  cost: 12
+  delay: 2
+  collisionMask: Impassable
+  rotation: User
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: Substation
+  category: Electrical
+  sprite: /Textures/Interface/Radial/RCD/substation.png
+  mode: ConstructObject
+  prototype: SubstationBasicEmpty
+  cost: 10
+  delay: 2
+  collisionMask: Impassable
+  rotation: User
+  fx: EffectRCDConstruct2

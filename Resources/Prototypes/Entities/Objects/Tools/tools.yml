@@ -403,6 +403,11 @@
     - MVCable
     - HVCable
     - CableTerminal
+    # <Ratbite>
+    - APC
+    - SMES
+    - Substation
+    # </Ratbite>
     - Deconstruct
   - type: LimitedCharges
     maxCharges: 45
