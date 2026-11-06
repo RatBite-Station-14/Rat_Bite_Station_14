@@ -33,3 +33,15 @@
   collisionMask: FullTileMask
   rotation: User
   fx: EffectRCDConstruct2
+
+- type: rcd
+  id: SolarPanel
+  category: Electrical
+  sprite: /Textures/Interface/Radial/RCD/solar_panel.png
+  mode: ConstructObject
+  prototype: SolarPanel
+  cost: 8
+  delay: 2
+  collisionMask: FullTileMask
+  rotation: User
+  fx: EffectRCDConstruct2

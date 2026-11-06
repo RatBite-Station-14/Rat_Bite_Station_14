@@ -407,6 +407,7 @@
     - APC
     - SMES
     - Substation
+    - SolarPanel
     # </Ratbite>
     - Deconstruct
   - type: LimitedCharges
