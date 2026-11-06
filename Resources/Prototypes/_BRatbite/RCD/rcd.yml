@@ -18,7 +18,7 @@
   prototype: SMESBasicEmpty
   cost: 12
   delay: 2
-  collisionMask: Impassable
+  collisionMask: FullTileMask
   rotation: User
   fx: EffectRCDConstruct2
 
@@ -30,6 +30,6 @@
   prototype: SubstationBasicEmpty
   cost: 10
   delay: 2
-  collisionMask: Impassable
+  collisionMask: FullTileMask
   rotation: User
   fx: EffectRCDConstruct2
