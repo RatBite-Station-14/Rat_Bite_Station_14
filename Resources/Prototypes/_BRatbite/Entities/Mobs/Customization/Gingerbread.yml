@@ -1,0 +1,214 @@
+- type: marking
+  id: frostinglessface
+  bodyPart: Face
+  markingCategory: Face
+  speciesRestriction: [Gingerbread]
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: frostinglessface
+
+- type: marking
+  id: frostingcoveredface
+  bodyPart: Face
+  markingCategory: Face
+  speciesRestriction: [Gingerbread]
+  followSkinColor: true
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: frostingcoveredface
+
+- type: marking
+  id: catfrosting
+  bodyPart: Face
+  markingCategory: Face
+  speciesRestriction: [Gingerbread]
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: catfrosting
+
+
+- type: marking
+  id: frostingfrown
+  bodyPart: Face
+  markingCategory: Face
+  speciesRestriction: [Gingerbread]
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: frostingfrown
+
+- type: marking
+  id: frostinggrin
+  bodyPart: Face
+  markingCategory: Face
+  speciesRestriction: [Gingerbread]
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: frostinggrin
+
+- type: marking
+  id: frostingneutral
+  bodyPart: Face
+  markingCategory: Face
+  speciesRestriction: [Gingerbread]
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: frostingneutral
+
+- type: marking
+  id: frostingbeard
+  bodyPart: FacialHair
+  markingCategory: FacialHair
+  speciesRestriction: [Gingerbread]
+  followSkinColor: true
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: frostingbeard
+
+
+- type: marking
+  id: frostinglongmoustache
+  bodyPart: FacialHair
+  markingCategory: FacialHair
+  speciesRestriction: [Gingerbread]
+  followSkinColor: true
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: frostinglongmoustache
+
+- type: marking
+  id: frostingshortmoustache
+  bodyPart: FacialHair
+  markingCategory: FacialHair
+  speciesRestriction: [Gingerbread]
+  followSkinColor: true
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: frostingshortmoustache
+
+- type: marking
+  id: frostingcyclops
+  bodyPart: Face
+  markingCategory: Face
+  speciesRestriction: [Gingerbread]
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: frostingcyclops
+
+- type: marking
+  id: frostinglonghair
+  bodyPart: Hair
+  markingCategory: Hair
+  speciesRestriction: [Gingerbread]
+  followSkinColor: true
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: frostinglonghair
+
+- type: marking
+  id: frostingshorthair
+  bodyPart: Hair
+  markingCategory: Hair
+  speciesRestriction: [Gingerbread]
+  followSkinColor: true
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: frostingshorthair
+
+- type: marking
+  id: frostingcurl
+  bodyPart: Hair
+  markingCategory: Hair
+  speciesRestriction: [Gingerbread]
+  followSkinColor: true
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: frostingcurl
+
+- type: marking
+  id: frostingbalding
+  bodyPart: Hair
+  markingCategory: Hair
+  speciesRestriction: [Gingerbread]
+  followSkinColor: true
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: frostingbalding
+
+- type: marking
+  id: frostinglipstick
+  bodyPart: Face
+  markingCategory: Face
+  speciesRestriction: [Gingerbread]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#ff0000"
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: frostinglipstick
+
+- type: marking
+  id: frostingblush
+  bodyPart: Face
+  markingCategory: Face
+  speciesRestriction: [Gingerbread]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#ff0000"
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: frostingblush
+
+- type: marking
+  id: gumdropbuttons
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Gingerbread]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#7a668b"
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: gumdropbuttons
+
+- type: marking
+  id: frostingbowtie
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Gingerbread]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#ff0000"
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: frostingbowtie
+
+- type: marking
+  id: frostinglesschest
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Gingerbread]
+  followSkinColor: true
+  forcedColoring: true
+  sprites:
+          - sprite: _BRatBites/Entities/Mobs/Customization/gingerbread_markings.rsi
+            state: frostinglesschest
