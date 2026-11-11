@@ -1,0 +1,17 @@
+# This creative work/file is freely and wholly released into the public domain by its original owner/creator, Fishied, under CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0
+# spawns in maints closets like slashers do
+- type: entity
+  parent: BaseGameRule
+  id: WildYowieSpawn
+  components:
+  - type: StationEvent
+    weight: 10
+    earliestStart: 15
+    minimumPlayers: 16
+    maxOccurrences: 3
+    duration: 1
+    eventType: Neutral
+  - type: GameRule
+    chaosScore: 20
+  - type: StowawayClosetSpawnRule
+    mobToSpawn: MobWildYowie
