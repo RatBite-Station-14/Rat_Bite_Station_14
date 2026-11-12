@@ -34,7 +34,7 @@ public sealed class TimedCookerSystem : SharedTimedCookerSystem
 
     private void OnStartCookingMsg(Entity<TimedCookerComponent> ent, ref TimedCookerStartCookingMessage args)
     {
-        if (!_sharedPowerReceiverSystem.IsPowered(ent.Owner) || ent.Comp.CalculatedPresets is null)
+        if (!_sharedPowerReceiverSystem.IsPowered(ent.Owner) || ent.Comp.CalculatedPresets is null || _cookingVesselSystem.IsEmpty(ent) || HasComp<ActiveCookingVesselComponent>(ent.Owner))
             return;
 
         if (args.SelectedTimePreset > ent.Comp.CookTimePresets.Length + 1)
@@ -51,10 +51,14 @@ public sealed class TimedCookerSystem : SharedTimedCookerSystem
         _sharedAudioSystem.PlayPvs(ent.Comp.StartCookingSound, ent, AudioParams.Default);
         _sharedAppearanceSystem.SetData(ent, TimedCookerDataKeys.Active, true);
         UpdateUserInterfaceState(ent, endCookingOn);
-        if (ent.Comp.LoopingSound is null)
-            return;
-        ent.Comp.PlayingStream = _sharedAudioSystem
-            .PlayPvs(ent.Comp.LoopingSound, ent, AudioParams.Default.WithLoop(true))
-            ?.Entity;
+        if (ent.Comp.LoopingSound is not null)
+        {
+            ent.Comp.PlayingStream = _sharedAudioSystem
+                .PlayPvs(ent.Comp.LoopingSound, ent, AudioParams.Default.WithLoop(true))
+                ?.Entity;
+        }
+        _sharedAppearanceSystem.SetData(ent, TimedCookerDataKeys.DoorOpen, false);
+        if (ent.Comp.OnUICloseSound is not null)
+            _sharedAudioSystem.PlayPvs(ent.Comp.OnUICloseSound, ent,  AudioParams.Default);
     }
 }

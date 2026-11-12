@@ -137,6 +137,13 @@ public abstract class SharedCookingVesselSystem : EntitySystem
         _container.EmptyContainer(cookingVesselComponent.Storage);
     }
 
+    public bool IsEmpty(EntityUid ent)
+    {
+        if (!TryComp<CookingVesselComponent>(ent, out var comp))
+            return false;
+        return comp.Storage.ContainedEntities.Count == 0;
+    }
+
     protected bool GetContents(EntityUid ent, [NotNullWhen(true)] out CookingVesselComponent? component)
     {
         component = null;

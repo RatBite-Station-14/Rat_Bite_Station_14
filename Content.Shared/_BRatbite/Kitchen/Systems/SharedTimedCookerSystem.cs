@@ -66,6 +66,8 @@ public abstract class SharedTimedCookerSystem : EntitySystem
 
     private void OnUIOpen(Entity<TimedCookerComponent> ent, ref OpenBoundInterfaceMessage args)
     {
+        if (HasComp<ActiveCookingVesselComponent>(ent.Owner))
+            return;
         if (ent.Comp.OnUIOpenSound is not null)
             _sharedAudioSystem.PlayPredicted(ent.Comp.OnUIOpenSound, ent, args.Actor, AudioParams.Default);
         _sharedAppearanceSystem.SetData(ent, TimedCookerDataKeys.DoorOpen, true);
@@ -73,6 +75,8 @@ public abstract class SharedTimedCookerSystem : EntitySystem
 
     private void OnUIClose(Entity<TimedCookerComponent> ent, ref CloseBoundInterfaceMessage args)
     {
+        if (HasComp<ActiveCookingVesselComponent>(ent.Owner))
+            return;
         if (ent.Comp.OnUICloseSound is not null)
             _sharedAudioSystem.PlayPredicted(ent.Comp.OnUICloseSound, ent, args.Actor, AudioParams.Default);
         _sharedAppearanceSystem.SetData(ent, TimedCookerDataKeys.DoorOpen, false);

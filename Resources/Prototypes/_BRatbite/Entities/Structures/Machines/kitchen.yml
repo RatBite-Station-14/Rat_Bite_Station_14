@@ -177,7 +177,7 @@
   - type: TimedCooker
     loopingSound: /Audio/Machines/microwave_loop.ogg
     onUIOpenSound: /Audio/_Goobstation/DropPod/closet_open.ogg
-    onUICloseSound: /Audio/Effects/closetclose.ogg
+    onUICloseSound: /Audio/_Goobstation/DropPod/closet_open.ogg
   - type: Sprite
     sprite: _BRatBites/Entities/Machines/Kitchen/Directional_microwave.rsi
     drawdepth: SmallObjects
