@@ -4,7 +4,7 @@
   sprite: /Textures/Interface/Radial/RCD/apc.png
   mode: ConstructObject
   prototype: APCBasic
-  cost: 6
+  cost: 5
   delay: 2
   collisionMask: Impassable
   rotation: User
@@ -16,7 +16,7 @@
   sprite: /Textures/Interface/Radial/RCD/smes.png
   mode: ConstructObject
   prototype: SMESBasicEmpty
-  cost: 12
+  cost: 15
   delay: 2
   collisionMask: FullTileMask
   rotation: User
@@ -45,3 +45,16 @@
   collisionMask: FullTileMask
   rotation: User
   fx: EffectRCDConstruct2
+
+- type: rcd
+  id: WallReinforced
+  category: WallsAndFlooring
+  sprite: /Textures/Interface/Radial/RCD/reinforced_wall.png
+  mode: ConstructObject
+  prototype: WallReinforced
+  cost: 12
+  delay: 2
+  collisionMask: FullTileMask
+  rotation: Fixed
+  fx: EffectRCDConstruct2
+  

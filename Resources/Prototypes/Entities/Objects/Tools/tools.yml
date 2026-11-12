@@ -408,6 +408,7 @@
     - SMES
     - Substation
     - SolarPanel
+    - WallReinforced
     # </Ratbite>
     - Deconstruct
   - type: LimitedCharges
