@@ -98,3 +98,16 @@
     slots:
     - idcard
     sprite: _BRatBites/Objects/Misc/id-cards.rsi
+
+- type: entity
+  parent: IDCardStandard
+  id: TramDriverIDCard
+  name: tram driver ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idscientist
+  - type: PresetIdCard
+    job: TramDriver
+

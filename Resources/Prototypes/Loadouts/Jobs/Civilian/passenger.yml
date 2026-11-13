@@ -17,7 +17,7 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobPassenger
-      time: 20h # fun mantle for the most experienced greytiders
+      time: 30h # fun mantle for the most experienced greytiders, ratbite time extension
 
 # Face
 - type: loadout
@@ -122,7 +122,7 @@
   id: MercBeret
   effects:
   - !type:GroupLoadoutEffect
-    proto: GreyTider
+    proto: MasterGrey
   equipment:
     head: ClothingHeadHatBeretMerc
 
@@ -183,4 +183,101 @@
   id: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinter
+
+
+
+
+# jumpsuit
+- type: loadout
+  id: TiderQuarterzip
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPassengerQuarterzip
+
+- type: loadout
+  id: BlackJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorBlack
+
+- type: loadout
+  id: BlackJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorBlack
+
+# outer
+
+
+# Ratbite dump because bevv is too lazy to neatly organize yml tonight feel free to order it yourself.
+
+- type: loadout
+  id: Gang2Letterman
+  equipment:
+    outerClothing: ClothingOuterCoatJacketLettermanGang2
+
+- type: loadout
+  id: Gang1Letterman
+  equipment:
+    outerClothing: ClothingOuterCoatJacketLettermanGang1
+
+- type: loadout
+  id: LeatherJacket
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: GreyTider
+  equipment:
+    outerClothing: ClothingOuterCoatJacketLeather
+
+- type: loadout
+  id: BikerJacket
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: GreyTider
+  equipment:
+    outerClothing: ClothingOuterCoatJacketBiker
+
+- type: loadout
+  id: BomberJacket
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: GreyTider
+  equipment:
+    outerClothing: ClothingOuterCoatBomber
+
+- type: loadout
+  id: TrenchCoat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterGrey
+  equipment:
+    outerClothing: ClothingOuterCoatTrench
+
+- type: loadout
+  id: GangMask2
+  equipment:
+    mask: ClothingMaskBandGreen
+
+- type: loadout
+  id: GangMask1
+  equipment:
+    mask: ClothingMaskBandPurple
+
+- type: loadout
+  id: SyndieWinterBoots
+  equipment:
+    shoes: ClothingShoesBootsWinterSyndicate
+
+
+- type: loadout
+  id: Highheels
+  equipment:
+    shoes: ClothingShoesHighheelBoots
+
+- type: loadout
+  id: GangHat1
+  equipment:
+    head: ClothingHeadHatPurplesoftFlipped
+
+- type: loadout
+  id: GangHat2
+  equipment:
+    head: ClothingHeadHatGreensoftFlipped
 

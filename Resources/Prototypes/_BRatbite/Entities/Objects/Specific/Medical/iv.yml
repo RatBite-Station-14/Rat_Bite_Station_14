@@ -16,7 +16,7 @@
     maxFillLevels: 4
     fillBaseName: iv-fill
     insertedItemSlotID: ivBag
-    solutionName: beaker
+    solutionName: drink
   - type: ItemSlots
     slots:
       ivBag:

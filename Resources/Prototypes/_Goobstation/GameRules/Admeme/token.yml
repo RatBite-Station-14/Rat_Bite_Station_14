@@ -331,6 +331,7 @@
       - MindRoleSlasher
       components:
       - type: Slasher
+      - type: BrainInChest # Ratbite
       - type: SlasherSummonMachete
       - type: SlasherStaggerArea
       - type: SlasherRelentlessGrab

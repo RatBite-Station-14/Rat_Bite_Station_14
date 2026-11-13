@@ -1,0 +1,21 @@
+- type: entity
+  parent: ClothingOuterCoatJacketLettermanRed
+  id: ClothingOuterCoatJacketLettermanGang1
+  name: purple letterman jacket
+  description: A colored letterman jacket, watch out, this jacket and its associated color is commonly tied to a violent grape themed multi-station gang known as "The Grapez"
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/OuterClothing/Coats/GangClothing/grapez.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/OuterClothing/Coats/GangClothing/grapez.rsi
+
+- type: entity
+  parent: ClothingOuterCoatJacketLettermanRed
+  id: ClothingOuterCoatJacketLettermanGang2
+  name: green letterman jacket
+  description: A colored letterman jacket, watch out, this jacket and its associated color is commonly tied to a violent tritium themed multi-station gang known as "The Tritz"
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/OuterClothing/Coats/GangClothing/tritz.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/OuterClothing/Coats/GangClothing/tritz.rsi

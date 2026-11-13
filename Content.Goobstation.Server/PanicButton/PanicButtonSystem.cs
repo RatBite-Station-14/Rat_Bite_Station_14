@@ -65,7 +65,7 @@ namespace Content.Goobstation.Server.PanicButton
             {
                 TargetLocation = coordinates.Position,
                 MapId = coordinates.MapId,
-                Sprite = ent.Comp.SecHudIcon,
+                MarkerPrototype = ent.Comp.MarkerPrototype,
                 PinColor = ent.Comp.SecHudIconColor,
                 Channels = ent.Comp.Channels,
             }, deleteAfter: TimeSpan.FromSeconds(5), soundToPlay: ent.Comp.PlayedSound);

@@ -80305,7 +80305,7 @@ entities:
     - type: Transform
       pos: 2.3387475,-64.660645
       parent: 2
-- proto: ClothingHandsGlovesColorYellow
+- proto: ClothingHandsGlovesColorYellowBudget
   entities:
   - uid: 12749
     components:

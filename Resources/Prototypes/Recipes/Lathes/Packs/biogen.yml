@@ -26,6 +26,7 @@
   - BioGenPhalanx #Goobstation Change
   - BioGenDiethyl #Goobstation Change
   - BioGenEgg #Goobstation Change
+  - BioGenUnstableMutagen # Ratbite - Make mutagen available to make from the start
 
 - type: latheRecipePack
   id: BioGenMaterialsStatic
@@ -35,7 +36,7 @@
   - BioGenPaper
   - BioGenPaperRolling1
 
-- type: latheRecipePack
-  id: BioGenEmagStatic
-  recipes:
-  - BioGenUnstableMutagen
+#- type: latheRecipePack # Ratbite - start edit - Make mutagen available to make from the start
+#  id: BioGenEmagStatic
+#  recipes:
+#  - BioGenUnstableMutagen # Ratbite - edit ended

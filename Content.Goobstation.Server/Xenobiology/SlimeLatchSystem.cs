@@ -102,6 +102,7 @@ public sealed partial class SlimeLatchSystem : EntitySystem
             && _solutionContainer.ResolveSolution(ent.Owner, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var blood)
             && _solutionContainer.ResolveSolution(ent.Owner, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var chem))
         {
+            if (chem.Volume + blood.Volume == 0) return; // Ratbite: Crash during debug
             FixedPoint2 bloodProportion = blood.Volume/(chem.Volume + blood.Volume);
             FixedPoint2 chemProportion = 1 - bloodProportion;
             FixedPoint2 bloodTransfer = FixedPoint2.Min(ent.Comp.SuctionUnits * bloodProportion, availabaleVolume * bloodProportion);

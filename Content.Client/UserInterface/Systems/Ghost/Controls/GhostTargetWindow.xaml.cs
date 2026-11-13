@@ -23,7 +23,6 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
         {
             RobustXamlLoader.Load(this);
             SearchBar.OnTextChanged += OnSearchTextChanged;
-            GhostScroll.OnResized += OnWindowResized;
             GhostnadoButton.OnPressed += _ => OnGhostnadoClicked?.Invoke();
         }
 
@@ -37,7 +36,7 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
                 if (warp.Mob)
                 {
                     name = warp.DisplayName + (warp.Followers > 0 ? " f: " + warp.Followers : "");
-                    if(warp.Player_ghost)
+                    if (warp.IsGhost)
                     {
                         type = 4;
                     }
@@ -159,16 +158,6 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
                 if (child is Button button)
                     button.Visible = ButtonIsVisible(button);
             }
-        }
-
-        private void OnWindowResized()
-        {
-            var x = GhostScroll.Size.X - 10;
-            AntagonistContainer.MaxGridWidth = x;
-            LivingContainer.MaxGridWidth = x;
-            DeadContainer.MaxGridWidth = x;
-            GhostContainer.MaxGridWidth = x;
-            MiscContainer.MaxGridWidth = x;
         }
 
         private void OnSearchTextChanged(LineEdit.LineEditEventArgs args)

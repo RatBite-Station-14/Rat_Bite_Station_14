@@ -324,3 +324,36 @@
         Blunt: 0
     soundHit:
       path: /Audio/Animals/wawa_mock.ogg
+
+- type: entity
+  parent: BasePlushie
+  id: PlushieKitty
+  name: k.i.t.t.y plushie
+  description: Your local salv droid, now in the body of a Plushie! Beep boop!
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Objects/Fun/toys.rsi
+    state: plushieKITTY
+  - type: Item
+    heldPrefix: plushieKITTY
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Nyanotrasen/Voice/Felinid/cat_mew1.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Nyanotrasen/Voice/Felinid/cat_mew1.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Nyanotrasen/Voice/Felinid/cat_mew1.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/Machines/robotscream_1.ogg
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 1
+    soundHit:
+      path: /Audio/Machines/robotscream_1.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Machines/robotscream_2.ogg

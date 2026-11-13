@@ -17,8 +17,11 @@
     children:
     - id: OxygenTankFilled
     - id: ClothingOuterHardsuitEVA
+      amount: 2
     - id: ClothingHeadHelmetEVA
+      amount: 2
     - id: ClothingMaskBreath
+      amount: 2
 
 #Basic EVA (Big Ass Helmet)
 - type: entity
@@ -37,8 +40,11 @@
     children:
     - id: OxygenTankFilled
     - id: ClothingOuterHardsuitEVA
-    - id: ClothingHeadHelmetEVALarge
+      amount: 2
+    - id: ClothingHeadHelmetEVA
+      amount: 2
     - id: ClothingMaskBreath
+      amount: 2
 
 #Emergency EVA
 - type: entity

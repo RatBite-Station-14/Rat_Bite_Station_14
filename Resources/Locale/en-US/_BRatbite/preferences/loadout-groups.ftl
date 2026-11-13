@@ -28,3 +28,9 @@ loadout-group-security-sidearms = Security Sidearm
 loadout-group-security-ammo = Sidearm Ammo
 loadout-group-security-longarm = Security Longarm
 loadout-group-security-gloves = Security Gloves
+
+# tram
+loadout-group-tramdriver-jumpsuit = Tram driver jumpsuit
+loadout-group-tramdriver-outerclothing = Tram driver suit
+loadout-group-tramdriver-hat = Tram driver hat
+loadout-group-tramdriver-gloves = Tram driver gloves

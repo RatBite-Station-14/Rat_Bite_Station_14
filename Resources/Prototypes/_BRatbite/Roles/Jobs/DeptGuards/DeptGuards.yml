@@ -17,6 +17,16 @@
       species:
       - Felinid
       - Scurret
+      - Monkey
+      - Kobold
+    - !type:TraitsRequirement # Ratbite: No NRP traits
+      inverted: true
+      traits:
+      - Trigger
+      - SocialAnxietyTrait
+      - ChronicKleptomania
+      - Nudist
+      - Stowaway
   goobcoins: 40
   weight: 20
   startingGear: MedicalOrderlyGear
@@ -77,6 +87,16 @@
       species:
       - Felinid
       - Scurret
+      - Monkey
+      - Kobold
+    - !type:TraitsRequirement # Ratbite: No NRP traits
+      inverted: true
+      traits:
+      - Trigger
+      - SocialAnxietyTrait
+      - ChronicKleptomania
+      - Nudist
+      - Stowaway
 
   startingGear: CargoInsuranceGear
   icon: "JobIconCargoInsurance"
@@ -136,6 +156,16 @@
       species:
       - Felinid
       - Scurret
+      - Monkey
+      - Kobold
+    - !type:TraitsRequirement # Ratbite: No NRP traits
+      inverted: true
+      traits:
+      - Trigger
+      - SocialAnxietyTrait
+      - ChronicKleptomania
+      - Nudist
+      - Stowaway
   startingGear: ScicurityguardGear
   icon: "JobIconScicurityGuard"
   supervisors: job-supervisors-rd
@@ -194,7 +224,16 @@
       species:
       - Felinid
       - Scurret
-
+      - Monkey
+      - Kobold
+    - !type:TraitsRequirement # Ratbite: No NRP traits
+      inverted: true
+      traits:
+      - Trigger
+      - SocialAnxietyTrait
+      - ChronicKleptomania
+      - Nudist
+      - Stowaway
   startingGear: EngiSentryGear
   icon: "JobIconEngiSentry"
   supervisors: job-supervisors-ce

@@ -24,3 +24,6 @@
 
 - type: playTimeTracker
   id: JobNTRLeadIntern
+
+- type: playTimeTracker
+  id: JobTramDriver

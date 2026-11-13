@@ -483,3 +483,41 @@
         - !type:ReagentCondition
           reagent: AllInOneGenderAffirmingHormone
           min: 20
+
+- type: reagent
+  parent: Ichor
+  id: PrimedIchor
+  name: reagent-name-primed-ichor
+  desc: reagent-desc-primed-ichor
+  physicalDesc: reagent-physical-desc-primed-ichor
+  metabolisms:
+    Drink:
+      metabolismRate: 5
+      effects:
+      - !type:SatiateThirst
+        factor: 7.5
+      - !type:SuppressPain
+        amount: 20
+        time: 28
+      - !type:HealthChange
+        damage:
+          types:
+            Heat: -25
+            Shock: -25
+            Cold: -25
+            Caustic: -25
+            Poison: -25
+            Radiation: -25
+            Asphyxiation: -25
+            Bloodloss: -25
+            Blunt: -25
+            Slash: -25
+            Piercing: -25
+      - !type:ModifyBleed
+        amount: -15
+      - !type:ModifyBloodLevel
+        amount: 60
+      - !type:AdjustBoneDamage
+        amount: -3
+      - !type:AdjustOrganDamage
+        amount: -3

@@ -16,6 +16,7 @@
   - LegalFreedomImplanter
   - DimensionPot
   - LegalEMAG
+  - MindControlImplanter
 
 - type: latheRecipePack #both sci fab and secfab
   id: LegalTechSciSec

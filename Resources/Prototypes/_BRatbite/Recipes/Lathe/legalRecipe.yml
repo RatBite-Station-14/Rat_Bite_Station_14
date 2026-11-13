@@ -53,6 +53,7 @@
     Gold: 500
     Silver: 500
 
+
 # Research - Advanced Chemical Manipulation
 
 - type: latheRecipe
@@ -290,3 +291,13 @@
     Plasma: 2500
     BSCrystal: 400
     Diamond: 400
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: MindControlImplanter
+  result: MindcontrolImplanter
+  materials:
+    Steel: 500
+    Plastic: 2000
+    Silver: 500
+    Plasma: 2000

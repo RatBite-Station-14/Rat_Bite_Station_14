@@ -63,7 +63,6 @@
   - PassengerHead
   - PassengerNeck
   - PassengerFace
-  - CivilianTacticoolMask
   - PassengerGloves
   - PassengerOuterClothing
   - PassengerShoes
@@ -103,7 +102,6 @@
   - GroupTankHarness
   - ServiceWorkerJumpsuit
   - CommonBackpack
-  - CivilianTacticoolMask
   - Glasses
   - Survival
   - Trinkets
@@ -141,7 +139,6 @@
   - GroupTankHarness
   - LibrarianJumpsuit
   - CommonBackpack
-  - CivilianTacticoolMask
   - Glasses
   - Survival
   - Trinkets
@@ -160,7 +157,6 @@
   - LawyerNeck
   - LawyerJumpsuit
   - CommonBackpack
-  - CivilianTacticoolMask
   - Glasses
   - Survival
   - Trinkets
@@ -285,7 +281,6 @@
   - MusicianJumpsuit
   - CommonBackpack
   - MusicianOuterClothing
-  - CivilianTacticoolMask
   - Glasses
   - Survival
   - Trinkets

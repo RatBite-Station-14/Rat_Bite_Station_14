@@ -49,7 +49,6 @@
       Normal: 32
       Damaged: 9
       Destroyed: 0
-    slotId: heart
   - type: Metabolizer
     metabolizerTypes: [ Cybernetic ]
   - type: Tag

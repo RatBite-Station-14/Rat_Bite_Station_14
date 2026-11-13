@@ -667,6 +667,8 @@
     - MedicalVehiclesStatic
     - MedicalBoardsStatic
     - MedicalBoardsStaticGoob
+    - EnergyChemistryStatic # Ratbite
+    - EmergencyEVAStatic # Ratbite
     - PowerCellsStatic
     - GrenadeTriggersStatic
     # Einstein Engines Packs
@@ -809,7 +811,7 @@
     - BioGenMaterialsStatic
   - type: EmagLatheRecipes
     emagStaticPacks:
-    - BioGenEmagStatic
+    #- BioGenEmagStatic - Ratbite - move the only thing here to BioGenIngredientsStatic
     - HostileCubesStatic
 
 - type: entity

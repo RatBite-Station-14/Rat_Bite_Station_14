@@ -1,0 +1,8 @@
+- type: latheRecipe
+  id: ClothingOuterSuitEmergency
+  result: ClothingOuterSuitEmergency
+  completetime: 10
+  materials:
+    Cloth: 600
+    Steel: 400
+    Plasma: 100

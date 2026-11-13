@@ -19,9 +19,6 @@ public sealed partial class CryoSicknessComponent : Component
     public EntProtoId Action = "ActionShakeAwake";
 
     [DataField]
-    public ProtoId<StatusEffectPrototype> Effect = "Pacified";
-
-    [DataField]
     public float DamageResistance = 0.6f;
 
     [DataField, AutoNetworkedField]

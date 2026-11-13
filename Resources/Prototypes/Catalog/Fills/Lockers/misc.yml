@@ -45,7 +45,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingMaskBreath
-    - id: ClothingOuterSuitEmergency
+   # - id: ClothingOuterSuitEmergency Ratbite removal
     - !type:GroupSelector
       children:
       - id: EmergencyOxygenTankFilled
@@ -84,7 +84,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingMaskBreath
-    - id: ClothingOuterSuitEmergency
+    #- id: ClothingOuterSuitEmergency Ratbite removal
     - id: BoxMRE
       prob: 0.1
     - id: ToolboxEmergencyFilled

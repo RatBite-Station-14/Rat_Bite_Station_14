@@ -1,0 +1,9 @@
+- type: latheRecipePack
+  id: EnergyChemistryStatic
+  recipes:
+  - EnergyChemDispenserMachineCircuitboard
+
+- type: latheRecipePack
+  id: EmergencyEVAStatic
+  recipes:
+  - ClothingOuterSuitEmergency

@@ -19,12 +19,14 @@ public abstract partial class SharedJobSystem : EntitySystem
     [Dependency] private readonly SharedPlayerSystem _playerSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
     [Dependency] private readonly SharedRoleSystem _roles = default!;
+    private ISawmill _sawmill = default!;
 
     private readonly Dictionary<string, string> _inverseTrackerLookup = new();
 
     public override void Initialize()
     {
         base.Initialize();
+        _sawmill = Logger.GetSawmill("shared-job-system"); // ratbite
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnProtoReload);
         SetupTrackerLookup();
     }
@@ -42,7 +44,12 @@ public abstract partial class SharedJobSystem : EntitySystem
         // This breaks if you have N trackers to 1 JobId but future concern.
         foreach (var job in _prototypes.EnumeratePrototypes<JobPrototype>())
         {
-            _inverseTrackerLookup.Add(job.PlayTimeTracker, job.ID);
+            // Ratbite: add log when overriding play time trackers
+            if (_inverseTrackerLookup.TryGetValue(job.PlayTimeTracker, out var jobId))
+            {
+                _sawmill.Warning($"Overriding playTimeTracker {job.PlayTimeTracker} (Previous value {jobId} new value {job.ID})");
+            }
+            _inverseTrackerLookup[job.PlayTimeTracker] = job.ID;
         }
     }
 

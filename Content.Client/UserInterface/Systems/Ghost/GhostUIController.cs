@@ -154,6 +154,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         Gui.ThunderdomePressed += ThunderdomePressed; // Goobstation - Thunderdome
         Gui.TargetWindow.WarpClicked += OnWarpClicked;
         Gui.TargetWindow.OnGhostnadoClicked += OnGhostnadoClicked;
+        Gui.AltServerConnectPressed += OnAltServerConnectButtonClicked;
         OnGuiLoaded?.Invoke(Gui); // Trauma
 
         UpdateGui();
@@ -199,5 +200,16 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
     private void OnThunderdomePlayerCount(ThunderdomePlayerCountEvent ev)
     {
         Gui?.UpdateThunderdome(ev.Count);
+    }
+
+    // Ratbite: Connect to server when clicking the button
+    private void OnAltServerConnectButtonClicked()
+    {
+        var serverIp = _cfg.GetCVar(RatbiteCVars.AltServerIP);
+        var serverPort = _cfg.GetCVar(RatbiteCVars.AltServerPort);
+        if (serverIp.Length != 0)
+        {
+            _gameController.Redial($"ss14://{serverIp}:{serverPort}");
+        }
     }
 }

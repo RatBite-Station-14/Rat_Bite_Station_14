@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared._BRatbite.TrackingHud;
+using Content.Shared._BRatbite.TrackingHud.MarkerMonitor;
 using Content.Shared.Radio;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
@@ -31,7 +32,7 @@ namespace Content.Goobstation.Server.PanicButton
 
         // Ratbite start
         [DataField]
-        public SpriteSpecifier SecHudIcon = new SpriteSpecifier.Rsi(new("/Textures/_BRatBites/Interface/Misc/exclamation-mark.rsi"), "exclamation-mark");
+        public ProtoId<MarkerPrototype> MarkerPrototype = "WarningExclamation";
 
         [DataField]
         public Color SecHudIconColor = Color.Red;

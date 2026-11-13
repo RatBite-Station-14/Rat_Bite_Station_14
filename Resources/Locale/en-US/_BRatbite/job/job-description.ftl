@@ -10,3 +10,5 @@ job-description-sci-guard = Protect the science department, the scientists, its 
 job-description-cargo-insurance = Protect the cargo department, its assets, its employees, and above all else, protect the quartermaster
 
 job-description-redsight-overseer = Ensure security's compliance with spacelaw, act as the judge in legal disputes
+
+job-description-tram-driver = you drive the tram. that it. that your entire purposes.

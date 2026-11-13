@@ -84,6 +84,7 @@ using Content.Goobstation.Common.Grab;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Zombies;
 using Content.Server.Ensnaring;
+using Content.Server._BRatbite.Antag;
 
 namespace Content.Goobstation.Server.Changeling;
 
@@ -792,6 +793,7 @@ public sealed partial class ChangelingSystem : SharedChangelingSystem
     // in the future ChangelingIdentity should have its own system and be ONLY used for holding stored DNA and handling transformations.
     private void OnChangelingMapInit(Entity<ChangelingComponent> ent, ref MapInitEvent args)
     {
+        EnsureComp<BrainInChestComponent>(ent);
         if (ent.Comp.EvolutionsAssigned // this is solely because polymorph will cause mega errors otherwise
             || !_proto.TryIndex(ent.Comp.EvolutionsProto, out var evoProto))
             return;

@@ -15,15 +15,21 @@
     - !type:DepartmentTimeRequirement
       department: Cargo
       time: 10h
-    - !type:SpeciesRequirement # Goob - None Felinid
-      inverted: true
-      species:
-      - Felinid
     - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
       inverted: true
       species:
       - Felinid
       - Scurret
+      - Monkey
+      - Kobold
+    - !type:TraitsRequirement # Ratbite: No NRP traits
+      inverted: true
+      traits:
+      - Trigger
+      - SocialAnxietyTrait
+      - ChronicKleptomania
+      - Nudist
+      - Stowaway
   weight: 10
   startingGear: QuartermasterGear
   icon: "JobIconQuarterMaster"

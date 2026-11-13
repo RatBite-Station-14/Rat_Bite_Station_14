@@ -1,0 +1,134 @@
+<!--
+SPDX-FileCopyrightText: 2026 Sprinkle <40203084+lnn0q@users.noreply.github.com>
+
+SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+
+<controls:SurgeryPartSelector
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client._Shitmed.Medical.Surgery"
+    MinSize="190 235">
+    <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <PanelContainer Name="DollPanel" SetSize="176 176" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextureRect Name="DollHead" Stretch="KeepAspectCentered" SetSize="176 176"/>
+            <TextureRect Name="DollTorso" Stretch="KeepAspectCentered" SetSize="176 176"/>
+            <TextureRect Name="DollGroin" Stretch="KeepAspectCentered" SetSize="176 176"/>
+            <TextureRect Name="DollLeftArm" Stretch="KeepAspectCentered" SetSize="176 176"/>
+            <TextureRect Name="DollLeftHand" Stretch="KeepAspectCentered" SetSize="176 176"/>
+            <TextureRect Name="DollRightArm" Stretch="KeepAspectCentered" SetSize="176 176"/>
+            <TextureRect Name="DollRightHand" Stretch="KeepAspectCentered" SetSize="176 176"/>
+            <TextureRect Name="DollLeftLeg" Stretch="KeepAspectCentered" SetSize="176 176"/>
+            <TextureRect Name="DollLeftFoot" Stretch="KeepAspectCentered" SetSize="176 176"/>
+            <TextureRect Name="DollRightLeg" Stretch="KeepAspectCentered" SetSize="176 176"/>
+            <TextureRect Name="DollRightFoot" Stretch="KeepAspectCentered" SetSize="176 176"/>
+
+            <Control HorizontalAlignment="Center" VerticalAlignment="Center" SetSize="176 176" Margin="0 -4 0 0">
+                <PanelContainer
+                    SetSize="105 176"
+                    Margin="33 0 0 0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left">
+                    <PanelContainer
+                        SetSize="28 61"
+                        Margin="7 0 0 0"
+                        HorizontalAlignment="Left">
+                        <TextureButton
+                            Name="RightArmButton"
+                            StyleClasses="TargetDollButtonRightArm"
+                            SetSize="28 46"
+                            VerticalAlignment="Top" />
+                        <TextureButton
+                            Name="RightHandButton"
+                            StyleClasses="TargetDollButtonRightHand"
+                            SetSize="28 28"
+                            VerticalAlignment="Bottom" />
+                    </PanelContainer>
+                    <PanelContainer
+                        SetSize="79 138"
+                        Margin="0 0 0 0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                        <TextureButton
+                            Name="HeadButton"
+                            StyleClasses="TargetDollButtonHead"
+                            SetSize="51 42"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center" />
+                        <TextureButton
+                            Name="ChestButton"
+                            StyleClasses="TargetDollButtonChest"
+                            SetSize="51 55"
+                            Margin="0 33 0 0"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center" />
+                        <PanelContainer
+                            SetSize="70 64"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Center">
+                            <TextureButton
+                                Name="GroinButton"
+                                StyleClasses="TargetDollButtonGroin"
+                                SetSize="51 28"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center" />
+                            <PanelContainer
+                                SetSize="37 55"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right">
+                                <TextureButton
+                                    Name="LeftLegButton"
+                                    StyleClasses="TargetDollButtonLeftLeg"
+                                    SetSize="28 51"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Left" />
+                                <TextureButton
+                                    Name="LeftFootButton"
+                                    StyleClasses="TargetDollButtonLeftFoot"
+                                    SetSize="37 18"
+                                    VerticalAlignment="Bottom" />
+                            </PanelContainer>
+                            <PanelContainer
+                                SetSize="37 55"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left">
+                                <TextureButton
+                                    Name="RightLegButton"
+                                    StyleClasses="TargetDollButtonRightLeg"
+                                    SetSize="28 51"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Right" />
+                                <TextureButton
+                                    Name="RightFootButton"
+                                    StyleClasses="TargetDollButtonRightFoot"
+                                    SetSize="37 18"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Center" />
+                            </PanelContainer>
+                        </PanelContainer>
+                    </PanelContainer>
+                    <PanelContainer
+                        SetSize="28 61"
+                        Margin="0 0 7 0"
+                        HorizontalAlignment="Right">
+                        <TextureButton
+                            Name="LeftArmButton"
+                            StyleClasses="TargetDollButtonLeftArm"
+                            SetSize="28 46"
+                            VerticalAlignment="Top" />
+                        <TextureButton
+                            Name="LeftHandButton"
+                            StyleClasses="TargetDollButtonLeftHand"
+                            SetSize="28 28"
+                            VerticalAlignment="Bottom" />
+                    </PanelContainer>
+                </PanelContainer>
+            </Control>
+        </PanelContainer>
+
+        <BoxContainer Orientation="Vertical" HorizontalAlignment="Left" MinSize="176 0" Margin="0 4 0 0">
+            <Label Name="PatientNameLabel" ClipText="True" />
+            <Label Name="SpeciesLabel" ClipText="True" />
+            <Label Name="PartNameLabel" ClipText="True" />
+        </BoxContainer>
+    </BoxContainer>
+</controls:SurgeryPartSelector>

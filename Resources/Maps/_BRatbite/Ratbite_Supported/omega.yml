@@ -31850,7 +31850,7 @@ entities:
     - type: Transform
       pos: -23.466429,-7.3899465
       parent: 2
-- proto: ClothingHandsGlovesColorYellow
+- proto: ClothingHandsGlovesColorYellowBudget
   entities:
   - uid: 5020
     components:

@@ -4,6 +4,7 @@ using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
@@ -15,12 +16,24 @@ public sealed partial class TrackingTargetOverlay : Overlay
     [Dependency] private readonly IEntityManager _entity = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IEyeManager _eyeManager = default!;
+    [Dependency] private readonly IPrototypeManager _proto = default!;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
+    private readonly ShaderInstance _baseShader;
+    private readonly Dictionary<Color, ShaderInstance> _shaders = new ();
 
     internal TrackingTargetOverlay()
     {
         IoCManager.InjectDependencies(this);
+        _baseShader = _proto.Index<ShaderPrototype>("ColorCorrection").Instance();
+    }
 
+    private ShaderInstance GetShader(Color color)
+    {
+        if (_shaders.TryGetValue(color, out var s)) return s;
+        var shader = _baseShader.Duplicate();
+        shader.SetParameter("TargetColor", color);
+        _shaders.Add(color, shader);
+        return shader;
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -32,13 +45,15 @@ public sealed partial class TrackingTargetOverlay : Overlay
         foreach (var (_, target) in tracker.Targets)
         {
             if (target.MapId != args.MapId) continue;
+            if (!_proto.TryIndex(target.MarkerPrototype, out var markerProto)) return;
             var eyePosition = eye.Position;
             float worldGap = 200f * eye.Zoom.X / EyeManager.PixelsPerMeter;
             var direction = target.TargetLocation - eyePosition.Position;
 
             var local = ClampMagnitude(direction, worldGap) + eyePosition.Position;
-            var texture = _sprite.GetFrame(target.Sprite, _timing.RealTime);
+            var texture = _sprite.GetFrame(markerProto.Icon, _timing.RealTime);
             var iconSize = new Vector2(25, 25) * eye.Zoom.X / EyeManager.PixelsPerMeter;
+            args.WorldHandle.UseShader(GetShader(target.PinColor));
             args.WorldHandle.DrawTextureRect(
                 texture,
                 new Box2Rotated(
@@ -46,8 +61,7 @@ public sealed partial class TrackingTargetOverlay : Overlay
                         local - iconSize / 2,
                         iconSize
                     ),
-                    -eye.Rotation, local),
-                target.PinColor
+                    -eye.Rotation, local)
             );
 
             if (direction.LengthSquared() >= worldGap * worldGap)
@@ -61,8 +75,7 @@ public sealed partial class TrackingTargetOverlay : Overlay
                     new Box2Rotated(
                         Box2.FromDimensions(
                          arrowCenter - arrowSize / 2, arrowSize),
-                        angle, arrowCenter),
-                    target.PinColor
+                        angle, arrowCenter)
                 );
             }
         }

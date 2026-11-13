@@ -4,12 +4,15 @@ using Content.Server.Atmos.Rotting;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Shared.Body.Part;
+using Content.Shared.Humanoid;
+using Content.Shared.Humanoid.Prototypes;
 using Content.Server.Popups;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Damage;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared._Shitmed.Damage;
 using Content.Shared._Shitmed.Medical.Surgery;
+using Content.Shared._Shitmed.Medical.Surgery.Wounds;
 using Content.Shared._Shitmed.Medical.Surgery.Wounds.Systems;
 using Content.Shared._Shitmed.Medical.Surgery.Conditions;
 using Content.Shared._Shitmed.Medical.Surgery.Effects.Step;
@@ -27,6 +30,7 @@ public sealed class SurgerySystem : SharedSurgerySystem
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly WoundSystem _wounds = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly IPrototypeManager _proto = default!;
 
     public override void Initialize()
     {
@@ -46,6 +50,9 @@ public sealed class SurgerySystem : SharedSurgerySystem
             return;
 
         var surgeries = new Dictionary<NetEntity, List<EntProtoId>>();
+        var parts = new Dictionary<TargetBodyPart, SurgeryPartBuiData>();
+        var woundStates = _wounds.GetWoundableStatesOnBodyPainFeels(body);
+
         foreach (var part in _body.GetBodyChildren(body))
         {
             var valid = new List<EntProtoId>();
@@ -62,9 +69,27 @@ public sealed class SurgerySystem : SharedSurgerySystem
 
                 valid.Add(surgery);
             }
+
+            var targetPart = _body.GetTargetBodyPart(part.Component);
+            var severity = woundStates.GetValueOrDefault(targetPart, WoundableSeverity.Healthy);
+
             surgeries[GetNetEntity(part.Id)] = valid;
+            parts[targetPart] = new SurgeryPartBuiData(
+                GetNetEntity(part.Id),
+                targetPart,
+                Name(part.Id),
+                severity,
+                valid);
         }
-        _ui.SetUiState(body, SurgeryUIKey.Key, new SurgeryBuiState(surgeries));
+
+        var speciesName = string.Empty;
+        if (TryComp(body, out HumanoidAppearanceComponent? humanoid)
+            && _proto.TryIndex<SpeciesPrototype>(humanoid.Species, out var species))
+        {
+            speciesName = Loc.GetString(species.Name);
+        }
+
+        _ui.SetUiState(body, SurgeryUIKey.Key, new SurgeryBuiState(surgeries, parts, Name(body), speciesName));
         /*
             Reason we do this is because when applying a BUI State, it rolls back the state on the entity temporarily,
             which just so happens to occur right as we're checking for step completion, so we end up with the UI

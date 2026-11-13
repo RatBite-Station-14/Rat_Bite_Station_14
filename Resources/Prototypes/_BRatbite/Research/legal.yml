@@ -168,3 +168,19 @@
   - BasicRobotics
   - Durand
 
+- type: technology
+  id: SyndicateMindSlavingTechnologies
+  name: Syndicate Mind Slaving
+  icon:
+    sprite: _Goobstation/Mobs/Species/Yowie/organs.rsi
+    state: brain
+  discipline: LEGAL
+  tier: 1
+  cost: 150000
+  recipeUnlocks:
+  - MindControlImplanter
+  position: -7,-9 # Goobstation R&D Console rework
+  technologyPrerequisites:
+  - MechanicalCompression
+  - DecoyTechnologies
+  - UnnaturalEntrapmentTechnologies

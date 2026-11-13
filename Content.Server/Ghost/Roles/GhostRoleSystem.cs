@@ -504,6 +504,13 @@ public sealed class GhostRoleSystem : EntitySystem
             return;
         }
 
+        // Ratbite: perma ghost role check
+        if (!roleEnt.Comp.AllowPerma && _permaManager.GetBrigTime(player.UserId) > 0)
+        {
+            _popupSystem.PopupCursor(Loc.GetString("perma-deny-ghost-role"), player);
+            return;
+        }
+
         // Decide to do a raffle or not
         if (roleEnt.Comp.RaffleConfig is not null)
         {
@@ -663,7 +670,7 @@ public sealed class GhostRoleSystem : EntitySystem
 
         foreach (var (id, (uid, role)) in _ghostRoles)
         {
-            if (metaQuery.GetComponent(uid).EntityPaused)
+            if (metaQuery.CompOrNull(uid)?.EntityPaused != false)
                 continue;
 
 

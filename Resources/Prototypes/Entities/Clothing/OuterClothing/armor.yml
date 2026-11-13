@@ -34,7 +34,7 @@
       coefficients:
         Blunt: 0.55
         Slash: 0.55
-        Piercing: 0.55
+        Piercing: 0.45 #ratbite
         Heat: 0.7
     # Goob end
   - type: ExplosionResistance

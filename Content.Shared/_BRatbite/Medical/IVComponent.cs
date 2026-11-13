@@ -33,7 +33,7 @@ public sealed partial class IVComponent : Component
     public string ItemSlotId = "ivBag";
 
     [DataField]
-    public string SolutionName = "beaker";
+    public string SolutionName = "drink";
 }
 
 

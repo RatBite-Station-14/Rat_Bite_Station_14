@@ -124,13 +124,13 @@ namespace Content.Shared.Ghost
     [Serializable, NetSerializable]
     public struct GhostWarp
     {
-        public GhostWarp(NetEntity entity, string displayName, bool mob, bool isDead, bool ghost, bool antagonist, int followers)
+        public GhostWarp(NetEntity entity, string displayName, bool mob, bool isDead, bool ghost, bool antagonist, byte followers)
         {
             Entity = entity;
             DisplayName = displayName;
             Mob = mob;
             IsDead = isDead;
-            Player_ghost = ghost;
+            IsGhost = ghost;
             Antagonist = antagonist;
             Followers = followers;
         }
@@ -155,13 +155,13 @@ namespace Content.Shared.Ghost
         /// </summary>
         public bool Mob { get; }
         public bool IsDead { get; }
-        public bool Player_ghost { get; }
+        public bool IsGhost { get; }
         public bool Antagonist { get; }
 
         /// <summary>
         /// How many followers this person has around them
         /// </summary>
-        public int Followers { get; }
+        public byte Followers { get; }
     }
 
     /// <summary>

@@ -4,11 +4,11 @@ namespace Content.Server._BRatbite.Traits;
 public sealed partial class TriggerComponent : Component
 {
     [DataField]
-    public float TotalIntensity = 100;
+    public float TotalIntensity = 50;
     [DataField]
     public float Slope = 3;
     [DataField]
-    public float MaxTileIntensity = 4;
+    public float MaxTileIntensity = 1;
     [DataField]
     public bool Examined = false;
 }

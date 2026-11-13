@@ -45,3 +45,11 @@
     sprite: /Textures/_BRatBites/Interface/Misc/job_icons.rsi
     state: ntrintern
   jobName: job-name-ntrintern
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconTramDriver
+  icon:
+    sprite: /Textures/_BRatBites/Interface/Misc/job_icons.rsi
+    state: TramDriver
+  jobName: job-name-tramdriver

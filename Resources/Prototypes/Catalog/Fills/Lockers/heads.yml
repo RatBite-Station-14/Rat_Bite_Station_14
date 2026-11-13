@@ -529,6 +529,7 @@
  #    prob: 0.50
     - id: ClothingBeltSecurityFilled
  #  - id: ClothingEyesGlassesSecurity
+    - id: MarkerMonitorHandeldComputer
     - id: ClothingHeadsetAltSecurity
   # - id: ClothingMaskNeckGaiter
   # - id: ClothingOuterCoatHoSTrench

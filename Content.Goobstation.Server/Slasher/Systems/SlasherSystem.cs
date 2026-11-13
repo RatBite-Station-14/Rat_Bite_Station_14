@@ -1,3 +1,4 @@
+/* Ratbite: Moved to Content.Server/_BRatbite/Antag/BrainInChestSystem.cs
 using Content.Goobstation.Shared.Slasher.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
@@ -61,3 +62,4 @@ public sealed class SlasherSystem : EntitySystem
         _standing.Stand(ent.Owner, force: true);
     }
 }
+*/

@@ -36,6 +36,7 @@
   - Zookeeper
   - ServiceWorker
   - PartyMaker # event-restricted, Goobstation
+  - TramDriver # Ratbite - tram station
 
 - type: department
   id: CentralCommand
