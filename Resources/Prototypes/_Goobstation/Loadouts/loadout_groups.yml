@@ -962,6 +962,7 @@
   - NanotrasenRepresentativeSatchel
   - NanotrasenRepresentativeDuffel
   - NanotrasenRepresentativeMessenger
+  - ClothingBagPet #Ratbite - for scurrets and other pets species
 
 - type: loadoutGroup
   id: NanotrasenRepresentativeJumpsuit
@@ -1045,6 +1046,7 @@
   - BlueshieldOfficerSatchel
   - BlueshieldOfficerDuffel
   - BlueshieldOfficerMessenger
+  - ClothingBagPet #Ratbite - for scurrets and other pets species
 
 - type: loadoutGroup
   id: BlueshieldOfficerJumpsuit
@@ -1514,6 +1516,7 @@
   - BrigmedicSatchel
   - BrigmedicDuffel
   - BrigmedicMessenger
+  - ClothingBagPet #Ratbite - for scurrets and other pets species
 
 - type: loadoutGroup
   id: BrigmedicEnvirohelm
