@@ -442,6 +442,7 @@
   minLimit: 0
   loadouts:
   - LizardPlushieServiceWorker
+  - SleeperbotPlushieServiceWorker
 
 - type: loadoutGroup
   id: ChefHead

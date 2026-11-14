@@ -357,3 +357,48 @@
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Machines/robotscream_2.ogg
+
+- type: entity
+  parent: BaseTalkingPlushie
+  id: PlushieSleeperbot #Made by Crumbsss, with help from ColonelNothing, and my33222233
+  name: Sleeperbot-BOOT Plushie
+  description: Beloved IPC and friend to many. He's been made into a plushie for your enjoyment! Yay! (Warning, this plushie may cause harm, handle with care.)
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Objects/Fun/toys.rsi
+    state: plushieSleeperbot
+  - type: Item
+    heldPrefix: plushieSleeperbot
+  - type: SpeakOnTrigger
+    pack: plushieSleeperbot
+  - type: Speech
+    speechSounds: SyndieBorg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Effects/explosion1.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/Effects/explosion1.ogg
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 1
+    soundHit:
+      path: /Audio/Voice/Silicon/syndieborg_laugh.ogg
+  - type: TriggerOnLand
+    keyOut: explode
+  - type: RandomChanceTriggerCondition
+    successChance: 0.001
+    keys:
+    - explode
+  - type: ExplodeOnTrigger
+    keysIn:
+    - explode
+  - type: Explosive
+    explosionType: Explosion
+    maxIntensity: 1
+    intensitySlope: 1
+    totalIntensity: 1
+    canCreateVacuum: false
+    deleteAfterExplosion: false
+    repeatable: true
