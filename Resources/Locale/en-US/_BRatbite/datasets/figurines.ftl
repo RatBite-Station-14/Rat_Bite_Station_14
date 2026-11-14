@@ -22,3 +22,17 @@ plushies-batch-7 = I'm not responsible for your chudouts, moron
 plushies-batch-8 = Oh twatting hell
 plushies-batch-9 = Why do we have to call ERT for this one fucking Heretic I swear to fuck
 plushies-batch-10 = I'm watching you.
+
+plushies-sleeperbot-1 = Clanker? I hardly know 'er!
+plushies-sleeperbot-2 = Whole station mad.
+plushies-sleeperbot-3 = THIS IS FOR CLANK NATION!!
+plushies-sleeperbot-4 = I love my friends!
+plushies-sleeperbot-5 = Well, shit.
+plushies-sleeperbot-6 = They call him Jesterbomb because his jokes are the bomb!!
+plushies-sleeperbot-7 = I'm so sleepy..
+plushies-sleeperbot-8 = Beep.
+plushies-sleeperbot-9 = Boop.
+plushies-sleeperbot-10 = FUCK.
+plushies-sleeperbot-11 = You’re my friend now.
+plushies-sleeperbot-12 = Ping.
+plushies-sleeperbot-13 = Buzz.
