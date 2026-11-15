@@ -77,8 +77,8 @@
     size: Large
     shape:
     - 0,0,3,1
-  - type: StealTarget
-    stealGroup: RapidSyringeGun
+#  - type: StealTarget    # Ratbite - removed steal target since its gone from lockers...
+#    stealGroup: RapidSyringeGun
   - type: Tag
     tags:
     - HighRiskItem
