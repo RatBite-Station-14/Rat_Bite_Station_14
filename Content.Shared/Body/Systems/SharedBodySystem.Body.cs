@@ -40,6 +40,7 @@ using Content.Shared.Popups;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
 using Content.Goobstation.Maths.FixedPoint;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.Body.Systems;
 
@@ -511,23 +512,36 @@ public partial class SharedBodySystem
             || HasComp<BorgChassisComponent>(args.EquipTarget))
             return;
 
-        if (TryGetPartFromSlotContainer(args.Slot, out var bodyPart)
+        // Ratbite: Moved logic to a helper function
+        if (IsMissingBodyPart((ent.Owner, ent.Comp), args.Slot, out var bodyPartString))
+        {
+            _popup.PopupClient(Loc.GetString("equip-part-missing-error",
+                                             ("target", args.EquipTarget), ("part", bodyPartString)), args.Equipee, args.Equipee);
+            args.Cancel();
+        }
+    }
+
+    // Ratbite: helper method
+    public bool IsMissingBodyPart(Entity<BodyComponent?> ent, string slotName, [NotNullWhen(true)] out string? partName)
+    {
+        partName = null;
+        if (!Resolve(ent.Owner, ref ent.Comp)) return false;
+        if (ent.Comp.Prototype is not { } bodyPrototype) return false;
+        if (TryGetPartFromSlotContainer(slotName, out var bodyPart)
             && bodyPart is not null)
         {
             var bodyPartString = bodyPart.Value.ToString().ToLower();
-            var prototype = Prototypes.Index(targetBody.Prototype.Value);
+            partName = bodyPartString;
+            var prototype = Prototypes.Index(bodyPrototype);
             var hasPartConnection = prototype.Slots.Values.Any(slot =>
                 slot.Connections.Contains(bodyPartString));
-
             if (hasPartConnection
-                && !GetBodyChildrenOfType(args.EquipTarget, bodyPart.Value).Any())
-            {
-                _popup.PopupClient(Loc.GetString("equip-part-missing-error",
-                    ("target", args.EquipTarget), ("part", bodyPartString)), args.Equipee, args.Equipee);
-                args.Cancel();
-            }
+                && !GetBodyChildrenOfType(ent, bodyPart.Value).Any())
+                return true;
         }
+        return false;
     }
+    // Ratbite end
 
     private void OnRejuvenate(EntityUid ent, BodyComponent body, ref RejuvenateEvent args)
     {
