@@ -1,0 +1,46 @@
+# Not expecting this to be accepted. Dipping my toes into learning how I can contribute.
+# I've gone back and combed over what I've added and modified. Hopefully I havn't left behind any useless shtuff..
+
+
+- type: entity
+  id: NicotinePouch
+  parent: [FoodBase, FoodInjectableBase]
+  name: nicotine pouch
+  description: Yeah this won't help you quit, but at least your lungs are off the hook.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - bitter
+  - type: Edible #
+    delay: 0.6
+    forceFeedDelay: 5
+    edible: NicotinePouch
+  - type: Clothing # Nic pouches go under your lip! No need for any visibility.
+    quickEquip: true
+    slots: [ mask ]
+  - type: Sprite
+    sprite: Objects/Consumable/Smokeables/Nic_Pouches/nic_pouch.rsi
+    state: icon
+  - type: Item
+    size: Tiny
+  - type: SolutionContainerManager # Getting this to work was a learning experience. Uhh hopefully this is right.
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Nicotine
+          Quantity: 10
+  - type: PassiveConsumable
+  - type: Tag
+    tags:
+    - NicotinePouch
+
+  # Get berated if you actually swallow the darn thing..
+- type: edible
+  id: NicotinePouch
+  useSound: !type:SoundPathSpecifier
+    params:
+      variation: 0.2
+      volume: -1
+    path: /Audio/_Goobstation/Voice/gulpexotic.ogg #Yoink!
+  message: What are you doing?! It is NOT! Food! # I just swallow these things right?
