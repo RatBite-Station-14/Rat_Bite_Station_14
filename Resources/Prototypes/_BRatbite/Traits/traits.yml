@@ -57,7 +57,7 @@
   name: trait-loyalty-training-name
   description: trait-loyalty-training-desc
   category: Mental
-  cost: -4
+  cost: -5
   components:
   - type: LoyaltyTraining
 
@@ -219,7 +219,7 @@
   name: trait-scared-of-guns-name
   description: trait-scared-of-guns-desc
   category: Mental
-  cost: -3
+  cost: -4
   speciesBlacklist:
   - Oni
   components:
@@ -267,7 +267,7 @@
   name: trait-trigger-name
   description: trait-trigger-desc
   category: Mental
-  cost: -10
+  cost: -2
   components:
   - type: Trigger
 
