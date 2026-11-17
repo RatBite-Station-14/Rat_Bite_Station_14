@@ -155,12 +155,13 @@
   - type: StealCondition
     stealGroup: Hypospray
 
-- type: entity
-  parent: LingCMOStealObjective
-  id: LingCMORapidSyringeGunStealObjective
-  components:
-  - type: StealCondition
-    stealGroup: RapidSyringeGun
+# Ratbite - was made unobtainable
+# - type: entity
+#   parent: LingCMOStealObjective
+#   id: LingCMORapidSyringeGunStealObjective
+#   components:
+#   - type: StealCondition
+#     stealGroup: RapidSyringeGun
 
 ## rd
 
