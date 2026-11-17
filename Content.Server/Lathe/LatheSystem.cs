@@ -214,7 +214,7 @@ namespace Content.Server.Lathe
             var lathe = EnsureComp<LatheProducingComponent>(uid);
             lathe.StartTime = _timing.CurTime;
             lathe.ProductionLength = time;
-            component.CurrentRecipe = recipe;
+            component.CurrentRecipe = batch.Recipe;
 
             var ev = new LatheStartPrintingEvent(recipe);
             RaiseLocalEvent(uid, ref ev);
@@ -229,8 +229,8 @@ namespace Content.Server.Lathe
                 if (component.OutputToStorage)
                     FinishProducingManyStorage((uid, component, lathe));
                 // Goobstation edit end
-
-                FinishProducing(uid, component, lathe);
+                else // RB EDIT
+                    FinishProducing(uid, component, lathe);
             }
             return true;
         }
