@@ -1,0 +1,434 @@
+{
+    "version": 1,
+    "license": "CC-BY-4.0",
+    "copyright": "Graphics taken from https://github.com/twitter/twemoji",
+    "size": {
+        "x": 16,
+        "y": 16
+    },
+    "states": [
+        {
+            "name": "white_heart"
+        },
+        {
+            "name": "revolving_hearts"
+        },
+        {
+            "name": "sparkling_heart"
+        },
+        {
+            "name": "mending_heart"
+        },
+        {
+            "name": "pulseheart"
+        },
+        {
+            "name": "purple_heart"
+        },
+        {
+            "name": "yellow_heart"
+        },
+        {
+            "name": "orange_heart"
+        },
+        {
+            "name": "broken_heart"
+        },
+        {
+            "name": "black_heart"
+        },
+        {
+            "name": "green_heart"
+        },
+        {
+            "name": "blue_heart"
+        },
+        {
+            "name": "two_hearts"
+        },
+        {
+            "name": "brown_heart"
+        },
+        {
+            "name": "red_heart"
+        },
+        {
+            "name": "heart_on_fire"
+        },
+        {
+            "name": "grinning"
+        },
+        {
+            "name": "rofl"
+        },
+        {
+            "name": "sweat_smile"
+        },
+        {
+            "name": "joy"
+        },
+        {
+            "name": "slight_smile"
+        },
+        {
+            "name": "upside_down"
+        },
+        {
+            "name": "melting_face"
+        },
+        {
+            "name": "wink"
+        },
+        {
+            "name": "relaxed"
+        },
+        {
+            "name": "halo"
+        },
+        {
+            "name": "smiling_face_with_3_hearts"
+        },
+        {
+            "name": "heart_eyes"
+        },
+        {
+            "name": "star_struck"
+        },
+        {
+            "name": "kissing_heart"
+        },
+        {
+            "name": "smiling_face_with_tear"
+        },
+        {
+            "name": "money_mouth"
+        },
+        {
+            "name": "shushing_face"
+        },
+        {
+            "name": "thinking"
+        },
+        {
+            "name": "salute"
+        },
+        {
+            "name": "zipper_mouth"
+        },
+        {
+            "name": "face_with_raised_eyebrow"
+        },
+        {
+            "name": "neutral_face"
+        },
+        {
+            "name": "no_mouth"
+        },
+        {
+            "name": "expressionless"
+        },
+        {
+            "name": "face_in_clouds"
+        },
+        {
+            "name": "smirk"
+        },
+        {
+            "name": "unamused"
+        },
+        {
+            "name": "rolling_eyes"
+        },
+        {
+            "name": "grimacing"
+        },
+        {
+            "name": "face_exhaling"
+        },
+        {
+            "name": "pensive"
+        },
+        {
+            "name": "drool"
+        },
+        {
+            "name": "sleeping"
+        },
+        {
+            "name": "head_bandage"
+        },
+        {
+            "name": "nauseated_face"
+        },
+        {
+            "name": "face_vomiting"
+        },
+        {
+            "name": "sneezing_face"
+        },
+        {
+            "name": "cold_face"
+        },
+        {
+            "name": "exploding_head"
+        },
+        {
+            "name": "partying_face"
+        },
+        {
+            "name": "sunglasses"
+        },
+        {
+            "name": "nerd"
+        },
+        {
+            "name": "flushed"
+        },
+        {
+            "name": "face_holding_back_tears"
+        },
+        {
+            "name": "fearful"
+        },
+        {
+            "name": "sob"
+        },
+        {
+            "name": "scream"
+        },
+        {
+            "name": "yawning"
+        },
+        {
+            "name": "triumph"
+        },
+        {
+            "name": "rage"
+        },
+        {
+            "name": "imp"
+        },
+        {
+            "name": "smiling_imp"
+        },
+        {
+            "name": "skull"
+        },
+        {
+            "name": "skull_crossbones"
+        },
+        {
+            "name": "poop"
+        },
+        {
+            "name": "clown"
+        },
+        {
+            "name": "robot"
+        },
+        {
+            "name": "wind"
+        },
+        {
+            "name": "waving_hand"
+        },
+        {
+            "name": "ok_hand"
+        },
+        {
+            "name": "pinched_fingers"
+        },
+        {
+            "name": "pinching_hand"
+        },
+        {
+            "name": "peace"
+        },
+        {
+            "name": "fingers_crossed"
+        },
+        {
+            "name": "pointing_left"
+        },
+        {
+            "name": "pointing_right"
+        },
+        {
+            "name": "pointing_up"
+        },
+        {
+            "name": "pointing_down"
+        },
+        {
+            "name": "middle_finger"
+        },
+        {
+            "name": "pointing_forwards"
+        },
+        {
+            "name": "thumbs_down"
+        },
+        {
+            "name": "thumbs_up"
+        },
+        {
+            "name": "clap"
+        },
+        {
+            "name": "heart_hands"
+        },
+        {
+            "name": "handshake"
+        },
+        {
+            "name": "pray"
+        },
+        {
+            "name": "writing"
+        },
+        {
+            "name": "nail_care"
+        },
+        {
+            "name": "muscle"
+        },
+        {
+            "name": "ear"
+        },
+        {
+            "name": "lungs"
+        },
+        {
+            "name": "heart"
+        },
+        {
+            "name": "brain"
+        },
+        {
+            "name": "bone"
+        },
+        {
+            "name": "tooth"
+        },
+        {
+            "name": "eyes"
+        },
+        {
+            "name": "speaking"
+        },
+        {
+            "name": "hug"
+        },
+        {
+            "name": "camel"
+        },
+        {
+            "name": "wilted_rose"
+        },
+        {
+            "name": "rose"
+        },
+        {
+            "name": "grapes"
+        },
+        {
+            "name": "apple"
+        },
+        {
+            "name": "tomato"
+        },
+        {
+            "name": "shrimp"
+        },
+        {
+            "name": "lobster"
+        },
+        {
+            "name": "crab"
+        },
+        {
+            "name": "fork_and_knife"
+        },
+        {
+            "name": "knife"
+        },
+        {
+            "name": "ice"
+        },
+        {
+            "name": "brick"
+        },
+        {
+            "name": "egg"
+        },
+        {
+            "name": "moon"
+        },
+        {
+            "name": "sun"
+        },
+        {
+            "name": "lightning_bolt"
+        },
+        {
+            "name": "hooray"
+        },
+        {
+            "name": "medal"
+        },
+        {
+            "name": "rainbow"
+        },
+        {
+            "name": "snowflake"
+        },
+        {
+            "name": "shooting_star"
+        },
+        {
+            "name": "fire"
+        },
+        {
+            "name": "water"
+        },
+        {
+            "name": "water_wave"
+        },
+        {
+            "name": "sparkles"
+        },
+        {
+            "name": "magic_wand"
+        },
+        {
+            "name": "megaphone"
+        },
+        {
+            "name": "crown"
+        },
+        {
+            "name": "gem"
+        },
+        {
+            "name": "hammer"
+        },
+        {
+            "name": "question_mark"
+        },
+        {
+            "name": "exclamation_mark"
+        },
+        {
+            "name": "exclamation_question_mark"
+        },
+        {
+            "name": "x"
+        },
+        {
+            "name": "check_mark"
+        },
+        {
+            "name": "red_circle"
+        }
+    ]
+}
