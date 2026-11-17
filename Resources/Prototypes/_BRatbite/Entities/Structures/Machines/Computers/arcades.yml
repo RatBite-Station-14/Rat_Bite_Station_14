@@ -1,0 +1,31 @@
+- type: entity
+  name: contraband sweeper
+  description: An NT sponsored game made to rehabilitate prisoners and teach them how to interact with contraband and security.
+  id: MineSweeperArcade
+  parent: ArcadeBase
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/arcade.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: sec-arcade
+    - map: ["computerLayerScreen"]
+      state: screen_contraband_sweeper
+    - map: ["enum.WiresVisualLayers.MaintenancePanel"]
+      state: panel
+      visible: false
+  - type: ActivatableUIRequiresPower
+  - type: StationAiWhitelist
+  - type: MineSweeper
+  - type: ActivatableUI
+    key: enum.MineSweeperUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.MineSweeperUiKey.Key:
+        type: MineSweeperBoundUserInterface
+  - type: Vocalizer
+    minVocalizeInterval: 1m # Arcades are noisy
+    maxVocalizeInterval: 4m
+    hideChat: true
+  - type: DatasetVocalizer
+    dataset: ContrabandSweeperAds
