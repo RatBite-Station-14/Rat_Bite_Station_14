@@ -25,10 +25,8 @@ public sealed partial class LatheSystem
 
         if (comp.CurrentRecipe != null)
         {
-            // RB EDIT START
-            var count = comp.Queue.Sum(x => x.ItemsRequested - x.ItemsPrinted);
-            for (var i = 0; i < count + 1; i++)
-            // RB EDIT END
+            var count = comp.Queue.Count;
+            for (int i = 0; i < count + 1; i++)
             {
                 // Modified FinishProducing method
                 var currentRecipe = _proto.Index(comp.CurrentRecipe.Value);
@@ -73,22 +71,16 @@ public sealed partial class LatheSystem
 
                 // Dequeue recipes on a loop
                 // We do this after the main code since the first recipe is given outside of this method
-                // RB EDIT START
-                var recipeBatch = comp.Queue.First?.Value;
-                if (recipeBatch is null)
-                    break; // Nothing else to do (Which in theory should always be true on the last loop)
-                var recipeProto = recipeBatch.Recipe;
-                if (recipeBatch.ItemsPrinted >= recipeBatch.ItemsRequested || recipeBatch.ItemsRequested == 0)
-                    comp.Queue.RemoveFirst();
-                recipeBatch.ItemsPrinted++;
-                // RB EDIT END
+                var recipeProto = comp.Queue.First().Recipe;
+                comp.Queue.RemoveFirst();
 
                 var recipe = _proto.Index(recipeProto);
                 var time = _reagentSpeed.ApplySpeed(uid, recipe.CompleteTime) * comp.TimeMultiplier;
                 if (time != TimeSpan.Zero)
                     break; // Now it should be handled by another method
 
-                comp.CurrentRecipe = recipeProto; // RB don't cancel craft and use proto directly rather than cast
+                comp.CurrentRecipe = recipe;
+                AbortFabrication(ent, comp, null);
             }
         }
 
