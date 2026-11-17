@@ -67,11 +67,6 @@ public abstract class SharedDeployableGridSystem : EntitySystem
             return false;
         }
 
-        if (_mapSystem.GetAnchoredEntities(xform.GridUid.Value, gridComp, box).Any())
-        {
-            _popup.PopupCoordinates(Loc.GetString("shelter-capsule-fail-no-space"), xform.Coordinates);
-            return false;
-        }
 
         return true;
     }
