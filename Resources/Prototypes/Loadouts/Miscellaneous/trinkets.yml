@@ -40,12 +40,6 @@
     - PlushieCarmella
 
 - type: loadout
-  id: PlushieDanBongos
-  storage:
-    back:
-    - PlushieDanBongos
-
-- type: loadout
   id: PlushieBatch
   storage:
     back:
