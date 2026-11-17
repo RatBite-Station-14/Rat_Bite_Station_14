@@ -49,6 +49,7 @@
   - 10
   - 15
   - 50
+  - 100
 
 - type: injectorMode
   parent: [ BaseSyringeMode, BaseInjectMode ]
