@@ -14,3 +14,9 @@
   values:
     prefix: plushies-batch-
     count: 10
+
+- type: localizedDataset
+  id: PlushiesDanBongos
+  values:
+    prefix: plushies-danbongos-
+    count: 14
