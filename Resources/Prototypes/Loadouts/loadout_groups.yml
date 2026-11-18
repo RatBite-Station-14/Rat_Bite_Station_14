@@ -192,6 +192,7 @@
   - CaptainSatchel
   - CaptainDuffel
   - CaptainMessenger # Frontier
+  - ClothingBagPet #Ratbite - for scurrets and other pets species
 
 - type: loadoutGroup
   id: CaptainOuterClothing
@@ -243,6 +244,7 @@
   - CommonDuffel
   - CommonMessenger # Frontier
   - HoPBackpackIan
+  - ClothingBagPet #Ratbite - for scurrets and other pets species
 
 - type: loadoutGroup
   id: HoPOuterClothing
@@ -348,6 +350,7 @@
   - CommonSatchel
   - CommonDuffel
   - CommonMessenger # Frontier
+  - ClothingBagPet #Ratbite - for scurrets and other pets species
 
 - type: loadoutGroup
   id: PassengerNeck
@@ -442,6 +445,7 @@
   minLimit: 0
   loadouts:
   - LizardPlushieServiceWorker
+  - SleeperbotPlushieServiceWorker
 
 - type: loadoutGroup
   id: ChefHead
@@ -666,6 +670,7 @@
   - BotanistSatchel
   - BotanistDuffel
   - BotanistMessenger # Frontier
+  - ClothingBagPet #Ratbite - for scurrets and other pets species
 
 - type: loadoutGroup
   id: BotanistOuterClothing
@@ -707,6 +712,7 @@
   - ClownSatchel
   - ClownDuffel
   - ClownMessenger # Frontier
+  - ClothingBagPet #Ratbite - for scurrets and other pets species
 
 - type: loadoutGroup
   id: ClownOuterClothing
@@ -777,6 +783,7 @@
   - MimeSatchel
   - MimeDuffel
   - MimeMessenger # Frontier
+  - ClothingBagPet #Ratbite - for scurrets and other pets species
 
 - type: loadoutGroup
   id: MimeOuterClothing
@@ -952,6 +959,7 @@
   - CargoTechnicianSatchel
   - CargoTechnicianDuffel
   - CargoTechnicianMessenger # Frontier
+  - ClothingBagPet #Ratbite - for scurrets and other pets species
 
 - type: loadoutGroup
   id: CargoTechnicianOuterClothing
@@ -990,6 +998,7 @@
   - SalvageSpecialistSatchel
   - SalvageSpecialistDuffel
   - SalvageSpecialistMessenger # Frontier
+  - ClothingBagPet #Ratbite - for scurrets and other pets species
 
 - type: loadoutGroup
   id: SalvageSpecialistOuterClothing
@@ -1111,6 +1120,7 @@
   - StationEngineerSatchel
   - StationEngineerDuffel
   - StationEngineerMessenger # Frontier
+  - ClothingBagPet #Ratbite - for scurrets and other pets species
 
 - type: loadoutGroup
   id: StationEngineerOuterClothing
@@ -1174,6 +1184,7 @@
   - AtmosphericTechnicianSatchel
   - AtmosphericTechnicianDuffel
   - AtmosphericTechnicianMessenger # Frontier
+  - ClothingBagPet #Ratbite - for scurrets and other pets species
 
 - type: loadoutGroup
   id: AtmosphericTechnicianShoes
@@ -1292,6 +1303,7 @@
   - ScientistSatchel
   - ScientistDuffel
   - ScientistMessenger # Frontier
+  - ClothingBagPet #Ratbite - for scurrets and other pets species
 
 - type: loadoutGroup
   id: ScientistOuterClothing
@@ -1481,6 +1493,7 @@
   - SecuritySatchel
   - SecurityDuffel
   - SecurityMessenger # Frontier
+  - ClothingBagPet #Ratbite - for scurrets and other pets species
 
 - type: loadoutGroup
   id: SecurityBelt
@@ -1693,6 +1706,7 @@
   - MedicalDoctorSatchel
   - MedicalDoctorDuffel
   - MedicalDoctorMessenger # Frontier
+  - ClothingBagPet #Ratbite - for scurrets and other pets species
 
 - type: loadoutGroup
   id: MedicalShoes
@@ -1773,6 +1787,7 @@
   - ChemistSatchel
   - ChemistDuffel
   - ChemistMessenger # Frontier
+  - ClothingBagPet #Ratbite - for scurrets and other pets species
 
 - type: loadoutGroup
   id: ChemistJobTrinkets

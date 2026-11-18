@@ -27,7 +27,15 @@ namespace Content.Server._BRatbite.PermaBrig
         [Dependency] private readonly IEntityManager _entManager = default!;
         [Dependency] private readonly IAdminLogManager _adminLogger = default!;
 
+        public sealed class PrisonerData
+        {
+            public int BrigTime { get; set; }
+            public bool Inpatient { get; set; }
+            public bool Dirty { get; set; }
+        }
+
         private readonly List<Task> _pendingSaveTasks = new();
+        private readonly Dictionary<NetUserId, PrisonerData> _cachedPrisoners = new();
 
         private ProtoId<RadioChannelPrototype> SecurityChannel = "Security";
 
@@ -50,6 +58,14 @@ namespace Content.Server._BRatbite.PermaBrig
         /// <returns>An integer containing the new total of minutes to serve.</returns>
         public int AddBrigTime(NetUserId userId, int minutes)
         {
+            if (_cachedPrisoners.TryGetValue(userId, out var prisonerData))
+            {
+                prisonerData.BrigTime += minutes;
+                prisonerData.Dirty = true;
+                _sawmill.Info($"Added {minutes} minutes to {userId} sentence. Current sentence: {prisonerData.BrigTime}");
+                return prisonerData.BrigTime;
+            }
+
             var newTotal = ModifyBrigTime(userId, minutes);
             _sawmill.Info($"Added {minutes} minutes to {userId} sentence. Current sentence: {newTotal}");
             return newTotal;
@@ -137,8 +153,29 @@ namespace Content.Server._BRatbite.PermaBrig
             _adminLogger.Add(LogType.Action,
                 LogImpact.High,
                 $"{name} served {time} minutes of perma after being offline.");
-        }
+            var remainingMinutes = await _db.GetPermaTimeLeft(userId);
+            var isInpatient = await _db.GetPermaInpatient(userId);
 
+            _cachedPrisoners[userId] = new PrisonerData
+            {
+                BrigTime = remainingMinutes,
+                Inpatient = isInpatient,
+                Dirty = false
+            };
+            _sawmill.Info($"Updated cached data for {userId}. Current sentence: {remainingMinutes}, Inpatient: {isInpatient}");
+        }
+        public async Task LoadPlayerPermaDataAsync(NetUserId userId)
+        {
+            var remainingMinutes = await _db.GetPermaTimeLeft(userId);
+            var isInpatient = await _db.GetPermaInpatient(userId);
+
+            _cachedPrisoners[userId] = new PrisonerData
+            {
+                BrigTime = remainingMinutes,
+                Inpatient = isInpatient,
+                Dirty = false
+            };
+        }
         /// <summary>
         /// Removes perma minutes from a player.
         /// </summary>
@@ -147,10 +184,69 @@ namespace Content.Server._BRatbite.PermaBrig
         /// <returns>An integer containing the new total of minutes to serve.</returns>
         public int RemoveBrigTime(NetUserId userId, int minutes)
         {
-            var newTotal = ModifyBrigTime(userId, -minutes);
-            _sawmill.Info($"Removed {minutes} minutes from {userId} sentence. Current sentence: {newTotal}");
-            return newTotal;
+            if (_cachedPrisoners.TryGetValue(userId, out var prisonerData))
+            {
+                prisonerData.BrigTime = Math.Max(0, prisonerData.BrigTime - minutes);
+                prisonerData.Dirty = true;
+
+                _sawmill.Info($"Removed {minutes} minutes from {userId} sentence. Current sentence: {prisonerData.BrigTime}");
+
+                return prisonerData.BrigTime;
+            }
+
+            return 0;
         }
+
+        public async Task SaveCachedPrisonerDataAsync(NetUserId userId, bool evictFromCache = false)
+        {
+            if (_cachedPrisoners.TryGetValue(userId, out var prisonerData) && prisonerData.Dirty)
+            {
+                await _db.SetPermaTimeLeft(userId, prisonerData.BrigTime);
+                await _db.SetPermaInpatient(userId, prisonerData.Inpatient);
+                prisonerData.Dirty = false;
+                _sawmill.Info($"Saved cached data for {userId}. Current sentence: {prisonerData.BrigTime}, Inpatient: {prisonerData.Inpatient}");
+            }
+
+            if (evictFromCache)
+            {
+                _cachedPrisoners.Remove(userId);
+                _sawmill.Info($"Evicted {userId} from cache.");
+            }
+        }
+
+        /// <summary>
+        /// Saves all dirty prisoners when round ends.
+        /// </summary>
+        public async Task SaveAllDirtyPrisonersAsync()
+        {
+            foreach (var kvp in _cachedPrisoners)
+            {
+                var userId = kvp.Key;
+                var prisonerData = kvp.Value;
+
+                if (prisonerData.Dirty)
+                {
+                    await _db.SetPermaTimeLeft(userId, prisonerData.BrigTime);
+                    await _db.SetPermaInpatient(userId, prisonerData.Inpatient);
+                    prisonerData.Dirty = false;
+                    _sawmill.Info($"Saved cached data for {userId}. Current sentence: {prisonerData.BrigTime}, Inpatient: {prisonerData.Inpatient}");
+                }
+            }
+        }
+
+        public void SavePlayer(NetUserId userId, bool evictFromCache = false)
+        {
+            TrackPending(SaveCachedPrisonerDataAsync(userId, evictFromCache));
+        }
+
+        public void SavePrisonerData(NetUserId userId, bool evictFromCache = false) => SavePlayer(userId, evictFromCache);
+
+        public void SaveAllDirtyPrisoners()
+        {
+            TrackPending(SaveAllDirtyPrisonersAsync());
+        }
+
+        public void SaveAllDirtyPrisonerData() => SaveAllDirtyPrisoners();
 
         /// <summary>
         /// Sets perma rounds for player.
@@ -161,6 +257,15 @@ namespace Content.Server._BRatbite.PermaBrig
         /// <remarks>Use the return value instead of calling <see cref="GetBrigSentence(NetUserId)"/> prior to this.</remarks>
         public int SetBrigTime(NetUserId userId, int minutes)
         {
+            if (_cachedPrisoners.TryGetValue(userId, out var prisonerData))
+            {
+                var old = prisonerData.BrigTime;
+                prisonerData.BrigTime = minutes;
+                prisonerData.Dirty = true;
+                _sawmill.Info($"Setting {userId} sentence to {minutes} minutes from {old}");
+                return old;
+            }
+
             var oldSentence = Task.Run(() => SetBrigTimeAsync(userId, minutes)).GetAwaiter().GetResult();
             _sawmill.Info($"Setting {userId} sentence to {minutes} minutes from {oldSentence}");
             return oldSentence;
@@ -173,7 +278,12 @@ namespace Content.Server._BRatbite.PermaBrig
         /// <returns>The players current time in minutes.</returns>
         public int GetBrigTime(NetUserId userId)
         {
-            return Task.Run(() => GetBrigTimeAsync(userId)).GetAwaiter().GetResult();
+            if (_cachedPrisoners.TryGetValue(userId, out var prisonerData))
+            {
+                return prisonerData.BrigTime;
+            }
+
+            return 0;
         }
 
         /// <summary>
@@ -183,7 +293,12 @@ namespace Content.Server._BRatbite.PermaBrig
         /// <returns>The players current time in minutes.</returns>
         public bool GetBrigInpatient(NetUserId userId)
         {
-            return Task.Run(() => GetBrigInpatientAsync(userId)).GetAwaiter().GetResult();
+            if (_cachedPrisoners.TryGetValue(userId, out var prisonerData))
+            {
+                return prisonerData.Inpatient;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -193,6 +308,13 @@ namespace Content.Server._BRatbite.PermaBrig
         /// <returns>The players current time in minutes.</returns>
         public void SetBrigInpatient(NetUserId userId, bool status)
         {
+            if (_cachedPrisoners.TryGetValue(userId, out var prisonerData))
+            {
+                prisonerData.Inpatient = status;
+                prisonerData.Dirty = true;
+                return;
+            }
+
             Task.Run(() => SetBrigInpatientAsync(userId, status)).GetAwaiter().GetResult();
         }
 

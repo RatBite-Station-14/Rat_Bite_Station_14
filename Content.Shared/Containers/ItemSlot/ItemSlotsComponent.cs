@@ -6,7 +6,6 @@ using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.Containers.ItemSlots
 {
@@ -82,12 +81,6 @@ namespace Content.Shared.Containers.ItemSlots
         [DataField]
         public SoundSpecifier? EjectSound = new SoundPathSpecifier("/Audio/Weapons/Guns/MagOut/revolver_magout.ogg");
 
-        [DataField]
-        public TimeSpan? InsertDelay;
-
-        [DataField]
-        public TimeSpan? EjectDelay;
-
         /// <summary>
         ///     The name of this item slot. This will be shown to the user in the verb menu.
         /// </summary>
@@ -107,10 +100,10 @@ namespace Content.Shared.Containers.ItemSlots
         ///     property of that component (e.g., cell slot size category), and this can lead to unnecessary changes
         ///     when mapping.
         /// </remarks>
-        [DataField(readOnly: true, customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
+        [DataField(readOnly: true)]
         [Access(typeof(ItemSlotsSystem), Other = AccessPermissions.ReadWriteExecute)] // FIXME Friends
         [NonSerialized]
-        public string? StartingItem;
+        public EntProtoId? StartingItem;
 
         /// <summary>
         ///     Whether or not an item can currently be ejected or inserted from this slot.
@@ -253,10 +246,23 @@ namespace Content.Shared.Containers.ItemSlots
         /// <summary>
         ///     Lavaland Change: Can light go through the container of this ItemSlot?
         /// </summary>
-
         [DataField]
         [Access(typeof(ItemSlotsSystem), Other = AccessPermissions.ReadWriteExecute)]
         public bool OccludesLight = true;
+
+        /// <summary>
+        ///     Lavaland Change: if specified, doesn't insert the item instantly, but instead after a do-after passes.
+        /// </summary>
+        [DataField]
+        [Access(typeof(ItemSlotsSystem), Other = AccessPermissions.ReadWriteExecute)]
+        public float? InsertDelay;
+
+        /// <summary>
+        ///     Lavaland Change: if specified, doesn't remove the item instantly, but instead after a do-after passes.
+        /// </summary>
+        [DataField]
+        [Access(typeof(ItemSlotsSystem), Other = AccessPermissions.ReadWriteExecute)]
+        public float? EjectDelay;
 
         public void CopyFrom(ItemSlot other)
         {
@@ -278,6 +284,8 @@ namespace Content.Shared.Containers.ItemSlots
             Swap = other.Swap;
             Priority = other.Priority;
             OccludesLight = other.OccludesLight; // Lavaland Change
+            InsertDelay = other.InsertDelay; // Lavaland Change
+            EjectDelay = other.EjectDelay; // Lavaland Change
         }
     }
 

@@ -14,7 +14,7 @@
     CaptainIDStealObjective: 1
     CMOHyposprayStealObjective: 1
     # CMOCrewMonitorStealObjective: 1 # Goobstation
-    CMORapidSyringeGunStealObjective: 1
+    # CMORapidSyringeGunStealObjective: 1   Ratbite - was made unobtainable
     RDHardsuitStealObjective: 1
     NukeDiskStealObjective: 1
     MagbootsStealObjective: 1
@@ -29,7 +29,7 @@
     EnergyShotgunStealObjective: 0.5 # Goobstation
     StealSupermatterSliverObjective: 0.5 # Goobstation - supermatter
     LawbringerStealObjective: 0.5 # Goobstation
-    GeminiProjectorStealObjective: 0.5 # Goobstation
+    # GeminiProjectorStealObjective: 0.5 # Goobstation     Ratbite - removed from lockers
     ExecutiveBriefcaseStealObjective: 0.5 # Goobstation
     JusticeStealObjective: 0.5 # Goobstation
 

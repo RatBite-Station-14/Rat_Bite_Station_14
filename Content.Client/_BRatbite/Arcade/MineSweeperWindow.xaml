@@ -1,0 +1,19 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      SetSize="1100 730"
+                      Name="MineSweeper"
+                      Title="{Loc 'mine-sweeper-title'}">
+    <ScrollContainer
+        VerticalExpand="True"
+        SetWidth="1050"
+        Margin="32, 8, 8, 8">
+        <BoxContainer Orientation="Vertical">
+            <GridContainer Name="Board" VSeparationOverride="0" HSeparationOverride="0">
+            </GridContainer>
+            <BoxContainer Name="GameStateContainer" Orientation="Vertical">
+                <Label Name="GameStateLabel" Margin="8" />
+                <Button Name="RestartButton" Text="{Loc 'mine-sweeper-restart'}" />
+            </BoxContainer>
+        </BoxContainer>
+    </ScrollContainer>
+</controls:FancyWindow>

@@ -1,0 +1,24 @@
+# Nothing fancy, just replicated how cigpacks have storage.
+
+- type: entity
+  parent: [ BaseStorageItem, BaseBagOpenClose ]
+  id: YipPack
+  name: Yipz
+  description: A pack of upper deckys! Now we can get zooted and save the company time by not visiting the smoke pit.. A label reads - WARNING! This product contains nicotine. Nicotine is supposed to be an addictive chemical.
+  components:
+   - type: Sprite
+     sprite: Objects/Consumable/Smokeables/Nic_Pouches/yip_green.rsi
+     state: icon
+   - type: Item
+     size: Tiny
+   - type: Storage # It's a pack of pouches of course!
+     grid:
+     - 0,0,4,1
+     whitelist:
+         tags:
+            - NicotinePouch
+   - type: EntityTableContainerFill
+     containers:
+       storagebase:
+         id: NicotinePouch
+         amount: 10
