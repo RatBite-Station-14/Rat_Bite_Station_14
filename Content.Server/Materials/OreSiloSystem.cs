@@ -31,13 +31,17 @@ public sealed class OreSiloSystem : SharedOreSiloSystem
         var xform = Transform(ent);
 
         // Sneakily uses override with TComponent parameter
-        _entityLookup.GetEntitiesInRange(xform.Coordinates, ent.Comp.Range, _clientLookup);
+        // Ratbite. Moved to be per grid instead
+        // _entityLookup.GetEntitiesInRange(xform.Coordinates, ent.Comp.Range, _clientLookup);
+        var eq = EntityQueryEnumerator<OreSiloClientComponent, TransformComponent>();
 
-        foreach (var client in _clientLookup)
+        while (eq.MoveNext(out var uid, out var comp, out var transform))
         {
+            Entity<OreSiloClientComponent> client = (uid, comp);
             // don't show already-linked clients.
             if (client.Comp.Silo is not null)
                 continue;
+            if (xform.GridUid != transform.GridUid) continue; // Ratbite
 
             var netEnt = GetNetEntity(client);
             var name = Identity.Name(client, EntityManager);

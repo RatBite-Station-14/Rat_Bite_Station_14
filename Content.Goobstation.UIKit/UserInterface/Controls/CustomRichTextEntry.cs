@@ -398,7 +398,7 @@ public struct CustomRichTextEntry
                         Angle.Zero);
             }
 
-            var advanceX = control.SetWidth;
+            var advanceX = control.DesiredPixelSize.X; // Ratbite edit - fixes spacing issues with emojis.
             controlYAdvance = Math.Max(0f, (control.DesiredPixelSize.Y - GetLineHeight(font, uiScale, lineHeightScale)) * invertedScale);
             baseLine += new Vector2(advanceX, 0);
         }

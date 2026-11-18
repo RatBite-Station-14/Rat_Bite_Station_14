@@ -37,6 +37,7 @@
   - ServiceWorker
   - PartyMaker # event-restricted, Goobstation
   - TramDriver # Ratbite - tram station
+  - Prisoner # Ratbite
 
 - type: department
   id: CentralCommand
@@ -140,7 +141,6 @@
   - Warden
   - Brigmedic # Goob
   - SecurityClown # event-restricted, Goob
-  - Prisoner # Ratbite
 
 - type: department
   id: Science

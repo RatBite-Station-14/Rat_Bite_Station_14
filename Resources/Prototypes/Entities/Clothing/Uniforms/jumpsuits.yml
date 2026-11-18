@@ -514,6 +514,7 @@
     #  - state: prisoner-inhand-right
   - type: Clothing
     sprite: _Goobstation/Clothing/Uniforms/Jumpsuit/color/prisoner.rsi # Goob
+    equipDelay: 2 # Ratbite
   - type: SuitSensor
     controlsLocked: true
     randomMode: false
@@ -524,6 +525,7 @@
     - Recyclable
     - PrisonUniform
     - WhitelistChameleon
+  - type: SelfUnremovableClothing # Ratbite
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase, BaseCommandContraband] # Goob

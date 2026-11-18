@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+- type: entity
+  parent: BaseItem
+  id: irishHandheldFlag
+  name: irish pride flag
+  description: "A flag to show off your Irish pride."
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Objects/Misc/Handy_Flags/irish.rsi
+    state: icon
+  - type: Item
+    sprite: _BRatBites/Objects/Misc/Handy_Flags/irish.rsi
+

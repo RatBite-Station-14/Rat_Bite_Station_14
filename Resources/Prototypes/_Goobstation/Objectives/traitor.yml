@@ -91,15 +91,15 @@
   - type: StealCondition
     stealGroup: WeaponSecHeadSword
     owner: job-name-hos
-
-- type: entity
-  parent: BaseCMOStealObjective
-  id: CMORapidSyringeGunStealObjective
-  components:
-  - type: StealCondition
-    stealGroup: RapidSyringeGun
-  - type: Objective
-    difficulty: 3 # Slightly more than normal as it does not fit into storage implant
+# Ratbite - was made unobtainable
+# - type: entity
+#   parent: BaseCMOStealObjective
+#   id: CMORapidSyringeGunStealObjective
+#   components:
+#   - type: StealCondition
+#     stealGroup: RapidSyringeGun
+#   - type: Objective
+#     difficulty: 3 # Slightly more than normal as it does not fit into storage implant
 
 - type: entity
   parent: BaseTraitorStealObjective
@@ -113,16 +113,17 @@
   - type: StealCondition
     stealGroup: ExecutiveBriefcase
 
-- type: entity
-  parent: BaseRDStealObjective
-  id: GeminiProjectorStealObjective
-  components:
-  - type: NotJobRequirement
-    jobs:
-    - ResearchDirector
-  - type: StealCondition
-    stealGroup: ClothingBeltGeminiHoloProjector
-    descriptionText: objective-condition-steal-gemini-projector-description
-  - type: Objective
-    # This bad boy is LITERALLY directly screwed into the RDs spinal cord. Good luck!
-    difficulty: 3.5
+# Ratbite - was made unobtainable
+# - type: entity
+#   parent: BaseRDStealObjective
+#   id: GeminiProjectorStealObjective
+#   components:
+#   - type: NotJobRequirement
+#     jobs:
+#     - ResearchDirector
+#   - type: StealCondition
+#     stealGroup: ClothingBeltGeminiHoloProjector
+#     descriptionText: objective-condition-steal-gemini-projector-description
+#   - type: Objective
+#     # This bad boy is LITERALLY directly screwed into the RDs spinal cord. Good luck!
+#     difficulty: 3.5

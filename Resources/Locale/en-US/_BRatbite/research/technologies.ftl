@@ -10,3 +10,4 @@ research-legal-adv-melee-technology = Theoretical Melee Implements
 research-legal-breacher-technology = Breach Explosives
 research-legal-borg-weapon-technology = Cyborg Armament
 research-legal-vestine-technology = Vestine Synthesis
+research-legal-mind-control = Syndicate Mind Slaving
