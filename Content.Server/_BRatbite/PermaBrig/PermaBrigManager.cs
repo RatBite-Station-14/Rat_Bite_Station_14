@@ -249,7 +249,7 @@ namespace Content.Server._BRatbite.PermaBrig
         public void SaveAllDirtyPrisonerData() => SaveAllDirtyPrisoners();
 
         /// <summary>
-        /// Sets perma rounds for player.
+        /// Sets perma minutes for player.
         /// </summary>
         /// <param name="userId">The player's NetUserId</param>
         /// <param name="minutes">The number of minutes to spend in perma</param>
@@ -420,7 +420,7 @@ namespace Content.Server._BRatbite.PermaBrig
         #region INTERNAL/ASYNC
 
         /// <summary>
-        /// Modifies a player's brig time.
+        /// Modifies a player's brig time in minutes.
         /// </summary>
         /// <param name="userId">The player's NetUserId</param>
         /// <param name="amountDelta">The time in minutes to add to the perma sentence</param>
@@ -489,7 +489,7 @@ namespace Content.Server._BRatbite.PermaBrig
         private async Task SetBrigInpatientAsync(NetUserId userId, bool status) => await _db.SetPermaInpatient(userId, status);
 
         /// <summary>
-        /// Modifies a player's sentence.
+        /// Modifies a player's sentence in minutes.
         /// </summary>
         /// <param name="userId">The player's NetUserId</param>
         /// <param name="amountDelta">The time in minutes to add to the perma sentence</param>
@@ -542,7 +542,7 @@ namespace Content.Server._BRatbite.PermaBrig
         private async Task<int> GetBrigSentenceAsync(NetUserId userId) => await _db.GetPermaRoundsLeft(userId);
 
         /// <summary>
-        /// Modifies a player's sentence.
+        /// Modifies a player's sentence in rounds.
         /// </summary>
         /// <param name="userId">The player's NetUserId</param>
         /// <param name="amountDelta">The rounds in perma that will to add.</param>
@@ -557,7 +557,7 @@ namespace Content.Server._BRatbite.PermaBrig
         }
 
         /// <summary>
-        /// Modifies a player's PPpoints total.
+        /// Adds to a player's PPpoints total.
         /// </summary>
         /// <param name="userId">The player's NetUserId</param>
         /// <param name="amountDelta">The PPpoints to add.</param>
