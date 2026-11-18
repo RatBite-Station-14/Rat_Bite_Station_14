@@ -41,6 +41,7 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared._BRatbite.Chemistry;
 using Robust.Shared.Timing;
+using Robust.Shared.Enums;
 
 namespace Content.Server._BRatbite.PermaBrig;
 
@@ -94,8 +95,29 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
 
         SubscribeLocalEvent<RulePlayerSpawningEvent>(OnPlayerSpawning);
         SubscribeLocalEvent<PlayerBeforeSpawnEvent>(OnPlayerBeforeSpawning);
-
+        _player.PlayerStatusChanged += OnPlayerStatusChanged;
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup);
         _sawmill = Logger.GetSawmill("server_permabrig");
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+        _player.PlayerStatusChanged -= OnPlayerStatusChanged;
+    }
+
+    private void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs e)
+    {
+        if (e.NewStatus == SessionStatus.Disconnected)
+        {
+            _permaBrigManager.SavePrisonerData(e.Session.UserId, evictFromCache: true);
+
+        }
+    }
+
+    private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
+    {
+        _permaBrigManager.SaveAllDirtyPrisoners();
     }
 
     public override void Update(float frameTime)
