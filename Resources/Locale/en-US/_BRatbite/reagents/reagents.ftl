@@ -28,3 +28,5 @@ reagent-name-aiogah = All-in-One Gender Affirming Hormone
 reagent-desc-aiogah = A concoction of hormones and chemicals that miraculously rearrange the DNA of the metaboliser, completely switching their biological sex. Not really a horomone... but it gets the job done.
 reagent-name-primed-ichor = primed ichor
 reagent-desc-primed-ichor = A supercharged variant of ichor laced with an unknown telecrystal-derived catalyst. It metabolizes violently fast, yet somehow knits wounds back together quickly enough to watch bruises fade, bones creak into place, and organs gurgle as they reform beneath the skin.
+reagent-name-poop = Poop Chemical
+reagent-desc-poop = Okay, who the fuck thought this was a good idea.
