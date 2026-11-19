@@ -694,6 +694,7 @@
   loadouts:
   - JesterHat
   - JesterAltHat
+  - JesterHatAltPurple #Ratbite
 
 - type: loadoutGroup
   id: ClownJumpsuit
@@ -703,6 +704,7 @@
   - ClownSkirt
   - JesterSuit
   - JesterAltSuit
+  - JesterAltSuitPurple #ratbite
 
 - type: loadoutGroup
   id: ClownBackpack
@@ -728,6 +730,7 @@
   loadouts:
   - ClownShoes
   - JesterShoes
+  - JesterShoesAltPurple #ratbite
 
 - type: loadoutGroup
   id: SurvivalClown
