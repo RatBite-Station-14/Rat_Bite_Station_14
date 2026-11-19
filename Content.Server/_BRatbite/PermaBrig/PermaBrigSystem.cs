@@ -549,4 +549,51 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
 
         _solutionContainerSystem.TryAddReagent(bloodstream.BloodSolution.Value, new ReagentId(_ketamine, null), _amountToInject, out _);
     }
+
+    public void UpdateInGamePrisonerSentence(NetUserId userId, int newSentenceMinutes)
+    {
+        var newExpireTime = Timing.CurTime + TimeSpan.FromMinutes(newSentenceMinutes);
+
+        var prisonerQuery = EntityQueryEnumerator<PrisonerComponent>();
+        while (prisonerQuery.MoveNext(out var prisonerBodyUid, out var prisoner))
+        {
+            if (prisoner.OriginalMindId is not { } mindId)
+                continue;
+
+            if (!TryComp<MindComponent>(mindId, out var mindComp))
+                continue;
+
+            if (mindComp.UserId != userId)
+                continue;
+
+            prisoner.PermaBrigSentenceExpireTime = newExpireTime;
+            Dirty(prisonerBodyUid, prisoner);
+
+            if (!_inventory.TryGetSlotEntity(prisonerBodyUid, "id", out var idUid))
+                continue;
+
+            if (TryComp<GenpopIdCardComponent>(idUid.Value, out var genpopCard))
+            {
+                genpopCard.SentenceDuration = TimeSpan.FromMinutes(newSentenceMinutes);
+                Dirty(idUid.Value, genpopCard);
+            }
+
+            _idCard.SetExpireTime(idUid.Value, newExpireTime);
+
+            if (newSentenceMinutes <= 0)
+            {
+                _sawmill.Info($"Prisoner {mindComp.CharacterName} ({userId}) has been released from perma brig.");
+                if (_player.TryGetSessionById(userId, out var session))
+                {
+                    _chat.ChatMessageToOne(ChatChannel.Server,
+                        Loc.GetString("perma-prisoner-release"),
+                        Loc.GetString("chat-manager-server-wrap-message", ("message", Loc.GetString("perma-prisoner-release"))),
+                        default,
+                        false,
+                        session.Channel,
+                        Color.Red);
+                }
+            }
+        }
+    }
 }
