@@ -1,0 +1,10 @@
+- type: entity
+  parent: [ClothingHeadBase, BaseCentcommContraband]
+  id: ClothingHeadHatCentcomBeret
+  name: centcom beret
+  description: A durathread beret worn by the most decorated of employees.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Head/Hats/ccberet.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Head/Hats/ccberet.rsi
