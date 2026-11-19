@@ -4,6 +4,7 @@ using System.Numerics;
 using Content.Shared.Administration.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
+using Robust.Shared.Player;
 
 namespace Content.Client.Administration.Systems;
 
@@ -17,6 +18,16 @@ public sealed class KillSignSystem : EntitySystem
         SubscribeLocalEvent<KillSignComponent, ComponentStartup>(KillSignAdded);
         SubscribeLocalEvent<KillSignComponent, ComponentShutdown>(KillSignRemoved);
         SubscribeLocalEvent<KillSignComponent, AfterAutoHandleStateEvent>(AfterAutoHandleState);
+
+        // recheck when the player attaches to the entity
+        SubscribeLocalEvent<KillSignComponent, LocalPlayerAttachedEvent>(RefreshKillsign);
+        SubscribeLocalEvent<KillSignComponent,
+            LocalPlayerDetachedEvent>(RefreshKillsign);
+    }
+
+    private void RefreshKillsign<TPlayerEv>(Entity<KillSignComponent> signedMob, ref TPlayerEv _)
+    {
+        RemoveKillsign(signedMob); AddKillsign(signedMob);
     }
 
     private void KillSignRemoved(Entity<KillSignComponent> ent, ref ComponentShutdown args)
