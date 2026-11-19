@@ -29,6 +29,7 @@
     components:
     - type: SurgerySpeedModifier
       speedModifier: 1.25
+    - type: CPRTraining # Ratbite
 
 - type: startingGear
   id: ParamedicGear
