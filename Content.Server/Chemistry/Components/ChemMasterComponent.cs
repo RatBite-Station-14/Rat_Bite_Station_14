@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Chemistry.EntitySystems;
-using Content.Shared._BRatbite.Chemistry;
 using Content.Shared.Chemistry;
 using Robust.Shared.Audio;
 
@@ -13,7 +12,7 @@ namespace Content.Server.Chemistry.Components
     /// </summary>
     [RegisterComponent]
     [Access(typeof(ChemMasterSystem))]
-    public sealed partial class ChemMasterComponent : SharedChemMasterComponent
+    public sealed partial class ChemMasterComponent : Component
     {
         [DataField("pillType"), ViewVariables(VVAccess.ReadWrite)]
         public uint PillType = 0;
