@@ -41,6 +41,7 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared._BRatbite.Chemistry;
 using Robust.Shared.Timing;
+using Robust.Shared.Enums;
 
 namespace Content.Server._BRatbite.PermaBrig;
 
@@ -94,8 +95,29 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
 
         SubscribeLocalEvent<RulePlayerSpawningEvent>(OnPlayerSpawning);
         SubscribeLocalEvent<PlayerBeforeSpawnEvent>(OnPlayerBeforeSpawning);
-
+        _player.PlayerStatusChanged += OnPlayerStatusChanged;
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup);
         _sawmill = Logger.GetSawmill("server_permabrig");
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+        _player.PlayerStatusChanged -= OnPlayerStatusChanged;
+    }
+
+    private void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs e)
+    {
+        if (e.NewStatus == SessionStatus.Disconnected)
+        {
+            _permaBrigManager.SavePrisonerData(e.Session.UserId, evictFromCache: true);
+
+        }
+    }
+
+    private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
+    {
+        _permaBrigManager.SaveAllDirtyPrisoners();
     }
 
     public override void Update(float frameTime)
@@ -526,5 +548,52 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
             return;
 
         _solutionContainerSystem.TryAddReagent(bloodstream.BloodSolution.Value, new ReagentId(_ketamine, null), _amountToInject, out _);
+    }
+
+    public void UpdateInGamePrisonerSentence(NetUserId userId, int newSentenceMinutes)
+    {
+        var newExpireTime = Timing.CurTime + TimeSpan.FromMinutes(newSentenceMinutes);
+
+        var prisonerQuery = EntityQueryEnumerator<PrisonerComponent>();
+        while (prisonerQuery.MoveNext(out var prisonerBodyUid, out var prisoner))
+        {
+            if (prisoner.OriginalMindId is not { } mindId)
+                continue;
+
+            if (!TryComp<MindComponent>(mindId, out var mindComp))
+                continue;
+
+            if (mindComp.UserId != userId)
+                continue;
+
+            prisoner.PermaBrigSentenceExpireTime = newExpireTime;
+            Dirty(prisonerBodyUid, prisoner);
+
+            if (!_inventory.TryGetSlotEntity(prisonerBodyUid, "id", out var idUid))
+                continue;
+
+            if (TryComp<GenpopIdCardComponent>(idUid.Value, out var genpopCard))
+            {
+                genpopCard.SentenceDuration = TimeSpan.FromMinutes(newSentenceMinutes);
+                Dirty(idUid.Value, genpopCard);
+            }
+
+            _idCard.SetExpireTime(idUid.Value, newExpireTime);
+
+            if (newSentenceMinutes <= 0)
+            {
+                _sawmill.Info($"Prisoner {mindComp.CharacterName} ({userId}) has been released from perma brig.");
+                if (_player.TryGetSessionById(userId, out var session))
+                {
+                    _chat.ChatMessageToOne(ChatChannel.Server,
+                        Loc.GetString("perma-prisoner-release"),
+                        Loc.GetString("chat-manager-server-wrap-message", ("message", Loc.GetString("perma-prisoner-release"))),
+                        default,
+                        false,
+                        session.Channel,
+                        Color.Red);
+                }
+            }
+        }
     }
 }

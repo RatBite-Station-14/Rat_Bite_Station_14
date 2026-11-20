@@ -3,6 +3,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using System.Text.RegularExpressions;
 using Content.Client.Administration.Managers;
 using Content.Client.Chat;
 using Content.Client.Chat.Managers;
@@ -900,6 +901,13 @@ public sealed partial class ChatUIController : UIController
                         msg.WrappedMessage = SharedChatSystem.InjectTagAroundString(msg, codeword, "color", codewordData.Color.ToHex());
                 }
             }
+        }
+
+        // RB EDIT BEGIN
+        // Emojis...
+        if (msg.Channel == ChatChannel.OOC)
+        {
+            msg.WrappedMessage = Regex.Replace(msg.WrappedMessage, ":([a-z0-9_+-]{1,32}):", "[emoji=\"$1\"]");
         }
 
         #region Goobstation - Highlight chat sounds/pings!

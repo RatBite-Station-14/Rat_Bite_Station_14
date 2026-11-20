@@ -62,6 +62,7 @@
   components:
   - type: DelayedGhostRole
     job: SecurityOfficer
+    description: ghost-role-information-reinforcement-sec-description  # Ratbite - description change :joel:
     name: ghost-role-information-reinforcement-sec-name
     requirements:
     - !type:DepartmentTimeRequirement

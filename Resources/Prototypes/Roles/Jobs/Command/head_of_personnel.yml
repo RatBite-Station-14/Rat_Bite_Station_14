@@ -42,6 +42,7 @@
   access:
   - Command
   - HeadOfPersonnel
+  - DepartmentalGuard # Ratbite
   - Bar
   - Service
   - Maintenance

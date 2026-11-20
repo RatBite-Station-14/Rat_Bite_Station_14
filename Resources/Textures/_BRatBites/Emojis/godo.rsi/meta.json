@@ -1,0 +1,13 @@
+﻿{
+    "version": 1,
+    "license": "CC-0",
+    "size": {
+        "x": 16,
+        "y": 16
+    },
+    "states": [
+        {
+            "name": "icon"
+        }
+    ]
+}

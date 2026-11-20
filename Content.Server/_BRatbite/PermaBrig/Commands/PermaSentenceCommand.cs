@@ -20,6 +20,7 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
         [Dependency] private readonly IChatManager _chatManager = default!;
         [Dependency] private readonly IAdminManager _adminManager = default!;
         [Dependency] private readonly PlayTimeTrackingManager _tracking = default!;
+        [Dependency] private readonly IEntitySystemManager _systems = default!;
         public string Command => "perma:sentence";
         public string Description => "check your/another players Brig Sentence";
 
@@ -121,6 +122,9 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
     {
         [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
         [Dependency] private readonly IChatManager _chatManager = default!;
+        [Dependency] private readonly IEntitySystemManager _systems = default!;
+
+
         public string Command => "perma:brig";
         public string Description => "Add time to player's brig sentence";
 
@@ -143,8 +147,9 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
             }
 
             var minutes = PlayTimeCommandUtilities.CountMinutes(args[1]);
-
-            _permaBrigManager.AddBrigTime(targetPlayer, minutes);
+            var newTotal = _permaBrigManager.AddBrigTime(targetPlayer, minutes);
+            var permaSystem = _systems.GetEntitySystem<PermaBrigSystem>();
+            permaSystem.UpdateInGamePrisonerSentence(targetPlayer, newTotal);
 
             var message = Loc.GetString("perma-add-time-to-player",
                 ("minutes", minutes),
@@ -179,6 +184,7 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
     {
         [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
         [Dependency] private readonly IChatManager _chatManager = default!;
+        [Dependency] private readonly IEntitySystemManager _systems = default!;
         public string Command => "perma:pardon";
         public string Description => "Remove time from player's brig sentence";
 
@@ -201,7 +207,10 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
             }
 
             var minutes = PlayTimeCommandUtilities.CountMinutes(args[1]);
-            _permaBrigManager.RemoveBrigTime(targetPlayer, minutes);
+            var newTotal = _permaBrigManager.RemoveBrigTime(targetPlayer, minutes);
+
+            var permaSystem = _systems.GetEntitySystem<PermaBrigSystem>();
+            permaSystem.UpdateInGamePrisonerSentence(targetPlayer, newTotal);
 
             var message = Loc.GetString("perma-rem-time-to-player",
                 ("minutes", minutes),
@@ -236,6 +245,8 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
     {
         [Dependency] private readonly PermaBrigManager _permaBrigManager = default!;
         [Dependency] private readonly IChatManager _chatManager = default!;
+        [Dependency] private readonly IEntitySystemManager _systems = default!;
+
         public string Command => "perma:set";
         public string Description => "Set the time player is serving in brig";
 
@@ -260,6 +271,8 @@ namespace Content.Server._BRatbite.PermaBrig.Commands
             var minutes = PlayTimeCommandUtilities.CountMinutes(args[1]);
 
             _permaBrigManager.SetBrigTime(targetPlayer, minutes);
+
+            _systems.GetEntitySystem<PermaBrigSystem>().UpdateInGamePrisonerSentence(targetPlayer, minutes);
 
             var message = Loc.GetString("perma-set-time-to-player",
                 ("minutes", minutes),

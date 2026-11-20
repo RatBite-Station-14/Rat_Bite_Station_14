@@ -30,7 +30,8 @@ public sealed class GhostCharacterSpawnerSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<GhostCharacterSpawnerComponent, TakeGhostRoleEvent>(OnTakeGhostRole);
+        SubscribeLocalEvent<GhostCharacterSpawnerComponent, TakeGhostRoleEvent>(OnTakeGhostRole,
+            before: [typeof(GhostRoleSystem)]); // RatBite -- Patch to fix ghosts being unable to take roles
         SubscribeLocalEvent<AntagGhostCharacterRuleComponent, AntagSelectEntityEvent>(OnSelectAntag);
     }
 

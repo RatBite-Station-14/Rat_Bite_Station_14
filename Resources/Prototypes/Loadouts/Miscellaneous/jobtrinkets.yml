@@ -61,6 +61,18 @@
     - PlushieLizardJobServiceworker
 
 - type: loadout
+  id: SleeperbotPlushieServiceWorker
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobServiceWorker
+      time: 72000 # 20hr
+  storage:
+    back:
+    - PlushieSleeperbot
+
+- type: loadout
   id: LizardPlushieChef
   effects:
   - !type:JobRequirementLoadoutEffect

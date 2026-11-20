@@ -18,6 +18,7 @@ using Robust.Shared.Containers;
 // Shitmed Change
 using Content.Shared._Shitmed.Targeting;
 using Content.Goobstation.Common.Atmos;
+using Content.Shared.Body.Systems;
 
 namespace Content.Server.Atmos.EntitySystems
 {
@@ -29,6 +30,7 @@ namespace Content.Server.Atmos.EntitySystems
         [Dependency] private readonly IAdminLogManager _adminLogger= default!;
         [Dependency] private readonly InventorySystem _inventorySystem = default!;
         [Dependency] private readonly SpellbladeSystem _spellblade = default!; // Goobstation
+        [Dependency] private readonly SharedBodySystem _body = default!;
         private const float UpdateTimer = 1f;
         private float _timer;
 
@@ -127,6 +129,9 @@ namespace Content.Server.Atmos.EntitySystems
 
                 foreach (var slot in barotrauma.ProtectionSlots)
                 {
+                    // Ratbite: skip slots if no limb is attached
+                    if (_body.IsMissingBodyPart(uid, slot, out var _)) continue;
+                    // Ratbite end
                     if (!_inventorySystem.TryGetSlotEntity(uid, slot, out var equipment, inv, contMan)
                         || !TryGetPressureProtectionValues(equipment.Value,
                             out var itemHighMultiplier,

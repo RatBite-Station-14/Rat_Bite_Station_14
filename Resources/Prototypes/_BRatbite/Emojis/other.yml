@@ -1,0 +1,5 @@
+- type: emoji
+  id: godo
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/godo.rsi
+    state: icon

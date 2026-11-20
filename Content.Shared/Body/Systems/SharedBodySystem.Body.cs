@@ -40,6 +40,7 @@ using Content.Shared.Popups;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
 using Content.Goobstation.Maths.FixedPoint;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared.Body.Systems;
 
@@ -511,23 +512,36 @@ public partial class SharedBodySystem
             || HasComp<BorgChassisComponent>(args.EquipTarget))
             return;
 
-        if (TryGetPartFromSlotContainer(args.Slot, out var bodyPart)
+        // Ratbite: Moved logic to a helper function
+        if (IsMissingBodyPart((ent.Owner, ent.Comp), args.Slot, out var bodyPartString))
+        {
+            _popup.PopupClient(Loc.GetString("equip-part-missing-error",
+                                             ("target", args.EquipTarget), ("part", bodyPartString)), args.Equipee, args.Equipee);
+            args.Cancel();
+        }
+    }
+
+    // Ratbite: helper method
+    public bool IsMissingBodyPart(Entity<BodyComponent?> ent, string slotName, [NotNullWhen(true)] out string? partName)
+    {
+        partName = null;
+        if (!Resolve(ent.Owner, ref ent.Comp)) return false;
+        if (ent.Comp.Prototype is not { } bodyPrototype) return false;
+        if (TryGetPartFromSlotContainer(slotName, out var bodyPart)
             && bodyPart is not null)
         {
             var bodyPartString = bodyPart.Value.ToString().ToLower();
-            var prototype = Prototypes.Index(targetBody.Prototype.Value);
+            partName = bodyPartString;
+            var prototype = Prototypes.Index(bodyPrototype);
             var hasPartConnection = prototype.Slots.Values.Any(slot =>
                 slot.Connections.Contains(bodyPartString));
-
             if (hasPartConnection
-                && !GetBodyChildrenOfType(args.EquipTarget, bodyPart.Value).Any())
-            {
-                _popup.PopupClient(Loc.GetString("equip-part-missing-error",
-                    ("target", args.EquipTarget), ("part", bodyPartString)), args.Equipee, args.Equipee);
-                args.Cancel();
-            }
+                && !GetBodyChildrenOfType(ent, bodyPart.Value).Any())
+                return true;
         }
+        return false;
     }
+    // Ratbite end
 
     private void OnRejuvenate(EntityUid ent, BodyComponent body, ref RejuvenateEvent args)
     {
@@ -634,21 +648,12 @@ public partial class SharedBodySystem
                     }
                     else
                     {
-                        var childPart = Spawn(connectionSlot.Part, new EntityCoordinates(parentEntity, Vector2.Zero));
-                        cameFromEntities[connection] = childPart;
-
-                        var childPartComponent = Comp<BodyPartComponent>(childPart);
-
-                        var partSlot = new BodyPartSlot(connection, childPartComponent.PartType, childPartComponent.Symmetry);
-                        childPartComponent.ParentSlot = partSlot;
-                        parentPartComponent.Children.TryAdd(connection, partSlot);
-
-                        Dirty(parentEntity, parentPartComponent);
-                        Dirty(childPart, childPartComponent);
-
-                        Containers.Insert(childPart, container);
-
-                        SetupOrgans((childPart, childPartComponent), connectionSlot.Organs);
+                        if (!CreateBodyPart((parentEntity, parentPartComponent), connectionSlot, connection, out var childPart))
+                        {
+                            Log.Error($"Could not create slot for connection {connection} in body {prototype.ID}");
+                            continue;
+                        }
+                        cameFromEntities[connection] = childPart.Value;
                     }
                 }
                 else
@@ -700,6 +705,34 @@ public partial class SharedBodySystem
         }
     }
     // Goob edit end
+
+    // Ratbite helper function
+    public bool CreateBodyPart(Entity<BodyPartComponent> ent, BodyPrototypeSlot part, string connection, [NotNullWhen(true)] out EntityUid? childPart)
+    {
+        childPart = Spawn(part.Part, new EntityCoordinates(ent.Owner, Vector2.Zero));
+
+        var childPartComponent = Comp<BodyPartComponent>(childPart.Value);
+
+        var partSlot = CreatePartSlot(ent.Owner, connection, childPartComponent.PartType, childPartComponent.Symmetry, ent.Comp);
+        childPartComponent.ParentSlot = partSlot;
+
+        Dirty(ent.Owner, ent.Comp);
+        Dirty(childPart.Value, childPartComponent);
+
+        if (partSlot is null)
+        {
+            QueueDel(childPart);
+            childPart = null;
+            return false;
+        }
+
+        var container = Containers.GetContainer(ent.Owner, GetPartSlotContainerId(connection));
+        Containers.Insert(childPart.Value, container);
+
+        SetupOrgans((childPart.Value, childPartComponent), part.Organs);
+        return true;
+    }
+    // Ratbite end
 
     /// <summary>
     /// Gets all child body parts of this entity that have component T, including the root entity if it has component T.

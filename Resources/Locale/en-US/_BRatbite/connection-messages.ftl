@@ -1,0 +1,1 @@
+ratbite-ban-banned-5 = If you don't recognise this ban, try turning off or restarting your VPN.
