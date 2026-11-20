@@ -1,0 +1,19 @@
+- type: entityTable
+  id: FillLockerUtilitiesSupplies
+  table: !type:AllSelector
+    children:
+    - id: ClothingBeltUtilityFilled
+    - id: SprayBottleSpaceCleaner
+    - id: SprayBottleSpaceCleaner
+
+- type: entity
+  id: WardrobeUtilitiesSupplies
+  suffix: Filled
+  parent: ClosetWallAtmospherics
+  name: utilities supplies locker
+  description: "This locker contains utilities supplies for department."
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillLockerUtilitiesSupplies
