@@ -1,0 +1,13 @@
+- type: department
+  id: DepartmentalGuards
+  name: department-departmental-guards
+  description: department-departmental-guards-description
+  color: "#f542ef"
+  primary: false
+  roles:
+  - CargoInsurance
+  - ScicurityGuard
+  - EngiSentry
+  - MedOrderly
+  editorHidden: true
+

@@ -804,6 +804,9 @@ public sealed class GhostRoleSystem : EntitySystem
 
     private void OnSpawnerTakeRole(EntityUid uid, GhostRoleMobSpawnerComponent component, ref TakeGhostRoleEvent args)
     {
+        if (args.TookRole) // RatBite -- Patch to fix ghosts being unable to take roles
+            return;
+
         if (!TryComp(uid, out GhostRoleComponent? ghostRole) ||
             !CanTakeGhost(uid, ghostRole))
         {
@@ -850,6 +853,9 @@ public sealed class GhostRoleSystem : EntitySystem
 
     private void OnTakeoverTakeRole(EntityUid uid, GhostTakeoverAvailableComponent component, ref TakeGhostRoleEvent args)
     {
+        if (args.TookRole) // RatBite -- Patch to fix ghosts being unable to take roles
+            return;
+
         if (!TryComp(uid, out GhostRoleComponent? ghostRole) ||
             !CanTakeGhost(uid, ghostRole))
         {

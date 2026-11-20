@@ -1,0 +1,845 @@
+- type: emoji
+  id: white_heart
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: white_heart
+
+- type: emoji
+  id: revolving_hearts
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: revolving_hearts
+
+- type: emoji
+  id: sparkling_heart
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: sparkling_heart
+
+- type: emoji
+  id: mending_heart
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: mending_heart
+
+- type: emoji
+  id: pulseheart
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: pulseheart
+
+- type: emoji
+  id: purple_heart
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: purple_heart
+
+- type: emoji
+  id: yellow_heart
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: yellow_heart
+
+- type: emoji
+  id: orange_heart
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: orange_heart
+
+- type: emoji
+  id: broken_heart
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: broken_heart
+
+- type: emoji
+  id: black_heart
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: black_heart
+
+- type: emoji
+  id: green_heart
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: green_heart
+
+- type: emoji
+  id: blue_heart
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: blue_heart
+
+- type: emoji
+  id: two_hearts
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: two_hearts
+
+- type: emoji
+  id: brown_heart
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: brown_heart
+
+- type: emoji
+  id: red_heart
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: red_heart
+
+- type: emoji
+  id: heart_on_fire
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: heart_on_fire
+
+- type: emoji
+  id: grinning
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: grinning
+
+- type: emoji
+  id: rofl
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: rofl
+
+- type: emoji
+  id: sweat_smile
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: sweat_smile
+
+- type: emoji
+  id: joy
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: joy
+
+- type: emoji
+  id: slight_smile
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: slight_smile
+
+- type: emoji
+  id: upside_down
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: upside_down
+
+- type: emoji
+  id: melting_face
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: melting_face
+
+- type: emoji
+  id: wink
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: wink
+
+- type: emoji
+  id: relaxed
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: relaxed
+
+- type: emoji
+  id: halo
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: halo
+
+- type: emoji
+  id: smiling_face_with_3_hearts
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: smiling_face_with_3_hearts
+
+- type: emoji
+  id: heart_eyes
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: heart_eyes
+
+- type: emoji
+  id: star_struck
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: star_struck
+
+- type: emoji
+  id: kissing_heart
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: kissing_heart
+
+- type: emoji
+  id: smiling_face_with_tear
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: smiling_face_with_tear
+
+- type: emoji
+  id: money_mouth
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: money_mouth
+
+- type: emoji
+  id: shushing_face
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: shushing_face
+
+- type: emoji
+  id: thinking
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: thinking
+
+- type: emoji
+  id: salute
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: salute
+
+- type: emoji
+  id: zipper_mouth
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: zipper_mouth
+
+- type: emoji
+  id: face_with_raised_eyebrow
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: face_with_raised_eyebrow
+
+- type: emoji
+  id: neutral_face
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: neutral_face
+
+- type: emoji
+  id: no_mouth
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: no_mouth
+
+- type: emoji
+  id: expressionless
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: expressionless
+
+- type: emoji
+  id: face_in_clouds
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: face_in_clouds
+
+- type: emoji
+  id: smirk
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: smirk
+
+- type: emoji
+  id: unamused
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: unamused
+
+- type: emoji
+  id: rolling_eyes
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: rolling_eyes
+
+- type: emoji
+  id: grimacing
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: grimacing
+
+- type: emoji
+  id: face_exhaling
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: face_exhaling
+
+- type: emoji
+  id: pensive
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: pensive
+
+- type: emoji
+  id: drool
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: drool
+
+- type: emoji
+  id: sleeping
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: sleeping
+
+- type: emoji
+  id: head_bandage
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: head_bandage
+
+- type: emoji
+  id: nauseated_face
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: nauseated_face
+
+- type: emoji
+  id: face_vomiting
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: face_vomiting
+
+- type: emoji
+  id: sneezing_face
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: sneezing_face
+
+- type: emoji
+  id: cold_face
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: cold_face
+
+- type: emoji
+  id: exploding_head
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: exploding_head
+
+- type: emoji
+  id: partying_face
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: partying_face
+
+- type: emoji
+  id: sunglasses
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: sunglasses
+
+- type: emoji
+  id: nerd
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: nerd
+
+- type: emoji
+  id: flushed
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: flushed
+
+- type: emoji
+  id: face_holding_back_tears
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: face_holding_back_tears
+
+- type: emoji
+  id: fearful
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: fearful
+
+- type: emoji
+  id: sob
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: sob
+
+- type: emoji
+  id: scream
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: scream
+
+- type: emoji
+  id: yawning
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: yawning
+
+- type: emoji
+  id: triumph
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: triumph
+
+- type: emoji
+  id: rage
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: rage
+
+- type: emoji
+  id: imp
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: imp
+
+- type: emoji
+  id: smiling_imp
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: smiling_imp
+
+- type: emoji
+  id: skull
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: skull
+
+- type: emoji
+  id: skull_crossbones
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: skull_crossbones
+
+- type: emoji
+  id: poop
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: poop
+
+- type: emoji
+  id: clown
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: clown
+
+- type: emoji
+  id: robot
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: robot
+
+- type: emoji
+  id: wind
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: wind
+
+- type: emoji
+  id: waving_hand
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: waving_hand
+
+- type: emoji
+  id: ok_hand
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: ok_hand
+
+- type: emoji
+  id: pinched_fingers
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: pinched_fingers
+
+- type: emoji
+  id: pinching_hand
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: pinching_hand
+
+- type: emoji
+  id: peace
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: peace
+
+- type: emoji
+  id: fingers_crossed
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: fingers_crossed
+
+- type: emoji
+  id: pointing_left
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: pointing_left
+
+- type: emoji
+  id: pointing_right
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: pointing_right
+
+- type: emoji
+  id: pointing_up
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: pointing_up
+
+- type: emoji
+  id: pointing_down
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: pointing_down
+
+- type: emoji
+  id: middle_finger
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: middle_finger
+
+- type: emoji
+  id: pointing_forwards
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: pointing_forwards
+
+- type: emoji
+  id: thumbs_down
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: thumbs_down
+
+- type: emoji
+  id: thumbs_up
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: thumbs_up
+
+- type: emoji
+  id: clap
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: clap
+
+- type: emoji
+  id: heart_hands
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: heart_hands
+
+- type: emoji
+  id: handshake
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: handshake
+
+- type: emoji
+  id: pray
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: pray
+
+- type: emoji
+  id: writing
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: writing
+
+- type: emoji
+  id: nail_care
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: nail_care
+
+- type: emoji
+  id: muscle
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: muscle
+
+- type: emoji
+  id: ear
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: ear
+
+- type: emoji
+  id: lungs
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: lungs
+
+- type: emoji
+  id: heart
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: heart
+
+- type: emoji
+  id: brain
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: brain
+
+- type: emoji
+  id: bone
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: bone
+
+- type: emoji
+  id: tooth
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: tooth
+
+- type: emoji
+  id: eyes
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: eyes
+
+- type: emoji
+  id: speaking
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: speaking
+
+- type: emoji
+  id: hug
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: hug
+
+- type: emoji
+  id: camel
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: camel
+
+- type: emoji
+  id: wilted_rose
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: wilted_rose
+
+- type: emoji
+  id: rose
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: rose
+
+- type: emoji
+  id: grapes
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: grapes
+
+- type: emoji
+  id: apple
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: apple
+
+- type: emoji
+  id: tomato
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: tomato
+
+- type: emoji
+  id: shrimp
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: shrimp
+
+- type: emoji
+  id: lobster
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: lobster
+
+- type: emoji
+  id: crab
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: crab
+
+- type: emoji
+  id: fork_and_knife
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: fork_and_knife
+
+- type: emoji
+  id: knife
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: knife
+
+- type: emoji
+  id: ice
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: ice
+
+- type: emoji
+  id: brick
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: brick
+
+- type: emoji
+  id: egg
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: egg
+
+- type: emoji
+  id: moon
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: moon
+
+- type: emoji
+  id: sun
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: sun
+
+- type: emoji
+  id: lightning_bolt
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: lightning_bolt
+
+- type: emoji
+  id: hooray
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: hooray
+
+- type: emoji
+  id: medal
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: medal
+
+- type: emoji
+  id: rainbow
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: rainbow
+
+- type: emoji
+  id: snowflake
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: snowflake
+
+- type: emoji
+  id: shooting_star
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: shooting_star
+
+- type: emoji
+  id: fire
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: fire
+
+- type: emoji
+  id: water
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: water
+
+- type: emoji
+  id: water_wave
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: water_wave
+
+- type: emoji
+  id: sparkles
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: sparkles
+
+- type: emoji
+  id: magic_wand
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: magic_wand
+
+- type: emoji
+  id: megaphone
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: megaphone
+
+- type: emoji
+  id: crown
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: crown
+
+- type: emoji
+  id: gem
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: gem
+
+- type: emoji
+  id: hammer
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: hammer
+
+- type: emoji
+  id: question_mark
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: question_mark
+
+- type: emoji
+  id: exclamation_mark
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: exclamation_mark
+
+- type: emoji
+  id: exclamation_question_mark
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: exclamation_question_mark
+
+- type: emoji
+  id: x
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: x
+
+- type: emoji
+  id: check_mark
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: check_mark
+
+- type: emoji
+  id: red_circle
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/twemojis.rsi
+    state: red_circle

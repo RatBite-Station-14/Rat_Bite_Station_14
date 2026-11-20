@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-4.0",
-    "copyright": "axerplushie, scugplush, karlplush, and epsilonplush by eirin, mmarwaarrplushie by mink, eririn and kaaxu",
+    "copyright": "axerplushie, scugplush, karlplush, and epsilonplush by eirin, mmarwaarrplushie by mink, eririn and kaaxu, plushieSleeperbot by spikeberd09",
     "size": {
         "x": 32,
         "y": 32
@@ -27,6 +27,10 @@
         },
         {
             "name": "plushieKITTY"
+        },
+        {
+            "name": "plushieSleeperbot"
         }
     ]
+
 }

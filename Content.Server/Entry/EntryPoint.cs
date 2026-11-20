@@ -102,6 +102,7 @@ namespace Content.Server.Entry
             base.Init();
             Dependencies.BuildGraph();
             Dependencies.InjectDependencies(this);
+            Content.Server._BRatbite.Security.NetSerializerGuard.Apply(_log.GetSawmill("netguard"));
 
             LoadConfigPresets(_cfg, _res, _log.GetSawmill("configpreset"));
 

@@ -42,7 +42,7 @@ trait-marathoner-desc =
 
 trait-juggernaut-name = Juggernaut
 trait-juggernaut-desc =
-    Your critical and death damage thresholds are increased by 50.
+    Your critical and death damage thresholds are increased by 25 and 50 respectively.
 
 trait-neurogenesis-imperfecta-name = Neurogenesis Imperfecta
 trait-neurogenesis-imperfecta-desc =

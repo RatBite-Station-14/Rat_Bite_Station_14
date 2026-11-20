@@ -20,9 +20,8 @@
     walkModifier: 0.90
     sprintModifier: 0.90
   - type: AccessReader
-    access: [["Security"]]
+    access: [[ "Security" ], [ "DepartmentalGuard" ]]
   - type: UnremovaeableOnToggle
-
 
 - type: entity
   parent: BaseAction

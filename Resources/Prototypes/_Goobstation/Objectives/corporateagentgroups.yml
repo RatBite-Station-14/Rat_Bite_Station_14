@@ -16,7 +16,7 @@
     CorporateCaptainIDStealObjective: 1
     CorporateCMOHyposprayStealObjective: 1
     # CMOCrewMonitorStealObjective: 1
-    CorporateCMORapidSyringeGunStealObjective: 1
+    # CorporateCMORapidSyringeGunStealObjective: 1   Ratbite - was made unobtainable
     CorporateRDHardsuitStealObjective: 1
     CorporateNukeDiskStealObjective: 1
     CorporateMagbootsStealObjective: 1
@@ -29,7 +29,7 @@
     CorporateEnergyShotgunStealObjective: 0.5
     CorporateStealSupermatterSliverObjective: 0.5 # Goobstation - supermatter
     CorporateLawbringerStealObjective: 0.5 # Goobstation specific
-    CorporateGeminiProjectorStealObjective: 0.5 # Goobstation specific
+    # CorporateGeminiProjectorStealObjective: 0.5 # Goobstation specific    Ratbite - was made unobtainable
 
 - type: weightedRandom
   id: CorporateObjectiveGroupKill
