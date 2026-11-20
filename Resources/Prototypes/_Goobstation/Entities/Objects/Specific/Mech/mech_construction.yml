@@ -380,6 +380,9 @@
       - GygaxRArm
       - GygaxLLeg
       - GygaxRLeg
+  - type: Construction #ratbite bug fix - should be able to construct gygax now
+    graph: Gygax
+    node: start
 
 - type: entity
   parent: BaseGygaxPartItem
