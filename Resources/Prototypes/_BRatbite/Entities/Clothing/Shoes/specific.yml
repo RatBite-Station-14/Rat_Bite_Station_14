@@ -1,0 +1,8 @@
+- type: entity
+  parent: ClothingShoesJester
+  id: ClothingShoesJesterAltAlt
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Shoes/Specific/jester3.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Shoes/Specific/jester3.rsi
