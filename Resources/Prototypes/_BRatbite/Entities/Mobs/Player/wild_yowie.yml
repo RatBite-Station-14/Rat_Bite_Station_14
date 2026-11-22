@@ -1,0 +1,86 @@
+# This creative work/file is freely and wholly released into the public domain by its original owner/creator, Fishied, under CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0
+- type: localizedDataset
+  id: NamesWildYowie
+  values:
+    prefix: names-wild-yowie-dataset-
+    count: 20
+
+# spawns in maints, has pct and vestiphobia and leap, vigor, sclumsy like clowns (unreliable guns, vaulting over tables or defibbing) random puncher name and random yowie beard and hair stuff
+- type: entity
+  parent: MobYowie
+  id: MobWildYowie
+  name: wild yowie
+  suffix: Ghost Role
+  components:
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+  - type: RandomMetadata
+    nameSegments:
+    - NamesWildYowie
+  - type: GhostRole
+    name: ghost-role-information-wild-yowie-name
+    description: ghost-role-information-wild-yowie-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: Clumsy
+  - type: KillSign
+    hideFromOwner: true
+  - type: PctTraining
+  - type: Nudist # this one has doubled drawbacks compared to normal
+    clothingModifier:
+      FEET:
+        speedModifier: .90
+        staminaModifier: .90
+      GLOVES:
+        speedModifier: .90
+        staminaModifier: .90
+      HEAD:
+        speedModifier: .90
+        staminaModifier: .90
+      INNERCLOTHING:
+        speedModifier: .60
+        staminaModifier: .70
+      OUTERCLOTHING:
+        speedModifier: .70
+        staminaModifier: .80
+  - type: Vigor
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      70: 0.83
+      90: 0.70
+  - type: DamageProtectionBuff
+    modifiers:
+      dermal:
+        id: DermalArmor
+        coefficients:
+          Shock: 1.25
+        flatReductions:
+          Blunt: 3.5
+          Slash: 3.5
+          Piercing: 3.5
+  - type: Juggernaut
+  - type: LanguageKnowledge
+    speaks:
+    - YowKriol
+    understands:
+    - TauCetiBasic
+    - SolCommon
+    - YowKriol
+  - type: Prying
+    pryPowered: true
+    force: true
+    speedModifier: 1.5 # pry time divides by this
+  - type: JumpAbility
+    action: ActionTraitLeap
+    jumpDistance: 4
+    canCollide: true
+    jumpSound: /Audio/Effects/stealthoff.ogg
+    #
