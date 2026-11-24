@@ -407,14 +407,16 @@
   - type: SolutionContainerManager
     solutions:
       grindable:
-        maxVol: 30
+        maxVol: 40
         reagents:
         - ReagentId: MindbreakerToxin
           Quantity: 30
+        - ReagentId: Fiber
+          Quantity: 10
   - type: Edible
     requiresSpecialDigestion: true
     solution: grindable
-    transferAmount: 30
+    transferAmount: 40
     destroyOnEmpty: true
     useSound:
       path: /Audio/Voice/Xenoborg/xenoborg_scream.ogg
