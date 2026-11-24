@@ -1,0 +1,28 @@
+
+- type: marking
+  id: GauzeRightArm
+  bodyPart: LArm, LHand
+  markingCategory: Overlay
+  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid, Felinid, Vulpkanin, Rodentia, Tajaran, Feroxi, Yowie, Oni, Gingerbread]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#FFFFFF"
+  sprites:
+  - sprite: _BRatBites/Entities/Mobs/Customization/moregauze.rsi
+    state: gauze_rightarm
+
+- type: marking
+  id: GauzeUpperArmL
+  bodyPart: LArm
+  markingCategory: Overlay
+  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid, Felinid, Vulpkanin, Rodentia, Tajaran, Feroxi, Yowie, Oni, Gingerbread]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#FFFFFF"
+  sprites:
+  - sprite: _BRatBites/Entities/Mobs/Customization/moregauze.rsi
+    state: gauze_upperarm_l
