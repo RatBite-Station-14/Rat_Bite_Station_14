@@ -1,0 +1,19 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Gauze markings sprited by DBNekonico (github) for Ratbite",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "gauze_rightarm",
+            "directions": 4
+        },
+        {
+            "name": "gauze_upperarm_l",
+            "directions": 4
+        }
+    ]
+}
