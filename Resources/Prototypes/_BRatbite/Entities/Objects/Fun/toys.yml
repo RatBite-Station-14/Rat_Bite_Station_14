@@ -395,10 +395,26 @@
     keysIn:
     - explode
   - type: Explosive
-    explosionType: Explosion
-    maxIntensity: 1
+    explosionType: Default
+    maxIntensity: 10
     intensitySlope: 1
-    totalIntensity: 1
+    totalIntensity: 10
     canCreateVacuum: false
     deleteAfterExplosion: false
     repeatable: true
+  - type: Extractable
+    grindableSolutionName: grindable
+  - type: SolutionContainerManager
+    solutions:
+      grindable:
+        maxVol: 30
+        reagents:
+        - ReagentId: MindbreakerToxin
+          Quantity: 30
+  - type: Edible
+    requiresSpecialDigestion: true
+    solution: grindable
+    transferAmount: 30
+    destroyOnEmpty: true
+    useSound:
+      path: /Audio/Voice/Xenoborg/xenoborg_scream.ogg
