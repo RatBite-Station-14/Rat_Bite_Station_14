@@ -21,7 +21,6 @@
     sprintModifier: 0.90
   - type: AccessReader
     access: [[ "Security" ], [ "DepartmentalGuard" ]]
-    access: [["Security"]]
   - type: UnremovaeableOnToggle
 
 - type: entity

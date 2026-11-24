@@ -395,7 +395,7 @@
     keysIn:
     - explode
   - type: Explosive
-    explosionType: Explosion
+    explosionType: Default
     maxIntensity: 1
     intensitySlope: 1
     totalIntensity: 1

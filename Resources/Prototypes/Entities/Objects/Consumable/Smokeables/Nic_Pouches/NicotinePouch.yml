@@ -43,4 +43,9 @@
       variation: 0.2
       volume: -1
     path: /Audio/_Goobstation/Voice/gulpexotic.ogg #Yoink!
-  message: What are you doing?! It is NOT! Food! # I just swallow these things right?
+  message: edible-nicotine-pouch  # I just swallow these things right?
+  otherMessage: edible-nom-other
+  verb: edible-verb-edible  # these edibles aint shit
+  noun: edible-noun-edible
+  verbName: ingestion-verb-food
+  verbIcon: /Textures/Interface/VerbIcons/cutlery.svg.192dpi.png

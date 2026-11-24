@@ -31,7 +31,6 @@ namespace Content.Client.Chemistry.UI
         private readonly SpriteSystem _sprite;
 
         public event Action<BaseButton.ButtonEventArgs, ReagentButton>? OnReagentButtonPressed;
-
         public readonly Button[] PillTypeButtons;
 
         private const string PillsRsiPath = "/Textures/Objects/Specific/Chemistry/pills.rsi";
@@ -96,7 +95,6 @@ namespace Content.Client.Chemistry.UI
 
             Tabs.SetTabTitle(0, Loc.GetString("chem-master-window-input-tab"));
             Tabs.SetTabTitle(1, Loc.GetString("chem-master-window-output-tab"));
-            SetupThermostat(); // Ratbite
         }
 
         private ReagentButton MakeReagentButton(string text, ChemMasterReagentAmount amount, ReagentId id, bool isBuffer, string styleClass)
@@ -144,17 +142,12 @@ namespace Content.Client.Chemistry.UI
         /// Update the UI state when new state data is received from the server.
         /// </summary>
         /// <param name="state">State data sent by the server.</param>
-        public void UpdateState(BoundUserInterfaceState state, EntityUid chemMaster)
+        public void UpdateState(BoundUserInterfaceState state)
         {
             var castState = (ChemMasterBoundUserInterfaceState)state;
 
             if (castState.UpdateLabel)
                 LabelLine = GenerateLabel(castState);
-
-            // Ratbite start
-            _chemMaster = chemMaster;
-            UpdateThermostat(castState.TargetTemperature);
-            // Ratbite end
 
             // Ensure the Panel Info is updated, including UI elements for Buffer Volume, Output Container and so on
             UpdatePanelInfo(castState);
@@ -175,9 +168,6 @@ namespace Content.Client.Chemistry.UI
             OutputEjectButton.Disabled = castState.OutputContainerInfo is null;
             CreateBottleButton.Disabled = castState.OutputContainerInfo?.Reagents == null;
             CreatePillButton.Disabled = castState.OutputContainerInfo?.Entities == null;
-
-            _selectedReagentToHeat = castState.SelectedReagentToHeat;
-            _targetHeat = castState.TargetTemperature;
 
             UpdateDosageFields(castState);
         }
@@ -237,7 +227,7 @@ namespace Content.Client.Chemistry.UI
 
             var reagent = (state.DrawSource switch
                 {
-                    ChemMasterDrawSource.Internal => state.BufferReagents.Select(r=> r.ToReagentQuantity()),
+                    ChemMasterDrawSource.Internal => state.BufferReagents,
                     ChemMasterDrawSource.External => state.InputContainerInfo.Reagents ?? [],
                     _ => throw new($"Chemmaster {state.OutputContainerInfo} draw source is not set"),
                 }).MinBy(r => r.Quantity)
@@ -298,15 +288,14 @@ namespace Content.Client.Chemistry.UI
             // This sets up the needed data for sorting later in a list
             // Its done this way to not repeat having to use same code twice (once for sorting
             // and once for displaying)
-            // Ratbite edit: add temperature
-            var reagentList = new List<(ReagentId reagentId, string name, Color color, FixedPoint2 quantity, float temperature)>();
-            foreach (var (reagent, quantity, temperature) in state.BufferReagents)
+            var reagentList = new List<(ReagentId reagentId, string name, Color color, FixedPoint2 quantity)>();
+            foreach (var (reagent, quantity) in state.BufferReagents)
             {
                 var reagentId = reagent;
                 _prototypeManager.TryIndex(reagentId.Prototype, out ReagentPrototype? proto);
                 var name = proto?.LocalizedName ?? Loc.GetString("chem-master-window-unknown-reagent-text");
                 var reagentColor = proto?.SubstanceColor ?? default(Color);
-                reagentList.Add(new (reagentId, name, reagentColor, quantity, temperature));
+                reagentList.Add(new (reagentId, name, reagentColor, quantity));
             }
 
             // We sort here since we need sorted list to be filled first.
@@ -334,14 +323,13 @@ namespace Content.Client.Chemistry.UI
             var rowCount = 0;
             foreach (var reagent in reagentList)
             {
-                BufferInfo.Children.Add(BuildReagentRow(reagent.color, rowCount++, reagent.name, reagent.reagentId, reagent.quantity, reagent.temperature, true, true));
+                BufferInfo.Children.Add(BuildReagentRow(reagent.color, rowCount++, reagent.name, reagent.reagentId, reagent.quantity, true, true));
             }
         }
 
         private void BuildContainerUI(Control control, ContainerInfo? info, bool addReagentButtons)
         {
             control.Children.Clear();
-            _temperatureLabels.Clear();
 
             if (info is null)
             {
@@ -374,7 +362,7 @@ namespace Content.Client.Chemistry.UI
             {
                 foreach (var (id, quantity) in info.Entities.Select(x => (x.Id, x.Quantity)))
                 {
-                    control.Children.Add(BuildReagentRow(default(Color), rowCount++, id, default(ReagentId), quantity, -1, false, addReagentButtons));
+                    control.Children.Add(BuildReagentRow(default(Color), rowCount++, id, default(ReagentId), quantity, false, addReagentButtons));
                 }
             }
 
@@ -387,14 +375,14 @@ namespace Content.Client.Chemistry.UI
                     var name = proto?.LocalizedName ?? Loc.GetString("chem-master-window-unknown-reagent-text");
                     var reagentColor = proto?.SubstanceColor ?? default(Color);
 
-                    control.Children.Add(BuildReagentRow(reagentColor, rowCount++, name, reagent.Reagent, reagent.Quantity, -1, false, addReagentButtons));
+                    control.Children.Add(BuildReagentRow(reagentColor, rowCount++, name, reagent.Reagent, reagent.Quantity, false, addReagentButtons));
                 }
             }
         }
         /// <summary>
         /// Take reagent/entity data and present rows, labels, and buttons appropriately. todo sprites?
         /// </summary>
-        private Control BuildReagentRow(Color reagentColor, int rowCount, string name, ReagentId reagent, FixedPoint2 quantity, float temperature, bool isBuffer, bool addReagentButtons)
+        private Control BuildReagentRow(Color reagentColor, int rowCount, string name, ReagentId reagent, FixedPoint2 quantity, bool isBuffer, bool addReagentButtons)
         {
             //Colors rows and sets fallback for reagentcolor to the same as background, this will hide colorPanel for entities hopefully
             var rowColor1 = Color.FromHex("#1B1B1E");
@@ -406,59 +394,42 @@ namespace Content.Client.Chemistry.UI
             }
             //this calls the separated button builder, and stores the return to render after labels
             var reagentButtonConstructors = CreateReagentTransferButtons(reagent, isBuffer, addReagentButtons);
+
+            // Create the row layout with the color panel
             var rowContainer = new BoxContainer
             {
-                Orientation = LayoutOrientation.Horizontal
+                Orientation = LayoutOrientation.Horizontal,
+                Children =
+                {
+                    new Label { Text = $"{name}: " },
+                    new Label
+                    {
+                        Text = $"{quantity}u",
+                        StyleClasses = { StyleClass.LabelWeak }
+                    },
+
+                    // Padding
+                    new Control { HorizontalExpand = true },
+                    // Colored panels for reagents
+                    new PanelContainer
+                    {
+                        Name = "colorPanel",
+                        VerticalExpand = true,
+                        MinWidth = 4,
+                        PanelOverride = new StyleBoxFlat
+                        {
+                            BackgroundColor = reagentColor
+                        },
+                        Margin = new Thickness(0, 1)
+                    }
+                }
             };
-            // Ratbite: add temperature
-            if (temperature > 0)
-            {
-                var checkbox = new CheckBox { Pressed = _selectedReagentToHeat == reagent };
-                checkbox.OnToggled += (args) =>
-                {
-                    _selectedReagentToHeat = args.Pressed ? reagent : null;
-                    OnReagentSelected?.Invoke(_selectedReagentToHeat);
-                };
-                rowContainer.AddChild(checkbox);
-            }
-            rowContainer.AddChild(new Label { Text = $"{name}: " });
-            rowContainer.AddChild(new Label
-            {
-                Text = $"{quantity}u",
-                StyleClasses = { StyleClass.LabelWeak }
-            });
-            if (temperature > 0)
-            {
-                var tempLabel = new Label
-                {
-                    Text = Loc.GetString("chem-master-temperature-label", [("temperature", MathF.Round(temperature))]),
-                    StyleClasses = { StyleClass.LabelWeak },
-                    Margin = new(4, 0, 0, 0),
-                    Visible = temperature > 0,
-                };
-                _temperatureLabels[reagent] = tempLabel;
-                rowContainer.AddChild(tempLabel);
-            }
-            // Padding
-            rowContainer.AddChild(new Control { HorizontalExpand = true });
-            rowContainer.AddChild(new PanelContainer
-            {
-                Name = "colorPanel",
-                VerticalExpand = true,
-                MinWidth = 4,
-                PanelOverride = new StyleBoxFlat
-                {
-                    BackgroundColor = reagentColor
-                },
-                Margin = new Thickness(0, 1)
-            });
-            // Ratbite end
+
             // Add the reagent buttons after the color panel
             foreach (var reagentTransferButton in reagentButtonConstructors)
             {
                 rowContainer.AddChild(reagentTransferButton);
             }
-
             //Apply panencontainer to allow for striped rows
             return new PanelContainer
             {

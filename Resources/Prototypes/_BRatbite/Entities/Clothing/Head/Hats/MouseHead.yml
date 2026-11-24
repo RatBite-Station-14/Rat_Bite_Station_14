@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingHeadHatJester
+  id: ClothingHeadHatMouse
+  name: mouse head
+  description: For silly little ratfinks.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Head/Hats/mousehead.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Head/Hats/mousehead.rsi

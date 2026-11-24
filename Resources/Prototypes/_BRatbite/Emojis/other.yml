@@ -3,3 +3,9 @@
   sprite:
     sprite: /Textures/_BRatBites/Emojis/godo.rsi
     state: icon
+
+- type: emoji
+  id: ltg
+  sprite:
+    sprite: /Textures/_BRatBites/Emojis/ltg.rsi
+    state: icon
