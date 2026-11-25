@@ -52,8 +52,9 @@
         emptyLabel: borg-slot-WeaponProtoKineticAccelerator-empty-goob
         emptyRepresentative: WeaponProtoKineticAccelerator
         whitelist:
-          components:
-          - PressureDamageChange
+          tags: # Ratbite - change to tags instead of components. it so much better.
+          - PKAWeapon
+          - PKAUpgrade
   - type: BorgModuleIcon
     icon: { sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi, state: icon }
 
