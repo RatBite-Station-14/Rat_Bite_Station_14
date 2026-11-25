@@ -36,3 +36,7 @@ plushies-sleeperbot-10 = FUCK.
 plushies-sleeperbot-11 = You’re my friend now.
 plushies-sleeperbot-12 = Ping.
 plushies-sleeperbot-13 = Buzz.
+plushies-sleeperbot-14 = Happens.
+plushies-sleeperbot-15 = THE MANSUS!!! THE MANSUS IS REEAAAAALL!!!
+plushies-sleeperbot-16 = Don't eat me. Please.
+plushies-sleeperbot-17 = FOR THE UNKNOWN!!!
