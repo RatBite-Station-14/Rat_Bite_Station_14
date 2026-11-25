@@ -1,0 +1,16 @@
+- type: loadout
+  id: JesterHatAltPurple
+  equipment:
+    head: ClothingHeadHatJesterAltAlt
+
+
+- type: loadout
+  id: JesterShoesAltPurple
+  equipment:
+    shoes: ClothingShoesJesterAltAlt
+
+
+- type: loadout
+  id: JesterAltSuitPurple
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitJesterAltAlt

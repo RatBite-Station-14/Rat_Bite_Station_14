@@ -22,6 +22,7 @@
     maxItemSize: Large
     storageInsertSound:
       path: /Audio/Voice/Slime/slime_squish.ogg
+  - type: RegrowLimbAction # Ratbite
   - type: ContainerContainer
     containers:
       storagebase: !type:Container

@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingOuterSuitBarrel
+  name: barrel suit
+  description: The old reliable always comes through in times of economic turmoil.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/OuterClothing/Coats/barrelsuit.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/OuterClothing/Coats/barrelsuit.rsi

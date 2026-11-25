@@ -139,7 +139,7 @@ public sealed class IdCardSystem : SharedIdCardSystem
         {
             _chat.TrySendInGameICMessage(
                 ent,
-                Loc.GetString(ent.Comp.ExpireMessage),
+                Loc.GetString(ent.Comp.ExpireMessage, ("name", idCard.FullName)),
                 InGameICChatType.Speak,
                 ChatTransmitRange.Normal,
                 true);
