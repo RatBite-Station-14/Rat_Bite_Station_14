@@ -1,7 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Linq;
-using Content.Client._BRatbite.Chemistry;
 using Content.Shared.Chemistry;
 using Content.Shared.Containers.ItemSlots;
 using JetBrains.Annotations;
@@ -55,14 +53,6 @@ namespace Content.Client.Chemistry.UI
                 new ChemMasterOutputDrawSourceMessage(ChemMasterDrawSource.Internal));
             _window.OutputBeakerDraw.OnPressed += _ => SendMessage(
                 new ChemMasterOutputDrawSourceMessage(ChemMasterDrawSource.External));
-            // Ratbite
-            _window.OnReagentSelected += reagentId => SendMessage(
-                new ChemMasterSelectReagentToHeatMessage(reagentId)
-            );
-            _window.OnThermostatChanged += temp => SendMessage(
-                new ChemMasterSetHeatMessage(temp)
-            );
-            // Ratbite end
 
             for (uint i = 0; i < _window.PillTypeButtons.Length; i++)
             {
@@ -85,17 +75,8 @@ namespace Content.Client.Chemistry.UI
             base.UpdateState(state);
 
             var castState = (ChemMasterBoundUserInterfaceState) state;
-            UpdateEntity(castState);
 
-            _window?.UpdateState(castState, Owner); // Update window state
-        }
-
-        private void UpdateEntity(ChemMasterBoundUserInterfaceState state)
-        {
-            var chemMaster = EntMan.GetComponent<ChemMasterComponent>(Owner);
-            chemMaster.TargetHeat = state.TargetTemperature;
-            chemMaster.Reagents = state.BufferReagents.ToDictionary(r => r.Reagent);
-            chemMaster.SelectedReagentToHeat = state.SelectedReagentToHeat;
+            _window?.UpdateState(castState); // Update window state
         }
     }
 }

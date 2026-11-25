@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingHeadHatJester
+  id: ClothingHeadHatFoxStinky
+  name: stinky fox head
+  description: For silly little tiders that smell bad.
+  components:
+  - type: Sprite
+    sprite: _BRatBites/Clothing/Head/Hats/foxhead.rsi
+  - type: Clothing
+    sprite: _BRatBites/Clothing/Head/Hats/foxhead.rsi

@@ -415,10 +415,8 @@ namespace Content.Shared.Chemistry.Components
             if (_heatCapacityDirty)
                 UpdateHeatCapacity(protoMan);
 
-            var totalThermalEnergy = Temperature * _heatCapacity + temperature * proto.SpecificHeat * quantity.Float(); // Ratbite: Add quantity to energy
+            var totalThermalEnergy = Temperature * _heatCapacity + temperature * proto.SpecificHeat;
             AddReagent(new ReagentId(proto.ID, data), quantity);
-            _heatCapacity += quantity.Float() * proto.SpecificHeat; // Ratbite: Update heat capacity
-            CheckRecalculateHeatCapacity();
             Temperature = _heatCapacity == 0 ? 0 : totalThermalEnergy / _heatCapacity;
         }
 
