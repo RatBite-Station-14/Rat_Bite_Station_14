@@ -166,3 +166,6 @@
         Blunt: 5
   - type: AltFireMelee
     attackType: Heavy
+  - type: Tag # Ratbite - tags for borg module whitelist
+    tags:
+    - PKAWeapon
