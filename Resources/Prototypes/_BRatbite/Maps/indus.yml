@@ -1,0 +1,71 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: gameMap
+  id: Indus
+  mapName: 'Indus'
+  mapPath: /Maps/_BRatbite/Ratbite_Original/indus.yml
+  minPlayers: 0
+  maxPlayers: 30
+  stations:
+    Indus:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Indus {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'R6'
+        - type: StationJobs
+          availableJobs:
+            #service
+            StationAi: [ 1, 1 ]
+            Captain: [ 1, 1 ]
+            NanotrasenRepresentative: [ 1, 1 ]
+            BlueshieldOfficer: [ 1, 1 ]
+            HeadOfPersonnel: [ 1, 1 ]
+            Bartender: [ 1, 1 ]
+            Botanist: [ 2, 2 ]
+            Chef: [ 1, 1 ]
+            Janitor: [ 1, 1 ]
+            Chaplain: [ 1, 1 ]
+            Librarian: [ 1, 1 ]
+            ServiceWorker: [ 1, 1 ]
+            #engineering
+            ChiefEngineer: [ 1, 1 ]
+            EngiSentry: [ 1, 1 ] #ratbite
+            AtmosphericTechnician: [ 2, 2 ]
+            StationEngineer: [ 3, 3 ]
+            TechnicalAssistant: [ 1, 3 ]
+            #medical
+            ChiefMedicalOfficer: [ 1, 1 ]
+            Chemist: [ 2, 2 ]
+            MedOrderly: [ 1, 1 ] #ratbite
+            MedicalDoctor: [ 3, 3 ]
+            MedicalIntern: [ 1, 3 ]
+            #science
+            ResearchDirector: [ 1, 1 ]
+            ScicurityGuard: [ 1, 1 ] #ratbite
+            Scientist: [ 3, 3 ]
+            ResearchAssistant: [ 1, 3 ]
+            Borg: [ 2, 2 ]
+            #security
+            HeadOfSecurity: [ 1, 1 ]
+            RedsightOverseer: [ 1, 1 ] #Ratbite
+            Warden: [ 1, 1 ] #Ratbite de protaganist-ify him!!!
+            Detective: [ 1, 1 ] #Ratbite disco elysium/sherlock larp
+            SecurityOfficer: [ 3, 3 ]
+            SecurityCadet: [ 1, 3 ]
+            Brigmedic: [ 1, 1 ]
+            #supply
+            Quartermaster: [ 1, 1 ]
+            CargoInsurance: [ 1, 1 ] #ratbite
+            SalvageSpecialist: [ 3, 3 ]
+            CargoTechnician: [ 4, 4 ]
+            #civillian
+            Passenger: [ -1, -1 ]
+            Radiohost: [ 1, 1 ]
+            Clown: [ 1, 1 ]
+            Mime: [ 1, 1 ]
+            Musician: [ 1, 1 ]
+            Lawyer: [ 1, 1 ]
+            Prisoner: [ -1, -1 ] #Ratbite
